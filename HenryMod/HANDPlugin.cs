@@ -1,5 +1,5 @@
 ﻿using BepInEx;
-using HANDMod.Modules.Survivors;
+using HANDMod.Content.HAND;
 using R2API.Utils;
 using RoR2;
 using System.Collections.Generic;
@@ -20,7 +20,8 @@ namespace HANDMod
         "PrefabAPI",
         "LanguageAPI",
         "SoundAPI",
-        "UnlockableAPI"
+        "UnlockableAPI",
+        "RecalculateStatsAPI"
     })]
 
     public class HandPlugin : BaseUnityPlugin

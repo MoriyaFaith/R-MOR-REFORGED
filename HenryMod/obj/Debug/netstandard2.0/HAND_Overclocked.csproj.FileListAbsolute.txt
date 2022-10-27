@@ -35,7 +35,6 @@ C:\Users\Node\RoR2 Mods\HAND\HenryMod\bin\Debug\netstandard2.0\Zio.dll
 C:\Users\Node\RoR2 Mods\HAND\HenryMod\bin\Debug\netstandard2.0\RiskOfOptions.dll
 C:\Users\Node\RoR2 Mods\HAND\HenryMod\bin\Debug\netstandard2.0\BepInEx.Harmony.xml
 C:\Users\Node\RoR2 Mods\HAND\HenryMod\bin\Debug\netstandard2.0\BepInEx.Preloader.xml
-C:\Users\Node\RoR2 Mods\HAND\HenryMod\obj\Debug\netstandard2.0\HAND_Overclocked.csproj.AssemblyReference.cache
 C:\Users\Node\RoR2 Mods\HAND\HenryMod\obj\Debug\netstandard2.0\HAND_Overclocked.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\Node\RoR2 Mods\HAND\HenryMod\obj\Debug\netstandard2.0\HAND_Overclocked.AssemblyInfoInputs.cache
 C:\Users\Node\RoR2 Mods\HAND\HenryMod\obj\Debug\netstandard2.0\HAND_Overclocked.AssemblyInfo.cs

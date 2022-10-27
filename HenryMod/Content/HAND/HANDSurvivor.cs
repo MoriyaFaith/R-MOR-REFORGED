@@ -8,8 +8,10 @@ using HANDMod.Modules;
 using System;
 using HANDMod;
 using System.Collections.Generic;
+using HANDMod.Content.HAND.Components.Body;
+using EntityStates;
 
-namespace HANDMod
+namespace HANDMod.Content.HAND
 {
     internal class HANDSurvivor : SurvivorBase
     {
@@ -26,7 +28,7 @@ namespace HANDMod
             bodyNameToken = HandPlugin.DEVELOPER_PREFIX + "_HAND_BODY_NAME",
             subtitleNameToken = HandPlugin.DEVELOPER_PREFIX + "_HAND_BODY_SUBTITLE",
 
-            characterPortrait = null,
+            characterPortrait = Assets.mainAssetBundle.LoadAsset<Texture>("texPortraitOld.png"),
             bodyColor = new Color(0.556862745f, 0.682352941f, 0.690196078f),
 
             crosshair = LegacyResourcesAPI.Load<GameObject>("prefabs/crosshair/simpledotcrosshair"),
@@ -43,20 +45,102 @@ namespace HANDMod
 
         public override Type characterMainState => typeof(EntityStates.GenericCharacterMain);
 
-        public override void InitializeSkills()
-        {
-            Modules.Skills.CreateSkillFamilies(bodyPrefab);
-            string prefix = HandPlugin.DEVELOPER_PREFIX;
-        }
-
         public override void InitializeCharacter()
         {
             base.InitializeCharacter();
             Modules.Assets.ConvertAllRenderersToHopooShader(bodyPrefab);
+
+            CharacterBody cb = bodyPrefab.GetComponent<CharacterBody>();
+            cb.bodyFlags = CharacterBody.BodyFlags.ImmuneToExecutes | CharacterBody.BodyFlags.Mechanical;
+
+            SfxLocator sfx = bodyPrefab.GetComponent<SfxLocator>();
+            sfx.landingSound = "play_char_land";
+            sfx.fallDamageSound = "Play_MULT_shift_hit";
+
+            CameraTargetParams cameraTargetParams = bodyPrefab.GetComponent<CameraTargetParams>();
+            cameraTargetParams.cameraParams = LegacyResourcesAPI.Load<GameObject>("prefabs/characterbodies/toolbotbody").GetComponent<CameraTargetParams>().cameraParams;
+            cameraTargetParams.cameraParams.data.idealLocalCameraPos = new Vector3(0f, 1f, -11f);
+
             RegisterStates();
-            bodyPrefab.AddComponent<HANDMod.Components.HAND_Body.HANDNetworkComponent>();
+            bodyPrefab.AddComponent<HANDMod.Content.HAND.Components.Body.HANDNetworkComponent>();
+            bodyPrefab.AddComponent<HANDMod.Content.HAND.Components.Body.OverclockController>();
 
             Content.HAND.Buffs.Init();
+        }
+        public override void InitializeSkills()
+        {
+            Modules.Skills.CreateSkillFamilies(bodyPrefab);
+            string prefix = HandPlugin.DEVELOPER_PREFIX;
+
+            SkillDef nevermore = Addressables.LoadAssetAsync<SkillDef>("RoR2/Base/Heretic/HereticDefaultAbility.asset").WaitForCompletion();
+
+            Skills.AddPrimarySkills(bodyPrefab, new SkillDef[] { nevermore });
+
+            Skills.AddSecondarySkills(bodyPrefab, new SkillDef[] { nevermore });
+
+            InitializeUtilitySkills();
+
+            Skills.AddSpecialSkills(bodyPrefab, new SkillDef[] { nevermore });
+        }
+
+        private void InitializeUtilitySkills()
+        {
+
+            Skills.AddUtilitySkills(bodyPrefab, new SkillDef[] {});
+            SkillDef ovcSkill = SkillDef.CreateInstance<SkillDef>();
+            ovcSkill.activationState = new SerializableEntityStateType(typeof(EntityStates.HAND_Overclocked.Utility.BeginOverclock));
+            ovcSkill.skillNameToken = HANDSurvivor.HAND_PREFIX + "UTILITY_NAME";
+            ovcSkill.skillName = "BeginOverclock";
+            ovcSkill.skillDescriptionToken = HANDSurvivor.HAND_PREFIX + "UTILITY_DESC";
+            ovcSkill.isCombatSkill = false;
+            ovcSkill.cancelSprintingOnActivation = false;
+            ovcSkill.canceledFromSprinting = false;
+            ovcSkill.baseRechargeInterval = 7f;
+            ovcSkill.interruptPriority = EntityStates.InterruptPriority.Any;
+            ovcSkill.mustKeyPress = true;
+            ovcSkill.beginSkillCooldownOnSkillEnd = false;
+            ovcSkill.baseMaxStock = 1;
+            ovcSkill.fullRestockOnAssign = true;
+            ovcSkill.rechargeStock = 1;
+            ovcSkill.requiredStock = 1;
+            ovcSkill.stockToConsume = 1;
+            ovcSkill.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texUtilityOverclock.png");
+            ovcSkill.activationStateMachineName = "Slide";
+            ovcSkill.keywordTokens = new string[] { HANDSurvivor.HAND_PREFIX + "KEYWORD_SPRINGY" };
+            FixScriptableObjectName(ovcSkill);
+            Modules.ContentPacks.skillDefs.Add(ovcSkill);
+
+            SkillDef ovcCancelDef = SkillDef.CreateInstance<SkillDef>();
+            ovcCancelDef.activationState = new SerializableEntityStateType(typeof(EntityStates.HAND_Overclocked.Utility.CancelOverclock));
+            ovcCancelDef.activationStateMachineName = "Slide";
+            ovcCancelDef.baseMaxStock = 1;
+            ovcCancelDef.baseRechargeInterval = 7f;
+            ovcCancelDef.beginSkillCooldownOnSkillEnd = true;
+            ovcCancelDef.canceledFromSprinting = false;
+            ovcCancelDef.dontAllowPastMaxStocks = true;
+            ovcCancelDef.forceSprintDuringState = false;
+            ovcCancelDef.fullRestockOnAssign = true;
+            ovcCancelDef.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texUtilityOverclockCancel.png");
+            ovcCancelDef.interruptPriority = InterruptPriority.Skill;
+            ovcCancelDef.isCombatSkill = false;
+            ovcCancelDef.keywordTokens = new string[] { HANDSurvivor.HAND_PREFIX + "KEYWORD_SPRINGY" };
+            ovcCancelDef.mustKeyPress = true;
+            ovcCancelDef.cancelSprintingOnActivation = false;
+            ovcCancelDef.rechargeStock = 1;
+            ovcCancelDef.requiredStock = 0;
+            ovcCancelDef.skillName = "CancelOverclock";
+            ovcCancelDef.skillNameToken = HANDSurvivor.HAND_PREFIX + "UTILITY_CANCEL_NAME";
+            ovcCancelDef.skillDescriptionToken = HANDSurvivor.HAND_PREFIX + "UTILITY_CANCEL_DESC";
+            ovcCancelDef.stockToConsume = 0;
+            FixScriptableObjectName(ovcCancelDef);
+            Modules.ContentPacks.skillDefs.Add(ovcCancelDef);
+            EntityStates.HAND_Overclocked.Utility.BeginOverclock.cancelSkillDef = ovcCancelDef;
+
+            OverclockController.texGauge = Assets.mainAssetBundle.LoadAsset<Texture2D>("texGauge.png");
+            OverclockController.texGaugeArrow = Assets.mainAssetBundle.LoadAsset<Texture2D>("texGaugeArrow.png");
+            OverclockController.ovcDef = ovcSkill;
+
+            Skills.AddUtilitySkills(bodyPrefab, new SkillDef[] { ovcSkill });
         }
 
         public override void InitializeSkins()
@@ -85,12 +169,12 @@ namespace HANDMod
 
         private void RegisterStates()
         {
-            SkillDef nevermore = Addressables.LoadAssetAsync<SkillDef>("RoR2/Base/Heretic/HereticDefaultAbility.asset").WaitForCompletion();
-
-            Skills.AddPrimarySkills(bodyPrefab, new SkillDef[] { nevermore });
-            Skills.AddSecondarySkills(bodyPrefab, new SkillDef[] { nevermore });
-            Skills.AddUtilitySkills(bodyPrefab, new SkillDef[] { nevermore });
-            Skills.AddSpecialSkills(bodyPrefab, new SkillDef[] { nevermore });
+            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HAND_Overclocked.Utility.BeginOverclock));
+            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HAND_Overclocked.Utility.CancelOverclock));
+        }
+        private void FixScriptableObjectName(SkillDef sk)
+        {
+            (sk as ScriptableObject).name = sk.skillName;
         }
     }
 }
