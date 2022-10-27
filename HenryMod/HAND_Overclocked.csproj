@@ -14,6 +14,7 @@
 
   <ItemGroup>
     <None Remove="handoverclockedassetbundle" />
+    <None Remove="HAND_Overclocked_Soundbank.bnk" />
     <None Remove="HenryBank.bnk" />
     <None Remove="Modules\Characters\Henry.cs~RF6221a098.TMP" />
   </ItemGroup>
@@ -26,7 +27,7 @@
 	
   <ItemGroup>
     <EmbeddedResource Include="handoverclockedassetbundle" />
-    <EmbeddedResource Include="HenryBank.bnk" />
+    <EmbeddedResource Include="HAND_Overclocked_Soundbank.bnk" />
   </ItemGroup>
 
   <ItemGroup>
