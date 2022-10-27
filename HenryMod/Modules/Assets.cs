@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using RoR2.UI;
 using System;
 
-namespace HenryMod.Modules
+namespace HANDMod.Modules
 {
     internal static class Assets
     {
@@ -29,15 +29,15 @@ namespace HenryMod.Modules
         // CHANGE THIS
         private const string assetbundleName = "myassetbundle";
         //change this to your project's name if/when you've renamed it
-        private const string csProjName = "HenryMod";
+        private const string csProjName = "HAND_Overclocked";
         
         internal static void Initialize()
         {
-            if (assetbundleName == "myassetbundle")
+            /*if (assetbundleName == "myassetbundle")
             {
                 Log.Error("AssetBundle name hasn't been changed. not loading any assets to avoid conflicts");
                 return;
-            }
+            }*/
 
             LoadAssetBundle();
             LoadSoundbank();
