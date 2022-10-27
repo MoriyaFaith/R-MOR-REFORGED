@@ -1,7 +1,7 @@
 {
   "version": 2,
-  "dgSpecHash": "lgCqrS6KP/Y2Z8m9Sce947Az8QBpHIiBlFMgIOdMfjmqYhE59u8JPZnRe/+E4TMUeBvG80QR/cbSlK5w8UJnHw==",
-  "success": false,
+  "dgSpecHash": "jxx3kpoSHuUDQAN6MvFMzbXN2v/TCMuHXoTaoD/NYbI3lavxAAWZ7nQGcOTwPnftVxfE37y6ijLdYnEqr6jd4g==",
+  "success": true,
   "projectFilePath": "C:\\Users\\Node\\RoR2 Mods\\HAND\\HenryMod\\HAND_Overclocked.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Node\\.nuget\\packages\\bepinex.baselib\\5.4.19\\bepinex.baselib.5.4.19.nupkg.sha512",
@@ -43,15 +43,5 @@
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.threading.tasks\\4.3.0\\system.threading.tasks.4.3.0.nupkg.sha512",
     "C:\\Users\\Node\\.nuget\\packages\\unityengine.modules\\2019.4.26\\unityengine.modules.2019.4.26.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "NU1101",
-      "level": "Error",
-      "message": "Unable to find package BepInEx.Analyzers. No packages exist with this id in source(s): Microsoft Visual Studio Offline Packages, nuget.org",
-      "libraryId": "BepInEx.Analyzers",
-      "targetGraphs": [
-        ".NETStandard,Version=v2.0"
-      ]
-    }
-  ]
+  "logs": []
 }

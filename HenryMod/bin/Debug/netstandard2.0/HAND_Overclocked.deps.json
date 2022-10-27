@@ -9,7 +9,6 @@
     ".NETStandard,Version=v2.0/": {
       "HAND_Overclocked/1.0.0": {
         "dependencies": {
-          "BepInEx.Analyzers": "1.0.8",
           "BepInEx.Core": "5.4.19",
           "NETStandard.Library": "2.0.3",
           "RiskOfRain2.GameLibs": "1.2.1-r.1",
@@ -50,7 +49,6 @@
           "HAND_Overclocked.dll": {}
         }
       },
-      "BepInEx.Analyzers/1.0.8": {},
       "BepInEx.BaseLib/5.4.19": {
         "runtime": {
           "lib/netstandard2.0/BepInEx.dll": {
@@ -981,13 +979,6 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
-    },
-    "BepInEx.Analyzers/1.0.8": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-xrfNmunsPhBx+vStTxLonq/aHkRrDH77c9tG/x3m5eejrKe5B0nf7cJPRRt6x330sGI0bLaPTtygdeHUgvI3wQ==",
-      "path": "bepinex.analyzers/1.0.8",
-      "hashPath": "bepinex.analyzers.1.0.8.nupkg.sha512"
     },
     "BepInEx.BaseLib/5.4.19": {
       "type": "package",

@@ -27,7 +27,7 @@ namespace HANDMod.Modules
         internal static AssetBundle mainAssetBundle;
 
         // CHANGE THIS
-        private const string assetbundleName = "myassetbundle";
+        private const string assetbundleName = "handoverclockedassetbundle";
         //change this to your project's name if/when you've renamed it
         private const string csProjName = "HAND_Overclocked";
         
@@ -81,32 +81,6 @@ namespace HANDMod.Modules
                 Log.Error("There is no AssetBundle to load assets from.");
                 return;
             }
-
-            // feel free to delete everything in here and load in your own assets instead
-            // it should work fine even if left as is- even if the assets aren't in the bundle
-
-            swordHitSoundEvent = CreateNetworkSoundEventDef("HenrySwordHit");
-
-            bombExplosionEffect = LoadEffect("BombExplosionEffect", "HenryBombExplosion");
-
-            if (bombExplosionEffect)
-            {
-                ShakeEmitter shakeEmitter = bombExplosionEffect.AddComponent<ShakeEmitter>();
-                shakeEmitter.amplitudeTimeDecay = true;
-                shakeEmitter.duration = 0.5f;
-                shakeEmitter.radius = 200f;
-                shakeEmitter.scaleShakeRadiusWithLocalScale = false;
-
-                shakeEmitter.wave = new Wave
-                {
-                    amplitude = 1f,
-                    frequency = 40f,
-                    cycleOffset = 0f
-                };
-            }
-
-            swordSwingEffect = Assets.LoadEffect("HenrySwordSwingEffect", true);
-            swordHitImpactEffect = Assets.LoadEffect("ImpactHenrySlash");
         }
 
         private static GameObject CreateTracer(string originalTracerName, string newTracerName)

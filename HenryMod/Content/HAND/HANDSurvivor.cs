@@ -18,15 +18,15 @@ namespace HANDMod
 
         public override UnlockableDef characterUnlockableDef => null;
 
-        public override string bodyName => "Henry";
+        public override string bodyName => "HANDOverclocked";
 
         public override BodyInfo bodyInfo { get; set; } = new BodyInfo
         {
-            bodyName = "HenryBody",
+            bodyName = "HANDOverclockedBody",
             bodyNameToken = HandPlugin.DEVELOPER_PREFIX + "_HAND_BODY_NAME",
             subtitleNameToken = HandPlugin.DEVELOPER_PREFIX + "_HAND_BODY_SUBTITLE",
 
-            characterPortrait = Assets.mainAssetBundle.LoadAsset<Texture>("texHenryIcon"),
+            characterPortrait = null,
             bodyColor = new Color(0.556862745f, 0.682352941f, 0.690196078f),
 
             crosshair = LegacyResourcesAPI.Load<GameObject>("prefabs/crosshair/simpledotcrosshair"),
@@ -52,6 +52,7 @@ namespace HANDMod
         public override void InitializeCharacter()
         {
             base.InitializeCharacter();
+            Modules.Assets.ConvertAllRenderersToHopooShader(bodyPrefab);
             RegisterStates();
             bodyPrefab.AddComponent<HANDMod.Components.HAND_Body.HANDNetworkComponent>();
         }
@@ -82,7 +83,12 @@ namespace HANDMod
 
         private void RegisterStates()
         {
+            SkillDef nevermore = Addressables.LoadAssetAsync<SkillDef>("RoR2/Base/Heretic/HereticDefaultAbility.asset").WaitForCompletion();
 
+            Skills.AddPrimarySkills(bodyPrefab, new SkillDef[] { nevermore });
+            Skills.AddSecondarySkills(bodyPrefab, new SkillDef[] { nevermore });
+            Skills.AddUtilitySkills(bodyPrefab, new SkillDef[] { nevermore });
+            Skills.AddSpecialSkills(bodyPrefab, new SkillDef[] { nevermore });
         }
     }
 }

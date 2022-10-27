@@ -43,12 +43,6 @@
         "netstandard2.0": {
           "targetAlias": "netstandard2.0",
           "dependencies": {
-            "BepInEx.Analyzers": {
-              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
-              "suppressParent": "All",
-              "target": "Package",
-              "version": "[1.0.*, )"
-            },
             "BepInEx.Core": {
               "target": "Package",
               "version": "[5.4.19, )"
