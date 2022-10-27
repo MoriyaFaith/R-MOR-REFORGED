@@ -33,12 +33,6 @@ namespace HANDMod.Modules
         
         internal static void Initialize()
         {
-            /*if (assetbundleName == "myassetbundle")
-            {
-                Log.Error("AssetBundle name hasn't been changed. not loading any assets to avoid conflicts");
-                return;
-            }*/
-
             LoadAssetBundle();
             LoadSoundbank();
             PopulateAssets();

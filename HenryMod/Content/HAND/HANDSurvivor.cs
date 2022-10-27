@@ -55,6 +55,8 @@ namespace HANDMod
             Modules.Assets.ConvertAllRenderersToHopooShader(bodyPrefab);
             RegisterStates();
             bodyPrefab.AddComponent<HANDMod.Components.HAND_Body.HANDNetworkComponent>();
+
+            Content.HAND.Buffs.Init();
         }
 
         public override void InitializeSkins()
