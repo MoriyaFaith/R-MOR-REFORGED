@@ -1,0 +1,55 @@
+ManifestFileVersion: 0
+CRC: 3183309552
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 658d2bd27aa8b70c20b8ef818c795399
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 4ae295fadbad9473f4cf3ded7fe4c4dd
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 74
+  Script: {instanceID: 0}
+- Class: 90
+  Script: {instanceID: 0}
+- Class: 91
+  Script: {instanceID: 0}
+- Class: 95
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: 67079b849227b734694872d8810229b8, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: db294d07add6b364f99a346939dd2a8a, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 136
+  Script: {instanceID: 0}
+- Class: 137
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/HAN-D/Textures/Skins/DefaultSkin/HanDWeapon_Normal.png
+- Assets/HAN-D/Textures/Skins/DefaultSkin/HanD_Normal.png
+- Assets/HAN-D/Textures/Skins/DefaultSkin/HanD_Diffuse.png
+- Assets/HAN-D/FBX/fbxHAND.fbx
+- Assets/HAN-D/Materials/Skins/DefaultSkin/matHANDDefault.mat
+- Assets/HAN-D/Textures/Skins/DefaultSkin/HanD_Emission.png
+- Assets/HAN-D/HANDOverclockedDisplay.prefab
+- Assets/HAN-D/mdlHANDOverclocked.prefab
+- Assets/HAN-D/Materials/Skins/DefaultSkin/matHANDWeaponDefault.mat
+- Assets/HAN-D/Animations/animHANDOverclocked.controller
+- Assets/HAN-D/Textures/Skins/DefaultSkin/HanDWeapon_Diffuse.png
+Dependencies: []
