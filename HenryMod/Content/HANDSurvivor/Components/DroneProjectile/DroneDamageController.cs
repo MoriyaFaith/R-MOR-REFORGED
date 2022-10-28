@@ -57,8 +57,10 @@ namespace HANDMod.Content.HANDSurvivor.Components.DroneProjectile
                         if (ownerHealthComponent.body) ownerCritMult = ownerHealthComponent.body.critMultiplier;
                         healOrb.healValue *= ownerCritMult;
                     }
+                    float remainingHealMult = (damageTicksTotal - damageTicks) / (float)damageTicksTotal;
+                    healOrb.healValue *= remainingHealMult;
 
-                    healOrb.overrideDuration = 0.3f;
+                     healOrb.overrideDuration = 0.3f;
                     OrbManager.instance.AddOrb(healOrb);
                 }
                 EffectManager.SimpleEffect(expireEffectPrefab, this.transform.position, this.transform.rotation, true);

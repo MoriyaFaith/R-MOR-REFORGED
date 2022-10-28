@@ -4,6 +4,7 @@ using RoR2.Projectile;
 using R2API;
 using EntityStates.HAND_Overclocked.Special;
 using HANDMod.Content.HANDSurvivor.Components.Body;
+using UnityEngine.AddressableAssets;
 
 namespace HANDMod.Content.HANDSurvivor
 {
@@ -14,6 +15,21 @@ namespace HANDMod.Content.HANDSurvivor
         {
             if (!FireSeekingDrone.projectilePrefab) FireSeekingDrone.projectilePrefab = CreateDroneProjectile();
             if (!DroneFollowerController.dronePrefab) DroneFollowerController.dronePrefab = CreateDroneFollower();
+            if (!TargetingController.allyIndicatorPrefab) TargetingController.allyIndicatorPrefab = CreateAllyIndicator();
+            if (!TargetingController.enemyIndicatorPrefab) TargetingController.enemyIndicatorPrefab = CreateEnemyIndicator();
+        }
+
+        private static GameObject CreateAllyIndicator()
+        {
+            GameObject indicator = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/PassiveHealing/WoodSpriteIndicator.prefab").WaitForCompletion();
+            UnityEngine.Object.Destroy(indicator.GetComponentInChildren<RoR2.InputBindingDisplayController>());
+            UnityEngine.Object.Destroy(indicator.GetComponentInChildren<TMPro.TextMeshPro>());
+            return indicator;
+        }
+        private static GameObject CreateEnemyIndicator()
+        {
+            GameObject indicator = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Engi/EngiMissileTrackingIndicator.prefab").WaitForCompletion();
+            return indicator;
         }
 
         private static GameObject CreateDroneProjectile()

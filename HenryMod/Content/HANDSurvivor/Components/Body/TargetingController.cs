@@ -11,7 +11,8 @@ namespace HANDMod.Content.HANDSurvivor.Components.Body
     {
         public void Awake()
         {
-            this.indicator = new Indicator(base.gameObject, LegacyResourcesAPI.Load<GameObject>("Prefabs/EngiMissileTrackingIndicator"));
+            this.enemyIndicator = new Indicator(base.gameObject, enemyIndicatorPrefab);
+            this.allyIndicator = new Indicator(base.gameObject, allyIndicatorPrefab);
             this.characterBody = base.GetComponent<CharacterBody>();
             this.inputBank = base.GetComponent<InputBankTest>();
             this.teamComponent = base.GetComponent<TeamComponent>();
@@ -19,15 +20,6 @@ namespace HANDMod.Content.HANDSurvivor.Components.Body
 
         public void FixedUpdate()
         {
-            if (characterBody.skillLocator.special.stock <= 0)
-            {
-                this.indicator.active = false;
-            }
-            else if (!this.indicator.active)
-            {
-                this.indicator.active = true;
-            }
-
             this.trackerUpdateStopwatch += Time.fixedDeltaTime;
             if (this.trackerUpdateStopwatch >= 1f / this.trackerUpdateFrequency)
             {
@@ -35,7 +27,34 @@ namespace HANDMod.Content.HANDSurvivor.Components.Body
                 HurtBox hurtBox = this.trackingTarget;
                 Ray aimRay = new Ray(this.inputBank.aimOrigin, this.inputBank.aimDirection);
                 this.SearchForTarget(aimRay);
-                this.indicator.targetTransform = (this.trackingTarget ? this.trackingTarget.transform : null);
+                Transform targetTransform = (this.trackingTarget ? this.trackingTarget.transform : null);
+                this.enemyIndicator.targetTransform = targetTransform;
+                this.allyIndicator.targetTransform = targetTransform;
+            }
+
+            if (characterBody.skillLocator.special.stock <= 0)
+            {
+                this.enemyIndicator.active = false;
+                this.allyIndicator.active = false;
+            }
+            else
+            {
+                bool targetingEnemy = true;
+                if (this.teamComponent && this.trackingTarget && this.trackingTarget.teamIndex == this.teamComponent.teamIndex)
+                {
+                    targetingEnemy = false;
+                }
+
+                if (targetingEnemy)
+                {
+                    this.enemyIndicator.active = true;
+                    this.allyIndicator.active = false;
+                }
+                else
+                {
+                    this.enemyIndicator.active = false;
+                    this.allyIndicator.active = true;
+                }
             }
         }
 
@@ -58,6 +77,9 @@ namespace HANDMod.Content.HANDSurvivor.Components.Body
             return this.trackingTarget;
         }
 
+        public static GameObject enemyIndicatorPrefab;
+        public static GameObject allyIndicatorPrefab;
+
         public float maxTrackingDistance = 160f;
         public float maxTrackingAngle = 120f;
         public float trackerUpdateFrequency = 10f;
@@ -68,7 +90,8 @@ namespace HANDMod.Content.HANDSurvivor.Components.Body
         private TeamComponent teamComponent;
         private InputBankTest inputBank;
         private float trackerUpdateStopwatch;
-        private Indicator indicator;
+        private Indicator enemyIndicator;
+        private Indicator allyIndicator;
         private readonly BullseyeSearch search = new BullseyeSearch();
     }
 }
