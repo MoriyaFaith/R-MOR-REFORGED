@@ -12,23 +12,10 @@ namespace HANDMod.Modules
 {
     internal static class Assets
     {
-        #region henry's stuff
-        // particle effects
-        internal static GameObject swordSwingEffect;
-        internal static GameObject swordHitImpactEffect;
-
-        internal static GameObject bombExplosionEffect;
-
-        // networked hit sounds
-        internal static NetworkSoundEventDef swordHitSoundEvent;
-        #endregion
-
         // the assetbundle to load assets from
         internal static AssetBundle mainAssetBundle;
 
-        // CHANGE THIS
         private const string assetbundleName = "handoverclockedassetbundle";
-        //change this to your project's name if/when you've renamed it
         private const string csProjName = "HAND_Overclocked";
         
         internal static void Initialize()

@@ -6,23 +6,9 @@ using UnityEngine.Networking;
 
 namespace HANDMod.Content.HANDSurvivor.Components.DroneProjectile
 {
-    public class DroneDamageController : NetworkBehaviour
+    public class DroneDamageController : MonoBehaviour
     {
         private bool playedHitSound = false;
-
-        [ClientRpc]
-        private void RpcPlayHitSound()
-        {
-            if (!playedHitSound)
-            {
-                playedHitSound = true;
-                Util.PlaySound("Play_HOC_Drill", this.gameObject);
-            }
-            else
-            {
-                Util.PlaySound("Play_HOC_DroneHit", this.gameObject);
-            }
-        }
 
         public void Awake()
         {
@@ -113,7 +99,11 @@ namespace HANDMod.Content.HANDSurvivor.Components.DroneProjectile
                                 Destroy(this.gameObject);
                             }
 
-                            RpcPlayHitSound();
+                            if (!playedHitSound)
+                            {
+                                playedHitSound = true;
+                                EffectManager.SimpleSoundEffect(startSound.index, base.transform.position, true);
+                            }
 
 
                             if (victimHealthComponent && projectileDamage)
@@ -197,6 +187,7 @@ namespace HANDMod.Content.HANDSurvivor.Components.DroneProjectile
         public static float damageHealFraction = 0.5f;
         public static GameObject bleedEffectPrefab = LegacyResourcesAPI.Load<GameObject>("Prefabs/BleedEffect");
         public static GameObject expireEffectPrefab = LegacyResourcesAPI.Load<GameObject>("prefabs/effects/omnieffect/OmniImpactVFXLoader");
+        public static NetworkSoundEventDef startSound;
 
         private float stopwatch;
         private ProjectileStickOnImpact stick;
