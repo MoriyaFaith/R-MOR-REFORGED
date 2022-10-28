@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 922799302
+CRC: 792662012
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 90956ca92276fb4ee348cf31159a80fe
+    Hash: 1f31d3ef5bf3c1aa153586fc5560be71
   TypeTreeHash:
     serializedVersion: 2
-    Hash: f863620933859c4027eba6c9e8e72819
+    Hash: 72b4dd5f825c346a00f447bf67a1a475
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -15,11 +15,17 @@ ClassTypes:
   Script: {instanceID: 0}
 - Class: 21
   Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
 - Class: 28
+  Script: {instanceID: 0}
+- Class: 33
   Script: {instanceID: 0}
 - Class: 43
   Script: {instanceID: 0}
 - Class: 48
+  Script: {instanceID: 0}
+- Class: 64
   Script: {instanceID: 0}
 - Class: 74
   Script: {instanceID: 0}
@@ -39,6 +45,10 @@ ClassTypes:
   Script: {instanceID: 0}
 - Class: 137
   Script: {instanceID: 0}
+- Class: 198
+  Script: {instanceID: 0}
+- Class: 199
+  Script: {instanceID: 0}
 - Class: 213
   Script: {instanceID: 0}
 - Class: 319
@@ -46,10 +56,16 @@ ClassTypes:
 SerializeReferenceClassIdentifiers: []
 Assets:
 - Assets/HAN-D/Textures/Skins/DefaultSkin/HanDWeapon_Normal.png
+- Assets/HandDrone/mat/texDroneBladesTemp.mat
+- Assets/HandDrone/mat/DroneSawTemp.mat
+- Assets/HandDrone/DroneAnimSpeenSaw.anim
+- Assets/HandDrone/DroneV07.fbx
 - Assets/HAN-D/Textures/Skills/texUtilityOverclockCancel.png
 - Assets/HAN-D/Textures/Skins/DefaultSkin/HanD_Normal.png
 - Assets/HAN-D/Textures/Skills/texSecondary.png
 - Assets/HAN-D/Textures/Skills/texUtilityOverclock.png
+- Assets/HandDrone/mat/sparksParticles.mat
+- Assets/HandDrone/mat/DroneBody.mat
 - Assets/HAN-D/Textures/Skins/DefaultSkin/HanD_Diffuse.png
 - Assets/HAN-D/FBX/fbxHAND.fbx
 - Assets/HAN-D/Textures/UI/texGaugeArrow.png
@@ -57,13 +73,19 @@ Assets:
 - Assets/HAN-D/Textures/Skins/DefaultSkin/HanD_Emission.png
 - Assets/HAN-D/Textures/Skills/texSecondaryScepter.png
 - Assets/HAN-D/Textures/UI/texGauge.png
+- Assets/HandDrone/DronePrefab.prefab
+- Assets/HandDrone/DroneAnimSpeenBlades.anim
 - Assets/HAN-D/HANDOverclockedDisplay.prefab
 - Assets/HAN-D/Animations/maskHANDOverclocked.mask
 - Assets/HAN-D/mdlHANDOverclocked.prefab
 - Assets/HAN-D/Materials/Skins/DefaultSkin/matHANDWeaponDefault.mat
+- Assets/HandDrone/mat/texDroneBodyEmission.png
+- Assets/HandDrone/mat/texDroneBlades.png
 - Assets/HAN-D/Animations/animHANDOverclocked.controller
 - Assets/HAN-D/Textures/UI/texPortraitOld.png
 - Assets/HAN-D/Textures/Skills/texPassive.png
 - Assets/HAN-D/Textures/Skills/texPrimaryPunch.png
+- Assets/HandDrone/DroneAnimator.controller
+- Assets/HandDrone/mat/texDroneBody.png
 - Assets/HAN-D/Textures/Skins/DefaultSkin/HanDWeapon_Diffuse.png
 Dependencies: []
