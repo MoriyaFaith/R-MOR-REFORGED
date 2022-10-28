@@ -7,6 +7,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2651193765526160102, guid: 6ed7f9ab5ec5aa94199eb7d3a9dc1277,
+        type: 3}
+      propertyPath: m_Name
+      value: HANDOverclockedDisplay
+      objectReference: {fileID: 0}
     - target: {fileID: 3479549802414438712, guid: 6ed7f9ab5ec5aa94199eb7d3a9dc1277,
         type: 3}
       propertyPath: m_RootOrder
@@ -82,6 +87,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: HANDOverclockedDisplay
       objectReference: {fileID: 0}
+    - target: {fileID: 8746292665943278118, guid: 6ed7f9ab5ec5aa94199eb7d3a9dc1277,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: ef24867269f0e3a4d830f6dbb6adad9b, type: 2}
     m_RemovedComponents:
     - {fileID: 4078550915233530981, guid: 6ed7f9ab5ec5aa94199eb7d3a9dc1277, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 6ed7f9ab5ec5aa94199eb7d3a9dc1277, type: 3}
