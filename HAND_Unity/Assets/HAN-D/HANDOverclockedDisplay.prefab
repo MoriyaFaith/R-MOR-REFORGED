@@ -12,6 +12,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: HANDOverclockedDisplay
       objectReference: {fileID: 0}
+    - target: {fileID: 3423085372141901916, guid: 6ed7f9ab5ec5aa94199eb7d3a9dc1277,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.2625
+      objectReference: {fileID: 0}
+    - target: {fileID: 3423085372141901916, guid: 6ed7f9ab5ec5aa94199eb7d3a9dc1277,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.2625
+      objectReference: {fileID: 0}
+    - target: {fileID: 3423085372141901916, guid: 6ed7f9ab5ec5aa94199eb7d3a9dc1277,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.2625
+      objectReference: {fileID: 0}
     - target: {fileID: 3479549802414438712, guid: 6ed7f9ab5ec5aa94199eb7d3a9dc1277,
         type: 3}
       propertyPath: m_RootOrder

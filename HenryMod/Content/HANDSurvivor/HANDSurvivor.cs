@@ -64,8 +64,8 @@ namespace HANDMod.Content.HANDSurvivor
             sfx.landingSound = "play_char_land";
             sfx.fallDamageSound = "Play_MULT_shift_hit";
 
+            //CameraTargetParams toolbotCamera = LegacyResourcesAPI.Load<GameObject>("prefabs/characterbodies/toolbotbody").GetComponent<CameraTargetParams>();
             CameraTargetParams cameraTargetParams = bodyPrefab.GetComponent<CameraTargetParams>();
-            cameraTargetParams.cameraParams = LegacyResourcesAPI.Load<GameObject>("prefabs/characterbodies/toolbotbody").GetComponent<CameraTargetParams>().cameraParams;
             cameraTargetParams.cameraParams.data.idealLocalCameraPos = new Vector3(0f, 1f, -11f);
 
             RegisterStates();
