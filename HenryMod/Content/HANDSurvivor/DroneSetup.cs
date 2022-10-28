@@ -2,25 +2,20 @@
 using UnityEngine;
 using RoR2.Projectile;
 using R2API;
+using EntityStates.HAND_Overclocked.Special;
+using HANDMod.Content.HANDSurvivor.Components.Body;
 
 namespace HANDMod.Content.HANDSurvivor
 {
     //Copypasted the code from the original HAN-D Overclocked.
     public class DroneSetup
     {
-        public static GameObject droneProjectile;
-        public static GameObject droneFollower;
         public static void Init()
         {
-            if (!droneProjectile)
-            {
-                droneProjectile = CreateDroneProjectile();
-            }
-            if (!droneFollower)
-            {
-                droneFollower = CreateDroneFollower();
-            }
+            if (!FireSeekingDrone.projectilePrefab) FireSeekingDrone.projectilePrefab = CreateDroneProjectile();
+            if (!DroneFollowerController.dronePrefab) DroneFollowerController.dronePrefab = CreateDroneFollower();
         }
+
         private static GameObject CreateDroneProjectile()
         {
             GameObject droneProjectile = LegacyResourcesAPI.Load<GameObject>("prefabs/projectiles/EngiHarpoon").InstantiateClone("HANDOverclockedDroneProjectile", true);

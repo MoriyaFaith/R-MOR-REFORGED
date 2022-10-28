@@ -12,7 +12,6 @@ namespace HANDMod.Content.HANDSurvivor.Components.Body
             ovcTimer = 0f;
             ovcActive = false;
             characterBody = base.GetComponent<CharacterBody>();
-            networkSounds = base.GetComponent<HANDNetworkComponent>();
             healthComponent = characterBody.healthComponent;
 
             rectGauge = new Rect();
@@ -76,7 +75,7 @@ namespace HANDMod.Content.HANDSurvivor.Components.Body
         [Command]
         private void CmdBeginOverclockServer()
         {
-            networkSounds.RpcPlayOverclockStart();
+            RpcPlayOverclockStart();
             if (!characterBody.HasBuff(Buffs.Overclock))
             {
                 characterBody.AddBuff(Buffs.Overclock);
@@ -100,7 +99,19 @@ namespace HANDMod.Content.HANDSurvivor.Components.Body
             {
                 characterBody.RemoveBuff(Buffs.Overclock);
             }
-            networkSounds.RpcPlayOverclockEnd();
+            RpcPlayOverclockEnd();
+        }
+
+        [ClientRpc]
+        public void RpcPlayOverclockEnd()
+        {
+            Util.PlaySound("Play_MULT_shift_end", base.gameObject);
+        }
+
+        [ClientRpc]
+        public void RpcPlayOverclockStart()
+        {
+            Util.PlaySound("Play_MULT_shift_start", base.gameObject);
         }
 
         private void ReiszeOverclockGauge()
@@ -156,7 +167,6 @@ namespace HANDMod.Content.HANDSurvivor.Components.Body
 
         public static float OverclockDuration = 4f;
 
-        private HANDNetworkComponent networkSounds;
         private CharacterBody characterBody;
         private HealthComponent healthComponent;
 

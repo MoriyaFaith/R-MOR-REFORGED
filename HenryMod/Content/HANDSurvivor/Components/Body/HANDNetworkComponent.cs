@@ -111,18 +111,6 @@ namespace HANDMod.Content.HANDSurvivor.Components.Body
             }
         }
 
-        [ClientRpc]
-        public void RpcPlayOverclockEnd()
-        {
-            Util.PlaySound("Play_MULT_shift_end", base.gameObject);
-        }
-
-        [ClientRpc]
-        public void RpcPlayOverclockStart()
-        {
-            Util.PlaySound("Play_MULT_shift_start", base.gameObject);
-        }
-
         private void OnDestroy()
         {
             Util.PlaySound("Play_MULT_shift_end", base.gameObject);

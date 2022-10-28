@@ -221,10 +221,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 382011251658748992, guid: c25152a8bbec99947b57543768709cab,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 382011251658748994, guid: c25152a8bbec99947b57543768709cab,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 382011251658748996, guid: c25152a8bbec99947b57543768709cab,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2330207779076030100, guid: c25152a8bbec99947b57543768709cab,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5223257359439201833, guid: c25152a8bbec99947b57543768709cab,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5223257359439201833, guid: c25152a8bbec99947b57543768709cab,
         type: 3}
@@ -280,6 +300,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: DronePrefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 5223257359439501839, guid: c25152a8bbec99947b57543768709cab,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c25152a8bbec99947b57543768709cab, type: 3}

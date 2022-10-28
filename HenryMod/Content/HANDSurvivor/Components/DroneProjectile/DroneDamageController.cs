@@ -33,7 +33,6 @@ namespace HANDMod.Content.HANDSurvivor.Components.DroneProjectile
                 damageTicks = 0;
                 firstHit = true;
                 projectileDamage = this.gameObject.GetComponent<ProjectileDamage>();
-                healPerTick = totalHeal / damageTicksTotal;
                 projectileController = this.gameObject.GetComponent<ProjectileController>();
             }
         }
@@ -51,7 +50,14 @@ namespace HANDMod.Content.HANDSurvivor.Components.DroneProjectile
                     HealOrb healOrb = new HealOrb();
                     healOrb.origin = this.transform.position;
                     healOrb.target = ownerHealthComponent.body.mainHurtBox;
-                    healOrb.healValue = ownerHealthComponent.body.maxHealth * healPerTick * (damageTicksTotal - damageTicks) * 0.5f;
+                    healOrb.healValue = projectileDamage.damage * DroneDamageController.damageHealFraction;
+                    if (projectileDamage && projectileDamage.crit)
+                    {
+                        float ownerCritMult = 2f;
+                        if (ownerHealthComponent.body) ownerCritMult = ownerHealthComponent.body.critMultiplier;
+                        healOrb.healValue *= ownerCritMult;
+                    }
+
                     healOrb.overrideDuration = 0.3f;
                     OrbManager.instance.AddOrb(healOrb);
                 }
@@ -107,15 +113,6 @@ namespace HANDMod.Content.HANDSurvivor.Components.DroneProjectile
 
                             RpcPlayHitSound();
 
-                            if (ownerHealthComponent)
-                            {
-                                HealOrb healOrb = new HealOrb();
-                                healOrb.origin = this.transform.position;
-                                healOrb.target = ownerHealthComponent.body.mainHurtBox;
-                                healOrb.healValue = ownerHealthComponent.body.maxHealth * healPerTick;
-                                healOrb.overrideDuration = 0.3f;
-                                OrbManager.instance.AddOrb(healOrb);
-                            }
 
                             if (victimHealthComponent && projectileDamage)
                             {
@@ -130,9 +127,24 @@ namespace HANDMod.Content.HANDSurvivor.Components.DroneProjectile
                                         }
                                         else
                                         {
-                                            victimHealthComponent.body.AddTimedBuff(Buffs.DroneDebuff, (float)damageTicksTotal * damageTimer);
+                                            //victimHealthComponent.body.AddTimedBuff(Buffs.DroneDebuff, (float)damageTicksTotal * damageTimer);
                                         }
                                     }
+                                }
+
+                                float currentTickDamage = projectileDamage.damage / (float)damageTicksTotal;
+                                float ownerCritMult = 2f;
+
+                                if (ownerHealthComponent)
+                                {
+                                    ownerCritMult = ownerHealthComponent.body.critMultiplier;
+                                    HealOrb healOrb = new HealOrb();
+                                    healOrb.origin = this.transform.position;
+                                    healOrb.target = ownerHealthComponent.body.mainHurtBox;
+                                    healOrb.healValue = damageHealFraction * currentTickDamage;
+                                    if (projectileDamage.crit) healOrb.healValue *= ownerCritMult;
+                                    healOrb.overrideDuration = 0.3f;
+                                    OrbManager.instance.AddOrb(healOrb);
                                 }
 
                                 if (victimHealthComponent.body && victimHealthComponent.body.teamComponent && victimHealthComponent.body.teamComponent.teamIndex == teamIndex)
@@ -140,7 +152,8 @@ namespace HANDMod.Content.HANDSurvivor.Components.DroneProjectile
                                     HealOrb healOrb = new HealOrb();
                                     healOrb.origin = this.transform.position;
                                     healOrb.target = victimHealthComponent.body.mainHurtBox;
-                                    healOrb.healValue = victimHealthComponent.body.maxHealth * healPerTick;
+                                    healOrb.healValue = currentTickDamage;
+                                    if (projectileDamage.crit) healOrb.healValue *= ownerCritMult;
                                     healOrb.overrideDuration = 0.3f;
                                     OrbManager.instance.AddOrb(healOrb);
                                 }
@@ -150,7 +163,7 @@ namespace HANDMod.Content.HANDSurvivor.Components.DroneProjectile
                                     {
                                         attacker = owner,
                                         inflictor = owner,
-                                        damage = projectileDamage.damage / (float)damageTicksTotal,
+                                        damage = currentTickDamage,
                                         damageColorIndex = DamageColorIndex.Default,
                                         damageType = DamageType.Generic,
                                         crit = projectileDamage.crit,
@@ -179,7 +192,7 @@ namespace HANDMod.Content.HANDSurvivor.Components.DroneProjectile
         public static float procCoefficient = 0.5f;
         public static float damageTimer = 0.5f;
         public static uint damageTicksTotal = 8;
-        public static float totalHeal = 0.085f;
+        public static float damageHealFraction = 0.5f;
         public static GameObject bleedEffectPrefab = LegacyResourcesAPI.Load<GameObject>("Prefabs/BleedEffect");
         public static GameObject expireEffectPrefab = LegacyResourcesAPI.Load<GameObject>("prefabs/effects/omnieffect/OmniImpactVFXLoader");
 
@@ -191,7 +204,6 @@ namespace HANDMod.Content.HANDSurvivor.Components.DroneProjectile
         private bool firstHit;
 
         private GameObject bleedEffect;
-        private float healPerTick;
         private GameObject owner;
         private TeamIndex teamIndex;
         private ProjectileController projectileController;

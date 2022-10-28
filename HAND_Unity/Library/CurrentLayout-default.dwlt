@@ -481,19 +481,19 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/HandDrone
+    - Assets/HAN-D/Textures/Skills
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/HandDrone
+  - Assets/HAN-D/Textures/Skills
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\Node\RoR2 Mods\HAND\HAND_Unity
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: ac370000
-    m_LastClickedID: 14252
+    m_SelectedIDs: cc370000
+    m_LastClickedID: 14284
     m_ExpandedIDs: 00000000a4370000a6370000a8370000aa370000ac37000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -549,7 +549,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 0
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c6230000683900009a34000000000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -645,7 +645,7 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
+      m_SelectedIDs: fc370000
       m_LastClickedID: 0
       m_ExpandedIDs: 5afbffff
       m_RenameOverlay:
@@ -707,9 +707,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 9.02181, y: 0.75858283, z: -12.068005}
+    m_Target: {x: 12.88888, y: 0.467708, z: -11.013988}
     speed: 2
-    m_Value: {x: 0.48550242, y: -0.1725615, z: -0.63123596}
+    m_Value: {x: 12.88888, y: 0.467708, z: -11.013988}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -755,13 +755,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.0050440067, y: 0.9868494, z: -0.031402092, w: 0.15854962}
+    m_Target: {x: 0.014854982, y: 0.9582498, z: -0.050652325, w: 0.28105727}
     speed: 2
-    m_Value: {x: 0.0022215194, y: 0.9892869, z: -0.14527865, w: 0.015138462}
+    m_Value: {x: 0.014854982, y: 0.9582498, z: -0.05065233, w: 0.28105727}
   m_Size:
-    m_Target: 8.891284
+    m_Target: 10.084917
     speed: 2
-    m_Value: 1.000437
+    m_Value: 10.084917
   m_Ortho:
     m_Target: 0
     speed: 2

@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 792662012
+CRC: 1517624216
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 1f31d3ef5bf3c1aa153586fc5560be71
+    Hash: 02b163c32818f77664989f3287b447da
   TypeTreeHash:
     serializedVersion: 2
     Hash: 72b4dd5f825c346a00f447bf67a1a475
@@ -76,6 +76,7 @@ Assets:
 - Assets/HandDrone/DronePrefab.prefab
 - Assets/HandDrone/DroneAnimSpeenBlades.anim
 - Assets/HAN-D/HANDOverclockedDisplay.prefab
+- Assets/HAN-D/Textures/Skills/texSpecial.png
 - Assets/HAN-D/Animations/maskHANDOverclocked.mask
 - Assets/HAN-D/mdlHANDOverclocked.prefab
 - Assets/HAN-D/Materials/Skins/DefaultSkin/matHANDWeaponDefault.mat

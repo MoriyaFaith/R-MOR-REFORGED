@@ -10,6 +10,7 @@ using HANDMod;
 using System.Collections.Generic;
 using HANDMod.Content.HANDSurvivor.Components.Body;
 using EntityStates;
+using System.Linq;
 
 namespace HANDMod.Content.HANDSurvivor
 {
@@ -65,6 +66,8 @@ namespace HANDMod.Content.HANDSurvivor
             bodyPrefab.AddComponent<HANDNetworkComponent>();
             bodyPrefab.AddComponent<OverclockController>();
             bodyPrefab.AddComponent<TargetingController>();
+            bodyPrefab.AddComponent<DroneStockController>();
+            bodyPrefab.AddComponent<DroneFollowerController>();
 
             Content.HANDSurvivor.Buffs.Init();
         }
@@ -146,7 +149,38 @@ namespace HANDMod.Content.HANDSurvivor
         private void InitializeSpecialSkills()
         {
             DroneSetup.Init();
-            Skills.AddSpecialSkills(bodyPrefab, new SkillDef[] { Addressables.LoadAssetAsync<SkillDef>("RoR2/Base/Heretic/HereticDefaultAbility.asset").WaitForCompletion() });
+
+            EntityStateMachine stateMachine = bodyPrefab.AddComponent<EntityStateMachine>();
+            stateMachine.customName = "DroneLauncher";
+            stateMachine.initialStateType = new SerializableEntityStateType(typeof(EntityStates.BaseBodyAttachmentState));
+            stateMachine.mainStateType = new SerializableEntityStateType(typeof(EntityStates.BaseBodyAttachmentState));
+            NetworkStateMachine nsm = bodyPrefab.GetComponent<NetworkStateMachine>();
+            nsm.stateMachines = nsm.stateMachines.Append(stateMachine).ToArray();
+
+            SkillDef droneSkill = SkillDef.CreateInstance<SkillDef>();
+            droneSkill.activationState = new SerializableEntityStateType(typeof(EntityStates.HAND_Overclocked.Special.FireSeekingDrone));
+            droneSkill.skillNameToken = HANDSurvivor.HAND_PREFIX + "SPECIAL_NAME";
+            droneSkill.skillName = "Drones";
+            droneSkill.skillDescriptionToken = HANDSurvivor.HAND_PREFIX + "SPECIAL_DESC";
+            droneSkill.isCombatSkill = true;
+            droneSkill.cancelSprintingOnActivation = false;
+            droneSkill.canceledFromSprinting = false;
+            droneSkill.baseRechargeInterval = 10f;
+            droneSkill.interruptPriority = EntityStates.InterruptPriority.Any;
+            droneSkill.mustKeyPress = false;
+            droneSkill.beginSkillCooldownOnSkillEnd = true;
+            droneSkill.baseMaxStock = 10;
+            droneSkill.fullRestockOnAssign = false;
+            droneSkill.rechargeStock = 1;
+            droneSkill.requiredStock = 1;
+            droneSkill.stockToConsume = 1;
+            droneSkill.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texSpecial.png");
+            droneSkill.activationStateMachineName = "DroneLauncher";
+            droneSkill.keywordTokens = new string[] { };
+            FixScriptableObjectName(droneSkill);
+            Modules.ContentPacks.skillDefs.Add(droneSkill);
+
+            Skills.AddSpecialSkills(bodyPrefab, new SkillDef[] { droneSkill });
         }
 
         public override void InitializeSkins()
@@ -177,6 +211,8 @@ namespace HANDMod.Content.HANDSurvivor
         {
             Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HAND_Overclocked.Utility.BeginOverclock));
             Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HAND_Overclocked.Utility.CancelOverclock));
+
+            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HAND_Overclocked.Special.FireSeekingDrone));
         }
         private void FixScriptableObjectName(SkillDef sk)
         {
