@@ -62,8 +62,9 @@ namespace HANDMod.Content.HANDSurvivor
             cameraTargetParams.cameraParams.data.idealLocalCameraPos = new Vector3(0f, 1f, -11f);
 
             RegisterStates();
-            bodyPrefab.AddComponent<HANDMod.Content.HANDSurvivor.Components.Body.HANDNetworkComponent>();
-            bodyPrefab.AddComponent<HANDMod.Content.HANDSurvivor.Components.Body.OverclockController>();
+            bodyPrefab.AddComponent<HANDNetworkComponent>();
+            bodyPrefab.AddComponent<OverclockController>();
+            bodyPrefab.AddComponent<TargetingController>();
 
             Content.HANDSurvivor.Buffs.Init();
         }
