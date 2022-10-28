@@ -1,18 +1,20 @@
 ﻿using UnityEngine;
 using RoR2;
 using UnityEngine.AddressableAssets;
+using R2API;
 
-namespace HANDMod.Content.HAND
+namespace HANDMod.Content.HANDSurvivor
 {
     public class Buffs
     {
         public static BuffDef Overclock;
+        public static BuffDef DroneDebuff;
 
         public static void Init()
         {
             if (!Buffs.Overclock)
             {
-                Overclock = CreateBuffDef(
+                Buffs.Overclock = CreateBuffDef(
                     "HANDMod_Overclock",
                     false,
                     false,
@@ -21,7 +23,29 @@ namespace HANDMod.Content.HAND
                     Addressables.LoadAssetAsync<BuffDef>("RoR2/Base/ShockNearby/bdTeslaField.asset").WaitForCompletion().iconSprite
                     );
 
-                R2API.RecalculateStatsAPI.GetStatCoefficients += OverclockHook;
+                RecalculateStatsAPI.GetStatCoefficients += OverclockHook;
+            }
+
+            if (!Buffs.DroneDebuff)
+            {
+                Buffs.DroneDebuff = CreateBuffDef(
+                    "HANDMod_DroneDebuff",
+                    false,
+                    false,
+                    true,
+                    new Color(0.556862745f, 0.682352941f, 0.690196078f),
+                    Addressables.LoadAssetAsync<BuffDef>("RoR2/Base/Treebot/bdWeak.asset").WaitForCompletion().iconSprite
+                    );
+                RecalculateStatsAPI.GetStatCoefficients += DroneDebuffHook;
+            }
+        }
+
+        private static void DroneDebuffHook(CharacterBody sender, RecalculateStatsAPI.StatHookEventArgs args)
+        {
+            if (sender.HasBuff(Buffs.DroneDebuff))
+            {
+                args.moveSpeedReductionMultAdd += 0.6f;
+                args.damageMultAdd -= 0.3f;
             }
         }
 

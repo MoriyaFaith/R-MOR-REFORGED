@@ -1,5 +1,5 @@
 ﻿using BepInEx;
-using HANDMod.Content.HAND;
+using HANDMod.Content.HANDSurvivor;
 using R2API.Utils;
 using RoR2;
 using System.Collections.Generic;

@@ -1,4 +1,4 @@
-﻿using HANDMod.Content.HAND.Components.Body;
+﻿using HANDMod.Content.HANDSurvivor.Components.Body;
 using RoR2;
 using RoR2.Skills;
 using UnityEngine;

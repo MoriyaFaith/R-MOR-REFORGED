@@ -42,3 +42,4 @@ C:\Users\Node\RoR2 Mods\HAND\HenryMod\obj\Debug\netstandard2.0\HAND_Overclocked.
 C:\Users\Node\RoR2 Mods\HAND\HenryMod\obj\Debug\netstandard2.0\HAND_Overclocked.csproj.CopyComplete
 C:\Users\Node\RoR2 Mods\HAND\HenryMod\obj\Debug\netstandard2.0\HAND_Overclocked.dll
 C:\Users\Node\RoR2 Mods\HAND\HenryMod\obj\Debug\netstandard2.0\HAND_Overclocked.pdb
+C:\Users\Node\RoR2 Mods\HAND\HenryMod\obj\Debug\netstandard2.0\HAND_Overclocked.csproj.AssemblyReference.cache

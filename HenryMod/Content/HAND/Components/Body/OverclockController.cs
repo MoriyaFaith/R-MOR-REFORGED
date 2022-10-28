@@ -3,7 +3,7 @@ using RoR2.Skills;
 using UnityEngine;
 using UnityEngine.Networking;
 
-namespace HANDMod.Content.HAND.Components.Body
+namespace HANDMod.Content.HANDSurvivor.Components.Body
 {
     public class OverclockController : NetworkBehaviour
     {

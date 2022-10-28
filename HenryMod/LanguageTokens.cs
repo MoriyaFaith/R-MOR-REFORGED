@@ -9,7 +9,7 @@ namespace HANDMod
     {
         public LanguageTokens()
         {
-            string prefix = Content.HAND.HANDSurvivor.HAND_PREFIX;
+            string prefix = Content.HANDSurvivor.HANDSurvivor.HAND_PREFIX;
             LanguageAPI.Add(prefix + "NAME", "HAN-D");
             LanguageAPI.Add(prefix + "DESCRIPTION", "TODO");
             LanguageAPI.Add(prefix + "SUBTITLE", "Unpaid Janitor");

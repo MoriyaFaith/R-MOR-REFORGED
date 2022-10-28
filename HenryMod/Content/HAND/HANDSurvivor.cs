@@ -8,10 +8,10 @@ using HANDMod.Modules;
 using System;
 using HANDMod;
 using System.Collections.Generic;
-using HANDMod.Content.HAND.Components.Body;
+using HANDMod.Content.HANDSurvivor.Components.Body;
 using EntityStates;
 
-namespace HANDMod.Content.HAND
+namespace HANDMod.Content.HANDSurvivor
 {
     internal class HANDSurvivor : SurvivorBase
     {
@@ -62,10 +62,10 @@ namespace HANDMod.Content.HAND
             cameraTargetParams.cameraParams.data.idealLocalCameraPos = new Vector3(0f, 1f, -11f);
 
             RegisterStates();
-            bodyPrefab.AddComponent<HANDMod.Content.HAND.Components.Body.HANDNetworkComponent>();
-            bodyPrefab.AddComponent<HANDMod.Content.HAND.Components.Body.OverclockController>();
+            bodyPrefab.AddComponent<HANDMod.Content.HANDSurvivor.Components.Body.HANDNetworkComponent>();
+            bodyPrefab.AddComponent<HANDMod.Content.HANDSurvivor.Components.Body.OverclockController>();
 
-            Content.HAND.Buffs.Init();
+            Content.HANDSurvivor.Buffs.Init();
         }
         public override void InitializeSkills()
         {
@@ -79,8 +79,7 @@ namespace HANDMod.Content.HAND
             Skills.AddSecondarySkills(bodyPrefab, new SkillDef[] { nevermore });
 
             InitializeUtilitySkills();
-
-            Skills.AddSpecialSkills(bodyPrefab, new SkillDef[] { nevermore });
+            InitializeSpecialSkills();
         }
 
         private void InitializeUtilitySkills()
@@ -141,6 +140,12 @@ namespace HANDMod.Content.HAND
             OverclockController.ovcDef = ovcSkill;
 
             Skills.AddUtilitySkills(bodyPrefab, new SkillDef[] { ovcSkill });
+        }
+
+        private void InitializeSpecialSkills()
+        {
+            DroneSetup.Init();
+            Skills.AddSpecialSkills(bodyPrefab, new SkillDef[] { Addressables.LoadAssetAsync<SkillDef>("RoR2/Base/Heretic/HereticDefaultAbility.asset").WaitForCompletion() });
         }
 
         public override void InitializeSkins()

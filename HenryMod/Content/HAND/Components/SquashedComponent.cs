@@ -4,7 +4,7 @@ using UnityEngine;
 
 //https://github.com/GnomeModder/EnforcerMod/blob/master/EnforcerMod_VS/Nemesis/SquashedComponent.cs
 //Credits to the EnforcerGang for lending me this code!
-namespace HANDMod.Content.HAND.Components
+namespace HANDMod.Content.HANDSurvivor.Components
 {
     public class SquashedComponent : MonoBehaviour
     {
