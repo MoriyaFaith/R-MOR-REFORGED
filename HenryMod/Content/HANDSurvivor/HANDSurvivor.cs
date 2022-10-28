@@ -42,14 +42,20 @@ namespace HANDMod.Content.HANDSurvivor
             jumpCount = 1
         };
 
-        public override CustomRendererInfo[] customRendererInfos { get; set; } = new CustomRendererInfo[] { };
+        public override CustomRendererInfo[] customRendererInfos { get; set; } = new CustomRendererInfo[] { 
+            new CustomRendererInfo {
+                childName = "HanDHammer",
+            }, 
+            new CustomRendererInfo {
+                childName = "HANDMesh",
+            },
+        };
 
         public override Type characterMainState => typeof(EntityStates.GenericCharacterMain);
 
         public override void InitializeCharacter()
         {
             base.InitializeCharacter();
-            Modules.Assets.ConvertAllRenderersToHopooShader(bodyPrefab);
 
             CharacterBody cb = bodyPrefab.GetComponent<CharacterBody>();
             cb.bodyFlags = CharacterBody.BodyFlags.ImmuneToExecutes | CharacterBody.BodyFlags.Mechanical;
@@ -81,7 +87,7 @@ namespace HANDMod.Content.HANDSurvivor
             Skills.AddPrimarySkills(bodyPrefab, new SkillDef[] { nevermore });
 
             Skills.AddSecondarySkills(bodyPrefab, new SkillDef[] { nevermore });
-
+            
             InitializeUtilitySkills();
             InitializeSpecialSkills();
         }
