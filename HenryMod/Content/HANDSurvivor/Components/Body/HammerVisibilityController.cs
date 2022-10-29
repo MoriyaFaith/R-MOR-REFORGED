@@ -8,7 +8,7 @@ namespace HANDMod.Content.HANDSurvivor.Components.Body
     {
         private ChildLocator childLocator;
         private SkillLocator skillLocator;
-        private Transform hammerTransform;
+        private GameObject hammer;
 
         private bool hammerEnabled = false;
 
@@ -21,9 +21,9 @@ namespace HANDMod.Content.HANDSurvivor.Components.Body
                 return;
             }
             skillLocator = base.GetComponent<SkillLocator>();
-            hammerTransform = childLocator.FindChild("HanDHammer");
+            hammer = childLocator.FindChildGameObject("HanDHammer");
 
-            HideHammer();
+            SetHammerEnabled(false);
         }
 
         private void FixedUpdate()
@@ -40,12 +40,12 @@ namespace HANDMod.Content.HANDSurvivor.Components.Body
 
         private void ShowHammer()
         {
-            hammerTransform.localScale = Vector3.one;
+            hammer.SetActive(true);
         }
 
         private void HideHammer()
         {
-            hammerTransform.localScale = Vector3.zero;
+            hammer.SetActive(false);
         }
 
         public void SetHammerEnabled(bool enabled)
