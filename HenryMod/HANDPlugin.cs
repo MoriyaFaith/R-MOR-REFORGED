@@ -21,7 +21,8 @@ namespace HANDMod
         "LanguageAPI",
         "SoundAPI",
         "UnlockableAPI",
-        "RecalculateStatsAPI"
+        "RecalculateStatsAPI",
+        "DamageAPI"
     })]
 
     public class HandPlugin : BaseUnityPlugin

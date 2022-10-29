@@ -74,12 +74,21 @@ namespace HANDMod.Content.HANDSurvivor
             Transform hitboxTransform = childLocator.FindChild("FistHitbox");
             Prefabs.SetupHitbox(model, "FistHitbox", new Transform[] { hitboxTransform });
 
+            LoopSoundWhileCharacterMoving ls = bodyPrefab.AddComponent<LoopSoundWhileCharacterMoving>();
+            ls.startSoundName = "Play_MULT_move_loop";
+            ls.stopSoundName = "Stop_MULT_move_loop";
+            ls.applyScale = true;
+            ls.disableWhileSprinting = false;
+            ls.minSpeed = 3f;
+            ls.requireGrounded = false;
+
             RegisterStates();
             bodyPrefab.AddComponent<HANDNetworkComponent>();
             bodyPrefab.AddComponent<OverclockController>();
             bodyPrefab.AddComponent<TargetingController>();
             bodyPrefab.AddComponent<DroneStockController>();
             bodyPrefab.AddComponent<DroneFollowerController>();
+            bodyPrefab.AddComponent<HammerVisibilityController>();
 
             Content.HANDSurvivor.Buffs.Init();
         }

@@ -33,8 +33,8 @@ namespace EntityStates.HAND_Overclocked.Primary
             this.procCoefficient = 1f;
             this.baseDuration = 1.25f;
             this.baseEarlyExitTime = 0.25f;
-            this.attackStartTime = 0.5f;
-            this.attackEndTime = 0.7f;
+            this.attackStartTime = 0.4f;
+            this.attackEndTime = 0.55f;
             this.pushForce = 1400f;
 
             Util.PlaySound("Play_HOC_StartPunch", base.gameObject);

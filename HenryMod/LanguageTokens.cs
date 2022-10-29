@@ -35,7 +35,7 @@ namespace HANDMod
             LanguageAPI.Add(prefix + "UTILITY_DESC", "<style=cIsUtility>Springy</style>. Increase <style=cIsUtility>movement speed</style> and <style=cIsDamage>attack speed</style> by <style=cIsDamage>40%</style> and gain <style=cIsDamage>50% stun chance</style>. Hit enemies to <style=cIsUtility>increase duration</style>.");
 
             LanguageAPI.Add(prefix + "SPECIAL_NAME", "DRONE");
-            LanguageAPI.Add(prefix + "SPECIAL_DESC", "Send out a drone that deals <style=cIsDamage>270% damage</style> and <style=cIsHealing>heals for 50% of the damage dealt</style>. Kills and melee hits <style=cIsUtility>reduce cooldown</style>.");
+            LanguageAPI.Add(prefix + "SPECIAL_DESC", "Fire a drone that deals <style=cIsDamage>270% damage</style> and <style=cIsHealing>heals for 50% of the damage dealt</style>. Kills and melee hits <style=cIsUtility>reduce cooldown</style>.");
 
             LanguageAPI.Add(prefix + "KEYWORD_SPRINGY", "<style=cKeywordName>Springy</style><style=cSub>Spring upwards when using this skill.</style>");
             LanguageAPI.Add(prefix + "KEYWORD_DRONEDEBUFF", "<style=cKeywordName>Drill</style><style=cSub>Reduce damage by <style=cIsDamage>30%</style>. Reduce movement speed by <style=cIsDamage>60%</style>.</style>");
