@@ -35,6 +35,7 @@ namespace HANDMod.Content.HANDSurvivor
             crosshair = LegacyResourcesAPI.Load<GameObject>("prefabs/crosshair/simpledotcrosshair"),
             podPrefab = LegacyResourcesAPI.Load<GameObject>("prefabs/networkedobjects/robocratepod"),//RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/NetworkedObjects/SurvivorPod")
 
+            damage = 14f,
             maxHealth = 160f,
             healthRegen = 2.5f,
             armor = 0f,
@@ -68,6 +69,11 @@ namespace HANDMod.Content.HANDSurvivor
             CameraTargetParams cameraTargetParams = bodyPrefab.GetComponent<CameraTargetParams>();
             cameraTargetParams.cameraParams.data.idealLocalCameraPos = new Vector3(0f, 1f, -11f);
 
+            ChildLocator childLocator = bodyPrefab.GetComponentInChildren<ChildLocator>();
+            GameObject model = childLocator.gameObject;
+            Transform hitboxTransform = childLocator.FindChild("FistHitbox");
+            Prefabs.SetupHitbox(model, "FistHitbox", new Transform[] { hitboxTransform });
+
             RegisterStates();
             bodyPrefab.AddComponent<HANDNetworkComponent>();
             bodyPrefab.AddComponent<OverclockController>();
@@ -83,13 +89,38 @@ namespace HANDMod.Content.HANDSurvivor
             string prefix = HandPlugin.DEVELOPER_PREFIX;
 
             SkillDef nevermore = Addressables.LoadAssetAsync<SkillDef>("RoR2/Base/Heretic/HereticDefaultAbility.asset").WaitForCompletion();
-
-            Skills.AddPrimarySkills(bodyPrefab, new SkillDef[] { nevermore });
-
             Skills.AddSecondarySkills(bodyPrefab, new SkillDef[] { nevermore });
-            
+
+            InitializePrimarySkills();
             InitializeUtilitySkills();
             InitializeSpecialSkills();
+        }
+
+        private void InitializePrimarySkills()
+        {
+            SkillDef primarySkill = SkillDef.CreateInstance<SkillDef>();
+            primarySkill.activationState = new SerializableEntityStateType(typeof(EntityStates.HAND_Overclocked.Primary.SwingFist));
+            primarySkill.skillNameToken = HAND_PREFIX + "PRIMARY_NAME";
+            primarySkill.skillName = "SwingFist";
+            primarySkill.skillDescriptionToken = HAND_PREFIX + "PRIMARY_DESC";
+            primarySkill.cancelSprintingOnActivation = true;
+            primarySkill.canceledFromSprinting = false;
+            primarySkill.baseRechargeInterval = 0f;
+            primarySkill.baseMaxStock = 1;
+            primarySkill.rechargeStock = 1;
+            primarySkill.beginSkillCooldownOnSkillEnd = false;
+            primarySkill.activationStateMachineName = "Weapon";
+            primarySkill.interruptPriority = EntityStates.InterruptPriority.Any;
+            primarySkill.isCombatSkill = true;
+            primarySkill.mustKeyPress = false;
+            primarySkill.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texPrimaryPunch.png");
+            primarySkill.requiredStock = 1;
+            primarySkill.stockToConsume = 1;
+            primarySkill.keywordTokens = new string[] { };
+            FixScriptableObjectName(primarySkill);
+            Modules.ContentPacks.skillDefs.Add(primarySkill);
+
+            Skills.AddPrimarySkills(bodyPrefab, new SkillDef[] { primarySkill });
         }
 
         private void InitializeUtilitySkills()
@@ -217,6 +248,8 @@ namespace HANDMod.Content.HANDSurvivor
 
         private void RegisterStates()
         {
+            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HAND_Overclocked.Primary.SwingFist));
+
             Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HAND_Overclocked.Utility.BeginOverclock));
             Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HAND_Overclocked.Utility.CancelOverclock));
 

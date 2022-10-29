@@ -98,7 +98,7 @@ namespace HANDMod.SkillStates.BaseStates
 
         protected virtual void PlaySwingEffect()
         {
-            EffectManager.SimpleMuzzleFlash(this.swingEffectPrefab, base.gameObject, this.muzzleString, true);
+            if (this.swingEffectPrefab) EffectManager.SimpleMuzzleFlash(this.swingEffectPrefab, base.gameObject, this.muzzleString, true);
         }
 
         protected virtual void OnHitEnemyAuthority()
@@ -109,7 +109,7 @@ namespace HANDMod.SkillStates.BaseStates
             {
                 if (base.characterMotor && !base.characterMotor.isGrounded && this.hitHopVelocity > 0f)
                 {
-                    base.SmallHop(base.characterMotor, this.hitHopVelocity);
+                    base.SmallHop(base.characterMotor, this.hitHopVelocity / Mathf.Sqrt(this.attackSpeedStat));
                 }
 
                 this.hasHopped = true;
