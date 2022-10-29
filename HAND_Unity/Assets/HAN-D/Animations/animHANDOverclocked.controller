@@ -379,7 +379,7 @@ AnimatorController:
     m_Controller: {fileID: 0}
   - m_Name: PunchCont.playbackRate
     m_Type: 1
-    m_DefaultFloat: 0.8
+    m_DefaultFloat: 1.2
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
