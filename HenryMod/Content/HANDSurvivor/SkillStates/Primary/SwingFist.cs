@@ -5,7 +5,7 @@ using RoR2;
 using R2API;
 using UnityEngine;
 
-namespace EntityStates.HAND_Overclocked.Primary
+namespace EntityStates.HANDMod.Primary
 {
     public class SwingFist : BaseMeleeAttack
     {
@@ -14,8 +14,7 @@ namespace EntityStates.HAND_Overclocked.Primary
         private bool hitEnemy = false;
         public override void OnEnter()
         {
-            //this.pushForce = 300f;
-            //this.bonusForce = Vector3.zero;
+            this.bonusForce = Vector3.zero;
             this.attackRecoil = 0f;
 
             //this.muzzleString = swingIndex % 2 == 0 ? "SwingLeft" : "SwingRight";
@@ -53,27 +52,37 @@ namespace EntityStates.HAND_Overclocked.Primary
 
             if (this.attack != null)
             {
-                this.attack.AddModdedDamageType(HANDMod.Content.DamageTypes.HANDPrimaryPunch);
-                this.attack.AddModdedDamageType(HANDMod.Content.DamageTypes.ResetVictimForce);
+                this.attack.AddModdedDamageType(global::HANDMod.Content.DamageTypes.HANDPrimaryPunch);
+                this.attack.AddModdedDamageType(global::HANDMod.Content.DamageTypes.ResetVictimForce);
             }
         }
 
 
         protected override void PlayAttackAnimation()
         {
-            switch (this.swingIndex)
+            //Uncomment when updated punch anims are in
+            /*switch (this.swingIndex)
             {
                 case 0:
                     base.PlayCrossfade("Gesture, Override", "PunchL", "Punch.playbackRate", this.duration, 0.2f);
                     break;
                 case 1:
                     //base.PlayCrossfade("Gesture, Override", "PunchR", "Punch.playbackRate", this.duration, 0.2f);
-                    base.PlayCrossfade("Gesture, Override", "PunchLR", "PunchCont.playbackRate", this.duration, 0.2f);
+                    base.PlayCrossfade("Gesture, Override", "PunchLR", "Punch.playbackRate", this.duration, 0.2f);
                     break;
                 case 2:
                     //base.PlayCrossfade("Gesture, Override", "PunchL", "Punch.playbackRate", this.duration, 0.2f);
-                    base.PlayCrossfade("Gesture, Override", "PunchRL", "PunchCont.playbackRate", this.duration, 0.2f);
+                    base.PlayCrossfade("Gesture, Override", "PunchRL", "Punch.playbackRate", this.duration, 0.2f);
                     break;
+            }*/
+
+            if (this.swingIndex == 1)
+            {
+                base.PlayCrossfade("Gesture, Override", "PunchR", "Punch.playbackRate", this.duration, 0.2f);
+            }
+            else
+            {
+                base.PlayCrossfade("Gesture, Override", "PunchL", "Punch.playbackRate", this.duration, 0.2f);
             }
         }
 

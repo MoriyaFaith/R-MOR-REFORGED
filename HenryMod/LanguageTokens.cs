@@ -31,6 +31,9 @@ namespace HANDMod
             LanguageAPI.Add(prefix + "PRIMARY_NAME", "HURT");
             LanguageAPI.Add(prefix + "PRIMARY_DESC", "Apply force to all combatants for <style=cIsDamage>390% damage</style>.");
 
+            LanguageAPI.Add(prefix + "SECONDARY_NAME", "FORCED_REASSEMBLY");
+            LanguageAPI.Add(prefix + "SECONDARY_DESC", "<style=cIsDamage>Stunning</style>. Charge up and apply great force to all combatants for <style=cIsDamage>500%-1500% damage</style>.");
+
             LanguageAPI.Add(prefix + "UTILITY_NAME", "OVERCLOCK");
             LanguageAPI.Add(prefix + "UTILITY_DESC", "<style=cIsUtility>Springy</style>. Increase <style=cIsUtility>movement speed</style> and <style=cIsDamage>attack speed</style> by <style=cIsDamage>40%</style> and gain <style=cIsDamage>50% stun chance</style>. Hit enemies to <style=cIsUtility>increase duration</style>.");
 

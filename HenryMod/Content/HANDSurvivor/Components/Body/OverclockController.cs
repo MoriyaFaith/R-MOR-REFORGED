@@ -44,7 +44,7 @@ namespace HANDMod.Content.HANDSurvivor.Components.Body
 
         public void MeleeHit()
         {
-            if (characterBody.skillLocator.special.stock < characterBody.skillLocator.special.maxStock && characterBody.skillLocator.special.skillDef == DroneStockController.droneSkill)
+            if (characterBody.skillLocator.special.stock < characterBody.skillLocator.special.maxStock && characterBody.skillLocator.special.skillDef == SkillDefs.SpecialDrone)
             {
                 characterBody.skillLocator.special.rechargeStopwatch += 1.2f;
             }

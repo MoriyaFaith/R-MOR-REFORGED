@@ -71,8 +71,11 @@ namespace HANDMod.Content.HANDSurvivor
 
             ChildLocator childLocator = bodyPrefab.GetComponentInChildren<ChildLocator>();
             GameObject model = childLocator.gameObject;
-            Transform hitboxTransform = childLocator.FindChild("FistHitbox");
-            Prefabs.SetupHitbox(model, "FistHitbox", new Transform[] { hitboxTransform });
+            Transform fistHitboxTransform = childLocator.FindChild("FistHitbox");
+            Prefabs.SetupHitbox(model, "FistHitbox", new Transform[] { fistHitboxTransform });
+
+            Transform chargeHammerHitboxTransform = childLocator.FindChild("ChargeHammerHitbox");
+            Prefabs.SetupHitbox(model, "ChargeHammerHitbox", new Transform[] { chargeHammerHitboxTransform });
 
             LoopSoundWhileCharacterMoving ls = bodyPrefab.AddComponent<LoopSoundWhileCharacterMoving>();
             ls.startSoundName = "Play_MULT_move_loop";
@@ -97,10 +100,8 @@ namespace HANDMod.Content.HANDSurvivor
             Modules.Skills.CreateSkillFamilies(bodyPrefab);
             string prefix = HandPlugin.DEVELOPER_PREFIX;
 
-            SkillDef nevermore = Addressables.LoadAssetAsync<SkillDef>("RoR2/Base/Heretic/HereticDefaultAbility.asset").WaitForCompletion();
-            Skills.AddSecondarySkills(bodyPrefab, new SkillDef[] { nevermore });
-
             InitializePrimarySkills();
+            InitializeSecondarySkills();
             InitializeUtilitySkills();
             InitializeSpecialSkills();
         }
@@ -108,7 +109,7 @@ namespace HANDMod.Content.HANDSurvivor
         private void InitializePrimarySkills()
         {
             SkillDef primarySkill = SkillDef.CreateInstance<SkillDef>();
-            primarySkill.activationState = new SerializableEntityStateType(typeof(EntityStates.HAND_Overclocked.Primary.SwingFist));
+            primarySkill.activationState = new SerializableEntityStateType(typeof(EntityStates.HANDMod.Primary.SwingFist));
             primarySkill.skillNameToken = HAND_PREFIX + "PRIMARY_NAME";
             primarySkill.skillName = "SwingFist";
             primarySkill.skillDescriptionToken = HAND_PREFIX + "PRIMARY_DESC";
@@ -130,6 +131,34 @@ namespace HANDMod.Content.HANDSurvivor
             Modules.ContentPacks.skillDefs.Add(primarySkill);
 
             Skills.AddPrimarySkills(bodyPrefab, new SkillDef[] { primarySkill });
+            SkillDefs.PrimaryPunch = primarySkill;
+        }
+        private void InitializeSecondarySkills()
+        {
+            SkillDef secondarySkill = SkillDef.CreateInstance<SkillDef>();
+            secondarySkill.activationState = new SerializableEntityStateType(typeof(EntityStates.HANDMod.Secondary.ChargeSlam));
+            secondarySkill.skillNameToken = HANDSurvivor.HAND_PREFIX + "SECONDARY_NAME";
+            secondarySkill.skillName = "ChargeSlam";
+            secondarySkill.skillDescriptionToken = HANDSurvivor.HAND_PREFIX + "SECONDARY_DESC";
+            secondarySkill.cancelSprintingOnActivation = true;
+            secondarySkill.canceledFromSprinting = false;
+            secondarySkill.baseRechargeInterval = 5f;
+            secondarySkill.baseMaxStock = 1;
+            secondarySkill.rechargeStock = 1;
+            secondarySkill.requiredStock = 1;
+            secondarySkill.stockToConsume = 1;
+            secondarySkill.activationStateMachineName = "Weapon";
+            secondarySkill.interruptPriority = EntityStates.InterruptPriority.Skill;
+            secondarySkill.isCombatSkill = true;
+            secondarySkill.mustKeyPress = false;
+            secondarySkill.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texSecondary.png");
+            secondarySkill.beginSkillCooldownOnSkillEnd = true;
+            secondarySkill.keywordTokens = new string[] { "KEYWORD_STUNNING" };
+            FixScriptableObjectName(secondarySkill);
+            Modules.ContentPacks.skillDefs.Add(secondarySkill);
+
+            Skills.AddSecondarySkills(bodyPrefab, new SkillDef[] { secondarySkill });
+            SkillDefs.SecondaryChargeHammer = secondarySkill;
         }
 
         private void InitializeUtilitySkills()
@@ -137,7 +166,7 @@ namespace HANDMod.Content.HANDSurvivor
 
             Skills.AddUtilitySkills(bodyPrefab, new SkillDef[] {});
             SkillDef ovcSkill = SkillDef.CreateInstance<SkillDef>();
-            ovcSkill.activationState = new SerializableEntityStateType(typeof(EntityStates.HAND_Overclocked.Utility.BeginOverclock));
+            ovcSkill.activationState = new SerializableEntityStateType(typeof(EntityStates.HANDMod.Utility.BeginOverclock));
             ovcSkill.skillNameToken = HANDSurvivor.HAND_PREFIX + "UTILITY_NAME";
             ovcSkill.skillName = "BeginOverclock";
             ovcSkill.skillDescriptionToken = HANDSurvivor.HAND_PREFIX + "UTILITY_DESC";
@@ -158,9 +187,10 @@ namespace HANDMod.Content.HANDSurvivor
             ovcSkill.keywordTokens = new string[] { HANDSurvivor.HAND_PREFIX + "KEYWORD_SPRINGY" };
             FixScriptableObjectName(ovcSkill);
             Modules.ContentPacks.skillDefs.Add(ovcSkill);
+            SkillDefs.UtilityOverclock = ovcSkill;
 
             SkillDef ovcCancelDef = SkillDef.CreateInstance<SkillDef>();
-            ovcCancelDef.activationState = new SerializableEntityStateType(typeof(EntityStates.HAND_Overclocked.Utility.CancelOverclock));
+            ovcCancelDef.activationState = new SerializableEntityStateType(typeof(EntityStates.HANDMod.Utility.CancelOverclock));
             ovcCancelDef.activationStateMachineName = "Slide";
             ovcCancelDef.baseMaxStock = 1;
             ovcCancelDef.baseRechargeInterval = 7f;
@@ -183,7 +213,7 @@ namespace HANDMod.Content.HANDSurvivor
             ovcCancelDef.stockToConsume = 0;
             FixScriptableObjectName(ovcCancelDef);
             Modules.ContentPacks.skillDefs.Add(ovcCancelDef);
-            EntityStates.HAND_Overclocked.Utility.BeginOverclock.cancelSkillDef = ovcCancelDef;
+            SkillDefs.UtilityOverclockCancel = ovcCancelDef;
 
             OverclockController.texGauge = Assets.mainAssetBundle.LoadAsset<Texture2D>("texGauge.png");
             OverclockController.texGaugeArrow = Assets.mainAssetBundle.LoadAsset<Texture2D>("texGaugeArrow.png");
@@ -206,7 +236,7 @@ namespace HANDMod.Content.HANDSurvivor
             nsm.stateMachines = nsm.stateMachines.Append(stateMachine).ToArray();
 
             SkillDef droneSkill = SkillDef.CreateInstance<SkillDef>();
-            droneSkill.activationState = new SerializableEntityStateType(typeof(EntityStates.HAND_Overclocked.Special.FireSeekingDrone));
+            droneSkill.activationState = new SerializableEntityStateType(typeof(EntityStates.HANDMod.Special.FireSeekingDrone));
             droneSkill.skillNameToken = HANDSurvivor.HAND_PREFIX + "SPECIAL_NAME";
             droneSkill.skillName = "Drones";
             droneSkill.skillDescriptionToken = HANDSurvivor.HAND_PREFIX + "SPECIAL_DESC";
@@ -227,7 +257,7 @@ namespace HANDMod.Content.HANDSurvivor
             droneSkill.keywordTokens = new string[] { };
             FixScriptableObjectName(droneSkill);
             Modules.ContentPacks.skillDefs.Add(droneSkill);
-            DroneStockController.droneSkill = droneSkill;
+            SkillDefs.SpecialDrone = droneSkill;
 
             Skills.AddSpecialSkills(bodyPrefab, new SkillDef[] { droneSkill });
         }
@@ -258,12 +288,15 @@ namespace HANDMod.Content.HANDSurvivor
 
         private void RegisterStates()
         {
-            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HAND_Overclocked.Primary.SwingFist));
+            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HANDMod.Primary.SwingFist));
 
-            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HAND_Overclocked.Utility.BeginOverclock));
-            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HAND_Overclocked.Utility.CancelOverclock));
+            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HANDMod.Secondary.ChargeSlam));
+            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HANDMod.Secondary.FireSlam));
 
-            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HAND_Overclocked.Special.FireSeekingDrone));
+            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HANDMod.Utility.BeginOverclock));
+            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HANDMod.Utility.CancelOverclock));
+
+            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HANDMod.Special.FireSeekingDrone));
         }
         private void FixScriptableObjectName(SkillDef sk)
         {

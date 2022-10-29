@@ -1,9 +1,10 @@
-﻿using HANDMod.Content.HANDSurvivor.Components.Body;
+﻿using HANDMod.Content.HANDSurvivor;
+using HANDMod.Content.HANDSurvivor.Components.Body;
 using RoR2;
 using RoR2.Skills;
 using UnityEngine;
 
-namespace EntityStates.HAND_Overclocked.Utility
+namespace EntityStates.HANDMod.Utility
 {
 	public class BeginOverclock : BaseState
 	{
@@ -27,7 +28,7 @@ namespace EntityStates.HAND_Overclocked.Utility
 			if (this.skillSlot)
 			{
 				startStocks = this.skillSlot.stock;
-				this.skillSlot.SetSkillOverride(this, BeginOverclock.cancelSkillDef, GenericSkill.SkillOverridePriority.Contextual);
+				this.skillSlot.SetSkillOverride(this, SkillDefs.UtilityOverclockCancel, GenericSkill.SkillOverridePriority.Contextual);
 				this.skillSlot.stock = Mathf.Min(skillSlot.maxStock, startStocks + 1);
 			}
 		}
@@ -36,7 +37,7 @@ namespace EntityStates.HAND_Overclocked.Utility
 		{
 			if (this.skillSlot)
 			{
-				this.skillSlot.UnsetSkillOverride(this, BeginOverclock.cancelSkillDef, GenericSkill.SkillOverridePriority.Contextual);
+				this.skillSlot.UnsetSkillOverride(this, SkillDefs.UtilityOverclockCancel, GenericSkill.SkillOverridePriority.Contextual);
 				this.skillSlot.stock = startStocks;
 			}
 			base.OnExit();
@@ -72,7 +73,6 @@ namespace EntityStates.HAND_Overclocked.Utility
 		public static float shortHopVelocity = 22f;
 		private OverclockController overclockController;
 		private GenericSkill skillSlot;
-		public static SkillDef cancelSkillDef;
 	}
 
 	public class CancelOverclock : BaseState

@@ -21,7 +21,7 @@ namespace HANDMod.Content.HANDSurvivor.Components.Body
                 }
                 else
                 {
-                    if (characterBody.skillLocator.special.skillDef == droneSkill)
+                    if (characterBody.skillLocator.special.skillDef == SkillDefs.SpecialDrone)
                     {
                         characterBody.skillLocator.special.stock = dronePersist.droneCount;
                     }
@@ -38,7 +38,7 @@ namespace HANDMod.Content.HANDSurvivor.Components.Body
         {
             if (hasAuthority)
             {
-                if (dronePersist && characterBody.skillLocator.special.skillDef == droneSkill)
+                if (dronePersist && characterBody.skillLocator.special.skillDef == SkillDefs.SpecialDrone)
                 {
                     if (characterBody.skillLocator.special.stock > dronePersist.droneCount)
                     {
@@ -98,7 +98,7 @@ namespace HANDMod.Content.HANDSurvivor.Components.Body
         [ClientRpc]
         public void RpcAddSpecialStock()
         {
-            if (hasAuthority && characterBody.skillLocator.special.stock < characterBody.skillLocator.special.maxStock && characterBody.skillLocator.special.skillDef == droneSkill)
+            if (hasAuthority && characterBody.skillLocator.special.stock < characterBody.skillLocator.special.maxStock && characterBody.skillLocator.special.skillDef == SkillDefs.SpecialDrone)
             {
                 characterBody.skillLocator.special.stock++;
                 if (characterBody.skillLocator.special.stock == characterBody.skillLocator.special.maxStock)
@@ -139,6 +139,5 @@ namespace HANDMod.Content.HANDSurvivor.Components.Body
         private int oldDroneCount = 0;
         private CharacterBody characterBody;
         private DroneStockPersist dronePersist;
-        public static SkillDef droneSkill;
     }
 }
