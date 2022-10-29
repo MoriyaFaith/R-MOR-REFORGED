@@ -45,6 +45,8 @@ namespace HANDMod
             new LanguageTokens();
             // survivor initialization
             //new MyCharacter().Initialize();
+
+            Content.DamageTypes.Initialize();
             new HANDSurvivor().Initialize();
 
             // now make a content pack and add it- this part will change with the next update

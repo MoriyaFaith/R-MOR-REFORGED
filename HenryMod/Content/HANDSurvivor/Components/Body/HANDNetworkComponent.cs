@@ -27,7 +27,7 @@ namespace HANDMod.Content.HANDSurvivor.Components.Body
             characterBody.skillLocator.special.stock = 0;
         }
 
-        [Client]
+        /*[Client]
         public void StopMomentum(uint networkID)
         {
             if (this.hasAuthority)
@@ -67,8 +67,7 @@ namespace HANDMod.Content.HANDSurvivor.Components.Body
                     }
                 }
             }
-        }
-
+        }*/
 
         [Client]
         public void SquashEnemy(uint networkID)
