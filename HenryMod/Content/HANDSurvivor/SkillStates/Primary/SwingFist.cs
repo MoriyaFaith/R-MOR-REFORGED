@@ -33,12 +33,13 @@ namespace EntityStates.HAND_Overclocked.Primary
             this.attackEndTime = 0.7f;
 
             Util.PlaySound("Play_HOC_StartPunch", base.gameObject);
-            base.OnEnter();
 
             if (base.characterBody && base.characterBody.HasBuff(Buffs.Overclock) && this.swingIndex == 1)
             {
                 this.damageType |= DamageType.Stun1s;
             }
+
+            base.OnEnter();
 
             if (this.swingIndex != 0)
             {
@@ -54,6 +55,7 @@ namespace EntityStates.HAND_Overclocked.Primary
 
         protected override void PlayAttackAnimation()
         {
+            base.PlayCrossfade("Gesture, Override", "PunchR", "Slash.playbackRate", this.duration, 0.2f);
             switch (this.swingIndex)
             {
                 case 0:
