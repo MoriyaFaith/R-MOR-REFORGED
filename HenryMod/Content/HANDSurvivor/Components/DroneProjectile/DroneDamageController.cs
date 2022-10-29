@@ -2,6 +2,7 @@
 using RoR2.Orbs;
 using RoR2.Projectile;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
 
 namespace HANDMod.Content.HANDSurvivor.Components.DroneProjectile
@@ -49,7 +50,6 @@ namespace HANDMod.Content.HANDSurvivor.Components.DroneProjectile
                      healOrb.overrideDuration = 0.3f;
                     OrbManager.instance.AddOrb(healOrb);
                 }
-                EffectManager.SimpleEffect(expireEffectPrefab, this.transform.position, this.transform.rotation, true);
             }
         }
 
@@ -169,7 +169,7 @@ namespace HANDMod.Content.HANDSurvivor.Components.DroneProjectile
                                     GlobalEventManager.instance.OnHitEnemy(droneDamage, victimHealthComponent.gameObject);
                                 }
                             }
-
+                            EffectManager.SimpleEffect(DroneDamageController.hitEffectPrefab, base.transform.position, default, true);
                             stopwatch -= damageTimer;
                         }
                     }
@@ -186,14 +186,13 @@ namespace HANDMod.Content.HANDSurvivor.Components.DroneProjectile
         public static uint damageTicksTotal = 8;
         public static float damageHealFraction = 0.5f;
         public static GameObject bleedEffectPrefab = LegacyResourcesAPI.Load<GameObject>("Prefabs/BleedEffect");
-        public static GameObject expireEffectPrefab = LegacyResourcesAPI.Load<GameObject>("prefabs/effects/omnieffect/OmniImpactVFXLoader");
+        public static GameObject hitEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Treebot/OmniImpactVFXSlashSyringe.prefab").WaitForCompletion();
         public static NetworkSoundEventDef startSound;
 
         private float stopwatch;
         private ProjectileStickOnImpact stick;
         private uint damageTicks;
 
-        [SyncVar]
         private bool firstHit;
 
         private GameObject bleedEffect;

@@ -53,14 +53,18 @@ namespace EntityStates.HAND_Overclocked.Primary
 
         protected override void PlayAttackAnimation()
         {
-            base.PlayCrossfade("Gesture, Override", "PunchR", "Slash.playbackRate", this.duration, 0.2f);
             switch (this.swingIndex)
             {
                 case 0:
+                    base.PlayCrossfade("Gesture, Override", "PunchL", "Punch.playbackRate", this.duration, 0.2f);
                     break;
                 case 1:
+                    base.PlayCrossfade("Gesture, Override", "PunchR", "Punch.playbackRate", this.duration, 0.2f);
+                    //base.PlayCrossfade("Gesture, Override", "PunchLR", "Punch.playbackRate", this.duration, 0.05f);
                     break;
                 case 2:
+                    base.PlayCrossfade("Gesture, Override", "PunchL", "Punch.playbackRate", this.duration, 0.2f);
+                    //base.PlayCrossfade("Gesture, Override", "PunchRL", "Punch.playbackRate", this.duration, 0.05f);
                     break;
             }
         }
