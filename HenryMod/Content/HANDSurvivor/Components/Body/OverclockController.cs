@@ -42,13 +42,13 @@ namespace HANDMod.Content.HANDSurvivor.Components.Body
             }
         }
 
-        /*public void MeleeHit(int hitCount)
+        public void MeleeHit()
         {
             if (characterBody.skillLocator.special.stock < characterBody.skillLocator.special.maxStock && characterBody.skillLocator.special.skillDef == DroneStockController.droneSkill)
             {
                 characterBody.skillLocator.special.rechargeStopwatch += 1.2f;
             }
-        }*/
+        }
 
         public void ExtendOverclock(float time)
         {

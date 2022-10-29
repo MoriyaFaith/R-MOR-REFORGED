@@ -218,6 +218,7 @@ namespace HANDMod.Content.HANDSurvivor
             droneSkill.keywordTokens = new string[] { };
             FixScriptableObjectName(droneSkill);
             Modules.ContentPacks.skillDefs.Add(droneSkill);
+            DroneStockController.droneSkill = droneSkill;
 
             Skills.AddSpecialSkills(bodyPrefab, new SkillDef[] { droneSkill });
         }

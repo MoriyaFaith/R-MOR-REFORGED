@@ -1,4 +1,5 @@
 ﻿using HANDMod.Content.HANDSurvivor;
+using HANDMod.Content.HANDSurvivor.Components.Body;
 using HANDMod.SkillStates.BaseStates;
 using RoR2;
 using UnityEngine;
@@ -8,6 +9,8 @@ namespace EntityStates.HAND_Overclocked.Primary
     public class SwingFist : BaseMeleeAttack
     {
         public static GameObject swingEffect;
+
+        private bool hitEnemy = false;
         public override void OnEnter()
         {
             //this.pushForce = 300f;
@@ -47,11 +50,6 @@ namespace EntityStates.HAND_Overclocked.Primary
             }
         }
 
-        public override InterruptPriority GetMinimumInterruptPriority()
-        {
-            return InterruptPriority.Skill;
-        }
-
 
         protected override void PlayAttackAnimation()
         {
@@ -64,6 +62,21 @@ namespace EntityStates.HAND_Overclocked.Primary
                     break;
                 case 2:
                     break;
+            }
+        }
+
+        protected override void OnHitEnemyAuthority()
+        {
+            base.OnHitEnemyAuthority();
+            if (!hitEnemy)
+            {
+                hitEnemy = true;
+                OverclockController hc = base.gameObject.GetComponent<OverclockController>();
+                if (hc)
+                {
+                    hc.MeleeHit();
+                    if (base.characterBody && base.characterBody.HasBuff(Buffs.Overclock)) hc.ExtendOverclock(0.8f);
+                }
             }
         }
 
@@ -91,6 +104,11 @@ namespace EntityStates.HAND_Overclocked.Primary
             {
                 swingIndex = index
             });
+        }
+
+        public override InterruptPriority GetMinimumInterruptPriority()
+        {
+            return InterruptPriority.Skill;
         }
     }
 }
