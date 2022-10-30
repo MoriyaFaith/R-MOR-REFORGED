@@ -63,7 +63,7 @@ namespace EntityStates.HAND_Overclocked.Secondary
                 if (!startedChargeAnim)
                 {
                     startedChargeAnim = true;
-                    base.PlayCrossfade("Gesture, Override", "ChargeHammer", "ChargeHammer.playbackRate", this.chargeDuration - this.minDuration, 0.2f);
+                    base.PlayCrossfade("Gesture, Override", "ChargeHammer", "ChargeHammer.playbackRate", (this.chargeDuration - this.minDuration)/0.9f, 0.2f);
                 }
 
                 charge += Time.deltaTime * this.attackSpeedStat;
@@ -94,8 +94,8 @@ namespace EntityStates.HAND_Overclocked.Secondary
             return InterruptPriority.PrioritySkill;
         }
 
-        public static float baseMinDuration = 0.6f;
-        public static float baseChargeDuration = 1.4f;
+        public static float baseMinDuration = 0.5f;
+        public static float baseChargeDuration = 1.5f;
         private float minDuration;
         private float chargeDuration;
         private float charge;

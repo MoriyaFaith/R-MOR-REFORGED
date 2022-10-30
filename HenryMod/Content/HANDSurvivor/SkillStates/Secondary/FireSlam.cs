@@ -157,6 +157,15 @@ namespace EntityStates.HAND_Overclocked.Secondary
                         origin = base.transform.position + (0 + 16) * directionFlat - 2f * Vector3.up,
                         scale = 0.5f
                     }, true); ;
+
+                    //Allow hammer to break fall, but dont make it springy like OVC.
+                    if (base.characterMotor)
+                    {
+                        if (base.characterMotor.velocity.y < 0)
+                        {
+                            base.SmallHop(base.characterMotor, 10f);
+                        }
+                    }
                 }
             }
         }
