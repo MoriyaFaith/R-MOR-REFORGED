@@ -111,7 +111,7 @@ namespace HANDMod.Content.HANDSurvivor
                     int buffCount = self.body.GetBuffCount(Buffs.DronePassive);
                     if (buffCount > 0 && damageInfo.damage > 1f)
                     {
-                        float totalDamageReduction = buffCount * 0.01f * self.fullCombinedHealth;
+                        float totalDamageReduction = buffCount * 0.005f * self.fullCombinedHealth;
                         damageInfo.damage = Mathf.Max(1f, damageInfo.damage - totalDamageReduction);
                         EntitySoundManager.EmitSoundServer(platingSound.index, self.gameObject);
                     }
