@@ -25,6 +25,7 @@ namespace EntityStates.HAND_Overclocked.Secondary
         public static float baseYScale = 30f;
         public static float maxYScale = 60f;
 
+        public static NetworkSoundEventDef networkHitSound;
         public static GameObject earthquakeEffectPrefab;
 
         private HammerVisibilityController hammerController;
@@ -40,22 +41,24 @@ namespace EntityStates.HAND_Overclocked.Secondary
             //this.muzzleString = swingIndex % 2 == 0 ? "SwingLeft" : "SwingRight";
             this.swingEffectPrefab = null;
             this.hitEffectPrefab = null;
-
+            this.impactSound = networkHitSound.index;
 
             this.damageType = DamageType.Stun1s;
-            this.hitHopVelocity = 24f;
+            this.hitHopVelocity = 22f;
             this.hitStopDuration = 0.1f;
-            this.hitSoundString = "Play_MULT_shift_hit";
+            this.hitSoundString = "";
             this.swingSoundString = "";
             this.hitboxName = "ChargeHammerHitbox";
             this.damageCoefficient = Mathf.Lerp(FireSlam.minDamageCoefficient, FireSlam.maxDamageCoefficient, chargePercent);
             this.procCoefficient = 1f;
-            this.baseDuration = 1f;
-            this.baseEarlyExitTime = 0.5f;
-            this.attackStartTime = 0.3f;
+            this.baseDuration = 0.8f;
+            this.baseEarlyExitTime = 0.2f;
+            this.attackStartTime = 0.4f;
             this.attackEndTime = 0.5f;
             this.pushForce = 0f;
             this.bonusForce = Vector3.down * Mathf.Lerp(FireSlam.minDownForce, FireSlam.maxDownForce, chargePercent);
+
+            ModifyStats();
 
             hammerController = base.GetComponent<HammerVisibilityController>();
             if (hammerController)
@@ -63,7 +66,7 @@ namespace EntityStates.HAND_Overclocked.Secondary
                 hammerController.SetHammerEnabled(true);
             }
 
-            //Only client knows charge percent
+            //Hitreg is clientside, so only change it on the client
             if (base.isAuthority)
             {
                 ChildLocator cl = base.GetModelChildLocator();
@@ -85,16 +88,26 @@ namespace EntityStates.HAND_Overclocked.Secondary
 
             if (this.attack != null)
             {
-                this.attack.AddModdedDamageType(DamageTypes.HANDSecondary);
-                this.attack.AddModdedDamageType(DamageTypes.SquashOnKill);
-                this.attack.AddModdedDamageType(DamageTypes.ResetVictimForce);
+                ModifyDamageTypes();
+            }
+
+            if (base.characterBody)
+            {
+                base.characterBody.SetAimTimer(3f);
             }
         }
 
+        public virtual void ModifyStats() { }
+        public virtual void ModifyDamageTypes()
+        {
+            this.attack.AddModdedDamageType(DamageTypes.HANDSecondary);
+            this.attack.AddModdedDamageType(DamageTypes.SquashOnKill);
+            this.attack.AddModdedDamageType(DamageTypes.ResetVictimForce);
+        }
 
         protected override void PlayAttackAnimation()
         {
-            base.PlayCrossfade("Gesture, Override", "FireHammer", "ChargeHammer.playbackRate", this.duration, 0.05f);
+            base.PlayAnimation("Gesture, Override", "FireHammer", "ChargeHammer.playbackRate", this.duration);
         }
 
         protected override void OnHitEnemyAuthority()
@@ -159,13 +172,13 @@ namespace EntityStates.HAND_Overclocked.Secondary
                     }, true); ;
 
                     //Allow hammer to break fall, but dont make it springy like OVC.
-                    if (base.characterMotor)
+                    /*if (base.characterMotor && !hitEnemy)
                     {
                         if (base.characterMotor.velocity.y < 0)
                         {
                             base.SmallHop(base.characterMotor, 10f);
                         }
-                    }
+                    }*/
                 }
             }
         }
@@ -175,6 +188,10 @@ namespace EntityStates.HAND_Overclocked.Secondary
             if (hammerController)
             {
                 hammerController.SetHammerEnabled(false);
+            }
+            if (!this.outer.destroying)
+            {
+                this.PlayAnimation("Gesture, Override", "Empty");
             }
             base.OnExit();
         }

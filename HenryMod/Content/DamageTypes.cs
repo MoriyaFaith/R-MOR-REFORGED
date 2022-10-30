@@ -85,6 +85,12 @@ namespace HANDMod.Content
                     {
                         damageInfo.force.x *= 1.8f;
                         damageInfo.force.z *= 1.8f;
+
+                        if (cb.isChampion)
+                        {
+                            damageInfo.force.x *= 0.8f;
+                            damageInfo.force.z *= 0.8f;
+                        }
                     }
                     else
                     {

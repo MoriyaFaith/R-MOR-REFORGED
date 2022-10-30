@@ -1,4 +1,5 @@
-﻿using HANDMod.Content.HANDSurvivor.Components.Body;
+﻿using HANDMod.Content.HANDSurvivor;
+using HANDMod.Content.HANDSurvivor.Components.Body;
 using RoR2;
 using UnityEngine;
 
@@ -18,7 +19,7 @@ namespace EntityStates.HAND_Overclocked.Secondary
             }
             if (base.characterBody)
             {
-                base.characterBody.SetAimTimer(4f);
+                base.characterBody.SetAimTimer(3f);
             }
             charge = 0f;
             chargePercent = 0f;
@@ -28,6 +29,12 @@ namespace EntityStates.HAND_Overclocked.Secondary
             if (hammerController)
             {
                 hammerController.SetHammerEnabled(true);
+            }
+
+            //Attack is only agile while in OVC
+            if (base.isAuthority && base.characterBody && !base.characterBody.HasBuff(Buffs.Overclock))
+            {
+                base.characterBody.isSprinting = false;
             }
         }
 
@@ -53,10 +60,10 @@ namespace EntityStates.HAND_Overclocked.Secondary
         {
             base.FixedUpdate();
 
-            /*if (base.characterBody && base.characterBody.isSprinting)
+            if (base.characterBody)
             {
-                base.characterBody.isSprinting = false;
-            }*/
+                base.characterBody.SetAimTimer(3f);
+            }
 
             if (base.fixedAge > this.minDuration && charge < chargeDuration)
             {
@@ -83,10 +90,15 @@ namespace EntityStates.HAND_Overclocked.Secondary
             {
                 if (base.isAuthority && base.inputBank && !base.inputBank.skill2.down)
                 {
-                    this.outer.SetNextState(new FireSlam() { chargePercent = chargePercent });
+                    SetNextState();
                     return;
                 }
             }
+        }
+
+        public virtual void SetNextState()
+        {
+            this.outer.SetNextState(new FireSlam() { chargePercent = chargePercent });
         }
 
         public override InterruptPriority GetMinimumInterruptPriority()
@@ -99,7 +111,7 @@ namespace EntityStates.HAND_Overclocked.Secondary
         private float minDuration;
         private float chargeDuration;
         private float charge;
-        private float chargePercent;
+        public float chargePercent;
         private Animator modelAnimator;
         public static GameObject chargeEffectPrefab = LegacyResourcesAPI.Load<GameObject>("prefabs/effects/omnieffect/OmniImpactVFXLoader");
         private bool startedChargeAnim = false;

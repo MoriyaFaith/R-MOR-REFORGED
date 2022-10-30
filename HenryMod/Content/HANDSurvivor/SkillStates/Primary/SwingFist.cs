@@ -10,7 +10,7 @@ namespace EntityStates.HAND_Overclocked.Primary
 {
     public class SwingFist : BaseMeleeAttack
     {
-        public static GameObject swingEffect;
+        public static NetworkSoundEventDef networkHitSound;
 
         private bool hitEnemy = false;
         public override void OnEnter()
@@ -21,13 +21,13 @@ namespace EntityStates.HAND_Overclocked.Primary
             //this.muzzleString = swingIndex % 2 == 0 ? "SwingLeft" : "SwingRight";
             this.swingEffectPrefab = null;
             this.hitEffectPrefab = null;
-
+            this.impactSound = networkHitSound.index;
 
             this.damageType = DamageType.Generic;
             this.hitHopVelocity = 10f;
             this.scaleHitHopWithAttackSpeed = true;
             this.hitStopDuration = 0.1f;
-            this.hitSoundString = "Play_MULT_shift_hit";
+            this.hitSoundString = "";
             this.swingSoundString = "Play_HOC_Punch";
             this.hitboxName = "FistHitbox";
             this.damageCoefficient = 3.9f;
@@ -35,22 +35,34 @@ namespace EntityStates.HAND_Overclocked.Primary
             this.baseDuration = 1.25f;
             this.baseEarlyExitTime = 0.25f;
             this.attackStartTime = 0.4f;
-            this.attackEndTime = 0.55f;
+            this.attackEndTime = 0.5f;
             this.pushForce = 0f;
             this.bonusForce = 1400f * base.GetAimRay().direction;
 
             Util.PlaySound("Play_HOC_StartPunch", base.gameObject);
 
-            if (base.characterBody && base.characterBody.HasBuff(Buffs.Overclock) && this.swingIndex == 1)
+            bool hasOVC = base.characterBody.HasBuff(Buffs.Overclock);
+            if (base.characterBody && hasOVC && this.swingIndex == 1)
             {
                 this.damageType |= DamageType.Stun1s;
             }
 
             base.OnEnter();
 
-            if (this.swingIndex != 0)
+            if (base.characterBody)
             {
-                base.characterBody.OnSkillActivated(base.skillLocator.primary);
+                if (this.swingIndex != 0)
+                {
+                    base.characterBody.OnSkillActivated(base.skillLocator.primary);
+                }
+
+                //Attack is only agile while in OVC
+                if (base.isAuthority && base.characterBody && !hasOVC)
+                {
+                    base.characterBody.isSprinting = false;
+                }
+
+                base.characterBody.SetAimTimer(3f);
             }
 
             if (this.attack != null)

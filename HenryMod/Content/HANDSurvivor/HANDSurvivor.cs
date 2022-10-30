@@ -12,6 +12,7 @@ using HANDMod.Content.HANDSurvivor.Components.Body;
 using EntityStates;
 using System.Linq;
 using R2API;
+using System.Runtime.CompilerServices;
 
 namespace HANDMod.Content.HANDSurvivor
 {
@@ -95,6 +96,7 @@ namespace HANDMod.Content.HANDSurvivor
             bodyPrefab.AddComponent<HammerVisibilityController>();
 
             Content.HANDSurvivor.Buffs.Init();
+            CreateHitEffects();
         }
         public override void InitializeSkills()
         {
@@ -105,6 +107,7 @@ namespace HANDMod.Content.HANDSurvivor
             InitializeSecondarySkills();
             InitializeUtilitySkills();
             InitializeSpecialSkills();
+            InitializeScepterSkills();
         }
 
         private void InitializePrimarySkills()
@@ -114,7 +117,7 @@ namespace HANDMod.Content.HANDSurvivor
             primarySkill.skillNameToken = HAND_PREFIX + "PRIMARY_NAME";
             primarySkill.skillName = "SwingFist";
             primarySkill.skillDescriptionToken = HAND_PREFIX + "PRIMARY_DESC";
-            primarySkill.cancelSprintingOnActivation = true;
+            primarySkill.cancelSprintingOnActivation = false;
             primarySkill.canceledFromSprinting = false;
             primarySkill.baseRechargeInterval = 0f;
             primarySkill.baseMaxStock = 1;
@@ -127,7 +130,7 @@ namespace HANDMod.Content.HANDSurvivor
             primarySkill.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texPrimaryPunch.png");
             primarySkill.requiredStock = 1;
             primarySkill.stockToConsume = 1;
-            primarySkill.keywordTokens = new string[] { };
+            primarySkill.keywordTokens = new string[] { "KEYWORD_STUNNING" };
             FixScriptableObjectName(primarySkill);
             Modules.ContentPacks.skillDefs.Add(primarySkill);
 
@@ -141,7 +144,7 @@ namespace HANDMod.Content.HANDSurvivor
             secondarySkill.skillNameToken = HANDSurvivor.HAND_PREFIX + "SECONDARY_NAME";
             secondarySkill.skillName = "ChargeSlam";
             secondarySkill.skillDescriptionToken = HANDSurvivor.HAND_PREFIX + "SECONDARY_DESC";
-            secondarySkill.cancelSprintingOnActivation = true;
+            secondarySkill.cancelSprintingOnActivation = false;
             secondarySkill.canceledFromSprinting = false;
             secondarySkill.baseRechargeInterval = 5f;
             secondarySkill.baseMaxStock = 1;
@@ -265,6 +268,49 @@ namespace HANDMod.Content.HANDSurvivor
             Skills.AddSpecialSkills(bodyPrefab, new SkillDef[] { droneSkill });
         }
 
+        private void InitializeScepterSkills()
+        {
+            SkillDef scepterSkill = SkillDef.CreateInstance<SkillDef>();
+            scepterSkill.activationState = new SerializableEntityStateType(typeof(EntityStates.HAND_Overclocked.Secondary.ChargeSlamScepter));
+            scepterSkill.skillNameToken = HANDSurvivor.HAND_PREFIX + "SECONDARY_SCEPTER_NAME";
+            scepterSkill.skillName = "ChargeSlamScepter";
+            scepterSkill.skillDescriptionToken = HANDSurvivor.HAND_PREFIX + "SECONDARY_SCEPTER_DESC";
+            scepterSkill.cancelSprintingOnActivation = SkillDefs.SecondaryChargeHammer.cancelSprintingOnActivation;
+            scepterSkill.canceledFromSprinting = SkillDefs.SecondaryChargeHammer.canceledFromSprinting;
+            scepterSkill.baseRechargeInterval = SkillDefs.SecondaryChargeHammer.baseRechargeInterval = 5f;
+            scepterSkill.baseMaxStock = SkillDefs.SecondaryChargeHammer.baseMaxStock;
+            scepterSkill.rechargeStock = SkillDefs.SecondaryChargeHammer.rechargeStock;
+            scepterSkill.requiredStock = SkillDefs.SecondaryChargeHammer.requiredStock;
+            scepterSkill.stockToConsume = SkillDefs.SecondaryChargeHammer.stockToConsume;
+            scepterSkill.activationStateMachineName = SkillDefs.SecondaryChargeHammer.activationStateMachineName;
+            scepterSkill.interruptPriority = SkillDefs.SecondaryChargeHammer.interruptPriority;
+            scepterSkill.isCombatSkill = SkillDefs.SecondaryChargeHammer.isCombatSkill;
+            scepterSkill.mustKeyPress = SkillDefs.SecondaryChargeHammer.mustKeyPress;
+            scepterSkill.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texSecondaryScepter.png");
+            scepterSkill.beginSkillCooldownOnSkillEnd = SkillDefs.SecondaryChargeHammer.beginSkillCooldownOnSkillEnd;
+            scepterSkill.keywordTokens = SkillDefs.SecondaryChargeHammer.keywordTokens;
+            FixScriptableObjectName(scepterSkill);
+            Modules.ContentPacks.skillDefs.Add(scepterSkill);
+
+            SkillDefs.SecondaryChargeHammerScepter = scepterSkill;
+
+            if (HandPlugin.classicScepterLoaded) ClassicScepterCompat();
+            if (HandPlugin.standaloneScepterLoaded) StandaloneScepterCompat();
+        }
+
+        [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
+        private void ClassicScepterCompat()
+        {
+            ThinkInvisible.ClassicItems.Scepter.instance.RegisterScepterSkill(SkillDefs.SecondaryChargeHammerScepter, "HANDOverclockedBody", SkillSlot.Secondary, SkillDefs.SecondaryChargeHammer);
+        }
+
+
+        [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
+        private void StandaloneScepterCompat()
+        {
+            AncientScepter.AncientScepterItem.instance.RegisterScepterSkill(SkillDefs.SecondaryChargeHammerScepter, "HANDOverclockedBody", SkillSlot.Secondary, 0);
+        }
+
         public override void InitializeSkins()
         {
             GameObject model = bodyPrefab.GetComponentInChildren<ModelLocator>().modelTransform.gameObject;
@@ -307,7 +353,7 @@ namespace HANDMod.Content.HANDSurvivor
         }
         private GameObject CreateSlamEffect()
         {
-            GameObject slamImpactEffect = LegacyResourcesAPI.Load<GameObject>("prefabs/effects/impacteffects/ParentSlamEffect").InstantiateClone("HANDOverclockedSlamImpactEffect", false);
+            GameObject slamImpactEffect = LegacyResourcesAPI.Load<GameObject>("prefabs/effects/impacteffects/ParentSlamEffect").InstantiateClone("HANDMod_SlamImpactEffect", false);
 
             var particleParent = slamImpactEffect.transform.Find("Particles");
             var debris = particleParent.Find("Debris, 3D");
@@ -336,6 +382,45 @@ namespace HANDMod.Content.HANDSurvivor
             Modules.ContentPacks.effectDefs.Add(new EffectDef(slamImpactEffect));
 
             return slamImpactEffect;
+        }
+
+        private void CreateHitEffects()
+        {
+            /*GameObject hitEffect = LegacyResourcesAPI.Load<GameObject>("prefabs/effects/impacteffects/ImpactToolbotDash").InstantiateClone("HANDMod_MeleeHitEffect");
+            EffectComponent ec = hitEffect.GetComponent<EffectComponent>();
+            ec.soundName = "";
+
+            Modules.ContentPacks.effectDefs.Add(new EffectDef(hitEffect));*/
+
+            /*GameObject hitEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Common/VFX/OmniImpactVFX.prefab").WaitForCompletion().InstantiateClone("HANDMod_MeleeHitEffect");
+            EffectComponent ec = hitEffect.GetComponent<EffectComponent>();
+            ec.soundName = "Play_MULT_shift_hit";*/
+            NetworkSoundEventDef nse = Modules.Assets.CreateNetworkSoundEventDef("Play_MULT_shift_hit");
+
+            EntityStates.HAND_Overclocked.Primary.SwingFist.networkHitSound = nse;
+            EntityStates.HAND_Overclocked.Secondary.FireSlam.networkHitSound = nse;
+
+            //DumpEntityStateConfig("EntityStates.Loader.SwingComboFist");
+        }
+        public static void DumpEntityStateConfig(EntityStateConfiguration esc)
+        {
+
+            for (int i = 0; i < esc.serializedFieldsCollection.serializedFields.Length; i++)
+            {
+                if (esc.serializedFieldsCollection.serializedFields[i].fieldValue.objectValue)
+                {
+                    Debug.Log(esc.serializedFieldsCollection.serializedFields[i].fieldName + " - " + esc.serializedFieldsCollection.serializedFields[i].fieldValue.objectValue);
+                }
+                else
+                {
+                    Debug.Log(esc.serializedFieldsCollection.serializedFields[i].fieldName + " - " + esc.serializedFieldsCollection.serializedFields[i].fieldValue.stringValue);
+                }
+            }
+        }
+        public static void DumpEntityStateConfig(string entityStateName)
+        {
+            EntityStateConfiguration esc = LegacyResourcesAPI.Load<EntityStateConfiguration>("entitystateconfigurations/" + entityStateName);
+            DumpEntityStateConfig(esc);
         }
     }
 }

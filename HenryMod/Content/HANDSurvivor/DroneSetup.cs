@@ -34,9 +34,9 @@ namespace HANDMod.Content.HANDSurvivor
 
         private static GameObject CreateDroneProjectile()
         {
-            GameObject droneProjectile = LegacyResourcesAPI.Load<GameObject>("prefabs/projectiles/EngiHarpoon").InstantiateClone("HANDOverclockedDroneProjectile", true);
+            GameObject droneProjectile = LegacyResourcesAPI.Load<GameObject>("prefabs/projectiles/EngiHarpoon").InstantiateClone("HANDMod_DroneProjectile", true);
 
-            GameObject droneProjectileGhost = PrefabAPI.InstantiateClone(HANDMod.Modules.Assets.mainAssetBundle.LoadAsset<GameObject>("DronePrefab.prefab"), "HANDOverclockedDroneProjectileGhost", false);
+            GameObject droneProjectileGhost = PrefabAPI.InstantiateClone(HANDMod.Modules.Assets.mainAssetBundle.LoadAsset<GameObject>("DronePrefab.prefab"), "HANDMod_DroneProjectileGhost", false);
 
             Shader hotpoo = LegacyResourcesAPI.Load<Shader>("Shaders/Deferred/hgstandard");
 
@@ -78,11 +78,11 @@ namespace HANDMod.Content.HANDSurvivor
             mc.maxVelocity = 25f;
             mc.acceleration = 3f;
             mc.maxSeekDistance = 160f;
-            mc.giveupTimer = 20f;
-            mc.deathTimer = 20f;
+            mc.giveupTimer = 15f;
+            mc.deathTimer = 15f;
 
-            UnityEngine.Object.Destroy(droneProjectile.GetComponent<AkGameObj>());
             UnityEngine.Object.Destroy(droneProjectile.GetComponent<AkEvent>());
+            UnityEngine.Object.Destroy(droneProjectile.GetComponent<AkGameObj>());
             UnityEngine.Object.Destroy(droneProjectile.GetComponent<ProjectileSingleTargetImpact>());
 
             ProjectileStickOnImpact stick = droneProjectile.AddComponent<ProjectileStickOnImpact>();
@@ -108,7 +108,7 @@ namespace HANDMod.Content.HANDSurvivor
         private static GameObject CreateDroneFollower()
         {
             Shader hotpoo = LegacyResourcesAPI.Load<Shader>("Shaders/Deferred/hgstandard");
-            GameObject droneFollower = PrefabAPI.InstantiateClone(HANDMod.Modules.Assets.mainAssetBundle.LoadAsset<GameObject>("DronePrefab.prefab"), "HANDOverclockedDroneFollower", false);
+            GameObject droneFollower = PrefabAPI.InstantiateClone(HANDMod.Modules.Assets.mainAssetBundle.LoadAsset<GameObject>("DronePrefab.prefab"), "HANDMod_DroneFollower", false);
             droneFollower.GetComponentInChildren<MeshRenderer>().material.shader = hotpoo;
             droneFollower.transform.localScale = 2f * Vector3.one;
 

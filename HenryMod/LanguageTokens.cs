@@ -29,13 +29,16 @@ namespace HANDMod
             LanguageAPI.Add(prefix + "OUTRO_FAILURE", "..and so it vanished, unrewarded in all of its efforts.");
 
             LanguageAPI.Add(prefix + "PRIMARY_NAME", "HURT");
-            LanguageAPI.Add(prefix + "PRIMARY_DESC", "Apply force to all combatants for <style=cIsDamage>390% damage</style>.");
+            LanguageAPI.Add(prefix + "PRIMARY_DESC", "Apply force to all combatants for <style=cIsDamage>390% damage</style>. <style=cIsDamage>Stuns</style> while <style=cIsDamage>Overclock</style> is active.");
 
             LanguageAPI.Add(prefix + "SECONDARY_NAME", "FORCED_REASSEMBLY");
             LanguageAPI.Add(prefix + "SECONDARY_DESC", "<style=cIsDamage>Stunning</style>. Charge up and apply great force to all combatants for <style=cIsDamage>500%-1500% damage</style>.");
 
+            LanguageAPI.Add(prefix + "SECONDARY_SCEPTER_NAME", "UNETHICAL_REASSEMBLY");
+            LanguageAPI.Add(prefix + "SECONDARY_SCEPTER_DESC", "<style=cIsDamage>Stunning</style>. Charge up and apply <style=cIsHealth>OVERWHELMING</style> force to all combatants for <style=cIsDamage>750%-2250% damage</style>.");
+
             LanguageAPI.Add(prefix + "UTILITY_NAME", "OVERCLOCK");
-            LanguageAPI.Add(prefix + "UTILITY_DESC", "<style=cIsUtility>Springy</style>. Increase <style=cIsUtility>movement speed</style> and <style=cIsDamage>attack speed</style> by <style=cIsDamage>40%</style> and gain <style=cIsDamage>50% stun chance</style>. Hit enemies to <style=cIsUtility>increase duration</style>.");
+            LanguageAPI.Add(prefix + "UTILITY_DESC", "<style=cIsUtility>Springy</style>. Increase <style=cIsUtility>movement speed</style> and <style=cIsDamage>attack speed</style> by <style=cIsDamage>40%</style>. Hit enemies to <style=cIsUtility>increase duration</style>.");
 
             LanguageAPI.Add(prefix + "SPECIAL_NAME", "DRONE");
             LanguageAPI.Add(prefix + "SPECIAL_DESC", "Fire a drone that deals <style=cIsDamage>270% damage</style> and <style=cIsHealing>heals for 50% of the damage dealt</style>. Kills and melee hits <style=cIsUtility>reduce cooldown</style>.");

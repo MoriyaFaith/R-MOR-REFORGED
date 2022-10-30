@@ -12,6 +12,8 @@ using System.Security.Permissions;
 //rename this namespace
 namespace HANDMod
 {
+    [BepInDependency("com.DestroyedClone.AncientScepter", BepInDependency.DependencyFlags.SoftDependency)]
+    [BepInDependency("com.ThinkInvisible.ClassicItems", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency("com.bepis.r2api", BepInDependency.DependencyFlags.HardDependency)]
     [NetworkCompatibility(CompatibilityLevel.EveryoneMustHaveMod, VersionStrictness.EveryoneNeedSameModVersion)]
     [BepInPlugin(MODUID, MODNAME, MODVERSION)]
@@ -34,10 +36,14 @@ namespace HANDMod
         public const string DEVELOPER_PREFIX = "MOFFEIN";
 
         public static HandPlugin instance;
+        public static bool standaloneScepterLoaded = false;
+        public static bool classicScepterLoaded = false;
 
         private void Awake()
         {
             instance = this;
+
+            CheckDependencies();
 
             Log.Init(Logger);
             Modules.Assets.Initialize(); // load assets and read config
@@ -52,6 +58,12 @@ namespace HANDMod
 
             // now make a content pack and add it- this part will change with the next update
             new Modules.ContentPacks().Initialize();
+        }
+
+        private void CheckDependencies()
+        {
+            standaloneScepterLoaded = BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.DestroyedClone.AncientScepter");
+            classicScepterLoaded = BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.ThinkInvisible.ClassicItems");
         }
     }
 }
