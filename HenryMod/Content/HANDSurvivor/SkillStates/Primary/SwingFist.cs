@@ -36,7 +36,8 @@ namespace EntityStates.HAND_Overclocked.Primary
             this.baseEarlyExitTime = 0.25f;
             this.attackStartTime = 0.4f;
             this.attackEndTime = 0.55f;
-            this.pushForce = 1400f;
+            this.pushForce = 0f;
+            this.bonusForce = 1400f * base.GetAimRay().direction;
 
             Util.PlaySound("Play_HOC_StartPunch", base.gameObject);
 

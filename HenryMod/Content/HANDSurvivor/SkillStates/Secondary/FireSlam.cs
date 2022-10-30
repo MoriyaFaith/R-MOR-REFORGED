@@ -20,6 +20,12 @@ namespace EntityStates.HAND_Overclocked.Secondary
         public static float minDownForce = 2400f;
         public static float maxDownForce = 3200f;
 
+
+        public static float baseYPos = 6f;
+
+        public static float baseZScale = 25f;
+        public static float maxZScale = 60f;
+
         public static float minRange = 9f;
         public static float maxRange = 22f;
         private float hitRange;
@@ -45,7 +51,7 @@ namespace EntityStates.HAND_Overclocked.Secondary
             this.hitHopVelocity = 24f;
             this.hitStopDuration = 0.1f;
             this.hitSoundString = "Play_MULT_shift_hit";
-            this.swingSoundString = "Play_HOC_Punch";
+            this.swingSoundString = "";
             this.hitboxName = "ChargeHammerHitbox";
             this.damageCoefficient = Mathf.Lerp(FireSlam.minDamageCoefficient, FireSlam.maxDamageCoefficient, chargePercent);
             this.procCoefficient = 1f;
@@ -56,8 +62,6 @@ namespace EntityStates.HAND_Overclocked.Secondary
             this.pushForce = 0f;
             this.bonusForce = Vector3.down * Mathf.Lerp(FireSlam.minDownForce, FireSlam.maxDownForce, chargePercent);
 
-            Util.PlaySound("Play_HOC_StartPunch", base.gameObject);
-
             hammerController = base.GetComponent<HammerVisibilityController>();
             if (hammerController)
             {
@@ -65,6 +69,24 @@ namespace EntityStates.HAND_Overclocked.Secondary
             }
 
             hitRange = Mathf.Lerp(FireSlam.minRange, FireSlam.maxRange, chargePercent);
+
+            //Only client knows charge percent
+            if (base.isAuthority)
+            {
+                ChildLocator cl = base.GetModelChildLocator();
+                if (cl)
+                {
+                    Transform chargeHammerHitboxTransform = cl.FindChild("ChargeHammerHitbox");
+                    //Debug.Log(chargeHammerHitboxTransform.localPosition);
+                    if (chargeHammerHitboxTransform)
+                    {
+                        float zScale = Mathf.Lerp(FireSlam.baseZScale, FireSlam.maxZScale, chargePercent);
+                        float zOffset = (zScale - baseZScale) * 0.5f;
+                        chargeHammerHitboxTransform.localScale = new Vector3(chargeHammerHitboxTransform.localScale.x, chargeHammerHitboxTransform.localScale.y, zScale);
+                        chargeHammerHitboxTransform.localPosition = new Vector3(chargeHammerHitboxTransform.localPosition.x, baseYPos - zOffset, chargeHammerHitboxTransform.localPosition.z);  //Hitbox is rotated in unity, which is why this is what gets changed.
+                    }
+                }
+            }
 
             base.OnEnter();
 
@@ -103,21 +125,26 @@ namespace EntityStates.HAND_Overclocked.Secondary
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            if (base.isAuthority && this.hasFired && !spawnedEffects)
+            if (this.hasFired && !spawnedEffects)
             {
                 spawnedEffects = true;
+                Util.PlaySound("Play_parent_attack1_slam", base.gameObject);
+                Util.PlaySound("Play_UI_podImpact", base.gameObject);
 
-                Ray aimRay = base.GetAimRay();
-                Vector3 directionFlat = aimRay.direction;
-                directionFlat.y = 0;
-                directionFlat.Normalize();
-                for (int i = 5; i <= Mathf.RoundToInt(hitRange) + 1; i += 2)
+                if (base.isAuthority)
                 {
-                    EffectManager.SpawnEffect(FireSlam.earthquakeEffectPrefab, new EffectData
+                    Ray aimRay = base.GetAimRay();
+                    Vector3 directionFlat = aimRay.direction;
+                    directionFlat.y = 0;
+                    directionFlat.Normalize();
+                    for (int i = 5; i <= Mathf.RoundToInt(hitRange) + 1; i += 2)
                     {
-                        origin = base.transform.position + i * directionFlat - 1.8f * Vector3.up,
-                        scale = 0.5f
-                    }, true); ;
+                        EffectManager.SpawnEffect(FireSlam.earthquakeEffectPrefab, new EffectData
+                        {
+                            origin = base.transform.position + i * directionFlat - 1.8f * Vector3.up,
+                            scale = 0.5f
+                        }, true); ;
+                    }
                 }
             }
         }
