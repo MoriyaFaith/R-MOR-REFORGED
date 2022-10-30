@@ -20,7 +20,6 @@ namespace EntityStates.HAND_Overclocked.Secondary
         public static float minDownForce = 2400f;
         public static float maxDownForce = 3200f;
 
-
         public static float baseYPos = -14f;
 
         public static float baseYScale = 30f;
@@ -132,15 +131,32 @@ namespace EntityStates.HAND_Overclocked.Secondary
                     directionFlat.y = 0;
                     directionFlat.Normalize();
 
-                    //Try to minimize how many particles need to be spawned
-                    for (int i = 0; i < 5; i ++)
+                    //These cover base hitbox
+                    EffectManager.SpawnEffect(FireSlam.earthquakeEffectPrefab, new EffectData
                     {
+                        origin = base.transform.position + (0 + 4) * directionFlat - 2f * Vector3.up,
+                        scale = 0.5f
+                    }, true); ;
+                    EffectManager.SpawnEffect(FireSlam.earthquakeEffectPrefab, new EffectData
+                    {
+                        origin = base.transform.position + (0 + 8) * directionFlat - 2f * Vector3.up,
+                        scale = 0.5f
+                    }, true); ;
+
+                    if (chargePercent >= 0.5f)
                         EffectManager.SpawnEffect(FireSlam.earthquakeEffectPrefab, new EffectData
-                        {
-                            origin = base.transform.position + i * directionFlat - 6f * Vector3.up,
-                            scale = 0.5f
-                        }, true); ;
-                    }
+                    {
+                        origin = base.transform.position + (0 + 12) * directionFlat -2f * Vector3.up,
+                        scale = 0.5f
+                    }, true); ;
+
+
+                    if (chargePercent >= 1f)
+                        EffectManager.SpawnEffect(FireSlam.earthquakeEffectPrefab, new EffectData
+                    {
+                        origin = base.transform.position + (0 + 16) * directionFlat - 2f * Vector3.up,
+                        scale = 0.5f
+                    }, true); ;
                 }
             }
         }
