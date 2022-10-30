@@ -61,6 +61,7 @@ namespace EntityStates.HAND_Overclocked.Secondary
 
             if (this.attack != null)
             {
+                this.attack.AddModdedDamageType(DamageTypes.HANDSecondary);
                 this.attack.AddModdedDamageType(DamageTypes.SquashOnKill);
                 this.attack.AddModdedDamageType(DamageTypes.ResetVictimForce);
             }
@@ -69,7 +70,7 @@ namespace EntityStates.HAND_Overclocked.Secondary
 
         protected override void PlayAttackAnimation()
         {
-            base.PlayAnimation("Gesture, Override", "FireHammer", "ChargeHammer.playbackRate", this.duration);
+            base.PlayCrossfade("Gesture, Override", "FireHammer", "ChargeHammer.playbackRate", this.duration, 0.05f);
         }
 
         protected override void OnHitEnemyAuthority()
@@ -84,7 +85,7 @@ namespace EntityStates.HAND_Overclocked.Secondary
                     if (hc)
                     {
                         hc.MeleeHit();
-                        hc.ExtendOverclock(Mathf.Lerp(0.8f, 1.6f, chargePercent);
+                        hc.ExtendOverclock(Mathf.Lerp(0.8f, 1.6f, chargePercent));
                     }
                 }
             }
