@@ -10,8 +10,9 @@ namespace EntityStates.HAND_Overclocked.Primary
 {
     public class SwingFist : BaseMeleeAttack
     {
-        public static NetworkSoundEventDef networkHitSound;
-        public static GameObject swingEffect;
+        public static NetworkSoundEventDef networkHitSound = null;
+        public static GameObject swingEffect = null;
+        public static GameObject hitEffect = null;
 
         private bool hitEnemy = false;
         public override void OnEnter()
@@ -21,8 +22,8 @@ namespace EntityStates.HAND_Overclocked.Primary
 
             this.muzzleString = swingIndex == 1 ? "HandL" : "HandR";    //Anim names are reversed. This is correct.
             this.swingEffectPrefab = SwingFist.swingEffect;
-            this.hitEffectPrefab = null;
-            this.impactSound = networkHitSound.index;
+            this.hitEffectPrefab = SwingFist.hitEffect;
+            if(SwingFist.networkHitSound) this.impactSound = networkHitSound.index;
 
             this.damageType = DamageType.Generic;
             this.hitHopVelocity = 10f;
@@ -38,7 +39,7 @@ namespace EntityStates.HAND_Overclocked.Primary
             this.attackStartTime = 0.4f;
             this.attackEndTime = 0.5f;
             this.pushForce = 0f;
-            this.bonusForce = 1400f * base.GetAimRay().direction;
+            this.bonusForce = 1600f * base.GetAimRay().direction;
 
             Util.PlaySound("Play_HOC_StartPunch", base.gameObject);
 
@@ -73,6 +74,14 @@ namespace EntityStates.HAND_Overclocked.Primary
             }
         }
 
+        public override void OnFiredAttack()
+        {
+            if (base.isAuthority)
+            {
+                ShakeEmitter se = ShakeEmitter.CreateSimpleShakeEmitter(base.transform.position, new Wave() { amplitude = 3f, cycleOffset = 0f, frequency = 4f }, 0.25f, 20f, true);
+                se.transform.parent = base.transform;
+            }
+        }
 
         protected override void PlayAttackAnimation()
         {
@@ -120,18 +129,15 @@ namespace EntityStates.HAND_Overclocked.Primary
             }
         }
 
-
         protected override void SetNextState()
         {
             int index = this.swingIndex;
             switch (index)
             {
-                case 0:
-                    index = 1;
-                    break;
                 case 1:
                     index = 2;
                     break;
+                case 0:
                 case 2:
                     index = 1;
                     break;

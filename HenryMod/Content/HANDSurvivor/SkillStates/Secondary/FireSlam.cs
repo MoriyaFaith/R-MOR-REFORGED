@@ -10,7 +10,7 @@ namespace EntityStates.HAND_Overclocked.Secondary
 {
     public class FireSlam : BaseMeleeAttack
     {
-        public static GameObject swingEffect;
+        public static GameObject swingEffect = null;
 
         public float chargePercent = 0f;
 
@@ -30,7 +30,6 @@ namespace EntityStates.HAND_Overclocked.Secondary
 
         private HammerVisibilityController hammerController;
 
-        private bool spawnedEffects = false;
         private bool hitEnemy = false;
         public override void OnEnter()
         {
@@ -41,10 +40,10 @@ namespace EntityStates.HAND_Overclocked.Secondary
             //this.muzzleString = swingIndex % 2 == 0 ? "SwingLeft" : "SwingRight";
             this.swingEffectPrefab = null;
             this.hitEffectPrefab = null;
-            this.impactSound = networkHitSound.index;
+            if (FireSlam.networkHitSound) this.impactSound = networkHitSound.index;
 
             this.damageType = DamageType.Stun1s;
-            this.hitHopVelocity = 22f;
+            this.hitHopVelocity = 20f;  //+4f guaranteed hithop
             this.hitStopDuration = 0.1f;
             this.hitSoundString = "";
             this.swingSoundString = "";
@@ -128,54 +127,49 @@ namespace EntityStates.HAND_Overclocked.Secondary
             }
         }
 
-        public override void FixedUpdate()
+        public override void OnFiredAttack()
         {
-            base.FixedUpdate();
-            if (this.hasFired && !spawnedEffects)
+            Util.PlaySound("Play_parent_attack1_slam", base.gameObject);
+            Util.PlaySound("Play_UI_podImpact", base.gameObject);
+
+            if (base.isAuthority)
             {
-                spawnedEffects = true;
-                Util.PlaySound("Play_parent_attack1_slam", base.gameObject);
-                Util.PlaySound("Play_UI_podImpact", base.gameObject);
+                Ray aimRay = base.GetAimRay();
+                Vector3 directionFlat = aimRay.direction;
+                directionFlat.y = 0;
+                directionFlat.Normalize();
 
-                if (base.isAuthority)
+                //These cover base hitbox
+                EffectManager.SpawnEffect(FireSlam.earthquakeEffectPrefab, new EffectData
                 {
-                    Ray aimRay = base.GetAimRay();
-                    Vector3 directionFlat = aimRay.direction;
-                    directionFlat.y = 0;
-                    directionFlat.Normalize();
+                    origin = base.transform.position + (0 + 4) * directionFlat - 2f * Vector3.up,
+                    scale = 0.5f
+                }, true); ;
+                EffectManager.SpawnEffect(FireSlam.earthquakeEffectPrefab, new EffectData
+                {
+                    origin = base.transform.position + (0 + 8) * directionFlat - 2f * Vector3.up,
+                    scale = 0.5f
+                }, true); ;
 
-                    //These cover base hitbox
+                if (chargePercent >= 0.5f)
                     EffectManager.SpawnEffect(FireSlam.earthquakeEffectPrefab, new EffectData
                     {
-                        origin = base.transform.position + (0 + 4) * directionFlat - 2f * Vector3.up,
+                        origin = base.transform.position + (0 + 12) * directionFlat - 2f * Vector3.up,
                         scale = 0.5f
                     }, true); ;
+
+
+                if (chargePercent >= 1f)
                     EffectManager.SpawnEffect(FireSlam.earthquakeEffectPrefab, new EffectData
-                    {
-                        origin = base.transform.position + (0 + 8) * directionFlat - 2f * Vector3.up,
-                        scale = 0.5f
-                    }, true); ;
-
-                    if (chargePercent >= 0.5f)
-                        EffectManager.SpawnEffect(FireSlam.earthquakeEffectPrefab, new EffectData
-                    {
-                        origin = base.transform.position + (0 + 12) * directionFlat -2f * Vector3.up,
-                        scale = 0.5f
-                    }, true); ;
-
-
-                    if (chargePercent >= 1f)
-                        EffectManager.SpawnEffect(FireSlam.earthquakeEffectPrefab, new EffectData
                     {
                         origin = base.transform.position + (0 + 16) * directionFlat - 2f * Vector3.up,
                         scale = 0.5f
                     }, true); ;
 
-                    //Allow hammer to break fall, but dont make it springy like OVC.
-                    if (base.characterMotor && !hitEnemy && !base.characterMotor.isGrounded)
-                    {
-                        base.SmallHop(base.characterMotor, 10f);
-                    }
+                //Allow hammer to break fall, but dont make it springy like OVC.
+                if (base.characterMotor && !base.characterMotor.isGrounded)
+                {
+                    base.SmallHop(base.characterMotor, 4f);
                 }
             }
         }

@@ -78,15 +78,15 @@ namespace HANDMod.Content
                 {
                     if (cb.isFlying)
                     {
-                        damageInfo.force.x *= 0.5f;
-                        damageInfo.force.z *= 0.5f;
+                        damageInfo.force.x *= 0.4375f;//0.5 * 7/8
+                        damageInfo.force.z *= 0.4375f;
                     }
                     else if (cb.characterMotor != null)
                     {
                         if (!cb.characterMotor.isGrounded)    //Multiply launched enemy force
                         {
-                            damageInfo.force.x *= 1.8f;
-                            damageInfo.force.z *= 1.8f;
+                            damageInfo.force.x *= 1.575f;//1.8 * 7/8
+                            damageInfo.force.z *= 1.575f;
 
                             if (cb.isChampion)
                             {
@@ -98,8 +98,8 @@ namespace HANDMod.Content
                         {
                             if (cb.isChampion) //deal less knockback against bosses if they're on the ground
                             {
-                                damageInfo.force.x *= 0.5f;
-                                damageInfo.force.z *= 0.5f;
+                                damageInfo.force.x *= 0.4375f;//0.5 * 7/8
+                                damageInfo.force.z *= 0.4375f;
                             }
                         }
                     }

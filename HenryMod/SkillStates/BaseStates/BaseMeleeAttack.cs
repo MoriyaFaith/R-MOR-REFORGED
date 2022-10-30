@@ -91,9 +91,7 @@ namespace HANDMod.SkillStates.BaseStates
         public override void OnExit()
         {
             if (!this.hasFired && !this.cancelled) this.FireAttack();
-
             base.OnExit();
-
             this.animator.SetBool("attacking", false);
         }
 
@@ -134,9 +132,11 @@ namespace HANDMod.SkillStates.BaseStates
         {
             if (!this.hasFired)
             {
+
                 this.hasFired = true;
                 Util.PlayAttackSpeedSound(this.swingSoundString, base.gameObject, this.attackSpeedStat);
 
+                OnFiredAttack();
                 if (base.isAuthority)
                 {
                     this.PlaySwingEffect();
@@ -152,6 +152,8 @@ namespace HANDMod.SkillStates.BaseStates
                 }
             }
         }
+
+        public virtual void OnFiredAttack() { }
 
         protected virtual void SetNextState()
         {

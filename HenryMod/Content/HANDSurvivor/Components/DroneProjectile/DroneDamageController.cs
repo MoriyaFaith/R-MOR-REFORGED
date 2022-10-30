@@ -66,7 +66,7 @@ namespace HANDMod.Content.HANDSurvivor.Components.DroneProjectile
             {
                 Destroy(bleedEffect);
             }
-            if (NetworkServer.active)
+            /*if (NetworkServer.active)
             {
                 if (damageTicks < damageTicksTotal && ownerHealthComponent)
                 {
@@ -86,7 +86,7 @@ namespace HANDMod.Content.HANDSurvivor.Components.DroneProjectile
                      healOrb.overrideDuration = 0.3f;
                     OrbManager.instance.AddOrb(healOrb);
                 }
-            }
+            }*/
         }
 
         public void FixedUpdate()

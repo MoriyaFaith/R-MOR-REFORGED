@@ -14,7 +14,7 @@ namespace EntityStates.HAND_Overclocked.Utility
 			this.overclockController = base.gameObject.GetComponent<OverclockController>();
 			if (base.isAuthority)
 			{
-				if (base.characterMotor && !base.characterMotor.isGrounded)
+				if (base.characterMotor && !base.characterMotor.isGrounded && BeginOverclock.shortHopVelocity > 0f)
 				{
 					base.SmallHop(base.characterMotor, BeginOverclock.shortHopVelocity);
 				}
@@ -70,13 +70,14 @@ namespace EntityStates.HAND_Overclocked.Utility
 		private int startStocks = 0;
 
 		public static float baseExitDuration = 0.3f;
-		public static float shortHopVelocity = 22f;
+		public static float shortHopVelocity = 0f;
 		private OverclockController overclockController;
 		private GenericSkill skillSlot;
 	}
 
 	public class CancelOverclock : BaseState
 	{
+		public static float shortHopVelocity = 30f;
 		public override void OnEnter()
 		{
 			base.OnEnter();
@@ -85,7 +86,7 @@ namespace EntityStates.HAND_Overclocked.Utility
 			{
 				if (base.characterMotor != null)    //Manually exiting will always trigger the shorthop regardless of grounded status.
 				{
-					base.SmallHop(base.characterMotor, BeginOverclock.shortHopVelocity);
+					base.SmallHop(base.characterMotor, CancelOverclock.shortHopVelocity);
 				}
 				if (overclockController)
 				{

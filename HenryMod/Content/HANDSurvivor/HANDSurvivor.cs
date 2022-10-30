@@ -195,7 +195,7 @@ namespace HANDMod.Content.HANDSurvivor
             ovcSkill.stockToConsume = 1;
             ovcSkill.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texUtilityOverclock.png");
             ovcSkill.activationStateMachineName = "Slide";
-            ovcSkill.keywordTokens = new string[] { HANDSurvivor.HAND_PREFIX + "KEYWORD_SPRINGY" };
+            ovcSkill.keywordTokens = new string[] { };//HANDSurvivor.HAND_PREFIX + "KEYWORD_SPRINGY"
             FixScriptableObjectName(ovcSkill);
             Modules.ContentPacks.skillDefs.Add(ovcSkill);
             SkillDefs.UtilityOverclock = ovcSkill;
@@ -237,7 +237,13 @@ namespace HANDMod.Content.HANDSurvivor
         {
             DroneSetup.Init();
 
-            Components.DroneProjectile.DroneDamageController.startSound = Assets.CreateNetworkSoundEventDef("Play_HOC_Drill");
+            //Components.DroneProjectile.DroneDamageController.startSound = Assets.CreateNetworkSoundEventDef("Play_HOC_Drill");
+            NetworkSoundEventDef networkSoundEventDef = ScriptableObject.CreateInstance<NetworkSoundEventDef>();
+            networkSoundEventDef.eventName = "Play_HOC_Drill";
+            Modules.ContentPacks.networkSoundEventDefs.Add(networkSoundEventDef);
+            Components.DroneProjectile.DroneDamageController.startSound = networkSoundEventDef;
+
+            Modules.Content.AddNetworkSoundEventDef(networkSoundEventDef);
 
             EntityStateMachine stateMachine = bodyPrefab.AddComponent<EntityStateMachine>();
             stateMachine.customName = "DroneLauncher";
@@ -391,23 +397,23 @@ namespace HANDMod.Content.HANDSurvivor
 
         private void CreateHitEffects()
         {
-            /*GameObject hitEffect = LegacyResourcesAPI.Load<GameObject>("prefabs/effects/impacteffects/ImpactToolbotDash").InstantiateClone("HANDMod_MeleeHitEffect");
-            EffectComponent ec = hitEffect.GetComponent<EffectComponent>();
-            ec.soundName = "";
-
-            Modules.ContentPacks.effectDefs.Add(new EffectDef(hitEffect));*/
-
+            //GameObject hitEffect = LegacyResourcesAPI.Load<GameObject>("prefabs/effects/impacteffects/ImpactToolbotDash").InstantiateClone("HANDMod_MeleeHitEffect");
             /*GameObject hitEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Common/VFX/OmniImpactVFX.prefab").WaitForCompletion().InstantiateClone("HANDMod_MeleeHitEffect");
             EffectComponent ec = hitEffect.GetComponent<EffectComponent>();
-            ec.soundName = "Play_MULT_shift_hit";*/
-            NetworkSoundEventDef nse = Modules.Assets.CreateNetworkSoundEventDef("Play_MULT_shift_hit");
+            ec.soundName = "";
+            //hitEffect.transform.localScale = 3f * Vector3.one;
+            Modules.ContentPacks.effectDefs.Add(new EffectDef(hitEffect));
+            EntityStates.HAND_Overclocked.Primary.SwingFist.hitEffect = hitEffect;*/
 
+
+            /*NetworkSoundEventDef nse = Modules.Assets.CreateNetworkSoundEventDef("Play_MULT_shift_hit");
             EntityStates.HAND_Overclocked.Primary.SwingFist.networkHitSound = nse;
-            EntityStates.HAND_Overclocked.Secondary.FireSlam.networkHitSound = nse;
+            EntityStates.HAND_Overclocked.Secondary.FireSlam.networkHitSound = nse;*/
 
-            //EntityStates.HAND_Overclocked.Primary.SwingFist.swingEffect = fistEffect;
         }
-        /*public static void DumpEntityStateConfig(EntityStateConfiguration esc)
+
+        //Use these to check Vanilla values of things.
+        public static void DumpEntityStateConfig(EntityStateConfiguration esc)
         {
 
             for (int i = 0; i < esc.serializedFieldsCollection.serializedFields.Length; i++)
@@ -426,6 +432,6 @@ namespace HANDMod.Content.HANDSurvivor
         {
             EntityStateConfiguration esc = LegacyResourcesAPI.Load<EntityStateConfiguration>("entitystateconfigurations/" + entityStateName);
             DumpEntityStateConfig(esc);
-        }*/
+        }
     }
 }
