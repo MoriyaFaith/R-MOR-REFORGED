@@ -10,7 +10,8 @@ namespace HANDMod.Content.HANDSurvivor.Components.DroneProjectile
     public class DroneDamageController : MonoBehaviour
     {
         private bool playedHitSound = false;
-        private bool hasDroneParts = false;
+        private int dronePartsCount = 0;
+        private int coolantCount = 0;
 
         public void Awake()
         {
@@ -35,11 +36,20 @@ namespace HANDMod.Content.HANDSurvivor.Components.DroneProjectile
                             master = cb.master;
                             float droneAttackSpeed = 1f;
 
-                            int dronePartsCount = cb.inventory.GetItemCount(DLC1Content.Items.DroneWeapons);
+                            dronePartsCount = cb.inventory.GetItemCount(DLC1Content.Items.DroneWeapons);
                             if (dronePartsCount > 0)
                             {
-                                hasDroneParts = true;
                                 droneAttackSpeed += 0.5f * dronePartsCount;
+                            }
+
+                            ItemIndex droneCoolantIndex = ItemCatalog.FindItemIndex("ITEM_DRONE_COOLANT_BOOST");
+                            if (droneCoolantIndex != ItemIndex.None)
+                            {
+                                coolantCount = cb.inventory.GetItemCount(droneCoolantIndex);
+                                if (coolantCount > 0)
+                                {
+                                    droneAttackSpeed += 0.1f * coolantCount;
+                                }
                             }
 
                             damageTicks = Mathf.FloorToInt(damageTicks * droneAttackSpeed);
@@ -191,10 +201,17 @@ namespace HANDMod.Content.HANDSurvivor.Components.DroneProjectile
                                         procChainMask = default(ProcChainMask),
                                         procCoefficient = procCoefficient
                                     };
+
+                                    //Coolant scales burn damage but I don't want to rewrite the hook for it.
+                                    if (coolantCount > 0 && Util.CheckRoll(10f + 10f * coolantCount, master))
+                                    {
+                                        droneDamage.damageType |= DamageType.IgniteOnHit;
+                                    }
+
                                     victimHealthComponent.TakeDamage(droneDamage);
                                     GlobalEventManager.instance.OnHitEnemy(droneDamage, victimHealthComponent.gameObject);
 
-                                    if (hasDroneParts && victimHealthComponent.body && victimHealthComponent.body.mainHurtBox)
+                                    if (dronePartsCount > 0 && victimHealthComponent.body && victimHealthComponent.body.mainHurtBox)
                                     {
                                         if (Util.CheckRoll(10f, master))
                                         {
