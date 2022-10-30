@@ -375,18 +375,6 @@ namespace HANDMod.Content.HANDSurvivor
             debris2.gameObject.SetActive(false);
             sphere.gameObject.SetActive(false);
 
-            ShakeEmitter se = slamImpactEffect.AddComponent<ShakeEmitter>();
-            se.shakeOnStart = true;
-            se.duration = 0.65f;
-            se.scaleShakeRadiusWithLocalScale = false;
-            se.radius = 30f;
-            se.wave = new Wave()
-            {
-                amplitude = 7f,
-                cycleOffset = 0f,
-                frequency = 6f
-            };
-
             slamImpactEffect.GetComponent<EffectComponent>().soundName = "";
             //Play_parent_attack1_slam
 

@@ -169,8 +169,17 @@ namespace EntityStates.HAND_Overclocked.Secondary
                 //Allow hammer to break fall, but dont make it springy like OVC.
                 if (base.characterMotor && !base.characterMotor.isGrounded)
                 {
-                    base.SmallHop(base.characterMotor, 4f);
+                    base.SmallHop(base.characterMotor, 8f);
                 }
+
+                ShakeEmitter se = ShakeEmitter.CreateSimpleShakeEmitter(base.transform.position, new Wave()
+                {
+                    amplitude = 12f,
+                    cycleOffset = 0f,
+                    frequency = 6f
+                },
+                0.75f, 30f, true);
+                se.transform.parent = base.transform;
             }
         }
 
