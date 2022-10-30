@@ -11,6 +11,7 @@ namespace EntityStates.HAND_Overclocked.Primary
     public class SwingFist : BaseMeleeAttack
     {
         public static NetworkSoundEventDef networkHitSound;
+        public static GameObject swingEffect;
 
         private bool hitEnemy = false;
         public override void OnEnter()
@@ -18,8 +19,8 @@ namespace EntityStates.HAND_Overclocked.Primary
             this.bonusForce = Vector3.zero;
             this.attackRecoil = 0f;
 
-            //this.muzzleString = swingIndex % 2 == 0 ? "SwingLeft" : "SwingRight";
-            this.swingEffectPrefab = null;
+            this.muzzleString = swingIndex == 1 ? "HandL" : "HandR";    //Anim names are reversed. This is correct.
+            this.swingEffectPrefab = SwingFist.swingEffect;
             this.hitEffectPrefab = null;
             this.impactSound = networkHitSound.index;
 

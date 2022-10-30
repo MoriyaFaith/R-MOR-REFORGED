@@ -28,8 +28,11 @@ namespace HANDMod
             LanguageAPI.Add(prefix + "OUTRO_FLAVOR", "..and so it left, servos pulsing with new life.");
             LanguageAPI.Add(prefix + "OUTRO_FAILURE", "..and so it vanished, unrewarded in all of its efforts.");
 
+            LanguageAPI.Add(prefix + "PASSIVE_NAME", "SWARM_ARMOR");
+            LanguageAPI.Add(prefix + "PASSIVE_DESC", "Gain <style=cIsDamage>incoming damage reduction</style> for every <style=cIsUtility>drone ally</style> on your team.");
+
             LanguageAPI.Add(prefix + "PRIMARY_NAME", "HURT");
-            LanguageAPI.Add(prefix + "PRIMARY_DESC", "Apply force to all combatants for <style=cIsDamage>390% damage</style>. <style=cIsDamage>Stuns</style> while <style=cIsDamage>Overclock</style> is active.");
+            LanguageAPI.Add(prefix + "PRIMARY_DESC", "Apply force to all combatants for <style=cIsDamage>390% damage</style>. <style=cIsDamage>Stuns</style> while <style=cIsDamage>OVERCLOCK</style> is active.");
 
             LanguageAPI.Add(prefix + "SECONDARY_NAME", "FORCED_REASSEMBLY");
             LanguageAPI.Add(prefix + "SECONDARY_DESC", "<style=cIsDamage>Stunning</style>. Charge up and apply great force to all combatants for <style=cIsDamage>500%-1500% damage</style>.");

@@ -101,13 +101,17 @@ namespace HANDMod.Content.HANDSurvivor
         public override void InitializeSkills()
         {
             Modules.Skills.CreateSkillFamilies(bodyPrefab);
-            string prefix = HandPlugin.DEVELOPER_PREFIX;
+
+            SkillLocator sk = bodyPrefab.GetComponent<SkillLocator>();
+            sk.passiveSkill.enabled = true;
+            sk.passiveSkill.skillNameToken = HAND_PREFIX + "PASSIVE_NAME";
+            sk.passiveSkill.skillDescriptionToken = HAND_PREFIX + "PASSIVE_DESC";
+            sk.passiveSkill.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texPassive.png");
 
             InitializePrimarySkills();
             InitializeSecondarySkills();
             InitializeUtilitySkills();
             InitializeSpecialSkills();
-            InitializeScepterSkills();
         }
 
         private void InitializePrimarySkills()
@@ -165,6 +169,7 @@ namespace HANDMod.Content.HANDSurvivor
             SkillDefs.SecondaryChargeHammer = secondarySkill;
 
             EntityStates.HAND_Overclocked.Secondary.FireSlam.earthquakeEffectPrefab = CreateSlamEffect();
+            InitializeScepterSkills();
         }
 
         private void InitializeUtilitySkills()
@@ -400,9 +405,9 @@ namespace HANDMod.Content.HANDSurvivor
             EntityStates.HAND_Overclocked.Primary.SwingFist.networkHitSound = nse;
             EntityStates.HAND_Overclocked.Secondary.FireSlam.networkHitSound = nse;
 
-            //DumpEntityStateConfig("EntityStates.Loader.SwingComboFist");
+            //EntityStates.HAND_Overclocked.Primary.SwingFist.swingEffect = fistEffect;
         }
-        public static void DumpEntityStateConfig(EntityStateConfiguration esc)
+        /*public static void DumpEntityStateConfig(EntityStateConfiguration esc)
         {
 
             for (int i = 0; i < esc.serializedFieldsCollection.serializedFields.Length; i++)
@@ -421,6 +426,6 @@ namespace HANDMod.Content.HANDSurvivor
         {
             EntityStateConfiguration esc = LegacyResourcesAPI.Load<EntityStateConfiguration>("entitystateconfigurations/" + entityStateName);
             DumpEntityStateConfig(esc);
-        }
+        }*/
     }
 }

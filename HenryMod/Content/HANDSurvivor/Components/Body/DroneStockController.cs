@@ -61,7 +61,7 @@ namespace HANDMod.Content.HANDSurvivor.Components.Body
                 }
                 if (droneCount != oldDroneCount)
                 {
-                    //CmdUpdatePCBuff(pcCount);
+                    CmdUpdateDronePassive(droneCount);
                 }
                 oldDroneCount = droneCount;
             }
@@ -108,33 +108,33 @@ namespace HANDMod.Content.HANDSurvivor.Components.Body
             }
         }
 
-        /*[Command]
-        public void CmdUpdatePCBuff(int newCount)
+        [Command]
+        public void CmdUpdateDronePassive(int newCount)
         {
             if (NetworkServer.active)
             {
-                int buffCount = characterBody.GetBuffCount(HANDBuffs.ParallelComputingBuff);
+                int buffCount = characterBody.GetBuffCount(Buffs.DronePassive);
                 if (buffCount < newCount)
                 {
                     int diff = newCount - buffCount;
                     for (int i = 0; i < diff; i++)
                     {
-                        characterBody.AddBuff(HANDBuffs.ParallelComputingBuff);
+                        characterBody.AddBuff(Buffs.DronePassive);
                     }
                 }
                 else if (buffCount > newCount)
                 {
                     for (int i = 0; i < buffCount; i++)
                     {
-                        characterBody.RemoveBuff(HANDBuffs.ParallelComputingBuff);
+                        characterBody.RemoveBuff(Buffs.DronePassive);
                     }
                     for (int i = 0; i < newCount; i++)
                     {
-                        characterBody.AddBuff(HANDBuffs.ParallelComputingBuff);
+                        characterBody.AddBuff(Buffs.DronePassive);
                     }
                 }
             }
-        }*/
+        }
 
         private int oldDroneCount = 0;
         private CharacterBody characterBody;

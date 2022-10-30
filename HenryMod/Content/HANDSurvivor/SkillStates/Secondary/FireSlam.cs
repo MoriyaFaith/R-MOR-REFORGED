@@ -172,13 +172,10 @@ namespace EntityStates.HAND_Overclocked.Secondary
                     }, true); ;
 
                     //Allow hammer to break fall, but dont make it springy like OVC.
-                    /*if (base.characterMotor && !hitEnemy)
+                    if (base.characterMotor && !hitEnemy && !base.characterMotor.isGrounded)
                     {
-                        if (base.characterMotor.velocity.y < 0)
-                        {
-                            base.SmallHop(base.characterMotor, 10f);
-                        }
-                    }*/
+                        base.SmallHop(base.characterMotor, 10f);
+                    }
                 }
             }
         }
