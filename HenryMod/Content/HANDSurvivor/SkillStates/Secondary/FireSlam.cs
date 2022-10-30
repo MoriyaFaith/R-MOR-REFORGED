@@ -26,10 +26,6 @@ namespace EntityStates.HAND_Overclocked.Secondary
         public static float baseYScale = 30f;
         public static float maxYScale = 60f;
 
-        public static float minRange = 9f;
-        public static float maxRange = 22f;
-        private float hitRange;
-
         public static GameObject earthquakeEffectPrefab;
 
         private HammerVisibilityController hammerController;
@@ -67,8 +63,6 @@ namespace EntityStates.HAND_Overclocked.Secondary
             {
                 hammerController.SetHammerEnabled(true);
             }
-
-            hitRange = Mathf.Lerp(FireSlam.minRange, FireSlam.maxRange, chargePercent);
 
             //Only client knows charge percent
             if (base.isAuthority)
@@ -137,11 +131,13 @@ namespace EntityStates.HAND_Overclocked.Secondary
                     Vector3 directionFlat = aimRay.direction;
                     directionFlat.y = 0;
                     directionFlat.Normalize();
-                    for (int i = 5; i <= Mathf.RoundToInt(hitRange) + 1; i += 2)
+
+                    //Try to minimize how many particles need to be spawned
+                    for (int i = 0; i < 5; i ++)
                     {
                         EffectManager.SpawnEffect(FireSlam.earthquakeEffectPrefab, new EffectData
                         {
-                            origin = base.transform.position + i * directionFlat - 1.8f * Vector3.up,
+                            origin = base.transform.position + i * directionFlat - 6f * Vector3.up,
                             scale = 0.5f
                         }, true); ;
                     }
