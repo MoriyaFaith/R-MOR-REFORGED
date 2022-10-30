@@ -7,7 +7,7 @@ using HANDMod.Content.HANDSurvivor.Components.Master;
 
 namespace HANDMod.Content.HANDSurvivor.Components.Body
 {
-    public class DroneStockController : NetworkBehaviour//, IOnKilledOtherServerReceiver
+    public class DroneStockController : NetworkBehaviour, IOnKilledOtherServerReceiver
     {
         public void Start()
         {
@@ -78,22 +78,18 @@ namespace HANDMod.Content.HANDSurvivor.Components.Body
             }
             return false;
         }
+
         //Sniper comes with a non-ally drone that isn't counted as an ally.
         //You can add your survivor to this list if they don't have a Mechanical bodyflag but you want them to count. Use their BaseNameToken.
         public static List<string> mechanicalBodies = new List<string> { "SNIPERCLASSIC_BODY_NAME" };
 
-        /*public void OnKilledOtherServer(DamageReport damageReport) //This seems to be called by both OnCharacterDeath and TakeDamage, resulting in it being called twice
+        public void OnKilledOtherServer(DamageReport damageReport) //This seems to be called by both OnCharacterDeath and TakeDamage, resulting in it being called twice
         {
-            if (hasAuthority && damageReport.attacker == base.gameObject)
+            if (NetworkServer.active && damageReport.attacker == base.gameObject)
             {
-                Debug.Log("Calling OnKilledOtherServer");
-                //RpcAddSpecialStock();
-                if (characterBody.skillLocator.special.stock < characterBody.skillLocator.special.maxStock)
-                {
-                    characterBody.skillLocator.special.AddOneStock();
-                }
+                RpcAddSpecialStock();
             }
-        }*/
+        }
 
         [ClientRpc]
         public void RpcAddSpecialStock()
