@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using HANDMod.Content.HANDSurvivor.Components.Body;
 using EntityStates;
 using System.Linq;
+using R2API;
 
 namespace HANDMod.Content.HANDSurvivor
 {
@@ -159,6 +160,8 @@ namespace HANDMod.Content.HANDSurvivor
 
             Skills.AddSecondarySkills(bodyPrefab, new SkillDef[] { secondarySkill });
             SkillDefs.SecondaryChargeHammer = secondarySkill;
+
+            EntityStates.HAND_Overclocked.Secondary.FireSlam.earthquakeEffectPrefab = CreateSlamEffect();
         }
 
         private void InitializeUtilitySkills()
@@ -301,6 +304,38 @@ namespace HANDMod.Content.HANDSurvivor
         private void FixScriptableObjectName(SkillDef sk)
         {
             (sk as ScriptableObject).name = sk.skillName;
+        }
+        private GameObject CreateSlamEffect()
+        {
+            GameObject slamImpactEffect = LegacyResourcesAPI.Load<GameObject>("prefabs/effects/impacteffects/ParentSlamEffect").InstantiateClone("HANDOverclockedSlamImpactEffect", false);
+
+            var particleParent = slamImpactEffect.transform.Find("Particles");
+            var debris = particleParent.Find("Debris, 3D");
+            var debris2 = particleParent.Find("Debris");
+            var sphere = particleParent.Find("Nova Sphere");
+
+            debris.gameObject.SetActive(false);
+            debris2.gameObject.SetActive(false);
+            sphere.gameObject.SetActive(false);
+
+            ShakeEmitter se = slamImpactEffect.AddComponent<ShakeEmitter>();
+            se.shakeOnStart = true;
+            se.duration = 0.65f;
+            se.scaleShakeRadiusWithLocalScale = false;
+            se.radius = 30f;
+            se.wave = new Wave()
+            {
+                amplitude = 7f,
+                cycleOffset = 0f,
+                frequency = 6f
+            };
+
+            slamImpactEffect.GetComponent<EffectComponent>().soundName = "";
+            //Play_parent_attack1_slam
+
+            Modules.ContentPacks.effectDefs.Add(new EffectDef(slamImpactEffect));
+
+            return slamImpactEffect;
         }
     }
 }
