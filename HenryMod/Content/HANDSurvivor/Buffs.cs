@@ -2,6 +2,9 @@
 using RoR2;
 using UnityEngine.AddressableAssets;
 using R2API;
+using System;
+using MonoMod.Cil;
+using Mono.Cecil.Cil;
 
 namespace HANDMod.Content.HANDSurvivor
 {
@@ -24,6 +27,20 @@ namespace HANDMod.Content.HANDSurvivor
                     );
 
                 RecalculateStatsAPI.GetStatCoefficients += OverclockHook;
+
+                IL.RoR2.CharacterModel.UpdateOverlays += (il) =>
+                {
+                    ILCursor c = new ILCursor(il);
+                    c.GotoNext(
+                         x => x.MatchLdsfld(typeof(RoR2Content.Buffs), "AttackSpeedOnCrit")
+                        );
+                    c.Index += 2;
+                    c.Emit(OpCodes.Ldarg_0);
+                    c.EmitDelegate<Func<bool, CharacterModel, bool>>((hasBuff, self) =>
+                    {
+                        return hasBuff || self.body.HasBuff(Buffs.Overclock);
+                    });
+                };
             }
 
             if (!Buffs.DroneDebuff)

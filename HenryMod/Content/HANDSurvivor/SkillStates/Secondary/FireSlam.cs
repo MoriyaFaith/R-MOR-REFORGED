@@ -4,8 +4,9 @@ using HANDMod.SkillStates.BaseStates;
 using HANDMod.Content.HANDSurvivor.Components.Body;
 using R2API;
 using HANDMod.Content.HANDSurvivor;
+using HANDMod.Content;
 
-namespace EntityStates.HANDMod.Secondary
+namespace EntityStates.HAND_Overclocked.Secondary
 {
     public class FireSlam : BaseMeleeAttack
     {
@@ -15,6 +16,9 @@ namespace EntityStates.HANDMod.Secondary
 
         public static float minDamageCoefficient = 5f;
         public static float maxDamageCoefficient = 15f;
+
+        public static float minDownForce = 2400f;
+        public static float maxDownForce = 3200f;
 
         private HammerVisibilityController hammerController;
 
@@ -31,7 +35,7 @@ namespace EntityStates.HANDMod.Secondary
 
 
             this.damageType = DamageType.Stun1s;
-            this.hitHopVelocity = 10f;
+            this.hitHopVelocity = 24f;
             this.hitStopDuration = 0.1f;
             this.hitSoundString = "Play_MULT_shift_hit";
             this.swingSoundString = "Play_HOC_Punch";
@@ -43,6 +47,7 @@ namespace EntityStates.HANDMod.Secondary
             this.attackStartTime = 0.3f;
             this.attackEndTime = 0.5f;
             this.pushForce = 0f;
+            this.bonusForce = Vector3.down * Mathf.Lerp(FireSlam.minDownForce, FireSlam.maxDownForce, chargePercent);
 
             Util.PlaySound("Play_HOC_StartPunch", base.gameObject);
 
@@ -53,6 +58,12 @@ namespace EntityStates.HANDMod.Secondary
             }
 
             base.OnEnter();
+
+            if (this.attack != null)
+            {
+                this.attack.AddModdedDamageType(DamageTypes.SquashOnKill);
+                this.attack.AddModdedDamageType(DamageTypes.ResetVictimForce);
+            }
         }
 
 
@@ -67,11 +78,14 @@ namespace EntityStates.HANDMod.Secondary
             if (!hitEnemy)
             {
                 hitEnemy = true;
-                OverclockController hc = base.gameObject.GetComponent<OverclockController>();
-                if (hc)
+                if (base.characterBody && base.characterBody.HasBuff(Buffs.Overclock))
                 {
-                    hc.MeleeHit();
-                    if (base.characterBody && base.characterBody.HasBuff(Buffs.Overclock)) hc.ExtendOverclock(0.8f);
+                    OverclockController hc = base.gameObject.GetComponent<OverclockController>();
+                    if (hc)
+                    {
+                        hc.MeleeHit();
+                        hc.ExtendOverclock(Mathf.Lerp(0.8f, 1.6f, chargePercent);
+                    }
                 }
             }
         }

@@ -27,61 +27,13 @@ namespace HANDMod.Content.HANDSurvivor.Components.Body
             characterBody.skillLocator.special.stock = 0;
         }
 
-        /*[Client]
-        public void StopMomentum(uint networkID)
-        {
-            if (this.hasAuthority)
-            {
-                CmdStopMomentum(networkID);
-            }
-        }
-
-        [Command]
-        private void CmdStopMomentum(uint networkID)
-        {
-            GameObject go = ClientScene.FindLocalObject(new NetworkInstanceId(networkID));
-            if (go)
-            {
-                CharacterMaster cm = go.GetComponent<CharacterMaster>();
-                if (cm)
-                {
-                    GameObject bodyObject = cm.GetBodyObject();
-                    if (bodyObject)
-                    {
-                        CharacterBody cb = bodyObject.GetComponent<CharacterBody>();
-                        if (cb)
-                        {
-                            if (cb.rigidbody)
-                            {
-                                cb.rigidbody.velocity = new Vector3(0f, cb.rigidbody.velocity.y, 0f);
-                                cb.rigidbody.angularVelocity = new Vector3(0f, cb.rigidbody.angularVelocity.y, 0f);
-                            }
-                            if (cb.characterMotor != null)
-                            {
-                                cb.characterMotor.velocity.x = 0f;
-                                cb.characterMotor.velocity.z = 0f;
-                                cb.characterMotor.rootMotion.x = 0f;
-                                cb.characterMotor.rootMotion.z = 0f;
-                            }
-                        }
-                    }
-                }
-            }
-        }*/
-
-        [Client]
+        [Server]
         public void SquashEnemy(uint networkID)
         {
-            if (this.hasAuthority)
+            if (NetworkServer.active)
             {
-                CmdAddSquash(networkID);
+                RpcAddSquash(networkID);
             }
-        }
-
-        [Command]
-        private void CmdAddSquash(uint networkID)
-        {
-            RpcAddSquash(networkID);
         }
 
         [ClientRpc]

@@ -2,7 +2,7 @@
 using RoR2;
 using UnityEngine;
 
-namespace EntityStates.HANDMod.Secondary
+namespace EntityStates.HAND_Overclocked.Secondary
 {
     public class ChargeSlam : BaseState
     {
@@ -14,7 +14,7 @@ namespace EntityStates.HANDMod.Secondary
             this.modelAnimator = base.GetModelAnimator();
             if (this.modelAnimator)
             {
-                base.PlayCrossfade("Gesture, Override", "PrepHammer", "ChargeHammer.playbackRate", this.minDuration, 0.2f);
+                base.PlayAnimation("Gesture, Override", "PrepHammer", "ChargeHammer.playbackRate", this.minDuration);
             }
             if (base.characterBody)
             {
@@ -83,7 +83,7 @@ namespace EntityStates.HANDMod.Secondary
             {
                 if (base.isAuthority && base.inputBank && !base.inputBank.skill2.down)
                 {
-                    this.outer.SetNextState(new EntityStates.HANDMod.Secondary.FireSlam() { chargePercent = chargePercent });
+                    this.outer.SetNextState(new FireSlam() { chargePercent = chargePercent });
                     return;
                 }
             }

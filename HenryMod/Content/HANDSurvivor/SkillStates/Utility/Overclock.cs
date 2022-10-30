@@ -4,7 +4,7 @@ using RoR2;
 using RoR2.Skills;
 using UnityEngine;
 
-namespace EntityStates.HANDMod.Utility
+namespace EntityStates.HAND_Overclocked.Utility
 {
 	public class BeginOverclock : BaseState
 	{

@@ -4,8 +4,9 @@ using HANDMod.SkillStates.BaseStates;
 using RoR2;
 using R2API;
 using UnityEngine;
+using HANDMod.Content;
 
-namespace EntityStates.HANDMod.Primary
+namespace EntityStates.HAND_Overclocked.Primary
 {
     public class SwingFist : BaseMeleeAttack
     {
@@ -24,6 +25,7 @@ namespace EntityStates.HANDMod.Primary
 
             this.damageType = DamageType.Generic;
             this.hitHopVelocity = 10f;
+            this.scaleHitHopWithAttackSpeed = true;
             this.hitStopDuration = 0.1f;
             this.hitSoundString = "Play_MULT_shift_hit";
             this.swingSoundString = "Play_HOC_Punch";
@@ -52,8 +54,8 @@ namespace EntityStates.HANDMod.Primary
 
             if (this.attack != null)
             {
-                this.attack.AddModdedDamageType(global::HANDMod.Content.DamageTypes.HANDPrimaryPunch);
-                this.attack.AddModdedDamageType(global::HANDMod.Content.DamageTypes.ResetVictimForce);
+                this.attack.AddModdedDamageType(DamageTypes.HANDPrimaryPunch);
+                this.attack.AddModdedDamageType(DamageTypes.ResetVictimForce);
             }
         }
 
@@ -92,11 +94,14 @@ namespace EntityStates.HANDMod.Primary
             if (!hitEnemy)
             {
                 hitEnemy = true;
-                OverclockController hc = base.gameObject.GetComponent<OverclockController>();
-                if (hc)
+                if (base.characterBody && base.characterBody.HasBuff(Buffs.Overclock))
                 {
-                    hc.MeleeHit();
-                    if (base.characterBody && base.characterBody.HasBuff(Buffs.Overclock)) hc.ExtendOverclock(0.8f);
+                    OverclockController hc = base.gameObject.GetComponent<OverclockController>();
+                    if (hc)
+                    {
+                        hc.MeleeHit();
+                        hc.ExtendOverclock(0.8f);
+                    }
                 }
             }
         }

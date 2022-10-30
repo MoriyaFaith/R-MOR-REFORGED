@@ -29,7 +29,7 @@ namespace HANDMod.Content.HANDSurvivor.Components.Body
             SetHammerEnabled(false);
         }
 
-        private void FixedUpdate()
+        /*private void FixedUpdate()
         {
             if (hammerEnabled)
             {
@@ -39,7 +39,7 @@ namespace HANDMod.Content.HANDSurvivor.Components.Body
             {
                 HideHammer();
             }
-        }
+        }*/
 
         private void ShowHammer()
         {

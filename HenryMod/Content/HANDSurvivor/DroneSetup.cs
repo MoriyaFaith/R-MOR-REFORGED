@@ -2,7 +2,7 @@
 using UnityEngine;
 using RoR2.Projectile;
 using R2API;
-using EntityStates.HANDMod.Special;
+using EntityStates.HAND_Overclocked.Special;
 using HANDMod.Content.HANDSurvivor.Components.Body;
 using UnityEngine.AddressableAssets;
 

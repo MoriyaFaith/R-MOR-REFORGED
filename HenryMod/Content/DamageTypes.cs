@@ -1,6 +1,8 @@
 ﻿using RoR2;
 using UnityEngine;
 using R2API;
+using HANDMod.Content.HANDSurvivor.Components.Body;
+using UnityEngine.Networking;
 
 namespace HANDMod.Content
 {
@@ -8,6 +10,10 @@ namespace HANDMod.Content
     {
         public static DamageAPI.ModdedDamageType ResetVictimForce;
         public static DamageAPI.ModdedDamageType HANDPrimaryPunch;
+        public static DamageAPI.ModdedDamageType HANDSecondary;
+        public static DamageAPI.ModdedDamageType HANDSecondaryScepter;
+        public static DamageAPI.ModdedDamageType SquashOnKill;
+        public static DamageAPI.ModdedDamageType ScaleForceToMass;
 
         private static bool initialized = false;
 
@@ -18,6 +24,9 @@ namespace HANDMod.Content
 
             DamageTypes.ResetVictimForce = DamageAPI.ReserveDamageType();
             DamageTypes.HANDPrimaryPunch = DamageAPI.ReserveDamageType();
+            DamageTypes.HANDSecondary = DamageAPI.ReserveDamageType();
+            DamageTypes.HANDSecondaryScepter = DamageAPI.ReserveDamageType();
+            DamageTypes.SquashOnKill = DamageAPI.ReserveDamageType();
 
             On.RoR2.HealthComponent.TakeDamage += HealthComponent_TakeDamage;
 
@@ -26,6 +35,25 @@ namespace HANDMod.Content
         private static void HealthComponent_TakeDamage(On.RoR2.HealthComponent.orig_TakeDamage orig, HealthComponent self, DamageInfo damageInfo)
         {
             CharacterBody cb = self.body;
+
+            if (damageInfo.attacker)
+            {
+                if (damageInfo.HasModdedDamageType(DamageTypes.SquashOnKill))
+                {
+                    HANDNetworkComponent hnc = damageInfo.attacker.GetComponent<HANDNetworkComponent>();
+                    if (hnc)
+                    {
+                        if (cb.master)
+                        {
+                            NetworkIdentity ni = cb.master.GetComponent<NetworkIdentity>();
+                            if (ni)
+                            {
+                                hnc.SquashEnemy(ni.netId.Value);
+                            }
+                        }
+                    }
+                }
+            }
 
             //This will only work on things that are run on the server.
             if (damageInfo.HasModdedDamageType(DamageTypes.ResetVictimForce))
@@ -68,13 +96,37 @@ namespace HANDMod.Content
                     }
                 }
 
-                //Scale force to match mass
-                Rigidbody rb = cb.rigidbody;
-                if (rb)
+                if (cb.rigidbody)
                 {
-                    damageInfo.force *= Mathf.Max(rb.mass / 100f, 1f);
+                    damageInfo.force *= Mathf.Max(cb.rigidbody.mass / 100f, 1f);
                 }
             }
+
+            //Jank.
+            bool isSecondary = damageInfo.HasModdedDamageType(DamageTypes.HANDSecondary);
+            bool isScepter = damageInfo.HasModdedDamageType(DamageTypes.HANDSecondaryScepter);
+            if (isSecondary || isScepter)
+            {
+                bool launchEnemy = false;
+                //Downwards force is determined when setting up the attack.
+                //Force gets overwritten into upwards force if target is grounded.
+                if (cb.characterMotor && cb.characterMotor.isGrounded)
+                {
+                    launchEnemy = true;
+                    damageInfo.force.y = 2000f;
+                }
+
+                if (cb.rigidbody)
+                {
+                    float forceMult = Mathf.Max(cb.rigidbody.mass / 100f, 1f);
+                    if (!launchEnemy && !isScepter)
+                    {
+                        forceMult = Mathf.Max(7.5f, forceMult);
+                    }
+                    damageInfo.force *= forceMult;
+                }
+            }
+
             orig(self, damageInfo);
         }
     }

@@ -34,6 +34,7 @@ namespace HANDMod.SkillStates.BaseStates
         protected GameObject hitEffectPrefab;
         protected NetworkSoundEventIndex impactSound;
 
+        protected bool scaleHitHopWithAttackSpeed = false;
         protected float earlyExitTime;
         public float duration;
         protected bool hasFired;
@@ -109,7 +110,12 @@ namespace HANDMod.SkillStates.BaseStates
             {
                 if (base.characterMotor && !base.characterMotor.isGrounded && this.hitHopVelocity > 0f)
                 {
-                    base.SmallHop(base.characterMotor, this.hitHopVelocity / Mathf.Sqrt(this.attackSpeedStat));
+                    float v = this.hitHopVelocity;
+                    if (this.scaleHitHopWithAttackSpeed)
+                    {
+                        v /= Mathf.Sqrt(this.attackSpeedStat);
+                    }
+                    base.SmallHop(base.characterMotor, v);
                 }
 
                 this.hasHopped = true;
