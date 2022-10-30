@@ -21,10 +21,10 @@ namespace EntityStates.HAND_Overclocked.Secondary
         public static float maxDownForce = 3200f;
 
 
-        public static float baseYPos = 6f;
+        public static float baseYPos = -14f;
 
-        public static float baseZScale = 25f;
-        public static float maxZScale = 60f;
+        public static float baseYScale = 30f;
+        public static float maxYScale = 60f;
 
         public static float minRange = 9f;
         public static float maxRange = 22f;
@@ -80,10 +80,10 @@ namespace EntityStates.HAND_Overclocked.Secondary
                     //Debug.Log(chargeHammerHitboxTransform.localPosition);
                     if (chargeHammerHitboxTransform)
                     {
-                        float zScale = Mathf.Lerp(FireSlam.baseZScale, FireSlam.maxZScale, chargePercent);
-                        float zOffset = (zScale - baseZScale) * 0.5f;
-                        chargeHammerHitboxTransform.localScale = new Vector3(chargeHammerHitboxTransform.localScale.x, chargeHammerHitboxTransform.localScale.y, zScale);
-                        chargeHammerHitboxTransform.localPosition = new Vector3(chargeHammerHitboxTransform.localPosition.x, baseYPos - zOffset, chargeHammerHitboxTransform.localPosition.z);  //Hitbox is rotated in unity, which is why this is what gets changed.
+                        float yScale = Mathf.Lerp(FireSlam.baseYScale, FireSlam.maxYScale, chargePercent);
+                        float yOffset = baseYPos - (yScale - baseYScale) * 0.5f;
+                        chargeHammerHitboxTransform.localScale = new Vector3(chargeHammerHitboxTransform.localScale.x, yScale, chargeHammerHitboxTransform.localScale.z);
+                        chargeHammerHitboxTransform.localPosition = new Vector3(chargeHammerHitboxTransform.localPosition.x, yOffset, chargeHammerHitboxTransform.localPosition.z);
                     }
                 }
             }
