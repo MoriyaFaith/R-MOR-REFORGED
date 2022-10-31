@@ -177,6 +177,7 @@ namespace HANDMod.Content.HANDSurvivor
 
         private void InitializeUtilitySkills()
         {
+            EntityStates.HAND_Overclocked.Utility.BeginOverclock.jetEffectPrefab = BuildOverclockJets();
 
             Skills.AddUtilitySkills(bodyPrefab, new SkillDef[] {});
             SkillDef ovcSkill = SkillDef.CreateInstance<SkillDef>();
@@ -216,7 +217,7 @@ namespace HANDMod.Content.HANDSurvivor
             ovcCancelDef.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texUtilityOverclockCancel.png");
             ovcCancelDef.interruptPriority = InterruptPriority.Skill;
             ovcCancelDef.isCombatSkill = false;
-            ovcCancelDef.keywordTokens = new string[] { HANDSurvivor.HAND_PREFIX + "KEYWORD_SPRINGY" };
+            ovcCancelDef.keywordTokens = new string[] { };
             ovcCancelDef.mustKeyPress = true;
             ovcCancelDef.cancelSprintingOnActivation = false;
             ovcCancelDef.rechargeStock = 1;
@@ -232,8 +233,6 @@ namespace HANDMod.Content.HANDSurvivor
             EntityStates.HAND_Overclocked.Utility.BeginOverclock.texGauge = Assets.mainAssetBundle.LoadAsset<Texture2D>("texGauge.png");
             EntityStates.HAND_Overclocked.Utility.BeginOverclock.texGaugeArrow = Assets.mainAssetBundle.LoadAsset<Texture2D>("texGaugeArrow.png");
             OverclockController.ovcDef = ovcSkill;
-
-            EntityStates.HAND_Overclocked.Utility.BeginOverclock.jetEffectPrefab = BuildOverclockJets();
 
             SkillDef focusSkill = SkillDef.CreateInstance<SkillDef>();
             focusSkill.activationState = new SerializableEntityStateType(typeof(EntityStates.HAND_Overclocked.Utility.BeginFocus));
@@ -272,7 +271,7 @@ namespace HANDMod.Content.HANDSurvivor
             focusCancelDef.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texUtilityOverclockCancel.png");
             focusCancelDef.interruptPriority = InterruptPriority.Skill;
             focusCancelDef.isCombatSkill = false;
-            focusCancelDef.keywordTokens = new string[] { HANDSurvivor.HAND_PREFIX + "KEYWORD_SPRINGY" };
+            focusCancelDef.keywordTokens = new string[] { };
             focusCancelDef.mustKeyPress = true;
             focusCancelDef.cancelSprintingOnActivation = false;
             focusCancelDef.rechargeStock = 1;
@@ -464,9 +463,8 @@ namespace HANDMod.Content.HANDSurvivor
         {
             GameObject jetObject = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Commando/CommandoDashJets.prefab").WaitForCompletion().InstantiateClone("HANDMod_OverclockJetObject", false);
 
-            //Why doesn't this do anything?
-            Transform [] particles = jetObject.GetComponentsInChildren<Transform>();
-            foreach (Transform p in particles)
+            ParticleSystemRenderer [] particles = jetObject.GetComponentsInChildren<ParticleSystemRenderer>();
+            foreach (ParticleSystemRenderer p in particles)
             {
                 //[Info   : Unity Log] Jet
                 //[Info   : Unity Log] Ring
@@ -475,11 +473,19 @@ namespace HANDMod.Content.HANDSurvivor
                 //[Info   : Unity Log] Flare
 
                 string name = p.name;
-                /*if (name == "Ring" || name == "Sparks")
+                if (name == "Ring" || name == "Sparks" || name == "Flare")
                 {
                     UnityEngine.Object.Destroy(p);
-                }*/
-                p.gameObject.SetActive(false);
+                }
+            }
+
+            VFXAttributes vfx = jetObject.GetComponent<VFXAttributes>();
+            if (vfx)
+            {
+                for (int i = 0; i< vfx.optionalLights.Length; i++)
+                {
+                    vfx.optionalLights[i].enabled = false;
+                }
             }
 
             DestroyOnTimer dot = jetObject.GetComponent<DestroyOnTimer>();

@@ -12,22 +12,34 @@ namespace EntityStates.HAND_Overclocked.Utility
         public static Texture2D texGaugeNemesis;
         public static Texture2D texGaugeArrowNemesis;
 
-		public virtual SkillDef GetCancelDef()
+		public override SkillDef GetCancelDef()
 		{
 			return SkillDefs.UtilityFocusCancel;
 		}
 
-		public virtual void StartOverclock()
+		public override void StartOverclock()
 		{
 			if (this.overclockController)
 			{
-				this.overclockController.BeginOverclock();
+				this.overclockController.BeginFocus();
 			}
 		}
-	}
+
+        public override void FixedUpdate()
+        {
+            base.FixedUpdate();
+			if (base.characterBody) base.characterBody.isSprinting = false;
+        }
+    }
 
     public class CancelFocus : CancelOverclock
-    {
-
+	{
+        public override void EndOverclock()
+        {
+			if (this.overclockController)
+			{
+				this.overclockController.EndFocus();
+			}
+		}
     }
 }

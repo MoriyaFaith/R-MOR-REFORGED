@@ -9,8 +9,8 @@ namespace HANDMod.Content.HANDSurvivor.Components.Body
     {
         public void Awake()
         {
-            ovcTimer = 0f;
-            ovcActive = false;
+            buffTimer = 0f;
+            buffActive = false;
             characterBody = base.GetComponent<CharacterBody>();
             healthComponent = characterBody.healthComponent;
 
@@ -28,24 +28,25 @@ namespace HANDMod.Content.HANDSurvivor.Components.Body
 
         public void FixedUpdate()
         {
-            if (ovcActive)
+            if (buffActive)
             {
-                characterBody.skillLocator.utility.rechargeStopwatch = initialOverclockCooldown;
+                characterBody.skillLocator.utility.rechargeStopwatch = initialSkillCooldown;
 
-                ovcTimer -= Time.fixedDeltaTime;
-                ovcPercent = ovcTimer / OverclockController.OverclockDuration;
+                buffTimer -= Time.fixedDeltaTime;
+                buffPercent = buffTimer / OverclockController.OverclockDuration;
 
-                if (ovcTimer > OverclockController.OverclockDuration)
+                if (buffTimer > OverclockController.OverclockDuration)
                 {
-                    ovcTimer = OverclockController.OverclockDuration;
+                    buffTimer = OverclockController.OverclockDuration;
                 }
-                else if (ovcTimer < 0f)
+                else if (buffTimer < 0f)
                 {
                     if (characterBody.skillLocator.utility.stock > 0)
                     {
                         characterBody.skillLocator.utility.stock--;
                     }
-                    EndOverclock();
+                    if (overclockActive) EndOverclock();
+                    if (focusActive) EndFocus();
                 }
             }
         }
@@ -92,23 +93,77 @@ namespace HANDMod.Content.HANDSurvivor.Components.Body
 
         public void ExtendOverclock(float time)
         {
-            if (ovcActive)
+            if (buffActive && allowExtend)
             {
-                ovcTimer += time;
+                buffTimer += time;
             }
+        }
+
+        public void BeginFocus()
+        {
+            this.texGauge = EntityStates.HAND_Overclocked.Utility.BeginFocus.texGaugeNemesis;
+            this.texGaugeArrow = EntityStates.HAND_Overclocked.Utility.BeginFocus.texGaugeArrowNemesis;
+            allowExtend = false;
+            if (hasAuthority)
+            {
+                ReiszeOverclockGauge();
+                buffTimer = OverclockController.OverclockDuration;
+                buffPercent = 1f;
+                buffActive = true;
+                focusActive = true;
+                initialSkillCooldown = characterBody.skillLocator.utility.rechargeStopwatch;
+
+                CmdBeginFocusServer();
+            }
+        }
+
+        [Command]
+        private void CmdBeginFocusServer()
+        {
+            RpcPlayOverclockStart();
+            if (!characterBody.HasBuff(Buffs.NemesisFocus))
+            {
+                characterBody.AddBuff(Buffs.NemesisFocus);
+            }
+            focusActive = true;
+            allowExtend = false;
+        }
+
+        public void EndFocus()
+        {
+            if (hasAuthority)
+            {
+                focusActive = false;
+                buffActive = false;
+                buffTimer = 0;
+                CmdEndFocusServer();
+            }
+        }
+
+        [Command]
+        private void CmdEndFocusServer()
+        {
+            if (characterBody.HasBuff(Buffs.NemesisFocus))
+            {
+                characterBody.RemoveBuff(Buffs.NemesisFocus);
+            }
+            focusActive = false;
+            RpcPlayOverclockEnd();
         }
 
         public void BeginOverclock()
         {
             this.texGauge = EntityStates.HAND_Overclocked.Utility.BeginOverclock.texGauge;
             this.texGaugeArrow = EntityStates.HAND_Overclocked.Utility.BeginOverclock.texGaugeArrow;
+            allowExtend = true;
             if (hasAuthority)
             {
                 ReiszeOverclockGauge();
-                ovcTimer = OverclockController.OverclockDuration;
-                ovcPercent = 1f;
-                ovcActive = true;
-                initialOverclockCooldown = characterBody.skillLocator.utility.rechargeStopwatch;
+                buffTimer = OverclockController.OverclockDuration;
+                buffPercent = 1f;
+                buffActive = true;
+                overclockActive = true;
+                initialSkillCooldown = characterBody.skillLocator.utility.rechargeStopwatch;
 
                 CmdBeginOverclockServer();
             }
@@ -122,14 +177,17 @@ namespace HANDMod.Content.HANDSurvivor.Components.Body
             {
                 characterBody.AddBuff(Buffs.Overclock);
             }
+            allowExtend = true;
+            overclockActive = true;
         }
 
         public void EndOverclock()
         {
             if (hasAuthority)
             {
-                ovcActive = false;
-                ovcTimer = 0;
+                overclockActive = false;
+                buffActive = false;
+                buffTimer = 0;
                 CmdEndOverclockServer();
             }
         }
@@ -141,6 +199,7 @@ namespace HANDMod.Content.HANDSurvivor.Components.Body
             {
                 characterBody.RemoveBuff(Buffs.Overclock);
             }
+            overclockActive = false;
             RpcPlayOverclockEnd();
         }
 
@@ -158,43 +217,47 @@ namespace HANDMod.Content.HANDSurvivor.Components.Body
 
         private void ReiszeOverclockGauge()
         {
-            rectGauge.width = Screen.height * texGauge.width * gaugeScale / 1080f;
-            rectGauge.height = Screen.height * texGauge.height * gaugeScale / 1080f;
+            float height = Camera.current.pixelHeight;
+            float width = Camera.current.pixelWidth;
 
-            rectGauge.position = new Vector2(Screen.width / 2f - rectGauge.width / 2f, Screen.height / 2f + rectGauge.height * 2f);
+            rectGauge.width = height * texGauge.width * gaugeScale / 1080f;
+            rectGauge.height = height * texGauge.height * gaugeScale / 1080f;
 
-            rectGaugeArrow.width = Screen.height * texGaugeArrow.width * gaugeScale / 1080f;
-            rectGaugeArrow.height = Screen.height * texGaugeArrow.height * gaugeScale / 1080f;
+            
+            rectGauge.position = new Vector2(width / 2f - rectGauge.width / 2f, height / 2f + rectGauge.height * 2f);
+
+            rectGaugeArrow.width = height * texGaugeArrow.width * gaugeScale / 1080f;
+            rectGaugeArrow.height = height * texGaugeArrow.height * gaugeScale / 1080f;
 
             gaugeLeftBound = rectGauge.position.x - rectGaugeArrow.width / 2f;
             gaugeRightBound = gaugeLeftBound + rectGauge.width;
-            gaugeArroyYPos = Screen.height / 2f + rectGauge.height * 2f;
+            gaugeArroyYPos = height / 2f + rectGauge.height * 2f;
         }
         private void OnGUI()
         {
-            if (this.hasAuthority && ovcActive && !menuActive && !RoR2.PauseManager.isPaused && healthComponent && healthComponent.alive)
+            if (this.hasAuthority && buffActive && !menuActive && !RoR2.PauseManager.isPaused && healthComponent && healthComponent.alive)
             {
                 GUI.DrawTexture(rectGauge, texGauge, ScaleMode.StretchToFill, true, 0f);
 
-                rectGaugeArrow.position = new Vector2(Mathf.Lerp(gaugeLeftBound, gaugeRightBound, ovcPercent), gaugeArroyYPos);
+                rectGaugeArrow.position = new Vector2(Mathf.Lerp(gaugeLeftBound, gaugeRightBound, buffPercent), gaugeArroyYPos);
                 GUI.DrawTexture(rectGaugeArrow, texGaugeArrow, ScaleMode.StretchToFill, true, 0f);
             }
         }
 
-        public bool ovcActive
+        public bool buffActive
         {
             get
             {
-                return _ovcActive;
+                return _buffActive;
             }
             protected set
             {
-                _ovcActive = value;
+                _buffActive = value;
             }
         }
-        private bool _ovcActive;
+        private bool _buffActive;
 
-        public float ovcTimer
+        public float buffTimer
         {
             get
             {
@@ -218,6 +281,7 @@ namespace HANDMod.Content.HANDSurvivor.Components.Body
 
         public static SkillDef ovcDef;
 
+        private bool allowExtend = true;
         public Texture2D texGauge;
         public Texture2D texGaugeArrow;
         private Rect rectGauge;
@@ -227,9 +291,12 @@ namespace HANDMod.Content.HANDSurvivor.Components.Body
         private float gaugeRightBound;
         private float gaugeArroyYPos;
 
-        private float initialOverclockCooldown;
-        private float ovcPercent;
+        private float initialSkillCooldown;
+        private float buffPercent;
 
         public bool menuActive = false;
+
+        private bool overclockActive = false;
+        private bool focusActive = false;
     }
 }

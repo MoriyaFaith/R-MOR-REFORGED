@@ -39,11 +39,11 @@ namespace EntityStates.HAND_Overclocked.Utility
 				rightJet = cl.FindChild("Jetpack.R");
 
 				GameObject leftEffect = UnityEngine.Object.Instantiate<GameObject>(BeginOverclock.jetEffectPrefab, leftJet);
-				leftEffect.transform.localRotation *= Quaternion.Euler(0f, -120f, 0f);
+				leftEffect.transform.localRotation *= Quaternion.Euler(0f, -60f, 0f);
 				leftEffect.transform.localPosition += new Vector3(0f, 0.6f, 0f);    //Adding to this shifts it downwards.
 
 				GameObject rightEffect = UnityEngine.Object.Instantiate<GameObject>(BeginOverclock.jetEffectPrefab, rightJet);
-				rightEffect.transform.localRotation *= Quaternion.Euler(0f, 120f, 0f);
+				rightEffect.transform.localRotation *= Quaternion.Euler(0f, 60f, 0f);
 				rightEffect.transform.localPosition += new Vector3(0f, 0.6f, 0f);
 			}
 		}
@@ -79,15 +79,15 @@ namespace EntityStates.HAND_Overclocked.Utility
 				jetStopwatch -= jetFireTime;
 
 				GameObject leftEffect = UnityEngine.Object.Instantiate<GameObject>(BeginOverclock.jetEffectPrefab, leftJet);
-				leftEffect.transform.localRotation *= Quaternion.Euler(0f, -120f, 0f);
+				leftEffect.transform.localRotation *= Quaternion.Euler(0f, -60f, 0f);
 				leftEffect.transform.localPosition += new Vector3(0f, 0.6f, 0f);    //Adding to this shifts it downwards.
 
 				GameObject rightEffect = UnityEngine.Object.Instantiate<GameObject>(BeginOverclock.jetEffectPrefab, rightJet);
-				rightEffect.transform.localRotation *= Quaternion.Euler(0f, 120f, 0f);
+				rightEffect.transform.localRotation *= Quaternion.Euler(0f, 60f, 0f);
 				rightEffect.transform.localPosition += new Vector3(0f, 0.6f, 0f);
 			}
 
-			if ((!this.skillSlot || this.skillSlot.stock == 0) || !(overclockController && overclockController.ovcActive))
+			if ((!this.skillSlot || this.skillSlot.stock == 0) || !(overclockController && overclockController.buffActive))
 			{
 				this.beginExit = true;
 			}
@@ -118,7 +118,8 @@ namespace EntityStates.HAND_Overclocked.Utility
 		public static float baseExitDuration = 0.3f;
 		public static float shortHopVelocity = 12f;
 		public static float jetFireFrequency = 6f;
-		private OverclockController overclockController;
+
+		protected OverclockController overclockController;
 		private GenericSkill skillSlot;
 
 		public static Texture2D texGauge;
@@ -129,6 +130,7 @@ namespace EntityStates.HAND_Overclocked.Utility
 	{
 		public static float shortHopVelocity = 24f;
 		public static GameObject jetEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Commando/CommandoDashJets.prefab").WaitForCompletion();
+		protected OverclockController overclockController;
 
 		public override void OnEnter()
 		{
@@ -151,7 +153,7 @@ namespace EntityStates.HAND_Overclocked.Utility
 				rightEffect.transform.localPosition += new Vector3(0f, 0.6f, 0f);
 			}
 
-				overclockController = base.gameObject.GetComponent<OverclockController>();
+			overclockController = base.gameObject.GetComponent<OverclockController>();
 			if (base.isAuthority)
 			{
 				if (base.characterMotor != null)    //Manually exiting will always trigger the shorthop regardless of grounded status.
@@ -176,7 +178,5 @@ namespace EntityStates.HAND_Overclocked.Utility
 		{
 			return InterruptPriority.PrioritySkill;
 		}
-
-		private OverclockController overclockController;
 	}
 }
