@@ -25,8 +25,12 @@ namespace EntityStates.HAND_Overclocked.Secondary
         public static float baseYScale = 30f;
         public static float maxYScale = 60f;
 
+        public static float baseZPos = 4.5f;
+        public static float baseZScale = 25f;
+        public static float maxZScale = 35f;
+
         public static float shortHop = 12f;
-        public static float shortHopOnHit = 14f;
+        public static float shortHopOnHit = 24f;
 
         public static NetworkSoundEventDef networkHitSound;
         public static GameObject earthquakeEffectPrefab;
@@ -80,8 +84,12 @@ namespace EntityStates.HAND_Overclocked.Secondary
                     {
                         float yScale = Mathf.Lerp(FireSlam.baseYScale, FireSlam.maxYScale, chargePercent);
                         float yOffset = baseYPos - (yScale - baseYScale) * 0.5f;
-                        chargeHammerHitboxTransform.localScale = new Vector3(chargeHammerHitboxTransform.localScale.x, yScale, chargeHammerHitboxTransform.localScale.z);
-                        chargeHammerHitboxTransform.localPosition = new Vector3(chargeHammerHitboxTransform.localPosition.x, yOffset, chargeHammerHitboxTransform.localPosition.z);
+
+                        float zScale = Mathf.Lerp(FireSlam.baseZScale, FireSlam.maxZScale, chargePercent);
+                        float zOffset = baseZPos - (zScale - baseZScale) * 0.5f;
+
+                        chargeHammerHitboxTransform.localScale = new Vector3(chargeHammerHitboxTransform.localScale.x, yScale, zScale);
+                        chargeHammerHitboxTransform.localPosition = new Vector3(chargeHammerHitboxTransform.localPosition.x, yOffset, zOffset);
                     }
                 }
             }
@@ -109,7 +117,7 @@ namespace EntityStates.HAND_Overclocked.Secondary
 
         protected override void PlayAttackAnimation()
         {
-            base.PlayAnimation("Gesture, Override", "FireHammer", "ChargeHammer.playbackRate", this.duration);
+            base.PlayAnimation("Gesture, Override", HammerVisibilityController.HasHammerPrimary(base.skillLocator) ? "FireHammerH" : "FireHammer", "ChargeHammer.playbackRate", this.duration);
         }
 
         protected override void OnHitEnemyAuthority()
@@ -169,7 +177,6 @@ namespace EntityStates.HAND_Overclocked.Secondary
                         scale = 0.5f
                     }, true); ;
 
-                //Allow hammer to break fall, but dont make it springy like OVC.
                 if (base.characterMotor && !base.characterMotor.isGrounded)
                 {
                     base.SmallHop(base.characterMotor, FireSlam.shortHop);

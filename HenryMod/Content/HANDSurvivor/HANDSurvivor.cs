@@ -31,7 +31,7 @@ namespace HANDMod.Content.HANDSurvivor
             bodyNameToken = HandPlugin.DEVELOPER_PREFIX + "_HAND_BODY_NAME",
             subtitleNameToken = HandPlugin.DEVELOPER_PREFIX + "_HAND_BODY_SUBTITLE",
 
-            characterPortrait = Assets.mainAssetBundle.LoadAsset<Texture>("texPortraitOld.png"),
+            characterPortrait = Assets.mainAssetBundle.LoadAsset<Texture>("texPortrait.png"),
             bodyColor = new Color(0.556862745f, 0.682352941f, 0.690196078f),
 
             crosshair = LegacyResourcesAPI.Load<GameObject>("prefabs/crosshair/simpledotcrosshair"),
@@ -78,6 +78,9 @@ namespace HANDMod.Content.HANDSurvivor
 
             Transform chargeHammerHitboxTransform = childLocator.FindChild("ChargeHammerHitbox");
             Prefabs.SetupHitbox(model, "ChargeHammerHitbox", new Transform[] { chargeHammerHitboxTransform });
+
+            Transform hammerHitboxTransform = childLocator.FindChild("HammerHitbox");
+            Prefabs.SetupHitbox(model, "HammerHitbox", new Transform[] { hammerHitboxTransform });
 
             LoopSoundWhileCharacterMoving ls = bodyPrefab.AddComponent<LoopSoundWhileCharacterMoving>();
             ls.startSoundName = "Play_MULT_move_loop";
@@ -226,11 +229,67 @@ namespace HANDMod.Content.HANDSurvivor
             Modules.ContentPacks.skillDefs.Add(ovcCancelDef);
             SkillDefs.UtilityOverclockCancel = ovcCancelDef;
 
-            OverclockController.texGauge = Assets.mainAssetBundle.LoadAsset<Texture2D>("texGauge.png");
-            OverclockController.texGaugeArrow = Assets.mainAssetBundle.LoadAsset<Texture2D>("texGaugeArrow.png");
+            EntityStates.HAND_Overclocked.Utility.BeginOverclock.texGauge = Assets.mainAssetBundle.LoadAsset<Texture2D>("texGauge.png");
+            EntityStates.HAND_Overclocked.Utility.BeginOverclock.texGaugeArrow = Assets.mainAssetBundle.LoadAsset<Texture2D>("texGaugeArrow.png");
             OverclockController.ovcDef = ovcSkill;
 
-            Skills.AddUtilitySkills(bodyPrefab, new SkillDef[] { ovcSkill });
+            EntityStates.HAND_Overclocked.Utility.BeginOverclock.jetEffectPrefab = BuildOverclockJets();
+
+            SkillDef focusSkill = SkillDef.CreateInstance<SkillDef>();
+            focusSkill.activationState = new SerializableEntityStateType(typeof(EntityStates.HAND_Overclocked.Utility.BeginFocus));
+            focusSkill.skillNameToken = HANDSurvivor.HAND_PREFIX + "UTILITY_NEMESIS_NAME";
+            focusSkill.skillName = "BeginFocus";
+            focusSkill.skillDescriptionToken = HANDSurvivor.HAND_PREFIX + "UTILITY_NEMESIS_DESC";
+            focusSkill.isCombatSkill = false;
+            focusSkill.cancelSprintingOnActivation = false;
+            focusSkill.canceledFromSprinting = false;
+            focusSkill.baseRechargeInterval = 7f;
+            focusSkill.interruptPriority = EntityStates.InterruptPriority.Any;
+            focusSkill.mustKeyPress = true;
+            focusSkill.beginSkillCooldownOnSkillEnd = false;
+            focusSkill.baseMaxStock = 1;
+            focusSkill.fullRestockOnAssign = true;
+            focusSkill.rechargeStock = 1;
+            focusSkill.requiredStock = 1;
+            focusSkill.stockToConsume = 1;
+            focusSkill.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texUtilityNemesis.png");
+            focusSkill.activationStateMachineName = "Slide";
+            focusSkill.keywordTokens = new string[] { };//HANDSurvivor.HAND_PREFIX + "KEYWORD_SPRINGY"
+            FixScriptableObjectName(focusSkill);
+            Modules.ContentPacks.skillDefs.Add(focusSkill);
+            SkillDefs.UtilityFocus = focusSkill;
+
+            SkillDef focusCancelDef = SkillDef.CreateInstance<SkillDef>();
+            focusCancelDef.activationState = new SerializableEntityStateType(typeof(EntityStates.HAND_Overclocked.Utility.CancelFocus));
+            focusCancelDef.activationStateMachineName = "Slide";
+            focusCancelDef.baseMaxStock = 1;
+            focusCancelDef.baseRechargeInterval = 7f;
+            focusCancelDef.beginSkillCooldownOnSkillEnd = true;
+            focusCancelDef.canceledFromSprinting = false;
+            focusCancelDef.dontAllowPastMaxStocks = true;
+            focusCancelDef.forceSprintDuringState = false;
+            focusCancelDef.fullRestockOnAssign = true;
+            focusCancelDef.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texUtilityOverclockCancel.png");
+            focusCancelDef.interruptPriority = InterruptPriority.Skill;
+            focusCancelDef.isCombatSkill = false;
+            focusCancelDef.keywordTokens = new string[] { HANDSurvivor.HAND_PREFIX + "KEYWORD_SPRINGY" };
+            focusCancelDef.mustKeyPress = true;
+            focusCancelDef.cancelSprintingOnActivation = false;
+            focusCancelDef.rechargeStock = 1;
+            focusCancelDef.requiredStock = 0;
+            focusCancelDef.skillName = "CancelFocus";
+            focusCancelDef.skillNameToken = HANDSurvivor.HAND_PREFIX + "UTILITY_CANCEL_NAME";
+            focusCancelDef.skillDescriptionToken = HANDSurvivor.HAND_PREFIX + "UTILITY__CANCEL_DESC";
+            focusCancelDef.stockToConsume = 0;
+            FixScriptableObjectName(focusCancelDef);
+            Modules.ContentPacks.skillDefs.Add(focusCancelDef);
+            SkillDefs.UtilityFocusCancel = focusCancelDef;
+
+            EntityStates.HAND_Overclocked.Utility.BeginFocus.texGaugeNemesis = Assets.mainAssetBundle.LoadAsset<Texture2D>("texGaugeNemesis.png");
+            EntityStates.HAND_Overclocked.Utility.BeginFocus.texGaugeArrowNemesis = Assets.mainAssetBundle.LoadAsset<Texture2D>("texGaugeArrowNemesis.png");
+
+
+            Skills.AddUtilitySkills(bodyPrefab, new SkillDef[] { ovcSkill, focusSkill });
         }
 
         private void InitializeSpecialSkills()
@@ -355,6 +414,8 @@ namespace HANDMod.Content.HANDSurvivor
 
             Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HAND_Overclocked.Utility.BeginOverclock));
             Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HAND_Overclocked.Utility.CancelOverclock));
+            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HAND_Overclocked.Utility.BeginFocus));
+            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HAND_Overclocked.Utility.CancelFocus));
 
             Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HAND_Overclocked.Special.FireSeekingDrone));
         }
@@ -397,6 +458,35 @@ namespace HANDMod.Content.HANDSurvivor
             /*NetworkSoundEventDef nse = Modules.Assets.CreateNetworkSoundEventDef("Play_MULT_shift_hit");
             EntityStates.HAND_Overclocked.Primary.SwingFist.networkHitSound = nse;
             EntityStates.HAND_Overclocked.Secondary.FireSlam.networkHitSound = nse;*/
+        }
+
+        private GameObject BuildOverclockJets()
+        {
+            GameObject jetObject = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Commando/CommandoDashJets.prefab").WaitForCompletion().InstantiateClone("HANDMod_OverclockJetObject", false);
+
+            //Why doesn't this do anything?
+            Transform [] particles = jetObject.GetComponentsInChildren<Transform>();
+            foreach (Transform p in particles)
+            {
+                //[Info   : Unity Log] Jet
+                //[Info   : Unity Log] Ring
+                //[Info   : Unity Log] Distortion
+                //[Info   : Unity Log] Sparks
+                //[Info   : Unity Log] Flare
+
+                string name = p.name;
+                /*if (name == "Ring" || name == "Sparks")
+                {
+                    UnityEngine.Object.Destroy(p);
+                }*/
+                p.gameObject.SetActive(false);
+            }
+
+            DestroyOnTimer dot = jetObject.GetComponent<DestroyOnTimer>();
+            dot.duration = 0.2f;//0.3f vanilla
+
+            //Does not have EffectComponent, no need to register.
+            return jetObject;
         }
 
         //Use these to check Vanilla values of things.

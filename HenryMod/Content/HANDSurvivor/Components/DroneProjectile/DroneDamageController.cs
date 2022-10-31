@@ -9,9 +9,6 @@ namespace HANDMod.Content.HANDSurvivor.Components.DroneProjectile
 {
     public class DroneDamageController : MonoBehaviour
     {
-        private bool playedHitSound = false;
-        private int dronePartsCount = 0;
-        private int coolantCount = 0;
 
         public void Awake()
         {
@@ -89,6 +86,132 @@ namespace HANDMod.Content.HANDSurvivor.Components.DroneProjectile
             }*/
         }
 
+        private void OnFirstHit()
+        {
+            if (victimHealthComponent.body)
+            {
+                if (victimHealthComponent.body.teamComponent && victimHealthComponent.body.teamComponent.teamIndex == teamIndex)
+                {
+                    victimHealthComponent.body.AddTimedBuff(RoR2Content.Buffs.SmallArmorBoost, (float)damageTicksTotal * baseTickRate);
+                }
+            }
+            EffectManager.SimpleSoundEffect(startSound.index, base.transform.position, true);
+        }
+
+        private bool CheckValidVictim()
+        {
+            bool valid = true;
+            if (!victimHealthComponent)
+            {
+                victimHealthComponent = stick.victim.GetComponent<HealthComponent>();
+                if (!victimHealthComponent)
+                {
+                    valid = false;
+                }
+            }
+            else if (victimHealthComponent && !victimHealthComponent.alive)
+            {
+                valid = false;
+            }
+            return valid;
+        }
+
+        private void VictimFixedUpdate()
+        {
+            stopwatch += Time.fixedDeltaTime;
+            if (stopwatch > tickRate)
+            {
+                damageTicks++;
+                if (damageTicks > damageTicksTotal)
+                {
+                    Destroy(this.gameObject);
+                }
+
+                if (victimHealthComponent && projectileDamage)
+                {
+                    if (firstHit)
+                    {
+                        firstHit = false;
+                        OnFirstHit();
+                    }
+
+                    float currentTickDamage = projectileDamage.damage / (float)damageTicksTotal;
+                    float ownerCritMult = 2f;
+
+                    if (ownerHealthComponent)
+                    {
+                        ownerCritMult = ownerHealthComponent.body.critMultiplier;
+                        HealOrb healOrb = new HealOrb();
+                        healOrb.origin = this.transform.position;
+                        healOrb.target = ownerHealthComponent.body.mainHurtBox;
+                        healOrb.healValue = damageHealFraction * currentTickDamage;
+                        if (projectileDamage.crit) healOrb.healValue *= ownerCritMult;
+                        healOrb.overrideDuration = 0.3f;
+                        OrbManager.instance.AddOrb(healOrb);
+                    }
+
+                    if (victimHealthComponent.body && victimHealthComponent.body.teamComponent && victimHealthComponent.body.teamComponent.teamIndex == teamIndex)
+                    {
+                        HealOrb healOrb = new HealOrb();
+                        healOrb.origin = this.transform.position;
+                        healOrb.target = victimHealthComponent.body.mainHurtBox;
+                        healOrb.healValue = currentTickDamage;
+                        if (projectileDamage.crit) healOrb.healValue *= ownerCritMult;
+                        healOrb.overrideDuration = 0.3f;
+                        OrbManager.instance.AddOrb(healOrb);
+                    }
+                    else
+                    {
+                        DamageInfo droneDamage = new DamageInfo
+                        {
+                            attacker = owner,
+                            inflictor = owner,
+                            damage = currentTickDamage,
+                            damageColorIndex = DamageColorIndex.Default,
+                            damageType = DamageType.Generic,
+                            crit = projectileDamage.crit,
+                            dotIndex = DotController.DotIndex.None,
+                            force = projectileDamage.force * Vector3.down,
+                            position = this.transform.position,
+                            procChainMask = default(ProcChainMask),
+                            procCoefficient = procCoefficient
+                        };
+
+                        //Coolant scales burn damage but I don't want to rewrite the hook for it.
+                        if (coolantCount > 0 && Util.CheckRoll(10f + 10f * coolantCount, master))
+                        {
+                            droneDamage.damageType |= DamageType.IgniteOnHit;
+                        }
+
+                        victimHealthComponent.TakeDamage(droneDamage);
+                        GlobalEventManager.instance.OnHitEnemy(droneDamage, victimHealthComponent.gameObject);
+
+                        if (dronePartsCount > 0 && victimHealthComponent.body && victimHealthComponent.body.mainHurtBox)
+                        {
+                            if (Util.CheckRoll(10f, master))
+                            {
+                                MicroMissileOrb missileOrb = new MicroMissileOrb();
+                                missileOrb.origin = base.transform.position;
+                                missileOrb.damageValue = currentTickDamage * 3f;
+                                missileOrb.isCrit = projectileDamage.crit;
+                                missileOrb.teamIndex = teamIndex;
+                                missileOrb.attacker = owner;
+                                missileOrb.procChainMask = default;
+                                missileOrb.procCoefficient = 0.25f;
+                                missileOrb.damageColorIndex = DamageColorIndex.Item;
+                                missileOrb.target = victimHealthComponent.body.mainHurtBox;
+                                missileOrb.speed = 25f; //Same as misisleprojectile. Default is 55f
+                                missileOrb.procChainMask.AddProc(ProcType.Missile);
+                                OrbManager.instance.AddOrb(missileOrb);
+                            }
+                        }
+                    }
+                }
+                EffectManager.SimpleEffect(DroneDamageController.hitEffectPrefab, base.transform.position, default, true);
+                stopwatch -= tickRate;
+            }
+        }
+
         public void FixedUpdate()
         {
             if (!firstHit && !bleedEffect)
@@ -111,130 +234,14 @@ namespace HANDMod.Content.HANDSurvivor.Components.DroneProjectile
                 {
                     if (stick.victim)
                     {
-                        if (!victimHealthComponent)
+                        bool validVictim = CheckValidVictim();
+                        if (!validVictim)
                         {
-                            victimHealthComponent = stick.victim.GetComponent<HealthComponent>();
-                            if (!victimHealthComponent)
-                            {
-                                Destroy(this.gameObject);
-                                return;
-                            }
-                        }
-                        else if (victimHealthComponent && !victimHealthComponent.alive)
-                        {
-                            Destroy(this.gameObject);
+                            Destroy(base.gameObject);
                             return;
                         }
 
-                        stopwatch += Time.fixedDeltaTime;
-                        if (stopwatch > tickRate)
-                        {
-                            damageTicks++;
-                            if (damageTicks > damageTicksTotal)
-                            {
-                                Destroy(this.gameObject);
-                            }
-
-                            if (!playedHitSound)
-                            {
-                                playedHitSound = true;
-                                EffectManager.SimpleSoundEffect(startSound.index, base.transform.position, true);
-                            }
-
-
-                            if (victimHealthComponent && projectileDamage)
-                            {
-                                if (firstHit)
-                                {
-                                    firstHit = false;
-                                    if (victimHealthComponent.body)
-                                    {
-                                        if (victimHealthComponent.body.teamComponent && victimHealthComponent.body.teamComponent.teamIndex == teamIndex)
-                                        {
-                                            victimHealthComponent.body.AddTimedBuff(RoR2Content.Buffs.SmallArmorBoost, (float)damageTicksTotal * baseTickRate);
-                                        }
-                                        else
-                                        {
-                                            //victimHealthComponent.body.AddTimedBuff(Buffs.DroneDebuff, (float)damageTicksTotal * damageTimer);
-                                        }
-                                    }
-                                }
-
-                                float currentTickDamage = projectileDamage.damage / (float)damageTicksTotal;
-                                float ownerCritMult = 2f;
-
-                                if (ownerHealthComponent)
-                                {
-                                    ownerCritMult = ownerHealthComponent.body.critMultiplier;
-                                    HealOrb healOrb = new HealOrb();
-                                    healOrb.origin = this.transform.position;
-                                    healOrb.target = ownerHealthComponent.body.mainHurtBox;
-                                    healOrb.healValue = damageHealFraction * currentTickDamage;
-                                    if (projectileDamage.crit) healOrb.healValue *= ownerCritMult;
-                                    healOrb.overrideDuration = 0.3f;
-                                    OrbManager.instance.AddOrb(healOrb);
-                                }
-
-                                if (victimHealthComponent.body && victimHealthComponent.body.teamComponent && victimHealthComponent.body.teamComponent.teamIndex == teamIndex)
-                                {
-                                    HealOrb healOrb = new HealOrb();
-                                    healOrb.origin = this.transform.position;
-                                    healOrb.target = victimHealthComponent.body.mainHurtBox;
-                                    healOrb.healValue = currentTickDamage;
-                                    if (projectileDamage.crit) healOrb.healValue *= ownerCritMult;
-                                    healOrb.overrideDuration = 0.3f;
-                                    OrbManager.instance.AddOrb(healOrb);
-                                }
-                                else
-                                {
-                                    DamageInfo droneDamage = new DamageInfo
-                                    {
-                                        attacker = owner,
-                                        inflictor = owner,
-                                        damage = currentTickDamage,
-                                        damageColorIndex = DamageColorIndex.Default,
-                                        damageType = DamageType.Generic,
-                                        crit = projectileDamage.crit,
-                                        dotIndex = DotController.DotIndex.None,
-                                        force = projectileDamage.force * Vector3.down,
-                                        position = this.transform.position,
-                                        procChainMask = default(ProcChainMask),
-                                        procCoefficient = procCoefficient
-                                    };
-
-                                    //Coolant scales burn damage but I don't want to rewrite the hook for it.
-                                    if (coolantCount > 0 && Util.CheckRoll(10f + 10f * coolantCount, master))
-                                    {
-                                        droneDamage.damageType |= DamageType.IgniteOnHit;
-                                    }
-
-                                    victimHealthComponent.TakeDamage(droneDamage);
-                                    GlobalEventManager.instance.OnHitEnemy(droneDamage, victimHealthComponent.gameObject);
-
-                                    if (dronePartsCount > 0 && victimHealthComponent.body && victimHealthComponent.body.mainHurtBox)
-                                    {
-                                        if (Util.CheckRoll(10f, master))
-                                        {
-                                            MicroMissileOrb missileOrb = new MicroMissileOrb();
-                                            missileOrb.origin = base.transform.position;
-                                            missileOrb.damageValue = currentTickDamage * 3f;
-                                            missileOrb.isCrit = projectileDamage.crit;
-                                            missileOrb.teamIndex = teamIndex;
-                                            missileOrb.attacker = owner;
-                                            missileOrb.procChainMask = default;
-                                            missileOrb.procCoefficient = 0.25f;
-                                            missileOrb.damageColorIndex = DamageColorIndex.Item;
-                                            missileOrb.target = victimHealthComponent.body.mainHurtBox;
-                                            missileOrb.speed = 25f; //Same as misisleprojectile. Default is 55f
-                                            missileOrb.procChainMask.AddProc(ProcType.Missile);
-                                            OrbManager.instance.AddOrb(missileOrb);
-                                        }
-                                    }
-                                }
-                            }
-                            EffectManager.SimpleEffect(DroneDamageController.hitEffectPrefab, base.transform.position, default, true);
-                            stopwatch -= tickRate;
-                        }
+                        VictimFixedUpdate();
                     }
                     else
                     {
@@ -258,6 +265,9 @@ namespace HANDMod.Content.HANDSurvivor.Components.DroneProjectile
         private int damageTicks;
 
         private bool firstHit;
+
+        private int dronePartsCount = 0;
+        private int coolantCount = 0;
 
         private GameObject bleedEffect;
         private CharacterMaster master;

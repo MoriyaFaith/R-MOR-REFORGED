@@ -37,6 +37,7 @@ namespace HANDMod.Content.HANDSurvivor
             GameObject droneProjectile = LegacyResourcesAPI.Load<GameObject>("prefabs/projectiles/EngiHarpoon").InstantiateClone("HANDMod_DroneProjectile", true);
 
             GameObject droneProjectileGhost = PrefabAPI.InstantiateClone(HANDMod.Modules.Assets.mainAssetBundle.LoadAsset<GameObject>("DronePrefab"), "HANDMod_DroneProjectileGhost", false);
+            droneProjectileGhost.transform.localScale = 2f * Vector3.one;   //Why is this needed here but not on the follower?
 
             Shader hotpoo = LegacyResourcesAPI.Load<Shader>("Shaders/Deferred/hgstandard");
 
@@ -92,8 +93,6 @@ namespace HANDMod.Content.HANDSurvivor
             stick.ignoreCharacters = false;
             stick.alignNormals = false;
 
-            droneProjectile.AddComponent< Components.DroneProjectile.DroneDamageController>();
-            droneProjectile.AddComponent<Components.DroneProjectile.PreventGroundCollision>();
 
             Collider[] colliders = droneProjectile.GetComponentsInChildren<Collider>();
             foreach (Collider c in colliders)
@@ -103,6 +102,11 @@ namespace HANDMod.Content.HANDSurvivor
             SphereCollider sc = droneProjectile.AddComponent<SphereCollider>();
             sc.radius = 0.6f;
             sc.contactOffset = 0.01f;
+
+            droneProjectile.AddComponent<Components.DroneProjectile.DroneDamageController>();
+            droneProjectile.AddComponent<Components.DroneProjectile.DroneCollisionController>();
+
+            droneProjectile.layer = LayerIndex.collideWithCharacterHullOnly.intVal;
 
             return droneProjectile;
         }

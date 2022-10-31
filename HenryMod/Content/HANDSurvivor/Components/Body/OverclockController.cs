@@ -100,6 +100,8 @@ namespace HANDMod.Content.HANDSurvivor.Components.Body
 
         public void BeginOverclock()
         {
+            this.texGauge = EntityStates.HAND_Overclocked.Utility.BeginOverclock.texGauge;
+            this.texGaugeArrow = EntityStates.HAND_Overclocked.Utility.BeginOverclock.texGaugeArrow;
             if (hasAuthority)
             {
                 ReiszeOverclockGauge();
@@ -216,8 +218,8 @@ namespace HANDMod.Content.HANDSurvivor.Components.Body
 
         public static SkillDef ovcDef;
 
-        public static Texture2D texGauge;
-        public static Texture2D texGaugeArrow;
+        public Texture2D texGauge;
+        public Texture2D texGaugeArrow;
         private Rect rectGauge;
         private Rect rectGaugeArrow;
         public static float gaugeScale = 0.3f;

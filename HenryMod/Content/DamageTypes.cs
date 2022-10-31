@@ -38,6 +38,11 @@ namespace HANDMod.Content
             {
                 CharacterBody cb = self.body;
 
+                if (damageInfo.procCoefficient > 0f)
+                {
+
+                }
+
                 if (damageInfo.attacker)
                 {
                     if (damageInfo.HasModdedDamageType(DamageTypes.SquashOnKill))

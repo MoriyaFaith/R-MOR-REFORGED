@@ -15,7 +15,7 @@ namespace EntityStates.HAND_Overclocked.Secondary
             this.modelAnimator = base.GetModelAnimator();
             if (this.modelAnimator)
             {
-                base.PlayAnimation("Gesture, Override", "PrepHammer", "ChargeHammer.playbackRate", this.minDuration);
+                base.PlayAnimation("Gesture, Override", HammerVisibilityController.HasHammerPrimary(base.skillLocator) ? "PrepHammerH" : "PrepHammer", "ChargeHammer.playbackRate", this.minDuration);
             }
             if (base.characterBody)
             {

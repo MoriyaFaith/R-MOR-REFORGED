@@ -48,12 +48,12 @@ namespace HANDMod.Content.HANDSurvivor.Components.Body
 
         private void HideHammer()
         {
-            if (!HasHammerPrimary()) hammer.SetActive(false);
+            if (!HasHammerPrimary(skillLocator)) hammer.SetActive(false);
         }
 
-        public bool HasHammerPrimary()
+        public static bool HasHammerPrimary(SkillLocator sk)
         {
-            return skillLocator && skillLocator.primary && skillLocator.primary.skillDef == SkillDefs.PrimaryHammer;
+            return sk && sk.primary && sk.primary.skillDef == SkillDefs.PrimaryHammer;
         }
 
         public void SetHammerEnabled(bool enabled)

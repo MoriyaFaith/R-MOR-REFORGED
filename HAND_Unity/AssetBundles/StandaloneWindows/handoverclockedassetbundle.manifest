@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 2675247151
+CRC: 1070434287
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 5374fd23f06664dba10b24dc4753a961
+    Hash: ce40713b82fde0cb9ca87abc71cb86e8
   TypeTreeHash:
     serializedVersion: 2
     Hash: 4e179099b555ead876f2a05ea75838b4
@@ -68,11 +68,13 @@ Assets:
 - Assets/HandDrone/mat/DroneSawTemp.mat
 - Assets/HAN-D/Textures/Skills/texUtilityOverclockCancel.png
 - Assets/HAN-D/Animations/animHANDOverclockedMenu.controller
+- Assets/HAN-D/Textures/UI/texGaugeNemesis.png
 - Assets/HAN-D/Textures/Skins/DefaultSkin/HanD_Normal.png
 - Assets/HAN-D/Textures/Skills/texSecondary.png
 - Assets/HandDrone/animDronePropeller.anim
 - Assets/HAN-D/Textures/Skills/texUtilityOverclock.png
 - Assets/HandDrone/mat/sparksParticles.mat
+- Assets/HAN-D/Textures/Skills/texUtilityNemesis.png
 - Assets/HandDrone/mat/DroneBody.mat
 - Assets/HAN-D/Textures/Skins/DefaultSkin/HanD_Diffuse.png
 - Assets/HAN-D/FBX/fbxHAND.fbx
@@ -86,16 +88,17 @@ Assets:
 - Assets/HAN-D/HANDOverclockedDisplay.prefab
 - Assets/HAN-D/Textures/Skills/texSpecial.png
 - Assets/HAN-D/Animations/maskHANDOverclocked.mask
+- Assets/HAN-D/Textures/UI/texGaugeArrowNemesis.png
 - Assets/HAN-D/mdlHANDOverclocked.prefab
 - Assets/HAN-D/Materials/Skins/DefaultSkin/matHANDWeaponDefault.mat
 - Assets/HandDrone/mat/texDroneBodyEmission.png
 - Assets/HandDrone/mat/texDroneBlades.png
 - Assets/HAN-D/Animations/animHANDOverclocked.controller
 - Assets/HandDrone/mat/texDroneBodyBrighter.png
-- Assets/HAN-D/Textures/UI/texPortraitOld.png
 - Assets/HAN-D/Textures/Skills/texPassive.png
 - Assets/HAN-D/Textures/Skills/texPrimaryPunch.png
 - Assets/HandDrone/DroneAnimator.controller
 - Assets/HandDrone/mat/texDroneBody.png
+- Assets/HAN-D/Textures/UI/texPortrait.png
 - Assets/HAN-D/Textures/Skins/DefaultSkin/HanDWeapon_Diffuse.png
 Dependencies: []

@@ -1,6 +1,7 @@
 ﻿using HANDMod.Content.HANDSurvivor;
 using HANDMod.Content.HANDSurvivor.Components.Body;
 using RoR2;
+using RoR2.Skills;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
@@ -18,18 +19,43 @@ namespace EntityStates.HAND_Overclocked.Utility
 				{
 					base.SmallHop(base.characterMotor, BeginOverclock.shortHopVelocity);
 				}
-				if (this.overclockController)
-				{
-					this.overclockController.BeginOverclock();
-				}
+				StartOverclock();
 			}
 
 			this.skillSlot = (base.skillLocator ? base.skillLocator.utility : null);
 			if (this.skillSlot)
 			{
 				startStocks = this.skillSlot.stock;
-				this.skillSlot.SetSkillOverride(this, SkillDefs.UtilityOverclockCancel, GenericSkill.SkillOverridePriority.Contextual);
+				this.skillSlot.SetSkillOverride(this, GetCancelDef(), GenericSkill.SkillOverridePriority.Contextual);
 				this.skillSlot.stock = Mathf.Min(skillSlot.maxStock, startStocks + 1);
+			}
+
+			jetFireTime = 1f / BeginOverclock.jetFireFrequency;
+			jetStopwatch = 0f;
+			ChildLocator cl = base.GetModelChildLocator();
+			if (cl)
+			{
+				leftJet = cl.FindChild("Jetpack.L");
+				rightJet = cl.FindChild("Jetpack.R");
+
+				GameObject leftEffect = UnityEngine.Object.Instantiate<GameObject>(BeginOverclock.jetEffectPrefab, leftJet);
+				leftEffect.transform.localRotation *= Quaternion.Euler(0f, -120f, 0f);
+				leftEffect.transform.localPosition += new Vector3(0f, 0.6f, 0f);    //Adding to this shifts it downwards.
+
+				GameObject rightEffect = UnityEngine.Object.Instantiate<GameObject>(BeginOverclock.jetEffectPrefab, rightJet);
+				rightEffect.transform.localRotation *= Quaternion.Euler(0f, 120f, 0f);
+				rightEffect.transform.localPosition += new Vector3(0f, 0.6f, 0f);
+			}
+		}
+		public virtual SkillDef GetCancelDef()
+        {
+			return SkillDefs.UtilityOverclockCancel;
+		}
+		public virtual void StartOverclock()
+		{
+			if (this.overclockController)
+			{
+				this.overclockController.BeginOverclock();
 			}
 		}
 
@@ -37,7 +63,7 @@ namespace EntityStates.HAND_Overclocked.Utility
 		{
 			if (this.skillSlot)
 			{
-				this.skillSlot.UnsetSkillOverride(this, SkillDefs.UtilityOverclockCancel, GenericSkill.SkillOverridePriority.Contextual);
+				this.skillSlot.UnsetSkillOverride(this, GetCancelDef(), GenericSkill.SkillOverridePriority.Contextual);
 				this.skillSlot.stock = startStocks;
 			}
 			base.OnExit();
@@ -46,6 +72,21 @@ namespace EntityStates.HAND_Overclocked.Utility
 		public override void FixedUpdate()
 		{
 			base.FixedUpdate();
+
+			jetStopwatch += Time.fixedDeltaTime;
+			if (jetStopwatch >= jetFireTime)
+            {
+				jetStopwatch -= jetFireTime;
+
+				GameObject leftEffect = UnityEngine.Object.Instantiate<GameObject>(BeginOverclock.jetEffectPrefab, leftJet);
+				leftEffect.transform.localRotation *= Quaternion.Euler(0f, -120f, 0f);
+				leftEffect.transform.localPosition += new Vector3(0f, 0.6f, 0f);    //Adding to this shifts it downwards.
+
+				GameObject rightEffect = UnityEngine.Object.Instantiate<GameObject>(BeginOverclock.jetEffectPrefab, rightJet);
+				rightEffect.transform.localRotation *= Quaternion.Euler(0f, 120f, 0f);
+				rightEffect.transform.localPosition += new Vector3(0f, 0.6f, 0f);
+			}
+
 			if ((!this.skillSlot || this.skillSlot.stock == 0) || !(overclockController && overclockController.ovcActive))
 			{
 				this.beginExit = true;
@@ -65,14 +106,23 @@ namespace EntityStates.HAND_Overclocked.Utility
 			return InterruptPriority.Skill;
 		}
 
+		private float jetFireTime;
+		private float jetStopwatch;
 		private float timerSinceComplete = 0f;
 		private bool beginExit;
 		private int startStocks = 0;
+		private Transform leftJet;
+		private Transform rightJet;
 
+		public static GameObject jetEffectPrefab;
 		public static float baseExitDuration = 0.3f;
 		public static float shortHopVelocity = 12f;
+		public static float jetFireFrequency = 6f;
 		private OverclockController overclockController;
 		private GenericSkill skillSlot;
+
+		public static Texture2D texGauge;
+		public static Texture2D texGaugeArrow;
 	}
 
 	public class CancelOverclock : BaseState
@@ -108,13 +158,18 @@ namespace EntityStates.HAND_Overclocked.Utility
 				{
 					base.SmallHop(base.characterMotor, CancelOverclock.shortHopVelocity);
 				}
-				if (overclockController)
-				{
-					overclockController.EndOverclock();
-				}
+				EndOverclock();
 				this.outer.SetNextStateToMain();
 			}
 
+		}
+
+		public virtual void EndOverclock()
+		{
+			if (overclockController)
+			{
+				overclockController.EndOverclock();
+			}
 		}
 
 		public override InterruptPriority GetMinimumInterruptPriority()
