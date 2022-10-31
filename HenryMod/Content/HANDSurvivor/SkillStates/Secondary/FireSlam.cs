@@ -118,13 +118,13 @@ namespace EntityStates.HAND_Overclocked.Secondary
             if (!hitEnemy)
             {
                 hitEnemy = true;
-                if (base.characterBody && base.characterBody.HasBuff(Buffs.Overclock))
+                if (base.characterBody)
                 {
                     OverclockController hc = base.gameObject.GetComponent<OverclockController>();
                     if (hc)
                     {
                         hc.MeleeHit();
-                        hc.ExtendOverclock(Mathf.Lerp(0.8f, 1.6f, chargePercent));
+                        if (base.characterBody.HasBuff(Buffs.Overclock)) hc.ExtendOverclock(Mathf.Lerp(0.8f, 1.6f, chargePercent));
                     }
                 }
             }

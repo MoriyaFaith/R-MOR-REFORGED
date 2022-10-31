@@ -36,14 +36,14 @@ namespace HANDMod.Content.HANDSurvivor
         {
             GameObject droneProjectile = LegacyResourcesAPI.Load<GameObject>("prefabs/projectiles/EngiHarpoon").InstantiateClone("HANDMod_DroneProjectile", true);
 
-            GameObject droneProjectileGhost = PrefabAPI.InstantiateClone(HANDMod.Modules.Assets.mainAssetBundle.LoadAsset<GameObject>("DronePrefab.prefab"), "HANDMod_DroneProjectileGhost", false);
+            GameObject droneProjectileGhost = PrefabAPI.InstantiateClone(HANDMod.Modules.Assets.mainAssetBundle.LoadAsset<GameObject>("DronePrefab"), "HANDMod_DroneProjectileGhost", false);
 
             Shader hotpoo = LegacyResourcesAPI.Load<Shader>("Shaders/Deferred/hgstandard");
 
             MeshRenderer[] mr = droneProjectileGhost.GetComponentsInChildren<MeshRenderer>();
             foreach (MeshRenderer m in mr)
             {
-                if (m.name.ToLower() == "saw")
+                if (m.name != "DronePropeller")
                 {
                     m.material.shader = hotpoo;
                 }
@@ -52,11 +52,13 @@ namespace HANDMod.Content.HANDSurvivor
             SkinnedMeshRenderer[] smr = droneProjectileGhost.GetComponentsInChildren<SkinnedMeshRenderer>();
             foreach (SkinnedMeshRenderer m in smr)
             {
-                m.material.shader = hotpoo;
+                if (m.name != "DronePropeller")
+                {
+                    m.material.shader = hotpoo;
+                }
             }
 
             droneProjectileGhost.AddComponent<ProjectileGhostController>();
-            droneProjectileGhost.transform.localScale = 2f * Vector3.one;
 
             droneProjectileGhost.layer = LayerIndex.noCollision.intVal;
 
@@ -108,12 +110,18 @@ namespace HANDMod.Content.HANDSurvivor
         private static GameObject CreateDroneFollower()
         {
             Shader hotpoo = LegacyResourcesAPI.Load<Shader>("Shaders/Deferred/hgstandard");
-            GameObject droneFollower = PrefabAPI.InstantiateClone(HANDMod.Modules.Assets.mainAssetBundle.LoadAsset<GameObject>("DronePrefab.prefab"), "HANDMod_DroneFollower", false);
-            droneFollower.GetComponentInChildren<MeshRenderer>().material.shader = hotpoo;
-            droneFollower.transform.localScale = 2f * Vector3.one;
+            GameObject droneFollower = PrefabAPI.InstantiateClone(HANDMod.Modules.Assets.mainAssetBundle.LoadAsset<GameObject>("DroneFollowerPrefab"), "HANDMod_DroneFollower", false);
+
+            MeshRenderer[] meshes = droneFollower.GetComponentsInChildren<MeshRenderer>();
+            foreach (MeshRenderer m in meshes)
+            {
+                if (m.name != "DronePropeller")
+                {
+                    m.material.shader = hotpoo;
+                }
+            }
 
             droneFollower.layer = LayerIndex.noCollision.intVal;
-            UnityEngine.Object.Destroy(droneFollower.GetComponentInChildren<ParticleSystem>());
             Collider[] colliders = droneFollower.GetComponentsInChildren<Collider>();
             foreach (Collider c in colliders)
             {
@@ -124,19 +132,13 @@ namespace HANDMod.Content.HANDSurvivor
             Modules.Materials.SetEmission(droneMat, 3f, Color.white);
             droneFollower.GetComponentInChildren<SkinnedMeshRenderer>().material = droneMat;
 
-            MeshRenderer[] mr = droneFollower.GetComponentsInChildren<MeshRenderer>();
-            foreach (MeshRenderer m in mr)
-            {
-                if (m.name.ToLower() == "saw")
-                {
-                    m.material.shader = hotpoo;
-                }
-            }
-
             SkinnedMeshRenderer[] smr = droneFollower.GetComponentsInChildren<SkinnedMeshRenderer>();
             foreach (SkinnedMeshRenderer m in smr)
             {
-                m.material.shader = hotpoo;
+                if (m.name != "DronePropeller")
+                {
+                    m.material.shader = hotpoo;
+                }
             }
 
             return droneFollower;

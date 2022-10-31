@@ -95,7 +95,7 @@ namespace HANDMod.Content.HANDSurvivor.Components.Body
                 }
 
                 Vector3 offset = Quaternion.AngleAxis(360f / maxFollowingDrones * i + stopwatch / orbitDuration * 360f, Vector3.up) * Vector3.right * 2.4f;
-                offset.y = 1.5f;
+                offset.y = 1.2f;
 
                 Vector3 desiredPosition = characterBody.corePosition + offset;
                 droneFollowers[i].gameObject.transform.position = Vector3.SmoothDamp(droneFollowers[i].gameObject.transform.position, desiredPosition, ref this.velocity, 0.1f);
