@@ -47,7 +47,7 @@ namespace HANDMod.Content.HANDSurvivor.Components.Body
                     dronePersist.droneCount = characterBody.skillLocator.special.stock;
                 }
 
-                int droneCount = characterBody.skillLocator.special.stock;
+                int droneCount = (characterBody.skillLocator.special.skillDef == SkillDefs.SpecialDrone) ? characterBody.skillLocator.special.stock : 0;
                 ReadOnlyCollection<TeamComponent> teamMembers = TeamComponent.GetTeamMembers(characterBody.teamComponent.teamIndex);
                 foreach (TeamComponent tc in teamMembers)
                 {

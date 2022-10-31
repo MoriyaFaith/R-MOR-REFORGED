@@ -10,15 +10,10 @@ namespace HANDMod.Content.HANDSurvivor.Components.DroneProjectile
         MissileController mc;
         private void Awake()
         {
-            if (NetworkServer.active)
-            {
-                stick = base.GetComponent<ProjectileStickOnImpact>();
-                mc = base.GetComponent<MissileController>();
-                missileNoTargetStopwatch = 0f;
-                projectileController = base.GetComponent<ProjectileController>();
-
-                if (projectileController) projectileController.IgnoreCollisionsWithOwner(true);
-            }
+            stick = base.GetComponent<ProjectileStickOnImpact>();
+            mc = base.GetComponent<MissileController>();
+            missileNoTargetStopwatch = 0f;
+            projectileController = base.GetComponent<ProjectileController>();
         }
 
         private void FixedUpdate()
@@ -51,28 +46,15 @@ namespace HANDMod.Content.HANDSurvivor.Components.DroneProjectile
         
         private void OnCollisionEnter(Collision collision)
         {
-            /*if (NetworkServer.active)
-            {
-                if (!projectileController || (projectileController && collision.gameObject != base.gameObject))
-                {
-                    if (base.gameObject.layer != LayerIndex.projectile.intVal) RpcSetProjectileLayer();
-                }
-            }*/
             if (collision.gameObject.layer == LayerIndex.world.intVal)
             {
                 base.gameObject.layer = LayerIndex.collideWithCharacterHullOnly.intVal;
             }
-            else if (!projectileController || (projectileController && collision.gameObject != base.gameObject))
+            else
             {
                 base.gameObject.layer = LayerIndex.projectile.intVal;
             }
         }
-
-        /*[ClientRpc]
-        private void RpcSetProjectileLayer()
-        {
-            base.gameObject.layer = LayerIndex.projectile.intVal;
-        }*/
 
         public static float destroyIfNoTargetTime = 5f;
         private float missileNoTargetStopwatch;

@@ -84,6 +84,8 @@ namespace HANDMod.Content.HANDSurvivor
             mc.giveupTimer = 15f;
             mc.deathTimer = 15f;
 
+            Debug.Log("RollVelocity: " + mc.rollVelocity);
+
             UnityEngine.Object.Destroy(droneProjectile.GetComponent<AkEvent>());
             UnityEngine.Object.Destroy(droneProjectile.GetComponent<AkGameObj>());
             UnityEngine.Object.Destroy(droneProjectile.GetComponent<ProjectileSingleTargetImpact>());
@@ -106,7 +108,7 @@ namespace HANDMod.Content.HANDSurvivor
             droneProjectile.AddComponent<Components.DroneProjectile.DroneDamageController>();
             droneProjectile.AddComponent<Components.DroneProjectile.DroneCollisionController>();
 
-            droneProjectile.layer = LayerIndex.collideWithCharacterHullOnly.intVal;
+            //droneProjectile.layer = LayerIndex.collideWithCharacterHullOnly.intVal;
 
             return droneProjectile;
         }
