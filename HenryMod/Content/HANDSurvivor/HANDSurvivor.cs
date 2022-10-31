@@ -473,7 +473,7 @@ namespace HANDMod.Content.HANDSurvivor
                 //[Info   : Unity Log] Flare
 
                 string name = p.name;
-                if (name == "Ring" || name == "Sparks" || name == "Flare")
+                if (name != "Jet")
                 {
                     UnityEngine.Object.Destroy(p);
                 }

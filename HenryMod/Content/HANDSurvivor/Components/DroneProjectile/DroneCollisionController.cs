@@ -7,12 +7,12 @@ namespace HANDMod.Content.HANDSurvivor.Components.DroneProjectile
 {
     public class DroneCollisionController : MonoBehaviour
     {
-        MissileController mc;
+        ProjectileSteerTowardTarget pst;
         private void Awake()
         {
             stick = base.GetComponent<ProjectileStickOnImpact>();
-            mc = base.GetComponent<MissileController>();
-            missileNoTargetStopwatch = 0f;
+            pst = base.GetComponent<ProjectileSteerTowardTarget>();
+            projectileNoTargetStopwatch = 0f;
             projectileController = base.GetComponent<ProjectileController>();
         }
 
@@ -21,14 +21,14 @@ namespace HANDMod.Content.HANDSurvivor.Components.DroneProjectile
             if (stick && !stick.syncVictim)
             {
                 //Check if target lost
-                if (NetworkServer.active && mc)
+                if (NetworkServer.active && pst)
                 {
-                    if (mc.targetComponent && mc.targetComponent.target != null)
+                    if (pst.targetComponent && pst.targetComponent.target != null)
                     {
-                        missileNoTargetStopwatch = 0f;
+                        projectileNoTargetStopwatch = 0f;
                     }
-                    missileNoTargetStopwatch += Time.fixedDeltaTime;
-                    if (missileNoTargetStopwatch >= DroneCollisionController.destroyIfNoTargetTime)
+                    projectileNoTargetStopwatch += Time.fixedDeltaTime;
+                    if (projectileNoTargetStopwatch >= DroneCollisionController.destroyIfNoTargetTime)
                     {
                         Destroy(base.gameObject);
                         return;
@@ -37,7 +37,12 @@ namespace HANDMod.Content.HANDSurvivor.Components.DroneProjectile
             }
             else
             {
-                if (NetworkServer.active && mc) Destroy(mc);
+                if (NetworkServer.active)
+                {
+                    //Reset lifetime.
+                    ProjectileSimple ps = base.GetComponent<ProjectileSimple>();
+                    ps.SetLifetime(30f);
+                }
                 base.gameObject.layer = LayerIndex.projectile.intVal;
                 Destroy(this);
                 return;
@@ -57,7 +62,7 @@ namespace HANDMod.Content.HANDSurvivor.Components.DroneProjectile
         }
 
         public static float destroyIfNoTargetTime = 5f;
-        private float missileNoTargetStopwatch;
+        private float projectileNoTargetStopwatch;
         private ProjectileStickOnImpact stick;
         private ProjectileController projectileController;
     }

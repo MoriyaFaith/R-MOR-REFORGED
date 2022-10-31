@@ -77,14 +77,30 @@ namespace HANDMod.Content.HANDSurvivor
 
             HANDMod.Modules.ContentPacks.projectilePrefabs.Add(droneProjectile);
 
-            MissileController mc = droneProjectile.GetComponent<MissileController>();
-            mc.maxVelocity = 25f;
-            mc.acceleration = 3f;
-            mc.maxSeekDistance = 160f;
-            mc.giveupTimer = 15f;
-            mc.deathTimer = 15f;
+            UnityEngine.Object.Destroy(droneProjectile.GetComponent<ApplyTorqueOnStart>());
+            UnityEngine.Object.Destroy(droneProjectile.GetComponent<MissileController>());
+            ProjectileSteerTowardTarget pst = droneProjectile.AddComponent<ProjectileSteerTowardTarget>();
+            pst.yAxisOnly = false;
+            pst.rotationSpeed = 360f;
 
-            Debug.Log("RollVelocity: " + mc.rollVelocity);
+            ProjectileSimple ps = droneProjectile.AddComponent<ProjectileSimple>();
+            ps.desiredForwardSpeed = 40f;
+            ps.lifetime = 30f;
+            ps.updateAfterFiring = true;
+            ps.enableVelocityOverLifetime = false;
+            ps.oscillate = true;
+            ps.oscillateMagnitude = 6f;
+            ps.oscillateSpeed = 1.5f;
+
+            ProjectileDirectionalTargetFinder pdtf = droneProjectile.AddComponent<ProjectileDirectionalTargetFinder>();
+            pdtf.lookRange = 160f;   //25f
+            pdtf.lookCone = 180f;    //20f
+            pdtf.targetSearchInterval = 0.1f;
+            pdtf.onlySearchIfNoTarget = true;
+            pdtf.allowTargetLoss = false;
+            pdtf.testLoS = false;
+            pdtf.ignoreAir = false;
+            pdtf.flierAltitudeTolerance = Mathf.Infinity;
 
             UnityEngine.Object.Destroy(droneProjectile.GetComponent<AkEvent>());
             UnityEngine.Object.Destroy(droneProjectile.GetComponent<AkGameObj>());

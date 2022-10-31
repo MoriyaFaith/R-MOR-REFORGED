@@ -200,7 +200,7 @@ namespace HANDMod.Content.HANDSurvivor.Components.DroneProjectile
                                 missileOrb.procCoefficient = 0.25f;
                                 missileOrb.damageColorIndex = DamageColorIndex.Item;
                                 missileOrb.target = victimHealthComponent.body.mainHurtBox;
-                                missileOrb.speed = 25f; //Same as misisleprojectile. Default is 55f
+                                missileOrb.speed = 55f;
                                 missileOrb.procChainMask.AddProc(ProcType.Missile);
                                 OrbManager.instance.AddOrb(missileOrb);
                             }
