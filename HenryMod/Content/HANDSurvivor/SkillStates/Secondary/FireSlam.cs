@@ -25,6 +25,9 @@ namespace EntityStates.HAND_Overclocked.Secondary
         public static float baseYScale = 30f;
         public static float maxYScale = 60f;
 
+        public static float shortHop = 12f;
+        public static float shortHopOnHit = 14f;
+
         public static NetworkSoundEventDef networkHitSound;
         public static GameObject earthquakeEffectPrefab;
 
@@ -43,7 +46,7 @@ namespace EntityStates.HAND_Overclocked.Secondary
             if (FireSlam.networkHitSound) this.impactSound = networkHitSound.index;
 
             this.damageType = DamageType.Stun1s;
-            this.hitHopVelocity = 20f;  //+4f guaranteed hithop
+            this.hitHopVelocity = FireSlam.shortHopOnHit;
             this.hitStopDuration = 0.1f;
             this.hitSoundString = "";
             this.swingSoundString = "";
@@ -169,7 +172,7 @@ namespace EntityStates.HAND_Overclocked.Secondary
                 //Allow hammer to break fall, but dont make it springy like OVC.
                 if (base.characterMotor && !base.characterMotor.isGrounded)
                 {
-                    base.SmallHop(base.characterMotor, 8f);
+                    base.SmallHop(base.characterMotor, FireSlam.shortHop);
                 }
 
                 ShakeEmitter se = ShakeEmitter.CreateSimpleShakeEmitter(base.transform.position, new Wave()

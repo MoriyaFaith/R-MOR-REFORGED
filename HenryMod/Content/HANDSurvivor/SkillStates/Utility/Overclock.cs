@@ -70,14 +70,14 @@ namespace EntityStates.HAND_Overclocked.Utility
 		private int startStocks = 0;
 
 		public static float baseExitDuration = 0.3f;
-		public static float shortHopVelocity = 0f;
+		public static float shortHopVelocity = 12f;
 		private OverclockController overclockController;
 		private GenericSkill skillSlot;
 	}
 
 	public class CancelOverclock : BaseState
 	{
-		public static float shortHopVelocity = 30f;
+		public static float shortHopVelocity = 24f;
 		public static GameObject jetEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Commando/CommandoDashJets.prefab").WaitForCompletion();
 
 		public override void OnEnter()
