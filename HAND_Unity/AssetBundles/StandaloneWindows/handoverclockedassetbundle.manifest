@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 3723523820
+CRC: 2675247151
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: d5a6bd566b2bc20d0b757dfc4c7f2bca
+    Hash: 5374fd23f06664dba10b24dc4753a961
   TypeTreeHash:
     serializedVersion: 2
     Hash: 4e179099b555ead876f2a05ea75838b4
@@ -66,11 +66,11 @@ Assets:
 - Assets/HAN-D/Textures/Skins/DefaultSkin/HanDWeapon_Normal.png
 - Assets/HandDrone/mat/texDroneBladesTemp.mat
 - Assets/HandDrone/mat/DroneSawTemp.mat
-- Assets/HandDrone/DroneAnimSpeenSaw.anim
 - Assets/HAN-D/Textures/Skills/texUtilityOverclockCancel.png
 - Assets/HAN-D/Animations/animHANDOverclockedMenu.controller
 - Assets/HAN-D/Textures/Skins/DefaultSkin/HanD_Normal.png
 - Assets/HAN-D/Textures/Skills/texSecondary.png
+- Assets/HandDrone/animDronePropeller.anim
 - Assets/HAN-D/Textures/Skills/texUtilityOverclock.png
 - Assets/HandDrone/mat/sparksParticles.mat
 - Assets/HandDrone/mat/DroneBody.mat
@@ -78,11 +78,11 @@ Assets:
 - Assets/HAN-D/FBX/fbxHAND.fbx
 - Assets/HAN-D/Textures/UI/texGaugeArrow.png
 - Assets/HAN-D/Materials/Skins/DefaultSkin/matHANDDefault.mat
+- Assets/HandDrone/animDroneSaw.anim
 - Assets/HAN-D/Textures/Skins/DefaultSkin/HanD_Emission.png
 - Assets/HAN-D/Textures/Skills/texSecondaryScepter.png
 - Assets/HAN-D/Textures/UI/texGauge.png
 - Assets/HandDrone/fbxDrone.fbx
-- Assets/HandDrone/DroneAnimSpeenBlades.anim
 - Assets/HAN-D/HANDOverclockedDisplay.prefab
 - Assets/HAN-D/Textures/Skills/texSpecial.png
 - Assets/HAN-D/Animations/maskHANDOverclocked.mask

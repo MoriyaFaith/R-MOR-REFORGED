@@ -4992,6 +4992,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4181909275219396147}
+  - component: {fileID: 3827741507476197355}
   m_Layer: 0
   m_Name: DronePrefab
   m_TagString: Untagged
@@ -5017,6 +5018,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &3827741507476197355
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3549664407936916617}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: e83af0d8cd3b9194fb6ae9928aced4bc, type: 3}
+  m_Controller: {fileID: 9100000, guid: 40e64fbd01a9caf4e92f34bde23c4a83, type: 2}
+  m_CullingMode: 1
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5144041204964627067
 GameObject:
   m_ObjectHideFlags: 0
@@ -5220,13 +5240,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7467332152844886649}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0.000099997036, y: 0.004100002, z: -0.0000000023469326}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children: []
   m_Father: {fileID: 4181909275219396147}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!137 &4975982313702449387
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
