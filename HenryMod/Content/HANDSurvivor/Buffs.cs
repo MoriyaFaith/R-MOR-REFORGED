@@ -31,7 +31,6 @@ namespace HANDMod.Content.HANDSurvivor
                     );
 
                 RecalculateStatsAPI.GetStatCoefficients += OverclockHook;
-
                 IL.RoR2.CharacterModel.UpdateOverlays += (il) =>
                 {
                     ILCursor c = new ILCursor(il);

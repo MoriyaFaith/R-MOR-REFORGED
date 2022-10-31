@@ -18,6 +18,14 @@ namespace HANDMod.Content.HANDSurvivor.Components.Body
             rectGaugeArrow = new Rect();
         }
 
+        public void Start()
+        {
+            if (characterBody.modelLocator && characterBody.modelLocator.modelTransform)
+            {
+                characterModel = characterBody.modelLocator.modelTransform.GetComponent<CharacterModel>();
+            }
+        }
+
         public void FixedUpdate()
         {
             if (ovcActive)
@@ -38,6 +46,38 @@ namespace HANDMod.Content.HANDSurvivor.Components.Body
                         characterBody.skillLocator.utility.stock--;
                     }
                     EndOverclock();
+                }
+            }
+        }
+
+        public void Update()
+        {
+            if (OverclockController.overclockMat) UpdateOverlay();
+        }
+
+        private void UpdateOverlay()
+        {
+            if (characterBody.HasBuff(Buffs.Overclock))
+            {
+                if (!overlay)
+                {
+                    overlay = characterModel.gameObject.AddComponent<TemporaryOverlay>();
+                    overlay.duration = Mathf.Infinity;
+                    overlay.animateShaderAlpha = true;
+                    overlay.alphaCurve = AnimationCurve.EaseInOut(0f, 1f, 1f, 0f);
+                    overlay.destroyComponentOnEnd = true;
+                    overlay.originalMaterial = OverclockController.overclockMat;
+                    overlay.AddToCharacerModel(characterModel);
+
+                }
+            }
+            else
+            {
+                if (overlay)
+                {
+                    overlay.RemoveFromCharacterModel();
+                    UnityEngine.Object.Destroy(overlay);
+                    overlay = null;
                 }
             }
         }
@@ -164,6 +204,10 @@ namespace HANDMod.Content.HANDSurvivor.Components.Body
             }
         }
         private float _ovcTimer;
+
+        private CharacterModel characterModel;
+        public static Material overclockMat;
+        private TemporaryOverlay overlay;
 
         public static float OverclockDuration = 4f;
 

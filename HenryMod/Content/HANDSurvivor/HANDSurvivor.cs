@@ -397,7 +397,6 @@ namespace HANDMod.Content.HANDSurvivor
             /*NetworkSoundEventDef nse = Modules.Assets.CreateNetworkSoundEventDef("Play_MULT_shift_hit");
             EntityStates.HAND_Overclocked.Primary.SwingFist.networkHitSound = nse;
             EntityStates.HAND_Overclocked.Secondary.FireSlam.networkHitSound = nse;*/
-
         }
 
         //Use these to check Vanilla values of things.

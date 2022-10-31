@@ -1,12 +1,12 @@
 ﻿using HANDMod.Content.HANDSurvivor;
 using HANDMod.Content.HANDSurvivor.Components.Body;
 using RoR2;
-using RoR2.Skills;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 namespace EntityStates.HAND_Overclocked.Utility
 {
-	public class BeginOverclock : BaseState
+    public class BeginOverclock : BaseState
 	{
 		public override void OnEnter()
 		{
@@ -46,7 +46,7 @@ namespace EntityStates.HAND_Overclocked.Utility
 		public override void FixedUpdate()
 		{
 			base.FixedUpdate();
-			if ((!this.skillSlot || this.skillSlot.stock == 0) || (!overclockController || !overclockController.ovcActive))
+			if ((!this.skillSlot || this.skillSlot.stock == 0) || !(overclockController && overclockController.ovcActive))
 			{
 				this.beginExit = true;
 			}
@@ -78,10 +78,30 @@ namespace EntityStates.HAND_Overclocked.Utility
 	public class CancelOverclock : BaseState
 	{
 		public static float shortHopVelocity = 30f;
+		public static GameObject jetEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Commando/CommandoDashJets.prefab").WaitForCompletion();
+
 		public override void OnEnter()
 		{
 			base.OnEnter();
-			overclockController = base.gameObject.GetComponent<OverclockController>();
+
+			Util.PlaySound("Play_commando_shift", base.gameObject);
+
+			ChildLocator cl = base.GetModelChildLocator();
+			if (cl)
+			{
+				Transform leftJet = cl.FindChild("Jetpack.L");
+				Transform rightJet = cl.FindChild("Jetpack.R");
+
+				GameObject leftEffect = UnityEngine.Object.Instantiate<GameObject>(CancelOverclock.jetEffectPrefab, leftJet);
+				leftEffect.transform.localRotation *= Quaternion.Euler(-60f, -90f, -60f);
+				leftEffect.transform.localPosition += new Vector3(0f, 0.6f, 0f);	//Adding to this shifts it downwards.
+
+				GameObject rightEffect = UnityEngine.Object.Instantiate<GameObject>(CancelOverclock.jetEffectPrefab, rightJet);
+				rightEffect.transform.localRotation *= Quaternion.Euler(-60f, 90f, -60f);
+				rightEffect.transform.localPosition += new Vector3(0f, 0.6f, 0f);
+			}
+
+				overclockController = base.gameObject.GetComponent<OverclockController>();
 			if (base.isAuthority)
 			{
 				if (base.characterMotor != null)    //Manually exiting will always trigger the shorthop regardless of grounded status.
@@ -94,6 +114,7 @@ namespace EntityStates.HAND_Overclocked.Utility
 				}
 				this.outer.SetNextStateToMain();
 			}
+
 		}
 
 		public override InterruptPriority GetMinimumInterruptPriority()
