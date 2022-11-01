@@ -115,7 +115,7 @@ namespace HANDMod.Content.HANDSurvivor.Components.Body
         public static GameObject dronePrefab;
         private CharacterBody characterBody;
         private int droneCount;
-        public static float droneScale = 2f;
+        public static float droneScale = 1f;
         public static int maxFollowingDrones = 10;
 
         private Vector3 velocity = Vector3.zero;
