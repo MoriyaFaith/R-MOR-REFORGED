@@ -26,7 +26,7 @@ namespace EntityStates.HAND_Overclocked.Primary
             if(SwingFist.networkHitSound) this.impactSound = networkHitSound.index;
 
             this.damageType = DamageType.Generic;
-            this.hitHopVelocity = 10f;
+            this.hitHopVelocity = 8f;
             this.scaleHitHopWithAttackSpeed = true;
             this.hitStopDuration = 0.1f;
             this.hitSoundString = "";
@@ -129,7 +129,7 @@ namespace EntityStates.HAND_Overclocked.Primary
                     OverclockController hc = base.gameObject.GetComponent<OverclockController>();
                     if (hc)
                     {
-                        if (base.characterBody.HasBuff(Buffs.Overclock)) hc.ExtendOverclock(0.8f);
+                        hc.ExtendOverclock(0.8f);
                     }
 
                     DroneStockController dsc = base.GetComponent<DroneStockController>();

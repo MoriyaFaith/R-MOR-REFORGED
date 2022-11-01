@@ -26,8 +26,8 @@ namespace EntityStates.HAND_Overclocked.Secondary
         public static float maxYScale = 60f;
 
         public static float baseZPos = 4.5f;
-        public static float baseZScale = 25f;
-        public static float maxZScale = 35f;
+        public static float baseZScale = 30f;   //25 in unity
+        public static float maxZScale = 40f;
 
         public static float shortHop = 12f;
         public static float shortHopOnHit = 24f;
@@ -136,7 +136,7 @@ namespace EntityStates.HAND_Overclocked.Secondary
                     OverclockController hc = base.gameObject.GetComponent<OverclockController>();
                     if (hc)
                     {
-                        if (base.characterBody.HasBuff(Buffs.Overclock)) hc.ExtendOverclock(Mathf.Lerp(0.8f, 1.6f, chargePercent));
+                        hc.ExtendOverclock(Mathf.Lerp(0.8f, 1.6f, chargePercent));
                     }
 
                     DroneStockController dsc = base.GetComponent<DroneStockController>();
