@@ -131,6 +131,13 @@ namespace HANDMod.Content.HANDSurvivor.Components.Body
                 }
             }
         }
+        public void MeleeHit()
+        {
+            if (characterBody.skillLocator.special.stock < characterBody.skillLocator.special.maxStock && characterBody.skillLocator.special.skillDef == SkillDefs.SpecialDrone)
+            {
+                characterBody.skillLocator.special.rechargeStopwatch += 1.2f;
+            }
+        }
 
         private int oldDroneCount = 0;
         private CharacterBody characterBody;

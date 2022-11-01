@@ -122,8 +122,13 @@ namespace EntityStates.HAND_Overclocked.Primary
                     OverclockController hc = base.gameObject.GetComponent<OverclockController>();
                     if (hc)
                     {
-                        hc.MeleeHit();
                         if (base.characterBody.HasBuff(Buffs.Overclock)) hc.ExtendOverclock(0.8f);
+                    }
+
+                    DroneStockController dsc = base.GetComponent<DroneStockController>();
+                    if (dsc)
+                    {
+                        dsc.MeleeHit();
                     }
                 }
             }

@@ -4,14 +4,18 @@ using RoR2;
 using RoR2.Skills;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using UnityEngine.Networking;
 
 namespace EntityStates.HAND_Overclocked.Utility
 {
-    public class BeginOverclock : BaseState
+	public class BeginOverclock : BaseState
 	{
 		public override void OnEnter()
 		{
 			base.OnEnter();
+
+			LoadStats();
+
 			this.overclockController = base.gameObject.GetComponent<OverclockController>();
 			if (base.isAuthority)
 			{
@@ -19,14 +23,28 @@ namespace EntityStates.HAND_Overclocked.Utility
 				{
 					base.SmallHop(base.characterMotor, BeginOverclock.shortHopVelocity);
 				}
-				StartOverclock();
+				if(overclockController)
+				{
+					overclockController.StartOverclock(gaugeInternal, gaugeArrowInternal);
+				}
 			}
+
+			if (NetworkServer.active)
+			{
+				BuffDef selectedBuff = buffDef;
+				if (base.characterBody && !base.characterBody.HasBuff(selectedBuff))
+				{
+					base.characterBody.AddBuff(selectedBuff);
+				}
+			}
+
+			Util.PlaySound(startSoundString, base.gameObject);
 
 			this.skillSlot = (base.skillLocator ? base.skillLocator.utility : null);
 			if (this.skillSlot)
 			{
 				startStocks = this.skillSlot.stock;
-				this.skillSlot.SetSkillOverride(this, GetCancelDef(), GenericSkill.SkillOverridePriority.Contextual);
+				this.skillSlot.SetSkillOverride(this, cancelDef, GenericSkill.SkillOverridePriority.Contextual);
 				this.skillSlot.stock = Mathf.Min(skillSlot.maxStock, startStocks + 1);
 			}
 
@@ -47,25 +65,42 @@ namespace EntityStates.HAND_Overclocked.Utility
 				rightEffect.transform.localPosition += new Vector3(0f, 0.6f, 0f);
 			}
 		}
-		public virtual SkillDef GetCancelDef()
+
+		public virtual void LoadStats()
         {
-			return SkillDefs.UtilityOverclockCancel;
-		}
-		public virtual void StartOverclock()
-		{
-			if (this.overclockController)
-			{
-				this.overclockController.BeginOverclock();
-			}
-		}
+			cancelDef = SkillDefs.UtilityOverclockCancel;
+			buffDef = Buffs.Overclock;
+			gaugeInternal = BeginOverclock.texGauge;
+			gaugeArrowInternal = BeginOverclock.texGaugeArrow;
+        }
+
+		public virtual float ExtendBuff(float stopwatch, float extensionTime)
+        {
+			return Mathf.Max(0f, stopwatch - extensionTime);
+        }
 
 		public override void OnExit()
 		{
 			if (this.skillSlot)
 			{
-				this.skillSlot.UnsetSkillOverride(this, GetCancelDef(), GenericSkill.SkillOverridePriority.Contextual);
+				this.skillSlot.UnsetSkillOverride(this, cancelDef, GenericSkill.SkillOverridePriority.Contextual);
 				this.skillSlot.stock = startStocks;
 			}
+
+			if (NetworkServer.active)
+            {
+				if (base.characterBody && base.characterBody.HasBuff(buffDef))
+                {
+					base.characterBody.RemoveBuff(buffDef);
+                }
+            }
+
+			if (base.isAuthority)
+            {
+				if (overclockController) overclockController.EndOverclock();
+            }
+
+			Util.PlaySound(endSoundString, base.gameObject);
 			base.OnExit();
 		}
 
@@ -75,7 +110,7 @@ namespace EntityStates.HAND_Overclocked.Utility
 
 			jetStopwatch += Time.fixedDeltaTime;
 			if (jetStopwatch >= jetFireTime)
-            {
+			{
 				jetStopwatch -= jetFireTime;
 
 				GameObject leftEffect = UnityEngine.Object.Instantiate<GameObject>(BeginOverclock.jetEffectPrefab, leftJet);
@@ -87,16 +122,25 @@ namespace EntityStates.HAND_Overclocked.Utility
 				rightEffect.transform.localPosition += new Vector3(0f, 0.6f, 0f);
 			}
 
-			if ((!this.skillSlot || this.skillSlot.stock == 0) || !(overclockController && overclockController.buffActive))
+			if (base.isAuthority)
 			{
-				this.beginExit = true;
-			}
-			if (this.beginExit)
-			{
-				this.timerSinceComplete += Time.fixedDeltaTime;
-				if (this.timerSinceComplete > BeginOverclock.baseExitDuration)
+				stopwatch += Time.fixedDeltaTime;
+				if (overclockController)
 				{
-					this.outer.SetNextStateToMain();
+					stopwatch = ExtendBuff(stopwatch, overclockController.ConsumeExtensionTime());
+					overclockController.buffPercent = Mathf.Max(0f, (buffDuration - stopwatch)) / buffDuration;
+				}
+				if (!this.skillSlot || this.skillSlot.stock == 0 || stopwatch >= buffDuration)
+				{
+					this.beginExit = true;
+				}
+				if (this.beginExit)
+				{
+					this.timerSinceComplete += Time.fixedDeltaTime;
+					if (this.timerSinceComplete > BeginOverclock.baseExitDuration)
+					{
+						this.outer.SetNextStateToMain();
+					}
 				}
 			}
 		}
@@ -106,6 +150,13 @@ namespace EntityStates.HAND_Overclocked.Utility
 			return InterruptPriority.Skill;
 		}
 
+		public float buffDuration = 4f;
+		public BuffDef buffDef;
+		public string startSoundString = "Play_MULT_shift_start";
+		public string endSoundString = "Play_MULT_shift_end";
+		public SkillDef cancelDef;
+
+		private float stopwatch = 0f;
 		private float jetFireTime;
 		private float jetStopwatch;
 		private float timerSinceComplete = 0f;
@@ -119,11 +170,12 @@ namespace EntityStates.HAND_Overclocked.Utility
 		public static float shortHopVelocity = 12f;
 		public static float jetFireFrequency = 6f;
 
-		protected OverclockController overclockController;
+		public OverclockController overclockController;
 		private GenericSkill skillSlot;
 
-		public static Texture2D texGauge;
-		public static Texture2D texGaugeArrow;
+		public Texture2D gaugeInternal, gaugeArrowInternal;
+
+		public static Texture2D texGauge, texGaugeArrow;
 	}
 
 	public class CancelOverclock : BaseState
@@ -146,32 +198,22 @@ namespace EntityStates.HAND_Overclocked.Utility
 
 				GameObject leftEffect = UnityEngine.Object.Instantiate<GameObject>(CancelOverclock.jetEffectPrefab, leftJet);
 				leftEffect.transform.localRotation *= Quaternion.Euler(-60f, -90f, -60f);
-				leftEffect.transform.localPosition += new Vector3(0f, 0.6f, 0f);	//Adding to this shifts it downwards.
+				leftEffect.transform.localPosition += new Vector3(0f, 0.6f, 0f);    //Adding to this shifts it downwards.
 
 				GameObject rightEffect = UnityEngine.Object.Instantiate<GameObject>(CancelOverclock.jetEffectPrefab, rightJet);
 				rightEffect.transform.localRotation *= Quaternion.Euler(-60f, 90f, -60f);
 				rightEffect.transform.localPosition += new Vector3(0f, 0.6f, 0f);
 			}
 
-			overclockController = base.gameObject.GetComponent<OverclockController>();
 			if (base.isAuthority)
 			{
 				if (base.characterMotor != null)    //Manually exiting will always trigger the shorthop regardless of grounded status.
 				{
 					base.SmallHop(base.characterMotor, CancelOverclock.shortHopVelocity);
 				}
-				EndOverclock();
 				this.outer.SetNextStateToMain();
 			}
 
-		}
-
-		public virtual void EndOverclock()
-		{
-			if (overclockController)
-			{
-				overclockController.EndOverclock();
-			}
 		}
 
 		public override InterruptPriority GetMinimumInterruptPriority()

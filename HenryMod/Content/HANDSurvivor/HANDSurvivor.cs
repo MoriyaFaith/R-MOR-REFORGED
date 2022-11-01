@@ -258,32 +258,6 @@ namespace HANDMod.Content.HANDSurvivor
             Modules.ContentPacks.skillDefs.Add(focusSkill);
             SkillDefs.UtilityFocus = focusSkill;
 
-            SkillDef focusCancelDef = SkillDef.CreateInstance<SkillDef>();
-            focusCancelDef.activationState = new SerializableEntityStateType(typeof(EntityStates.HAND_Overclocked.Utility.CancelFocus));
-            focusCancelDef.activationStateMachineName = "Slide";
-            focusCancelDef.baseMaxStock = 1;
-            focusCancelDef.baseRechargeInterval = 7f;
-            focusCancelDef.beginSkillCooldownOnSkillEnd = true;
-            focusCancelDef.canceledFromSprinting = false;
-            focusCancelDef.dontAllowPastMaxStocks = true;
-            focusCancelDef.forceSprintDuringState = false;
-            focusCancelDef.fullRestockOnAssign = true;
-            focusCancelDef.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texUtilityOverclockCancel.png");
-            focusCancelDef.interruptPriority = InterruptPriority.Skill;
-            focusCancelDef.isCombatSkill = false;
-            focusCancelDef.keywordTokens = new string[] { };
-            focusCancelDef.mustKeyPress = true;
-            focusCancelDef.cancelSprintingOnActivation = false;
-            focusCancelDef.rechargeStock = 1;
-            focusCancelDef.requiredStock = 0;
-            focusCancelDef.skillName = "CancelFocus";
-            focusCancelDef.skillNameToken = HANDSurvivor.HAND_PREFIX + "UTILITY_CANCEL_NAME";
-            focusCancelDef.skillDescriptionToken = HANDSurvivor.HAND_PREFIX + "UTILITY__CANCEL_DESC";
-            focusCancelDef.stockToConsume = 0;
-            FixScriptableObjectName(focusCancelDef);
-            Modules.ContentPacks.skillDefs.Add(focusCancelDef);
-            SkillDefs.UtilityFocusCancel = focusCancelDef;
-
             EntityStates.HAND_Overclocked.Utility.BeginFocus.texGaugeNemesis = Assets.mainAssetBundle.LoadAsset<Texture2D>("texGaugeNemesis.png");
             EntityStates.HAND_Overclocked.Utility.BeginFocus.texGaugeArrowNemesis = Assets.mainAssetBundle.LoadAsset<Texture2D>("texGaugeArrowNemesis.png");
 
@@ -409,7 +383,6 @@ namespace HANDMod.Content.HANDSurvivor
             Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HAND_Overclocked.Utility.BeginOverclock));
             Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HAND_Overclocked.Utility.CancelOverclock));
             Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HAND_Overclocked.Utility.BeginFocus));
-            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HAND_Overclocked.Utility.CancelFocus));
 
             Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HAND_Overclocked.Special.FireSeekingDrone));
         }

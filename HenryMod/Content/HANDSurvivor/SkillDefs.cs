@@ -11,7 +11,6 @@ namespace HANDMod.Content.HANDSurvivor
         public static SkillDef UtilityOverclock;
         public static SkillDef UtilityOverclockCancel;
         public static SkillDef UtilityFocus;
-        public static SkillDef UtilityFocusCancel;
         public static SkillDef SpecialDrone;
     }
 }
