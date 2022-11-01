@@ -100,7 +100,23 @@ namespace HANDMod.Content.HANDSurvivor
 
             Content.HANDSurvivor.Buffs.Init();
             CreateHitEffects();
+
+            /*RagdollController rd = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Toolbot/ToolbotBody.prefab").WaitForCompletion().GetComponentInChildren<ModelLocator>().modelTransform.gameObject.GetComponent<RagdollController>();
+            foreach(Transform t in rd.bones)
+            {
+                Debug.Log(t.name);
+            }*/
+
+            bodyPrefab.GetComponent<ModelLocator>().modelTransform.gameObject.GetComponent<ChildLocator>().FindChildGameObject("HanDHammer").SetActive(false);
         }
+        /*protected override void InitializeDisplayPrefab()
+        {
+            base.InitializeDisplayPrefab();
+
+            GameObject hammer = displayPrefab.GetComponent<ChildLocator>().FindChildGameObject("HanDHammer");
+            hammer.SetActive(true);
+        }*/
+
         public override void InitializeSkills()
         {
             Modules.Skills.CreateSkillFamilies(bodyPrefab);

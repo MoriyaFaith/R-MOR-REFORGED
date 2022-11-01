@@ -142,7 +142,7 @@ namespace HANDMod.Content.HANDSurvivor
             if (sender.HasBuff(Buffs.NemesisFocus))
             {
                 args.damageMultAdd += 0.5f;
-                //args.moveSpeedReductionMultAdd += 0.3f;
+                args.moveSpeedReductionMultAdd += 0.3f;
             }
         }
 

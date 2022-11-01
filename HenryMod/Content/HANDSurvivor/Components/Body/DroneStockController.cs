@@ -9,6 +9,10 @@ namespace HANDMod.Content.HANDSurvivor.Components.Body
 {
     public class DroneStockController : NetworkBehaviour, IOnKilledOtherServerReceiver
     {
+        private int oldDroneCount = 0;
+        private CharacterBody characterBody;
+        private DroneStockPersist dronePersist;
+
         public void Start()
         {
             characterBody.skillLocator.special.RemoveAllStocks();
@@ -138,9 +142,5 @@ namespace HANDMod.Content.HANDSurvivor.Components.Body
                 characterBody.skillLocator.special.rechargeStopwatch += 1.2f;
             }
         }
-
-        private int oldDroneCount = 0;
-        private CharacterBody characterBody;
-        private DroneStockPersist dronePersist;
     }
 }

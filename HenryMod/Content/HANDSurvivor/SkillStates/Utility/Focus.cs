@@ -22,15 +22,16 @@ namespace EntityStates.HAND_Overclocked.Utility
             internalOverlayMaterial = BeginFocus.overlayMaterial;
         }
 
-        public override void FixedUpdate()
+        //Disabling sprint feels terrible.
+        /*public override void FixedUpdate()
         {
             if (base.characterBody) base.characterBody.isSprinting = false;
             base.FixedUpdate();
-        }
+        }*/
 
-        public override float ExtendBuff(float stopwatch, float extensionTime)
+        /*public override float ExtendBuff(float stopwatch, float extensionTime)
         {
-            return stopwatch;
-        }
+            return stopwatch - 0.5f * extensionTime;
+        }*/
     }
 }

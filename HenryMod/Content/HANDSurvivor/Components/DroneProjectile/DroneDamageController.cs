@@ -258,7 +258,7 @@ namespace HANDMod.Content.HANDSurvivor.Components.DroneProjectile
         public static float procCoefficient = 0.5f;
         public static float baseTickRate = 0.5f;
         public static int damageTicksTotal = 8;
-        public static float damageHealFraction = 0.5f;
+        public static float damageHealFraction = 0.4f;
         public static GameObject bleedEffectPrefab = LegacyResourcesAPI.Load<GameObject>("Prefabs/BleedEffect");
         public static GameObject hitEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Treebot/OmniImpactVFXSlashSyringe.prefab").WaitForCompletion();
         public static NetworkSoundEventDef startSound;
