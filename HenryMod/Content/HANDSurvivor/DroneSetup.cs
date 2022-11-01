@@ -21,14 +21,32 @@ namespace HANDMod.Content.HANDSurvivor
 
         private static GameObject CreateAllyIndicator()
         {
-            GameObject indicator = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/PassiveHealing/WoodSpriteIndicator.prefab").WaitForCompletion();
+            GameObject indicator = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/PassiveHealing/WoodSpriteIndicator.prefab").WaitForCompletion().InstantiateClone("HANDMod_AllyIndicator", false);
             UnityEngine.Object.Destroy(indicator.GetComponentInChildren<RoR2.InputBindingDisplayController>());
             UnityEngine.Object.Destroy(indicator.GetComponentInChildren<TMPro.TextMeshPro>());
+
+            Rewired.ComponentControls.Effects.RotateAroundAxis rot = indicator.GetComponentInChildren<Rewired.ComponentControls.Effects.RotateAroundAxis>();
+            UnityEngine.Object.Destroy(rot);
+
+            SpriteRenderer sr = indicator.GetComponentInChildren<SpriteRenderer>();
+            sr.sprite = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texIndicatorDroneHeal.png");
+            sr.color = new Color(189f/255, 1f, 77f / 255f);
+            sr.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
+
             return indicator;
         }
         private static GameObject CreateEnemyIndicator()
         {
-            GameObject indicator = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Engi/EngiMissileTrackingIndicator.prefab").WaitForCompletion();
+            GameObject indicator = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Engi/EngiMissileTrackingIndicator.prefab").WaitForCompletion().InstantiateClone("HANDMod_EnemyIndicator", false);
+            SpriteRenderer[] sr = indicator.GetComponentsInChildren<SpriteRenderer>();
+            foreach(SpriteRenderer s in sr)
+            {
+                if (s.name == "Base Core")
+                {
+                    s.color = new Color(1f, 109f / 255f, 112f / 255f);
+                    break;
+                }
+            }
             return indicator;
         }
 
@@ -92,15 +110,14 @@ namespace HANDMod.Content.HANDSurvivor
             ps.oscillateMagnitude = 6f;
             ps.oscillateSpeed = 1.5f;
 
-            ProjectileDirectionalTargetFinder pdtf = droneProjectile.AddComponent<ProjectileDirectionalTargetFinder>();
-            pdtf.lookRange = 160f;   //25f
-            pdtf.lookCone = 180f;    //20f
-            pdtf.targetSearchInterval = 0.1f;
-            pdtf.onlySearchIfNoTarget = true;
-            pdtf.allowTargetLoss = false;
-            pdtf.testLoS = false;
-            pdtf.ignoreAir = false;
-            pdtf.flierAltitudeTolerance = Mathf.Infinity;
+            ProjectileSphereTargetFinder pstf = droneProjectile.AddComponent<ProjectileSphereTargetFinder>();
+            pstf.lookRange = 90f;
+            pstf.targetSearchInterval = 0.3f;
+            pstf.onlySearchIfNoTarget = true;
+            pstf.allowTargetLoss = false;
+            pstf.testLoS = false;
+            pstf.ignoreAir = false;
+            pstf.flierAltitudeTolerance = Mathf.Infinity;
 
             UnityEngine.Object.Destroy(droneProjectile.GetComponent<AkEvent>());
             UnityEngine.Object.Destroy(droneProjectile.GetComponent<AkGameObj>());

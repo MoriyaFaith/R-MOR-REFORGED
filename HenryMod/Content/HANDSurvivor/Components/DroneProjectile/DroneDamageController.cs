@@ -134,6 +134,10 @@ namespace HANDMod.Content.HANDSurvivor.Components.DroneProjectile
                         firstHit = false;
                         OnFirstHit();
                     }
+                    else
+                    {
+                        EffectManager.SimpleSoundEffect(hitSound.index, base.transform.position, true);
+                    }
 
                     float currentTickDamage = projectileDamage.damage / (float)damageTicksTotal;
                     float ownerCritMult = 2f;
@@ -258,6 +262,7 @@ namespace HANDMod.Content.HANDSurvivor.Components.DroneProjectile
         public static GameObject bleedEffectPrefab = LegacyResourcesAPI.Load<GameObject>("Prefabs/BleedEffect");
         public static GameObject hitEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Treebot/OmniImpactVFXSlashSyringe.prefab").WaitForCompletion();
         public static NetworkSoundEventDef startSound;
+        public static NetworkSoundEventDef hitSound;
 
         private float tickRate;
         private float stopwatch;

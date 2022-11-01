@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 2681209253
+CRC: 1357033218
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 99da4ecb2af287e3a88e259114f13e39
+    Hash: 43e3c1ddc7f420b4dfdcccc7362cbc2e
   TypeTreeHash:
     serializedVersion: 2
     Hash: 4e179099b555ead876f2a05ea75838b4
@@ -66,6 +66,7 @@ Assets:
 - Assets/HAN-D/Textures/Skins/DefaultSkin/HanDWeapon_Normal.png
 - Assets/HandDrone/mat/texDroneBladesTemp.mat
 - Assets/HandDrone/mat/DroneSawTemp.mat
+- Assets/HAN-D/Textures/UI/texIndicatorDroneHeal.png
 - Assets/HAN-D/Textures/Skills/texUtilityOverclockCancel.png
 - Assets/HAN-D/Animations/animHANDOverclockedMenu.controller
 - Assets/HAN-D/Textures/UI/texGaugeNemesis.png

@@ -295,13 +295,8 @@ namespace HANDMod.Content.HANDSurvivor
         {
             DroneSetup.Init();
 
-            //Components.DroneProjectile.DroneDamageController.startSound = Assets.CreateNetworkSoundEventDef("Play_HOC_Drill");
-            NetworkSoundEventDef networkSoundEventDef = ScriptableObject.CreateInstance<NetworkSoundEventDef>();
-            networkSoundEventDef.eventName = "Play_HOC_Drill";
-            Modules.ContentPacks.networkSoundEventDefs.Add(networkSoundEventDef);
-            Components.DroneProjectile.DroneDamageController.startSound = networkSoundEventDef;
-
-            Modules.Content.AddNetworkSoundEventDef(networkSoundEventDef);
+            Components.DroneProjectile.DroneDamageController.startSound = Assets.CreateNetworkSoundEventDef("Play_HOC_Drill");
+            Components.DroneProjectile.DroneDamageController.hitSound = Assets.CreateNetworkSoundEventDef("Play_treeBot_m1_impact");
 
             EntityStateMachine stateMachine = bodyPrefab.AddComponent<EntityStateMachine>();
             stateMachine.customName = "DroneLauncher";
@@ -490,6 +485,12 @@ namespace HANDMod.Content.HANDSurvivor
 
             DestroyOnTimer dot = jetObject.GetComponent<DestroyOnTimer>();
             dot.duration = 0.2f;//0.3f vanilla
+
+            Light[] lights = jetObject.GetComponentsInChildren<Light>();
+            foreach (Light light in lights)
+            {
+                light.enabled = false;
+            }
 
             //Does not have EffectComponent, no need to register.
             return jetObject;

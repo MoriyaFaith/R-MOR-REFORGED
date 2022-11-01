@@ -7,11 +7,11 @@ namespace HANDMod.Content.HANDSurvivor.Components.DroneProjectile
 {
     public class DroneCollisionController : MonoBehaviour
     {
-        ProjectileSteerTowardTarget pst;
+        ProjectileTargetComponent ptc;
         private void Awake()
         {
             stick = base.GetComponent<ProjectileStickOnImpact>();
-            pst = base.GetComponent<ProjectileSteerTowardTarget>();
+            ptc = base.GetComponent<ProjectileTargetComponent>();
             projectileNoTargetStopwatch = 0f;
             projectileController = base.GetComponent<ProjectileController>();
         }
@@ -21,9 +21,9 @@ namespace HANDMod.Content.HANDSurvivor.Components.DroneProjectile
             if (stick && !stick.syncVictim)
             {
                 //Check if target lost
-                if (NetworkServer.active && pst)
+                if (NetworkServer.active && ptc)
                 {
-                    if (pst.targetComponent && pst.targetComponent.target != null)
+                    if (ptc.target != null)
                     {
                         projectileNoTargetStopwatch = 0f;
                     }
@@ -44,6 +44,9 @@ namespace HANDMod.Content.HANDSurvivor.Components.DroneProjectile
                     ps.SetLifetime(30f);
                 }
                 base.gameObject.layer = LayerIndex.projectile.intVal;
+                Destroy(base.GetComponent<ProjectileSteerTowardTarget>());
+                Destroy(base.GetComponent<ProjectileSphereTargetFinder>());
+                Destroy(ptc);
                 Destroy(this);
                 return;
             }
