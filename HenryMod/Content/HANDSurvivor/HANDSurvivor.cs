@@ -299,6 +299,7 @@ namespace HANDMod.Content.HANDSurvivor
             NetworkStateMachine nsm = bodyPrefab.GetComponent<NetworkStateMachine>();
             nsm.stateMachines = nsm.stateMachines.Append(stateMachine).ToArray();
 
+            //DroneSkillDef too restrictive, but it's there if it's needed.
             SkillDef droneSkill = SkillDef.CreateInstance<SkillDef>();
             droneSkill.activationState = new SerializableEntityStateType(typeof(EntityStates.HAND_Overclocked.Special.FireSeekingDrone));
             droneSkill.skillNameToken = HANDSurvivor.HAND_PREFIX + "SPECIAL_NAME";

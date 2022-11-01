@@ -77,11 +77,16 @@ namespace HANDMod.Content.HANDSurvivor.Components.Body
             return this.trackingTarget;
         }
 
+        public bool HasTarget()
+        {
+            return this.trackingTarget != null;
+        }
+
         public static GameObject enemyIndicatorPrefab;
         public static GameObject allyIndicatorPrefab;
 
         public float maxTrackingDistance = 160f;
-        public float maxTrackingAngle = 120f;
+        public float maxTrackingAngle = 60f;
         public float trackerUpdateFrequency = 10f;
 
         private HurtBox trackingTarget;
