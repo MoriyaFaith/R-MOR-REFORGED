@@ -8,7 +8,7 @@ using HANDMod.Content;
 
 namespace EntityStates.HAND_Overclocked.Primary
 {
-    public class SwingFist : BaseMeleeAttack
+    public class PunchFist : BaseMeleeAttack
     {
         public static NetworkSoundEventDef networkHitSound = null;
         public static GameObject swingEffect = null;
@@ -21,9 +21,9 @@ namespace EntityStates.HAND_Overclocked.Primary
             this.attackRecoil = 0f;
 
             this.muzzleString = swingIndex == 1 ? "HandL" : "HandR";    //Anim names are reversed. This is correct.
-            this.swingEffectPrefab = SwingFist.swingEffect;
-            this.hitEffectPrefab = SwingFist.hitEffect;
-            if(SwingFist.networkHitSound) this.impactSound = networkHitSound.index;
+            this.swingEffectPrefab = PunchFist.swingEffect;
+            this.hitEffectPrefab = PunchFist.hitEffect;
+            if(PunchFist.networkHitSound) this.impactSound = networkHitSound.index;
 
             this.damageType = DamageType.Generic;
             this.hitHopVelocity = 8f;
@@ -158,7 +158,7 @@ namespace EntityStates.HAND_Overclocked.Primary
             //1 - PunchLR
             //2 - PunchRL
 
-            this.outer.SetNextState(new SwingFist
+            this.outer.SetNextState(new PunchFist
             {
                 swingIndex = index
             });

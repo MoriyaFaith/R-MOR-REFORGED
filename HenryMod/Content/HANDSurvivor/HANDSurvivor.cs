@@ -121,7 +121,7 @@ namespace HANDMod.Content.HANDSurvivor
         private void InitializePrimarySkills()
         {
             SkillDef primarySkill = SkillDef.CreateInstance<SkillDef>();
-            primarySkill.activationState = new SerializableEntityStateType(typeof(EntityStates.HAND_Overclocked.Primary.SwingFist));
+            primarySkill.activationState = new SerializableEntityStateType(typeof(EntityStates.HAND_Overclocked.Primary.PunchFist));
             primarySkill.skillNameToken = HAND_PREFIX + "PRIMARY_NAME";
             primarySkill.skillName = "SwingFist";
             primarySkill.skillDescriptionToken = HAND_PREFIX + "PRIMARY_DESC";
@@ -381,7 +381,7 @@ namespace HANDMod.Content.HANDSurvivor
 
         private void RegisterStates()
         {
-            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HAND_Overclocked.Primary.SwingFist));
+            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HAND_Overclocked.Primary.PunchFist));
 
             Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HAND_Overclocked.Secondary.ChargeSlam));
             Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HAND_Overclocked.Secondary.FireSlam));
