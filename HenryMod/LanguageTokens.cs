@@ -44,7 +44,7 @@ namespace HANDMod
             LanguageAPI.Add(prefix + "UTILITY_DESC", "Increase <style=cIsUtility>movement speed</style> and <style=cIsDamage>attack speed</style> by <style=cIsDamage>40%</style>. Hit enemies to <style=cIsUtility>increase duration</style>.");
 
             LanguageAPI.Add(prefix + "UTILITY_NEMESIS_NAME", "FOCUS");
-            LanguageAPI.Add(prefix + "UTILITY_NEMESIS_DESC", "Temporarily <style=cIsHealth>reduce your movement speed</style> while dealing <style=cIsDamage>50% extra damage</style>.");
+            LanguageAPI.Add(prefix + "UTILITY_NEMESIS_DESC", "Temporarily become <style=cIsHealth>unable to sprint</style> while dealing <style=cIsDamage>50% extra damage</style>.");
 
             LanguageAPI.Add(prefix + "SPECIAL_NAME", "DRONE");
             LanguageAPI.Add(prefix + "SPECIAL_DESC", "Fire a drone that deals <style=cIsDamage>270% damage</style> and <style=cIsHealing>heals for 50% of the damage dealt</style>. Kills and melee hits <style=cIsUtility>reduce cooldown</style>.");

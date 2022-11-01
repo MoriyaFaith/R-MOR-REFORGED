@@ -230,6 +230,8 @@ namespace HANDMod.Content.HANDSurvivor
             Modules.ContentPacks.skillDefs.Add(ovcCancelDef);
             SkillDefs.UtilityOverclockCancel = ovcCancelDef;
 
+            EntityStates.HAND_Overclocked.Utility.BeginOverclock.overlayMaterial = UnityEngine.Material.Instantiate(LegacyResourcesAPI.Load<Material>("Materials/matWolfhatOverlay"));
+
             EntityStates.HAND_Overclocked.Utility.BeginOverclock.texGauge = Assets.mainAssetBundle.LoadAsset<Texture2D>("texGauge.png");
             EntityStates.HAND_Overclocked.Utility.BeginOverclock.texGaugeArrow = Assets.mainAssetBundle.LoadAsset<Texture2D>("texGaugeArrow.png");
             OverclockController.ovcDef = ovcSkill;
@@ -257,6 +259,8 @@ namespace HANDMod.Content.HANDSurvivor
             FixScriptableObjectName(focusSkill);
             Modules.ContentPacks.skillDefs.Add(focusSkill);
             SkillDefs.UtilityFocus = focusSkill;
+
+            EntityStates.HAND_Overclocked.Utility.BeginFocus.overlayMaterial = UnityEngine.Material.Instantiate(LegacyResourcesAPI.Load<Material>("Materials/matFullCrit"));
 
             EntityStates.HAND_Overclocked.Utility.BeginFocus.texGaugeNemesis = Assets.mainAssetBundle.LoadAsset<Texture2D>("texGaugeNemesis.png");
             EntityStates.HAND_Overclocked.Utility.BeginFocus.texGaugeArrowNemesis = Assets.mainAssetBundle.LoadAsset<Texture2D>("texGaugeArrowNemesis.png");

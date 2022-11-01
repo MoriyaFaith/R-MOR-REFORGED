@@ -43,7 +43,7 @@ namespace HANDMod.Content.HANDSurvivor
             {
                 if (s.name == "Base Core")
                 {
-                    s.color = new Color(1f, 109f / 255f, 112f / 255f);
+                    s.color = new Color(0.556862745f, 0.682352941f, 0.690196078f);
                     break;
                 }
             }

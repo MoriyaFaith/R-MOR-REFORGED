@@ -11,6 +11,7 @@ namespace EntityStates.HAND_Overclocked.Utility
     {
         public static Texture2D texGaugeNemesis;
         public static Texture2D texGaugeArrowNemesis;
+        public static new Material overlayMaterial;
 
         public override void LoadStats()
         {
@@ -18,6 +19,7 @@ namespace EntityStates.HAND_Overclocked.Utility
             buffDef = Buffs.NemesisFocus;
             gaugeInternal = texGaugeNemesis;
             gaugeArrowInternal = texGaugeArrowNemesis;
+            internalOverlayMaterial = BeginFocus.overlayMaterial;
         }
 
         public override void FixedUpdate()

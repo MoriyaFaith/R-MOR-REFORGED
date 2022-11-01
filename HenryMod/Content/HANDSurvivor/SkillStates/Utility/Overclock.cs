@@ -64,6 +64,24 @@ namespace EntityStates.HAND_Overclocked.Utility
 				rightEffect.transform.localRotation *= Quaternion.Euler(0f, 60f, 0f);
 				rightEffect.transform.localPosition += new Vector3(0f, 0.6f, 0f);
 			}
+
+			if (internalOverlayMaterial)
+			{
+				if (base.modelLocator && base.modelLocator.modelTransform && base.modelLocator.modelTransform.gameObject)
+				{
+					characterModel = base.modelLocator.modelTransform.gameObject.GetComponent<CharacterModel>();
+					if (characterModel)
+					{
+						tempOverlay = characterModel.gameObject.AddComponent<TemporaryOverlay>();
+						tempOverlay.duration = Mathf.Infinity;
+						tempOverlay.animateShaderAlpha = true;
+						tempOverlay.alphaCurve = AnimationCurve.EaseInOut(0f, 1f, 1f, 0f);
+						tempOverlay.destroyComponentOnEnd = true;
+						tempOverlay.originalMaterial = internalOverlayMaterial;
+						tempOverlay.AddToCharacerModel(characterModel);
+					}
+				}
+			}
 		}
 
 		public virtual void LoadStats()
@@ -72,6 +90,7 @@ namespace EntityStates.HAND_Overclocked.Utility
 			buffDef = Buffs.Overclock;
 			gaugeInternal = BeginOverclock.texGauge;
 			gaugeArrowInternal = BeginOverclock.texGaugeArrow;
+			internalOverlayMaterial = BeginOverclock.overlayMaterial;
         }
 
 		public virtual float ExtendBuff(float stopwatch, float extensionTime)
@@ -93,6 +112,13 @@ namespace EntityStates.HAND_Overclocked.Utility
                 {
 					base.characterBody.RemoveBuff(buffDef);
                 }
+            }
+
+			if (tempOverlay)
+            {
+				tempOverlay.RemoveFromCharacterModel();
+				UnityEngine.Object.Destroy(tempOverlay);
+				tempOverlay = null;
             }
 
 			if (base.isAuthority)
@@ -164,11 +190,16 @@ namespace EntityStates.HAND_Overclocked.Utility
 		private int startStocks = 0;
 		private Transform leftJet;
 		private Transform rightJet;
+		private TemporaryOverlay tempOverlay;
+		private CharacterModel characterModel;
 
 		public static GameObject jetEffectPrefab;
 		public static float baseExitDuration = 0.3f;
 		public static float shortHopVelocity = 12f;
 		public static float jetFireFrequency = 6f;
+
+		public Material internalOverlayMaterial;
+		public static Material overlayMaterial;
 
 		public OverclockController overclockController;
 		private GenericSkill skillSlot;

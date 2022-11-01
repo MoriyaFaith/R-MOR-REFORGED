@@ -1,4 +1,5 @@
-﻿using HANDMod.Content.HANDSurvivor.Components.Body;
+﻿using HANDMod.Content.HANDSurvivor;
+using HANDMod.Content.HANDSurvivor.Components.Body;
 using RoR2;
 using RoR2.Projectile;
 using UnityEngine;
@@ -32,12 +33,12 @@ namespace EntityStates.HAND_Overclocked.Special
         {
             if (!hasFired && base.isAuthority)
             {
-                FireMissile(this.initialOrbTarget, base.inputBank.aimOrigin);
+                FireProjectile(this.initialOrbTarget, base.inputBank.aimOrigin);
             }
             base.OnExit();
         }
 
-        private void FireMissile(HurtBox target, Vector3 position)
+        private void FireProjectile(HurtBox target, Vector3 position)
         {
             hasFired = true;
             FireProjectileInfo fireProjectileInfo = default(FireProjectileInfo);
@@ -46,7 +47,7 @@ namespace EntityStates.HAND_Overclocked.Special
             fireProjectileInfo.rotation = Util.QuaternionSafeLookRotation(base.GetAimRay().direction);
             fireProjectileInfo.crit = base.RollCrit();
             fireProjectileInfo.damage = this.damageStat * FireSeekingDrone.damageCoefficient;
-            fireProjectileInfo.damageColorIndex = DamageColorIndex.Item;
+            fireProjectileInfo.damageColorIndex = DamageColorIndex.Default;
             fireProjectileInfo.owner = base.gameObject;
             fireProjectileInfo.force = FireSeekingDrone.force;
             fireProjectileInfo.projectilePrefab = FireSeekingDrone.projectilePrefab;
@@ -62,7 +63,7 @@ namespace EntityStates.HAND_Overclocked.Special
             base.FixedUpdate();
             if (!hasFired && base.isAuthority)
             {
-                FireMissile(this.initialOrbTarget, base.inputBank.aimOrigin);
+                FireProjectile(this.initialOrbTarget, base.inputBank.aimOrigin);
             }
             if (base.fixedAge > this.duration && base.isAuthority)
             {

@@ -31,8 +31,11 @@ namespace EntityStates.HAND_Overclocked.Secondary
                 hammerController.SetHammerEnabled(true);
             }
 
+            OverclockController ovc = base.GetComponent<OverclockController>();
+            bool hasOVC = ovc && ovc.BuffActive();
+
             //Attack is only agile while in OVC
-            if (base.isAuthority && base.characterBody && !base.characterBody.HasBuff(Buffs.Overclock))
+            if (base.isAuthority && base.characterBody && !hasOVC)
             {
                 base.characterBody.isSprinting = false;
             }

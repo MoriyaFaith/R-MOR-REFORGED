@@ -99,6 +99,11 @@ namespace EntityStates.HAND_Overclocked.Secondary
             if (this.attack != null)
             {
                 ModifyDamageTypes();
+
+                if (base.characterBody && base.characterBody.HasBuff(Buffs.NemesisFocus))
+                {
+                    this.attack.damageColorIndex = DamageColorIndex.Sniper;
+                }
             }
 
             if (base.characterBody)

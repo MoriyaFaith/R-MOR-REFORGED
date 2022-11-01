@@ -31,7 +31,7 @@ namespace HANDMod.Content.HANDSurvivor
                     );
 
                 RecalculateStatsAPI.GetStatCoefficients += OverclockHook;
-                IL.RoR2.CharacterModel.UpdateOverlays += (il) =>
+                /*IL.RoR2.CharacterModel.UpdateOverlays += (il) =>
                 {
                     ILCursor c = new ILCursor(il);
                     c.GotoNext(
@@ -43,7 +43,7 @@ namespace HANDMod.Content.HANDSurvivor
                     {
                         return hasBuff || self.body.HasBuff(Buffs.Overclock);
                     });
-                };
+                };*/
             }
 
             if (!Buffs.DroneDebuff)
@@ -71,7 +71,7 @@ namespace HANDMod.Content.HANDSurvivor
                     );
 
                 RecalculateStatsAPI.GetStatCoefficients += NemesisFocusHook;
-                IL.RoR2.CharacterModel.UpdateOverlays += (il) =>
+               /* IL.RoR2.CharacterModel.UpdateOverlays += (il) =>
                 {
                     ILCursor c = new ILCursor(il);
                     c.GotoNext(
@@ -83,7 +83,7 @@ namespace HANDMod.Content.HANDSurvivor
                     {
                         return hasBuff || (self.body.HasBuff(Buffs.NemesisFocus));
                     });
-                };
+                };*/
             }
 
             if (!Buffs.DronePassive)
@@ -142,7 +142,7 @@ namespace HANDMod.Content.HANDSurvivor
             if (sender.HasBuff(Buffs.NemesisFocus))
             {
                 args.damageMultAdd += 0.5f;
-                args.moveSpeedReductionMultAdd += 0.5f;
+                //args.moveSpeedReductionMultAdd += 0.3f;
             }
         }
 

@@ -7,6 +7,10 @@ namespace HANDMod.Content.HANDSurvivor.Components.Body
 {
     public class OverclockController : MonoBehaviour
     {
+        public bool BuffActive()
+        {
+            return buffActive;
+        }
         public void StartOverclock(Texture2D gauge, Texture2D arrow)
         {
             buffActive = true;

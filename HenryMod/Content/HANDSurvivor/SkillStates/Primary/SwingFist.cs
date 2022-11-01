@@ -43,7 +43,9 @@ namespace EntityStates.HAND_Overclocked.Primary
 
             Util.PlaySound("Play_HOC_StartPunch", base.gameObject);
 
-            bool hasOVC = base.characterBody.HasBuff(Buffs.Overclock);
+            OverclockController ovc = base.GetComponent<OverclockController>();
+            bool hasOVC = ovc && ovc.BuffActive();
+
             if (base.characterBody && hasOVC && this.swingIndex == 1)
             {
                 this.damageType |= DamageType.Stun1s;
@@ -59,7 +61,7 @@ namespace EntityStates.HAND_Overclocked.Primary
                 }
 
                 //Attack is only agile while in OVC
-                if (base.isAuthority && base.characterBody && !hasOVC)
+                if (base.isAuthority && !hasOVC)
                 {
                     base.characterBody.isSprinting = false;
                 }
@@ -71,6 +73,11 @@ namespace EntityStates.HAND_Overclocked.Primary
             {
                 this.attack.AddModdedDamageType(DamageTypes.HANDPrimaryPunch);
                 this.attack.AddModdedDamageType(DamageTypes.ResetVictimForce);
+
+                if (base.characterBody && base.characterBody.HasBuff(Buffs.NemesisFocus))
+                {
+                    this.attack.damageColorIndex = DamageColorIndex.Sniper;
+                }
             }
         }
 
