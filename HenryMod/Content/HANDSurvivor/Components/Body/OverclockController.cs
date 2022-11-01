@@ -5,13 +5,14 @@ using UnityEngine.Networking;
 
 namespace HANDMod.Content.HANDSurvivor.Components.Body
 {
-    public class OverclockController : NetworkBehaviour
+    public class OverclockController : MonoBehaviour
     {
         public void StartOverclock(Texture2D gauge, Texture2D arrow)
         {
             buffActive = true;
             texGauge = gauge;
             texGaugeArrow = arrow;
+            ReiszeOverclockGauge();
         }
         public void EndOverclock()
         {
@@ -25,6 +26,7 @@ namespace HANDMod.Content.HANDSurvivor.Components.Body
         {
             rectGauge = new Rect();
             rectGaugeArrow = new Rect();
+            networkIdentity = base.GetComponent<NetworkIdentity>();
         }
 
         public void ExtendOverclock(float time)
@@ -63,7 +65,7 @@ namespace HANDMod.Content.HANDSurvivor.Components.Body
 
         private void OnGUI()
         {
-            if (this.hasAuthority && buffActive && !menuActive && !RoR2.PauseManager.isPaused)
+            if (networkIdentity.hasAuthority && buffActive && !menuActive && !RoR2.PauseManager.isPaused)
             {
                 GUI.DrawTexture(rectGauge, texGauge, ScaleMode.StretchToFill, true, 0f);
 
@@ -79,6 +81,7 @@ namespace HANDMod.Content.HANDSurvivor.Components.Body
 
         public static SkillDef ovcDef;
 
+        private NetworkIdentity networkIdentity;
         public Texture2D texGauge;
         public Texture2D texGaugeArrow;
         private Rect rectGauge;
