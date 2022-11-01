@@ -47,7 +47,7 @@ namespace HANDMod
             LanguageAPI.Add(prefix + "UTILITY_NEMESIS_DESC", "Temporarily <style=cIsHealth>reduce movement speed</style> while dealing <style=cIsDamage>50% extra damage</style>. Hit enemies to <style=cIsUtility>increase duration</style>.");
 
             LanguageAPI.Add(prefix + "SPECIAL_NAME", "DRONE");
-            LanguageAPI.Add(prefix + "SPECIAL_DESC", "Fire a drone that deals <style=cIsDamage>270% damage</style> and <style=cIsHealing>heals for 4% of the damage dealt</style>. Kills and melee hits <style=cIsUtility>reduce cooldown</style>.");
+            LanguageAPI.Add(prefix + "SPECIAL_DESC", "Fire a drone that deals <style=cIsDamage>270% damage</style> and <style=cIsHealing>heals for 40% of the damage dealt</style>. Kills and melee hits <style=cIsUtility>reduce cooldown</style>.");
         }
     }
 }
