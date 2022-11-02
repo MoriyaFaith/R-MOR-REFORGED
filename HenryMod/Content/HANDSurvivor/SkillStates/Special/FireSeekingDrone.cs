@@ -14,7 +14,7 @@ namespace EntityStates.HAND_Overclocked.Special
 
             hasFired = false;
             Transform modelTransform = base.GetModelTransform();
-            targetingController = base.GetComponent<TargetingController>();
+            targetingController = base.GetComponent<HANDTargetingController>();
             Util.PlaySound("Play_HOC_Drone", base.gameObject);
             if (base.isAuthority && targetingController)
             {
@@ -90,6 +90,6 @@ namespace EntityStates.HAND_Overclocked.Special
         private float duration;
         protected bool isCrit;
         private HurtBox initialOrbTarget = null;
-        private TargetingController targetingController;
+        private HANDTargetingController targetingController;
     }
 }

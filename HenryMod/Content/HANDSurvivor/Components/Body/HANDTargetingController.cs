@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace HANDMod.Content.HANDSurvivor.Components.Body
 {
-    public class TargetingController : MonoBehaviour
+    public class HANDTargetingController : MonoBehaviour
     {
         public void Awake()
         {

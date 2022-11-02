@@ -1,5 +1,6 @@
 ﻿using BepInEx;
 using HANDMod.Content.HANDSurvivor;
+using HANDMod.Content.RMORSurvivor;
 using R2API.Utils;
 using RoR2;
 using System.Collections.Generic;
@@ -55,6 +56,7 @@ namespace HANDMod
 
             Content.DamageTypes.Initialize();
             new HANDSurvivor().Initialize();
+            if (RMORSurvivor.enabled) new RMORSurvivor().Initialize();
 
             // now make a content pack and add it- this part will change with the next update
             new Modules.ContentPacks().Initialize();

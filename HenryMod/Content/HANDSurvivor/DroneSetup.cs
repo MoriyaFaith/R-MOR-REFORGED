@@ -15,8 +15,8 @@ namespace HANDMod.Content.HANDSurvivor
         {
             if (!FireSeekingDrone.projectilePrefab) FireSeekingDrone.projectilePrefab = CreateDroneProjectile();
             if (!DroneFollowerController.dronePrefab) DroneFollowerController.dronePrefab = CreateDroneFollower();
-            if (!TargetingController.allyIndicatorPrefab) TargetingController.allyIndicatorPrefab = CreateAllyIndicator();
-            if (!TargetingController.enemyIndicatorPrefab) TargetingController.enemyIndicatorPrefab = CreateEnemyIndicator();
+            if (!HANDTargetingController.allyIndicatorPrefab) HANDTargetingController.allyIndicatorPrefab = CreateAllyIndicator();
+            if (!HANDTargetingController.enemyIndicatorPrefab) HANDTargetingController.enemyIndicatorPrefab = CreateEnemyIndicator();
         }
 
         private static GameObject CreateAllyIndicator()

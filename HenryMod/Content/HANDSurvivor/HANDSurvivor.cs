@@ -93,7 +93,7 @@ namespace HANDMod.Content.HANDSurvivor
             RegisterStates();
             bodyPrefab.AddComponent<HANDNetworkComponent>();
             bodyPrefab.AddComponent<OverclockController>();
-            bodyPrefab.AddComponent<TargetingController>();
+            bodyPrefab.AddComponent<HANDTargetingController>();
             bodyPrefab.AddComponent<DroneStockController>();
             bodyPrefab.AddComponent<DroneFollowerController>();
             bodyPrefab.AddComponent<HammerVisibilityController>();

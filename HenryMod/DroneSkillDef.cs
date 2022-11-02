@@ -12,7 +12,7 @@ namespace HANDMod
 		{
 			return new DroneSkillDef.InstanceData
 			{
-				targetingController = skillSlot.GetComponent<TargetingController>()
+				targetingController = skillSlot.GetComponent<HANDTargetingController>()
 			};
 		}
 
@@ -28,12 +28,12 @@ namespace HANDMod
 
 		protected class InstanceData : SkillDef.BaseSkillInstanceData
 		{
-			public TargetingController targetingController;
+			public HANDTargetingController targetingController;
 		}
 
 		private static bool HasTarget([NotNull] GenericSkill skillSlot)
 		{
-			TargetingController targeter = ((DroneSkillDef.InstanceData)skillSlot.skillInstanceData).targetingController;
+			HANDTargetingController targeter = ((DroneSkillDef.InstanceData)skillSlot.skillInstanceData).targetingController;
 			return (targeter != null) ? targeter.HasTarget() : false;
 		}
 	}
