@@ -121,9 +121,9 @@ namespace HANDMod.Content.HANDSurvivor
         private void InitializePrimarySkills()
         {
             SkillDef primarySkill = SkillDef.CreateInstance<SkillDef>();
-            primarySkill.activationState = new SerializableEntityStateType(typeof(EntityStates.HAND_Overclocked.Primary.PunchFist));
+            primarySkill.activationState = new SerializableEntityStateType(typeof(EntityStates.HAND_Overclocked.Primary.SwingPunch));
             primarySkill.skillNameToken = HAND_PREFIX + "PRIMARY_NAME";
-            primarySkill.skillName = "SwingFist";
+            primarySkill.skillName = "SwingPunch";
             primarySkill.skillDescriptionToken = HAND_PREFIX + "PRIMARY_DESC";
             primarySkill.cancelSprintingOnActivation = false;
             primarySkill.canceledFromSprinting = false;
@@ -141,9 +141,32 @@ namespace HANDMod.Content.HANDSurvivor
             primarySkill.keywordTokens = new string[] { "KEYWORD_STUNNING" };
             FixScriptableObjectName(primarySkill);
             Modules.ContentPacks.skillDefs.Add(primarySkill);
-
-            Skills.AddPrimarySkills(bodyPrefab, new SkillDef[] { primarySkill });
             SkillDefs.PrimaryPunch = primarySkill;
+
+            SkillDef primaryHammerSkill = SkillDef.CreateInstance<SkillDef>();
+            primaryHammerSkill.activationState = new SerializableEntityStateType(typeof(EntityStates.HAND_Overclocked.Primary.SwingHammer));
+            primaryHammerSkill.skillNameToken = HAND_PREFIX + "PRIMARY_HAMMER_NAME";
+            primaryHammerSkill.skillName = "SwingHammer";
+            primaryHammerSkill.skillDescriptionToken = HAND_PREFIX + "PRIMARY_HAMMER_DESC";
+            primaryHammerSkill.cancelSprintingOnActivation = false;
+            primaryHammerSkill.canceledFromSprinting = false;
+            primaryHammerSkill.baseRechargeInterval = 0f;
+            primaryHammerSkill.baseMaxStock = 1;
+            primaryHammerSkill.rechargeStock = 1;
+            primaryHammerSkill.beginSkillCooldownOnSkillEnd = false;
+            primaryHammerSkill.activationStateMachineName = "Weapon";
+            primaryHammerSkill.interruptPriority = EntityStates.InterruptPriority.Any;
+            primaryHammerSkill.isCombatSkill = true;
+            primaryHammerSkill.mustKeyPress = false;
+            primaryHammerSkill.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texPrimaryPunch.png");
+            primaryHammerSkill.requiredStock = 1;
+            primaryHammerSkill.stockToConsume = 1;
+            primaryHammerSkill.keywordTokens = new string[] { "KEYWORD_STUNNING" };
+            FixScriptableObjectName(primaryHammerSkill);
+            Modules.ContentPacks.skillDefs.Add(primaryHammerSkill);
+            SkillDefs.PrimaryHammer = primaryHammerSkill;
+
+            Skills.AddPrimarySkills(bodyPrefab, new SkillDef[] { primarySkill, primaryHammerSkill });
         }
         private void InitializeSecondarySkills()
         {
@@ -381,7 +404,8 @@ namespace HANDMod.Content.HANDSurvivor
 
         private void RegisterStates()
         {
-            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HAND_Overclocked.Primary.PunchFist));
+            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HAND_Overclocked.Primary.SwingPunch));
+            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HAND_Overclocked.Primary.SwingHammer));
 
             Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HAND_Overclocked.Secondary.ChargeSlam));
             Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HAND_Overclocked.Secondary.FireSlam));
