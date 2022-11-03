@@ -51,6 +51,9 @@ namespace EntityStates.HAND_Overclocked.Primary
             OverclockController ovc = base.GetComponent<OverclockController>();
             bool hasOVC = ovc && ovc.BuffActive();
 
+            Animator an = base.GetModelAnimator();
+            if (an) an.SetFloat("hammerIdle", 1f);
+
             if (base.characterBody && hasOVC && this.swingIndex == 1)
             {
                 this.damageType |= DamageType.Stun1s;

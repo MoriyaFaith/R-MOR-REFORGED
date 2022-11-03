@@ -6,6 +6,7 @@ namespace HANDMod.Content.HANDSurvivor.Components.Body
     //Doesn't work, hammer transform seems to ignore modifications to localScale.
     public class HammerVisibilityController : MonoBehaviour
     {
+        private Animator animator;
         private ChildLocator childLocator;
         private SkillLocator skillLocator;
         private GameObject hammer;
@@ -22,11 +23,27 @@ namespace HANDMod.Content.HANDSurvivor.Components.Body
             }
             skillLocator = base.GetComponent<SkillLocator>();
             hammer = childLocator.FindChildGameObject("HanDHammer");
+            ModelLocator ml = base.GetComponent<ModelLocator>();
+            if (ml && ml.modelTransform)
+            {
+                animator = ml.modelTransform.GetComponent<Animator>();
+            }
         }
 
         private void Start()
         {
-            SetHammerEnabled(false);
+            if (HasHammerPrimary(skillLocator))
+            {
+                SetHammerEnabled(true);
+                if (animator)
+                {
+                    animator.SetFloat("hammerIdle", 1f);
+                }
+            }
+            else
+            {
+                SetHammerEnabled(false);
+            }
         }
 
         /*private void FixedUpdate()
