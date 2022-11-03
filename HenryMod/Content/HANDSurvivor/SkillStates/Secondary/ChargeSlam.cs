@@ -50,7 +50,7 @@ namespace EntityStates.HAND_Overclocked.Secondary
             }
             if (!this.outer.destroying)
             {
-                this.PlayCrossfade("Gesture, Override", "BufferEmpty", "ChargeHammer.playbackRate", 0.2f, 0.2f);
+                this.PlayAnimation("Gesture, Override", "BufferEmpty");
             }
             if (hammerController)
             {

@@ -122,7 +122,7 @@ namespace EntityStates.HAND_Overclocked.Secondary
 
         protected override void PlayAttackAnimation()
         {
-            base.PlayAnimation("Gesture, Override", HammerVisibilityController.HasHammerPrimary(base.skillLocator) ? "FireHammerH" : "FireHammer", "ChargeHammer.playbackRate", this.duration);
+            base.PlayAnimation("FullBody, Override", HammerVisibilityController.HasHammerPrimary(base.skillLocator) ? "FireHammerH" : "FireHammer", "ChargeHammer.playbackRate", this.duration);
         }
 
         protected override void OnHitEnemyAuthority()
@@ -211,7 +211,7 @@ namespace EntityStates.HAND_Overclocked.Secondary
             }
             if (!this.outer.destroying)
             {
-                this.PlayAnimation("Gesture, Override", "Empty");
+                this.PlayAnimation("FullBody, Override", "Empty");
             }
             base.OnExit();
         }
