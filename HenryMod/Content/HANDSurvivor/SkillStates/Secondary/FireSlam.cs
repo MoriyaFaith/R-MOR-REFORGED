@@ -122,7 +122,7 @@ namespace EntityStates.HAND_Overclocked.Secondary
 
         protected override void PlayAttackAnimation()
         {
-            base.PlayAnimation("FullBody, Override", HammerVisibilityController.HasHammerPrimary(base.skillLocator) ? "FireHammerH" : "FireHammer", "ChargeHammer.playbackRate", this.duration);
+            base.PlayAnimation("FullBody, Override", "FireHammer", "ChargeHammer.playbackRate", this.duration);
         }
 
         protected override void OnHitEnemyAuthority()
