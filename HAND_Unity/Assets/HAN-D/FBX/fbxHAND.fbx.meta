@@ -331,7 +331,7 @@ ModelImporter:
       takeName: Armature|Idle_Hammer
       internalID: 0
       firstFrame: 0
-      lastFrame: 34
+      lastFrame: 66
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -360,7 +360,7 @@ ModelImporter:
       takeName: Armature|IdleIn
       internalID: 0
       firstFrame: 0
-      lastFrame: 14
+      lastFrame: 15
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -795,7 +795,7 @@ ModelImporter:
       takeName: Armature|RunL
       internalID: 0
       firstFrame: 0
-      lastFrame: 24
+      lastFrame: 57
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -853,7 +853,7 @@ ModelImporter:
       takeName: Armature|Sprint
       internalID: 0
       firstFrame: 0
-      lastFrame: 20
+      lastFrame: 80
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
