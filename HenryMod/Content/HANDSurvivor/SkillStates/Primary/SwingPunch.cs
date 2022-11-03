@@ -14,6 +14,7 @@ namespace EntityStates.HAND_Overclocked.Primary
         public static GameObject swingEffect = null;
         public static GameObject hitEffect = null;
         private bool setNextState = false;
+        private string animationLayer;
 
         private bool hitEnemy = false;
         public override void OnEnter()
@@ -41,6 +42,8 @@ namespace EntityStates.HAND_Overclocked.Primary
             this.attackEndTime = 0.5f;
             this.pushForce = 0f;
             this.bonusForce = 1600f * base.GetAimRay().direction;
+
+            this.animationLayer = "FullBody, Override";
 
             Util.PlaySound("Play_HOC_StartPunch", base.gameObject);
 
@@ -97,25 +100,23 @@ namespace EntityStates.HAND_Overclocked.Primary
             switch (this.swingIndex)
             {
                 case 0:
-                    base.PlayCrossfade("Gesture, Override", "PunchL", "Punch.playbackRate", this.duration, 0.2f);
+                    base.PlayCrossfade(animationLayer, "PunchL", "Punch.playbackRate", this.duration, 0.2f);
                     break;
                 case 1:
-                    //base.PlayCrossfade("Gesture, Override", "PunchR", "Punch.playbackRate", this.duration, 0.2f);
-                    base.PlayCrossfade("Gesture, Override", "PunchLR", "Punch.playbackRate", this.duration * 0.6f, 0.2f);
+                    base.PlayCrossfade(animationLayer, "PunchLR", "Punch.playbackRate", this.duration * 0.6f, 0.2f);
                     break;
                 case 2:
-                    //base.PlayCrossfade("Gesture, Override", "PunchL", "Punch.playbackRate", this.duration, 0.2f);
-                    base.PlayCrossfade("Gesture, Override", "PunchRL", "Punch.playbackRate", this.duration * 0.6f, 0.2f);
+                    base.PlayCrossfade(animationLayer, "PunchRL", "Punch.playbackRate", this.duration * 0.6f, 0.2f);
                     break;
             }
 
             /*if (this.swingIndex == 1)
             {
-                base.PlayCrossfade("Gesture, Override", "PunchR", "Punch.playbackRate", this.duration, 0.2f);
+                base.PlayCrossfade(animationLayer, "PunchR", "Punch.playbackRate", this.duration, 0.2f);
             }
             else
             {
-                base.PlayCrossfade("Gesture, Override", "PunchL", "Punch.playbackRate", this.duration, 0.2f);
+                base.PlayCrossfade(animationLayer, "PunchL", "Punch.playbackRate", this.duration, 0.2f);
             }*/
         }
 
@@ -123,7 +124,7 @@ namespace EntityStates.HAND_Overclocked.Primary
         {
             if (!this.outer.destroying && !setNextState)
             {
-                this.PlayCrossfade("Gesture, Override", "BufferEmpty", "SwingHammer.playbackRate", 0.2f, 0.2f);
+                this.PlayCrossfade(animationLayer, "BufferEmpty", "Punch.playbackRate", 0.2f, 0.2f);
             }
             base.OnExit();
         }

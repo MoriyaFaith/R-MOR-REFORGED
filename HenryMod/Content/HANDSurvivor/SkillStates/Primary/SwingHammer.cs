@@ -17,6 +17,7 @@ namespace EntityStates.HAND_Overclocked.Primary
         private HammerVisibilityController hvc;
         private bool hitEnemy = false;
         private bool setNextState = false;
+        private string animationLayer;
 
         public override void OnEnter()
         {
@@ -33,7 +34,7 @@ namespace EntityStates.HAND_Overclocked.Primary
             this.scaleHitHopWithAttackSpeed = true;
             this.hitStopDuration = 0.1f;
             this.hitSoundString = "";
-            this.swingSoundString = "Play_HOC_SwingHammer";
+            this.swingSoundString = "Play_HOC_Punch";//"Play_HOC_SwingHammer";
             this.hitboxName = "HammerHitbox";
             this.damageCoefficient = 5.8f;
             this.procCoefficient = 1f;
@@ -44,6 +45,7 @@ namespace EntityStates.HAND_Overclocked.Primary
             this.pushForce = 0f;
             this.bonusForce = 2000f * base.GetAimRay().direction;
 
+            this.animationLayer = "FullBody, Override";
             Util.PlaySound("Play_HOC_StartPunch", base.gameObject);
 
             OverclockController ovc = base.GetComponent<OverclockController>();
@@ -105,13 +107,13 @@ namespace EntityStates.HAND_Overclocked.Primary
             switch (this.swingIndex)
             {
                 case 0:
-                    base.PlayCrossfade("Gesture, Override", "HammerSwingR", "SwingHammer.playbackRate", this.duration * 1.4f, 0.2f);
+                    base.PlayCrossfade(animationLayer, "HammerSwingR", "SwingHammer.playbackRate", this.duration * 1.4f, 0.2f);
                     break;
                 case 1:
-                    base.PlayCrossfade("Gesture, Override", "HammerSwingRL", "SwingHammer.playbackRate", this.duration * 0.8f, 0.2f);
+                    base.PlayCrossfade(animationLayer, "HammerSwingRL", "SwingHammer.playbackRate", this.duration * 0.8f, 0.2f);
                     break;
                 case 2:
-                    base.PlayCrossfade("Gesture, Override", "HammerSwingLR", "SwingHammer.playbackRate", this.duration * 0.8f, 0.2f);
+                    base.PlayCrossfade(animationLayer, "HammerSwingLR", "SwingHammer.playbackRate", this.duration * 0.8f, 0.2f);
                     break;
             }
         }
@@ -167,7 +169,7 @@ namespace EntityStates.HAND_Overclocked.Primary
         {
             if (!this.outer.destroying && !setNextState)
             {
-                this.PlayCrossfade("Gesture, Override", "BufferEmpty", "SwingHammer.playbackRate",  0.2f, 0.2f);
+                this.PlayCrossfade(animationLayer, "BufferEmpty", "SwingHammer.playbackRate",  0.2f, 0.2f);
             }
             base.OnExit();
         }
