@@ -115,6 +115,20 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Play_HOC_SwingHammer" ID="{F6265670-4259-4123-9A9D-5E713A7CB190}">
+					<ChildrenList>
+						<Action Name="" ID="{11867825-8C48-43CF-A262-443435093CE0}" ShortID="389591399">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="sndHammer" ID="{6AB5DF88-326E-406E-9835-3C0AEED593A6}" WorkUnitID="{068EBB0B-3714-4C7C-A629-E920CE6D27A5}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

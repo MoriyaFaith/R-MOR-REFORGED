@@ -295,6 +295,34 @@
 										</Sound>
 									</ChildrenList>
 								</ActorMixer>
+								<Sound Name="sndHammer" ID="{6AB5DF88-326E-406E-9835-3C0AEED593A6}" ShortID="524298843">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9ABFC28C-F9CE-4070-B4DF-0A3FFE7A6911}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{F13B7F92-F854-4213-A72F-8692113DBAF5}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="sndHammer" ID="{C78C431A-2941-4147-AD4E-786E8BA9B371}">
+											<PropertyList>
+												<Property Name="LoopBegin" Type="Real64" Value="-0.001"/>
+												<Property Name="LoopEnd" Type="Real64" Value="-0.001"/>
+												<Property Name="TrimBegin" Type="Real64" Value="-0.001"/>
+												<Property Name="TrimEnd" Type="Real64" Value="-0.001"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>sndHammer.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="269277722"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="sndHammer" ID="{C78C431A-2941-4147-AD4E-786E8BA9B371}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
 							</ChildrenList>
 						</ActorMixer>
 					</ChildrenList>

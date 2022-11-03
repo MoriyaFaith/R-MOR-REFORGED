@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="12" SoundbankVersion="135">
 	<RootPaths>
-		<ProjectRoot>C:\Users\Node\RoR2 Mods\HAN-D_OVERCLOCKED\HAND_Overclocked_WWISE\</ProjectRoot>
-		<SourceFilesRoot>C:\Users\Node\RoR2 Mods\HAN-D_OVERCLOCKED\HAND_Overclocked_WWISE\.cache\Windows\</SourceFilesRoot>
-		<SoundBanksRoot>C:\Users\Node\RoR2 Mods\HAN-D_OVERCLOCKED\HAND_Overclocked_WWISE\GeneratedSoundBanks\Windows\</SoundBanksRoot>
+		<ProjectRoot>C:\Users\Node\RoR2 Mods\HAND\HAND_Overclocked_WWISE\</ProjectRoot>
+		<SourceFilesRoot>C:\Users\Node\RoR2 Mods\HAND\HAND_Overclocked_WWISE\.cache\Windows\</SourceFilesRoot>
+		<SoundBanksRoot>C:\Users\Node\RoR2 Mods\HAND\HAND_Overclocked_WWISE\GeneratedSoundBanks\Windows\</SoundBanksRoot>
 		<ExternalSourcesInputFile></ExternalSourcesInputFile>
-		<ExternalSourcesOutputRoot>C:\Users\Node\RoR2 Mods\HAN-D_OVERCLOCKED\HAND_Overclocked_WWISE\GeneratedSoundBanks\Windows</ExternalSourcesOutputRoot>
+		<ExternalSourcesOutputRoot>C:\Users\Node\RoR2 Mods\HAND\HAND_Overclocked_WWISE\GeneratedSoundBanks\Windows</ExternalSourcesOutputRoot>
 	</RootPaths>
 	<DialogueEvents/>
 	<StreamedFiles/>
 	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
-		<SoundBank Id="1029746374" Language="SFX" Hash="912009791">
+		<SoundBank Id="1029746374" Language="SFX" Hash="2992255496">
 			<ObjectPath>\SoundBanks\Default Work Unit\HAND_Overclocked_Soundbank</ObjectPath>
 			<ShortName>HAND_Overclocked_Soundbank</ShortName>
 			<Path>HAND_Overclocked_Soundbank.bnk</Path>
@@ -77,6 +77,14 @@
 						<File Id="28592980" Language="SFX">
 							<ShortName>wJanitorShoot1 1.wav</ShortName>
 							<Path>SFX\wJanitorShoot1 1_0D5756A9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="475308029" Name="Play_HOC_SwingHammer" ObjectPath="\Events\Default Work Unit\Play_HOC_SwingHammer">
+					<IncludedMemoryFiles>
+						<File Id="269277722" Language="SFX">
+							<ShortName>sndHammer.wav</ShortName>
+							<Path>SFX\sndHammer_3F75BDB9.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>

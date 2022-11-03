@@ -5,6 +5,7 @@
 			<ChildrenList>
 				<SoundBank Name="HAND_Overclocked_Soundbank" ID="{D6B7C4B8-37A8-48BB-94F6-E75F77A4C535}">
 					<ObjectInclusionList>
+						<ObjectRef Name="Play_HOC_SwingHammer" ID="{F6265670-4259-4123-9A9D-5E713A7CB190}" WorkUnitID="{38978FD5-8D2C-4C2D-9894-9E7B04E034AF}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_HOC_StartPunch" ID="{D7BF5C09-7AFD-42AE-849F-308BA3AAA9CB}" WorkUnitID="{38978FD5-8D2C-4C2D-9894-9E7B04E034AF}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_HOC_Hammer" ID="{858A263C-084E-435C-A37B-76BC509AFF81}" WorkUnitID="{38978FD5-8D2C-4C2D-9894-9E7B04E034AF}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_HOC_Drill" ID="{995825FD-63D1-4384-955F-2FB92F5771DD}" WorkUnitID="{38978FD5-8D2C-4C2D-9894-9E7B04E034AF}" Origin="Manual" Filter="7"/>
