@@ -19,6 +19,8 @@ namespace EntityStates.HAND_Overclocked.Primary
 
         public override void OnEnter()
         {
+            Debug.Log(EntityStates.HAND.Weapon.FullSwing.baseDuration);
+
             this.bonusForce = Vector3.zero;
             this.attackRecoil = 0f;
 
@@ -34,12 +36,12 @@ namespace EntityStates.HAND_Overclocked.Primary
             this.hitSoundString = "";
             this.swingSoundString = "Play_HOC_Punch";
             this.hitboxName = "HammerHitbox";
-            this.damageCoefficient = 5.4f;
+            this.damageCoefficient = 5.8f;
             this.procCoefficient = 1f;
-            this.baseDuration = 1.625f;
+            this.baseDuration = 1.75f;
             this.baseEarlyExitTime = 0.35f;
             this.attackStartTime = this.baseDuration * 0.325f;
-            this.attackEndTime = this.baseDuration * 0.5f;
+            this.attackEndTime = this.baseDuration * 0.45f;
             this.pushForce = 0f;
             this.bonusForce = 2000f * base.GetAimRay().direction;
 

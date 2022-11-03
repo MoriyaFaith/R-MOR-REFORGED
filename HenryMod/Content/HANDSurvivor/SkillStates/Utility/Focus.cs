@@ -20,6 +20,7 @@ namespace EntityStates.HAND_Overclocked.Utility
             gaugeInternal = texGaugeNemesis;
             gaugeArrowInternal = texGaugeArrowNemesis;
             internalOverlayMaterial = BeginFocus.overlayMaterial;
+            soundPitch = 0.7f;
         }
 
         //Disabling sprint feels terrible.

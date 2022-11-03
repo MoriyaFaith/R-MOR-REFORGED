@@ -126,7 +126,7 @@ namespace EntityStates.HAND_Overclocked.Utility
 				if (overclockController) overclockController.EndOverclock();
             }
 
-			Util.PlaySound(endSoundString, base.gameObject);
+			Util.PlayAttackSpeedSound(endSoundString, base.gameObject, soundPitch);
 			base.OnExit();
 		}
 
@@ -181,6 +181,7 @@ namespace EntityStates.HAND_Overclocked.Utility
 		public string startSoundString = "Play_MULT_shift_start";
 		public string endSoundString = "Play_MULT_shift_end";
 		public SkillDef cancelDef;
+		public float soundPitch = 1f;
 
 		private float stopwatch = 0f;
 		private float jetFireTime;
