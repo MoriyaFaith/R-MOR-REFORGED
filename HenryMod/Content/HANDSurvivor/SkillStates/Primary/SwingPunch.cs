@@ -13,6 +13,7 @@ namespace EntityStates.HAND_Overclocked.Primary
         public static NetworkSoundEventDef networkHitSound = null;
         public static GameObject swingEffect = null;
         public static GameObject hitEffect = null;
+        private bool setNextState = false;
 
         private bool hitEnemy = false;
         public override void OnEnter()
@@ -93,29 +94,38 @@ namespace EntityStates.HAND_Overclocked.Primary
         protected override void PlayAttackAnimation()
         {
             //Uncomment when updated punch anims are in
-            /*switch (this.swingIndex)
+            switch (this.swingIndex)
             {
                 case 0:
                     base.PlayCrossfade("Gesture, Override", "PunchL", "Punch.playbackRate", this.duration, 0.2f);
                     break;
                 case 1:
                     //base.PlayCrossfade("Gesture, Override", "PunchR", "Punch.playbackRate", this.duration, 0.2f);
-                    base.PlayCrossfade("Gesture, Override", "PunchLR", "Punch.playbackRate", this.duration, 0.2f);
+                    base.PlayCrossfade("Gesture, Override", "PunchLR", "Punch.playbackRate", this.duration * 0.6f, 0.2f);
                     break;
                 case 2:
                     //base.PlayCrossfade("Gesture, Override", "PunchL", "Punch.playbackRate", this.duration, 0.2f);
-                    base.PlayCrossfade("Gesture, Override", "PunchRL", "Punch.playbackRate", this.duration, 0.2f);
+                    base.PlayCrossfade("Gesture, Override", "PunchRL", "Punch.playbackRate", this.duration * 0.6f, 0.2f);
                     break;
-            }*/
+            }
 
-            if (this.swingIndex == 1)
+            /*if (this.swingIndex == 1)
             {
                 base.PlayCrossfade("Gesture, Override", "PunchR", "Punch.playbackRate", this.duration, 0.2f);
             }
             else
             {
                 base.PlayCrossfade("Gesture, Override", "PunchL", "Punch.playbackRate", this.duration, 0.2f);
+            }*/
+        }
+
+        public override void OnExit()
+        {
+            if (!this.outer.destroying && !setNextState)
+            {
+                this.PlayCrossfade("Gesture, Override", "BufferEmpty", "SwingHammer.playbackRate", 0.2f, 0.2f);
             }
+            base.OnExit();
         }
 
         protected override void OnHitEnemyAuthority()
@@ -129,7 +139,7 @@ namespace EntityStates.HAND_Overclocked.Primary
                     OverclockController hc = base.gameObject.GetComponent<OverclockController>();
                     if (hc)
                     {
-                        hc.ExtendOverclock(this.baseDuration * 0.64f);
+                        hc.ExtendOverclock(0.8f);
                     }
 
                     DroneStockController dsc = base.GetComponent<DroneStockController>();
@@ -157,7 +167,7 @@ namespace EntityStates.HAND_Overclocked.Primary
             //0 - PunchR
             //1 - PunchLR
             //2 - PunchRL
-
+            setNextState = true;
             this.outer.SetNextState(new SwingPunch
             {
                 swingIndex = index

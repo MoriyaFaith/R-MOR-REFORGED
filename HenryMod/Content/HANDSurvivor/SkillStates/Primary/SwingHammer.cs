@@ -16,11 +16,10 @@ namespace EntityStates.HAND_Overclocked.Primary
 
         private HammerVisibilityController hvc;
         private bool hitEnemy = false;
+        private bool setNextState = false;
 
         public override void OnEnter()
         {
-            Debug.Log(EntityStates.HAND.Weapon.FullSwing.baseDuration);
-
             this.bonusForce = Vector3.zero;
             this.attackRecoil = 0f;
 
@@ -38,8 +37,8 @@ namespace EntityStates.HAND_Overclocked.Primary
             this.hitboxName = "HammerHitbox";
             this.damageCoefficient = 5.8f;
             this.procCoefficient = 1f;
-            this.baseDuration = 1.75f;
-            this.baseEarlyExitTime = 0.35f;
+            this.baseDuration = 1.625f;
+            this.baseEarlyExitTime = 0.325f;
             this.attackStartTime = this.baseDuration * 0.325f;
             this.attackEndTime = this.baseDuration * 0.45f;
             this.pushForce = 0f;
@@ -106,7 +105,7 @@ namespace EntityStates.HAND_Overclocked.Primary
             switch (this.swingIndex)
             {
                 case 0:
-                    base.PlayCrossfade("Gesture, Override", "HammerSwingR", "SwingHammer.playbackRate", this.duration * 1.25f, 0.2f);
+                    base.PlayCrossfade("Gesture, Override", "HammerSwingR", "SwingHammer.playbackRate", this.duration * 1.4f, 0.2f);
                     break;
                 case 1:
                     base.PlayCrossfade("Gesture, Override", "HammerSwingRL", "SwingHammer.playbackRate", this.duration * 0.8f, 0.2f);
@@ -128,7 +127,7 @@ namespace EntityStates.HAND_Overclocked.Primary
                     OverclockController hc = base.gameObject.GetComponent<OverclockController>();
                     if (hc)
                     {
-                        hc.ExtendOverclock(this.baseDuration * 0.64f);
+                        hc.ExtendOverclock(1f);
                     }
 
                     DroneStockController dsc = base.GetComponent<DroneStockController>();
@@ -157,6 +156,7 @@ namespace EntityStates.HAND_Overclocked.Primary
             //1 - PunchLR
             //2 - PunchRL
 
+            setNextState = true;
             this.outer.SetNextState(new SwingHammer
             {
                 swingIndex = index
@@ -165,9 +165,9 @@ namespace EntityStates.HAND_Overclocked.Primary
 
         public override void OnExit()
         {
-            if (!this.outer.destroying)
+            if (!this.outer.destroying && !setNextState)
             {
-                this.PlayAnimation("Gesture, Override", "Empty");
+                this.PlayCrossfade("Gesture, Override", "BufferEmpty", "SwingHammer.playbackRate",  0.2f, 0.2f);
             }
             base.OnExit();
         }
