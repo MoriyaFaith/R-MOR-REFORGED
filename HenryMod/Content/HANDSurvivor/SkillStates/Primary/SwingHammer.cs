@@ -33,7 +33,7 @@ namespace EntityStates.HAND_Overclocked.Primary
             this.scaleHitHopWithAttackSpeed = true;
             this.hitStopDuration = 0.1f;
             this.hitSoundString = "";
-            this.swingSoundString = "Play_HOC_Punch";
+            this.swingSoundString = "Play_HOC_SwingHammer";
             this.hitboxName = "HammerHitbox";
             this.damageCoefficient = 5.8f;
             this.procCoefficient = 1f;

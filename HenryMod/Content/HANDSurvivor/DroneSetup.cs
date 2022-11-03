@@ -160,11 +160,6 @@ namespace HANDMod.Content.HANDSurvivor
             }
 
             droneFollower.layer = LayerIndex.noCollision.intVal;
-            Collider[] colliders = droneFollower.GetComponentsInChildren<Collider>();
-            foreach (Collider c in colliders)
-            {
-                UnityEngine.Object.Destroy(c);
-            }
 
             Material droneMat = Modules.Materials.CreateHopooMaterial("DroneBody");
             Modules.Materials.SetEmission(droneMat, 3f, Color.white);

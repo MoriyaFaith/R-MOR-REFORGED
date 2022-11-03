@@ -57,7 +57,7 @@ namespace HANDMod.Content.HANDSurvivor.Components.Body
             {
                 UpdateMotion();
             }
-            base.transform.position += this.velocity * Time.fixedDeltaTime;
+            //base.transform.position += this.velocity * Time.fixedDeltaTime;   //Why is this here?
 
             stopwatch += Time.deltaTime * (characterBody.HasBuff(Buffs.Overclock) ? 2f : 1f);
             if (stopwatch > orbitDuration)
