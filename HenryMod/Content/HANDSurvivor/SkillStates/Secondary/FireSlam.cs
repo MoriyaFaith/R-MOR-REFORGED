@@ -59,7 +59,7 @@ namespace EntityStates.HAND_Overclocked.Secondary
             this.procCoefficient = 1f;
             this.baseDuration = 0.8f;
             this.baseEarlyExitTime = 0.2f;
-            this.attackStartTime = 0.4f;
+            this.attackStartTime = 0.35f;
             this.attackEndTime = 0.5f;
             this.pushForce = 0f;
             this.bonusForce = Vector3.down * Mathf.Lerp(FireSlam.minDownForce, FireSlam.maxDownForce, chargePercent);

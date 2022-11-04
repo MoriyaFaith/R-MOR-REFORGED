@@ -6,7 +6,7 @@ AvatarMask:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: maskHANDOverclocked
+  m_Name: maskHANDOverclocked_HammerAndArms
   m_Mask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
   m_Elements:
   - m_Path: 
@@ -56,29 +56,29 @@ AvatarMask:
   - m_Path: Armature/ROOT/BASE/pelvis/PipesDown.R/Pipes.R
     m_Weight: 0
   - m_Path: Armature/ROOT/BASE/Stomach
-    m_Weight: 1
+    m_Weight: 0
   - m_Path: Armature/ROOT/BASE/Stomach/Chest
-    m_Weight: 1
+    m_Weight: 0
   - m_Path: Armature/ROOT/BASE/Stomach/Chest/Jetpack.L
-    m_Weight: 1
+    m_Weight: 0
   - m_Path: Armature/ROOT/BASE/Stomach/Chest/Jetpack.R
-    m_Weight: 1
+    m_Weight: 0
   - m_Path: Armature/ROOT/BASE/Stomach/Chest/Neck
-    m_Weight: 1
+    m_Weight: 0
   - m_Path: Armature/ROOT/BASE/Stomach/Chest/Neck/Head
-    m_Weight: 1
+    m_Weight: 0
   - m_Path: Armature/ROOT/BASE/Stomach/Chest/Neck/Head/Hat
-    m_Weight: 1
+    m_Weight: 0
   - m_Path: Armature/ROOT/BASE/Stomach/Chest/Neck/Head/Hat/hatJiggle1
-    m_Weight: 1
+    m_Weight: 0
   - m_Path: Armature/ROOT/BASE/Stomach/Chest/Neck/Head/Hat/hatJiggle1/hatJiggle2
-    m_Weight: 1
+    m_Weight: 0
   - m_Path: Armature/ROOT/BASE/Stomach/Chest/Neck/Head/Head.001
-    m_Weight: 1
+    m_Weight: 0
   - m_Path: Armature/ROOT/BASE/Stomach/Chest/PipesUp.L
-    m_Weight: 1
+    m_Weight: 0
   - m_Path: Armature/ROOT/BASE/Stomach/Chest/PipesUp.R
-    m_Weight: 1
+    m_Weight: 0
   - m_Path: Armature/ROOT/BASE/Stomach/Chest/Shoulder.L
     m_Weight: 1
   - m_Path: Armature/ROOT/BASE/Stomach/Chest/Shoulder.L/Arm1.L

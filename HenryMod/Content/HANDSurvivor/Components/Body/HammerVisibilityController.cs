@@ -38,6 +38,7 @@ namespace HANDMod.Content.HANDSurvivor.Components.Body
                 if (animator)
                 {
                     animator.SetFloat("hammerIdle", 1f);
+                    animator.SetLayerWeight(1, 1);
                 }
             }
             else
