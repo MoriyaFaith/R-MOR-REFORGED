@@ -41,9 +41,9 @@ namespace EntityStates.HAND_Overclocked.Primary
             this.baseDuration = 1.625f;
             this.baseEarlyExitTime = 0.325f;
             this.attackStartTime = this.baseDuration * 0.325f;
-            this.attackEndTime = this.baseDuration * 0.45f;
+            this.attackEndTime = this.baseDuration * 0.42f;
             this.pushForce = 0f;
-            this.bonusForce = 2000f * base.GetAimRay().direction;
+            this.bonusForce = 2400f * base.GetAimRay().direction;
 
             this.animationLayer = "FullBody, Override";
             Util.PlaySound("Play_HOC_StartPunch", base.gameObject);
@@ -79,7 +79,7 @@ namespace EntityStates.HAND_Overclocked.Primary
 
             if (this.attack != null)
             {
-                this.attack.AddModdedDamageType(DamageTypes.HANDPrimaryPunch);
+                this.attack.AddModdedDamageType(DamageTypes.HANDPrimaryHammer);
                 this.attack.AddModdedDamageType(DamageTypes.ResetVictimForce);
 
                 if (base.characterBody && base.characterBody.HasBuff(Buffs.NemesisFocus))
@@ -172,7 +172,8 @@ namespace EntityStates.HAND_Overclocked.Primary
         {
             if (!this.outer.destroying && !setNextState)
             {
-                this.PlayCrossfade(animationLayer, "BufferEmpty", "SwingHammer.playbackRate",  0.2f, 0.2f);
+                float exitDuration = swingIndex == 0 ? 1.3f / this.attackSpeedStat : 0.2f;
+                this.PlayCrossfade(animationLayer, "BufferEmpty", "SwingHammer.playbackRate", exitDuration, exitDuration);
             }
             base.OnExit();
         }

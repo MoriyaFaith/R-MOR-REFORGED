@@ -10,6 +10,7 @@ namespace HANDMod.Content
     {
         public static DamageAPI.ModdedDamageType ResetVictimForce;
         public static DamageAPI.ModdedDamageType HANDPrimaryPunch;
+        public static DamageAPI.ModdedDamageType HANDPrimaryHammer;
         public static DamageAPI.ModdedDamageType HANDSecondary;
         public static DamageAPI.ModdedDamageType HANDSecondaryScepter;
         public static DamageAPI.ModdedDamageType SquashOnKill;
@@ -24,6 +25,7 @@ namespace HANDMod.Content
 
             DamageTypes.ResetVictimForce = DamageAPI.ReserveDamageType();
             DamageTypes.HANDPrimaryPunch = DamageAPI.ReserveDamageType();
+            DamageTypes.HANDPrimaryHammer = DamageAPI.ReserveDamageType();
             DamageTypes.HANDSecondary = DamageAPI.ReserveDamageType();
             DamageTypes.HANDSecondaryScepter = DamageAPI.ReserveDamageType();
             DamageTypes.SquashOnKill = DamageAPI.ReserveDamageType();
@@ -37,11 +39,6 @@ namespace HANDMod.Content
             if (NetworkServer.active)
             {
                 CharacterBody cb = self.body;
-
-                if (damageInfo.procCoefficient > 0f)
-                {
-
-                }
 
                 if (damageInfo.attacker)
                 {
@@ -95,8 +92,8 @@ namespace HANDMod.Content
 
                             if (cb.isChampion)
                             {
-                                damageInfo.force.x *= 0.8f;
-                                damageInfo.force.z *= 0.8f;
+                                damageInfo.force.x *= 0.7f;
+                                damageInfo.force.z *= 0.7f;
                             }
                         }
                         else
@@ -115,7 +112,49 @@ namespace HANDMod.Content
                     }
                 }
 
-                //Jank.
+                //Make sure this doesn't stack with punch damagetype.
+                if (damageInfo.HasModdedDamageType(DamageTypes.HANDPrimaryHammer))
+                {
+                    if (cb.isFlying)
+                    {
+                        damageInfo.force.x *= 0.4375f;//0.5 * 7/8
+                        damageInfo.force.z *= 0.4375f;
+                    }
+                    else if (cb.characterMotor != null)
+                    {
+                        if (!cb.characterMotor.isGrounded)    //Multiply launched enemy force
+                        {
+                            damageInfo.force.x *= 1.2f;
+                            damageInfo.force.z *= 1.2f;
+
+                            if (cb.isChampion)
+                            {
+                                damageInfo.force.x *= 0.7f;
+                                damageInfo.force.z *= 0.7f;
+                            }
+                        }
+                        else
+                        {
+                            if (cb.isChampion) //deal less knockback against bosses if they're on the ground
+                            {
+                                damageInfo.force.x *= 0.5f;
+                                damageInfo.force.z *= 0.5f;
+                            }
+                        }
+                    }
+
+                    if (cb.rigidbody)
+                    {
+                        float forceMult = Mathf.Max(cb.rigidbody.mass / 100f, 1f);
+                        damageInfo.force *= forceMult;
+
+                        if (cb.isFlying)
+                        {
+                            damageInfo.force += 1500f * Vector3.down * Mathf.Min(7.5f, forceMult);
+                        }
+                    }
+                }
+
                 bool isSecondary = damageInfo.HasModdedDamageType(DamageTypes.HANDSecondary);
                 bool isScepter = damageInfo.HasModdedDamageType(DamageTypes.HANDSecondaryScepter);
                 if (isSecondary || isScepter)
@@ -134,7 +173,7 @@ namespace HANDMod.Content
                         float forceMult = Mathf.Max(cb.rigidbody.mass / 100f, 1f);
                         if (!launchEnemy && !isScepter)
                         {
-                            forceMult = Mathf.Max(7.5f, forceMult);
+                            forceMult = Mathf.Min(7.5f, forceMult);
                         }
                         damageInfo.force *= forceMult;
                     }

@@ -26,7 +26,7 @@ namespace EntityStates.HAND_Overclocked.Secondary
         public static float maxYScale = 60f;
 
         public static float baseZPos = 4.5f;
-        public static float baseZScale = 30f;   //25 in unity
+        public static float baseZScale = 30f;
         public static float maxZScale = 40f;
 
         public static float shortHop = 12f;
