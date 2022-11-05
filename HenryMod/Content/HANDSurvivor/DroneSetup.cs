@@ -32,6 +32,7 @@ namespace HANDMod.Content.HANDSurvivor
             sr.sprite = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texIndicatorDroneHeal.png");
             sr.color = new Color(189f/255, 1f, 77f / 255f);
             sr.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
+            sr.transform.localScale = 0.5f * Vector3.one;
 
             return indicator;
         }

@@ -63,6 +63,7 @@ namespace EntityStates.HAND_Overclocked.Secondary
             this.attackEndTime = 0.5f;
             this.pushForce = 0f;
             this.bonusForce = Vector3.down * Mathf.Lerp(FireSlam.minDownForce, FireSlam.maxDownForce, chargePercent);
+            this.muzzleString = "SwingCenter";
 
             ModifyStats();
 

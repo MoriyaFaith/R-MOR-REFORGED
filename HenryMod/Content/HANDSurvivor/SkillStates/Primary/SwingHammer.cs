@@ -12,7 +12,10 @@ namespace EntityStates.HAND_Overclocked.Primary
     {
         public static NetworkSoundEventDef networkHitSound = null;
         public static GameObject swingEffect = null;
+        public static GameObject swingEffectOverclock = null;
+        public static GameObject swingEffectFocus = null;
         public static GameObject hitEffect = null;
+        public static float force = 2400f;
 
         private HammerVisibilityController hvc;
         private bool hitEnemy = false;
@@ -23,8 +26,6 @@ namespace EntityStates.HAND_Overclocked.Primary
         {
             this.bonusForce = Vector3.zero;
             this.attackRecoil = 0f;
-
-            this.muzzleString = swingIndex == 1 ? "HandL" : "HandR";    //Anim names are reversed. This is correct.
             this.swingEffectPrefab = SwingHammer.swingEffect;
             this.hitEffectPrefab = SwingHammer.hitEffect;
             if (SwingHammer.networkHitSound) this.impactSound = networkHitSound.index;
@@ -40,10 +41,11 @@ namespace EntityStates.HAND_Overclocked.Primary
             this.procCoefficient = 1f;
             this.baseDuration = 1.625f;
             this.baseEarlyExitTime = 0.325f;
-            this.attackStartTime = this.baseDuration * 0.325f;
+            this.attackStartTime = this.baseDuration * 0.35f;
             this.attackEndTime = this.baseDuration * 0.42f;
             this.pushForce = 0f;
-            this.bonusForce = 2400f * base.GetAimRay().direction;
+            this.bonusForce = SwingHammer.force * base.GetAimRay().direction;
+            this.muzzleString = this.swingIndex == 1 ? "SwingCenterL": "SwingCenterR";
 
             this.animationLayer = "FullBody, Override";
             Util.PlaySound("Play_HOC_StartPunch", base.gameObject);
@@ -54,9 +56,15 @@ namespace EntityStates.HAND_Overclocked.Primary
             Animator an = base.GetModelAnimator();
             if (an) an.SetFloat("hammerIdle", 1f);
 
-            if (base.characterBody && hasOVC && this.swingIndex == 1)
+            if (base.characterBody)
             {
-                this.damageType |= DamageType.Stun1s;
+                if (base.characterBody.HasBuff(Buffs.Overclock)) base.swingEffectPrefab = SwingHammer.swingEffectOverclock;
+                if (base.characterBody.HasBuff(Buffs.NemesisFocus)) base.swingEffectPrefab = SwingHammer.swingEffectFocus;
+
+                if (hasOVC && this.swingIndex == 1)
+                {
+                    this.damageType |= DamageType.Stun1s;
+                }
             }
 
             base.OnEnter();
@@ -93,6 +101,12 @@ namespace EntityStates.HAND_Overclocked.Primary
             {
                 hvc.SetHammerEnabled(true);
             }
+        }
+
+        public override void FixedUpdate()
+        {
+            this.bonusForce = SwingHammer.force * base.GetAimRay().direction;
+            base.FixedUpdate();
         }
 
         public override void OnFiredAttack()
@@ -172,7 +186,7 @@ namespace EntityStates.HAND_Overclocked.Primary
         {
             if (!this.outer.destroying && !setNextState)
             {
-                float exitDuration = swingIndex == 0 ? 1.3f / this.attackSpeedStat : 0.2f;
+                float exitDuration = swingIndex == 0 ? 1.3f / this.attackSpeedStat : 0.3f;
                 this.PlayCrossfade(animationLayer, "BufferEmpty", "SwingHammer.playbackRate", exitDuration, exitDuration);
             }
             base.OnExit();

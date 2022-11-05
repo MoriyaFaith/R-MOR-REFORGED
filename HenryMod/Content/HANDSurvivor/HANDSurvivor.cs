@@ -100,6 +100,11 @@ namespace HANDMod.Content.HANDSurvivor
 
             Content.HANDSurvivor.Buffs.Init();
             CreateHitEffects();
+            EntityStates.HAND_Overclocked.Utility.BeginOverclock.jetEffectPrefab = BuildOverclockJets();
+            EntityStates.HAND_Overclocked.Secondary.FireSlam.earthquakeEffectPrefab = CreateSlamEffect();
+            EntityStates.HAND_Overclocked.Primary.SwingHammer.swingEffect = CreateSwingVFX("HANDMod_SwingHammerEffect", 1.5f, Addressables.LoadAssetAsync<Material>("RoR2/Base/Lemurian/matLizardBiteTrail.mat").WaitForCompletion());
+            EntityStates.HAND_Overclocked.Primary.SwingHammer.swingEffectOverclock = CreateSwingVFX("HANDMod_SwingHammerEffectOverclock", 1.5f, Addressables.LoadAssetAsync<Material>("RoR2/Base/Lemurian/matLizardBiteTrail.mat").WaitForCompletion());
+            EntityStates.HAND_Overclocked.Primary.SwingHammer.swingEffectFocus = CreateSwingVFX("HANDMod_SwingHammerEffectFocus", 1.5f, Addressables.LoadAssetAsync<Material>("RoR2/DLC1/VoidSurvivor/matVoidSurvivorMeleeSlash.mat").WaitForCompletion());
         }
 
         public override void InitializeSkills()
@@ -198,14 +203,11 @@ namespace HANDMod.Content.HANDSurvivor
             Skills.AddSecondarySkills(bodyPrefab, new SkillDef[] { secondarySkill });
             SkillDefs.SecondaryChargeHammer = secondarySkill;
 
-            EntityStates.HAND_Overclocked.Secondary.FireSlam.earthquakeEffectPrefab = CreateSlamEffect();
             InitializeScepterSkills();
         }
 
         private void InitializeUtilitySkills()
         {
-            EntityStates.HAND_Overclocked.Utility.BeginOverclock.jetEffectPrefab = BuildOverclockJets();
-
             Skills.AddUtilitySkills(bodyPrefab, new SkillDef[] {});
             SkillDef ovcSkill = SkillDef.CreateInstance<SkillDef>();
             ovcSkill.activationState = new SerializableEntityStateType(typeof(EntityStates.HAND_Overclocked.Utility.BeginOverclock));
@@ -500,6 +502,27 @@ namespace HANDMod.Content.HANDSurvivor
 
             //Does not have EffectComponent, no need to register.
             return jetObject;
+        }
+
+        private GameObject CreateSwingVFX(string name, float scale, Material material)
+        {
+            GameObject swingTrail = LegacyResourcesAPI.Load<GameObject>("prefabs/effects/handslamtrail").InstantiateClone(name, false);
+            UnityEngine.Object.Destroy(swingTrail.GetComponent<ShakeEmitter>());
+
+            Transform swingTrailTransform = swingTrail.transform.Find("SlamTrail");
+            swingTrailTransform.localScale = scale * Vector3.one;
+
+            ParticleSystemRenderer renderer = swingTrailTransform.GetComponent<ParticleSystemRenderer>();
+
+            Material swingTrailMat = material;
+            if (renderer)
+            {
+                renderer.material = swingTrailMat;
+            }
+
+            Modules.ContentPacks.effectDefs.Add(new EffectDef(swingTrail));
+
+            return swingTrail;
         }
 
         //Use these to check Vanilla values of things.

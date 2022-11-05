@@ -28,6 +28,7 @@ namespace EntityStates.HAND_Overclocked.Primary
 
         private bool setNextState = false;
         private string animationLayer;
+        public static float force = 1600f;
 
         private bool hitEnemy = false;
         public override void OnEnter()
@@ -54,7 +55,7 @@ namespace EntityStates.HAND_Overclocked.Primary
             this.attackStartTime = 0.4f;
             this.attackEndTime = 0.5f;
             this.pushForce = 0f;
-            this.bonusForce = 1600f * base.GetAimRay().direction;
+            this.bonusForce = SwingPunch.force * base.GetAimRay().direction;
             this.forceForwardVelocity = true;
             this.forwardVelocityCurve = punchVelocityCurve;
 
@@ -101,6 +102,12 @@ namespace EntityStates.HAND_Overclocked.Primary
                     this.attack.damageColorIndex = DamageColorIndex.Sniper;
                 }
             }
+        }
+
+        public override void FixedUpdate()
+        {
+            this.bonusForce = SwingPunch.force * base.GetAimRay().direction;
+            base.FixedUpdate();
         }
 
         public override void OnFiredAttack()
