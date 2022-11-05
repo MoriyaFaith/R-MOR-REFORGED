@@ -102,7 +102,8 @@ namespace HANDMod.Content.HANDSurvivor
             CreateHitEffects();
             EntityStates.HAND_Overclocked.Utility.BeginOverclock.jetEffectPrefab = BuildOverclockJets();
             EntityStates.HAND_Overclocked.Secondary.FireSlam.earthquakeEffectPrefab = CreateSlamEffect();
-            EntityStates.HAND_Overclocked.Primary.SwingHammer.swingEffect = CreateSwingVFX("HANDMod_SwingHammerEffect", 1.5f, Addressables.LoadAssetAsync<Material>("RoR2/Base/Lemurian/matLizardBiteTrail.mat").WaitForCompletion());
+            EntityStates.HAND_Overclocked.Primary.SwingHammer.swingEffect = CreateSwingVFX("HANDMod_SwingHammerEffect", 1.5f * Vector3.one, Addressables.LoadAssetAsync<Material>("RoR2/Base/Lemurian/matLizardBiteTrail.mat").WaitForCompletion());
+            EntityStates.HAND_Overclocked.Primary.SwingPunch.swingEffect = CreateSwingVFX("HANDMod_SwingPunchEffect", new Vector3 (0.4f, 2f, 1f), Addressables.LoadAssetAsync<Material>("RoR2/Base/Lemurian/matLizardBiteTrail.mat").WaitForCompletion());
         }
 
         public override void InitializeSkills()
@@ -502,13 +503,13 @@ namespace HANDMod.Content.HANDSurvivor
             return jetObject;
         }
 
-        private GameObject CreateSwingVFX(string name, float scale, Material material)
+        private GameObject CreateSwingVFX(string name, Vector3 scale, Material material)
         {
             GameObject swingTrail = LegacyResourcesAPI.Load<GameObject>("prefabs/effects/handslamtrail").InstantiateClone(name, false);
             UnityEngine.Object.Destroy(swingTrail.GetComponent<ShakeEmitter>());
 
             Transform swingTrailTransform = swingTrail.transform.Find("SlamTrail");
-            swingTrailTransform.localScale = scale * Vector3.one;
+            swingTrailTransform.localScale = scale;
 
             ParticleSystemRenderer renderer = swingTrailTransform.GetComponent<ParticleSystemRenderer>();
 

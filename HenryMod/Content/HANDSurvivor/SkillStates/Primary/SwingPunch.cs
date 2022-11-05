@@ -36,7 +36,7 @@ namespace EntityStates.HAND_Overclocked.Primary
             this.bonusForce = Vector3.zero;
             this.attackRecoil = 0f;
 
-            this.muzzleString = swingIndex == 1 ? "HandL" : "HandR";    //Anim names are reversed. This is correct.
+            this.muzzleString = swingIndex == 1 ? "MuzzleHandL" : "MuzzleHandR";    //Anim names are reversed. This is correct.
             this.swingEffectPrefab = SwingPunch.swingEffect;
             this.hitEffectPrefab = SwingPunch.hitEffect;
             if(SwingPunch.networkHitSound) this.impactSound = networkHitSound.index;
@@ -122,7 +122,7 @@ namespace EntityStates.HAND_Overclocked.Primary
         protected override void PlayAttackAnimation()
         {
             //Uncomment when updated punch anims are in
-            switch (this.swingIndex)
+            /*switch (this.swingIndex)
             {
                 case 0:
                     base.PlayCrossfade(animationLayer, "PunchL", "Punch.playbackRate", this.duration, 0.2f);
@@ -133,16 +133,16 @@ namespace EntityStates.HAND_Overclocked.Primary
                 case 2:
                     base.PlayCrossfade(animationLayer, "PunchRL", "Punch.playbackRate", this.duration * 0.6f, 0.2f);
                     break;
-            }
+            }*/
 
-            /*if (this.swingIndex == 1)
+            if (this.swingIndex == 1)
             {
                 base.PlayCrossfade(animationLayer, "PunchR", "Punch.playbackRate", this.duration, 0.2f);
             }
             else
             {
                 base.PlayCrossfade(animationLayer, "PunchL", "Punch.playbackRate", this.duration, 0.2f);
-            }*/
+            }
         }
 
         public override void OnExit()
