@@ -55,7 +55,7 @@ namespace EntityStates.HAND_Overclocked.Primary
             this.attackStartTime = 0.4f;
             this.attackEndTime = 0.5f;
             this.pushForce = 0f;
-            this.bonusForce = SwingPunch.force * base.GetAimRay().direction;
+            this.bonusForce = SwingPunch.force * base.transform.forward;
             this.forceForwardVelocity = true;
             this.forwardVelocityCurve = punchVelocityCurve;
 
@@ -106,7 +106,7 @@ namespace EntityStates.HAND_Overclocked.Primary
 
         public override void FixedUpdate()
         {
-            this.bonusForce = SwingPunch.force * base.GetAimRay().direction;
+            this.bonusForce = SwingPunch.force * base.transform.forward;
             base.FixedUpdate();
         }
 

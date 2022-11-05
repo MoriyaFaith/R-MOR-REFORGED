@@ -103,8 +103,6 @@ namespace HANDMod.Content.HANDSurvivor
             EntityStates.HAND_Overclocked.Utility.BeginOverclock.jetEffectPrefab = BuildOverclockJets();
             EntityStates.HAND_Overclocked.Secondary.FireSlam.earthquakeEffectPrefab = CreateSlamEffect();
             EntityStates.HAND_Overclocked.Primary.SwingHammer.swingEffect = CreateSwingVFX("HANDMod_SwingHammerEffect", 1.5f, Addressables.LoadAssetAsync<Material>("RoR2/Base/Lemurian/matLizardBiteTrail.mat").WaitForCompletion());
-            EntityStates.HAND_Overclocked.Primary.SwingHammer.swingEffectOverclock = CreateSwingVFX("HANDMod_SwingHammerEffectOverclock", 1.5f, Addressables.LoadAssetAsync<Material>("RoR2/Base/Lemurian/matLizardBiteTrail.mat").WaitForCompletion());
-            EntityStates.HAND_Overclocked.Primary.SwingHammer.swingEffectFocus = CreateSwingVFX("HANDMod_SwingHammerEffectFocus", 1.5f, Addressables.LoadAssetAsync<Material>("RoR2/DLC1/VoidSurvivor/matVoidSurvivorMeleeSlash.mat").WaitForCompletion());
         }
 
         public override void InitializeSkills()

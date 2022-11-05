@@ -12,8 +12,6 @@ namespace EntityStates.HAND_Overclocked.Primary
     {
         public static NetworkSoundEventDef networkHitSound = null;
         public static GameObject swingEffect = null;
-        public static GameObject swingEffectOverclock = null;
-        public static GameObject swingEffectFocus = null;
         public static GameObject hitEffect = null;
         public static float force = 2400f;
 
@@ -44,7 +42,7 @@ namespace EntityStates.HAND_Overclocked.Primary
             this.attackStartTime = this.baseDuration * 0.35f;
             this.attackEndTime = this.baseDuration * 0.42f;
             this.pushForce = 0f;
-            this.bonusForce = SwingHammer.force * base.GetAimRay().direction;
+            this.bonusForce = SwingHammer.force * base.transform.forward;
             this.muzzleString = this.swingIndex == 1 ? "SwingCenterL": "SwingCenterR";
 
             this.animationLayer = "FullBody, Override";
@@ -58,9 +56,6 @@ namespace EntityStates.HAND_Overclocked.Primary
 
             if (base.characterBody)
             {
-                if (base.characterBody.HasBuff(Buffs.Overclock)) base.swingEffectPrefab = SwingHammer.swingEffectOverclock;
-                if (base.characterBody.HasBuff(Buffs.NemesisFocus)) base.swingEffectPrefab = SwingHammer.swingEffectFocus;
-
                 if (hasOVC && this.swingIndex == 1)
                 {
                     this.damageType |= DamageType.Stun1s;
@@ -105,7 +100,7 @@ namespace EntityStates.HAND_Overclocked.Primary
 
         public override void FixedUpdate()
         {
-            this.bonusForce = SwingHammer.force * base.GetAimRay().direction;
+            this.bonusForce = SwingHammer.force * base.transform.forward;
             base.FixedUpdate();
         }
 
