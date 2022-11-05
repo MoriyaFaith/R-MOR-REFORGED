@@ -13,6 +13,19 @@ namespace EntityStates.HAND_Overclocked.Primary
         public static NetworkSoundEventDef networkHitSound = null;
         public static GameObject swingEffect = null;
         public static GameObject hitEffect = null;
+        public static AnimationCurve punchVelocityCurve = new AnimationCurve(new Keyframe[]
+        {
+            new Keyframe(0f, 0f, 0.25312966108322146f, Mathf.Infinity, 0f, 0.3333333432674408f),    //Move starting time to when HAN-D's punch starts
+            new Keyframe(0.24929532408714295f, 0.20000000298023225f, -1.3447399139404297f, -1.3447399139404297f, 0.3333333432674408f, 0.09076657891273499f),
+            new Keyframe(0.6705322265625f, 0f, -0.1023506224155426f, -0.1023506224155426f, 0.7332440614700317f, 0f),
+        });
+
+        //Loader's VelocityCurve
+        /*{"preWrapMode":8,"postWrapMode":8
+         * "keys":[{"time":0.0,"value":0.0,"inTangent":0.25312966108322146,"outTangent":Infinity,"inWeight":0.0,"outWeight":0.3333333432674408,"weightedMode":0,"tangentMode":97},
+         * {"time":0.24929532408714295,"value":0.20000000298023225,"inTangent":-1.3447399139404297,"outTangent":-1.3447399139404297,"inWeight":0.3333333432674408,"outWeight":0.09076657891273499,"weightedMode":0,"tangentMode":0},
+         * { "time":0.6705322265625,"value":0.0,"inTangent":-0.1023506224155426,"outTangent":-0.1023506224155426,"inWeight":0.7332440614700317,"outWeight":0.0,"weightedMode":0,"tangentMode":0}]}*/
+
         private bool setNextState = false;
         private string animationLayer;
 
@@ -42,6 +55,8 @@ namespace EntityStates.HAND_Overclocked.Primary
             this.attackEndTime = 0.5f;
             this.pushForce = 0f;
             this.bonusForce = 1600f * base.GetAimRay().direction;
+            this.forceForwardVelocity = true;
+            this.forwardVelocityCurve = punchVelocityCurve;
 
             this.animationLayer = "FullBody, Override";
 

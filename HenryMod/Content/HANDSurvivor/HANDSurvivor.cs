@@ -143,6 +143,9 @@ namespace HANDMod.Content.HANDSurvivor
             Modules.ContentPacks.skillDefs.Add(primarySkill);
             SkillDefs.PrimaryPunch = primarySkill;
 
+            EntityStates.HAND_Overclocked.Primary.SwingPunch.punchVelocityCurve.preWrapMode = UnityEngine.WrapMode.ClampForever;
+            EntityStates.HAND_Overclocked.Primary.SwingPunch.punchVelocityCurve.postWrapMode = UnityEngine.WrapMode.ClampForever;
+
             SkillDef primaryHammerSkill = SkillDef.CreateInstance<SkillDef>();
             primaryHammerSkill.activationState = new SerializableEntityStateType(typeof(EntityStates.HAND_Overclocked.Primary.SwingHammer));
             primaryHammerSkill.skillNameToken = HAND_PREFIX + "PRIMARY_HAMMER_NAME";
