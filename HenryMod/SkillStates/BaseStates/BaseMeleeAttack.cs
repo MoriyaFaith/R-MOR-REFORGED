@@ -26,6 +26,8 @@ namespace HANDMod.SkillStates.BaseStates
         protected float attackRecoil = 0.75f;
         protected float hitHopVelocity = 4f;
         protected bool cancelled = false;
+        protected bool forceForwardVelocity = false;
+        protected AnimationCurve forwardVelocityCurve;
 
         protected string swingSoundString = "";
         protected string hitSoundString = "";
@@ -173,21 +175,29 @@ namespace HANDMod.SkillStates.BaseStates
 
             this.hitPauseTimer -= Time.fixedDeltaTime;
 
-            if (this.hitPauseTimer <= 0f && this.inHitPause)
+            if (base.isAuthority)
             {
-                base.ConsumeHitStopCachedState(this.hitStopCachedState, base.characterMotor, this.animator);
-                this.inHitPause = false;
-                base.characterMotor.velocity = this.storedVelocity;
-            }
+                if (this.hitPauseTimer <= 0f && this.inHitPause)
+                {
+                    base.ConsumeHitStopCachedState(this.hitStopCachedState, base.characterMotor, this.animator);
+                    this.inHitPause = false;
+                    base.characterMotor.velocity = this.storedVelocity;
+                }
 
-            if (!this.inHitPause)
-            {
-                this.stopwatch += Time.fixedDeltaTime;
-            }
-            else
-            {
-                if (base.characterMotor) base.characterMotor.velocity = Vector3.zero;
-                if (this.animator) this.animator.SetFloat("Swing.playbackRate", 0f);
+                if (!this.inHitPause)
+                {
+                    this.stopwatch += Time.fixedDeltaTime;
+                    if (this.forceForwardVelocity && base.characterMotor && !(base.characterBody && base.characterBody.GetNotMoving()))
+                    {
+                        Vector3 evaluatedForwardVector = base.characterDirection.forward * this.forwardVelocityCurve.Evaluate(base.fixedAge / this.duration);
+                        base.characterMotor.AddDisplacement(new Vector3(evaluatedForwardVector.x, 0f, evaluatedForwardVector.z));
+                    }
+                }
+                else
+                {
+                    if (base.characterMotor) base.characterMotor.velocity = Vector3.zero;
+                    if (this.animator) this.animator.SetFloat("Swing.playbackRate", 0f);
+                }
             }
 
             if (this.stopwatch >= (this.duration * this.attackStartTime) && this.stopwatch <= (this.duration * this.attackEndTime))
@@ -205,10 +215,13 @@ namespace HANDMod.SkillStates.BaseStates
                 }
             }
 
-            if (this.stopwatch >= this.duration && base.isAuthority)
+            if (base.isAuthority)
             {
-                this.outer.SetNextStateToMain();
-                return;
+                if (this.stopwatch >= this.duration)
+                {
+                    this.outer.SetNextStateToMain();
+                    return;
+                }
             }
         }
 
