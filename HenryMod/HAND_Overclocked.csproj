@@ -374,7 +374,6 @@
 
   <ItemGroup>
     <Folder Include="Content\RMORSurvivor\SkillStates\Secondary\" />
-    <Folder Include="Content\RMORSurvivor\SkillStates\Primary\" />
   </ItemGroup>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
