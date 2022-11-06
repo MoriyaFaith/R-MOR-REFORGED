@@ -43,7 +43,11 @@ namespace EntityStates.HAND_Overclocked.Primary
             this.attackStartTime = this.baseDuration * 0.35f;
             this.attackEndTime = this.baseDuration * 0.42f;
             this.pushForce = 0f;
-            this.bonusForce = SwingHammer.force * base.transform.forward;
+
+            Vector3 aimFlat = base.GetAimRay().direction;
+            aimFlat.y = 0;
+            aimFlat.Normalize();
+            this.bonusForce = SwingHammer.force * aimFlat;
             this.muzzleString = this.swingIndex == 1 ? "SwingCenterL": "SwingCenterR";
 
             this.animationLayer = "FullBody, Override";
@@ -101,7 +105,10 @@ namespace EntityStates.HAND_Overclocked.Primary
 
         public override void FixedUpdate()
         {
-            this.bonusForce = SwingHammer.force * base.transform.forward;
+            Vector3 aimFlat = base.GetAimRay().direction;
+            aimFlat.y = 0;
+            aimFlat.Normalize();
+            this.bonusForce = SwingHammer.force * aimFlat;
             base.FixedUpdate();
         }
 
