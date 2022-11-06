@@ -45,7 +45,7 @@ namespace HANDMod.Content.Shared
             ovcSkill.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texUtilityOverclock.png");
             ovcSkill.activationStateMachineName = "Slide";
             ovcSkill.keywordTokens = new string[] { };//HANDSurvivor.HAND_PREFIX + "KEYWORD_SPRINGY"
-            FixScriptableObjectName(ovcSkill);
+            Modules.Skills.FixScriptableObjectName(ovcSkill);
             Modules.ContentPacks.skillDefs.Add(ovcSkill);
             SkillDefs.UtilityOverclock = ovcSkill;
 
@@ -71,7 +71,7 @@ namespace HANDMod.Content.Shared
             ovcCancelDef.skillNameToken = HANDMod.Content.HANDSurvivor.HANDSurvivor.HAND_PREFIX + "UTILITY_CANCEL_NAME";
             ovcCancelDef.skillDescriptionToken = HANDMod.Content.HANDSurvivor.HANDSurvivor.HAND_PREFIX + "UTILITY_CANCEL_DESC";
             ovcCancelDef.stockToConsume = 0;
-            FixScriptableObjectName(ovcCancelDef);
+            Modules.Skills.FixScriptableObjectName(ovcCancelDef);
             HANDMod.Modules.ContentPacks.skillDefs.Add(ovcCancelDef);
             SkillDefs.UtilityOverclockCancel = ovcCancelDef;
 
@@ -101,7 +101,7 @@ namespace HANDMod.Content.Shared
             focusSkill.icon = HANDMod.Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texUtilityNemesis.png");
             focusSkill.activationStateMachineName = "Slide";
             focusSkill.keywordTokens = new string[] { };//HANDSurvivor.HAND_PREFIX + "KEYWORD_SPRINGY"
-            FixScriptableObjectName(focusSkill);
+            Modules.Skills.FixScriptableObjectName(focusSkill);
             HANDMod.Modules.ContentPacks.skillDefs.Add(focusSkill);
             SkillDefs.UtilityFocus = focusSkill;
 
@@ -109,10 +109,6 @@ namespace HANDMod.Content.Shared
 
             EntityStates.HAND_Overclocked.Utility.BeginFocus.texGaugeNemesis = Assets.mainAssetBundle.LoadAsset<Texture2D>("texGaugeNemesis.png");
             EntityStates.HAND_Overclocked.Utility.BeginFocus.texGaugeArrowNemesis = Assets.mainAssetBundle.LoadAsset<Texture2D>("texGaugeArrowNemesis.png");
-        }
-        private void FixScriptableObjectName(SkillDef sk)
-        {
-            (sk as ScriptableObject).name = sk.skillName;
         }
     }
 }

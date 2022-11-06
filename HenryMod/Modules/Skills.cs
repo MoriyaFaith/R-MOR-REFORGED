@@ -8,7 +8,6 @@ using UnityEngine;
 
 namespace HANDMod.Modules
 {
-
     internal static class Skills
     {
         #region genericskills
@@ -146,6 +145,11 @@ namespace HANDMod.Modules
             return skillDef;
         }
         #endregion skilldefs
+
+        public static void FixScriptableObjectName(SkillDef sk)
+        {
+            (sk as ScriptableObject).name = sk.skillName;
+        }
     }
 
     /// <summary>

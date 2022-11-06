@@ -149,7 +149,7 @@ namespace HANDMod.Content.HANDSurvivor
             primarySkill.requiredStock = 1;
             primarySkill.stockToConsume = 1;
             primarySkill.keywordTokens = new string[] { "KEYWORD_STUNNING" };
-            FixScriptableObjectName(primarySkill);
+            Modules.Skills.FixScriptableObjectName(primarySkill);
             Modules.ContentPacks.skillDefs.Add(primarySkill);
             SkillDefs.PrimaryPunch = primarySkill;
 
@@ -175,7 +175,7 @@ namespace HANDMod.Content.HANDSurvivor
             primaryHammerSkill.requiredStock = 1;
             primaryHammerSkill.stockToConsume = 1;
             primaryHammerSkill.keywordTokens = new string[] { "KEYWORD_STUNNING" };
-            FixScriptableObjectName(primaryHammerSkill);
+            Modules.Skills.FixScriptableObjectName(primaryHammerSkill);
             Modules.ContentPacks.skillDefs.Add(primaryHammerSkill);
             SkillDefs.PrimaryHammer = primaryHammerSkill;
 
@@ -202,7 +202,7 @@ namespace HANDMod.Content.HANDSurvivor
             secondarySkill.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texSecondary.png");
             secondarySkill.beginSkillCooldownOnSkillEnd = true;
             secondarySkill.keywordTokens = new string[] { "KEYWORD_STUNNING" };
-            FixScriptableObjectName(secondarySkill);
+            Modules.Skills.FixScriptableObjectName(secondarySkill);
             Modules.ContentPacks.skillDefs.Add(secondarySkill);
 
             Skills.AddSecondarySkills(bodyPrefab, new SkillDef[] { secondarySkill });
@@ -252,7 +252,7 @@ namespace HANDMod.Content.HANDSurvivor
             droneSkill.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texSpecial.png");
             droneSkill.activationStateMachineName = "DroneLauncher";
             droneSkill.keywordTokens = new string[] { };
-            FixScriptableObjectName(droneSkill);
+            Modules.Skills.FixScriptableObjectName(droneSkill);
             Modules.ContentPacks.skillDefs.Add(droneSkill);
             SkillDefs.SpecialDrone = droneSkill;
 
@@ -280,7 +280,7 @@ namespace HANDMod.Content.HANDSurvivor
             scepterSkill.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texSecondaryScepter.png");
             scepterSkill.beginSkillCooldownOnSkillEnd = SkillDefs.SecondaryChargeHammer.beginSkillCooldownOnSkillEnd;
             scepterSkill.keywordTokens = SkillDefs.SecondaryChargeHammer.keywordTokens;
-            FixScriptableObjectName(scepterSkill);
+            Modules.Skills.FixScriptableObjectName(scepterSkill);
             Modules.ContentPacks.skillDefs.Add(scepterSkill);
 
             SkillDefs.SecondaryChargeHammerScepter = scepterSkill;
@@ -340,10 +340,7 @@ namespace HANDMod.Content.HANDSurvivor
 
             Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HAND_Overclocked.Special.FireSeekingDrone));
         }
-        private void FixScriptableObjectName(SkillDef sk)
-        {
-            (sk as ScriptableObject).name = sk.skillName;
-        }
+
         private GameObject CreateSlamEffect()
         {
             GameObject slamImpactEffect = LegacyResourcesAPI.Load<GameObject>("prefabs/effects/impacteffects/ParentSlamEffect").InstantiateClone("HANDMod_SlamImpactEffect", false);
