@@ -5,6 +5,7 @@ using RoR2;
 using R2API;
 using UnityEngine;
 using HANDMod.Content;
+using HANDMod.Content.Shared.Components.Body;
 
 namespace EntityStates.HAND_Overclocked.Primary
 {
@@ -97,7 +98,7 @@ namespace EntityStates.HAND_Overclocked.Primary
                 this.attack.AddModdedDamageType(DamageTypes.HANDPrimaryPunch);
                 this.attack.AddModdedDamageType(DamageTypes.ResetVictimForce);
 
-                if (base.characterBody && base.characterBody.HasBuff(Buffs.NemesisFocus))
+                if (base.characterBody && base.characterBody.HasBuff(HANDMod.Content.Shared.Buffs.NemesisFocus))
                 {
                     this.attack.damageColorIndex = DamageColorIndex.Sniper;
                 }

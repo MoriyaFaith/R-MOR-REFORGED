@@ -5,6 +5,7 @@ using HANDMod.Content.HANDSurvivor.Components.Body;
 using R2API;
 using HANDMod.Content.HANDSurvivor;
 using HANDMod.Content;
+using HANDMod.Content.Shared.Components.Body;
 
 namespace EntityStates.HAND_Overclocked.Secondary
 {
@@ -101,7 +102,7 @@ namespace EntityStates.HAND_Overclocked.Secondary
             {
                 ModifyDamageTypes();
 
-                if (base.characterBody && base.characterBody.HasBuff(Buffs.NemesisFocus))
+                if (base.characterBody && base.characterBody.HasBuff(HANDMod.Content.Shared.Buffs.NemesisFocus))
                 {
                     this.attack.damageColorIndex = DamageColorIndex.Sniper;
                 }

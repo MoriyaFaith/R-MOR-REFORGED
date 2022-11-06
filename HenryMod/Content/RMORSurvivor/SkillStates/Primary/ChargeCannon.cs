@@ -6,8 +6,8 @@ namespace EntityStates.RMOR.Primary
     public class ChargeCannon : BaseState
     {
         public static float baseDuration = 1.5f;
-        public static string partialChargeSoundString;
-        public static string fullChargeSoundString;
+        public static string partialChargeSoundString = "Play_engi_M1_chargeStock";
+        public static string fullChargeSoundString = "Play_HOC_StartPunch";
         public static GameObject partialChargeEffect;
         public static GameObject fullChargeEffect;
         public static int maxChargeLevel = 3;

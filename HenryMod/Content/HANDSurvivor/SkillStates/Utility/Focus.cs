@@ -15,8 +15,8 @@ namespace EntityStates.HAND_Overclocked.Utility
 
         public override void LoadStats()
         {
-            cancelDef = SkillDefs.UtilityOverclockCancel;
-            buffDef = Buffs.NemesisFocus;
+            cancelDef = HANDMod.Content.Shared.SkillDefs.UtilityOverclockCancel;
+            buffDef = HANDMod.Content.Shared.Buffs.NemesisFocus;
             gaugeInternal = texGaugeNemesis;
             gaugeArrowInternal = texGaugeArrowNemesis;
             internalOverlayMaterial = BeginFocus.overlayMaterial;

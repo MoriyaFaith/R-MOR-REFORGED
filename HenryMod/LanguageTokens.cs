@@ -51,6 +51,12 @@ namespace HANDMod
 
             LanguageAPI.Add(handPrefix + "SPECIAL_NAME", "DRONE");
             LanguageAPI.Add(handPrefix + "SPECIAL_DESC", "Fire a drone that deals <style=cIsDamage>270% damage</style> and <style=cIsHealing>heals for 40% of the damage dealt</style>. Kills and melee hits <style=cIsUtility>reduce cooldown</style>.");
+
+            string rmorPrefix = Content.RMORSurvivor.RMORSurvivor.RMOR_PREFIX;
+            LanguageAPI.Add(rmorPrefix + "NAME", "R-MOR");
+
+            LanguageAPI.Add(rmorPrefix + "PRIMARY_NAME", "ERADICATE");
+            LanguageAPI.Add(rmorPrefix + "PRIMARY_DESC", "Charge up your cannons and fire a barrage of rockets for up to <style=cIsDamage>3x420% damage</style>.");
         }
     }
 }

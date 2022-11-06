@@ -45,7 +45,7 @@ namespace HANDMod.Content.RMORSurvivor
         public override void InitializeCharacter()
         {
             base.InitializeCharacter();
-            bodyPrefab.AddComponent<HANDSurvivor.Components.Body.OverclockController>();
+            bodyPrefab.AddComponent<HANDMod.Content.Shared.Components.Body.OverclockController >();
 
             RMORTargetingController.enemyIndicatorPrefab = CreateEnemyIndicator();
             RMORTargetingController tc = bodyPrefab.AddComponent<RMORTargetingController>();
@@ -71,10 +71,10 @@ namespace HANDMod.Content.RMORSurvivor
 
         private void InitializeUtilitySkills()
         {
-            Skills.AddUtilitySkills(bodyPrefab, new SkillDef[] { HANDSurvivor.SkillDefs.UtilityOverclock, HANDSurvivor.SkillDefs.UtilityFocus });
+            Skills.AddUtilitySkills(bodyPrefab, new SkillDef[] { Shared.SkillDefs.UtilityOverclock, Shared.SkillDefs.UtilityFocus });
         }
 
-        private static GameObject CreateEnemyIndicator()
+        private GameObject CreateEnemyIndicator()
         {
             GameObject indicator = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Engi/EngiMissileTrackingIndicator.prefab").WaitForCompletion().InstantiateClone("HANDMod_RMOR_EnemyIndicator", false);
             SpriteRenderer[] sr = indicator.GetComponentsInChildren<SpriteRenderer>();
@@ -87,6 +87,13 @@ namespace HANDMod.Content.RMORSurvivor
                 }
             }
             return indicator;
+        }
+
+        private GameObject CreateRocketProjectile()
+        {
+            GameObject projectile = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Drones/PaladinRocket.prefab").WaitForCompletion().InstantiateClone("HANDMod_RMOR_Rocket", true);
+            Modules.ContentPacks.projectilePrefabs.Add(projectile);
+            return projectile;
         }
     }
 }

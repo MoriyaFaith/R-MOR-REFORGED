@@ -54,6 +54,8 @@ namespace HANDMod
             // survivor initialization
             //new MyCharacter().Initialize();
 
+            new Content.Shared.SharedContent();
+
             Content.DamageTypes.Initialize();
             new HANDSurvivor().Initialize();
             if (RMORSurvivor.enabled) new RMORSurvivor().Initialize();

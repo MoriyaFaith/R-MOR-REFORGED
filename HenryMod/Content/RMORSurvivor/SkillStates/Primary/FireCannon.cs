@@ -10,7 +10,7 @@ namespace EntityStates.RMOR.Primary
         public static GameObject projectilePrefab;
         public static float baseExitDuration = 0.6f;
         public static float baseDurationBetweenShots = 0.2f;
-        public static float damageCoefficient = 5f;
+        public static float damageCoefficient = 4.2f;
         public static float force = 2000f;
         public static GameObject muzzleflashEffectPrefab;
 
@@ -30,7 +30,8 @@ namespace EntityStates.RMOR.Primary
         public override void OnEnter()
         {
             base.OnEnter();
-            shotsRemaining = Mathf.ClosestPowerOfTwo(chargeLevel - 1);
+            //shotsRemaining = Mathf.ClosestPowerOfTwo(chargeLevel - 1);
+            shotsRemaining = chargeLevel;
             crit = base.RollCrit();
             fireStopwatch = 0f;
             durationBetweenShots = FireCannon.baseDurationBetweenShots / this.attackSpeedStat;
