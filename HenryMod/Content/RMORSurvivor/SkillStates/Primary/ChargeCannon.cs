@@ -50,6 +50,10 @@ namespace EntityStates.RMOR.Primary
                         SetNextState();
                         return;
                     }
+                    else
+                    {
+                        this.outer.SetNextStateToMain();
+                    }
                 }
             }
         }
