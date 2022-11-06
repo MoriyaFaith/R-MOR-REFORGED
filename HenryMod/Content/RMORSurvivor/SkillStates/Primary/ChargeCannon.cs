@@ -5,7 +5,7 @@ namespace EntityStates.RMOR.Primary
 {
     public class ChargeCannon : BaseState
     {
-        public static float baseDuration;
+        public static float baseDuration = 1.5f;
         public static string partialChargeSoundString;
         public static string fullChargeSoundString;
         public static GameObject partialChargeEffect;
