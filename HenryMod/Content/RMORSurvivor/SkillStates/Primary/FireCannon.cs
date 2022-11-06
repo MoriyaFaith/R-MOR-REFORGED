@@ -30,7 +30,7 @@ namespace EntityStates.RMOR.Primary
         public override void OnEnter()
         {
             base.OnEnter();
-            shotsRemaining = chargeLevel;
+            shotsRemaining = Mathf.ClosestPowerOfTwo(chargeLevel - 1);
             crit = base.RollCrit();
             fireStopwatch = 0f;
             durationBetweenShots = FireCannon.baseDurationBetweenShots / this.attackSpeedStat;
