@@ -105,6 +105,9 @@ namespace HANDMod.Content.HANDSurvivor
             bodyPrefab.AddComponent<HammerVisibilityController>();
 
             Content.HANDSurvivor.Buffs.Init();
+
+            MasterAI.Init(bodyPrefab);
+
             CreateHitEffects();
             EntityStates.HAND_Overclocked.Utility.BeginOverclock.jetEffectPrefab = BuildOverclockJets();
             EntityStates.HAND_Overclocked.Secondary.FireSlam.earthquakeEffectPrefab = CreateSlamEffect();
