@@ -21,6 +21,7 @@ namespace HANDMod.Content.HANDSurvivor
     {
         public const string HAND_PREFIX = HandPlugin.DEVELOPER_PREFIX + "_HAND_BODY_";
         public override string survivorTokenPrefix => HAND_PREFIX;
+        public override string cachedName => "HANDOverclocked";
 
         public override UnlockableDef characterUnlockableDef => null;
 

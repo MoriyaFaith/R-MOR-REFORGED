@@ -21,6 +21,7 @@ namespace HANDMod.Content.RMORSurvivor
         public override UnlockableDef characterUnlockableDef => null;
 
         public override string bodyName => "RMOR";
+        public override string cachedName => "RMOR";
 
         public override BodyInfo bodyInfo { get; set; } = new BodyInfo
         {
