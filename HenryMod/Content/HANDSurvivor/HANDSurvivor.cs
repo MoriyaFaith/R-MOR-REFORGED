@@ -107,13 +107,16 @@ namespace HANDMod.Content.HANDSurvivor
 
             Content.HANDSurvivor.Buffs.Init();
 
-            MasterAI.Init(bodyPrefab);
-
             CreateHitEffects();
             EntityStates.HAND_Overclocked.Utility.BeginOverclock.jetEffectPrefab = BuildOverclockJets();
             EntityStates.HAND_Overclocked.Secondary.FireSlam.earthquakeEffectPrefab = CreateSlamEffect();
             EntityStates.HAND_Overclocked.Primary.SwingHammer.swingEffect = CreateSwingVFX("HANDMod_SwingHammerEffect", 1.5f * Vector3.one, Addressables.LoadAssetAsync<Material>("RoR2/Base/Lemurian/matLizardBiteTrail.mat").WaitForCompletion());
             EntityStates.HAND_Overclocked.Primary.SwingPunch.swingEffect = CreateSwingVFX("HANDMod_SwingPunchEffect", new Vector3 (0.4f, 2f, 1f), Addressables.LoadAssetAsync<Material>("RoR2/Base/Lemurian/matLizardBiteTrail.mat").WaitForCompletion());
+        }
+
+        public override void InitializeDoppelganger(string clone)
+        {
+            MasterAI.Init(bodyPrefab);
         }
 
         public override void InitializeSkills()
