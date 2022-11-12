@@ -22,7 +22,7 @@ namespace HANDMod.Content.HANDSurvivor
         public const string HAND_PREFIX = HandPlugin.DEVELOPER_PREFIX + "_HAND_BODY_";
         public override string survivorTokenPrefix => HAND_PREFIX;
         public override string cachedName => "HANDOverclocked";
-
+        public override ItemDisplaysBase itemDisplays => new HANDItemDisplays();
         public override UnlockableDef characterUnlockableDef => null;
 
         public override string bodyName => "HANDOverclocked";
@@ -247,7 +247,7 @@ namespace HANDMod.Content.HANDSurvivor
             droneSkill.isCombatSkill = true;
             droneSkill.cancelSprintingOnActivation = false;
             droneSkill.canceledFromSprinting = false;
-            droneSkill.baseRechargeInterval = 10f;
+            droneSkill.baseRechargeInterval = 12f;
             droneSkill.interruptPriority = EntityStates.InterruptPriority.Any;
             droneSkill.mustKeyPress = false;
             droneSkill.beginSkillCooldownOnSkillEnd = true;
@@ -323,7 +323,7 @@ namespace HANDMod.Content.HANDSurvivor
 
             #region DefaultSkin
             //this creates a SkinDef with all default fields
-            SkinDef defaultSkin = Modules.Skins.CreateSkinDef(HAND_PREFIX + "DEFAULT_SKIN_NAME",
+            SkinDef defaultSkin = Modules.Skins.CreateSkinDef("DEFAULT_SKIN",
                 Assets.mainAssetBundle.LoadAsset<Sprite>("texMainSkin"),
                 defaultRendererinfos,
                 model);

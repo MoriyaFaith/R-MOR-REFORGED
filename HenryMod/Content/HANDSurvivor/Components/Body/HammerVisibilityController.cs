@@ -9,6 +9,8 @@ namespace HANDMod.Content.HANDSurvivor.Components.Body
         private Animator animator;
         private ChildLocator childLocator;
         private SkillLocator skillLocator;
+        private CharacterBody characterBody;
+        private Inventory inventory;
         private GameObject hammer;
 
         private bool hammerEnabled = false;
@@ -21,6 +23,7 @@ namespace HANDMod.Content.HANDSurvivor.Components.Body
                 Destroy(this);
                 return;
             }
+            characterBody = base.GetComponent<CharacterBody>();
             skillLocator = base.GetComponent<SkillLocator>();
             hammer = childLocator.FindChildGameObject("HanDHammer");
             ModelLocator ml = base.GetComponent<ModelLocator>();
@@ -32,6 +35,10 @@ namespace HANDMod.Content.HANDSurvivor.Components.Body
 
         private void Start()
         {
+            if (characterBody)
+            {
+                inventory = characterBody.inventory;
+            }
             if (HasHammerPrimary(skillLocator))
             {
                 SetHammerEnabled(true);
@@ -61,17 +68,29 @@ namespace HANDMod.Content.HANDSurvivor.Components.Body
 
         private void ShowHammer()
         {
-            hammer.SetActive(true);
+            if (!HasShatteringJustice(inventory))
+            {
+                hammer.SetActive(true);
+            }
+            else
+            {
+                hammer.SetActive(false);
+            }
         }
 
         private void HideHammer()
         {
-            if (!HasHammerPrimary(skillLocator)) hammer.SetActive(false);
+            if (!HasHammerPrimary(skillLocator) || HasShatteringJustice(inventory)) hammer.SetActive(false);
         }
 
         public static bool HasHammerPrimary(SkillLocator sk)
         {
             return sk && sk.primary && sk.primary.skillDef == SkillDefs.PrimaryHammer;
+        }
+
+        public static bool HasShatteringJustice(Inventory inv)
+        {
+            return (inv && inv.GetItemCount(RoR2Content.Items.ArmorReductionOnHit) > 0);
         }
 
         public void SetHammerEnabled(bool enabled)

@@ -141,6 +141,9 @@ namespace HANDMod.Content.HANDSurvivor
             droneProjectile.AddComponent<Components.DroneProjectile.DroneDamageController>();
             droneProjectile.AddComponent<Components.DroneProjectile.DroneCollisionController>();
 
+            ProjectileController pc = droneProjectile.GetComponent<ProjectileController>();
+            pc.allowPrediction = false;
+
             //droneProjectile.layer = LayerIndex.collideWithCharacterHullOnly.intVal;
 
             return droneProjectile;
