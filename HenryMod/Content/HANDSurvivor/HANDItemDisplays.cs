@@ -830,8 +830,8 @@ namespace HANDMod.Content.HANDSurvivor
                         {
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayHoof"),
-                            childName = "Pelvis",
-                            localPos = new Vector3(0F, 1.93124F, 0.04088F),
+                            childName = "CalfL",
+                            localPos = new Vector3(0.02358F, 1.03058F, -0.0098F),
                             localAngles = new Vector3(90F, 0F, 0F),
                             localScale = new Vector3(0.3F, 0.3F, 0.3F),
                             limbMask = LimbFlags.None
