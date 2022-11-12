@@ -2176,8 +2176,8 @@ namespace HANDMod.Content.HANDSurvivor
                         new ItemDisplayRule
                         {
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
-                            followerPrefab = ItemDisplays.LoadDisplay("DisplayWarhammer"),
-                            childName = "HandR",
+                            followerPrefab = ItemDisplays.LoadDisplay("CustomWarhammer"),
+                            childName = "HammerHandle1",
                             localPos = new Vector3(0.95841F, 0.44103F, -6.83693F),
                             localAngles = new Vector3(0.71671F, 169.9688F, 331.0027F),
                             localScale = new Vector3(3F, 3F, 3F),

@@ -15,6 +15,7 @@ namespace HANDMod.Modules
             PopulateFromBody("LunarExploderBody"); //solely for the perfected crown
 
             PopulateCustomLightningArm();
+            CreateCustomShatteringJustice();
 
             //if you have any custom item displays to add here I would be very impressed
         }
@@ -63,6 +64,23 @@ namespace HANDMod.Modules
 
             itemDisplayPrefabs["displaylightningarmcustom"] = display;
             #endregion
+        }
+
+        private static void CreateCustomShatteringJustice() {
+            Material originalShatMaterial = LoadDisplay("DisplayWarhammer").GetComponent<ItemDisplay>().rendererInfos[0].defaultMaterial;
+
+            GameObject ShatDisplay = Assets.mainAssetBundle.LoadAsset<GameObject>("ShatDisplay");
+            ItemDisplay displayComponent = ShatDisplay.AddComponent<ItemDisplay>();
+
+            displayComponent.rendererInfos = new CharacterModel.RendererInfo[] {
+                   new CharacterModel.RendererInfo { 
+                       renderer = ShatDisplay.transform.Find("mdlWarhammerMesh").GetComponent<Renderer>(),
+                       defaultMaterial = originalShatMaterial,
+                   }
+            };
+            displayComponent.rendererInfos[0].renderer.material = originalShatMaterial;
+
+            itemDisplayPrefabs["customwarhammer"] = ShatDisplay;
         }
 
         public static GameObject LoadDisplay(string name) {
