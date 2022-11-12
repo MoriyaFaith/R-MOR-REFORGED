@@ -1104,7 +1104,7 @@ namespace HANDMod.Content.HANDSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayBFG"),
                             childName = "Chest",
-                            localPos = new Vector3(-1.18284F, 0.93573F, -0.9409F),
+                            localPos = new Vector3(-1.30985F, 0.79909F, -0.81778F),
                             localAngles = new Vector3(0F, 0F, 34F),
                             localScale = new Vector3(1.4F, 1.4F, 1.4F),
                             limbMask = LimbFlags.None
