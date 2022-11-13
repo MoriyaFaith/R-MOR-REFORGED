@@ -12,8 +12,46 @@ namespace HANDMod.Content.HANDSurvivor.Components.Body
         private CharacterBody characterBody;
         private Inventory inventory;
         private GameObject hammer;
+        private CharacterModel characterModel;
 
-        private bool hammerEnabled = false;
+        private bool usingHammer = false;
+
+        private void OnEnable()
+        {
+            if (characterBody)
+            {
+                characterBody.onInventoryChanged += CharacterBody_onInventoryChanged;
+            }
+        }
+
+        private void OnDisable()
+        {
+            if (characterBody)
+            {
+                characterBody.onInventoryChanged -= CharacterBody_onInventoryChanged;
+            }
+        }
+
+        private void CharacterBody_onInventoryChanged()
+        {
+            UpdateHammer();
+        }
+
+        private void DisableShatteringJustice()
+        {
+            if (HasShatteringJustice(inventory) && characterModel)
+            {
+                characterModel.DisableItemDisplay(RoR2Content.Items.ArmorReductionOnHit.itemIndex);
+            }
+        }
+
+        private void EnableShatteringJustice()
+        {
+            if (HasShatteringJustice(inventory) && characterModel)
+            {
+                characterModel.EnableItemDisplay(RoR2Content.Items.ArmorReductionOnHit.itemIndex);
+            }
+        }
 
         private void Awake()
         {
@@ -38,6 +76,10 @@ namespace HANDMod.Content.HANDSurvivor.Components.Body
             if (characterBody)
             {
                 inventory = characterBody.inventory;
+                if (characterBody.modelLocator && characterBody.modelLocator.modelTransform && characterBody.modelLocator.modelTransform.gameObject)
+                {
+                    characterModel = characterBody.modelLocator.modelTransform.gameObject.GetComponent<CharacterModel>();
+                }
             }
             if (HasHammerPrimary(skillLocator))
             {
@@ -54,34 +96,31 @@ namespace HANDMod.Content.HANDSurvivor.Components.Body
             }
         }
 
-        private void FixedUpdate()
-        {
-            if (hammerEnabled && HasShatteringJustice(inventory))
-            {
-                HideHammer();
-            }
-        }
-
         private void ShowHammer()
         {
+            usingHammer = true;
             if (!HasShatteringJustice(inventory))
             {
-                hammerEnabled = true;
                 hammer.SetActive(true);
             }
             else
             {
-                hammerEnabled = false;
                 hammer.SetActive(false);
+                EnableShatteringJustice();
             }
         }
 
         private void HideHammer()
         {
-            if (!HasHammerPrimary(skillLocator) || HasShatteringJustice(inventory))
+            if (!HasHammerPrimary(skillLocator))
             {
-                hammerEnabled = false;
+                usingHammer = false;
                 hammer.SetActive(false);
+                DisableShatteringJustice();
+            }
+            else
+            {
+                ShowHammer();
             }
         }
 
@@ -97,13 +136,25 @@ namespace HANDMod.Content.HANDSurvivor.Components.Body
 
         public void SetHammerEnabled(bool enabled)
         {
-            if (!hammerEnabled)
+            if (enabled)
             {
-                HideHammer();
+                ShowHammer();
             }
             else
             {
+                HideHammer();
+            }
+        }
+
+        public void UpdateHammer()
+        {
+            if (usingHammer)
+            {
                 ShowHammer();
+            }
+            else
+            {
+                HideHammer();
             }
         }
     }

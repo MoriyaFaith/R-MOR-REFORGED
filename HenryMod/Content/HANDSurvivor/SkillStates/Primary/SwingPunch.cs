@@ -88,6 +88,12 @@ namespace EntityStates.HAND_Overclocked.Primary
                     base.characterBody.OnSkillActivated(base.skillLocator.primary);
                 }
 
+                HammerVisibilityController hvc = base.GetComponent<HammerVisibilityController>();
+                if (hvc)
+                {
+                    hvc.SetHammerEnabled(false);
+                }
+
                 //Attack is only agile while in OVC
                 if (base.isAuthority && !hasOVC)
                 {

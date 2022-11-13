@@ -16,7 +16,6 @@ namespace EntityStates.HAND_Overclocked.Primary
         public static GameObject hitEffect = null;
         public static float force = 2400f;
 
-        private HammerVisibilityController hvc;
         private bool hitEnemy = false;
         private bool setNextState = false;
         private string animationLayer;
@@ -96,7 +95,7 @@ namespace EntityStates.HAND_Overclocked.Primary
                 }
             }
 
-            hvc = base.GetComponent<HammerVisibilityController>();
+            HammerVisibilityController hvc = base.GetComponent<HammerVisibilityController>();
             if (hvc)
             {
                 hvc.SetHammerEnabled(true);
