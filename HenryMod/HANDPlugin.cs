@@ -4,6 +4,7 @@ using HANDMod.Content.RMORSurvivor;
 using R2API.Utils;
 using RoR2;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using System.Security;
 using System.Security.Permissions;
 
@@ -38,8 +39,9 @@ namespace HANDMod
         public const string DEVELOPER_PREFIX = "MOFFEIN";
 
         public static HandPlugin instance;
-        public static bool standaloneScepterLoaded = false;
-        public static bool classicScepterLoaded = false;
+        public static bool ScepterStandaloneLoaded = false;
+        public static bool ScepterClassicLoaded = false;
+        public static bool EmoteAPILoaded = false;
 
         private void Awake()
         {
@@ -63,12 +65,33 @@ namespace HANDMod
 
             // now make a content pack and add it- this part will change with the next update
             new Modules.ContentPacks().Initialize();
+
+            if (EmoteAPILoaded) EmoteAPICompat();
         }
 
         private void CheckDependencies()
         {
-            standaloneScepterLoaded = BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.DestroyedClone.AncientScepter");
-            classicScepterLoaded = BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.ThinkInvisible.ClassicItems");
+            ScepterStandaloneLoaded = BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.DestroyedClone.AncientScepter");
+            ScepterClassicLoaded = BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.ThinkInvisible.ClassicItems");
+            EmoteAPILoaded = BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.weliveinasociety.CustomEmotesAPI");
+        }
+
+        [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
+        private void EmoteAPICompat()
+        {
+            On.RoR2.SurvivorCatalog.Init += (orig) =>
+            {
+                orig();
+                foreach (var item in SurvivorCatalog.allSurvivorDefs)
+                {
+                    if (item.bodyPrefab.name == "HANDOverclockedBody")
+                    {
+                        var skele = Modules.Assets.mainAssetBundle.LoadAsset<UnityEngine.GameObject>("animHANDEmote.prefab");
+                        EmotesAPI.CustomEmotesAPI.ImportArmature(item.bodyPrefab, skele);
+                        skele.GetComponentInChildren<BoneMapper>().scale = 1.5f;
+                    }
+                }
+            };
         }
     }
 }

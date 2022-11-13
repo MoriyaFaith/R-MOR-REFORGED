@@ -292,8 +292,8 @@ namespace HANDMod.Content.HANDSurvivor
 
             SkillDefs.SecondaryChargeHammerScepter = scepterSkill;
 
-            if (HandPlugin.classicScepterLoaded) ClassicScepterCompat();
-            if (HandPlugin.standaloneScepterLoaded) StandaloneScepterCompat();
+            if (HandPlugin.ScepterClassicLoaded) ClassicScepterCompat();
+            if (HandPlugin.ScepterStandaloneLoaded) StandaloneScepterCompat();
         }
 
         [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
