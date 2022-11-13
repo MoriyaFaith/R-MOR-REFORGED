@@ -215,7 +215,7 @@ ModelImporter:
       takeName: Armature|CSSIdle
       internalID: 0
       firstFrame: 0
-      lastFrame: 73
+      lastFrame: 90
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -273,7 +273,7 @@ ModelImporter:
       takeName: Armature|Emote1
       internalID: 0
       firstFrame: 0
-      lastFrame: 16
+      lastFrame: 38
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -302,7 +302,7 @@ ModelImporter:
       takeName: Armature|Idle
       internalID: 0
       firstFrame: 0
-      lastFrame: 87
+      lastFrame: 160
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -389,7 +389,7 @@ ModelImporter:
       takeName: Armature|Jump
       internalID: 0
       firstFrame: 0
-      lastFrame: 7
+      lastFrame: 8
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -418,7 +418,7 @@ ModelImporter:
       takeName: Armature|Landing
       internalID: 0
       firstFrame: 0
-      lastFrame: 14
+      lastFrame: 15
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -621,7 +621,7 @@ ModelImporter:
       takeName: Armature|PunchL
       internalID: 0
       firstFrame: 0
-      lastFrame: 31
+      lastFrame: 32
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -853,7 +853,7 @@ ModelImporter:
       takeName: Armature|Sprint
       internalID: 0
       firstFrame: 0
-      lastFrame: 80
+      lastFrame: 90
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -882,7 +882,7 @@ ModelImporter:
       takeName: Armature|SwingLR
       internalID: 0
       firstFrame: 0
-      lastFrame: 28
+      lastFrame: 29
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -940,7 +940,7 @@ ModelImporter:
       takeName: Armature|SwingRL
       internalID: 0
       firstFrame: 0
-      lastFrame: 28
+      lastFrame: 29
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -969,7 +969,7 @@ ModelImporter:
       takeName: Armature|RunBR
       internalID: 0
       firstFrame: 0
-      lastFrame: 24
+      lastFrame: 40
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -998,7 +998,7 @@ ModelImporter:
       takeName: Armature|RunBL
       internalID: 0
       firstFrame: 0
-      lastFrame: 24
+      lastFrame: 40
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -1027,7 +1027,7 @@ ModelImporter:
       takeName: Armature|AimPitch
       internalID: 0
       firstFrame: 0
-      lastFrame: 20
+      lastFrame: 40
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -1056,7 +1056,7 @@ ModelImporter:
       takeName: Armature|AimYaw
       internalID: 0
       firstFrame: 0
-      lastFrame: 20
+      lastFrame: 40
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

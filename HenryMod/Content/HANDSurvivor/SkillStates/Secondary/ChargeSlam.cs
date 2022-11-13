@@ -86,13 +86,18 @@ namespace EntityStates.HAND_Overclocked.Secondary
                         origin = base.transform.position
                     }, false);
                 }
-                chargePercent = charge / chargeDuration;
+                chargePercent = Mathf.Max(0f, (charge-baseMinDuration)/(baseChargeDuration-baseMinDuration));
             }
 
             if (base.fixedAge >= this.minDuration)
             {
-                if (base.isAuthority && base.inputBank && !base.inputBank.skill2.down)
+                bool hasHammer = base.skillLocator && base.skillLocator.primary && base.skillLocator.primary.skillDef == HANDMod.Content.HANDSurvivor.SkillDefs.PrimaryHammer;
+                if (base.isAuthority && ((base.inputBank && !base.inputBank.skill2.down) || hasHammer))
                 {
+                    if (hasHammer)
+                    {
+                        chargePercent = 1f;
+                    }
                     SetNextState();
                     return;
                 }

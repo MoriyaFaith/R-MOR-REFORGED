@@ -35,7 +35,7 @@ namespace HANDMod
             LanguageAPI.Add(handPrefix + "PRIMARY_DESC", "Apply force to all combatants for <style=cIsDamage>390% damage</style>. <style=cIsDamage>Stuns</style> while <style=cIsDamage>OVERCLOCK</style> is active.");
 
             LanguageAPI.Add(handPrefix + "PRIMARY_HAMMER_NAME", "SMASH");
-            LanguageAPI.Add(handPrefix + "PRIMARY_HAMMER_DESC", "Compact all combatants for <style=cIsDamage>580% damage</style>. <style=cIsDamage>Stuns</style> while <style=cIsDamage>OVERCLOCK</style> is active.");
+            LanguageAPI.Add(handPrefix + "PRIMARY_HAMMER_DESC", "<style=cIsHealth>Immobile</style>. Compact all combatants for <style=cIsDamage>750% damage</style>. <style=cIsDamage>Stuns</style> while <style=cIsDamage>OVERCLOCK</style> is active.");
 
             LanguageAPI.Add(handPrefix + "SECONDARY_NAME", "FORCED_REASSEMBLY");
             LanguageAPI.Add(handPrefix + "SECONDARY_DESC", "<style=cIsDamage>Stunning</style>. Charge up and apply great force to all combatants for <style=cIsDamage>500%-1500% damage</style>.");

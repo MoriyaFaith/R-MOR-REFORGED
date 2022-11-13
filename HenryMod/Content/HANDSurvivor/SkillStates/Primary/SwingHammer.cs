@@ -35,7 +35,7 @@ namespace EntityStates.HAND_Overclocked.Primary
             this.hitSoundString = "";
             this.swingSoundString = "Play_HOC_Punch";//"Play_HOC_SwingHammer";
             this.hitboxName = "HammerHitbox";
-            this.damageCoefficient = 5.8f;
+            this.damageCoefficient = 7.5f;
             this.procCoefficient = 1f;
             this.baseDuration = 1.625f;
             this.baseEarlyExitTime = 0.325f;
@@ -75,12 +75,6 @@ namespace EntityStates.HAND_Overclocked.Primary
                     base.characterBody.OnSkillActivated(base.skillLocator.primary);
                 }
 
-                //Attack is only agile while in OVC
-                if (base.isAuthority && !hasOVC)
-                {
-                    base.characterBody.isSprinting = false;
-                }
-
                 base.characterBody.SetAimTimer(3f);
             }
 
@@ -108,6 +102,15 @@ namespace EntityStates.HAND_Overclocked.Primary
             aimFlat.y = 0;
             aimFlat.Normalize();
             this.bonusForce = SwingHammer.force * aimFlat;
+
+            if (base.isAuthority && base.fixedAge <= this.duration * this.attackEndTime)
+            {
+                if (base.characterMotor)
+                {
+                    base.characterMotor.moveDirection = Vector3.zero;
+                }
+            }
+
             base.FixedUpdate();
         }
 
@@ -191,6 +194,7 @@ namespace EntityStates.HAND_Overclocked.Primary
                 float exitDuration = swingIndex == 0 ? 1.3f / this.attackSpeedStat : 0.3f;
                 this.PlayCrossfade(animationLayer, "BufferEmpty", "SwingHammer.playbackRate", exitDuration, exitDuration);
             }
+
             base.OnExit();
         }
 
