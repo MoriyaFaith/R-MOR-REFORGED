@@ -54,33 +54,35 @@ namespace HANDMod.Content.HANDSurvivor.Components.Body
             }
         }
 
-        /*private void FixedUpdate()
+        private void FixedUpdate()
         {
-            if (hammerEnabled)
-            {
-                ShowHammer();
-            }
-            else
+            if (hammerEnabled && HasShatteringJustice(inventory))
             {
                 HideHammer();
             }
-        }*/
+        }
 
         private void ShowHammer()
         {
             if (!HasShatteringJustice(inventory))
             {
+                hammerEnabled = true;
                 hammer.SetActive(true);
             }
             else
             {
+                hammerEnabled = false;
                 hammer.SetActive(false);
             }
         }
 
         private void HideHammer()
         {
-            if (!HasHammerPrimary(skillLocator) || HasShatteringJustice(inventory)) hammer.SetActive(false);
+            if (!HasHammerPrimary(skillLocator) || HasShatteringJustice(inventory))
+            {
+                hammerEnabled = false;
+                hammer.SetActive(false);
+            }
         }
 
         public static bool HasHammerPrimary(SkillLocator sk)
@@ -95,7 +97,6 @@ namespace HANDMod.Content.HANDSurvivor.Components.Body
 
         public void SetHammerEnabled(bool enabled)
         {
-            hammerEnabled = enabled;
             if (!hammerEnabled)
             {
                 HideHammer();
