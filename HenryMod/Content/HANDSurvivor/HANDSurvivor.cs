@@ -62,6 +62,8 @@ namespace HANDMod.Content.HANDSurvivor
         {
             base.InitializeCharacter();
 
+            HammerVisibilityController.Initialize();
+
             CharacterBody cb = bodyPrefab.GetComponent<CharacterBody>();
             cb.bodyFlags = CharacterBody.BodyFlags.ImmuneToExecutes | CharacterBody.BodyFlags.Mechanical;
 

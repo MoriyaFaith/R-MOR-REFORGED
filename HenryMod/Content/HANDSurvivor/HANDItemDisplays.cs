@@ -285,10 +285,10 @@ namespace HANDMod.Content.HANDSurvivor
                         {
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayWolfPelt"),
-                            childName = "Head",
-                            localPos = new Vector3(-0.47887F, 1.81491F, 0.50173F),
+                            childName = "Hat",
+                            localPos = new Vector3(-0.06115F, 0.61931F, 0.07598F),
                             localAngles = new Vector3(0F, 324F, 0F),
-                            localScale = new Vector3(1.5F, 1.5F, 1.5F),
+                            localScale = new Vector3(1.6F, 1.6F, 1.6F),
                             limbMask = LimbFlags.None
                         }
                     }
@@ -851,9 +851,9 @@ namespace HANDMod.Content.HANDSurvivor
                         {
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplaySoda"),
-                            childName = "Pelvis",
-                            localPos = new Vector3(-0.73196F, -0.3882F, 0.05895F),
-                            localAngles = new Vector3(295F, 90F, 0F),
+                            childName = "PipesL",
+                            localPos = new Vector3(0.008F, 0.34211F, -0.01367F),
+                            localAngles = new Vector3(275.6745F, 200.5645F, 251.6839F),
                             localScale = new Vector3(1.1F, 1.1F, 1.1F),
                             limbMask = LimbFlags.None
                         }
@@ -1145,9 +1145,9 @@ namespace HANDMod.Content.HANDSurvivor
                         {
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayCoffee"),
-                            childName = "Pelvis",
-                            localPos = new Vector3(0.73196F, -0.3882F, 0.05895F),
-                            localAngles = new Vector3(337.1124F, 82.54765F, 188.4022F),
+                            childName = "PipesR",
+                            localPos = new Vector3(-0.0117F, 0.33519F, -0.05378F),
+                            localAngles = new Vector3(354.3912F, 155.4135F, 357.7732F),
                             localScale = new Vector3(0.7F, 0.7F, 0.7F),
                             limbMask = LimbFlags.None
                         }
@@ -3381,8 +3381,8 @@ namespace HANDMod.Content.HANDSurvivor
                         {
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayJellyGuts"),
-                            childName = "Head",
-                            localPos = new Vector3(-0.45445F, 1.28761F, -0.01145F),
+                            childName = "Hat",
+                            localPos = new Vector3(-0.05386F, 0.21865F, -0.36482F),
                             localAngles = new Vector3(0F, 0F, 0F),
                             localScale = new Vector3(0.5F, 0.5F, 0.5F),
                             limbMask = LimbFlags.None

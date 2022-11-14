@@ -16,7 +16,30 @@ namespace HANDMod.Content.HANDSurvivor.Components.Body
 
         private bool usingHammer = false;
 
-        private void OnEnable()
+        private static bool initialized = false;
+        public static void Initialize()
+        {
+            if (initialized) return;
+            initialized = true;
+
+            On.RoR2.CharacterModel.UpdateItemDisplay += CharacterModel_UpdateItemDisplay;
+        }
+
+        private static void CharacterModel_UpdateItemDisplay(On.RoR2.CharacterModel.orig_UpdateItemDisplay orig, CharacterModel self, Inventory inventory)
+        {
+            orig(self, inventory);
+            if (self.body)
+            {
+                HammerVisibilityController hvc = self.body.GetComponent<HammerVisibilityController>();
+                if (hvc)
+                {
+                    hvc.UpdateHammer();
+                }
+            }
+        }
+
+        //This method ends up running before itemdisplays get updated, so the Shattering Justice hiding doesnt work.
+        /*private void OnEnable()
         {
             if (characterBody)
             {
@@ -35,7 +58,7 @@ namespace HANDMod.Content.HANDSurvivor.Components.Body
         private void CharacterBody_onInventoryChanged()
         {
             UpdateHammer();
-        }
+        }*/
 
         private void DisableShatteringJustice()
         {
