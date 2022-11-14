@@ -15,7 +15,7 @@ namespace EntityStates.HAND_Overclocked.Primary
         public static GameObject swingEffect = null;
         public static GameObject swingEffectFocus = null;
         public static GameObject hitEffect = null;
-        public static AnimationCurve punchVelocityCurve = new AnimationCurve(new Keyframe[]
+        public static AnimationCurve swingCurve = new AnimationCurve(new Keyframe[]
         {
             new Keyframe(0f, 0f, 0.25312966108322146f, Mathf.Infinity, 0f, 0.3333333432674408f),
             new Keyframe(0.24929532408714295f, 0.20000000298023225f, -1.3447399139404297f, -1.3447399139404297f, 0.3333333432674408f, 0.09076657891273499f),
@@ -62,7 +62,7 @@ namespace EntityStates.HAND_Overclocked.Primary
             aimFlat.Normalize();
             this.bonusForce = SwingPunch.force * aimFlat;
             this.forceForwardVelocity = true;
-            this.forwardVelocityCurve = punchVelocityCurve;
+            this.forwardVelocityCurve = swingCurve;
 
             this.animationLayer = "FullBody, Override";
 

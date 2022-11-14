@@ -187,7 +187,7 @@ namespace HANDMod.SkillStates.BaseStates
                 if (!this.inHitPause)
                 {
                     this.stopwatch += Time.fixedDeltaTime;
-                    if (this.forceForwardVelocity && base.characterMotor && !(base.characterBody && base.characterBody.GetNotMoving()))
+                    if (this.forceForwardVelocity && base.characterMotor && base.characterDirection && !(base.characterBody && base.characterBody.GetNotMoving()))
                     {
                         Vector3 evaluatedForwardVector = base.characterDirection.forward * this.forwardVelocityCurve.Evaluate(base.fixedAge / this.duration);
                         base.characterMotor.AddDisplacement(new Vector3(evaluatedForwardVector.x, 0f, evaluatedForwardVector.z));

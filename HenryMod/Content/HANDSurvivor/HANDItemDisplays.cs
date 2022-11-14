@@ -1912,8 +1912,8 @@ namespace HANDMod.Content.HANDSurvivor
                         {
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayTricornGhost"),
-                            childName = "Head",
-                            localPos = new Vector3(-0.24273F, 1.99415F, 0.00022F),
+                            childName = "Hat",
+                            localPos = new Vector3(0.03438F, 0.89773F, -0.24518F),
                             localAngles = new Vector3(0F, 0F, 0F),
                             localScale = new Vector3(3F, 3F, 3F),
                             limbMask = LimbFlags.None
@@ -1944,8 +1944,8 @@ namespace HANDMod.Content.HANDSurvivor
                         {
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayTricornUsed"),
-                            childName = "Head",
-                            localPos = new Vector3(-0.24273F, 1.99415F, 0.00022F),
+                            childName = "Hat",
+                            localPos = new Vector3(0.03438F, 0.89773F, -0.24518F),
                             localAngles = new Vector3(0F, 0F, 0F),
                             localScale = new Vector3(3F, 3F, 3F),
                             limbMask = LimbFlags.None

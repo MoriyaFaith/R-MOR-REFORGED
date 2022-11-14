@@ -18,6 +18,8 @@ namespace EntityStates.HAND_Overclocked.Primary
         public static GameObject hitEffect = null;
         public static float force = 2400f;
         //public static float selfForce = 2400f;
+        public static float forwardSpeed = 30f;
+        public static float momentumEndPercent = 0.8f;
 
         private bool hitEnemy = false;
         private bool setNextState = false;
@@ -43,8 +45,8 @@ namespace EntityStates.HAND_Overclocked.Primary
             this.procCoefficient = 1f;
             this.baseDuration = 1.625f;
             this.baseEarlyExitTime = 0.325f;
-            this.attackStartTime = this.baseDuration * 0.35f;
-            this.attackEndTime = this.baseDuration * 0.42f;
+            this.attackStartTime = 0.56875f;
+            this.attackEndTime = 0.6825f;
             this.pushForce = 0f;
 
             Vector3 aimFlat = base.GetAimRay().direction;
@@ -130,6 +132,23 @@ namespace EntityStates.HAND_Overclocked.Primary
                 if (base.fixedAge > base.duration * attackEndTime)
                 {
                     RemoveBuff();
+                }
+            }
+
+            if (base.isAuthority)
+            { 
+                if (this.hasFired && !this.inHitPause && base.characterDirection && base.characterMotor && !(base.characterBody && base.characterBody.GetNotMoving()))
+                {
+                    float endTime = this.duration * this.attackEndTime;
+                    float momentumEndTime = this.duration * SwingHammer.momentumEndPercent;
+
+                    float evaluatedForwardSpeed = SwingHammer.forwardSpeed * Time.fixedDeltaTime;
+                    if (this.stopwatch > endTime && this.stopwatch <= momentumEndTime)
+                    {
+                        evaluatedForwardSpeed = Mathf.Lerp(evaluatedForwardSpeed, 0f, (this.stopwatch - endTime) / (momentumEndTime - endTime));
+                    }
+                    Vector3 evaluatedForwardVector = base.characterDirection.forward * evaluatedForwardSpeed;
+                    base.characterMotor.AddDisplacement(new Vector3(evaluatedForwardVector.x, 0f, evaluatedForwardVector.z));
                 }
             }
         }
