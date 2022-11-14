@@ -371,13 +371,13 @@ namespace HANDMod.Content.HANDSurvivor
 
         private void CreateHitEffects()
         {
-            //GameObject hitEffect = LegacyResourcesAPI.Load<GameObject>("prefabs/effects/impacteffects/ImpactToolbotDash").InstantiateClone("HANDMod_MeleeHitEffect");
-            /*GameObject hitEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Common/VFX/OmniImpactVFX.prefab").WaitForCompletion().InstantiateClone("HANDMod_MeleeHitEffect");
+            GameObject hitEffect = LegacyResourcesAPI.Load<GameObject>("prefabs/effects/impacteffects/ImpactToolbotDash").InstantiateClone("HANDMod_HitEffect", false);
             EffectComponent ec = hitEffect.GetComponent<EffectComponent>();
-            ec.soundName = "";
-            //hitEffect.transform.localScale = 3f * Vector3.one;
+            ec.soundName = "Play_MULT_shift_hit";
             Modules.ContentPacks.effectDefs.Add(new EffectDef(hitEffect));
-            EntityStates.HAND_Overclocked.Primary.SwingFist.hitEffect = hitEffect;*/
+            EntityStates.HAND_Overclocked.Primary.SwingPunch.hitEffect = hitEffect;
+            EntityStates.HAND_Overclocked.Primary.SwingHammer.hitEffect = hitEffect;
+            EntityStates.HAND_Overclocked.Secondary.FireSlam.hitEffect = hitEffect;
 
 
             /*NetworkSoundEventDef nse = Modules.Assets.CreateNetworkSoundEventDef("Play_MULT_shift_hit");

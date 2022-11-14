@@ -110,6 +110,9 @@ namespace HANDMod.Content
                     {
                         damageInfo.force *= Mathf.Max(cb.rigidbody.mass / 100f, 1f);
                     }
+
+                    //Plays the DRONE sound when spawned via BaseMeleeAttack hitEffectPrefab for some reason.
+                    EffectManager.SimpleEffect(EntityStates.HAND_Overclocked.Primary.SwingPunch.hitEffect, damageInfo.position, default, true);
                 }
 
                 //Make sure this doesn't stack with punch damagetype.
@@ -141,6 +144,9 @@ namespace HANDMod.Content
                                 damageInfo.force.z *= 0.5f;
                             }
                         }
+
+                        //Plays the DRONE sound when spawned via BaseMeleeAttack hitEffectPrefab for some reason.
+                        EffectManager.SimpleEffect(EntityStates.HAND_Overclocked.Primary.SwingHammer.hitEffect, damageInfo.position, default, true);
                     }
 
                     if (cb.rigidbody)
@@ -177,6 +183,9 @@ namespace HANDMod.Content
                         }
                         damageInfo.force *= forceMult;
                     }
+
+                    //Plays the DRONE sound when spawned via BaseMeleeAttack hitEffectPrefab for some reason.
+                    EffectManager.SimpleEffect(EntityStates.HAND_Overclocked.Secondary.FireSlam.hitEffect, damageInfo.position, default, true);
                 }
             }
             orig(self, damageInfo);

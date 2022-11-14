@@ -35,6 +35,7 @@ namespace EntityStates.HAND_Overclocked.Secondary
 
         public static NetworkSoundEventDef networkHitSound;
         public static GameObject earthquakeEffectPrefab;
+        public static GameObject hitEffect = null;
 
         private HammerVisibilityController hammerController;
 
@@ -65,6 +66,7 @@ namespace EntityStates.HAND_Overclocked.Secondary
             this.pushForce = 0f;
             this.bonusForce = Vector3.down * Mathf.Lerp(FireSlam.minDownForce, FireSlam.maxDownForce, chargePercent);
             this.muzzleString = "SwingCenter";
+            //this.hitEffectPrefab = FireSlam.hitEffect;  //Why does this play the DRONE sound?
 
             ModifyStats();
 

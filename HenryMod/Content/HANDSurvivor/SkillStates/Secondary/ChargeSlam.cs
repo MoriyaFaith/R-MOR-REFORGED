@@ -91,13 +91,13 @@ namespace EntityStates.HAND_Overclocked.Secondary
 
             if (base.fixedAge >= this.minDuration)
             {
-                bool hasHammer = base.skillLocator && base.skillLocator.primary && base.skillLocator.primary.skillDef == HANDMod.Content.HANDSurvivor.SkillDefs.PrimaryHammer;
-                if (base.isAuthority && ((base.inputBank && !base.inputBank.skill2.down) || hasHammer))
+                //bool hasHammer = base.skillLocator && base.skillLocator.primary && base.skillLocator.primary.skillDef == HANDMod.Content.HANDSurvivor.SkillDefs.PrimaryHammer;
+                if (base.isAuthority && (base.inputBank && !base.inputBank.skill2.down))// || hasHammer
                 {
-                    if (hasHammer)
+                    /*if (hasHammer)
                     {
                         chargePercent = 1f;
-                    }
+                    }*/
                     SetNextState();
                     return;
                 }

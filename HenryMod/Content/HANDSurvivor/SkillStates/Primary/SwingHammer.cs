@@ -6,6 +6,7 @@ using R2API;
 using UnityEngine;
 using HANDMod.Content;
 using HANDMod.Content.Shared.Components.Body;
+using UnityEngine.Networking;
 
 namespace EntityStates.HAND_Overclocked.Primary
 {
@@ -15,18 +16,21 @@ namespace EntityStates.HAND_Overclocked.Primary
         public static GameObject swingEffect = null;
         public static GameObject hitEffect = null;
         public static float force = 2400f;
+        public static float selfForce = 3000f;
 
         private bool hitEnemy = false;
         private bool setNextState = false;
         private string animationLayer;
+
+        private bool removedBuff = false;
 
         public override void OnEnter()
         {
             this.bonusForce = Vector3.zero;
             this.attackRecoil = 0f;
             this.swingEffectPrefab = SwingHammer.swingEffect;
-            this.hitEffectPrefab = SwingHammer.hitEffect;
-            if (SwingHammer.networkHitSound) this.impactSound = networkHitSound.index;
+            //this.hitEffectPrefab = SwingHammer.hitEffect;  //Why does this play the DRONE sound?
+            if (SwingHammer.networkHitSound != null) this.impactSound = networkHitSound.index;
 
             this.damageType = DamageType.Generic;
             this.hitHopVelocity = 11f;
@@ -35,7 +39,7 @@ namespace EntityStates.HAND_Overclocked.Primary
             this.hitSoundString = "";
             this.swingSoundString = "Play_HOC_Punch";//"Play_HOC_SwingHammer";
             this.hitboxName = "HammerHitbox";
-            this.damageCoefficient = 7.5f;
+            this.damageCoefficient = 6f;
             this.procCoefficient = 1f;
             this.baseDuration = 1.625f;
             this.baseEarlyExitTime = 0.325f;
@@ -76,6 +80,11 @@ namespace EntityStates.HAND_Overclocked.Primary
                 }
 
                 base.characterBody.SetAimTimer(3f);
+
+                if (NetworkServer.active)
+                {
+                    base.characterBody.AddBuff(RoR2Content.Buffs.Slow50);
+                }
             }
 
             if (this.attack != null)
@@ -103,23 +112,42 @@ namespace EntityStates.HAND_Overclocked.Primary
             aimFlat.Normalize();
             this.bonusForce = SwingHammer.force * aimFlat;
 
-            if (base.isAuthority && base.fixedAge <= this.duration * this.attackEndTime)
+            base.FixedUpdate();
+
+            if (NetworkServer.active && !removedBuff)
             {
-                if (base.characterMotor)
+                if (base.fixedAge > base.duration * attackEndTime)
                 {
-                    base.characterMotor.moveDirection = Vector3.zero;
+                    RemoveBuff();
                 }
             }
-
-            base.FixedUpdate();
         }
 
         public override void OnFiredAttack()
         {
             if (base.isAuthority)
             {
-                ShakeEmitter se = ShakeEmitter.CreateSimpleShakeEmitter(base.transform.position, new Wave() { amplitude = 4f, cycleOffset = 0f, frequency = 4f }, 0.25f, 20f, true);
+                ShakeEmitter se = ShakeEmitter.CreateSimpleShakeEmitter(base.transform.position, new Wave() { amplitude = 5f, cycleOffset = 0f, frequency = 4f }, 0.3f, 20f, true);
                 se.transform.parent = base.transform;
+
+                if (base.characterMotor && !(base.characterBody && base.characterBody.GetNotMoving()))
+                {
+                    if (base.characterMotor.isGrounded && base.characterMotor.Motor) base.characterMotor.Motor.ForceUnground();
+                    Vector3 direction = base.GetAimRay().direction;
+                    direction.y = 0;
+                    direction.Normalize();
+
+                    base.characterMotor.velocity.x = 0f;
+                    if (base.characterMotor.velocity.y < 0f) base.characterMotor.velocity.y = 0f;
+                    base.characterMotor.velocity.z = 0f;
+
+                    base.characterMotor.rootMotion.x = 0f;
+                    if (base.characterMotor.rootMotion.y < 0f) base.characterMotor.rootMotion.y = 0f;
+                    base.characterMotor.rootMotion.z = 0f;
+
+
+                    base.characterMotor.ApplyForce(direction * SwingHammer.selfForce, true, false);
+                }
             }
         }
 
@@ -195,7 +223,19 @@ namespace EntityStates.HAND_Overclocked.Primary
                 this.PlayCrossfade(animationLayer, "BufferEmpty", "SwingHammer.playbackRate", exitDuration, exitDuration);
             }
 
+            RemoveBuff();
+
             base.OnExit();
+        }
+
+        private void RemoveBuff()
+        {
+
+            if (!removedBuff && NetworkServer.active && base.characterBody)
+            {
+                removedBuff = true;
+                if (base.characterBody.HasBuff(RoR2Content.Buffs.Slow50)) base.characterBody.RemoveBuff(RoR2Content.Buffs.Slow50);
+            }
         }
 
         public override InterruptPriority GetMinimumInterruptPriority()

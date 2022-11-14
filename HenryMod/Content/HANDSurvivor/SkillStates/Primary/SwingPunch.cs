@@ -16,7 +16,7 @@ namespace EntityStates.HAND_Overclocked.Primary
         public static GameObject hitEffect = null;
         public static AnimationCurve punchVelocityCurve = new AnimationCurve(new Keyframe[]
         {
-            new Keyframe(0f, 0f, 0.25312966108322146f, Mathf.Infinity, 0f, 0.3333333432674408f),    //Move starting time to when HAN-D's punch starts
+            new Keyframe(0f, 0f, 0.25312966108322146f, Mathf.Infinity, 0f, 0.3333333432674408f),
             new Keyframe(0.24929532408714295f, 0.20000000298023225f, -1.3447399139404297f, -1.3447399139404297f, 0.3333333432674408f, 0.09076657891273499f),
             new Keyframe(0.6705322265625f, 0f, -0.1023506224155426f, -0.1023506224155426f, 0.7332440614700317f, 0f),
         });
@@ -39,8 +39,8 @@ namespace EntityStates.HAND_Overclocked.Primary
 
             this.muzzleString = swingIndex == 1 ? "MuzzleHandL" : "MuzzleHandR";    //Anim names are reversed. This is correct.
             this.swingEffectPrefab = SwingPunch.swingEffect;
-            this.hitEffectPrefab = SwingPunch.hitEffect;
-            if(SwingPunch.networkHitSound) this.impactSound = networkHitSound.index;
+            //this.hitEffectPrefab = SwingPunch.hitEffect;  //Why does this play the DRONE sound?
+            if(SwingPunch.networkHitSound != null) this.impactSound = networkHitSound.index;
 
             this.damageType = DamageType.Generic;
             this.hitHopVelocity = 8f;
