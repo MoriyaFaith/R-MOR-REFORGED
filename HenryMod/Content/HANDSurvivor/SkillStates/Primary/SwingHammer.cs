@@ -103,6 +103,12 @@ namespace EntityStates.HAND_Overclocked.Primary
             {
                 hvc.SetHammerEnabled(true);
             }
+
+            //Attack is only agile while in OVC
+            if (base.isAuthority && !hasOVC)
+            {
+                base.characterBody.isSprinting = false;
+            }
         }
 
         public override void FixedUpdate()
