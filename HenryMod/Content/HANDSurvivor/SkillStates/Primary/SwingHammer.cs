@@ -16,7 +16,7 @@ namespace EntityStates.HAND_Overclocked.Primary
         public static GameObject swingEffect = null;
         public static GameObject hitEffect = null;
         public static float force = 2400f;
-        public static float selfForce = 3000f;
+        public static float selfForce = 2800f;
 
         private bool hitEnemy = false;
         private bool setNextState = false;
