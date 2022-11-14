@@ -14,9 +14,10 @@ namespace EntityStates.HAND_Overclocked.Primary
     {
         public static NetworkSoundEventDef networkHitSound = null;
         public static GameObject swingEffect = null;
+        public static GameObject swingEffectFocus = null;
         public static GameObject hitEffect = null;
         public static float force = 2400f;
-        public static float selfForce = 2800f;
+        //public static float selfForce = 2400f;
 
         private bool hitEnemy = false;
         private bool setNextState = false;
@@ -28,7 +29,6 @@ namespace EntityStates.HAND_Overclocked.Primary
         {
             this.bonusForce = Vector3.zero;
             this.attackRecoil = 0f;
-            this.swingEffectPrefab = SwingHammer.swingEffect;
             //this.hitEffectPrefab = SwingHammer.hitEffect;  //Why does this play the DRONE sound?
             if (SwingHammer.networkHitSound != null) this.impactSound = networkHitSound.index;
 
@@ -37,7 +37,7 @@ namespace EntityStates.HAND_Overclocked.Primary
             this.scaleHitHopWithAttackSpeed = true;
             this.hitStopDuration = 0.1f;
             this.hitSoundString = "";
-            this.swingSoundString = "Play_HOC_Punch";//"Play_HOC_SwingHammer";
+            this.swingSoundString = "Play_loader_m1_swing";//"Play_HOC_Punch";
             this.hitboxName = "HammerHitbox";
             this.damageCoefficient = 6f;
             this.procCoefficient = 1f;
@@ -62,8 +62,13 @@ namespace EntityStates.HAND_Overclocked.Primary
             Animator an = base.GetModelAnimator();
             if (an) an.SetFloat("hammerIdle", 1f);
 
+            this.swingEffectPrefab = SwingHammer.swingEffect;
             if (base.characterBody)
             {
+                if (SwingHammer.swingEffectFocus && base.characterBody.HasBuff(HANDMod.Content.Shared.Buffs.NemesisFocus))
+                {
+                    this.swingEffectPrefab = SwingHammer.swingEffectFocus;
+                }
                 if (hasOVC && this.swingIndex == 1)
                 {
                     this.damageType |= DamageType.Stun1s;
@@ -136,7 +141,7 @@ namespace EntityStates.HAND_Overclocked.Primary
                 ShakeEmitter se = ShakeEmitter.CreateSimpleShakeEmitter(base.transform.position, new Wave() { amplitude = 5f, cycleOffset = 0f, frequency = 4f }, 0.3f, 20f, true);
                 se.transform.parent = base.transform;
 
-                if (base.characterMotor && !(base.characterBody && base.characterBody.GetNotMoving()))
+                /*if (base.characterMotor && !(base.characterBody && base.characterBody.GetNotMoving()))
                 {
                     if (base.characterMotor.isGrounded && base.characterMotor.Motor) base.characterMotor.Motor.ForceUnground();
                     Vector3 direction = base.GetAimRay().direction;
@@ -153,7 +158,7 @@ namespace EntityStates.HAND_Overclocked.Primary
 
 
                     base.characterMotor.ApplyForce(direction * SwingHammer.selfForce, true, false);
-                }
+                }*/
             }
         }
 

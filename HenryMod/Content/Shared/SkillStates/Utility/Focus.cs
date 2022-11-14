@@ -29,9 +29,9 @@ namespace EntityStates.HAND_Overclocked.Utility
             base.FixedUpdate();
         }*/
 
-        /*public override float ExtendBuff(float stopwatch, float extensionTime)
+        public override float ExtendBuff(float stopwatch, float extensionTime)
         {
-            return stopwatch - 0.5f * extensionTime;
-        }*/
+            return stopwatch;// - 0.5f * extensionTime;
+        }
     }
 }

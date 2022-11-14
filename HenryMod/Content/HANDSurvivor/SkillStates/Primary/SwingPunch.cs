@@ -13,6 +13,7 @@ namespace EntityStates.HAND_Overclocked.Primary
     {
         public static NetworkSoundEventDef networkHitSound = null;
         public static GameObject swingEffect = null;
+        public static GameObject swingEffectFocus = null;
         public static GameObject hitEffect = null;
         public static AnimationCurve punchVelocityCurve = new AnimationCurve(new Keyframe[]
         {
@@ -38,7 +39,6 @@ namespace EntityStates.HAND_Overclocked.Primary
             this.attackRecoil = 0f;
 
             this.muzzleString = swingIndex == 1 ? "MuzzleHandL" : "MuzzleHandR";    //Anim names are reversed. This is correct.
-            this.swingEffectPrefab = SwingPunch.swingEffect;
             //this.hitEffectPrefab = SwingPunch.hitEffect;  //Why does this play the DRONE sound?
             if(SwingPunch.networkHitSound != null) this.impactSound = networkHitSound.index;
 
@@ -74,9 +74,17 @@ namespace EntityStates.HAND_Overclocked.Primary
             Animator an = base.GetModelAnimator();
             if (an) an.SetFloat("hammerIdle", 0f);
 
-            if (base.characterBody && hasOVC && this.swingIndex == 1)
+            this.swingEffectPrefab = SwingPunch.swingEffect;
+            if (base.characterBody)
             {
-                this.damageType |= DamageType.Stun1s;
+                if (SwingPunch.swingEffectFocus && base.characterBody.HasBuff(HANDMod.Content.Shared.Buffs.NemesisFocus))
+                {
+                    this.swingEffectPrefab = SwingPunch.swingEffectFocus;
+                }
+                if (hasOVC && this.swingIndex == 1)
+                {
+                    this.damageType |= DamageType.Stun1s;
+                }
             }
 
             base.OnEnter();

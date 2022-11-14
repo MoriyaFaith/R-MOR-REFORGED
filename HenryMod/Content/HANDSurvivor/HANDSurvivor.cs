@@ -62,6 +62,9 @@ namespace HANDMod.Content.HANDSurvivor
         {
             base.InitializeCharacter();
 
+            CharacterMotor cm = bodyPrefab.GetComponent<CharacterMotor>();
+            cm.mass = 300f;
+
             HammerVisibilityController.Initialize();
 
             CharacterBody cb = bodyPrefab.GetComponent<CharacterBody>();
@@ -112,8 +115,14 @@ namespace HANDMod.Content.HANDSurvivor
             CreateHitEffects();
             EntityStates.HAND_Overclocked.Utility.BeginOverclock.jetEffectPrefab = BuildOverclockJets();
             EntityStates.HAND_Overclocked.Secondary.FireSlam.earthquakeEffectPrefab = CreateSlamEffect();
-            EntityStates.HAND_Overclocked.Primary.SwingHammer.swingEffect = CreateSwingVFX("HANDMod_SwingHammerEffect", 1.5f * Vector3.one, Addressables.LoadAssetAsync<Material>("RoR2/Base/Lemurian/matLizardBiteTrail.mat").WaitForCompletion());
-            EntityStates.HAND_Overclocked.Primary.SwingPunch.swingEffect = CreateSwingVFX("HANDMod_SwingPunchEffect", new Vector3 (0.4f, 2f, 1f), Addressables.LoadAssetAsync<Material>("RoR2/Base/Lemurian/matLizardBiteTrail.mat").WaitForCompletion());
+
+            Material matDefault = Addressables.LoadAssetAsync<Material>("RoR2/Base/Lemurian/matLizardBiteTrail.mat").WaitForCompletion();
+            EntityStates.HAND_Overclocked.Primary.SwingHammer.swingEffect = CreateSwingVFX("HANDMod_SwingHammerEffect", 1.5f * Vector3.one, matDefault);
+            EntityStates.HAND_Overclocked.Primary.SwingPunch.swingEffect = CreateSwingVFX("HANDMod_SwingPunchEffect", new Vector3(0.4f, 2f, 1f), matDefault);
+
+            Material matFocus = Addressables.LoadAssetAsync<Material>("RoR2/Base/Imp/matImpSwipe.mat").WaitForCompletion();
+            EntityStates.HAND_Overclocked.Primary.SwingHammer.swingEffectFocus = CreateSwingVFX("HANDMod_SwingHammerFocusEffect", 1.5f * Vector3.one, matFocus);
+            EntityStates.HAND_Overclocked.Primary.SwingPunch.swingEffectFocus = CreateSwingVFX("HANDMod_SwingPunchFocusEffect", new Vector3(0.4f, 2f, 1f), matFocus);
         }
 
         public override void InitializeDoppelganger(string clone)
