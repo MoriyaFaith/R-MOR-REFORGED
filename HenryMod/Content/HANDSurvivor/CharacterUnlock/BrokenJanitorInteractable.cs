@@ -31,7 +31,7 @@ namespace HANDMod.Content.HANDSurvivor.CharacterUnlock
                 if (currentScene == rallypointSceneDef)
                 {
                     GameObject interactable = UnityEngine.Object.Instantiate(HANDMod.Content.HANDSurvivor.CharacterUnlock.BrokenJanitorInteractable.interactablePrefab);
-                    interactable.transform.position = new Vector3(2.3f, 10.7f, 12.0f);
+                    interactable.transform.position = new Vector3(1f, 10.8f, 12.0f);
                     interactable.transform.rotation = Quaternion.Euler(0f, -90f, 0f);
                     NetworkServer.Spawn(interactable);
                 }
@@ -42,6 +42,17 @@ namespace HANDMod.Content.HANDSurvivor.CharacterUnlock
         {
             GameObject gameObject = Modules.Assets.mainAssetBundle.LoadAsset<GameObject>("mdlHANDOverclocked").InstantiateClone("BrokenJanitorInteractable", false);
             Modules.Assets.ConvertAllRenderersToHopooShader(gameObject);
+
+            Collider[] cl = gameObject.GetComponentsInChildren<Collider>();
+            foreach (Collider c in cl)
+            {
+                c.isTrigger = true;
+            }
+
+            gameObject.layer = LayerIndex.CommonMasks.interactable.value;
+            SphereCollider interactionCollider = gameObject.AddComponent<SphereCollider>();
+            interactionCollider.isTrigger = true;
+            interactionCollider.radius = 3f;
 
             NetworkIdentity net = gameObject.AddComponent<NetworkIdentity>();
             gameObject.RegisterNetworkPrefab();
