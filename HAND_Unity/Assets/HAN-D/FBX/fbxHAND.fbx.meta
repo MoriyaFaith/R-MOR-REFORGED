@@ -123,6 +123,12 @@ ModelImporter:
   - first:
       74: 2702412570793667854
     second: Armature|Emote2
+  - first:
+      74: 3741975146168832115
+    second: Armature|Pitch
+  - first:
+      74: 8612617642206311228
+    second: Armature|Yaw
   externalObjects:
   - first:
       type: UnityEngine:Material
@@ -1032,11 +1038,11 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Armature|AimPitch
-      takeName: Armature|AimPitch
+      name: Armature|Pitch
+      takeName: Armature|Pitch
       internalID: 0
       firstFrame: 0
-      lastFrame: 40
+      lastFrame: 20
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -1061,11 +1067,11 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 10
     - serializedVersion: 16
-      name: Armature|AimYaw
-      takeName: Armature|AimYaw
+      name: Armature|Yaw
+      takeName: Armature|Yaw
       internalID: 0
       firstFrame: 0
-      lastFrame: 40
+      lastFrame: 20
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
