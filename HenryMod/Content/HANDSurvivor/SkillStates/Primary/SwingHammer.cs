@@ -16,8 +16,7 @@ namespace EntityStates.HAND_Overclocked.Primary
         public static GameObject swingEffect = null;
         public static GameObject swingEffectFocus = null;
         public static GameObject hitEffect = null;
-        public static float force = 2400f;
-        //public static float selfForce = 2400f;
+        public static float force = 3000f;
         public static float forwardSpeed = 30f;
         public static float momentumEndPercent = 0.8f;
 
@@ -123,7 +122,24 @@ namespace EntityStates.HAND_Overclocked.Primary
             Vector3 aimFlat = base.GetAimRay().direction;
             aimFlat.y = 0;
             aimFlat.Normalize();
-            this.bonusForce = SwingHammer.force * aimFlat;
+            if (this.attack != null)
+            {
+                this.attack.forceVector = SwingHammer.force * aimFlat;
+            }
+
+            if (base.characterBody)
+            {
+                this.damageStat = base.characterBody.damage;
+
+                if (base.characterBody.HasBuff(HANDMod.Content.Shared.Buffs.NemesisFocus))
+                {
+                    this.swingEffectPrefab = SwingHammer.swingEffectFocus;
+                }
+                else
+                {
+                    this.swingEffectPrefab = SwingHammer.swingEffect;
+                }
+            }
 
             base.FixedUpdate();
 
@@ -141,14 +157,16 @@ namespace EntityStates.HAND_Overclocked.Primary
                 {
                     float endTime = this.duration * this.attackEndTime;
                     float momentumEndTime = this.duration * SwingHammer.momentumEndPercent;
-
-                    float evaluatedForwardSpeed = SwingHammer.forwardSpeed * Time.fixedDeltaTime;
-                    if (this.stopwatch > endTime && this.stopwatch <= momentumEndTime)
+                    if (this.stopwatch <= momentumEndTime)
                     {
-                        evaluatedForwardSpeed = Mathf.Lerp(evaluatedForwardSpeed, 0f, (this.stopwatch - endTime) / (momentumEndTime - endTime));
+                        float evaluatedForwardSpeed = SwingHammer.forwardSpeed * Time.fixedDeltaTime;
+                        if (this.stopwatch > endTime)
+                        {
+                            evaluatedForwardSpeed = Mathf.Lerp(evaluatedForwardSpeed, 0f, (this.stopwatch - endTime) / (momentumEndTime - endTime));
+                        }
+                        Vector3 evaluatedForwardVector = base.characterDirection.forward * evaluatedForwardSpeed;
+                        base.characterMotor.AddDisplacement(new Vector3(evaluatedForwardVector.x, 0f, evaluatedForwardVector.z));
                     }
-                    Vector3 evaluatedForwardVector = base.characterDirection.forward * evaluatedForwardSpeed;
-                    base.characterMotor.AddDisplacement(new Vector3(evaluatedForwardVector.x, 0f, evaluatedForwardVector.z));
                 }
             }
         }

@@ -128,7 +128,25 @@ namespace EntityStates.HAND_Overclocked.Primary
             Vector3 aimFlat = base.GetAimRay().direction;
             aimFlat.y = 0;
             aimFlat.Normalize();
-            this.bonusForce = SwingPunch.force * aimFlat;
+            if (this.attack != null)
+            {
+                this.attack.forceVector = SwingPunch.force * aimFlat;
+            }
+
+            if (base.characterBody)
+            {
+                this.damageStat = base.characterBody.damage;
+
+                if (base.characterBody.HasBuff(HANDMod.Content.Shared.Buffs.NemesisFocus))
+                {
+                    this.swingEffectPrefab = SwingPunch.swingEffectFocus;
+                }
+                else
+                {
+                    this.swingEffectPrefab = SwingPunch.swingEffect;
+                }
+            }
+
             base.FixedUpdate();
         }
 

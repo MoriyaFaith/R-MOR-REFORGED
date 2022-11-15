@@ -127,8 +127,8 @@ namespace HANDMod.Content
                     {
                         if (!cb.characterMotor.isGrounded)    //Multiply launched enemy force
                         {
-                            damageInfo.force.x *= 1.2f;
-                            damageInfo.force.z *= 1.2f;
+                            //damageInfo.force.x *= 1.2f;
+                            //damageInfo.force.z *= 1.2f;
 
                             if (cb.isChampion)
                             {
