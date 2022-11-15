@@ -2,12 +2,15 @@
 using RoR2.Achievements;
 using UnityEngine;
 using R2API;
+using HANDMod.Content.HANDSurvivor.Components;
 
 namespace HANDMod.Content.HANDSurvivor.Achievements
 {
-    [RegisterAchievement("MoffeinHANDOverclockedHammerPrimaryUnlock", "Skills.HANDOverclocked.HammerPrimary", null, typeof(HANDOverclockedHammerPrimaryUnlockServerAchievement))]
+    [RegisterAchievement("MoffeinHANDOverclockedHammerPrimaryUnlock", "Skills.HANDOverclocked.HammerPrimary", null, null)]
     public class HANDOverclockedHammerPrimaryUnlockAchievement : BaseAchievement
     {
+        BodyIndex mithrixBody;
+        BodyIndex voidlingBody;
         public override BodyIndex LookUpRequiredBodyIndex()
         {
             return BodyCatalog.FindBodyIndex("HANDOverclockedBody");
@@ -15,40 +18,29 @@ namespace HANDMod.Content.HANDSurvivor.Achievements
         public override void OnBodyRequirementMet()
         {
             base.OnBodyRequirementMet();
-            base.SetServerTracked(true);
+            mithrixBody = BodyCatalog.FindBodyIndex("BrotherHurtBody");
+            voidlingBody = BodyCatalog.FindBodyIndex("VoidRaidCrabBody");
+            SquashedComponent.onSquashedGlobal += SquashedComponent_onSquashedGlobal;
         }
 
         public override void OnBodyRequirementBroken()
         {
-            base.SetServerTracked(false);
+            SquashedComponent.onSquashedGlobal -= SquashedComponent_onSquashedGlobal;
             base.OnBodyRequirementBroken();
         }
 
-        private class HANDOverclockedHammerPrimaryUnlockServerAchievement : BaseServerAchievement
+        private void SquashedComponent_onSquashedGlobal(SquashedComponent sq)
         {
-            public override void OnInstall()
+            if (sq.triggerer)
             {
-                base.OnInstall();
-                GlobalEventManager.onCharacterDeathGlobal += this.OnCharacterDeath;
-            }
-
-            public override void OnUninstall()
-            {
-                GlobalEventManager.onCharacterDeathGlobal -= this.OnCharacterDeath;
-                base.OnUninstall();
-            }
-            private void OnCharacterDeath(DamageReport damageReport)
-            {
-                if (!damageReport.victimBody)
+                CharacterBody triggererBody = sq.triggerer.GetComponent<CharacterBody>();
+                if (triggererBody == base.localUser.cachedBody)
                 {
-                    return;
-                }
-                Debug.Log(damageReport.victimIsBoss);
-                if (base.IsCurrentBody(damageReport.attackerBody)
-                    && damageReport.victimIsBoss
-                    && (damageReport.damageInfo.HasModdedDamageType(DamageTypes.HANDSecondary) || damageReport.damageInfo.HasModdedDamageType(DamageTypes.HANDSecondaryScepter)))
-                {
-                    base.Grant();
+                    BodyIndex victimBodyIndex = sq.GetBodyIndex();
+                    if (victimBodyIndex == mithrixBody || victimBodyIndex == voidlingBody)
+                    {
+                        base.Grant();
+                    }
                 }
             }
         }

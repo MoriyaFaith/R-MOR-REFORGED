@@ -205,7 +205,15 @@ namespace HANDMod.Content.HANDSurvivor
 
             SkillFamily primarySkillFamily = bodyPrefab.GetComponent<SkillLocator>().primary.skillFamily;
             Skills.AddSkillToFamily(primarySkillFamily, primarySkill);
-            Skills.AddSkillToFamily(primarySkillFamily, primaryHammerSkill, primaryHammerUnlock);
+            
+            if (!Modules.Config.forceUnlock)
+            {
+                Skills.AddSkillToFamily(primarySkillFamily, primaryHammerSkill, primaryHammerUnlock);
+            }
+            else
+            {
+                Skills.AddSkillToFamily(primarySkillFamily, primaryHammerSkill);
+            }
         }
         private void InitializeSecondarySkills()
         {
@@ -239,8 +247,23 @@ namespace HANDMod.Content.HANDSurvivor
 
         private void InitializeUtilitySkills()
         {
-            Skills.AddUtilitySkills(bodyPrefab, new SkillDef[] {});
-            Skills.AddUtilitySkills(bodyPrefab, new SkillDef[] { HANDMod.Content.Shared.SkillDefs.UtilityOverclock, HANDMod.Content.Shared.SkillDefs.UtilityFocus });
+            UnlockableDef focusUnlock = ScriptableObject.CreateInstance<UnlockableDef>();
+            focusUnlock.cachedName = "Skills.HANDOverclocked.NemesisFocus";
+            focusUnlock.nameToken = "ACHIEVEMENT_MOFFEINHANDOVERCLOCKEDNEMESISFOCUSUNLOCK_NAME";
+            focusUnlock.achievementIcon = Shared.SkillDefs.UtilityFocus.icon;
+            Modules.ContentPacks.unlockableDefs.Add(focusUnlock);
+            
+            SkillFamily utilityFamily = bodyPrefab.GetComponent<SkillLocator>().utility.skillFamily;
+            Skills.AddSkillToFamily(utilityFamily, Shared.SkillDefs.UtilityOverclock);
+
+            if (!Modules.Config.forceUnlock)
+            {
+                Skills.AddSkillToFamily(utilityFamily, Shared.SkillDefs.UtilityFocus, focusUnlock);
+            }
+            else
+            {
+                Skills.AddSkillToFamily(utilityFamily, Shared.SkillDefs.UtilityFocus);
+            }
         }
 
         private void InitializeSpecialSkills()

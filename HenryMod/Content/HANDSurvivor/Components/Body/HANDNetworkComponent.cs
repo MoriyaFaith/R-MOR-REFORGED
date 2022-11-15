@@ -55,8 +55,9 @@ namespace HANDMod.Content.HANDSurvivor.Components.Body
                         }
                         else
                         {
-                            bodyObject.AddComponent<SquashedComponent>();
+                            sq = bodyObject.AddComponent<SquashedComponent>();
                         }
+                        sq.triggerer = base.gameObject;
                     }
                 }
             }

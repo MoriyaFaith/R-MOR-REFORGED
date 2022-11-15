@@ -2,6 +2,7 @@
 using HANDMod.Content.Shared.Components.Body;
 using RoR2;
 using RoR2.Skills;
+using System;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
@@ -10,6 +11,8 @@ namespace EntityStates.HAND_Overclocked.Utility
 {
 	public class BeginOverclock : BaseState
 	{
+		//Used for achievement.
+		public static event Action<BeginOverclock> onAuthorityFixedUpdateGlobal;
 		public override void OnEnter()
 		{
 			base.OnEnter();
@@ -156,6 +159,9 @@ namespace EntityStates.HAND_Overclocked.Utility
 					stopwatch = ExtendBuff(stopwatch, overclockController.ConsumeExtensionTime());
 					overclockController.buffPercent = Mathf.Max(0f, (buffDuration - stopwatch)) / buffDuration;
 				}
+
+				if (onAuthorityFixedUpdateGlobal != null) onAuthorityFixedUpdateGlobal.Invoke(this);
+
 				if (!this.skillSlot || this.skillSlot.stock == 0 || stopwatch >= buffDuration)
 				{
 					this.beginExit = true;

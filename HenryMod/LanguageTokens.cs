@@ -44,16 +44,21 @@ namespace HANDMod
             LanguageAPI.Add(handPrefix + "SECONDARY_SCEPTER_DESC", "<style=cIsDamage>Stunning</style>. Charge up and apply <style=cIsHealth>OVERWHELMING</style> force to all combatants for <style=cIsDamage>900%-2250% damage</style>.");
 
             LanguageAPI.Add(handPrefix + "UTILITY_NAME", "OVERCLOCK");
-            LanguageAPI.Add(handPrefix + "UTILITY_DESC", "Increase <style=cIsUtility>movement speed</style> and <style=cIsDamage>attack speed</style> by <style=cIsDamage>40%</style>. Hit enemies to <style=cIsUtility>increase duration</style>.");
+            LanguageAPI.Add(handPrefix + "UTILITY_DESC", "<style=cIsUtility>Boost</style>. Increase <style=cIsUtility>movement speed</style> and <style=cIsDamage>attack speed</style> by <style=cIsDamage>40%</style>. Hit enemies to <style=cIsUtility>increase duration</style>.");
 
             LanguageAPI.Add(handPrefix + "UTILITY_NEMESIS_NAME", "FOCUS");
-            LanguageAPI.Add(handPrefix + "UTILITY_NEMESIS_DESC", "Temporarily deal <style=cIsDamage>50% extra damage</style>.");
+            LanguageAPI.Add(handPrefix + "UTILITY_NEMESIS_DESC", "<style=cIsUtility>Boost</style>. Temporarily deal <style=cIsDamage>50% extra damage</style>.");
+
+            LanguageAPI.Add("KEYWORD_MOFFEINHANDOVERCLOCKED_BOOST", "<style=cKeywordName>Boost</style><style=cSub>The skill can be cancelled early to boost upwards.</style>");
 
             LanguageAPI.Add(handPrefix + "SPECIAL_NAME", "DRONE");
             LanguageAPI.Add(handPrefix + "SPECIAL_DESC", "Fire a drone that deals <style=cIsDamage>270% damage</style> and <style=cIsHealing>heals for 40% of the damage dealt</style>. Kills and melee hits <style=cIsUtility>reduce cooldown</style>.");
 
-            LanguageAPI.Add("ACHIEVEMENT_MOFFEINHANDOVERCLOCKEDHAMMERPRIMARYUNLOCK_NAME", "Bonk!");
-            LanguageAPI.Add("ACHIEVEMENT_MOFFEINHANDOVERCLOCKEDHAMMERPRIMARYUNLOCK_DESCRIPTION", "Flatten a Teleporter boss.");
+            LanguageAPI.Add("ACHIEVEMENT_MOFFEINHANDOVERCLOCKEDHAMMERPRIMARYUNLOCK_NAME", "HAN-D: Bonk!");
+            LanguageAPI.Add("ACHIEVEMENT_MOFFEINHANDOVERCLOCKEDHAMMERPRIMARYUNLOCK_DESCRIPTION", "Flatten the final boss.");
+
+            LanguageAPI.Add("ACHIEVEMENT_MOFFEINHANDOVERCLOCKEDNEMESISFOCUSUNLOCK_NAME", "HAN-D: Beatdown");
+            LanguageAPI.Add("ACHIEVEMENT_MOFFEINHANDOVERCLOCKEDNEMESISFOCUSUNLOCK_DESCRIPTION", "Keep OVERCLOCK active for over 60 seconds.");
 
             string rmorPrefix = Content.RMORSurvivor.RMORSurvivor.RMOR_PREFIX;
             LanguageAPI.Add(rmorPrefix + "NAME", "R-MOR");

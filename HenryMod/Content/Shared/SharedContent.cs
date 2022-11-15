@@ -44,7 +44,7 @@ namespace HANDMod.Content.Shared
             ovcSkill.stockToConsume = 1;
             ovcSkill.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texUtilityOverclock.png");
             ovcSkill.activationStateMachineName = "Slide";
-            ovcSkill.keywordTokens = new string[] { };//HANDSurvivor.HAND_PREFIX + "KEYWORD_SPRINGY"
+            ovcSkill.keywordTokens = new string[] { "KEYWORD_MOFFEINHANDOVERCLOCKED_BOOST" };//HANDSurvivor.HAND_PREFIX + "KEYWORD_SPRINGY"
             Modules.Skills.FixScriptableObjectName(ovcSkill);
             Modules.ContentPacks.skillDefs.Add(ovcSkill);
             SkillDefs.UtilityOverclock = ovcSkill;
@@ -100,7 +100,7 @@ namespace HANDMod.Content.Shared
             focusSkill.stockToConsume = 1;
             focusSkill.icon = HANDMod.Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texUtilityNemesis.png");
             focusSkill.activationStateMachineName = "Slide";
-            focusSkill.keywordTokens = new string[] { };//HANDSurvivor.HAND_PREFIX + "KEYWORD_SPRINGY"
+            focusSkill.keywordTokens = new string[] { "KEYWORD_MOFFEINHANDOVERCLOCKED_BOOST" };//HANDSurvivor.HAND_PREFIX + "KEYWORD_SPRINGY"
             Modules.Skills.FixScriptableObjectName(focusSkill);
             HANDMod.Modules.ContentPacks.skillDefs.Add(focusSkill);
             SkillDefs.UtilityFocus = focusSkill;
