@@ -315,13 +315,13 @@ CharacterJoint:
     limit: 40
     bounciness: 0
     contactDistance: 0
-  m_EnableProjection: 1
-  m_ProjectionDistance: 0.01
+  m_EnableProjection: 0
+  m_ProjectionDistance: 0.1
   m_ProjectionAngle: 180
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
   m_EnableCollision: 0
-  m_EnablePreprocessing: 0
+  m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
 --- !u!54 &1954911933706586763
@@ -5282,6 +5282,11 @@ PrefabInstance:
     - target: {fileID: 3000143737291139049, guid: ae242a850babe6d4baa1af93a9cf5418,
         type: 3}
       propertyPath: m_DynamicOccludee
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3000143737291139049, guid: ae242a850babe6d4baa1af93a9cf5418,
+        type: 3}
+      propertyPath: m_UpdateWhenOffscreen
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3016873879412092048, guid: ae242a850babe6d4baa1af93a9cf5418,

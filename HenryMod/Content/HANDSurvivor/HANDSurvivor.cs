@@ -14,6 +14,7 @@ using EntityStates;
 using System.Linq;
 using R2API;
 using System.Runtime.CompilerServices;
+using HANDMod.Content.HANDSurvivor.CharacterUnlock;
 
 namespace HANDMod.Content.HANDSurvivor
 {
@@ -123,6 +124,8 @@ namespace HANDMod.Content.HANDSurvivor
             Material matFocus = Addressables.LoadAssetAsync<Material>("RoR2/Base/Imp/matImpSwipe.mat").WaitForCompletion();
             EntityStates.HAND_Overclocked.Primary.SwingHammer.swingEffectFocus = CreateSwingVFX("HANDMod_SwingHammerFocusEffect", 1.5f * Vector3.one, matFocus);
             EntityStates.HAND_Overclocked.Primary.SwingPunch.swingEffectFocus = CreateSwingVFX("HANDMod_SwingPunchFocusEffect", new Vector3(0.25f, 2f, 0.7f), matFocus);
+
+            BrokenJanitorInteractable.Initialize();
         }
 
         public override void InitializeDoppelganger(string clone)
