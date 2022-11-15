@@ -38,10 +38,10 @@ namespace HANDMod
             LanguageAPI.Add(handPrefix + "PRIMARY_HAMMER_DESC", "<style=cIsHealth>Slow down</style> and smash all combatants for <style=cIsDamage>600% damage</style>. <style=cIsDamage>Stuns</style> while <style=cIsDamage>OVERCLOCK</style> is active.");
 
             LanguageAPI.Add(handPrefix + "SECONDARY_NAME", "FORCED_REASSEMBLY");
-            LanguageAPI.Add(handPrefix + "SECONDARY_DESC", "<style=cIsDamage>Stunning</style>. Charge up and apply great force to all combatants for <style=cIsDamage>500%-1500% damage</style>.");
+            LanguageAPI.Add(handPrefix + "SECONDARY_DESC", "<style=cIsDamage>Stunning</style>. Charge up and apply great force to all combatants for <style=cIsDamage>600%-1500% damage</style>.");
 
             LanguageAPI.Add(handPrefix + "SECONDARY_SCEPTER_NAME", "UNETHICAL_REASSEMBLY");
-            LanguageAPI.Add(handPrefix + "SECONDARY_SCEPTER_DESC", "<style=cIsDamage>Stunning</style>. Charge up and apply <style=cIsHealth>OVERWHELMING</style> force to all combatants for <style=cIsDamage>750%-2250% damage</style>.");
+            LanguageAPI.Add(handPrefix + "SECONDARY_SCEPTER_DESC", "<style=cIsDamage>Stunning</style>. Charge up and apply <style=cIsHealth>OVERWHELMING</style> force to all combatants for <style=cIsDamage>900%-2250% damage</style>.");
 
             LanguageAPI.Add(handPrefix + "UTILITY_NAME", "OVERCLOCK");
             LanguageAPI.Add(handPrefix + "UTILITY_DESC", "Increase <style=cIsUtility>movement speed</style> and <style=cIsDamage>attack speed</style> by <style=cIsDamage>40%</style>. Hit enemies to <style=cIsUtility>increase duration</style>.");
@@ -51,6 +51,9 @@ namespace HANDMod
 
             LanguageAPI.Add(handPrefix + "SPECIAL_NAME", "DRONE");
             LanguageAPI.Add(handPrefix + "SPECIAL_DESC", "Fire a drone that deals <style=cIsDamage>270% damage</style> and <style=cIsHealing>heals for 40% of the damage dealt</style>. Kills and melee hits <style=cIsUtility>reduce cooldown</style>.");
+
+            LanguageAPI.Add("ACHIEVEMENT_MOFFEINHANDOVERCLOCKEDHAMMERPRIMARYUNLOCK_NAME", "Bonk!");
+            LanguageAPI.Add("ACHIEVEMENT_MOFFEINHANDOVERCLOCKEDHAMMERPRIMARYUNLOCK_DESCRIPTION", "Flatten a Teleporter boss.");
 
             string rmorPrefix = Content.RMORSurvivor.RMORSurvivor.RMOR_PREFIX;
             LanguageAPI.Add(rmorPrefix + "NAME", "R-MOR");

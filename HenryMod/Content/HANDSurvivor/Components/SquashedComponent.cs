@@ -15,7 +15,7 @@ namespace HANDMod.Content.HANDSurvivor.Components
         private HealthComponent health = null;
 
         private float graceTimer;
-        public static float baseGraceTimer = 0.5f;
+        public static float baseGraceTimer = 0.3f;
 
         private bool triggeredSquash = false;
         GameObject model;

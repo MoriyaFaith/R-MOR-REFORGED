@@ -197,7 +197,15 @@ namespace HANDMod.Content.HANDSurvivor
             Modules.ContentPacks.skillDefs.Add(primaryHammerSkill);
             SkillDefs.PrimaryHammer = primaryHammerSkill;
 
-            Skills.AddPrimarySkills(bodyPrefab, new SkillDef[] { primarySkill, primaryHammerSkill });
+            UnlockableDef primaryHammerUnlock = ScriptableObject.CreateInstance<UnlockableDef>();
+            primaryHammerUnlock.cachedName = "Skills.HANDOverclocked.HammerPrimary";
+            primaryHammerUnlock.nameToken = "ACHIEVEMENT_MOFFEINHANDOVERCLOCKEDHAMMERPRIMARYUNLOCK_NAME";
+            primaryHammerUnlock.achievementIcon = primaryHammerSkill.icon;
+            Modules.ContentPacks.unlockableDefs.Add(primaryHammerUnlock);
+
+            SkillFamily primarySkillFamily = bodyPrefab.GetComponent<SkillLocator>().primary.skillFamily;
+            Skills.AddSkillToFamily(primarySkillFamily, primarySkill);
+            Skills.AddSkillToFamily(primarySkillFamily, primaryHammerSkill, primaryHammerUnlock);
         }
         private void InitializeSecondarySkills()
         {

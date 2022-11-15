@@ -15,7 +15,7 @@ namespace EntityStates.HAND_Overclocked.Secondary
 
         public float chargePercent = 0f;
 
-        public static float minDamageCoefficient = 5f;
+        public static float minDamageCoefficient = 6f;
         public static float maxDamageCoefficient = 15f;
 
         public static float minDownForce = 2400f;
