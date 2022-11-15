@@ -15,6 +15,7 @@ namespace HANDMod.Modules
         public static List<GameObject> bodyPrefabs = new List<GameObject>();
         public static List<GameObject> masterPrefabs = new List<GameObject>();
         public static List<GameObject> projectilePrefabs = new List<GameObject>();
+        public static List<GameObject> networkedObjectPrefabs = new List<GameObject>();
 
         public static List<SurvivorDef> survivorDefs = new List<SurvivorDef>();
         public static List<UnlockableDef> unlockableDefs = new List<UnlockableDef>();
@@ -57,6 +58,8 @@ namespace HANDMod.Modules
             contentPack.effectDefs.Add(effectDefs.ToArray());
 
             contentPack.networkSoundEventDefs.Add(networkSoundEventDefs.ToArray());
+
+            contentPack.networkedObjectPrefabs.Add(networkedObjectPrefabs.ToArray());
 
             args.ReportProgress(1f);
             yield break;

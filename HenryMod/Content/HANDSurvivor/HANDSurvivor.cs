@@ -22,11 +22,11 @@ namespace HANDMod.Content.HANDSurvivor
     {
         public const string HAND_PREFIX = HandPlugin.DEVELOPER_PREFIX + "_HAND_BODY_";
         public override string survivorTokenPrefix => HAND_PREFIX;
-        public override string cachedName => "HANDOverclocked";
         public override ItemDisplaysBase itemDisplays => new HANDItemDisplays();
         public override UnlockableDef characterUnlockableDef => null;
 
         public override string bodyName => "HANDOverclocked";
+        public override string cachedName => bodyName;
 
         public override BodyInfo bodyInfo { get; set; } = new BodyInfo
         {
