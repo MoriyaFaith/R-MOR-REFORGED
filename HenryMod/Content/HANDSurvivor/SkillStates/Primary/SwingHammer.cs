@@ -18,6 +18,9 @@ namespace EntityStates.HAND_Overclocked.Primary
         public static GameObject hitEffect = null;
         public static float force = 3000f;
         public static float forwardSpeed = 30f;
+
+        public static float momentumStartPercent = 0.5f;
+        public static float momentumFadePercent = 0.6825f;
         public static float momentumEndPercent = 0.8f;
 
         private bool hitEnemy = false;
@@ -153,16 +156,16 @@ namespace EntityStates.HAND_Overclocked.Primary
 
             if (base.isAuthority)
             { 
-                if (this.hasFired && !this.inHitPause && base.characterDirection && base.characterMotor && !(base.characterBody && base.characterBody.GetNotMoving()))
+                if (!this.inHitPause && base.characterDirection && base.characterMotor && !(base.characterBody && base.characterBody.GetNotMoving()) && this.stopwatch >= this.duration * SwingHammer.momentumStartPercent)
                 {
-                    float endTime = this.duration * this.attackEndTime;
+                    float fadeTime = this.duration * SwingHammer.momentumFadePercent;
                     float momentumEndTime = this.duration * SwingHammer.momentumEndPercent;
                     if (this.stopwatch <= momentumEndTime)
                     {
                         float evaluatedForwardSpeed = SwingHammer.forwardSpeed * Time.fixedDeltaTime;
-                        if (this.stopwatch > endTime)
+                        if (this.stopwatch > fadeTime)
                         {
-                            evaluatedForwardSpeed = Mathf.Lerp(evaluatedForwardSpeed, 0f, (this.stopwatch - endTime) / (momentumEndTime - endTime));
+                            evaluatedForwardSpeed = Mathf.Lerp(evaluatedForwardSpeed, 0f, (this.stopwatch - fadeTime) / (momentumEndTime - fadeTime));
                         }
                         Vector3 evaluatedForwardVector = base.characterDirection.forward * evaluatedForwardSpeed;
                         base.characterMotor.AddDisplacement(new Vector3(evaluatedForwardVector.x, 0f, evaluatedForwardVector.z));
