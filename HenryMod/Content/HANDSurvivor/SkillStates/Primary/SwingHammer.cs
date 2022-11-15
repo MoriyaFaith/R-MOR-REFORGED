@@ -137,10 +137,12 @@ namespace EntityStates.HAND_Overclocked.Primary
                 if (base.characterBody.HasBuff(HANDMod.Content.Shared.Buffs.NemesisFocus))
                 {
                     this.swingEffectPrefab = SwingHammer.swingEffectFocus;
+                    this.attack.damageColorIndex = DamageColorIndex.Sniper;
                 }
                 else
                 {
                     this.swingEffectPrefab = SwingHammer.swingEffect;
+                    this.attack.damageColorIndex = DamageColorIndex.Default;
                 }
             }
 
