@@ -137,7 +137,7 @@ namespace HANDMod.Content.HANDSurvivor.CharacterUnlock
             pi.contextToken = "LOCKEDTREEBOT_CONTEXT";
             pi.costType = CostTypeIndex.Money;
             pi.available = true;
-            pi.cost = 200;
+            pi.cost = 150;
             pi.automaticallyScaleCostWithDifficulty = true;
             pi.ignoreSpherecastForInteractability = false;
             pi.setUnavailableOnTeleporterActivated = false;
