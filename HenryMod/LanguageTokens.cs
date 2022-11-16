@@ -29,7 +29,7 @@ namespace HANDMod
             LanguageAPI.Add(handPrefix + "OUTRO_FAILURE", "..and so it vanished, unrewarded in all of its efforts.");
 
             LanguageAPI.Add(handPrefix + "PASSIVE_NAME", "SWARM_ARMOR");
-            LanguageAPI.Add(handPrefix + "PASSIVE_DESC", "<style=cIsDamage>Reduce incoming damage</style> by <style=cIsDamage>0.5%</style> of your maximum health for every <style=cIsUtility>drone</style> on your team.");
+            LanguageAPI.Add(handPrefix + "PASSIVE_DESC", "<style=cIsDamage>Reduce incoming damage</style> by <style=cIsDamage>0.3%</style> of your maximum health for every <style=cIsUtility>drone</style> on your team.");
 
             LanguageAPI.Add(handPrefix + "PRIMARY_NAME", "HURT");
             LanguageAPI.Add(handPrefix + "PRIMARY_DESC", "Apply force to all combatants for <style=cIsDamage>390% damage</style>. <style=cIsDamage>Stuns</style> while <style=cIsDamage>OVERCLOCK</style> is active.");
@@ -47,7 +47,7 @@ namespace HANDMod
             LanguageAPI.Add(handPrefix + "UTILITY_DESC", "<style=cIsUtility>Boost</style>. Increase <style=cIsUtility>movement speed</style> and <style=cIsDamage>attack speed</style> by <style=cIsDamage>40%</style>. Hit enemies to <style=cIsUtility>increase duration</style>.");
 
             LanguageAPI.Add(handPrefix + "UTILITY_NEMESIS_NAME", "FOCUS");
-            LanguageAPI.Add(handPrefix + "UTILITY_NEMESIS_DESC", "<style=cIsUtility>Boost</style>. Temporarily deal <style=cIsDamage>50% extra damage</style>.");
+            LanguageAPI.Add(handPrefix + "UTILITY_NEMESIS_DESC", "<style=cIsUtility>Boost</style>. <style=cIsHealth>Slow down</style> and deal <style=cIsDamage>50% extra damage</style>. Hit enemies to <style=cIsUtility>increase duration</style>.");
 
             LanguageAPI.Add("KEYWORD_MOFFEINHANDOVERCLOCKED_BOOST", "<style=cKeywordName>Boost</style><style=cSub>The skill can be cancelled early to boost upwards.</style>");
 

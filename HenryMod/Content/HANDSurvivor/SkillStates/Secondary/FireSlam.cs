@@ -157,6 +157,11 @@ namespace EntityStates.HAND_Overclocked.Secondary
             Util.PlaySound("Play_parent_attack1_slam", base.gameObject);
             Util.PlaySound("Play_UI_podImpact", base.gameObject);
 
+            if (base.characterBody && base.characterBody.HasBuff(HANDMod.Content.Shared.Buffs.NemesisFocus))
+            {
+                Util.PlaySound("Play_HOC_Focus", base.gameObject);
+            }
+
             if (base.isAuthority)
             {
                 Ray aimRay = base.GetAimRay();

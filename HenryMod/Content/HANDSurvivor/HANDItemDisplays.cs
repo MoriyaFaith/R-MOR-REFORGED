@@ -1125,8 +1125,8 @@ namespace HANDMod.Content.HANDSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayGoldGat"),
                             childName = "Pelvis",
-                            localPos = new Vector3(0F, 1.82973F, 0.74723F),
-                            localAngles = new Vector3(-0.00001F, 270F, 315F),
+                            localPos = new Vector3(0F, 2.01706F, -0.07716F),
+                            localAngles = new Vector3(0F, 270F, 0F),
                             localScale = new Vector3(0.7F, 0.7F, 0.7F),
                             limbMask = LimbFlags.None
                         }

@@ -129,6 +129,20 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Play_HOC_Focus" ID="{4784BACE-3E8E-4F3B-A63D-56B12F923A52}">
+					<ChildrenList>
+						<Action Name="" ID="{1E776A33-5BBE-4470-9D81-E1BE978E6DA8}" ShortID="505385462">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="exeSpecial" ID="{76781A04-F4DD-4155-80D0-DC70AD978FEB}" WorkUnitID="{068EBB0B-3714-4C7C-A629-E920CE6D27A5}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

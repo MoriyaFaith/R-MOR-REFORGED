@@ -202,6 +202,11 @@ namespace EntityStates.HAND_Overclocked.Primary
                     base.characterMotor.ApplyForce(direction * SwingHammer.selfForce, true, false);
                 }*/
             }
+
+            if (this.swingEffectPrefab == SwingHammer.swingEffectFocus)
+            {
+                Util.PlaySound("Play_HOC_Focus", base.gameObject);
+            }
         }
 
         protected override void PlayAttackAnimation()

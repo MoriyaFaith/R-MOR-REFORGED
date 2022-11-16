@@ -159,6 +159,11 @@ namespace EntityStates.HAND_Overclocked.Primary
                 ShakeEmitter se = ShakeEmitter.CreateSimpleShakeEmitter(base.transform.position, new Wave() { amplitude = 3f, cycleOffset = 0f, frequency = 4f }, 0.25f, 20f, true);
                 se.transform.parent = base.transform;
             }
+
+            if (this.swingEffectPrefab == SwingPunch.swingEffectFocus)
+            {
+                Util.PlaySound("Play_HOC_Focus", base.gameObject);
+            }
         }
 
         protected override void PlayAttackAnimation()

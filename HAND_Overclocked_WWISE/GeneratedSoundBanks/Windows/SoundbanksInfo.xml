@@ -11,7 +11,7 @@
 	<StreamedFiles/>
 	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
-		<SoundBank Id="1029746374" Language="SFX" Hash="2992255496">
+		<SoundBank Id="1029746374" Language="SFX" Hash="1805663773">
 			<ObjectPath>\SoundBanks\Default Work Unit\HAND_Overclocked_Soundbank</ObjectPath>
 			<ShortName>HAND_Overclocked_Soundbank</ShortName>
 			<Path>HAND_Overclocked_Soundbank.bnk</Path>
@@ -45,6 +45,14 @@
 						<File Id="863164524" Language="SFX">
 							<ShortName>wLizardHit.wav</ShortName>
 							<Path>SFX\wLizardHit_0D5756A9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2201467365" Name="Play_HOC_Focus" ObjectPath="\Events\Default Work Unit\Play_HOC_Focus">
+					<IncludedMemoryFiles>
+						<File Id="189267586" Language="SFX">
+							<ShortName>exeSpecial.wav</ShortName>
+							<Path>SFX\exeSpecial_3F75BDB9.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>

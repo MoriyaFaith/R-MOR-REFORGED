@@ -14,6 +14,7 @@
 						<ObjectRef Name="Play_HOC_DroneGain" ID="{C57632A0-11F3-4903-87AA-62A21DF11E2A}" WorkUnitID="{38978FD5-8D2C-4C2D-9894-9E7B04E034AF}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_HOC_Punch" ID="{C2CE9FF4-558F-49FC-96DB-3052C9BE5688}" WorkUnitID="{38978FD5-8D2C-4C2D-9894-9E7B04E034AF}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_HOC_StartHammer" ID="{F41C9FAA-B9C1-4F14-BB76-C853E1CDBCDD}" WorkUnitID="{38978FD5-8D2C-4C2D-9894-9E7B04E034AF}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_HOC_Focus" ID="{4784BACE-3E8E-4F3B-A63D-56B12F923A52}" WorkUnitID="{38978FD5-8D2C-4C2D-9894-9E7B04E034AF}" Origin="Manual" Filter="7"/>
 					</ObjectInclusionList>
 					<ObjectExclusionList/>
 					<GameSyncExclusionList/>
