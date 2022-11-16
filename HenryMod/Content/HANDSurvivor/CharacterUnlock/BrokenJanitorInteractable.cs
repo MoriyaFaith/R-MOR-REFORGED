@@ -11,7 +11,6 @@ namespace HANDMod.Content.HANDSurvivor.CharacterUnlock
 {
     public class BrokenJanitorInteractable
     {
-        public static CharacterSpawnCard handMonsterCard;
         public static GameObject interactablePrefab;
         private static SceneDef rallypointSceneDef = Addressables.LoadAssetAsync<SceneDef>("RoR2/Base/frozenwall/frozenwall.asset").WaitForCompletion();
 
@@ -23,12 +22,6 @@ namespace HANDMod.Content.HANDSurvivor.CharacterUnlock
             initialized = true;
             interactablePrefab = BuildPrefab();
             On.RoR2.Stage.Start += SpawnInteractable;
-
-            handMonsterCard = ScriptableObject.CreateInstance<CharacterSpawnCard>();
-            handMonsterCard.directorCreditCost = 100;
-            handMonsterCard.hullSize = HullClassification.Human;
-            handMonsterCard.nodeGraphType = RoR2.Navigation.MapNodeGroup.GraphType.Ground;
-            handMonsterCard.prefab = MasterAI.HANDMaster;
         }
 
         private static void SpawnInteractable(On.RoR2.Stage.orig_Start orig, Stage self)
@@ -41,8 +34,8 @@ namespace HANDMod.Content.HANDSurvivor.CharacterUnlock
                 if (currentScene == rallypointSceneDef)
                 {
                     GameObject interactable = UnityEngine.Object.Instantiate(HANDMod.Content.HANDSurvivor.CharacterUnlock.BrokenJanitorInteractable.interactablePrefab);
-                    interactable.transform.position = new Vector3(1f, 10.8f, 12.0f);
-                    interactable.transform.rotation = Quaternion.Euler(0f, -90f, 0f);
+                    interactable.transform.position = new Vector3(41.92087f, 5f, 87.45225f);
+                    interactable.transform.rotation = Quaternion.Euler(0f, 90f, 0f);
                     NetworkServer.Spawn(interactable);
                 }
             }
@@ -173,69 +166,45 @@ namespace EntityStates.HAND_Overclocked.BrokenJanitor
             spawned = true;
             if (activator)
             {
-                CharacterBody activatorBody = activator.GetComponent<CharacterBody>();
+                MasterSummon ms = new MasterSummon
+                {
+                    useAmbientLevel = true,
+                    ignoreTeamMemberLimit = true,
+                    masterPrefab = HANDMod.Content.HANDSurvivor.MasterAI.HANDMaster,
+                    position = base.transform.position,
+                    rotation = base.transform.rotation,
+                    summonerBodyObject = activator.gameObject
+                };
 
-                DirectorSpawnRequest directorSpawnRequest = new DirectorSpawnRequest(HANDMod.Content.HANDSurvivor.CharacterUnlock.BrokenJanitorInteractable.handMonsterCard, new DirectorPlacementRule
+                CharacterMaster minionMaster = ms.Perform();
+                if (minionMaster)
                 {
-                    placementMode = DirectorPlacementRule.PlacementMode.Direct,
-                    minDistance = 0f,
-                    maxDistance = 0f,
-                    spawnOnTarget = transform
-                }, RoR2Application.rng);
-                directorSpawnRequest.summonerBodyObject = activator;
-                directorSpawnRequest.onSpawnedServer = (Action<SpawnCard.SpawnResult>)Delegate.Combine(directorSpawnRequest.onSpawnedServer, new Action<SpawnCard.SpawnResult>(delegate (SpawnCard.SpawnResult spawnResult)
-                {
-                    if (spawnResult.success && spawnResult.spawnedInstance)
+                    SetDontDestroyOnLoad.DontDestroyOnLoad(minionMaster);
+                    Inventory inventory = minionMaster.inventory;
+                    if (inventory)
                     {
-                        Inventory inventory = spawnResult.spawnedInstance.GetComponent<Inventory>();
-                        if (inventory)
+                        inventory.GiveItem(RoR2Content.Items.BoostHp, 50);
+                        inventory.GiveItem(RoR2Content.Items.BoostDamage, 20);
+
+                        ItemIndex riskyModAllyMarker = ItemCatalog.FindItemIndex("RiskyModAllyMarkerItem");
+                        if (riskyModAllyMarker != ItemIndex.None)
                         {
-                            inventory.GiveItem(RoR2Content.Items.BoostHp, 50);
-                            inventory.GiveItem(RoR2Content.Items.BoostDamage, 20);
-                            inventory.GiveItem(RoR2Content.Items.UseAmbientLevel);
-                            inventory.GiveItem(RoR2Content.Items.MinionLeash);
-
-                            ItemIndex riskyModAllyMarker = ItemCatalog.FindItemIndex("RiskyModAllyMarkerItem");
-                            if (riskyModAllyMarker != ItemIndex.None)
-                            {
-                                inventory.GiveItem(riskyModAllyMarker);
-                            }
-
-                            ItemIndex riskyModAllyScaling = ItemCatalog.FindItemIndex("RiskyModAllyScalingItem");
-                            if (riskyModAllyScaling != ItemIndex.None)
-                            {
-                                inventory.GiveItem(riskyModAllyScaling);
-                            }
-
-                            ItemIndex riskyModAllyRegen = ItemCatalog.FindItemIndex("RiskyModAllyRegenItem");
-                            if (riskyModAllyRegen != ItemIndex.None)
-                            {
-                                inventory.GiveItem(riskyModAllyRegen, 40);
-                            }
+                            inventory.GiveItem(riskyModAllyMarker);
                         }
 
-                        CharacterMaster cm = spawnResult.spawnedInstance.GetComponent<CharacterMaster>();
-                        if (cm)
+                        ItemIndex riskyModAllyScaling = ItemCatalog.FindItemIndex("RiskyModAllyScalingItem");
+                        if (riskyModAllyScaling != ItemIndex.None)
                         {
-                            if (cm.minionOwnership && activatorBody && activatorBody.master) cm.minionOwnership.SetOwner(activatorBody.master);
+                            inventory.GiveItem(riskyModAllyScaling);
                         }
 
-                        BaseAI ai = spawnResult.spawnedInstance.GetComponent<BaseAI>();
-                        if (ai)
+                        ItemIndex riskyModAllyRegen = ItemCatalog.FindItemIndex("RiskyModAllyRegenItem");
+                        if (riskyModAllyRegen != ItemIndex.None)
                         {
-                            ai.leader.gameObject = activator.gameObject;
+                            inventory.GiveItem(riskyModAllyRegen, 40);
                         }
-                        
-                        SetDontDestroyOnLoad.DontDestroyOnLoad(spawnResult.spawnedInstance);
                     }
-                }));
-
-                DirectorCore instance = DirectorCore.instance;
-                if (instance == null)
-                {
-                    return;
                 }
-                instance.TrySpawnObject(directorSpawnRequest);
             }
         }
     }
