@@ -44,6 +44,7 @@ namespace HANDMod.Content.HANDSurvivor
             specialSelfHeal.shouldSprint = true;
             specialSelfHeal.shouldFireEquipment = false;
             specialSelfHeal.buttonPressType = AISkillDriver.ButtonPressType.TapContinuous;
+            specialSelfHeal.maxUserHealthFraction = 0.7f;
 
             AISkillDriver secondary = masterObject.AddComponent<AISkillDriver>();
             secondary.skillSlot = SkillSlot.Secondary;
@@ -52,13 +53,13 @@ namespace HANDMod.Content.HANDSurvivor
             secondary.moveTargetType = AISkillDriver.TargetType.CurrentEnemy;
             secondary.minDistance = 0f;
             secondary.maxDistance = 10f;
-            secondary.selectionRequiresTargetLoS = true;
+            secondary.selectionRequiresTargetLoS = false;
             secondary.activationRequiresTargetLoS = false;
             secondary.activationRequiresAimConfirmation = false;
             secondary.movementType = AISkillDriver.MovementType.ChaseMoveTarget;
-            secondary.aimType = AISkillDriver.AimType.AtCurrentEnemy;
+            secondary.aimType = AISkillDriver.AimType.AtMoveTarget;
             secondary.ignoreNodeGraph = false;
-            secondary.driverUpdateTimerOverride = 1.5f;
+            secondary.driverUpdateTimerOverride = 2f;
             secondary.noRepeat = true;
             secondary.shouldSprint = true;
             secondary.shouldFireEquipment = false;
@@ -71,11 +72,11 @@ namespace HANDMod.Content.HANDSurvivor
             primary.moveTargetType = AISkillDriver.TargetType.CurrentEnemy;
             primary.minDistance = 0f;
             primary.maxDistance = 10f;
-            primary.selectionRequiresTargetLoS = true;
+            primary.selectionRequiresTargetLoS = false;
             primary.activationRequiresTargetLoS = false;
             primary.activationRequiresAimConfirmation = false;
             primary.movementType = AISkillDriver.MovementType.ChaseMoveTarget;
-            primary.aimType = AISkillDriver.AimType.AtCurrentEnemy;
+            primary.aimType = AISkillDriver.AimType.AtMoveTarget;
             primary.ignoreNodeGraph = false;
             primary.driverUpdateTimerOverride = -1f;
             primary.noRepeat = false;

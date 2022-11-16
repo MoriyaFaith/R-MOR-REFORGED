@@ -1,17 +1,19 @@
-﻿using RoR2;
-using UnityEngine;
+﻿using HANDMod.Content.HANDSurvivor.CharacterUnlock;
 using R2API;
-using UnityEngine.Networking;
+using RoR2;
+using RoR2.Hologram;
+using System;
+using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Events;
-using System;
-using RoR2.CharacterAI;
+using UnityEngine.Networking;
 
 namespace HANDMod.Content.HANDSurvivor.CharacterUnlock
 {
     public class BrokenJanitorInteractable
     {
         public static GameObject interactablePrefab;
+        public static GameObject repairPrefab;
         private static SceneDef rallypointSceneDef = Addressables.LoadAssetAsync<SceneDef>("RoR2/Base/frozenwall/frozenwall.asset").WaitForCompletion();
 
 
@@ -20,7 +22,12 @@ namespace HANDMod.Content.HANDSurvivor.CharacterUnlock
         {
             if (initialized) return;
             initialized = true;
+
+            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HAND_Overclocked.BrokenJanitor.BrokenJanitorMain));
+            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HAND_Overclocked.BrokenJanitor.BrokenJanitorActivate));
+
             interactablePrefab = BuildPrefab();
+            repairPrefab = BuildRepairPrefab();
             On.RoR2.Stage.Start += SpawnInteractable;
         }
 
@@ -46,8 +53,8 @@ namespace HANDMod.Content.HANDSurvivor.CharacterUnlock
             GameObject gameObject = Modules.Assets.mainAssetBundle.LoadAsset<GameObject>("mdlHANDOverclocked").InstantiateClone("BrokenJanitorInteractable", false);
             Modules.Assets.ConvertAllRenderersToHopooShader(gameObject);
 
-            Collider[] cl = gameObject.GetComponentsInChildren<Collider>();
-            foreach (Collider c in cl)
+            Collider[] colliders = gameObject.GetComponentsInChildren<Collider>();
+            foreach (Collider c in colliders)
             {
                 c.isTrigger = true;
             }
@@ -80,13 +87,10 @@ namespace HANDMod.Content.HANDSurvivor.CharacterUnlock
             pi.setUnavailableOnTeleporterActivated = false;
             pi.isShrine = false;
             pi.isGoldShrine = false;
-            //pi.onPurchase = 
 
             ModelLocator ml = gameObject.AddComponent<ModelLocator>();
             ml.modelTransform = gameObject.transform;
 
-            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HAND_Overclocked.BrokenJanitor.BrokenJanitorMain));
-            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HAND_Overclocked.BrokenJanitor.BrokenJanitorActivate));
             EntityStateMachine esm = gameObject.AddComponent<EntityStateMachine>();
             esm.mainStateType = new EntityStates.SerializableEntityStateType(typeof(EntityStates.HAND_Overclocked.BrokenJanitor.BrokenJanitorMain));
             esm.initialStateType = esm.mainStateType;
@@ -98,6 +102,135 @@ namespace HANDMod.Content.HANDSurvivor.CharacterUnlock
             el.entity = gameObject;
 
             return gameObject;
+        }
+
+        private static GameObject BuildRepairPrefab()
+        {
+            GameObject gameObject = Modules.Assets.mainAssetBundle.LoadAsset<GameObject>("mdlHANDOverclocked").InstantiateClone("BrokenJanitorRepair", false);
+            Modules.Assets.ConvertAllRenderersToHopooShader(gameObject);
+
+            Collider[] colliders = gameObject.GetComponentsInChildren<Collider>();
+            foreach (Collider c in colliders)
+            {
+                c.isTrigger = true;
+            }
+
+            gameObject.layer = LayerIndex.CommonMasks.interactable.value;
+            SphereCollider interactionCollider = gameObject.AddComponent<SphereCollider>();
+            interactionCollider.isTrigger = true;
+            interactionCollider.radius = 3f;
+
+            NetworkIdentity net = gameObject.AddComponent<NetworkIdentity>();
+            gameObject.RegisterNetworkPrefab();
+            Modules.ContentPacks.networkedObjectPrefabs.Add(gameObject);
+
+            Highlight highlight = gameObject.AddComponent<Highlight>();
+
+            SkinnedMeshRenderer[] smr = gameObject.GetComponentsInChildren<SkinnedMeshRenderer>();
+            highlight.targetRenderer = smr[1];  //HANDMesh
+            highlight.strength = 1f;
+            highlight.highlightColor = Highlight.HighlightColor.interactive;
+            highlight.isOn = false;
+
+            PurchaseInteraction pi = gameObject.AddComponent<PurchaseInteraction>();
+            pi.displayNameToken = "LOCKEDTREEBOT_NAME";
+            pi.contextToken = "LOCKEDTREEBOT_CONTEXT";
+            pi.costType = CostTypeIndex.Money;
+            pi.available = true;
+            pi.cost = 200;
+            pi.automaticallyScaleCostWithDifficulty = true;
+            pi.ignoreSpherecastForInteractability = false;
+            pi.setUnavailableOnTeleporterActivated = false;
+            pi.isShrine = false;
+            pi.isGoldShrine = false;
+
+            ModelLocator ml = gameObject.AddComponent<ModelLocator>();
+            ml.modelTransform = gameObject.transform;
+
+            ChildLocator cl = gameObject.GetComponent<ChildLocator>();
+            HologramProjector hl = gameObject.AddComponent<HologramProjector>();
+            hl.displayDistance = 15f;
+            hl.disableHologramRotation = false;
+            hl.hologramPivot = cl.FindChild("HologramPivot");
+
+            EntityStateMachine esm = gameObject.AddComponent<EntityStateMachine>();
+            esm.mainStateType = new EntityStates.SerializableEntityStateType(typeof(EntityStates.HAND_Overclocked.BrokenJanitor.BrokenJanitorMain));
+            esm.initialStateType = esm.mainStateType;
+
+            NetworkStateMachine nsm = gameObject.AddComponent<NetworkStateMachine>();
+            nsm.stateMachines = new EntityStateMachine[] { esm };
+
+            EntityLocator el = gameObject.AddComponent<EntityLocator>();
+            el.entity = gameObject;
+
+            return gameObject;
+        }
+    }
+
+    public class CreateRepairOnDeath : MonoBehaviour
+    {
+        private HealthComponent healthComponent;
+        private bool spawnedRepair = false;
+        public void Awake()
+        {
+            healthComponent = base.GetComponent<HealthComponent>();
+        }
+
+        public void FixedUpdate()
+        {
+            if (NetworkServer.active && !spawnedRepair && !(healthComponent && healthComponent.alive))
+            {
+                spawnedRepair = true;
+                GameObject interactable = UnityEngine.Object.Instantiate(HANDMod.Content.HANDSurvivor.CharacterUnlock.BrokenJanitorInteractable.repairPrefab);
+
+                Vector3 pos = FindSafeTeleportPosition(base.gameObject, base.transform.position);
+                interactable.transform.position = pos;
+                interactable.transform.rotation = base.transform.rotation;
+                NetworkServer.Spawn(interactable);
+            }
+        }
+        public static Vector3 FindSafeTeleportPosition(GameObject gameObject, Vector3 targetPosition)
+        {
+            return FindSafeTeleportPosition(gameObject, targetPosition, float.NegativeInfinity, float.NegativeInfinity);
+        }
+
+        public static Vector3 FindSafeTeleportPosition(GameObject gameObject, Vector3 targetPosition, float idealMinDistance, float idealMaxDistance)
+        {
+            Vector3 vector = targetPosition;
+            SpawnCard spawnCard = ScriptableObject.CreateInstance<SpawnCard>();
+            spawnCard.hullSize = HullClassification.Human;
+            spawnCard.nodeGraphType = RoR2.Navigation.MapNodeGroup.GraphType.Ground;
+            spawnCard.prefab = LegacyResourcesAPI.Load<GameObject>("SpawnCards/HelperPrefab");
+            Vector3 result = vector;
+            GameObject teleportGameObject = null;
+            if (idealMaxDistance > 0f && idealMinDistance < idealMaxDistance)
+            {
+                teleportGameObject = DirectorCore.instance.TrySpawnObject(new DirectorSpawnRequest(spawnCard, new DirectorPlacementRule
+                {
+                    placementMode = DirectorPlacementRule.PlacementMode.Approximate,
+                    minDistance = idealMinDistance,
+                    maxDistance = idealMaxDistance,
+                    position = vector
+                }, RoR2Application.rng));
+            }
+            if (!teleportGameObject)
+            {
+                teleportGameObject = DirectorCore.instance.TrySpawnObject(new DirectorSpawnRequest(spawnCard, new DirectorPlacementRule
+                {
+                    placementMode = DirectorPlacementRule.PlacementMode.NearestNode,
+                    position = vector
+                }, RoR2Application.rng));
+                if (teleportGameObject)
+                {
+                    result = teleportGameObject.transform.position;
+                }
+            }
+            if (teleportGameObject)
+            {
+                UnityEngine.Object.Destroy(teleportGameObject);
+            }
+            UnityEngine.Object.Destroy(spawnCard);
+            return result;
         }
     }
 }
@@ -185,6 +318,7 @@ namespace EntityStates.HAND_Overclocked.BrokenJanitor
                         CharacterBody minionBody = minionMaster.GetBody();
                         if (minionBody)
                         {
+                            minionBody.gameObject.AddComponent<CreateRepairOnDeath>();
                             minionBody.SetLoadoutServer(minionMaster.loadout);
                         }
                     }

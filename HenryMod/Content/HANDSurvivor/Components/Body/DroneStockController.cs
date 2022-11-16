@@ -139,7 +139,7 @@ namespace HANDMod.Content.HANDSurvivor.Components.Body
         {
             if (characterBody.skillLocator.special.stock < characterBody.skillLocator.special.maxStock && characterBody.skillLocator.special.skillDef == SkillDefs.SpecialDrone)
             {
-                characterBody.skillLocator.special.rechargeStopwatch += 1f;
+                characterBody.skillLocator.special.rechargeStopwatch += 2f;
             }
         }
     }
