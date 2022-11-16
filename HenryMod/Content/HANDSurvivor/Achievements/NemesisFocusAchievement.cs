@@ -23,7 +23,7 @@ namespace HANDMod.Content.HANDSurvivor.Achievements
         {
 			if (state.outer.commonComponents.characterBody && state.outer.commonComponents.characterBody == base.localUser.cachedBody)
 			{
-				if (state.fixedAge > 60f)
+				if (state.fixedAge >= 45f)
 				{
 					base.Grant();
 				}

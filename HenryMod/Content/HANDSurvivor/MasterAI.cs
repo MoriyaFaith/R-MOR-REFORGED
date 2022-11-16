@@ -52,7 +52,7 @@ namespace HANDMod.Content.HANDSurvivor
             secondary.requireEquipmentReady = false;
             secondary.moveTargetType = AISkillDriver.TargetType.CurrentEnemy;
             secondary.minDistance = 0f;
-            secondary.maxDistance = 7f;
+            secondary.maxDistance = 10f;
             secondary.selectionRequiresTargetLoS = true;
             secondary.activationRequiresTargetLoS = false;
             secondary.activationRequiresAimConfirmation = false;
