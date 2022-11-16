@@ -684,7 +684,7 @@ namespace HANDMod.Content.HANDSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayFireRing"),
                             childName = "LowerArmL",
-                            localPos = new Vector3(0.06496F, -0.05618F, 0.01569F),
+                            localPos = new Vector3(0.00143F, -0.06617F, -0.02875F),
                             localAngles = new Vector3(274.3965F, 90F, 270F),
                             localScale = new Vector3(3F, 3F, 3F),
                             limbMask = LimbFlags.None
@@ -715,7 +715,7 @@ namespace HANDMod.Content.HANDSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayVoidRing"),
                             childName = "LowerArmL",
-                            localPos = new Vector3(0.06496F, -0.05618F, 0.01569F),
+                            localPos = new Vector3(0.00143F, -0.06617F, -0.02875F),
                             localAngles = new Vector3(274.3965F, 90F, 270F),
                             localScale = new Vector3(3F, 3F, 3F),
                             limbMask = LimbFlags.None
@@ -2092,8 +2092,8 @@ namespace HANDMod.Content.HANDSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayDelicateWatch"),
                             childName = "HandL",
-                            localPos = new Vector3(0.07642F, 0.43514F, -0.0465F),
-                            localAngles = new Vector3(82.92931F, 323.9665F, 208.6622F),
+                            localPos = new Vector3(-0.12222F, 0.34454F, 0.0291F),
+                            localAngles = new Vector3(283.6929F, 128.8764F, 336.2239F),
                             localScale = new Vector3(3F, 3F, 3F),
                             limbMask = LimbFlags.None
                         }
@@ -3426,7 +3426,7 @@ namespace HANDMod.Content.HANDSurvivor
                             childName = "Pelvis",
                             localPos = new Vector3(0F, 0.41284F, -1.08212F),
                             localAngles = new Vector3(0F, 180F, 180F),
-                            localScale = new Vector3(0.7F, 0.7F, 0.7F),
+                            localScale = new Vector3(0.85F, 0.85F, 0.85F),
                             limbMask = LimbFlags.None
                         }
                     }

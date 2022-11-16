@@ -295,7 +295,7 @@ namespace HANDMod.Content.HANDSurvivor
             droneSkill.isCombatSkill = true;
             droneSkill.cancelSprintingOnActivation = false;
             droneSkill.canceledFromSprinting = false;
-            droneSkill.baseRechargeInterval = 12f;
+            droneSkill.baseRechargeInterval = 20f;
             droneSkill.interruptPriority = EntityStates.InterruptPriority.Any;
             droneSkill.mustKeyPress = false;
             droneSkill.beginSkillCooldownOnSkillEnd = true;
