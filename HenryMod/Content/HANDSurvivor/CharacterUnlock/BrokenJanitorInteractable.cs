@@ -179,6 +179,16 @@ namespace EntityStates.HAND_Overclocked.BrokenJanitor
                 CharacterMaster minionMaster = ms.Perform();
                 if (minionMaster)
                 {
+                    if (minionMaster.loadout != null)
+                    {
+                        minionMaster.loadout.bodyLoadoutManager.SetSkillVariant(BodyCatalog.FindBodyIndex("HANDOverclockedBody"), (int)SkillSlot.Primary, 1);
+                        CharacterBody minionBody = minionMaster.GetBody();
+                        if (minionBody)
+                        {
+                            minionBody.SetLoadoutServer(minionMaster.loadout);
+                        }
+                    }
+
                     SetDontDestroyOnLoad.DontDestroyOnLoad(minionMaster);
                     Inventory inventory = minionMaster.inventory;
                     if (inventory)
