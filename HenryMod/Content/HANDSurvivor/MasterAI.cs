@@ -146,7 +146,7 @@ namespace HANDMod.Content.HANDSurvivor
             followFriendly.requireSkillReady = false;
             followFriendly.requireEquipmentReady = false;
             followFriendly.moveTargetType = AISkillDriver.TargetType.CurrentLeader;
-            followFriendly.minDistance = 0f;
+            followFriendly.minDistance = 10f;
             followFriendly.maxDistance = float.PositiveInfinity;
             followFriendly.selectionRequiresTargetLoS = false;
             followFriendly.activationRequiresTargetLoS = false;
@@ -164,7 +164,7 @@ namespace HANDMod.Content.HANDSurvivor
             afk.requireSkillReady = false;
             afk.requireEquipmentReady = false;
             afk.moveTargetType = AISkillDriver.TargetType.NearestFriendlyInSkillRange;
-            afk.minDistance = 0f;
+            afk.minDistance = 10f;
             afk.maxDistance = float.PositiveInfinity;
             afk.selectionRequiresTargetLoS = false;
             afk.activationRequiresTargetLoS = false;
