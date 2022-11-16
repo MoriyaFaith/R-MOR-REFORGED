@@ -71,7 +71,7 @@ namespace HANDMod.Content.HANDSurvivor
             primary.requireEquipmentReady = false;
             primary.moveTargetType = AISkillDriver.TargetType.CurrentEnemy;
             primary.minDistance = 0f;
-            primary.maxDistance = 7f;
+            primary.maxDistance = 10f;
             primary.selectionRequiresTargetLoS = true;
             primary.activationRequiresTargetLoS = false;
             primary.activationRequiresAimConfirmation = false;
