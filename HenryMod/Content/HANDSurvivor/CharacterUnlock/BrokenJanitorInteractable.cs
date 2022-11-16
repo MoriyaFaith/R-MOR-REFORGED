@@ -211,7 +211,7 @@ namespace EntityStates.HAND_Overclocked.BrokenJanitor
                         ItemIndex riskyModAllyRegen = ItemCatalog.FindItemIndex("RiskyModAllyRegenItem");
                         if (riskyModAllyRegen != ItemIndex.None)
                         {
-                            inventory.GiveItem(riskyModAllyRegen, 40);
+                            inventory.GiveItem(riskyModAllyRegen, 7);   // 40 / 6 because it only counts base health.
                         }
                     }
                 }
