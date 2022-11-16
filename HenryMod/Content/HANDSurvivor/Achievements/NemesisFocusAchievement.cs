@@ -21,7 +21,7 @@ namespace HANDMod.Content.HANDSurvivor.Achievements
 
 		private void CheckOverclockTime(EntityStates.HAND_Overclocked.Utility.BeginOverclock state)
         {
-			if (state.outer.commonComponents.characterBody == base.localUser.cachedBody)
+			if (state.outer.commonComponents.characterBody && state.outer.commonComponents.characterBody == base.localUser.cachedBody)
 			{
 				if (state.fixedAge > 60f)
 				{

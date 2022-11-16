@@ -23,7 +23,9 @@ namespace HANDMod.Content.HANDSurvivor
         public const string HAND_PREFIX = HandPlugin.DEVELOPER_PREFIX + "_HAND_BODY_";
         public override string survivorTokenPrefix => HAND_PREFIX;
         public override ItemDisplaysBase itemDisplays => new HANDItemDisplays();
-        public override UnlockableDef characterUnlockableDef => null;
+        public override UnlockableDef characterUnlockableDef => CreateUnlockableDef();
+
+        private static UnlockableDef survivorUnlock;
 
         public override string bodyName => "HANDOverclocked";
         public override string cachedName => bodyName;
@@ -56,6 +58,21 @@ namespace HANDMod.Content.HANDSurvivor
                 childName = "HANDMesh",
             },
         };
+
+        private static UnlockableDef CreateUnlockableDef()
+        {
+            if (!survivorUnlock)
+            {
+                survivorUnlock = ScriptableObject.CreateInstance<UnlockableDef>();
+                survivorUnlock.cachedName = "Characters.HANDOverclocked";
+                survivorUnlock.nameToken = "ACHIEVEMENT_MOFFEINHANDOVERCLOCKEDSURVIVORUNLOCK_NAME";
+                survivorUnlock.achievementIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("texHANDUnlock.png");
+                Modules.ContentPacks.unlockableDefs.Add(survivorUnlock);
+            }
+
+            if (Modules.Config.forceUnlock) return null;
+            return survivorUnlock;
+        }
 
         public override Type characterMainState => typeof(EntityStates.GenericCharacterMain);
 
@@ -208,15 +225,8 @@ namespace HANDMod.Content.HANDSurvivor
 
             SkillFamily primarySkillFamily = bodyPrefab.GetComponent<SkillLocator>().primary.skillFamily;
             Skills.AddSkillToFamily(primarySkillFamily, primarySkill);
-            
-            if (!Modules.Config.forceUnlock)
-            {
-                Skills.AddSkillToFamily(primarySkillFamily, primaryHammerSkill, primaryHammerUnlock);
-            }
-            else
-            {
-                Skills.AddSkillToFamily(primarySkillFamily, primaryHammerSkill);
-            }
+
+            Skills.AddSkillToFamily(primarySkillFamily, primaryHammerSkill, Modules.Config.forceUnlock? null : primaryHammerUnlock);
         }
         private void InitializeSecondarySkills()
         {
@@ -259,14 +269,7 @@ namespace HANDMod.Content.HANDSurvivor
             SkillFamily utilityFamily = bodyPrefab.GetComponent<SkillLocator>().utility.skillFamily;
             Skills.AddSkillToFamily(utilityFamily, Shared.SkillDefs.UtilityOverclock);
 
-            if (!Modules.Config.forceUnlock)
-            {
-                Skills.AddSkillToFamily(utilityFamily, Shared.SkillDefs.UtilityFocus, focusUnlock);
-            }
-            else
-            {
-                Skills.AddSkillToFamily(utilityFamily, Shared.SkillDefs.UtilityFocus);
-            }
+            Skills.AddSkillToFamily(utilityFamily, Shared.SkillDefs.UtilityFocus, Modules.Config.forceUnlock ? null : focusUnlock);
         }
 
         private void InitializeSpecialSkills()

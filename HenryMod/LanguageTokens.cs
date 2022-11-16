@@ -60,6 +60,9 @@ namespace HANDMod
             LanguageAPI.Add("ACHIEVEMENT_MOFFEINHANDOVERCLOCKEDNEMESISFOCUSUNLOCK_NAME", "HAN-D: Beatdown");
             LanguageAPI.Add("ACHIEVEMENT_MOFFEINHANDOVERCLOCKEDNEMESISFOCUSUNLOCK_DESCRIPTION", "Keep OVERCLOCK active for over 60 seconds.");
 
+            LanguageAPI.Add("ACHIEVEMENT_MOFFEINHANDOVERCLOCKEDSURVIVORUNLOCK_NAME", "Handyman");
+            LanguageAPI.Add("ACHIEVEMENT_MOFFEINHANDOVERCLOCKEDSURVIVORUNLOCK_DESCRIPTION", "Repair the robot janitor on Rallypoint Delta with an Escape Pod's Fuel Array.");
+
             string rmorPrefix = Content.RMORSurvivor.RMORSurvivor.RMOR_PREFIX;
             LanguageAPI.Add(rmorPrefix + "NAME", "R-MOR");
 

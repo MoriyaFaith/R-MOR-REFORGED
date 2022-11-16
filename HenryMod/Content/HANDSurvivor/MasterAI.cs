@@ -8,6 +8,7 @@ namespace HANDMod.Content.HANDSurvivor
     public class MasterAI
     {
         private static bool initialized = false;
+        public static GameObject HANDMaster;
         public static void Init(GameObject bodyPrefab)
         {
             if (initialized) return;
@@ -121,6 +122,26 @@ namespace HANDMod.Content.HANDSurvivor
             chase.shouldFireEquipment = false;
             chase.shouldTapButton = false;
 
+            AISkillDriver followFriendly = masterObject.AddComponent<AISkillDriver>();
+            followFriendly.skillSlot = SkillSlot.None;
+            followFriendly.requireSkillReady = false;
+            followFriendly.requireEquipmentReady = false;
+            followFriendly.moveTargetType = AISkillDriver.TargetType.CurrentLeader;
+            followFriendly.minDistance = 0f;
+            followFriendly.maxDistance = float.PositiveInfinity;
+            followFriendly.selectionRequiresTargetLoS = false;
+            followFriendly.activationRequiresTargetLoS = false;
+            followFriendly.activationRequiresAimConfirmation = false;
+            followFriendly.movementType = AISkillDriver.MovementType.ChaseMoveTarget;
+            followFriendly.aimType = AISkillDriver.AimType.AtCurrentEnemy;
+            followFriendly.ignoreNodeGraph = false;
+            followFriendly.driverUpdateTimerOverride = -1f;
+            followFriendly.noRepeat = false;
+            followFriendly.shouldSprint = true;
+            followFriendly.shouldFireEquipment = false;
+            followFriendly.shouldTapButton = false;
+            followFriendly.maxUserHealthFraction = 0.6f;
+
             AISkillDriver afk = masterObject.AddComponent<AISkillDriver>();
             afk.skillSlot = SkillSlot.None;
             afk.requireSkillReady = false;
@@ -139,6 +160,8 @@ namespace HANDMod.Content.HANDSurvivor
             afk.shouldSprint = true;
             afk.shouldFireEquipment = false;
             afk.shouldTapButton = false;
+
+            HANDMaster = masterObject;
         }
     }
 }

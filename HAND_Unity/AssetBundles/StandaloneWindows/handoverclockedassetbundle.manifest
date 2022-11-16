@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 238381639
+CRC: 2314863003
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: f696eb94cbbf57d01b30114743cac8fe
+    Hash: b397e10b967d20f13c51487e7168233b
   TypeTreeHash:
     serializedVersion: 2
     Hash: 0713b83fc0fda10e7027ae2bc2bee20d
@@ -103,6 +103,7 @@ Assets:
 - Assets/HAN-D/Animations/animHANDOverclocked.controller
 - Assets/HandDrone/mat/texDroneBodyBrighter.png
 - Assets/HAN-D/Shat/ShatDisplay.prefab
+- Assets/HAN-D/Textures/UI/texHANDUnlock.png
 - Assets/HAN-D/Textures/Skills/texPassive.png
 - Assets/HAN-D/Textures/Skills/texPrimaryPunch.png
 - Assets/HandDrone/DroneAnimator.controller
