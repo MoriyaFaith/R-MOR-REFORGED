@@ -44,7 +44,6 @@ namespace HANDMod.Content.HANDSurvivor
             specialSelfHeal.shouldSprint = true;
             specialSelfHeal.shouldFireEquipment = false;
             specialSelfHeal.buttonPressType = AISkillDriver.ButtonPressType.TapContinuous;
-            specialSelfHeal.maxUserHealthFraction = 0.7f;
 
             AISkillDriver secondary = masterObject.AddComponent<AISkillDriver>();
             secondary.skillSlot = SkillSlot.Secondary;
@@ -159,7 +158,6 @@ namespace HANDMod.Content.HANDSurvivor
             followFriendly.noRepeat = false;
             followFriendly.shouldSprint = true;
             followFriendly.shouldFireEquipment = false;
-            followFriendly.maxUserHealthFraction = 0.6f;
 
             AISkillDriver afk = masterObject.AddComponent<AISkillDriver>();
             afk.skillSlot = SkillSlot.None;
