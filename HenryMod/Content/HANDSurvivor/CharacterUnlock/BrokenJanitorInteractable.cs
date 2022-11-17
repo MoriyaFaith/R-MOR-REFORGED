@@ -28,26 +28,20 @@ namespace HANDMod.Content.HANDSurvivor.CharacterUnlock
 
             interactablePrefab = BuildPrefab();
             repairPrefab = BuildRepairPrefab();
-            On.RoR2.Stage.Start += SpawnInteractable;
+            RoR2.Stage.onServerStageBegin += Stage_onServerStageBegin;
         }
 
-        private static void SpawnInteractable(On.RoR2.Stage.orig_Start orig, Stage self)
+        private static void Stage_onServerStageBegin(Stage obj)
         {
-            orig(self);
-
-            if (NetworkServer.active)
+            SceneDef currentScene = SceneCatalog.GetSceneDefForCurrentScene();
+            if (currentScene == rallypointSceneDef)
             {
-                SceneDef currentScene = SceneCatalog.GetSceneDefForCurrentScene();
-                if (currentScene == rallypointSceneDef)
-                {
-                    GameObject interactable = UnityEngine.Object.Instantiate(HANDMod.Content.HANDSurvivor.CharacterUnlock.BrokenJanitorInteractable.interactablePrefab);
-                    interactable.transform.position = new Vector3(41.92087f, 5f, 87.45225f);
-                    interactable.transform.rotation = Quaternion.Euler(0f, 90f, 0f);
-                    NetworkServer.Spawn(interactable);
-                }
+                GameObject interactable = UnityEngine.Object.Instantiate(HANDMod.Content.HANDSurvivor.CharacterUnlock.BrokenJanitorInteractable.interactablePrefab);
+                interactable.transform.position = new Vector3(41.92087f, 5f, 87.45225f);
+                interactable.transform.rotation = Quaternion.Euler(0f, 90f, 0f);
+                NetworkServer.Spawn(interactable);
             }
         }
-
         private static GameObject BuildPrefab()
         {
             GameObject gameObject = Modules.Assets.mainAssetBundle.LoadAsset<GameObject>("mdlHANDOverclocked").InstantiateClone("BrokenJanitorInteractable", false);
