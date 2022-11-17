@@ -180,10 +180,13 @@ namespace HANDMod.Content.HANDSurvivor.CharacterUnlock
                 spawnedRepair = true;
                 GameObject interactable = UnityEngine.Object.Instantiate(HANDMod.Content.HANDSurvivor.CharacterUnlock.BrokenJanitorInteractable.repairPrefab);
 
-                Vector3 pos = FindSafeTeleportPosition(base.gameObject, base.transform.position);
-                interactable.transform.position = pos;
-                interactable.transform.rotation = base.transform.rotation;
-                NetworkServer.Spawn(interactable);
+                if (interactable && base.gameObject && base.transform)
+                {
+                    Vector3 pos = FindSafeTeleportPosition(base.gameObject, base.transform.position);
+                    interactable.transform.position = pos;
+                    interactable.transform.rotation = base.transform.rotation;
+                    NetworkServer.Spawn(interactable);
+                }
             }
         }
         public static Vector3 FindSafeTeleportPosition(GameObject gameObject, Vector3 targetPosition)
