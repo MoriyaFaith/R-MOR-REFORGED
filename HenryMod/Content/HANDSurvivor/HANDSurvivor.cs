@@ -143,6 +143,10 @@ namespace HANDMod.Content.HANDSurvivor
             EntityStates.HAND_Overclocked.Primary.SwingPunch.swingEffectFocus = CreateSwingVFX("HANDMod_SwingPunchFocusEffect", new Vector3(0.25f, 2f, 0.7f), matFocus);
 
             BrokenJanitorInteractable.Initialize();
+            if (Modules.Config.allowPlayerRepair)
+            {
+                bodyPrefab.AddComponent<CreateRepairOnDeath>();
+            }
         }
 
         public override void InitializeDoppelganger(string clone)
