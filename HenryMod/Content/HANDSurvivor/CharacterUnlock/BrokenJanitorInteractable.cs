@@ -34,12 +34,15 @@ namespace HANDMod.Content.HANDSurvivor.CharacterUnlock
         private static void Stage_onServerStageBegin(Stage obj)
         {
             SceneDef currentScene = SceneCatalog.GetSceneDefForCurrentScene();
-            if (currentScene == rallypointSceneDef)
+            if (currentScene && currentScene == rallypointSceneDef)
             {
                 GameObject interactable = UnityEngine.Object.Instantiate(HANDMod.Content.HANDSurvivor.CharacterUnlock.BrokenJanitorInteractable.interactablePrefab);
-                interactable.transform.position = new Vector3(41.92087f, 5f, 87.45225f);
-                interactable.transform.rotation = Quaternion.Euler(0f, 90f, 0f);
-                NetworkServer.Spawn(interactable);
+                if (interactable)
+                {
+                    interactable.transform.position = new Vector3(41.92087f, 5f, 87.45225f);
+                    interactable.transform.rotation = Quaternion.Euler(0f, 90f, 0f);
+                    NetworkServer.Spawn(interactable);
+                }
             }
         }
         private static GameObject BuildPrefab()
