@@ -36,7 +36,7 @@ namespace HANDMod.Content.HANDSurvivor
             bodyNameToken = HandPlugin.DEVELOPER_PREFIX + "_HAND_BODY_NAME",
             subtitleNameToken = HandPlugin.DEVELOPER_PREFIX + "_HAND_BODY_SUBTITLE",
 
-            characterPortrait = Assets.mainAssetBundle.LoadAsset<Texture>("texPortrait.png"),
+            characterPortrait = Assets.mainAssetBundle.LoadAsset<Texture>("texHANDPortrait.png"),
             bodyColor = new Color(0.556862745f, 0.682352941f, 0.690196078f),
 
             crosshair = LegacyResourcesAPI.Load<GameObject>("prefabs/crosshair/simpledotcrosshair"),
@@ -376,7 +376,7 @@ namespace HANDMod.Content.HANDSurvivor
             #region DefaultSkin
             //this creates a SkinDef with all default fields
             SkinDef defaultSkin = Modules.Skins.CreateSkinDef("DEFAULT_SKIN",
-                Assets.mainAssetBundle.LoadAsset<Sprite>("texMainSkin"),
+                Assets.mainAssetBundle.LoadAsset<Sprite>("texHANDSkinIconDefault"),
                 defaultRendererinfos,
                 model);
             skins.Add(defaultSkin);
