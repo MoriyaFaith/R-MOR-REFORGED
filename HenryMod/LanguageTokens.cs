@@ -47,7 +47,7 @@ namespace HANDMod
             LanguageAPI.Add(handPrefix + "UTILITY_DESC", "<style=cIsUtility>Boost</style>. Increase <style=cIsUtility>movement speed</style> and <style=cIsDamage>attack speed</style> by <style=cIsDamage>40%</style>. Hit enemies to <style=cIsUtility>increase duration</style>.");
 
             LanguageAPI.Add(handPrefix + "UTILITY_NEMESIS_NAME", "FOCUS");
-            LanguageAPI.Add(handPrefix + "UTILITY_NEMESIS_DESC", "<style=cIsUtility>Boost</style>. <style=cIsHealth>Slow down</style> and deal <style=cIsDamage>50% extra damage</style>. Hit enemies to <style=cIsUtility>increase duration</style>.");
+            LanguageAPI.Add(handPrefix + "UTILITY_NEMESIS_DESC", "<style=cIsUtility>Boost</style>. Temporarily deal <style=cIsDamage>50% extra damage</style>. Hit enemies to <style=cIsUtility>increase duration</style>.");
 
             LanguageAPI.Add("KEYWORD_MOFFEINHANDOVERCLOCKED_BOOST", "<style=cKeywordName>Boost</style><style=cSub>The skill can be cancelled early to boost upwards.</style>");
 
