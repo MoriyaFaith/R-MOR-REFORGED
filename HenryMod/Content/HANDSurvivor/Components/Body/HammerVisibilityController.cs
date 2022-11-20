@@ -15,6 +15,7 @@ namespace HANDMod.Content.HANDSurvivor.Components.Body
         private CharacterModel characterModel;
 
         private bool usingHammer = false;
+        private bool inEmote = false;
 
         private static bool initialized = false;
         public static void Initialize()
@@ -135,7 +136,7 @@ namespace HANDMod.Content.HANDSurvivor.Components.Body
 
         private void HideHammer()
         {
-            if (!HasHammerPrimary(skillLocator))
+            if (inEmote || !HasHammerPrimary(skillLocator))
             {
                 usingHammer = false;
                 hammer.SetActive(false);
@@ -167,6 +168,12 @@ namespace HANDMod.Content.HANDSurvivor.Components.Body
             {
                 HideHammer();
             }
+        }
+
+        public void SetEmote(bool inEmote)
+        {
+            this.inEmote = inEmote;
+            UpdateHammer();
         }
 
         public void UpdateHammer()

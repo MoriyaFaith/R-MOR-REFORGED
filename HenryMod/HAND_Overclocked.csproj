@@ -127,6 +127,9 @@
     <Reference Include="Rewired_Windows">
       <HintPath>libs\Rewired_Windows.dll</HintPath>
     </Reference>
+    <Reference Include="RiskOfOptions">
+      <HintPath>libs\HardDependencies\RiskOfOptions.dll</HintPath>
+    </Reference>
     <Reference Include="RoR2">
       <HintPath>libs\RoR2.dll</HintPath>
     </Reference>

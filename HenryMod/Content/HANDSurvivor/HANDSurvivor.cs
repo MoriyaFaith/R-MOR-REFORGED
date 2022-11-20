@@ -74,7 +74,7 @@ namespace HANDMod.Content.HANDSurvivor
             return survivorUnlock;
         }
 
-        public override Type characterMainState => typeof(EntityStates.GenericCharacterMain);
+        public override Type characterMainState => typeof(EntityStates.HAND_Overclocked.HANDMainState);
 
         public override void InitializeCharacter()
         {
@@ -387,6 +387,12 @@ namespace HANDMod.Content.HANDSurvivor
 
         private void RegisterStates()
         {
+
+            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HAND_Overclocked.HANDMainState));
+            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HAND_Overclocked.Emotes.Sit));
+            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HAND_Overclocked.Emotes.Spin));
+            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HAND_Overclocked.Emotes.MenuPose));
+
             Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HAND_Overclocked.Primary.SwingPunch));
             Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HAND_Overclocked.Primary.SwingHammer));
 

@@ -14,6 +14,7 @@ using System.Security.Permissions;
 //rename this namespace
 namespace HANDMod
 {
+    [BepInDependency("com.rune580.riskofoptions", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency("com.weliveinasociety.CustomEmotesAPI", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency("com.DestroyedClone.AncientScepter", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency("com.ThinkInvisible.ClassicItems", BepInDependency.DependencyFlags.SoftDependency)]
@@ -42,12 +43,16 @@ namespace HANDMod
         public static bool ScepterStandaloneLoaded = false;
         public static bool ScepterClassicLoaded = false;
         public static bool EmoteAPILoaded = false;
+        public static bool ArenaPluginLoaded = false;
+        public static bool ArenaModeActive = false;
+        public static bool RiskOfOptionsLoaded = false;
 
         private void Awake()
         {
             instance = this;
 
             CheckDependencies();
+            Modules.Config.ReadConfig();
 
             Log.Init(Logger);
             Modules.Assets.Initialize(); // load assets and read config
@@ -67,6 +72,10 @@ namespace HANDMod
             new Modules.ContentPacks().Initialize();
 
             if (EmoteAPILoaded) EmoteAPICompat();
+            if (ArenaPluginLoaded)
+            {
+                Stage.onStageStartGlobal += SetArena;
+            }
         }
 
         private void CheckDependencies()
@@ -74,6 +83,15 @@ namespace HANDMod
             ScepterStandaloneLoaded = BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.DestroyedClone.AncientScepter");
             ScepterClassicLoaded = BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.ThinkInvisible.ClassicItems");
             EmoteAPILoaded = BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.weliveinasociety.CustomEmotesAPI");
+            ArenaPluginLoaded = BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.Kingpinush.KingKombatArena");
+            RiskOfOptionsLoaded = BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.rune580.riskofoptions");
+        }
+
+
+        [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
+        private static void SetArena(Stage obj)
+        {
+            HandPlugin.ArenaModeActive = NS_KingKombatArena.KingKombatArenaMainPlugin.s_GAME_MODE_ACTIVE;
         }
 
         [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]

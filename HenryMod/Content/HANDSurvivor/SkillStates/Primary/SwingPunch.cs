@@ -6,6 +6,7 @@ using R2API;
 using UnityEngine;
 using HANDMod.Content;
 using HANDMod.Content.Shared.Components.Body;
+using HANDMod;
 
 namespace EntityStates.HAND_Overclocked.Primary
 {
@@ -81,7 +82,7 @@ namespace EntityStates.HAND_Overclocked.Primary
                 {
                     this.swingEffectPrefab = SwingPunch.swingEffectFocus;
                 }
-                if (hasOVC && this.swingIndex == 1)
+                if (!HandPlugin.ArenaModeActive && hasOVC && this.swingIndex == 1)
                 {
                     this.damageType |= DamageType.Stun1s;
                 }

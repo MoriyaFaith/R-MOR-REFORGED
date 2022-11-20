@@ -1,4 +1,6 @@
 ﻿using BepInEx.Configuration;
+using RiskOfOptions;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 namespace HANDMod.Modules
@@ -7,10 +9,31 @@ namespace HANDMod.Modules
     {
         public static bool forceUnlock = false;
         public static bool allowPlayerRepair = false;
+        public static ConfigEntry<KeyboardShortcut> KeybindEmoteCSS;
+        public static ConfigEntry<KeyboardShortcut> KeybindEmote1;
+        public static ConfigEntry<KeyboardShortcut> KeybindEmote2;
+
         public static void ReadConfig()
         {
             forceUnlock = HandPlugin.instance.Config.Bind("General", "Force Unlock", false, "Automatically unlock HAN-D and his skills by default.").Value;
             allowPlayerRepair = HandPlugin.instance.Config.Bind("General", "Allow Player Repair", false, "HAN-D teammates can be revived as an NPC ally for $200.").Value;
+
+            KeybindEmote1 = HandPlugin.instance.Config.Bind("Keybinds", "Emote - Sit", new KeyboardShortcut(KeyCode.Alpha1), "Button to play this emote.");
+            KeybindEmote2 = HandPlugin.instance.Config.Bind("Keybinds", "Emote - Malfunction", new KeyboardShortcut(KeyCode.Alpha2), "Button to play this emote.");
+            KeybindEmoteCSS = HandPlugin.instance.Config.Bind("Keybinds", "Emote - Pose", new KeyboardShortcut(KeyCode.Alpha3), "Button to play this emote.");
+
+            if (HandPlugin.RiskOfOptionsLoaded)
+            {
+                RiskOfOptionsCompat();
+            }
+        }
+
+        [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
+        public static void RiskOfOptionsCompat()
+        {
+            ModSettingsManager.AddOption(new RiskOfOptions.Options.KeyBindOption(KeybindEmote1));
+            ModSettingsManager.AddOption(new RiskOfOptions.Options.KeyBindOption(KeybindEmote2));
+            ModSettingsManager.AddOption(new RiskOfOptions.Options.KeyBindOption(KeybindEmoteCSS));
         }
 
         // this helper automatically makes config entries for disabling survivors
@@ -20,6 +43,19 @@ namespace HANDMod.Modules
                                                           "Enable " + characterName,
                                                           enabledDefault,
                                                           description);
+        }
+
+        //Taken from https://github.com/ToastedOven/CustomEmotesAPI/blob/main/CustomEmotesAPI/CustomEmotesAPI/CustomEmotesAPI.cs
+        public static bool GetKeyPressed(ConfigEntry<KeyboardShortcut> entry)
+        {
+            foreach (var item in entry.Value.Modifiers)
+            {
+                if (!Input.GetKey(item))
+                {
+                    return false;
+                }
+            }
+            return Input.GetKeyDown(entry.Value.MainKey);
         }
     }
 }
