@@ -73,12 +73,13 @@ namespace EntityStates.HAND_Overclocked.Secondary
                 if (!startedChargeAnim)
                 {
                     startedChargeAnim = true;
-                    base.PlayCrossfade("Gesture, Override", "ChargeHammer", "ChargeHammer.playbackRate", (this.chargeDuration - this.minDuration)/0.9f, 0.2f);
+                    base.PlayCrossfade("Gesture, Override", "ChargeHammer", "ChargeHammer.playbackRate", (this.chargeDuration - this.minDuration), 0.2f);
                 }
 
                 charge += Time.deltaTime * this.attackSpeedStat;
-                if (charge > chargeDuration)
+                if (charge >= chargeDuration)
                 {
+                    base.PlayCrossfade("Gesture, Override", "ChargeHammerHold", "ChargeHammer.playbackRate", 0.6f, 0.05f);
                     Util.PlaySound("Play_HOC_StartPunch", base.gameObject);
                     charge = chargeDuration;
                     EffectManager.SpawnEffect(chargeEffectPrefab, new EffectData
