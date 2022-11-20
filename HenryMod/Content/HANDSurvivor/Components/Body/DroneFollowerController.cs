@@ -15,12 +15,58 @@ namespace HANDMod.Content.HANDSurvivor.Components.Body
                 _droneCountServer = 0;
             }
 
+            Transform bodyDroneFollower = null;
+            Renderer[] bodyDroneRenderers = null;
+            MeshFilter[] bodyDroneMeshes = null;
+            if (characterBody && characterBody.modelLocator && characterBody.modelLocator.modelTransform)
+            {
+                GameObject modelObject = characterBody.modelLocator.modelTransform.gameObject;
+                if (modelObject)
+                {
+                    ChildLocator cl = modelObject.GetComponent<ChildLocator>();
+                    if (cl)
+                    {
+                        bodyDroneFollower = cl.FindChild("DroneFollower");
+                        if (bodyDroneFollower)
+                        {
+                            bodyDroneRenderers = bodyDroneFollower.GetComponentsInChildren<Renderer>();
+                            bodyDroneMeshes = bodyDroneFollower.GetComponentsInChildren<MeshFilter>();
+                        }
+                    }
+                }
+            }
+            //follower.GetComponentInChildren<Renderer>().material = characterModel.baseRendererInfos[2].defaultMaterial;
+            //follower.GetComponentInChildren<MeshFilter>().mesh = characterModel.baseRendererInfos[2].renderer.GetComponent<MeshFilter>().mesh;
+
             droneFollowers = new DroneFollower[maxFollowingDrones];
             for (int i = 0; i < droneFollowers.Length; i++)
             {
                 droneFollowers[i].gameObject = Instantiate(dronePrefab);
                 droneFollowers[i].gameObject.transform.localScale = Vector3.zero;
                 droneFollowers[i].active = false;
+
+
+                if (bodyDroneRenderers != null && bodyDroneMeshes != null)
+                {
+                    Renderer[] instanceDroneRenderers = bodyDroneFollower.GetComponentsInChildren<Renderer>();
+                    MeshFilter[] instanceDroneMeshes = bodyDroneFollower.GetComponentsInChildren<MeshFilter>();
+
+                    if (instanceDroneRenderers.Length > 0)
+                    {
+                        for (int j = 0; j < bodyDroneRenderers.Length && j < instanceDroneRenderers.Length; j++)
+                        {
+                            instanceDroneRenderers[j].material = bodyDroneRenderers[j].material;
+                        }
+                    }
+
+                    if (instanceDroneMeshes.Length > 0)
+                    {
+                        for (int j = 0; j < bodyDroneMeshes.Length && j < instanceDroneMeshes.Length; j++)
+                        {
+                            instanceDroneMeshes[j].mesh = bodyDroneMeshes[j].mesh;
+                        }
+                    }
+                }
             }
         }
 
@@ -100,9 +146,8 @@ namespace HANDMod.Content.HANDSurvivor.Components.Body
                 Vector3 desiredPosition = characterBody.corePosition + offset;
                 droneFollowers[i].gameObject.transform.position = Vector3.SmoothDamp(droneFollowers[i].gameObject.transform.position, desiredPosition, ref this.velocity, 0.1f);
             }
-
-
         }
+
 
         [Command]
         private void CmdUpdateDroneCount(int newCount)
