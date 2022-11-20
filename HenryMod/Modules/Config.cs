@@ -20,7 +20,7 @@ namespace HANDMod.Modules
 
             KeybindEmote1 = HandPlugin.instance.Config.Bind("Keybinds", "Emote - Sit", new KeyboardShortcut(KeyCode.Alpha1), "Button to play this emote.");
             KeybindEmote2 = HandPlugin.instance.Config.Bind("Keybinds", "Emote - Malfunction", new KeyboardShortcut(KeyCode.Alpha2), "Button to play this emote.");
-            KeybindEmoteCSS = HandPlugin.instance.Config.Bind("Keybinds", "Emote - Pose", new KeyboardShortcut(KeyCode.Alpha3), "Button to play this emote.");
+            KeybindEmoteCSS = HandPlugin.instance.Config.Bind("Keybinds", "Emote - Hat Tip", new KeyboardShortcut(KeyCode.Alpha3), "Button to play this emote.");
 
             if (HandPlugin.RiskOfOptionsLoaded)
             {
