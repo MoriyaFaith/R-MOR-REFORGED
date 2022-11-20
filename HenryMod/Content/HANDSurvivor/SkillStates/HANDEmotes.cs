@@ -4,6 +4,7 @@ using System;
 using static RoR2.CameraTargetParams;
 using HANDMod.Content.HANDSurvivor.Components.Body;
 using HANDMod.Modules;
+using HANDMod.Content.Shared.Components.Body;
 
 namespace EntityStates.HAND_Overclocked.Emotes
 {
@@ -177,11 +178,18 @@ namespace EntityStates.HAND_Overclocked.Emotes
             this.animDuration = 2.3666666667f;
             this.useHammer = true;
             base.OnEnter();
+
+            Util.PlaySound("Play_HOC_StartHammer", base.gameObject);
         }
     }
 
     public class Spin : HANDEmotes
     {
+        private bool playedSound1 = false;
+        private bool playedSound2 = false;
+        private bool playedSound3 = false;
+        private static string startSoundString = "Play_MULT_shift_start";
+        private static string endSoundString = "Play_MULT_shift_end";
         public override void OnEnter()
         {
             this.animString = "Emote2";
@@ -189,16 +197,61 @@ namespace EntityStates.HAND_Overclocked.Emotes
             this.useHammer = false;
             base.OnEnter();
         }
+
+        public override void FixedUpdate()
+        {
+            base.FixedUpdate();
+
+            float animPercent = base.fixedAge / this.animDuration;
+            if (!playedSound1 && animPercent >= (10f/129f))
+            {
+                playedSound1 = true;
+                Util.PlaySound(startSoundString, base.gameObject);
+            }
+            if (!playedSound2 && animPercent >= (120f/129f))
+            {
+                playedSound2 = true;
+                Util.PlaySound(endSoundString, base.gameObject);
+                Util.PlaySound("Play_mult_shift_hit", base.gameObject);
+            }
+            if (!playedSound3 && animPercent >= 136f/129f)
+            {
+                playedSound3 = true;
+                Util.PlaySound("Play_HOC_StartPunch", base.gameObject);
+            }
+        }
+
+        public override void OnExit()
+        {
+            if (playedSound1 && !playedSound2)
+            {
+                Util.PlaySound(endSoundString, base.gameObject);
+            }
+            base.OnExit();
+        }
     }
 
     public class Sit : HANDEmotes
     {
+        private bool playedSound = false;
         public override void OnEnter()
         {
             this.animString = "Emote1";
             this.animDuration = 1.2666666667f;
             this.useHammer = false;
             base.OnEnter();
+            Util.PlaySound("Play_drone_deathpt1", base.gameObject);
+        }
+
+        public override void FixedUpdate()
+        {
+            base.FixedUpdate();
+
+            if (!playedSound && base.fixedAge/this.animDuration >= (30f/38f))
+            {
+                playedSound = true;
+                Util.PlaySound("Play_drone_deathpt2", base.gameObject);
+            }
         }
     }
 }

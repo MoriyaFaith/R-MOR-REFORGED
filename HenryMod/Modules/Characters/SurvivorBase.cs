@@ -18,6 +18,7 @@ namespace HANDMod.Modules.Survivors
         public virtual ConfigEntry<bool> characterEnabledConfig { get; }
 
         public virtual GameObject displayPrefab { get; set; }
+        public SurvivorDef survivorDef;
 
         public override void InitializeCharacter()
         {
@@ -40,7 +41,7 @@ namespace HANDMod.Modules.Survivors
 
         protected virtual void InitializeSurvivor()
         {
-            RegisterNewSurvivor(bodyPrefab, displayPrefab, Color.grey, survivorTokenPrefix, characterUnlockableDef, bodyInfo.sortPosition, cachedName);
+            survivorDef = RegisterNewSurvivor(bodyPrefab, displayPrefab, Color.grey, survivorTokenPrefix, characterUnlockableDef, bodyInfo.sortPosition, cachedName);
         }
 
         protected virtual void InitializeDisplayPrefab()
@@ -51,7 +52,7 @@ namespace HANDMod.Modules.Survivors
         {
         }
 
-        public static void RegisterNewSurvivor(GameObject bodyPrefab, GameObject displayPrefab, Color charColor, string tokenPrefix, UnlockableDef unlockableDef, float sortPosition, string cachedName)
+        public static SurvivorDef RegisterNewSurvivor(GameObject bodyPrefab, GameObject displayPrefab, Color charColor, string tokenPrefix, UnlockableDef unlockableDef, float sortPosition, string cachedName)
         {
             SurvivorDef survivorDef = ScriptableObject.CreateInstance<SurvivorDef>();
             survivorDef.bodyPrefab = bodyPrefab;
@@ -68,6 +69,7 @@ namespace HANDMod.Modules.Survivors
             survivorDef.cachedName = cachedName;
 
             Modules.Content.AddSurvivorDef(survivorDef);
+            return survivorDef;
         }
 
         #region CharacterSelectSurvivorPreviewDisplayController

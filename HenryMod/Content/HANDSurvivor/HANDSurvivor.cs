@@ -76,6 +76,12 @@ namespace HANDMod.Content.HANDSurvivor
 
         public override Type characterMainState => typeof(EntityStates.HAND_Overclocked.HANDMainState);
 
+        protected override void InitializeDisplayPrefab()
+        {
+            base.InitializeDisplayPrefab();
+            displayPrefab.AddComponent<MenuSoundComponent>();
+        }
+
         public override void InitializeCharacter()
         {
             base.InitializeCharacter();
