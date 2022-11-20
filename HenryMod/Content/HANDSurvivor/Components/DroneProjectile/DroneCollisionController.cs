@@ -7,7 +7,9 @@ namespace HANDMod.Content.HANDSurvivor.Components.DroneProjectile
 {
     public class DroneCollisionController : MonoBehaviour
     {
-        ProjectileTargetComponent ptc;
+        private ProjectileTargetComponent ptc;
+        private int passThroughWallsFrames = 0;
+
         private void Awake()
         {
             stick = base.GetComponent<ProjectileStickOnImpact>();
@@ -20,6 +22,15 @@ namespace HANDMod.Content.HANDSurvivor.Components.DroneProjectile
         {
             if (stick && !stick.syncVictim)
             {
+                if (passThroughWallsFrames > 0)
+                {
+                    passThroughWallsFrames--;
+                    if (passThroughWallsFrames <= 0)
+                    {
+                        base.gameObject.layer = LayerIndex.projectile.intVal;
+                    }
+                }
+
                 //Check if target lost
                 if (NetworkServer.active && ptc)
                 {
@@ -43,6 +54,7 @@ namespace HANDMod.Content.HANDSurvivor.Components.DroneProjectile
                     ProjectileSimple ps = base.GetComponent<ProjectileSimple>();
                     ps.SetLifetime(30f);
                 }
+                passThroughWallsFrames = 0;
                 base.gameObject.layer = LayerIndex.projectile.intVal;
                 Destroy(base.GetComponent<ProjectileSteerTowardTarget>());
                 Destroy(base.GetComponent<ProjectileSphereTargetFinder>());
@@ -57,6 +69,7 @@ namespace HANDMod.Content.HANDSurvivor.Components.DroneProjectile
             if (collision.gameObject.layer == LayerIndex.world.intVal)
             {
                 base.gameObject.layer = LayerIndex.collideWithCharacterHullOnly.intVal;
+                passThroughWallsFrames = 15;
             }
             else
             {
