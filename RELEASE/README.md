@@ -9,6 +9,11 @@ We are looking for translators! Check the languages folder on the [GitHub](https
 
 To add custom DRONE models to your HAN-D skin, refer to mdlHANDOverclocked.prefab in the Unity project on the GitHub. The DRONE model is a disabled GameObject attached to the prefab, and the game will attempt to load the textures/mesh from that.
 
+## Installation
+
+Place the HAND_Overclocked folder in /Risk of Rain 2/BepInEx/plugins/  
+Settings can be changed in BepInEx/config/com.EnforcerGang.HAND_Overclocked.cfg
+
 ## Credits
 
 Moffein - Main dev
@@ -26,6 +31,8 @@ Tera - Skill Icons
 KoobyKarasu - Skill Icons
 
 Jaysian - bankroller
+
+Sounds taken from Risk of Rain 1 and Starstorm
 
 ## Changelog
 

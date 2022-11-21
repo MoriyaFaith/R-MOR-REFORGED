@@ -108,6 +108,10 @@ namespace HANDMod.Content.HANDSurvivor
             cameraTargetParams.cameraParams.data.idealLocalCameraPos = new Vector3(0f, 1f, -11f);
 
             ChildLocator childLocator = bodyPrefab.GetComponentInChildren<ChildLocator>();
+
+            Transform hammerTransform = childLocator.FindChild("HanDHammer");
+            hammerTransform.gameObject.SetActive(false);
+
             GameObject model = childLocator.gameObject;
             Transform fistHitboxTransform = childLocator.FindChild("FistHitbox");
             Prefabs.SetupHitbox(model, "FistHitbox", new Transform[] { fistHitboxTransform });
