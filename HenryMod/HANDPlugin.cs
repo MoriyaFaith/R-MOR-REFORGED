@@ -24,7 +24,6 @@ namespace HANDMod
     [R2APISubmoduleDependency(new string[]
     {
         "PrefabAPI",
-        "LanguageAPI",
         "SoundAPI",
         "UnlockableAPI",
         "RecalculateStatsAPI",
@@ -40,6 +39,8 @@ namespace HANDMod
         public const string DEVELOPER_PREFIX = "MOFFEIN";
 
         public static HandPlugin instance;
+        public static PluginInfo pluginInfo;
+
         public static bool ScepterStandaloneLoaded = false;
         public static bool ScepterClassicLoaded = false;
         public static bool EmoteAPILoaded = false;
@@ -49,6 +50,7 @@ namespace HANDMod
 
         private void Awake()
         {
+            pluginInfo = Info;
             instance = this;
 
             CheckDependencies();

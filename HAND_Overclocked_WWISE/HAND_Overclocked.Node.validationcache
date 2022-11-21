@@ -6,7 +6,7 @@
 	<ValidationCacheItem File="C:\Users\Node\RoR2 Mods\HAND\HAND_Overclocked_WWISE\Switches\Default Work Unit.wwu" DateLow="1646551963" DateHigh="0"/>
 	<ValidationCacheItem File="C:\Users\Node\RoR2 Mods\HAND\HAND_Overclocked_WWISE\States\Default Work Unit.wwu" DateLow="1646551963" DateHigh="0"/>
 	<ValidationCacheItem File="C:\Users\Node\RoR2 Mods\HAND\HAND_Overclocked_WWISE\Soundcaster Sessions\Default Work Unit.wwu" DateLow="1646551962" DateHigh="0"/>
-	<ValidationCacheItem File="C:\Users\Node\RoR2 Mods\HAND\HAND_Overclocked_WWISE\SoundBanks\Default Work Unit.wwu" DateLow="1667464850" DateHigh="0"/>
+	<ValidationCacheItem File="C:\Users\Node\RoR2 Mods\HAND\HAND_Overclocked_WWISE\SoundBanks\Default Work Unit.wwu" DateLow="1668586727" DateHigh="0"/>
 	<ValidationCacheItem File="C:\Users\Node\RoR2 Mods\HAND\HAND_Overclocked_WWISE\Queries\Factory Queries.wwu" DateLow="1646551962" DateHigh="0"/>
 	<ValidationCacheItem File="C:\Users\Node\RoR2 Mods\HAND\HAND_Overclocked_WWISE\Queries\Default Work Unit.wwu" DateLow="1646551962" DateHigh="0"/>
 	<ValidationCacheItem File="C:\Users\Node\RoR2 Mods\HAND\HAND_Overclocked_WWISE\Presets\Factory Spatial Audio.wwu" DateLow="1646551962" DateHigh="0"/>
@@ -17,11 +17,11 @@
 	<ValidationCacheItem File="C:\Users\Node\RoR2 Mods\HAND\HAND_Overclocked_WWISE\Master-Mixer Hierarchy\Default Work Unit.wwu" DateLow="1646551962" DateHigh="0"/>
 	<ValidationCacheItem File="C:\Users\Node\RoR2 Mods\HAND\HAND_Overclocked_WWISE\Interactive Music Hierarchy\Default Work Unit.wwu" DateLow="1646551962" DateHigh="0"/>
 	<ValidationCacheItem File="C:\Users\Node\RoR2 Mods\HAND\HAND_Overclocked_WWISE\HAND_Overclocked.wproj" DateLow="1646551962" DateHigh="0"/>
-	<ValidationCacheItem File="C:\Users\Node\RoR2 Mods\HAND\HAND_Overclocked_WWISE\HAND_Overclocked.Node.wsettings" DateLow="1668585420" DateHigh="0"/>
+	<ValidationCacheItem File="C:\Users\Node\RoR2 Mods\HAND\HAND_Overclocked_WWISE\HAND_Overclocked.Node.wsettings" DateLow="1668590500" DateHigh="0"/>
 	<ValidationCacheItem File="C:\Users\Node\RoR2 Mods\HAND\HAND_Overclocked_WWISE\Game Parameters\Factory SoundSeed Air Game Syncs.wwu" DateLow="1646551963" DateHigh="0"/>
 	<ValidationCacheItem File="C:\Users\Node\RoR2 Mods\HAND\HAND_Overclocked_WWISE\Game Parameters\Factory Motion.wwu" DateLow="1646551963" DateHigh="0"/>
 	<ValidationCacheItem File="C:\Users\Node\RoR2 Mods\HAND\HAND_Overclocked_WWISE\Game Parameters\Default Work Unit.wwu" DateLow="1646551962" DateHigh="0"/>
-	<ValidationCacheItem File="C:\Users\Node\RoR2 Mods\HAND\HAND_Overclocked_WWISE\Events\Default Work Unit.wwu" DateLow="1668585399" DateHigh="0"/>
+	<ValidationCacheItem File="C:\Users\Node\RoR2 Mods\HAND\HAND_Overclocked_WWISE\Events\Default Work Unit.wwu" DateLow="1668586919" DateHigh="0"/>
 	<ValidationCacheItem File="C:\Users\Node\RoR2 Mods\HAND\HAND_Overclocked_WWISE\Effects\Factory Reflect.wwu" DateLow="1646551962" DateHigh="0"/>
 	<ValidationCacheItem File="C:\Users\Node\RoR2 Mods\HAND\HAND_Overclocked_WWISE\Effects\Factory McDSP Effects.wwu" DateLow="1646551962" DateHigh="0"/>
 	<ValidationCacheItem File="C:\Users\Node\RoR2 Mods\HAND\HAND_Overclocked_WWISE\Effects\Factory iZotope Singleband Distortion.wwu" DateLow="1646551962" DateHigh="0"/>
@@ -43,7 +43,7 @@
 	<ValidationCacheItem File="C:\Users\Node\RoR2 Mods\HAND\HAND_Overclocked_WWISE\Actor-Mixer Hierarchy\Factory Synth One.wwu" DateLow="1646551962" DateHigh="0"/>
 	<ValidationCacheItem File="C:\Users\Node\RoR2 Mods\HAND\HAND_Overclocked_WWISE\Actor-Mixer Hierarchy\Factory SoundSeed Air Objects.wwu" DateLow="1646551962" DateHigh="0"/>
 	<ValidationCacheItem File="C:\Users\Node\RoR2 Mods\HAND\HAND_Overclocked_WWISE\Actor-Mixer Hierarchy\Factory Motion.wwu" DateLow="1646551962" DateHigh="0"/>
-	<ValidationCacheItem File="C:\Users\Node\RoR2 Mods\HAND\HAND_Overclocked_WWISE\Actor-Mixer Hierarchy\Default Work Unit.wwu" DateLow="1668585389" DateHigh="0"/>
+	<ValidationCacheItem File="C:\Users\Node\RoR2 Mods\HAND\HAND_Overclocked_WWISE\Actor-Mixer Hierarchy\Default Work Unit.wwu" DateLow="1668586919" DateHigh="0"/>
 	<ValidationCacheItem File="C:\Users\Node\RoR2 Mods\HAN-D_OVERCLOCKED\HAND_Overclocked_WWISE\Virtual Acoustics\Factory Reflect Acoustic Textures.wwu" DateLow="1646551962" DateHigh="0"/>
 	<ValidationCacheItem File="C:\Users\Node\RoR2 Mods\HAN-D_OVERCLOCKED\HAND_Overclocked_WWISE\Virtual Acoustics\Default Work Unit.wwu" DateLow="1646551962" DateHigh="0"/>
 	<ValidationCacheItem File="C:\Users\Node\RoR2 Mods\HAN-D_OVERCLOCKED\HAND_Overclocked_WWISE\Triggers\Default Work Unit.wwu" DateLow="1646551962" DateHigh="0"/>

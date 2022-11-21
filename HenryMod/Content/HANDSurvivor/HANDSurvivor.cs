@@ -219,7 +219,7 @@ namespace HANDMod.Content.HANDSurvivor
             primaryHammerSkill.interruptPriority = EntityStates.InterruptPriority.Any;
             primaryHammerSkill.isCombatSkill = true;
             primaryHammerSkill.mustKeyPress = false;
-            primaryHammerSkill.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texPrimaryPunch.png");
+            primaryHammerSkill.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texPrimaryHammer.png");
             primaryHammerSkill.requiredStock = 1;
             primaryHammerSkill.stockToConsume = 1;
             primaryHammerSkill.keywordTokens = new string[] { "KEYWORD_STUNNING" };
