@@ -321,6 +321,7 @@ namespace EntityStates.HAND_Overclocked.BrokenJanitor
                             ///This component gets added to all bodies if allowPlayerRepair is enabled, so no need to re-add it here.
                             if (!HANDMod.Modules.Config.allowPlayerRepair) minionBody.gameObject.AddComponent<CreateRepairOnDeath>();
                             minionBody.SetLoadoutServer(minionMaster.loadout);
+                            minionBody.bodyFlags |= CharacterBody.BodyFlags.IgnoreFallDamage;
                         }
                     }
 
