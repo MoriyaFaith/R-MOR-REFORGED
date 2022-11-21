@@ -22,7 +22,7 @@ namespace EntityStates.HAND_Overclocked.Primary
             new Keyframe(0.24929532408714295f, 0.20000000298023225f, -1.3447399139404297f, -1.3447399139404297f, 0.3333333432674408f, 0.09076657891273499f),
             new Keyframe(0.6705322265625f, 0f, -0.1023506224155426f, -0.1023506224155426f, 0.7332440614700317f, 0f),
         });
-
+        
         //Loader's VelocityCurve
         /*{"preWrapMode":8,"postWrapMode":8
          * "keys":[{"time":0.0,"value":0.0,"inTangent":0.25312966108322146,"outTangent":Infinity,"inWeight":0.0,"outWeight":0.3333333432674408,"weightedMode":0,"tangentMode":97},
@@ -52,10 +52,10 @@ namespace EntityStates.HAND_Overclocked.Primary
             this.hitboxName = "FistHitbox";
             this.damageCoefficient = 3.9f;
             this.procCoefficient = 1f;
-            this.baseDuration = 1.25f;
-            this.baseEarlyExitTime = 0.25f;
-            this.attackStartTime = 0.4f;
-            this.attackEndTime = 0.5f;
+            this.baseDuration = 1.3f;
+            this.baseEarlyExitTime = 0.35f;
+            this.attackStartTime = 0.283f;
+            this.attackEndTime = 0.565f;
             this.pushForce = 0f;
 
             Vector3 aimFlat = base.GetAimRay().direction;
@@ -74,7 +74,7 @@ namespace EntityStates.HAND_Overclocked.Primary
 
             Animator an = base.GetModelAnimator();
             if (an) an.SetFloat("hammerIdle", 0f);
-
+            
             this.swingEffectPrefab = SwingPunch.swingEffect;
             if (base.characterBody)
             {
