@@ -174,6 +174,10 @@ namespace HANDMod.SkillStates.BaseStates
             base.FixedUpdate();
 
             this.hitPauseTimer -= Time.fixedDeltaTime;
+            if (!this.inHitPause)
+            {
+                this.stopwatch += Time.fixedDeltaTime;
+            }
 
             if (base.isAuthority)
             {
@@ -186,7 +190,6 @@ namespace HANDMod.SkillStates.BaseStates
 
                 if (!this.inHitPause)
                 {
-                    this.stopwatch += Time.fixedDeltaTime;
                     if (this.forceForwardVelocity && base.characterMotor && base.characterDirection && !(base.characterBody && base.characterBody.GetNotMoving()))
                     {
                         Vector3 evaluatedForwardVector = base.characterDirection.forward * this.forwardVelocityCurve.Evaluate(base.fixedAge / this.duration);
