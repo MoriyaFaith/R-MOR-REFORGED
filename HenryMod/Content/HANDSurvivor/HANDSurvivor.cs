@@ -43,8 +43,13 @@ namespace HANDMod.Content.HANDSurvivor
             podPrefab = LegacyResourcesAPI.Load<GameObject>("prefabs/networkedobjects/robocratepod"),//RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/NetworkedObjects/SurvivorPod")
 
             damage = 14f,
+            damageGrowth = 14f * 0.2f,
+
             maxHealth = 160f,
+            healthGrowth = 160f * 0.3f,
+
             healthRegen = 2.5f,
+            regenGrowth = 2.5f * 0.2f,
             armor = 0f,
 
             jumpCount = 1
