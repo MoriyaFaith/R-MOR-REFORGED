@@ -182,8 +182,8 @@ namespace HANDMod.Content.HANDSurvivor.CharacterUnlock
 
                 if (interactable && base.gameObject && base.transform)
                 {
-                    Vector3 pos = FindSafeTeleportPosition(base.gameObject, base.transform.position);
-                    interactable.transform.position = pos;
+                    //Vector3 pos = FindSafeTeleportPosition(base.gameObject, base.transform.position);
+                    interactable.transform.position = base.transform.position + 1f * Vector3.down;
                     interactable.transform.rotation = base.transform.rotation;
                     NetworkServer.Spawn(interactable);
                 }
@@ -346,7 +346,7 @@ namespace EntityStates.HAND_Overclocked.BrokenJanitor
                         ItemIndex riskyModAllyRegen = ItemCatalog.FindItemIndex("RiskyModAllyRegenItem");
                         if (riskyModAllyRegen != ItemIndex.None)
                         {
-                            inventory.GiveItem(riskyModAllyRegen, 7);   // 40 / 6 because it only counts base health.
+                            inventory.GiveItem(riskyModAllyRegen, 40);
                         }
                     }
                 }
