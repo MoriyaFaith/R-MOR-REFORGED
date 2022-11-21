@@ -59,9 +59,9 @@ namespace EntityStates.HAND_Overclocked.Secondary
             this.hitboxName = "ChargeHammerHitbox";
             this.damageCoefficient = Mathf.Lerp(FireSlam.minDamageCoefficient, FireSlam.maxDamageCoefficient, chargePercent);
             this.procCoefficient = 1f;
-            this.baseDuration = 0.8f;
+            this.baseDuration = 0.7f;
             this.baseEarlyExitTime = 0.2f;
-            this.attackStartTime = 0.35f;
+            this.attackStartTime = 0.33f;
             this.attackEndTime = 0.5f;
             this.pushForce = 0f;
             this.bonusForce = Vector3.down * Mathf.Lerp(FireSlam.minDownForce, FireSlam.maxDownForce, chargePercent);
