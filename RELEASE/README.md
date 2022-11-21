@@ -18,7 +18,7 @@ Settings can be changed in BepInEx/config/com.EnforcerGang.HAND_Overclocked.cfg
 
 Moffein - Main dev
 
-TheTimesweeper - HenryMod template, help with Unity/Animations. You're a lifesaver!
+TheTimesweeper - HenryMod template, help with Unity/Animations, general polish. You're a lifesaver!
 
 Dotflare - HAN-D Model + Anims
 
@@ -30,7 +30,7 @@ Tera - Skill Icons
 
 KoobyKarasu - Skill Icons
 
-Jaysian - bankroller
+Jaysian - Bankroller
 
 Sounds taken from Risk of Rain 1 and Starstorm
 
@@ -48,4 +48,4 @@ Sounds taken from Risk of Rain 1 and Starstorm
 - Added ItemDisplays
 - Added 3 built-in emotes.
 
-*Special thanks to Jaysian for commissioning the new HAN-D Model/Anims!*
+*Special thanks to Jaysian for commissioning Dotflare for the new HAN-D Model/Anims!*

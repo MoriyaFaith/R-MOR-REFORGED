@@ -159,7 +159,12 @@ namespace EntityStates.HAND_Overclocked.Primary
 
             if (base.isAuthority)
             { 
-                if (!this.inHitPause && base.characterDirection && base.characterMotor && !(base.characterBody && base.characterBody.GetNotMoving()) && this.stopwatch >= this.duration * SwingHammer.momentumStartPercent)
+                if (!this.hasFired)
+                {
+                    this.startedSkillStationary = base.characterMotor && base.characterMotor.moveDirection == Vector3.zero;
+                }
+
+                if (!this.inHitPause && base.characterDirection && base.characterMotor && !this.startedSkillStationary && this.stopwatch >= this.duration * SwingHammer.momentumStartPercent)
                 {
                     float fadeTime = this.duration * SwingHammer.momentumFadePercent;
                     float momentumEndTime = this.duration * SwingHammer.momentumEndPercent;
@@ -183,25 +188,6 @@ namespace EntityStates.HAND_Overclocked.Primary
             {
                 ShakeEmitter se = ShakeEmitter.CreateSimpleShakeEmitter(base.transform.position, new Wave() { amplitude = 5f, cycleOffset = 0f, frequency = 4f }, 0.3f, 20f, true);
                 se.transform.parent = base.transform;
-
-                /*if (base.characterMotor && !(base.characterBody && base.characterBody.GetNotMoving()))
-                {
-                    if (base.characterMotor.isGrounded && base.characterMotor.Motor) base.characterMotor.Motor.ForceUnground();
-                    Vector3 direction = base.GetAimRay().direction;
-                    direction.y = 0;
-                    direction.Normalize();
-
-                    base.characterMotor.velocity.x = 0f;
-                    if (base.characterMotor.velocity.y < 0f) base.characterMotor.velocity.y = 0f;
-                    base.characterMotor.velocity.z = 0f;
-
-                    base.characterMotor.rootMotion.x = 0f;
-                    if (base.characterMotor.rootMotion.y < 0f) base.characterMotor.rootMotion.y = 0f;
-                    base.characterMotor.rootMotion.z = 0f;
-
-
-                    base.characterMotor.ApplyForce(direction * SwingHammer.selfForce, true, false);
-                }*/
             }
 
             if (this.swingEffectPrefab == SwingHammer.swingEffectFocus)

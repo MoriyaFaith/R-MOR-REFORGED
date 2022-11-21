@@ -28,6 +28,7 @@ namespace HANDMod.SkillStates.BaseStates
         protected bool cancelled = false;
         protected bool forceForwardVelocity = false;
         protected AnimationCurve forwardVelocityCurve;
+        protected bool startedSkillStationary = false;
 
         protected string swingSoundString = "";
         protected string hitSoundString = "";
@@ -52,6 +53,9 @@ namespace HANDMod.SkillStates.BaseStates
         public override void OnEnter()
         {
             base.OnEnter();
+
+            this.startedSkillStationary = (base.characterMotor && base.characterMotor.moveDirection == Vector3.zero);
+
             this.duration = this.baseDuration / this.attackSpeedStat;
             this.earlyExitTime = this.baseEarlyExitTime / this.attackSpeedStat;
             this.hasFired = false;
@@ -190,7 +194,7 @@ namespace HANDMod.SkillStates.BaseStates
 
                 if (!this.inHitPause)
                 {
-                    if (this.forceForwardVelocity && base.characterMotor && base.characterDirection && !(base.characterBody && base.characterBody.GetNotMoving()))
+                    if (this.forceForwardVelocity && base.characterMotor && base.characterDirection && !startedSkillStationary)
                     {
                         Vector3 evaluatedForwardVector = base.characterDirection.forward * this.forwardVelocityCurve.Evaluate(base.fixedAge / this.duration);
                         base.characterMotor.AddDisplacement(new Vector3(evaluatedForwardVector.x, 0f, evaluatedForwardVector.z));

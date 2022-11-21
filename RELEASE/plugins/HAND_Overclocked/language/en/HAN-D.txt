@@ -25,6 +25,9 @@
 	
 	"KEYWORD_MOFFEINHANDOVERCLOCKED_BOOST" : "<style=cKeywordName>Boost</style><style=cSub>The skill can be cancelled early to boost upwards.</style>",
 	
+	"MOFFEIN_HAND_BODY_UTILITY_CANCEL_NAME" : "CANCEL",
+	"MOFFEIN_HAND_BODY_UTILITY_CANCEL_DESC" : "<style=cIsUtility>Boost upwards</style>.",
+	
 	"MOFFEIN_HAND_BODY_UTILITY_NAME" : "OVERCLOCK",
 	"MOFFEIN_HAND_BODY_UTILITY_DESC" : "<style=cIsUtility>Boost</style>. Increase <style=cIsUtility>movement speed</style> and <style=cIsDamage>attack speed</style> by <style=cIsDamage>40%</style>. Hit enemies to <style=cIsUtility>increase duration</style>.",
 	
