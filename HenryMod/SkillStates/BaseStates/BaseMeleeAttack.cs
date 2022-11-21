@@ -138,7 +138,10 @@ namespace HANDMod.SkillStates.BaseStates
         {
             if (!this.hasFired)
             {
-
+                if (base.characterDirection)
+                {
+                    base.characterDirection.forward = base.GetAimRay().direction;
+                }
                 this.hasFired = true;
                 Util.PlayAttackSpeedSound(this.swingSoundString, base.gameObject, this.attackSpeedStat);
 
