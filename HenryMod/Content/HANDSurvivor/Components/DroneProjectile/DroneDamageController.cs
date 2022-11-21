@@ -57,35 +57,6 @@ namespace HANDMod.Content.HANDSurvivor.Components.DroneProjectile
             }
         }
 
-        public void OnDestroy()
-        {
-            if (bleedEffect)
-            {
-                Destroy(bleedEffect);
-            }
-            /*if (NetworkServer.active)
-            {
-                if (damageTicks < damageTicksTotal && ownerHealthComponent)
-                {
-                    HealOrb healOrb = new HealOrb();
-                    healOrb.origin = this.transform.position;
-                    healOrb.target = ownerHealthComponent.body.mainHurtBox;
-                    healOrb.healValue = projectileDamage.damage * DroneDamageController.damageHealFraction;
-                    if (projectileDamage && projectileDamage.crit)
-                    {
-                        float ownerCritMult = 2f;
-                        if (ownerHealthComponent.body) ownerCritMult = ownerHealthComponent.body.critMultiplier;
-                        healOrb.healValue *= ownerCritMult;
-                    }
-                    float remainingHealMult = (damageTicksTotal - damageTicks) / (float)damageTicksTotal;
-                    healOrb.healValue *= remainingHealMult;
-
-                     healOrb.overrideDuration = 0.3f;
-                    OrbManager.instance.AddOrb(healOrb);
-                }
-            }*/
-        }
-
         private void OnFirstHit()
         {
             if (victimHealthComponent.body)
@@ -218,10 +189,6 @@ namespace HANDMod.Content.HANDSurvivor.Components.DroneProjectile
 
         public void FixedUpdate()
         {
-            if (!firstHit && !bleedEffect)
-            {
-                bleedEffect = UnityEngine.Object.Instantiate<GameObject>(bleedEffectPrefab, this.transform);
-            }
             if (NetworkServer.active)
             {
                 if (projectileController && !owner)
@@ -259,7 +226,6 @@ namespace HANDMod.Content.HANDSurvivor.Components.DroneProjectile
         public static float baseTickRate = 0.5f;
         public static int damageTicksTotal = 8;
         public static float damageHealFraction = 0.4f;
-        public static GameObject bleedEffectPrefab = LegacyResourcesAPI.Load<GameObject>("Prefabs/BleedEffect");
         public static GameObject hitEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Treebot/OmniImpactVFXSlashSyringe.prefab").WaitForCompletion();
         public static NetworkSoundEventDef startSound;
         public static NetworkSoundEventDef hitSound;
@@ -274,7 +240,6 @@ namespace HANDMod.Content.HANDSurvivor.Components.DroneProjectile
         private int dronePartsCount = 0;
         private int coolantCount = 0;
 
-        private GameObject bleedEffect;
         private CharacterMaster master;
         private GameObject owner;
         private TeamIndex teamIndex;
