@@ -7,6 +7,7 @@ using MonoMod.Cil;
 using Mono.Cecil.Cil;
 using UnityEngine.Networking;
 using RoR2.Audio;
+using HANDMod.Modules;
 
 namespace HANDMod.Content.HANDSurvivor
 {
@@ -25,7 +26,7 @@ namespace HANDMod.Content.HANDSurvivor
                        false,
                        false,
                        new Color(74f / 255f, 170f / 255f, 198f / 255f),
-                       Addressables.LoadAssetAsync<BuffDef>("RoR2/Base/Common/bdSmallArmorBoost.asset").WaitForCompletion().iconSprite
+                       Assets.mainAssetBundle.LoadAsset<Sprite>("texBuffSwarmArmor.png")
                        );
                 On.RoR2.HealthComponent.TakeDamage += DronePassiveHook;
             }

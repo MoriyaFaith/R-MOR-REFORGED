@@ -26,9 +26,11 @@ LucidInceptor - DRONE Model
 
 PapaZach - Skill Icons
 
-Tera - Skill Icons
+Tera - FOCUS Skill Icon
 
-KoobyKarasu - Skill Icons
+Vale-X - SWARM_ARMOR Buff Icon
+
+KoobyKarasu - SMASH Skill Icon
 
 Jaysian - Bankroller
 
