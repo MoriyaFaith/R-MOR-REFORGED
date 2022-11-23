@@ -38,6 +38,10 @@ Sounds taken from Risk of Rain 1 and Starstorm
 
 ## Changelog
 
+`1.0.1`
+
+- Changed default sort position from Before Rex to After MUL-T
+
 `1.0.0`
 
 - Rewrote the mod.

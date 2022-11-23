@@ -16,7 +16,7 @@ namespace HANDMod.Modules
 
         public static void ReadConfig()
         {
-            sortPosition = HandPlugin.instance.Config.Bind("General", "Sort Position", 7.5f, "Controls where HAN-D is placed in the character select screen.").Value;
+            sortPosition = HandPlugin.instance.Config.Bind("General", "Survivor Sort Position", 4.5f, "Controls where HAN-D is placed in the character select screen.").Value;
             forceUnlock = HandPlugin.instance.Config.Bind("General", "Force Unlock", false, "Automatically unlock HAN-D and his skills by default.").Value;
             allowPlayerRepair = HandPlugin.instance.Config.Bind("General", "Allow Player Repair", false, "HAN-D teammates can be revived as an NPC ally for $150.").Value;
 
