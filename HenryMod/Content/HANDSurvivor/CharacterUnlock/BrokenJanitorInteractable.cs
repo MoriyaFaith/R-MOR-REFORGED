@@ -349,6 +349,13 @@ namespace EntityStates.HAND_Overclocked.BrokenJanitor
                         {
                             inventory.GiveItem(riskyModAllyRegen, 40);
                         }
+                        else
+                        {
+                            if (minionMaster.teamIndex == TeamIndex.Player)
+                            {
+                                inventory.GiveItem(RoR2Content.Items.HealWhileSafe, 7);
+                            }
+                        }
                     }
                 }
             }

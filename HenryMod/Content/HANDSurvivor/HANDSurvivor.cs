@@ -52,7 +52,9 @@ namespace HANDMod.Content.HANDSurvivor
             regenGrowth = 2.5f * 0.2f,
             armor = 0f,
 
-            jumpCount = 1
+            jumpCount = 1,
+
+            sortPosition = Config.sortPosition
         };
 
         public override CustomRendererInfo[] customRendererInfos { get; set; } = new CustomRendererInfo[] { 
