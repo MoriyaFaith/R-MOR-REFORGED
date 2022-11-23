@@ -1,4 +1,4 @@
-HAN-D is a tanky melee survivor who can heal himself and his allies to stay in the fight. By combining FORCED_REASSEMBLY with his primary attacks, he can knock away even the heaviest enemies!
+HAN-D is a tanky melee survivor who can heal himself and his allies to stay in the fight. His melee attacks have high knockback, and comboing them properly will allow him to knock away even the heaviest enemies!
 
 We are looking for translators! Check the languages folder on the [GitHub](https://github.com/Moffein/HAN-D_OVERCLOCKED/tree/master/language) if you would like to submit a translation for your language.
 
