@@ -15,7 +15,7 @@
 	"MOFFEIN_HAND_BODY_PRIMARY_DESC" : "Примените силу к врагам, нанеся <style=cIsDamage>390% урона</style>. <style=cIsDamage>Оглушает</style> пока активен <style=cIsDamage>РАЗГОН</style>.",
 	
 	"MOFFEIN_HAND_BODY_PRIMARY_HAMMER_NAME" : "КРУШЕНИЕ",
-	"MOFFEIN_HAND_BODY_PRIMARY_HAMMER_DESC" : "<style=cIsHealth>Замедлите</style> и крушите врагов, нанося <style=cIsDamage>600% урона</style>. <style=cIsDamage>Оглушает</style> пока вктивен <style=cIsDamage>РАЗГОН</style>.",
+	"MOFFEIN_HAND_BODY_PRIMARY_HAMMER_DESC" : "<style=cIsHealth>Замедлитесь</style> и крушите врагов, нанося <style=cIsDamage>600% урона</style>. <style=cIsDamage>Оглушает</style> пока вктивен <style=cIsDamage>РАЗГОН</style>.",
 	
 	"MOFFEIN_HAND_BODY_SECONDARY_NAME" : "ВЫНУЖДЕННАЯ_ПЕРЕСБОРКА",
 	"MOFFEIN_HAND_BODY_SECONDARY_DESC" : "<style=cIsDamage>Оглушение</style>. Зарядите и примените огромную силу к врагам, нанеся <style=cIsDamage>600%-1500% урона</style>.",
@@ -29,17 +29,17 @@
 	"MOFFEIN_HAND_BODY_UTILITY_CANCEL_DESC" : "<style=cIsUtility>Подбрасывает вверх</style>.",
 	
 	"MOFFEIN_HAND_BODY_UTILITY_NAME" : "РАЗГОН",
-	"MOFFEIN_HAND_BODY_UTILITY_DESC" : "<style=cIsUtility>Подъем</style>. Увеличивает <style=cIsUtility>скорость передвижения</style> и <style=cIsDamage>скорость атаки</style> на <style=cIsDamage>40%</style>. Бейте врагов, чтобы <style=cIsUtility>продлить время действия</style>.",
+	"MOFFEIN_HAND_BODY_UTILITY_DESC" : "<style=cIsUtility>Подъем</style>. Увеличивает <style=cIsUtility>скорость передвижения</style> и <style=cIsDamage>скорость атаки</style> на <style=cIsDamage>40%</style>. Бейте врагов в рукопшной, чтобы <style=cIsUtility>продлить время действия</style>.",
 	
 	"MOFFEIN_HAND_BODY_UTILITY_NEMESIS_NAME" : "ФОКУСИРОВКА",
-	"MOFFEIN_HAND_BODY_UTILITY_NEMESIS_DESC" : "<style=cIsUtility>Подъем</style>. Временно наносите на <style=cIsDamage>50% больше урона</style>. Бейте врагов, чтобы <style=cIsUtility>продлить время действия</style>.",
+	"MOFFEIN_HAND_BODY_UTILITY_NEMESIS_DESC" : "<style=cIsUtility>Подъем</style>. Временно наносите на <style=cIsDamage>50% больше урона</style>. Бейте врагов в рукопшной, чтобы <style=cIsUtility>продлить время действия</style>.",
 	
 	"MOFFEIN_HAND_BODY_SPECIAL_NAME" : "ДРОН",
 	"MOFFEIN_HAND_BODY_SPECIAL_DESC" : "Выстрелите дроном, который наносит <style=cIsDamage>270% урона</style> и <style=cIsHealing>исцеляет на 40% от нанесенного урона</style>. Убийства и урон в рукопашной <style=cIsUtility>уменьшают время восстановления</style>.",
 	
 	
 	"ACHIEVEMENT_MOFFEINHANDOVERCLOCKEDSURVIVORUNLOCK_NAME" : "Мастер на все руки",
-	"ACHIEVEMENT_MOFFEINHANDOVERCLOCKEDSURVIVORUNLOCK_DESCRIPTION" : "Отремонтируйте робота-уборщика на Меcте сбора «Дельта» с помощью топливного элемента из спасательной капсулы.",
+	"ACHIEVEMENT_MOFFEINHANDOVERCLOCKEDSURVIVORUNLOCK_DESCRIPTION" : "Отремонтируйте робота-уборщика на Меcте сбора «Дельта» с помощью топливного элемента спасательной капсулы.",
 	
 	"ACHIEVEMENT_MOFFEINHANDOVERCLOCKEDNEMESISFOCUSUNLOCK_NAME" : "ХЕН-Д: Избиение",
 	"ACHIEVEMENT_MOFFEINHANDOVERCLOCKEDNEMESISFOCUSUNLOCK_DESCRIPTION" : "Поддерживайте РАЗГОН активным в течение 45 секунд.",
