@@ -34,9 +34,17 @@ KoobyKarasu - SMASH Skill Icon
 
 Jaysian - Bankroller
 
+WockyTheWolf - Simplified Chinese translation.
+
 Sounds taken from Risk of Rain 1 and Starstorm
 
 ## Changelog
+
+`1.0.2`
+
+- Added Simplified Chinese translation (Thanks WockyTheWolf!)
+- Added Spare Drone Parts item displays.
+- Head can now rotate 360 degrees.
 
 `1.0.1`
 

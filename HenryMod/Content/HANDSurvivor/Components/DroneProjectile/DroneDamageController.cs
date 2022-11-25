@@ -160,6 +160,7 @@ namespace HANDMod.Content.HANDSurvivor.Components.DroneProjectile
 
                         victimHealthComponent.TakeDamage(droneDamage);
                         GlobalEventManager.instance.OnHitEnemy(droneDamage, victimHealthComponent.gameObject);
+                        GlobalEventManager.instance.OnHitAll(droneDamage, victimHealthComponent.gameObject);
 
                         if (dronePartsCount > 0 && victimHealthComponent.body && victimHealthComponent.body.mainHurtBox)
                         {
