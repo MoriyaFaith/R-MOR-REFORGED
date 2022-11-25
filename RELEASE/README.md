@@ -1,6 +1,7 @@
 HAN-D is a tanky melee survivor who can heal himself and his allies to stay in the fight. His melee attacks have high knockback, and comboing them properly will allow him to knock away even the heaviest enemies!
 
 We are looking for translators! Check the languages folder on the [GitHub](https://github.com/Moffein/HAN-D_OVERCLOCKED/tree/master/language) if you would like to submit a translation for your language.
+Current Supported Languages: English, Simplified Chinese
 
 [![](https://i.imgur.com/9pHqh2i.jpg)]()
 [![](https://i.imgur.com/iSWV7xb.png)]()
@@ -34,9 +35,18 @@ KoobyKarasu - SMASH Skill Icon
 
 Jaysian - Bankroller
 
+WockyTheWolf - Simplified Chinese translation.
+
 Sounds taken from Risk of Rain 1 and Starstorm
 
 ## Changelog
+
+`1.0.2`
+
+- Added Simplified Chinese translation (Thanks WockyTheWolf!)
+- Added Spare Drone Parts item displays.
+- Head can now rotate 360 degrees.
+- Fixed DRONE not proccing on-impact effects like Behemoth.
 
 `1.0.1`
 

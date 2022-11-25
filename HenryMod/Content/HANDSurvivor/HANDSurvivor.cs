@@ -118,10 +118,10 @@ namespace HANDMod.Content.HANDSurvivor
             Transform fistHitboxTransform = childLocator.FindChild("FistHitbox");
             Prefabs.SetupHitbox(model, "FistHitbox", new Transform[] { fistHitboxTransform });
 
-            /*AimAnimator aan = model.GetComponent<AimAnimator>();
+            AimAnimator aan = model.GetComponent<AimAnimator>();
             aan.yawRangeMin = -180f;
             aan.yawRangeMax = 180f;
-            aan.fullYaw = true;*/
+            aan.fullYaw = true;
 
             Transform chargeHammerHitboxTransform = childLocator.FindChild("ChargeHammerHitbox");
             Prefabs.SetupHitbox(model, "ChargeHammerHitbox", new Transform[] { chargeHammerHitboxTransform });
