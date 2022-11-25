@@ -35,7 +35,7 @@ KoobyKarasu - SMASH Skill Icon
 
 Jaysian - Bankroller
 
-WockyTheWolf - Simplified Chinese translation.
+WockyTheWolf, JunJun - Simplified Chinese translation.
 
 Sounds taken from Risk of Rain 1 and Starstorm
 
