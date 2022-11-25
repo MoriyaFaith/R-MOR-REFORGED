@@ -8,7 +8,7 @@
 	"MOFFEIN_HAND_BODY_OUTRO_FLAVOR" : "..и он ушел, а его сервоприводы пульсировали новой жизнью.",
 	"MOFFEIN_HAND_BODY_OUTRO_FAILURE" : "..и он исчез, не получив вознаграждения за все свои усилия.",
 	
-	"MOFFEIN_HAND_BODY_PASSIVE_NAME" : "РОЕВАЯ_БРОНЯ",
+	"MOFFEIN_HAND_BODY_PASSIVE_NAME" : "РОЙ_БРОНЯ",
 	"MOFFEIN_HAND_BODY_PASSIVE_DESC" : "<style=cIsDamage>Уменьшает входящий урон</style> на <style=cIsDamage>0.3%</style> от вашего максимального здоровья за каждого активного <style=cIsUtility>дрона</style>.",
 	
 	"MOFFEIN_HAND_BODY_PRIMARY_NAME" : "УВЕЧЬЕ",
@@ -18,10 +18,10 @@
 	"MOFFEIN_HAND_BODY_PRIMARY_HAMMER_DESC" : "<style=cIsHealth>Замедлитесь</style> и крушите врагов молотом, нанося <style=cIsDamage>600% урона</style>. <style=cIsDamage>Оглушает</style> при активном <style=cIsDamage>РАЗГОНЕ</style>.",
 	
 	"MOFFEIN_HAND_BODY_SECONDARY_NAME" : "ВЫНУЖДЕННАЯ_ПЕРЕСБОРКА",
-	"MOFFEIN_HAND_BODY_SECONDARY_DESC" : "<style=cIsDamage>Оглушение</style>. Зарядите и примените огромную силу к врагам, нанося <style=cIsDamage>600%-1500% урона</style>.",
+	"MOFFEIN_HAND_BODY_SECONDARY_DESC" : "<style=cIsDamage>Оглушение</style>. Зарядите и примените огромную силу молотом к врагам вокруг, нанося <style=cIsDamage>600%-1500% урона</style>.",
 	
 	"MOFFEIN_HAND_BODY_SECONDARY_SCEPTER_NAME" : "НЕЭТИЧНАЯ_ПЕРЕСБОРКА",
-	"MOFFEIN_HAND_BODY_SECONDARY_SCEPTER_DESC" : "<style=cIsDamage>Оглушение</style>. Зарядите и примените <style=cIsHealth>НЕВЕРОЯТНУЮ</style> силу к врагам, нанося <style=cIsDamage>900%-2250% урона</style>.",
+	"MOFFEIN_HAND_BODY_SECONDARY_SCEPTER_DESC" : "<style=cIsDamage>Оглушение</style>. Зарядите и примените <style=cIsHealth>НЕВЕРОЯТНУЮ</style> силу молотом к врагам вокруг, нанося <style=cIsDamage>900%-2250% урона</style>.",
 	
 	"KEYWORD_MOFFEINHANDOVERCLOCKED_BOOST" : "<style=cKeywordName>Прыжок</style><style=cSub>Умение можно отменить досрочно, чтобы подпрыгнуть в воздух.</style>",
 	
