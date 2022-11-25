@@ -12,16 +12,16 @@
 	"MOFFEIN_HAND_BODY_PASSIVE_DESC" : "<style=cIsDamage>Уменьшает входящий урон</style> на <style=cIsDamage>0.3%</style> от вашего максимального здоровья за каждого активного <style=cIsUtility>дрона</style>.",
 	
 	"MOFFEIN_HAND_BODY_PRIMARY_NAME" : "УВЕЧЬЕ",
-	"MOFFEIN_HAND_BODY_PRIMARY_DESC" : "Примените силу к врагам, нанеся <style=cIsDamage>390% урона</style>. <style=cIsDamage>Оглушает</style> при активном <style=cIsDamage>РАЗГОНЕ</style>.",
+	"MOFFEIN_HAND_BODY_PRIMARY_DESC" : "Примените силу к врагам, нанеся <style=cIsDamage>390% урона</style>. <style=cIsDamage>Оглушает</style> врагов при активном <style=cIsDamage>РАЗГОНЕ</style>.",
 	
 	"MOFFEIN_HAND_BODY_PRIMARY_HAMMER_NAME" : "КРУШЕНИЕ",
-	"MOFFEIN_HAND_BODY_PRIMARY_HAMMER_DESC" : "<style=cIsHealth>Замедлитесь</style> и размахивайте молотом, нанося <style=cIsDamage>600% урона</style>. <style=cIsDamage>Оглушает</style> при активном <style=cIsDamage>РАЗГОНЕ</style>.",
+	"MOFFEIN_HAND_BODY_PRIMARY_HAMMER_DESC" : "<style=cIsHealth>Замедлитесь</style> и размахивайте молотом, нанося <style=cIsDamage>600% урона</style>. <style=cIsDamage>Оглушает</style> врагов при активном <style=cIsDamage>РАЗГОНЕ</style>.",
 	
 	"MOFFEIN_HAND_BODY_SECONDARY_NAME" : "ВЫНУЖДЕННАЯ_ПЕРЕСБОРКА",
-	"MOFFEIN_HAND_BODY_SECONDARY_DESC" : "<style=cIsDamage>Оглушение</style>. Зарядите и примените огромную силу молотом, нанося <style=cIsDamage>600%-1500% урона</style>.",
+	"MOFFEIN_HAND_BODY_SECONDARY_DESC" : "<style=cIsDamage>Оглушение</style>. Зарядите и нанесите мощный удар молотом на <style=cIsDamage>600%-1500% урона</style>.",
 	
 	"MOFFEIN_HAND_BODY_SECONDARY_SCEPTER_NAME" : "НЕЭТИЧНАЯ_ПЕРЕСБОРКА",
-	"MOFFEIN_HAND_BODY_SECONDARY_SCEPTER_DESC" : "<style=cIsDamage>Оглушение</style>. Зарядите и примените <style=cIsHealth>НЕВЕРОЯТНУЮ</style> силу молотом, нанося <style=cIsDamage>900%-2250% урона</style>.",
+	"MOFFEIN_HAND_BODY_SECONDARY_SCEPTER_DESC" : "<style=cIsDamage>Оглушение</style>. Зарядите и нанесите <style=cIsHealth>ОСОБО МОЩНЫЙ</style> удар молотом на <style=cIsDamage>900%-2250% урона</style>.",
 	
 	"KEYWORD_MOFFEINHANDOVERCLOCKED_BOOST" : "<style=cKeywordName>Прыжок</style><style=cSub>Умение можно отменить досрочно, чтобы подпрыгнуть в воздух.</style>",
 	
