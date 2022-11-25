@@ -1,6 +1,6 @@
 {
   "name": "HAND_OVERCLOCKED",
-  "version_number": "1.0.1",
+  "version_number": "1.0.2",
   "website_url": "https://github.com/Moffein/HAN-D_OVERCLOCKED",
   "description": "Adds HAN-D, the classic robot janitor from Risk of Rain 1. Multiplayer-compatible!",
   "dependencies": [
