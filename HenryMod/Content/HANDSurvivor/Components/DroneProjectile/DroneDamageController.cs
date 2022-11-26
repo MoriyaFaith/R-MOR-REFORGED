@@ -127,10 +127,12 @@ namespace HANDMod.Content.HANDSurvivor.Components.DroneProjectile
 
                     if (victimHealthComponent.body && victimHealthComponent.body.teamComponent && victimHealthComponent.body.teamComponent.teamIndex == teamIndex)
                     {
+                        float minTotalHeal = victimHealthComponent.fullHealth * 0.1f / (float)damageTicksTotal;
+
                         HealOrb healOrb = new HealOrb();
                         healOrb.origin = this.transform.position;
                         healOrb.target = victimHealthComponent.body.mainHurtBox;
-                        healOrb.healValue = currentTickDamage;
+                        healOrb.healValue = Mathf.Max(minTotalHeal, currentTickDamage);
                         if (projectileDamage.crit) healOrb.healValue *= ownerCritMult;
                         healOrb.overrideDuration = 0.3f;
                         OrbManager.instance.AddOrb(healOrb);
