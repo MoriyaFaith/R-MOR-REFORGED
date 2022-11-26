@@ -41,6 +41,13 @@ Sounds taken from Risk of Rain 1 and Starstorm
 
 ## Changelog
 
+`1.0.3`
+
+- Healing allies with DRONE will heal a minimum of 10% of their max HP.
+	- Does not apply to yourself.
+	
+	*This should fix DRONES not being effective at healing NPCs due to their health scaling.*
+
 `1.0.2`
 
 - Added Simplified Chinese translation (Thanks WockyTheWolf and JunJun_w!)
