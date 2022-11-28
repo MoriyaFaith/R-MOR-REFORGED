@@ -32,7 +32,7 @@
 	"MOFFEIN_HAND_BODY_UTILITY_DESC" : "<style=cIsUtility>Прыжок</style>. Увеличивает <style=cIsUtility>скорость передвижения</style> и <style=cIsDamage>скорость атаки</style> на <style=cIsDamage>40%</style>. Нанесение урона в рукопашной <style=cIsUtility>продлевает время действия</style>.",
 	
 	"MOFFEIN_HAND_BODY_UTILITY_NEMESIS_NAME" : "ФОКУСИРОВКА",
-	"MOFFEIN_HAND_BODY_UTILITY_NEMESIS_DESC" : "<style=cIsUtility>Прыжок</style>. Временно увеличивает урон на <style=cIsDamage>50%</style> и добавляет <style=cIsUtility>50 брони</style>, но уменьшает скорость передвижения на <style=cIsHealth>-30%</style>. Нанесение урона в рукопашной <style=cIsUtility>продлевает время действия</style>.",
+	"MOFFEIN_HAND_BODY_UTILITY_NEMESIS_DESC" : "<style=cIsUtility>Прыжок</style>. Временно увеличивает урон на <style=cIsDamage>50%</style> и добавляет <style=cIsUtility>50 брони</style>, но снижает скорость передвижения на <style=cIsUtility>30%</style>. Нанесение урона в рукопашной <style=cIsUtility>продлевает время действия</style>.",
 	
 	"MOFFEIN_HAND_BODY_SPECIAL_NAME" : "ДРОН",
 	"MOFFEIN_HAND_BODY_SPECIAL_DESC" : "Выпустите дрон, который наносит <style=cIsDamage>270% урона</style> и <style=cIsHealing>исцеляет на 40% от нанесенного урона</style>. Убийства и урон в рукопашной <style=cIsUtility>уменьшают время восстановления</style>.",
