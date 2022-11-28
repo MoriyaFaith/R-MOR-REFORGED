@@ -58,7 +58,7 @@ namespace HANDMod.Content.Shared
             {
                 args.damageMultAdd += 0.5f;
                 args.moveSpeedReductionMultAdd += 0.3f;
-                args.armorAdd += 40f;
+                args.armorAdd += 50f;
             }
         }
     }
