@@ -419,8 +419,9 @@ namespace HANDMod.Content.HANDSurvivor
             #region MasterySkin
 
             //creating a new skindef as we did before
+            Sprite masteryIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("texHANDSkinIconMastery");
             SkinDef masterySkin = Modules.Skins.CreateSkinDef(HAND_PREFIX + "MASTERY_SKIN_NAME",
-                Assets.mainAssetBundle.LoadAsset<Sprite>("texHANDSkinIconMastery"),
+                masteryIcon,
                 defaultRendererinfos,
                 model/*,
                 masterySkinUnlockableDef*/);
@@ -435,6 +436,13 @@ namespace HANDMod.Content.HANDSurvivor
             masterySkin.rendererInfos[1].defaultMaterial = Modules.Materials.CreateHopooMaterial("matHANDWeaponMastery");
             masterySkin.rendererInfos[2].defaultMaterial = Modules.Materials.CreateHopooMaterial("matDroneMastery");
             //masterySkin.rendererInfos[3].defaultMaterial = Modules.Materials.CreateHopooMaterial("matDroneMastery");
+
+            UnlockableDef masteryUnlockableDef = ScriptableObject.CreateInstance<UnlockableDef>();
+            masteryUnlockableDef.cachedName = "Skins.HANDOverclocked.Mastery";
+            masteryUnlockableDef.nameToken = "ACHIEVEMENT_MOFFEINHANDOVERCLOCKEDHAMMERPRIMARYUNLOCK_NAME";
+            masteryUnlockableDef.achievementIcon = masteryIcon;
+            Modules.ContentPacks.unlockableDefs.Add(masteryUnlockableDef);
+            masterySkin.unlockableDef = masteryUnlockableDef;
 
             skins.Add(masterySkin);
             

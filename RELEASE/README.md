@@ -43,11 +43,26 @@ Sounds taken from Risk of Rain 1 and Starstorm
 
 `1.1.0`
 
-- Added Mastery skin. (Thanks DotFlare!)
-- Healing allies with DRONE will now heal a minimum of 10% of their max HP.
-	- Does not apply to yourself.
+- Added Mastery skin. (Thanks DotFlare! Also thanks to TimeSweeper for helping me get it in-game!)
+
+- SMASH
+	- Reduced screenshake amplitude from 5 -> 3.9
+	- Now only lunges forward if the forward movement button is pressed.
+		- On gamepad, checks if movement input is within 50 degrees of the forward direction on either side.
+	- Each enemy hit reduces lunge speed by 50%.
 	
-	*This should fix DRONES not being effective at healing NPCs due to their health scaling.*
+	*Trying to make this a bit less disorienting to use.*
+
+- FOCUS
+	- Added a -30% speed penalty and +50 armor bonus.
+	
+	*Trying to make this feel more distinct from OVERCLOCK. Now has better crowdtanking potential, but worse mobility for chasing down enemies to keep your buff active.*
+	
+- DRONE
+	- Healing allies with DRONE will now heal a minimum of 10% of their max HP.
+		- Does not apply to your self-heal.
+	
+	*This should fix DRONES not being effective at healing NPCs that use AmbientLevel scaling (ex. Drones, Beetle Guards).*
 
 `1.0.2`
 
