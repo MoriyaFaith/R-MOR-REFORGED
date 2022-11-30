@@ -57,12 +57,18 @@ namespace HANDMod.Content.HANDSurvivor
             sortPosition = Config.sortPosition
         };
 
-        public override CustomRendererInfo[] customRendererInfos { get; set; } = new CustomRendererInfo[] { 
-            new CustomRendererInfo {
-                childName = "HanDHammer",
-            }, 
+        public override CustomRendererInfo[] customRendererInfos { get; set; } = new CustomRendererInfo[] {
             new CustomRendererInfo {
                 childName = "HANDMesh",
+            },
+            new CustomRendererInfo {
+                childName = "HanDHammer",
+            },
+            new CustomRendererInfo {
+                childName = "Drone",
+            },
+            new CustomRendererInfo {
+                childName = "Saw",
             },
         };
 
@@ -96,6 +102,7 @@ namespace HANDMod.Content.HANDSurvivor
             CharacterMotor cm = bodyPrefab.GetComponent<CharacterMotor>();
             cm.mass = 300f;
 
+            DroneFollowerController.Initialize();
             HammerVisibilityController.Initialize();
 
             CharacterBody cb = bodyPrefab.GetComponent<CharacterBody>();
@@ -145,6 +152,7 @@ namespace HANDMod.Content.HANDSurvivor
             bodyPrefab.AddComponent<DroneFollowerController>();
             bodyPrefab.AddComponent<HammerVisibilityController>();
 
+            
             Content.HANDSurvivor.Buffs.Init();
 
             CreateHitEffects();
@@ -396,10 +404,132 @@ namespace HANDMod.Content.HANDSurvivor
                 Assets.mainAssetBundle.LoadAsset<Sprite>("texHANDSkinIconDefault"),
                 defaultRendererinfos,
                 model);
+
+            defaultSkin.meshReplacements = Modules.Skins.getMeshReplacements(defaultRendererinfos,
+                "meshHanDDefault_Body",
+                "meshHanDDefault_Hammer",
+                "meshDroneDefault_Body",
+                "meshDroneDefault_Saw");
+
             skins.Add(defaultSkin);
+
+            //materials are the default materials
+            #endregion
+
+            #region MasterySkin
+
+            //creating a new skindef as we did before
+            SkinDef masterySkin = Modules.Skins.CreateSkinDef(HAND_PREFIX + "MASTERY_SKIN_NAME",
+                Assets.mainAssetBundle.LoadAsset<Sprite>("texHANDSkinIconMastery"),
+                defaultRendererinfos,
+                model/*,
+                masterySkinUnlockableDef*/);
+
+            masterySkin.meshReplacements = Modules.Skins.getMeshReplacements(defaultRendererinfos,
+                "meshHanDMastery_Body",
+                "meshHanDMastery_Hammer",
+                "meshDroneMastery_Body",
+                null);
+
+            masterySkin.rendererInfos[0].defaultMaterial = Modules.Materials.CreateHopooMaterial("matHANDMastery");
+            masterySkin.rendererInfos[1].defaultMaterial = Modules.Materials.CreateHopooMaterial("matHANDWeaponMastery");
+            masterySkin.rendererInfos[2].defaultMaterial = Modules.Materials.CreateHopooMaterial("matDroneMastery");
+            //masterySkin.rendererInfos[3].defaultMaterial = Modules.Materials.CreateHopooMaterial("matDroneMastery");
+
+            skins.Add(masterySkin);
+            
             #endregion
 
             skinController.skins = skins.ToArray();
+
+            On.RoR2.ProjectileGhostReplacementManager.Init += ProjectileGhostReplacementManager_Init;
+        }
+
+        private void ProjectileGhostReplacementManager_Init(On.RoR2.ProjectileGhostReplacementManager.orig_Init orig)
+        {
+            ModelSkinController skinController = bodyPrefab.GetComponentInChildren<ModelSkinController>();
+            for (int i = 1; i < skinController.skins.Length; i++)
+            {
+                SkinDef skin = skinController.skins[i];
+
+                if (DoesSkinHaveDroneReplacement(skin))
+                {
+                    skin.projectileGhostReplacements = new SkinDef.ProjectileGhostReplacement[]
+                    {
+                        new SkinDef.ProjectileGhostReplacement
+                        {
+                            projectilePrefab = EntityStates.HAND_Overclocked.Special.FireSeekingDrone.projectilePrefab,
+                            projectileGhostReplacementPrefab = CreateProjectileGhostReplacementPrefab(skin),
+                        }
+                    };
+                }
+            }
+
+            orig();
+        }
+
+
+        public static bool DoesSkinHaveDroneReplacement(SkinDef skin)
+        {
+
+            SkinDef defaultSkin = HANDSurvivor.instance.bodyPrefab.GetComponentInChildren<ModelSkinController>().skins[0];
+
+            for (int i = 0; i < skin.meshReplacements.Length; i++)
+            {
+                if (skin.meshReplacements[i].renderer == defaultSkin.rendererInfos[2].renderer ||
+                   skin.meshReplacements[i].renderer == defaultSkin.rendererInfos[3].renderer)
+                {
+                    return true;
+                }
+            }
+            for (int i = 0; i < skin.rendererInfos.Length; i++)
+            {
+                if (skin.rendererInfos[i].renderer == defaultSkin.rendererInfos[2].renderer ||
+                    skin.rendererInfos[i].renderer == defaultSkin.rendererInfos[3].renderer)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+
+        public static GameObject CreateProjectileGhostReplacementPrefab(SkinDef skin)
+        {
+            GameObject ghostReplacement = PrefabAPI.InstantiateClone(DroneSetup.droneProjectileGhost, skin.nameToken + "DroneGhostReplacement", false);
+            SkinnedMeshRenderer ghostDroneRenderer = ghostReplacement.GetComponent<ChildLocator>().FindChildComponent<SkinnedMeshRenderer>("Drone");
+            MeshRenderer ghostSawRenderer = ghostReplacement.GetComponent<ChildLocator>().FindChildComponent<MeshRenderer>("Saw");
+
+            SkinDef defaultSkin = HANDSurvivor.instance.bodyPrefab.GetComponentInChildren<ModelSkinController>().skins[0];
+
+            CharacterModel.RendererInfo defaultRendererInfoDrone = defaultSkin.rendererInfos[2];
+            CharacterModel.RendererInfo defaultRendererInfoSaw = defaultSkin.rendererInfos[3];
+
+            for (int i = 0; i < skin.rendererInfos.Length; i++)
+            {
+                if (skin.rendererInfos[i].renderer == defaultRendererInfoDrone.renderer)
+                {
+                    ghostDroneRenderer.material = skin.rendererInfos[i].defaultMaterial;
+                }
+                if (skin.rendererInfos[i].renderer == defaultRendererInfoSaw.renderer)
+                {
+                    ghostSawRenderer.material = skin.rendererInfos[i].defaultMaterial;
+                }
+            }
+
+            for (int i = 0; i < skin.meshReplacements.Length; i++)
+            {
+                if (skin.meshReplacements[i].renderer == defaultRendererInfoDrone.renderer)
+                {
+                    ghostDroneRenderer.sharedMesh = skin.meshReplacements[i].mesh;
+                }
+                if (skin.meshReplacements[i].renderer == defaultRendererInfoSaw.renderer)
+                {
+                    ghostSawRenderer.GetComponent<MeshFilter>().mesh = skin.meshReplacements[i].mesh;
+                }
+            }
+
+            return ghostReplacement;
         }
 
         private void RegisterStates()

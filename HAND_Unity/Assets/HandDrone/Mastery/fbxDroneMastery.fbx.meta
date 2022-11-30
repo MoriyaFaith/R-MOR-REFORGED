@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 00d9978ec9a1d124c842dbe960d7be1b
+guid: ace764c59d3405749a168be1dd1bdfc0
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable: []
@@ -9,11 +9,6 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: HanDDroneMaster
     second: {fileID: 2100000, guid: 39848636bf59b3e448c816d783a35c7e, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material.003
-    second: {fileID: 2100000, guid: 2c88b20198d3cf341ae984d01fae81fa, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0

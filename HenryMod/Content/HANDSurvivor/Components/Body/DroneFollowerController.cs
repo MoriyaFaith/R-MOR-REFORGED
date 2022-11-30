@@ -1,4 +1,5 @@
 ﻿using RoR2;
+using System;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -7,16 +8,55 @@ namespace HANDMod.Content.HANDSurvivor.Components.Body
     public class DroneFollowerController : NetworkBehaviour
     {
         private float sleepTimer = 1.5f;    //Don't render drones until 1.5s after spawn.
-        public void Awake()
+
+        private static bool initialized = false;
+        public static void Initialize()
         {
-            characterBody = base.GetComponent<CharacterBody>();
-            if (NetworkServer.active)
+            if (initialized) return;
+            initialized = true;
+
+            On.RoR2.ModelSkinController.ApplySkin += ModelSkinController_ApplySkin;
+        }
+
+        private static void ModelSkinController_ApplySkin(On.RoR2.ModelSkinController.orig_ApplySkin orig, ModelSkinController self, int skinIndex)
+        {
+            orig(self, skinIndex);
+            if(self.characterModel.body.TryGetComponent<DroneFollowerController>(out DroneFollowerController controller))
             {
-                _droneCountServer = 0;
+                controller.ApplyDroneSkins();
+            }
+        }
+
+        //follower.GetComponentInChildren<Renderer>().material = characterModel.baseRendererInfos[2].defaultMaterial;
+        //follower.GetComponentInChildren<MeshFilter>().mesh = characterModel.baseRendererInfos[2].renderer.GetComponent<MeshFilter>().mesh;
+
+        private void ApplyDroneSkins()
+        {
+            CharacterModel characterModel = null;
+            if (characterBody && characterBody.modelLocator && characterBody.modelLocator.modelTransform)
+            {
+                characterModel = characterBody.modelLocator.modelTransform.GetComponent<CharacterModel>();
             }
 
+            for (int i = 0; i < droneFollowers.Length; i++)
+            {
+                ChildLocator droneChildLocator = droneFollowers[i].gameObject.GetComponent<ChildLocator>();
+
+                SkinnedMeshRenderer droneRenderer = droneChildLocator.FindChildComponent<SkinnedMeshRenderer>("Drone");
+                droneRenderer.sharedMaterial = characterModel.baseRendererInfos[2].defaultMaterial;
+                droneRenderer.sharedMesh = (characterModel.baseRendererInfos[2].renderer as SkinnedMeshRenderer).sharedMesh;
+
+                GameObject saw = droneChildLocator.FindChildGameObject("Saw");
+                saw.GetComponent<MeshRenderer>().material = characterModel.baseRendererInfos[3].defaultMaterial;
+                saw.GetComponent<MeshFilter>().mesh = characterModel.baseRendererInfos[3].renderer.GetComponent<MeshFilter>().mesh;
+            }
+        }
+
+        private void ApplyDroneSkinsFunny()
+        {
             Transform bodyDroneFollower = null;
-            Renderer[] bodyDroneRenderers = null;
+            SkinnedMeshRenderer[] bodyDroneSkinnedMeshRenderers = null;
+            MeshRenderer[] bodyDroneMeshRenderers = null;
             MeshFilter[] bodyDroneMeshes = null;
             if (characterBody && characterBody.modelLocator && characterBody.modelLocator.modelTransform)
             {
@@ -29,33 +69,37 @@ namespace HANDMod.Content.HANDSurvivor.Components.Body
                         bodyDroneFollower = cl.FindChild("DroneFollower");
                         if (bodyDroneFollower)
                         {
-                            bodyDroneRenderers = bodyDroneFollower.GetComponentsInChildren<Renderer>();
-                            bodyDroneMeshes = bodyDroneFollower.GetComponentsInChildren<MeshFilter>();
+                            bodyDroneSkinnedMeshRenderers = bodyDroneFollower.GetComponentsInChildren<SkinnedMeshRenderer>(true);
+                            bodyDroneMeshRenderers = bodyDroneFollower.GetComponentsInChildren<MeshRenderer>(true);
+                            bodyDroneMeshes = bodyDroneFollower.GetComponentsInChildren<MeshFilter>(true);
                         }
                     }
                 }
             }
-            //follower.GetComponentInChildren<Renderer>().material = characterModel.baseRendererInfos[2].defaultMaterial;
-            //follower.GetComponentInChildren<MeshFilter>().mesh = characterModel.baseRendererInfos[2].renderer.GetComponent<MeshFilter>().mesh;
 
-            droneFollowers = new DroneFollower[maxFollowingDrones];
             for (int i = 0; i < droneFollowers.Length; i++)
             {
-                droneFollowers[i].gameObject = Instantiate(dronePrefab);
-                droneFollowers[i].gameObject.transform.localScale = Vector3.zero;
-                droneFollowers[i].active = false;
-
-
-                if (bodyDroneRenderers != null && bodyDroneMeshes != null)
+                if (bodyDroneMeshRenderers != null && bodyDroneMeshes != null)
                 {
-                    Renderer[] instanceDroneRenderers = bodyDroneFollower.GetComponentsInChildren<Renderer>();
-                    MeshFilter[] instanceDroneMeshes = bodyDroneFollower.GetComponentsInChildren<MeshFilter>();
+                    SkinnedMeshRenderer[] instanceDroneSkinnedMeshRenderers = droneFollowers[i].gameObject.GetComponentsInChildren<SkinnedMeshRenderer>(true);
+                    MeshRenderer[] instanceDroneMeshRenderers = droneFollowers[i].gameObject.GetComponentsInChildren<MeshRenderer>(true);
+                    MeshFilter[] instanceDroneMeshes = droneFollowers[i].gameObject.GetComponentsInChildren<MeshFilter>(true);
 
-                    if (instanceDroneRenderers.Length > 0)
+                    if (instanceDroneSkinnedMeshRenderers.Length > 0)
                     {
-                        for (int j = 0; j < bodyDroneRenderers.Length && j < instanceDroneRenderers.Length; j++)
+                        for (int j = 0; j < bodyDroneSkinnedMeshRenderers.Length && j < instanceDroneSkinnedMeshRenderers.Length; j++)
                         {
-                            instanceDroneRenderers[j].material = bodyDroneRenderers[j].material;
+                            instanceDroneSkinnedMeshRenderers[j].material = bodyDroneSkinnedMeshRenderers[j].material;
+                            instanceDroneSkinnedMeshRenderers[j].sharedMesh = bodyDroneSkinnedMeshRenderers[j].sharedMesh;
+                            Log.Warning(bodyDroneSkinnedMeshRenderers[j].material.name);
+                        }
+                    }
+
+                    if (instanceDroneMeshRenderers.Length > 0)
+                    {
+                        for (int j = 0; j < bodyDroneMeshRenderers.Length && j < instanceDroneMeshRenderers.Length; j++)
+                        {
+                            instanceDroneMeshRenderers[j].material = bodyDroneMeshRenderers[j].material;
                         }
                     }
 
@@ -67,6 +111,29 @@ namespace HANDMod.Content.HANDSurvivor.Components.Body
                         }
                     }
                 }
+            }
+        }
+
+        public void Awake()
+        {
+            characterBody = base.GetComponent<CharacterBody>();
+            if (NetworkServer.active)
+            {
+                _droneCountServer = 0;
+            }
+
+            InitDroneFollowers();
+        }
+
+        private void InitDroneFollowers()
+        {
+            
+            droneFollowers = new DroneFollower[maxFollowingDrones];
+            for (int i = 0; i < droneFollowers.Length; i++)
+            {
+                droneFollowers[i].gameObject = Instantiate(dronePrefab);
+                droneFollowers[i].gameObject.transform.localScale = Vector3.zero;
+                droneFollowers[i].active = false;
             }
         }
 
@@ -98,7 +165,6 @@ namespace HANDMod.Content.HANDSurvivor.Components.Body
 
         private void Update()
         {
-
             if (sleepTimer <= 0f)
             {
                 UpdateMotion();
