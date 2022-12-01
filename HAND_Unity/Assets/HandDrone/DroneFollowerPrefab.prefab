@@ -7,6 +7,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1882373182675167160, guid: 43934d903d6a6ff4e86523dc4edef5ba,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1882373182675167160, guid: 43934d903d6a6ff4e86523dc4edef5ba,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1882373182675167160, guid: 43934d903d6a6ff4e86523dc4edef5ba,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2011218168150162351, guid: 43934d903d6a6ff4e86523dc4edef5ba,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3549664407936916617, guid: 43934d903d6a6ff4e86523dc4edef5ba,
         type: 3}
       propertyPath: m_Name
@@ -76,6 +96,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6066965511444287982, guid: 43934d903d6a6ff4e86523dc4edef5ba,
+        type: 3}
+      propertyPath: m_Name
+      value: DroneFollowerPrefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 8352180941114877544, guid: 43934d903d6a6ff4e86523dc4edef5ba,
+        type: 3}
+      propertyPath: m_Name
+      value: DronePropeller
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 43934d903d6a6ff4e86523dc4edef5ba, type: 3}

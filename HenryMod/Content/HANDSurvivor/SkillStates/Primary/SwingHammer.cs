@@ -20,10 +20,13 @@ namespace EntityStates.HAND_Overclocked.Primary
         public static float force = 3000f;
         public static float forwardSpeed = 30f;
 
+        public static float recoilAmplitude = 1.5f;
         public static float momentumStartPercent = 0.5f;
         public static float momentumFadePercent = 0.6825f;
         public static float momentumEndPercent = 0.8f;
 
+        private float accumulatedReductionPercent = 1f;
+        private float inputReductionPercent = 0f;
         private bool hitEnemy = false;
         private bool setNextState = false;
         private string animationLayer;
@@ -162,6 +165,24 @@ namespace EntityStates.HAND_Overclocked.Primary
                 if (!this.hasFired)
                 {
                     this.startedSkillStationary = base.characterMotor && base.characterMotor.moveDirection == Vector3.zero;
+                    if (base.characterMotor && !this.startedSkillStationary)
+                    {
+                        Ray aimRay = base.GetAimRay();
+                        Vector2 moveDirectionFlat = new Vector2(base.characterMotor.moveDirection.x, base.characterMotor.moveDirection.z);
+                        Vector2 forwardDirectionFlat = new Vector2(aimRay.direction.x, aimRay.direction.z);
+
+                        float angle = Vector2.Angle(moveDirectionFlat, forwardDirectionFlat);
+
+                        if (angle < 50f)
+                        {
+                            this.inputReductionPercent = 0f;
+                        }
+                        else
+                        {
+                            this.inputReductionPercent = 1f;
+                            this.startedSkillStationary = true;
+                        }
+                    }
                 }
 
                 if (!this.inHitPause && base.characterDirection && base.characterMotor && !this.startedSkillStationary && this.stopwatch >= this.duration * SwingHammer.momentumStartPercent)
@@ -170,13 +191,22 @@ namespace EntityStates.HAND_Overclocked.Primary
                     float momentumEndTime = this.duration * SwingHammer.momentumEndPercent;
                     if (this.stopwatch <= momentumEndTime)
                     {
-                        float evaluatedForwardSpeed = SwingHammer.forwardSpeed * Time.fixedDeltaTime;
+                        float evaluatedForwardSpeed = SwingHammer.forwardSpeed * Time.fixedDeltaTime * (1f - inputReductionPercent) * accumulatedReductionPercent;
                         if (this.stopwatch > fadeTime)
                         {
                             evaluatedForwardSpeed = Mathf.Lerp(evaluatedForwardSpeed, 0f, (this.stopwatch - fadeTime) / (momentumEndTime - fadeTime));
                         }
-                        Vector3 evaluatedForwardVector = base.characterDirection.forward * evaluatedForwardSpeed;
-                        base.characterMotor.AddDisplacement(new Vector3(evaluatedForwardVector.x, 0f, evaluatedForwardVector.z));
+
+                        if (evaluatedForwardSpeed > 0f)
+                        {
+                            Vector3 evaluatedForwardVector = base.characterDirection.forward * evaluatedForwardSpeed;
+                            base.characterMotor.AddDisplacement(new Vector3(evaluatedForwardVector.x, 0f, evaluatedForwardVector.z));
+                        }
+                        else
+                        {
+                            //Use this to cancel lunge
+                            startedSkillStationary = true;
+                        }
                     }
                 }
             }
@@ -186,8 +216,7 @@ namespace EntityStates.HAND_Overclocked.Primary
         {
             if (base.isAuthority)
             {
-                ShakeEmitter se = ShakeEmitter.CreateSimpleShakeEmitter(base.transform.position, new Wave() { amplitude = 5f, cycleOffset = 0f, frequency = 4f }, 0.3f, 20f, true);
-                se.transform.parent = base.transform;
+                base.AddRecoil(-0.1f * SwingHammer.recoilAmplitude, 0.1f * SwingHammer.recoilAmplitude, -1f * SwingHammer.recoilAmplitude, 1f * SwingHammer.recoilAmplitude);
             }
 
             if (this.swingEffectPrefab == SwingHammer.swingEffectFocus)
@@ -216,6 +245,9 @@ namespace EntityStates.HAND_Overclocked.Primary
         protected override void OnHitEnemyAuthority()
         {
             base.OnHitEnemyAuthority();
+
+            this.accumulatedReductionPercent *= 0.5f;
+
             if (!hitEnemy)
             {
                 hitEnemy = true;

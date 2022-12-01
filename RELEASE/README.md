@@ -4,7 +4,7 @@ We are looking for translators! Check the languages folder on the [GitHub](https
 Current Supported Languages: English, Simplified Chinese
 
 [![](https://i.imgur.com/9pHqh2i.jpg)]()
-[![](https://i.imgur.com/iSWV7xb.png)]()
+[![](https://i.imgur.com/5HoCYrq.png)]()
 
 ## For Skin Creators
 
@@ -44,10 +44,34 @@ Sounds taken from Risk of Rain 1 and Starstorm
 `1.1.0`
 
 - Added Mastery skin. (Thanks DotFlare!)
-- Healing allies with DRONE will now heal a minimum of 10% of their max HP.
-	- Does not apply to yourself.
+	- Also thanks to TimeSweeper for getting it working in-game!
+
+- Updated portrait icon.
+	- Old icon was from an older version of the mod when the textures were different.
 	
-	*This should fix DRONES not being effective at healing NPCs due to their health scaling.*
+- Fixed neck becoming tiny when looking backwards.
+
+- SMASH
+	- Replaced screenshake with subtle directional recoil.
+	- Now only lunges forward if the forward movement button is pressed.
+		- On gamepad, checks if movement input is within 50 degrees of the forward direction on either side.
+	- Each enemy hit reduces lunge speed by 50%.
+	
+	*Adding extra control to this skill's movement. You can now easily choose whether you want to lunge or stay in place.*
+	
+- FORCED_REASSEMBLY
+	- Increased fully charged hit OVERCLOCK extension time from 1.6s -> 2s
+
+- FOCUS
+	- Added a -30% speed penalty and +50 armor bonus.
+	
+	*Trying to make this feel more distinct from OVERCLOCK. Now has better crowdtanking potential, but worse mobility for chasing down enemies to keep your buff active.*
+	
+- DRONE
+	- Healing allies with DRONE will now heal a minimum of 10% of their max HP.
+		- Does not apply to your self-heal.
+	
+	*This should fix DRONES not being effective at healing NPCs that use AmbientLevel scaling (ex. Drones, Beetle Guards).*
 
 `1.0.2`
 

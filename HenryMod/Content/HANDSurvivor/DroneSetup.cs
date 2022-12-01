@@ -11,6 +11,8 @@ namespace HANDMod.Content.HANDSurvivor
     //Copypasted the code from the original HAN-D Overclocked.
     public class DroneSetup
     {
+        public static GameObject droneProjectileGhost;
+
         public static void Init()
         {
             if (!FireSeekingDrone.projectilePrefab) FireSeekingDrone.projectilePrefab = CreateDroneProjectile();
@@ -55,7 +57,7 @@ namespace HANDMod.Content.HANDSurvivor
         {
             GameObject droneProjectile = LegacyResourcesAPI.Load<GameObject>("prefabs/projectiles/EngiHarpoon").InstantiateClone("HANDMod_DroneProjectile", true);
 
-            GameObject droneProjectileGhost = PrefabAPI.InstantiateClone(HANDMod.Modules.Assets.mainAssetBundle.LoadAsset<GameObject>("DronePrefab"), "HANDMod_DroneProjectileGhost", false);
+            droneProjectileGhost = PrefabAPI.InstantiateClone(HANDMod.Modules.Assets.mainAssetBundle.LoadAsset<GameObject>("DronePrefab"), "HANDMod_DroneProjectileGhost", false);
 
             Shader hotpoo = LegacyResourcesAPI.Load<Shader>("Shaders/Deferred/hgstandard");
 

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e83af0d8cd3b9194fb6ae9928aced4bc
+guid: 74f5379340970374ebee1d71fac29e84
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable: []
@@ -7,18 +7,13 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: DroneBody01
+      name: DroneBody
     second: {fileID: 2100000, guid: 79ce2aa473884f34fa6025a381ce0367, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: DroneBody01.002
+      name: DroneSaw
     second: {fileID: 2100000, guid: 6625d4110080e1e42b3d18637f6a2e61, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material.003
-    second: {fileID: 2100000, guid: 2c88b20198d3cf341ae984d01fae81fa, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
@@ -38,7 +33,7 @@ ModelImporter:
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 3
+    animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -99,13 +94,13 @@ ModelImporter:
     globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
-    hasExtraRoot: 1
+    hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 1
+  avatarSetup: 0
   additionalBone: 0
   userData: 
   assetBundleName: 
