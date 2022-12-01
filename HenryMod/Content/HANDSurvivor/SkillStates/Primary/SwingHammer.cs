@@ -216,10 +216,6 @@ namespace EntityStates.HAND_Overclocked.Primary
         {
             if (base.isAuthority)
             {
-                /*ShakeEmitter se = ShakeEmitter.CreateSimpleShakeEmitter(base.transform.position, new Wave() { amplitude = 3.9f, cycleOffset = 0f, frequency = 4f }, 0.3f, 20f, true);
-                se.transform.parent = base.transform;*/
-
-                //base.AddRecoil(-0.1f * Slash.recoilAmplitude, 0.1f * Slash.recoilAmplitude, -1f * Slash.recoilAmplitude, 1f * Slash.recoilAmplitude);
                 float leftRecoil = 0f;
                 float rightRecoil = 0f;
 

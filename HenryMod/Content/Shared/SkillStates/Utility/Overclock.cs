@@ -11,13 +11,17 @@ namespace EntityStates.HAND_Overclocked.Utility
 {
 	public class BeginOverclock : BaseState
 	{
-		//Used for achievement.
-		public static event Action<BeginOverclock> onAuthorityFixedUpdateGlobal;
 		public override void OnEnter()
 		{
 			base.OnEnter();
 
 			LoadStats();
+
+            modelAnimator = base.GetModelAnimator();
+            if (modelAnimator)
+            {
+                modelAnimator.SetFloat("KeyCrank", 1f);
+            }
 
 			this.overclockController = base.gameObject.GetComponent<OverclockController>();
 			if (base.isAuthority)
@@ -57,9 +61,9 @@ namespace EntityStates.HAND_Overclocked.Utility
 			if (cl)
 			{
 				leftJet = cl.FindChild("Jetpack.L");
-				rightJet = cl.FindChild("Jetpack.R");
+                rightJet = cl.FindChild("Jetpack.R");
 
-				GameObject leftEffect = UnityEngine.Object.Instantiate<GameObject>(BeginOverclock.jetEffectPrefab, leftJet);
+                GameObject leftEffect = UnityEngine.Object.Instantiate<GameObject>(BeginOverclock.jetEffectPrefab, leftJet);
 				leftEffect.transform.localRotation *= Quaternion.Euler(0f, -60f, 0f);
 				leftEffect.transform.localPosition += new Vector3(0f, 0.6f, 0f);    //Adding to this shifts it downwards.
 
@@ -130,10 +134,14 @@ namespace EntityStates.HAND_Overclocked.Utility
             }
 
 			Util.PlaySound(endSoundString, base.gameObject);
-			base.OnExit();
+            if (modelAnimator)
+            {
+                modelAnimator.SetFloat("KeyCrank", 0f);
+            }
+            base.OnExit();
 		}
 
-		public override void FixedUpdate()
+        public override void FixedUpdate()
 		{
 			base.FixedUpdate();
 
@@ -180,14 +188,18 @@ namespace EntityStates.HAND_Overclocked.Utility
 		public override InterruptPriority GetMinimumInterruptPriority()
 		{
 			return InterruptPriority.Skill;
-		}
+        }
 
-		public float buffDuration = 4f;
+        //Used for achievement.
+        public static event Action<BeginOverclock> onAuthorityFixedUpdateGlobal;
+
+        public float buffDuration = 4f;
 		public BuffDef buffDef;
 		public string startSoundString = "Play_MULT_shift_start";
 		public string endSoundString = "Play_MULT_shift_end";
 		public SkillDef cancelDef;
 
+        private Animator modelAnimator;
 		private float stopwatch = 0f;
 		private float jetFireTime;
 		private float jetStopwatch;
