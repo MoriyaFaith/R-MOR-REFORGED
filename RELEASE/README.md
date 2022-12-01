@@ -48,14 +48,16 @@ Sounds taken from Risk of Rain 1 and Starstorm
 
 - Updated portrait icon.
 	- Old icon was from an older version of the mod when the textures were different.
+	
+- Fixed neck becoming tiny when looking backwards.
 
 - SMASH
-	- Reduced screenshake amplitude from 5 -> 3.9
+	- Replaced screenshake with subtle directional recoil.
 	- Now only lunges forward if the forward movement button is pressed.
 		- On gamepad, checks if movement input is within 50 degrees of the forward direction on either side.
 	- Each enemy hit reduces lunge speed by 50%.
 	
-	*Trying to make this a bit less disorienting to use.*
+	*Adding extra control to this skill's movement. You can now easily choose whether you want to lunge or stay in place.*
 	
 - FORCED_REASSEMBLY
 	- Increased fully charged hit OVERCLOCK extension time from 1.6s -> 2s
