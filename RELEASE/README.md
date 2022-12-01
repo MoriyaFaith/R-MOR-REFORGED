@@ -45,6 +45,9 @@ Sounds taken from Risk of Rain 1 and Starstorm
 
 - Added Mastery skin. (Thanks DotFlare! Also thanks to TimeSweeper for helping me get it in-game!)
 
+- Updated portrait icon.
+	- Old icon was from an older version of the mod when the textures were different.
+
 - SMASH
 	- Reduced screenshake amplitude from 5 -> 3.9
 	- Now only lunges forward if the forward movement button is pressed.

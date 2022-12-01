@@ -17,6 +17,12 @@ namespace EntityStates.HAND_Overclocked.Utility
 
 			LoadStats();
 
+            modelAnimator = base.GetModelAnimator();
+            if (modelAnimator)
+            {
+                modelAnimator.SetFloat("KeyCrank", 1f);
+            }
+
 			this.overclockController = base.gameObject.GetComponent<OverclockController>();
 			if (base.isAuthority)
 			{
@@ -56,7 +62,6 @@ namespace EntityStates.HAND_Overclocked.Utility
 			{
 				leftJet = cl.FindChild("Jetpack.L");
                 rightJet = cl.FindChild("Jetpack.R");
-                keyCrank = cl.FindChild("KeyCrank");
 
                 GameObject leftEffect = UnityEngine.Object.Instantiate<GameObject>(BeginOverclock.jetEffectPrefab, leftJet);
 				leftEffect.transform.localRotation *= Quaternion.Euler(0f, -60f, 0f);
@@ -129,17 +134,12 @@ namespace EntityStates.HAND_Overclocked.Utility
             }
 
 			Util.PlaySound(endSoundString, base.gameObject);
-			base.OnExit();
-		}
-
-        public override void Update()
-        {
-            base.Update();
-            if (keyCrank)
+            if (modelAnimator)
             {
-                keyCrank.localRotation *= Quaternion.Euler(0f, 90f * Time.deltaTime, 0f);
+                modelAnimator.SetFloat("KeyCrank", 0f);
             }
-        }
+            base.OnExit();
+		}
 
         public override void FixedUpdate()
 		{
@@ -199,6 +199,7 @@ namespace EntityStates.HAND_Overclocked.Utility
 		public string endSoundString = "Play_MULT_shift_end";
 		public SkillDef cancelDef;
 
+        private Animator modelAnimator;
 		private float stopwatch = 0f;
 		private float jetFireTime;
 		private float jetStopwatch;
@@ -207,7 +208,6 @@ namespace EntityStates.HAND_Overclocked.Utility
 		private int startStocks = 0;
 		private Transform leftJet;
 		private Transform rightJet;
-        private Transform keyCrank;
 		private TemporaryOverlay tempOverlay;
 		private CharacterModel characterModel;
 
