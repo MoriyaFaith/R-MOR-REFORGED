@@ -430,12 +430,12 @@ namespace HANDMod.Content.HANDSurvivor
                 "meshHanDMastery_Body",
                 "meshHanDMastery_Hammer",
                 "meshDroneMastery_Body",
-                "meshDroneMastery_Saw");
+                null);
 
             masterySkin.rendererInfos[0].defaultMaterial = Modules.Materials.CreateHopooMaterial("matHANDMastery");
             masterySkin.rendererInfos[1].defaultMaterial = Modules.Materials.CreateHopooMaterial("matHANDWeaponMastery");
             masterySkin.rendererInfos[2].defaultMaterial = Modules.Materials.CreateHopooMaterial("matDroneMastery");
-            masterySkin.rendererInfos[3].defaultMaterial = Modules.Materials.CreateHopooMaterial("matDroneMastery");
+            //masterySkin.rendererInfos[3].defaultMaterial = Modules.Materials.CreateHopooMaterial("matDroneMastery");
 
             UnlockableDef masteryUnlockableDef = ScriptableObject.CreateInstance<UnlockableDef>();
             masteryUnlockableDef.cachedName = "Skins.HANDOverclocked.Mastery";
