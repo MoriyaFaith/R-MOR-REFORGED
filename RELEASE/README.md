@@ -4,7 +4,7 @@ We are looking for translators! Check the languages folder on the [GitHub](https
 Current Supported Languages: English, Simplified Chinese
 
 [![](https://i.imgur.com/9pHqh2i.jpg)]()
-[![](https://i.imgur.com/iSWV7xb.png)]()
+[![](https://i.imgur.com/5HoCYrq.png)]()
 
 ## For Skin Creators
 
