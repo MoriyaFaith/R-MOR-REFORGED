@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 1860660910
+CRC: 673176582
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: eecd1d59014336571a82e65caadf6948
+    Hash: 85ddde16840cda84c3445d35905516da
   TypeTreeHash:
     serializedVersion: 2
     Hash: 0713b83fc0fda10e7027ae2bc2bee20d
@@ -65,7 +65,6 @@ SerializeReferenceClassIdentifiers: []
 Assets:
 - Assets/HAN-D/Materials/Skins/Mastery/matHANDMastery.mat
 - Assets/HandDrone/DroneFollowerPrefab.prefab
-- Assets/HAN-D/Mesh/meshHanDDefault_Body.mesh
 - Assets/HAN-D/Textures/UI/texHANDSkinIconMastery.png
 - Assets/HAN-D/Textures/Skins/Mastery/HanDMaster_diffuse.png
 - Assets/HandDrone/DronePrefab.prefab
@@ -106,6 +105,7 @@ Assets:
 - Assets/HAN-D/Textures/UI/texGauge.png
 - Assets/HAN-D/animHANDEmote.prefab
 - Assets/HAN-D/FBX/fbxHANDMastery.fbx
+- Assets/HAN-D/Mesh/meshHanDDefault_Body.mesh
 - Assets/HAN-D/HANDOverclockedDisplay.prefab
 - Assets/HAN-D/Textures/Skills/texSpecial.png
 - Assets/HAN-D/Animations/maskHANDOverclocked_Gesture.mask
