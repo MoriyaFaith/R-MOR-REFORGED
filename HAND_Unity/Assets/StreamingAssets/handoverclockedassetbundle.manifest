@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 2827028953
+CRC: 463551681
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: f5f37814070439806ba7bb77cebf6d91
+    Hash: d601183609aaaf24a0c40d6829490529
   TypeTreeHash:
     serializedVersion: 2
     Hash: 0713b83fc0fda10e7027ae2bc2bee20d
@@ -134,4 +134,5 @@ Assets:
 - Assets/HandDrone/Mastery/texHanDDroneMaster_emission.png
 - Assets/HandDrone/Mesh/meshDroneMastery_Body.mesh
 - Assets/HAN-D/Mesh/meshHanDMastery_Hammer.mesh
+- Assets/HAN-D/FBX/meshHanDMastery_Body.mesh
 Dependencies: []
