@@ -4,7 +4,7 @@ We are looking for translators! Check the languages folder on the [GitHub](https
 Current Supported Languages: English, Simplified Chinese
 
 [![](https://i.imgur.com/9pHqh2i.jpg)]()
-[![](https://i.imgur.com/5HoCYrq.png)]()
+[![](https://i.imgur.com/iSWV7xb.png)]()
 
 ## For Skin Creators
 
@@ -44,9 +44,6 @@ Sounds taken from Risk of Rain 1 and Starstorm
 `1.1.0`
 
 - Added Mastery skin. (Thanks DotFlare! Also thanks to TimeSweeper for helping me get it in-game!)
-
-- Updated portrait icon.
-	- Old icon was from an older version of the mod when the textures were different.
 
 - SMASH
 	- Reduced screenshake amplitude from 5 -> 3.9

@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 1447665089
+CRC: 463551681
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 0d7088ed6ae1d7dda5c24a1c1e93e5cb
+    Hash: d601183609aaaf24a0c40d6829490529
   TypeTreeHash:
     serializedVersion: 2
     Hash: 0713b83fc0fda10e7027ae2bc2bee20d
@@ -65,6 +65,7 @@ SerializeReferenceClassIdentifiers: []
 Assets:
 - Assets/HAN-D/Materials/Skins/Mastery/matHANDMastery.mat
 - Assets/HandDrone/DroneFollowerPrefab.prefab
+- Assets/HAN-D/Mesh/meshHanDDefault_Body.mesh
 - Assets/HAN-D/Textures/UI/texHANDSkinIconMastery.png
 - Assets/HAN-D/Textures/Skins/Mastery/HanDMaster_diffuse.png
 - Assets/HandDrone/DronePrefab.prefab
@@ -89,12 +90,10 @@ Assets:
 - Assets/HandDrone/Mesh/meshDroneDefault_Body.mesh
 - Assets/HandDrone/DefaultSkin/matDroneBody.mat
 - Assets/HAN-D/Textures/Skins/DefaultSkin/HanD_Diffuse.png
-- Assets/HandDrone/Mesh/meshDroneMastery_Body.mesh
 - Assets/HAN-D/FBX/fbxHAND.fbx
 - Assets/HAN-D/Textures/UI/texHANDSkinIconDefault.png
 - Assets/HandDrone/Mastery/fbxDroneMastery.fbx
 - Assets/HAN-D/Textures/UI/texGaugeArrow.png
-- Assets/HandDrone/Mesh/meshDroneMastery_Saw.mesh
 - Assets/HAN-D/Textures/Skins/Mastery/HanDMaster_normal.png
 - Assets/HandDrone/Mastery/matDroneMastery.mat
 - Assets/HAN-D/Materials/Skins/DefaultSkin/matHANDDefault.mat
@@ -105,7 +104,7 @@ Assets:
 - Assets/HAN-D/Textures/UI/texGauge.png
 - Assets/HAN-D/animHANDEmote.prefab
 - Assets/HAN-D/FBX/fbxHANDMastery.fbx
-- Assets/HAN-D/Mesh/meshHanDDefault_Body.mesh
+- Assets/HAN-D/Mesh/meshHanDMastery_Body.mesh
 - Assets/HAN-D/HANDOverclockedDisplay.prefab
 - Assets/HAN-D/Textures/Skills/texSpecial.png
 - Assets/HAN-D/Animations/maskHANDOverclocked_Gesture.mask
@@ -124,7 +123,6 @@ Assets:
 - Assets/HAN-D/Textures/Skins/Mastery/HanDWeaponMaster_diffuse.png
 - Assets/HAN-D/Textures/UI/texHANDUnlock.png
 - Assets/HAN-D/Textures/Skills/texPassive.png
-- Assets/HAN-D/Mesh/meshHanDMastery_Body.mesh
 - Assets/HAN-D/Textures/Skills/texPrimaryHammer.png
 - Assets/HAN-D/Textures/Skills/texPrimaryPunch.png
 - Assets/HandDrone/DroneAnimator.controller
@@ -134,5 +132,7 @@ Assets:
 - Assets/HandDrone/Mesh/meshDroneDefault_Saw.mesh
 - Assets/HAN-D/Textures/Skins/DefaultSkin/HanDWeapon_Diffuse.png
 - Assets/HandDrone/Mastery/texHanDDroneMaster_emission.png
+- Assets/HandDrone/Mesh/meshDroneMastery_Body.mesh
 - Assets/HAN-D/Mesh/meshHanDMastery_Hammer.mesh
+- Assets/HAN-D/FBX/meshHanDMastery_Body.mesh
 Dependencies: []
