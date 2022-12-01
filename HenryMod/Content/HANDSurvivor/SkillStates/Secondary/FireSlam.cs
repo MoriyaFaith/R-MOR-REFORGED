@@ -140,7 +140,7 @@ namespace EntityStates.HAND_Overclocked.Secondary
                     OverclockController hc = base.gameObject.GetComponent<OverclockController>();
                     if (hc)
                     {
-                        hc.ExtendOverclock(Mathf.Lerp(0.8f, 1.6f, chargePercent));
+                        hc.ExtendOverclock(Mathf.Lerp(0.8f, 2f, chargePercent));
                     }
 
                     DroneStockController dsc = base.GetComponent<DroneStockController>();
