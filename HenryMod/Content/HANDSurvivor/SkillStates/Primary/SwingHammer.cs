@@ -216,19 +216,7 @@ namespace EntityStates.HAND_Overclocked.Primary
         {
             if (base.isAuthority)
             {
-                float leftRecoil = 0f;
-                float rightRecoil = 0f;
-
-                if (swingIndex == 1)
-                {
-                    rightRecoil = 0.1f * SwingHammer.recoilAmplitude;
-                }
-                else
-                {
-                    leftRecoil = -0.1f * SwingHammer.recoilAmplitude;
-                }
-
-                base.AddRecoil(leftRecoil, rightRecoil, -1f * SwingHammer.recoilAmplitude, 1f * SwingHammer.recoilAmplitude);
+                base.AddRecoil(-0.1f * SwingHammer.recoilAmplitude, 0.1f * SwingHammer.recoilAmplitude, -1f * SwingHammer.recoilAmplitude, 1f * SwingHammer.recoilAmplitude);
             }
 
             if (this.swingEffectPrefab == SwingHammer.swingEffectFocus)
