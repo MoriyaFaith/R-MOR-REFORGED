@@ -43,7 +43,8 @@ Sounds taken from Risk of Rain 1 and Starstorm
 
 `1.1.0`
 
-- Added Mastery skin. (Thanks DotFlare! Also thanks to TimeSweeper for helping me get it in-game!)
+- Added Mastery skin. (Thanks DotFlare!)
+	- Also thanks to TimeSweeper for getting it working in-game!
 
 - Updated portrait icon.
 	- Old icon was from an older version of the mod when the textures were different.
@@ -55,6 +56,9 @@ Sounds taken from Risk of Rain 1 and Starstorm
 	- Each enemy hit reduces lunge speed by 50%.
 	
 	*Trying to make this a bit less disorienting to use.*
+	
+- FORCED_REASSEMBLY
+	- Increased fully charged hit OVERCLOCK extension time from 1.6s -> 2s
 
 - FOCUS
 	- Added a -30% speed penalty and +50 armor bonus.
