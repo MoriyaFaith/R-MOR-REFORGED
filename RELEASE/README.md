@@ -41,6 +41,10 @@ Sounds taken from Risk of Rain 1 and Starstorm
 
 ## Changelog
 
+`1.1.1`
+
+- Renamed Mastery skin. (Thanks CommandoGaming!)
+
 `1.1.0`
 
 - Added Mastery skin. (Thanks DotFlare!)
