@@ -44,7 +44,7 @@ Sounds taken from Risk of Rain 1 and Starstorm
 `1.1.0`
 
 - Added Mastery skin. (Thanks DotFlare!)
-	- Also thanks to TimeSweeper for getting it working in-game!
+	- Also thanks to TimeSweeper for getting it working in-game, and improving the mod's skin support!
 
 - Updated portrait icon.
 	- Old icon was from an older version of the mod when the textures were different.
@@ -52,7 +52,7 @@ Sounds taken from Risk of Rain 1 and Starstorm
 - Fixed neck becoming tiny when looking backwards.
 
 - SMASH
-	- Replaced screenshake with subtle directional recoil.
+	- Replaced screenshake with subtle recoil.
 	- Now only lunges forward if the forward movement button is pressed.
 		- On gamepad, checks if movement input is within 50 degrees of the forward direction on either side.
 	- Each enemy hit reduces lunge speed by 50%.
@@ -70,8 +70,11 @@ Sounds taken from Risk of Rain 1 and Starstorm
 - DRONE
 	- Healing allies with DRONE will now heal a minimum of 10% of their max HP.
 		- Does not apply to your self-heal.
+	- Fixed Spare Drone Parts and Illegal Drone Coolant interaction not working
+		- DRONES are affected by the attack speed and on-hit effects of both items.
+		- DRONES do NOT get the Spare Drone Parts minigun.
 	
-	*This should fix DRONES not being effective at healing NPCs that use AmbientLevel scaling (ex. Drones, Beetle Guards).*
+	*This should fix DRONES not being effective at healing NPCs that use AmbientLevel scaling (ex. Beetle Guards).*
 
 `1.0.2`
 
