@@ -20,6 +20,7 @@ namespace EntityStates.HAND_Overclocked.Primary
         public static float force = 3000f;
         public static float forwardSpeed = 30f;
 
+        public static float recoilAmplitude = 1.3f;
         public static float momentumStartPercent = 0.5f;
         public static float momentumFadePercent = 0.6825f;
         public static float momentumEndPercent = 0.8f;
@@ -215,8 +216,7 @@ namespace EntityStates.HAND_Overclocked.Primary
         {
             if (base.isAuthority)
             {
-                ShakeEmitter se = ShakeEmitter.CreateSimpleShakeEmitter(base.transform.position, new Wave() { amplitude = 3.9f, cycleOffset = 0f, frequency = 4f }, 0.3f, 20f, true);
-                se.transform.parent = base.transform;
+                base.AddRecoil(-0.1f * SwingHammer.recoilAmplitude, 0.1f * SwingHammer.recoilAmplitude, -1f * SwingHammer.recoilAmplitude, 1f * SwingHammer.recoilAmplitude);
             }
 
             if (this.swingEffectPrefab == SwingHammer.swingEffectFocus)

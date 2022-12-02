@@ -4,7 +4,7 @@ We are looking for translators! Check the languages folder on the [GitHub](https
 Current Supported Languages: English, Simplified Chinese
 
 [![](https://i.imgur.com/9pHqh2i.jpg)]()
-[![](https://i.imgur.com/iSWV7xb.png)]()
+[![](https://i.imgur.com/5HoCYrq.png)]()
 
 ## For Skin Creators
 
@@ -21,7 +21,7 @@ Moffein - Main dev
 
 TheTimesweeper - HenryMod template, help with Unity/Animations, general polish. You're a lifesaver!
 
-Dotflare - HAN-D Model + Anims
+dotflare - HAN-D Model + Anims
 
 LucidInceptor - DRONE Model
 
@@ -41,17 +41,30 @@ Sounds taken from Risk of Rain 1 and Starstorm
 
 ## Changelog
 
+`1.1.1`
+
+- Renamed Mastery skin. (Thanks Commando Gaming!)
+
 `1.1.0`
 
-- Added Mastery skin. (Thanks DotFlare! Also thanks to TimeSweeper for helping me get it in-game!)
+- Added Mastery skin. (Thanks dotflare!)
+	- Also thanks to TimeSweeper for getting it working in-game, and improving the mod's skin support!
+
+- Updated portrait icon.
+	- Old icon was from an older version of the mod when the textures were different.
+	
+- Fixed neck becoming tiny when looking backwards.
 
 - SMASH
-	- Reduced screenshake amplitude from 5 -> 3.9
+	- Replaced screenshake with subtle recoil.
 	- Now only lunges forward if the forward movement button is pressed.
 		- On gamepad, checks if movement input is within 50 degrees of the forward direction on either side.
 	- Each enemy hit reduces lunge speed by 50%.
 	
-	*Trying to make this a bit less disorienting to use.*
+	*Adding extra control to this skill's movement. You can now easily choose whether you want to lunge or stay in place.*
+	
+- FORCED_REASSEMBLY
+	- Increased fully charged hit OVERCLOCK extension time from 1.6s -> 2s
 
 - FOCUS
 	- Added a -30% speed penalty and +50 armor bonus.
@@ -61,8 +74,11 @@ Sounds taken from Risk of Rain 1 and Starstorm
 - DRONE
 	- Healing allies with DRONE will now heal a minimum of 10% of their max HP.
 		- Does not apply to your self-heal.
+	- Fixed Spare Drone Parts and Illegal Drone Coolant interaction not working
+		- DRONES are affected by the attack speed and on-hit effects of both items.
+		- DRONES do NOT get the Spare Drone Parts minigun.
 	
-	*This should fix DRONES not being effective at healing NPCs that use AmbientLevel scaling (ex. Drones, Beetle Guards).*
+	*This should fix DRONES not being effective at healing NPCs that use AmbientLevel scaling (ex. Beetle Guards).*
 
 `1.0.2`
 
@@ -78,7 +94,7 @@ Sounds taken from Risk of Rain 1 and Starstorm
 `1.0.0`
 
 - Rewrote the mod.
-- Added new model + anims (made by Dotflare)
+- Added new model + anims (made by dotflare)
 - Added alt Primary and alt Utility.
 - Added unlock condition.
 	- Can be bypassed with Force Unlock config option.
@@ -87,4 +103,4 @@ Sounds taken from Risk of Rain 1 and Starstorm
 - Added ItemDisplays
 - Added 3 built-in emotes.
 
-*Special thanks to Jaysian for commissioning Dotflare for the new HAN-D Model/Anims!*
+*Special thanks to Jaysian for commissioning dotflare for the new HAN-D Model/Anims!*

@@ -4842,7 +4842,7 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6066965511444287982}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: e83af0d8cd3b9194fb6ae9928aced4bc, type: 3}
+  m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 40e64fbd01a9caf4e92f34bde23c4a83, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
@@ -4866,9 +4866,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   transformPairs:
   - name: Drone
-    transform: {fileID: 4967523433218070916}
+    transform: {fileID: 7965373234144691485}
   - name: Saw
-    transform: {fileID: 7450710501513109064}
+    transform: {fileID: 1620534995569909432}
 --- !u!1 &8352180941114877544
 GameObject:
   m_ObjectHideFlags: 0
@@ -5060,15 +5060,15 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 6409564744120003775}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &7450710501513109064 stripped
+--- !u!4 &1620534995569909432 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: -4641693248399215881, guid: 74f5379340970374ebee1d71fac29e84,
+  m_CorrespondingSourceObject: {fileID: 5660482479084761607, guid: 74f5379340970374ebee1d71fac29e84,
     type: 3}
   m_PrefabInstance: {fileID: 6409564744120003775}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &4967523433218070916 stripped
+--- !u!4 &7965373234144691485 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 2018572587114149179, guid: 74f5379340970374ebee1d71fac29e84,
+  m_CorrespondingSourceObject: {fileID: -5297946278637164126, guid: 74f5379340970374ebee1d71fac29e84,
     type: 3}
   m_PrefabInstance: {fileID: 6409564744120003775}
   m_PrefabAsset: {fileID: 0}
