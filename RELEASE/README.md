@@ -21,7 +21,7 @@ Moffein - Main dev
 
 TheTimesweeper - HenryMod template, help with Unity/Animations, general polish. You're a lifesaver!
 
-Dotflare - HAN-D Model + Anims
+dotflare - HAN-D Model + Anims
 
 LucidInceptor - DRONE Model
 
@@ -43,11 +43,11 @@ Sounds taken from Risk of Rain 1 and Starstorm
 
 `1.1.1`
 
-- Renamed Mastery skin. (Thanks CommandoGaming!)
+- Renamed Mastery skin. (Thanks Commando Gaming!)
 
 `1.1.0`
 
-- Added Mastery skin. (Thanks DotFlare!)
+- Added Mastery skin. (Thanks dotflare!)
 	- Also thanks to TimeSweeper for getting it working in-game, and improving the mod's skin support!
 
 - Updated portrait icon.
@@ -94,7 +94,7 @@ Sounds taken from Risk of Rain 1 and Starstorm
 `1.0.0`
 
 - Rewrote the mod.
-- Added new model + anims (made by Dotflare)
+- Added new model + anims (made by dotflare)
 - Added alt Primary and alt Utility.
 - Added unlock condition.
 	- Can be bypassed with Force Unlock config option.
@@ -103,4 +103,4 @@ Sounds taken from Risk of Rain 1 and Starstorm
 - Added ItemDisplays
 - Added 3 built-in emotes.
 
-*Special thanks to Jaysian for commissioning Dotflare for the new HAN-D Model/Anims!*
+*Special thanks to Jaysian for commissioning dotflare for the new HAN-D Model/Anims!*
