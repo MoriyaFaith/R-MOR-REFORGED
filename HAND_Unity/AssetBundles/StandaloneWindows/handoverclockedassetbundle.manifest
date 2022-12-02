@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 1447665089
+CRC: 3059019823
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 0d7088ed6ae1d7dda5c24a1c1e93e5cb
+    Hash: 1a2d5eb2857f0992b6f1639e7ded25ea
   TypeTreeHash:
     serializedVersion: 2
     Hash: 0713b83fc0fda10e7027ae2bc2bee20d
@@ -124,7 +124,6 @@ Assets:
 - Assets/HAN-D/Textures/Skins/Mastery/HanDWeaponMaster_diffuse.png
 - Assets/HAN-D/Textures/UI/texHANDUnlock.png
 - Assets/HAN-D/Textures/Skills/texPassive.png
-- Assets/HAN-D/Mesh/meshHanDMastery_Body.mesh
 - Assets/HAN-D/Textures/Skills/texPrimaryHammer.png
 - Assets/HAN-D/Textures/Skills/texPrimaryPunch.png
 - Assets/HandDrone/DroneAnimator.controller
@@ -135,4 +134,5 @@ Assets:
 - Assets/HAN-D/Textures/Skins/DefaultSkin/HanDWeapon_Diffuse.png
 - Assets/HandDrone/Mastery/texHanDDroneMaster_emission.png
 - Assets/HAN-D/Mesh/meshHanDMastery_Hammer.mesh
+- Assets/HAN-D/Mesh/meshHanDMastery_Body.mesh
 Dependencies: []
