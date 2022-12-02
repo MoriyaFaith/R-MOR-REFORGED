@@ -20,7 +20,7 @@ namespace EntityStates.HAND_Overclocked.Primary
         public static float force = 3000f;
         public static float forwardSpeed = 30f;
 
-        public static float recoilAmplitude = 1.5f;
+        public static float recoilAmplitude = 1.3f;
         public static float momentumStartPercent = 0.5f;
         public static float momentumFadePercent = 0.6825f;
         public static float momentumEndPercent = 0.8f;

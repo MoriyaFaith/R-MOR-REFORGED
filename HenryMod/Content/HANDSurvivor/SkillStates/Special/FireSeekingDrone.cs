@@ -42,7 +42,7 @@ namespace EntityStates.HAND_Overclocked.Special
         {
             hasFired = true;
             FireProjectileInfo fireProjectileInfo = default(FireProjectileInfo);
-            fireProjectileInfo.position = base.inputBank.aimOrigin;
+            fireProjectileInfo.position = position;
 
             fireProjectileInfo.rotation = Util.QuaternionSafeLookRotation(base.GetAimRay().direction);
             fireProjectileInfo.crit = base.RollCrit();

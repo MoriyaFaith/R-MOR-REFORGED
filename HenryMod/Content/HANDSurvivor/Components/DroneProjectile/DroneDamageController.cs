@@ -20,38 +20,45 @@ namespace HANDMod.Content.HANDSurvivor.Components.DroneProjectile
                 firstHit = true;
                 projectileDamage = this.gameObject.GetComponent<ProjectileDamage>();
                 projectileController = this.gameObject.GetComponent<ProjectileController>();
-                tickRate = baseTickRate;
+                durationBetweenTicks = baseDurationBetweenTicks;
+                tickCount = baseTickCount;
+            }
+        }
 
-                if (projectileController)
+        public void Start()
+        {
+            if (projectileController)
+            {
+                owner = projectileController.owner;
+                if (owner)
                 {
-                    owner = projectileController.owner;
-                    if (owner)
+                    ownerHealthComponent = projectileController.owner.GetComponent<HealthComponent>();
+                    TeamComponent tc = owner.GetComponent<TeamComponent>();
+                    teamIndex = tc.teamIndex;
+                    CharacterBody cb = owner.GetComponent<CharacterBody>();
+                    if (cb && cb.inventory)
                     {
-                        CharacterBody cb = owner.GetComponent<CharacterBody>();
-                        if (cb && cb.inventory)
+                        master = cb.master;
+                        float droneAttackSpeed = 1f;
+
+                        dronePartsCount = cb.inventory.GetItemCount(DLC1Content.Items.DroneWeapons);
+                        if (dronePartsCount > 0)
                         {
-                            master = cb.master;
-                            float droneAttackSpeed = 1f;
-
-                            dronePartsCount = cb.inventory.GetItemCount(DLC1Content.Items.DroneWeapons);
-                            if (dronePartsCount > 0)
-                            {
-                                droneAttackSpeed += 0.5f * dronePartsCount;
-                            }
-
-                            ItemIndex droneCoolantIndex = ItemCatalog.FindItemIndex("ITEM_DRONE_COOLANT_BOOST");
-                            if (droneCoolantIndex != ItemIndex.None)
-                            {
-                                coolantCount = cb.inventory.GetItemCount(droneCoolantIndex);
-                                if (coolantCount > 0)
-                                {
-                                    droneAttackSpeed += 0.1f * coolantCount;
-                                }
-                            }
-
-                            damageTicks = Mathf.FloorToInt(damageTicks * droneAttackSpeed);
-                            tickRate = tickRate / droneAttackSpeed;
+                            droneAttackSpeed += 0.5f * dronePartsCount;
                         }
+
+                        ItemIndex droneCoolantIndex = ItemCatalog.FindItemIndex("ITEM_DRONE_COOLANT_BOOST");
+                        if (droneCoolantIndex != ItemIndex.None)
+                        {
+                            coolantCount = cb.inventory.GetItemCount(droneCoolantIndex);
+                            if (coolantCount > 0)
+                            {
+                                droneAttackSpeed += 0.1f * coolantCount;
+                            }
+                        }
+
+                        tickCount = Mathf.FloorToInt(tickCount * droneAttackSpeed);
+                        durationBetweenTicks /= droneAttackSpeed;
                     }
                 }
             }
@@ -63,7 +70,7 @@ namespace HANDMod.Content.HANDSurvivor.Components.DroneProjectile
             {
                 if (victimHealthComponent.body.teamComponent && victimHealthComponent.body.teamComponent.teamIndex == teamIndex)
                 {
-                    victimHealthComponent.body.AddTimedBuff(RoR2Content.Buffs.SmallArmorBoost, (float)damageTicksTotal * baseTickRate);
+                    victimHealthComponent.body.AddTimedBuff(RoR2Content.Buffs.SmallArmorBoost, (float)tickCount * durationBetweenTicks);
                 }
             }
             EffectManager.SimpleSoundEffect(startSound.index, base.transform.position, true);
@@ -90,10 +97,10 @@ namespace HANDMod.Content.HANDSurvivor.Components.DroneProjectile
         private void VictimFixedUpdate()
         {
             stopwatch += Time.fixedDeltaTime;
-            if (stopwatch > tickRate)
+            if (stopwatch > durationBetweenTicks)
             {
                 damageTicks++;
-                if (damageTicks > damageTicksTotal)
+                if (damageTicks > tickCount)
                 {
                     Destroy(this.gameObject);
                 }
@@ -110,7 +117,7 @@ namespace HANDMod.Content.HANDSurvivor.Components.DroneProjectile
                         EffectManager.SimpleSoundEffect(hitSound.index, base.transform.position, true);
                     }
 
-                    float currentTickDamage = projectileDamage.damage / (float)damageTicksTotal;
+                    float currentTickDamage = projectileDamage.damage / (float)DroneDamageController.baseTickCount;
                     float ownerCritMult = 2f;
 
                     if (ownerHealthComponent)
@@ -127,7 +134,7 @@ namespace HANDMod.Content.HANDSurvivor.Components.DroneProjectile
 
                     if (victimHealthComponent.body && victimHealthComponent.body.teamComponent && victimHealthComponent.body.teamComponent.teamIndex == teamIndex)
                     {
-                        float minTotalHeal = victimHealthComponent.fullHealth * 0.1f / (float)damageTicksTotal;
+                        float minTotalHeal = victimHealthComponent.fullHealth * 0.1f / (float)DroneDamageController.baseTickCount;
 
                         HealOrb healOrb = new HealOrb();
                         healOrb.origin = this.transform.position;
@@ -179,14 +186,13 @@ namespace HANDMod.Content.HANDSurvivor.Components.DroneProjectile
                                 missileOrb.damageColorIndex = DamageColorIndex.Item;
                                 missileOrb.target = victimHealthComponent.body.mainHurtBox;
                                 missileOrb.speed = 55f;
-                                missileOrb.procChainMask.AddProc(ProcType.Missile);
                                 OrbManager.instance.AddOrb(missileOrb);
                             }
                         }
                     }
                 }
                 EffectManager.SimpleEffect(DroneDamageController.hitEffectPrefab, base.transform.position, default, true);
-                stopwatch -= tickRate;
+                stopwatch -= durationBetweenTicks;
             }
         }
 
@@ -194,16 +200,6 @@ namespace HANDMod.Content.HANDSurvivor.Components.DroneProjectile
         {
             if (NetworkServer.active)
             {
-                if (projectileController && !owner)
-                {
-                    owner = projectileController.owner;
-                    if (owner)
-                    {
-                        ownerHealthComponent = projectileController.owner.GetComponent<HealthComponent>();
-                        TeamComponent tc = owner.GetComponent<TeamComponent>();
-                        teamIndex = tc.teamIndex;
-                    }
-                }
                 if (stick.stuck)
                 {
                     if (stick.victim)
@@ -226,17 +222,18 @@ namespace HANDMod.Content.HANDSurvivor.Components.DroneProjectile
         }
 
         public static float procCoefficient = 0.5f;
-        public static float baseTickRate = 0.5f;
-        public static int damageTicksTotal = 8;
+        public static float baseDurationBetweenTicks = 0.5f;
+        public static int baseTickCount = 8;
         public static float damageHealFraction = 0.4f;
         public static GameObject hitEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Treebot/OmniImpactVFXSlashSyringe.prefab").WaitForCompletion();
         public static NetworkSoundEventDef startSound;
         public static NetworkSoundEventDef hitSound;
 
-        private float tickRate;
+        private float durationBetweenTicks;
         private float stopwatch;
         private ProjectileStickOnImpact stick;
         private int damageTicks;
+        private int tickCount;
 
         private bool firstHit;
 
