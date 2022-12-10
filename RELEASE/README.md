@@ -37,13 +37,19 @@ Jaysian - Bankroller
 
 WockyTheWolf, JunJun_w - Simplified Chinese translation.
 
+MoonsugarCrusader - Russian translation.
+
 Sounds taken from Risk of Rain 1 and Starstorm
 
 ## Changelog
 
+`1.1.2`
+
+- Added Russian translation (Thanks MoonsugarCrusader!)
+
 `1.1.1`
 
-- Renamed Mastery skin. (Thanks Commando Gaming!)
+- Renamed Mastery skin. (Credits to Commando Gaming for the suggestion!)
 
 `1.1.0`
 
