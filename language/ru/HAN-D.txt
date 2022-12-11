@@ -49,6 +49,6 @@
 	
 	"MOFFEIN_HAND_BODY_MASTERY_SKIN_NAME" : "ВУ-Д",
 	"ACHIEVEMENT_MOFFEINHANDOVERCLOCKEDCLEARGAMEMONSOON_NAME" : "ХЭН-Д: Мастерство",
-	"ACHIEVEMENT_MOFFEINHANDOVERCLOCKEDCLEARGAMEMONSOON_DESCRIPTION" : "Играя за ХЭН-Д, пройдите игру или уничтожьтесь на уровне сложности "Сезон дождей.",
+	"ACHIEVEMENT_MOFFEINHANDOVERCLOCKEDCLEARGAMEMONSOON_DESCRIPTION" : "Играя за ХЭН-Д, пройдите игру или уничтожьтесь на уровне сложности «Сезон дождей».",
 	}
 }
