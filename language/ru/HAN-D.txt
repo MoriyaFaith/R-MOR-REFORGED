@@ -37,7 +37,6 @@
 	"MOFFEIN_HAND_BODY_SPECIAL_NAME" : "ДРОН",
 	"MOFFEIN_HAND_BODY_SPECIAL_DESC" : "Выпустите дрон, который наносит <style=cIsDamage>270% урона</style> и <style=cIsHealing>исцеляет на 40% от нанесенного урона</style>. Убийства и урон в рукопашной <style=cIsUtility>уменьшают время восстановления</style>.",
 	
-	
 	"ACHIEVEMENT_MOFFEINHANDOVERCLOCKEDSURVIVORUNLOCK_NAME" : "Мастер на все руки",
 	"ACHIEVEMENT_MOFFEINHANDOVERCLOCKEDSURVIVORUNLOCK_DESCRIPTION" : "Отремонтируйте робота-уборщика на Меcте сбора «Дельта» с помощью топливного элемента спасательной капсулы.",
 	
