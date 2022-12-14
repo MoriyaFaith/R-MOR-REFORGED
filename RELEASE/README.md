@@ -43,6 +43,18 @@ Sounds taken from Risk of Rain 1 and Starstorm
 
 ## Changelog
 
+`1.1.5`
+
+- Fixed Scepter M2 anim not playing online.
+
+`1.1.4`
+
+- Fixed Mastery skin not being unlockable when using the Force Unlock config option.
+
+`1.1.3`
+
+- Fixed game not booting up with the Russian translation.
+
 `1.1.2`
 
 - Added Russian translation (Thanks MoonsugarCrusader!)

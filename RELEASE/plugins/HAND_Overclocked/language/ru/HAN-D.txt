@@ -37,7 +37,6 @@
 	"MOFFEIN_HAND_BODY_SPECIAL_NAME" : "ДРОН",
 	"MOFFEIN_HAND_BODY_SPECIAL_DESC" : "Выпустите дрон, который наносит <style=cIsDamage>270% урона</style> и <style=cIsHealing>исцеляет на 40% от нанесенного урона</style>. Убийства и урон в рукопашной <style=cIsUtility>уменьшают время восстановления</style>.",
 	
-	
 	"ACHIEVEMENT_MOFFEINHANDOVERCLOCKEDSURVIVORUNLOCK_NAME" : "Мастер на все руки",
 	"ACHIEVEMENT_MOFFEINHANDOVERCLOCKEDSURVIVORUNLOCK_DESCRIPTION" : "Отремонтируйте робота-уборщика на Меcте сбора «Дельта» с помощью топливного элемента спасательной капсулы.",
 	
@@ -49,6 +48,6 @@
 	
 	"MOFFEIN_HAND_BODY_MASTERY_SKIN_NAME" : "ВУ-Д",
 	"ACHIEVEMENT_MOFFEINHANDOVERCLOCKEDCLEARGAMEMONSOON_NAME" : "ХЭН-Д: Мастерство",
-	"ACHIEVEMENT_MOFFEINHANDOVERCLOCKEDCLEARGAMEMONSOON_DESCRIPTION" : "Играя за ХЭН-Д, пройдите игру или уничтожьтесь на уровне сложности "Сезон дождей.",
+	"ACHIEVEMENT_MOFFEINHANDOVERCLOCKEDCLEARGAMEMONSOON_DESCRIPTION" : "Играя за ХЭН-Д, пройдите игру или уничтожьтесь на уровне сложности «Сезон дождей».",
 	}
 }
