@@ -164,7 +164,7 @@ namespace EntityStates.HAND_Overclocked.Primary
             { 
                 if (!this.hasFired)
                 {
-                    this.startedSkillStationary = base.characterMotor && base.characterMotor.moveDirection == Vector3.zero;
+                    this.startedSkillStationary = base.inputBank && base.inputBank.moveVector == Vector3.zero;
                     if (base.inputBank && !this.startedSkillStationary)
                     {
                         Ray aimRay = base.GetAimRay();

@@ -43,6 +43,10 @@ Sounds taken from Risk of Rain 1 and Starstorm
 
 ## Changelog
 
+`1.1.7`
+
+- Updated SMASH to check InputBank instead of CharacterMotor.
+
 `1.1.6`
 
 - Minor tweak to HURT's self-force code.
