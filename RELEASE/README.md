@@ -43,6 +43,11 @@ Sounds taken from Risk of Rain 1 and Starstorm
 
 ## Changelog
 
+`1.1.6`
+
+- Minor tweak to HURT's self-force code.
+	- HURT doesn't apply self-force if you are standing still. Before, this was checked via the CharacterMotor's move vector. Now it uses the actual Input move vector to check this.
+
 `1.1.5`
 
 - Fixed Scepter M2 anim not playing online.

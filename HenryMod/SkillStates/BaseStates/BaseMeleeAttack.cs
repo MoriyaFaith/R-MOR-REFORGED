@@ -54,7 +54,7 @@ namespace HANDMod.SkillStates.BaseStates
         {
             base.OnEnter();
 
-            this.startedSkillStationary = (base.characterMotor && base.characterMotor.moveDirection == Vector3.zero);
+            this.startedSkillStationary = (base.inputBank && base.inputBank.moveVector == Vector3.zero);
 
             this.duration = this.baseDuration / this.attackSpeedStat;
             this.earlyExitTime = this.baseEarlyExitTime / this.attackSpeedStat;
