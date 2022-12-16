@@ -14,7 +14,6 @@ namespace HANDMod.Content
         public static DamageAPI.ModdedDamageType HANDSecondary;
         public static DamageAPI.ModdedDamageType HANDSecondaryScepter;
         public static DamageAPI.ModdedDamageType SquashOnKill;
-        public static DamageAPI.ModdedDamageType ScaleForceToMass;
 
         private static bool initialized = false;
 
