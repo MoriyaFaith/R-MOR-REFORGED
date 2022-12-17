@@ -43,6 +43,10 @@ Sounds taken from Risk of Rain 1 and Starstorm
 
 ## Changelog
 
+`1.1.8`
+
+- Remembered to mark KingKombatArena as a softdependency so that it will always load before HAN-D.
+
 `1.1.7`
 
 - Updated SMASH to check InputBank instead of CharacterMotor.
