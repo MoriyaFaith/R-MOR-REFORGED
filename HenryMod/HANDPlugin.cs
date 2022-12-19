@@ -35,7 +35,7 @@ namespace HANDMod
     {
         public const string MODUID = "com.EnforcerGang.HANDOverclocked";
         public const string MODNAME = "HAN-D Overclocked";
-        public const string MODVERSION = "1.1.8";
+        public const string MODVERSION = "1.1.9";
 
         public const string DEVELOPER_PREFIX = "MOFFEIN";
 
@@ -78,6 +78,16 @@ namespace HANDMod
             if (ArenaPluginLoaded)
             {
                 Stage.onStageStartGlobal += SetArena;
+            }
+            RoR2.RoR2Application.onLoad += AddMechanicalBodies;
+        }
+
+        private void AddMechanicalBodies()
+        {
+            BodyIndex sniperClassicIndex = BodyCatalog.FindBodyIndex("SniperClassicBody");
+            if (sniperClassicIndex != BodyIndex.None)
+            {
+                Content.HANDSurvivor.Components.Body.DroneStockController.mechanicalBodies.Add(sniperClassicIndex);
             }
         }
 

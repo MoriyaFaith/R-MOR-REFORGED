@@ -57,9 +57,18 @@ namespace HANDMod.Content.HANDSurvivor.Components.Body
                 {
                     if (tc.body && tc.body != characterBody)
                     {
-                        if ((tc.body.bodyFlags & CharacterBody.BodyFlags.Mechanical) > 0 || CheckMechanicalBody(tc.body.baseNameToken))
+                        if ((tc.body.bodyFlags & CharacterBody.BodyFlags.Mechanical) > 0 || CheckMechanicalBody(tc.body.bodyIndex))
                         {
                             droneCount++;
+                        }
+
+                        if (tc.body.inventory)
+                        {
+                            ItemIndex droneMeldStackItem = ItemCatalog.FindItemIndex("DronemeldInternalStackItem");
+                            if (droneMeldStackItem != ItemIndex.None)
+                            {
+                                droneCount += tc.body.inventory.GetItemCount(droneMeldStackItem);
+                            }
                         }
                     }
                 }
@@ -71,11 +80,11 @@ namespace HANDMod.Content.HANDSurvivor.Components.Body
             }
         }
 
-        public static bool CheckMechanicalBody(string str)
+        public static bool CheckMechanicalBody(BodyIndex bodyIndex)
         {
-            foreach (string name in mechanicalBodies)
+            foreach (BodyIndex index in mechanicalBodies)
             {
-                if (str == name)
+                if (index == bodyIndex)
                 {
                     return true;
                 }
@@ -85,7 +94,7 @@ namespace HANDMod.Content.HANDSurvivor.Components.Body
 
         //Sniper comes with a non-ally drone that isn't counted as an ally.
         //You can add your survivor to this list if they don't have a Mechanical bodyflag but you want them to count. Use their BaseNameToken.
-        public static List<string> mechanicalBodies = new List<string> { "SNIPERCLASSIC_BODY_NAME" };
+        public static List<BodyIndex> mechanicalBodies = new List<BodyIndex> { };
 
         public void OnKilledOtherServer(DamageReport damageReport) //This seems to be called by both OnCharacterDeath and TakeDamage, resulting in it being called twice
         {
