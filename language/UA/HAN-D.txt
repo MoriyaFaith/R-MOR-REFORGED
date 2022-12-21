@@ -50,6 +50,6 @@
         "MOFFEIN_HAND_BODY_MASTERY_SKIN_NAME" : "WOO-D",
         "ACHIEVEMENT_MOFFEINHANDOVERCLOCKEDCLEARGAMEMONSOON_NAME" : "HAN-D: Майстерність",
         "ACHIEVEMENT_MOFFEINHANDOVERCLOCKEDCLEARGAMEMONSOON_DESCRIPTION" : "За HAN-D, пройти гру або стерти себе на складності Мусон.",
-        	}
+	}
 }
     
