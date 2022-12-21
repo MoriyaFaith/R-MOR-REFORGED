@@ -17,7 +17,9 @@ namespace HANDMod.Modules
 
         private const string assetbundleName = "handoverclockedassetbundle";
         private const string csProjName = "HAND_Overclocked";
-        
+
+        internal static GameObject lockOnTarget;
+
         internal static void Initialize()
         {
             LoadAssetBundle();
@@ -62,6 +64,32 @@ namespace HANDMod.Modules
                 Log.Error("There is no AssetBundle to load assets from.");
                 return;
             }
+            lockOnTarget = CreateLockOnIndicator();
+        }
+
+        private static GameObject CreateLockOnIndicator()
+        {
+
+            GameObject indicatorPrefab = PrefabAPI.InstantiateClone(RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/LightningIndicator"), "LockOnIndicator", false);
+
+            //UnityEngine.Object.DestroyImmediate(indicatorPrefab.transform.Find("TextMeshPro").gameObject);
+            //UnityEngine.Object.DestroyImmediate(indicatorPrefab.transform.Find("Holder/Brackets").gameObject);
+
+            indicatorPrefab.transform.localScale = Vector3.one * .15f;
+            indicatorPrefab.transform.localPosition = Vector3.zero;
+            indicatorPrefab.transform.Find("Holder").rotation = Quaternion.identity;
+            indicatorPrefab.transform.Find("Holder/Brackets").rotation = Quaternion.identity;
+
+            SpriteRenderer spriteRenderer = indicatorPrefab.GetComponentInChildren<SpriteRenderer>();
+            spriteRenderer.sprite = null;
+            spriteRenderer.color = Color.green;
+            spriteRenderer.size = Vector2.zero;
+            spriteRenderer.transform.localRotation = Quaternion.identity;
+            spriteRenderer.transform.localPosition = Vector3.zero;
+
+            //UnityEngine.Object.Internal_InstantiateSingleWithParent(LoadAsset<GameObject>("ConquererTargetMarker"), indicatorPrefab.transform.Find("Holder/Brackets"), Vector3.zero, Quaternion.identity);
+
+            return indicatorPrefab;
         }
 
         private static GameObject CreateTracer(string originalTracerName, string newTracerName)

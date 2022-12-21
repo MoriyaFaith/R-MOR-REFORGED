@@ -8,6 +8,7 @@ using HANDMod.Content;
 using HANDMod.Content.Shared.Components.Body;
 using UnityEngine.Networking;
 using HANDMod;
+using HAND_Overclocked.Content.Shared.Components.Body;
 
 namespace EntityStates.HAND_Overclocked.Primary
 {

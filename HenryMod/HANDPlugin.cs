@@ -1,4 +1,5 @@
 ﻿using BepInEx;
+using HAND_Overclocked.Content.Shared.Components.Body;
 using HANDMod.Content.HANDSurvivor;
 using HANDMod.Content.RMORSurvivor;
 using R2API.Utils;
@@ -69,7 +70,7 @@ namespace HANDMod
             Content.DamageTypes.Initialize();
 
             new HANDSurvivor().Initialize();
-            if (RMORSurvivor.enabled) new RMORSurvivor().Initialize();
+            if (Modules.Config.enableRMOR) new RMORSurvivor().Initialize();
 
             // now make a content pack and add it- this part will change with the next update
             new Modules.ContentPacks().Initialize();
@@ -87,7 +88,7 @@ namespace HANDMod
             BodyIndex sniperClassicIndex = BodyCatalog.FindBodyIndex("SniperClassicBody");
             if (sniperClassicIndex != BodyIndex.None)
             {
-                Content.HANDSurvivor.Components.Body.DroneStockController.mechanicalBodies.Add(sniperClassicIndex);
+                DroneStockController.mechanicalBodies.Add(sniperClassicIndex);
             }
         }
 

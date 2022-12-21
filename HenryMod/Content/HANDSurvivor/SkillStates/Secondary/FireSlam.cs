@@ -6,6 +6,7 @@ using R2API;
 using HANDMod.Content.HANDSurvivor;
 using HANDMod.Content;
 using HANDMod.Content.Shared.Components.Body;
+using HAND_Overclocked.Content.Shared.Components.Body;
 
 namespace EntityStates.HAND_Overclocked.Secondary
 {

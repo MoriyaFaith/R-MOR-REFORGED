@@ -3,6 +3,8 @@ using UnityEngine;
 using RoR2.Projectile;
 using R2API;
 using EntityStates.HAND_Overclocked.Special;
+using EntityStates.RMOR.Primary;
+using EntityStates.RMOR.Secondary;
 using HANDMod.Content.HANDSurvivor.Components.Body;
 using UnityEngine.AddressableAssets;
 
@@ -16,6 +18,8 @@ namespace HANDMod.Content.HANDSurvivor
         public static void Init()
         {
             if (!FireSeekingDrone.projectilePrefab) FireSeekingDrone.projectilePrefab = CreateDroneProjectile();
+            if (!RMORRocket.projectilePrefab) RMORRocket.projectilePrefab = CreateRocketProjectile();
+            if (!FireCannon.projectilePrefab) FireCannon.projectilePrefab = CreateRocketProjectile();
             if (!DroneFollowerController.dronePrefab) DroneFollowerController.dronePrefab = CreateDroneFollower();
             if (!HANDTargetingController.allyIndicatorPrefab) HANDTargetingController.allyIndicatorPrefab = CreateAllyIndicator();
             if (!HANDTargetingController.enemyIndicatorPrefab) HANDTargetingController.enemyIndicatorPrefab = CreateEnemyIndicator();
@@ -51,6 +55,12 @@ namespace HANDMod.Content.HANDSurvivor
                 }
             }
             return indicator;
+        }
+        private static GameObject CreateRocketProjectile()
+        {
+            GameObject projectile = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Drones/PaladinRocket.prefab").WaitForCompletion().InstantiateClone("HANDMod_RMOR_Rocket", true);
+            Modules.ContentPacks.projectilePrefabs.Add(projectile);
+            return projectile;
         }
 
         private static GameObject CreateDroneProjectile()

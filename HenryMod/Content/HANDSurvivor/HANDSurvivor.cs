@@ -15,6 +15,7 @@ using System.Linq;
 using R2API;
 using System.Runtime.CompilerServices;
 using HANDMod.Content.HANDSurvivor.CharacterUnlock;
+using HAND_Overclocked.Content.Shared.Components.Body;
 
 namespace HANDMod.Content.HANDSurvivor
 {
