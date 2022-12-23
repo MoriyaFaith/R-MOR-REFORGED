@@ -1,10 +1,10 @@
-﻿using HANDMod.Content.HANDSurvivor.Components.Body;
+﻿using RMORMod.Content.HANDSurvivor.Components.Body;
 using JetBrains.Annotations;
 using RoR2;
 using RoR2.Skills;
 using UnityEngine;
 
-namespace HANDMod
+namespace RMORMod
 {
     public class DroneSkillDef : SkillDef
 	{

@@ -1,7 +1,7 @@
 ManifestFileVersion: 0
-CRC: 2177831672
+CRC: 1419298653
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
-      Name: handoverclockedassetbundle
+      Name: rmorassetbundle
       Dependencies: {}

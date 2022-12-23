@@ -1,6 +1,6 @@
 ﻿using RoR2;
 
-namespace HANDMod.Modules
+namespace RMORMod.Modules
 {
     public abstract class BaseMasteryUnlockable : GenericModdedUnlockable
     {

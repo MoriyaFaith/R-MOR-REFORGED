@@ -1,5 +1,5 @@
-﻿using HANDMod.Content.Shared.Components.Body;
-using HANDMod.Content.HANDSurvivor.Components.Body;
+﻿using RMORMod.Content.Shared.Components.Body;
+using RMORMod.Content.HANDSurvivor.Components.Body;
 using RoR2;
 using UnityEngine;
 
@@ -92,7 +92,7 @@ namespace EntityStates.HAND_Overclocked.Secondary
 
             if (base.fixedAge >= this.minDuration)
             {
-                //bool hasHammer = base.skillLocator && base.skillLocator.primary && base.skillLocator.primary.skillDef == HANDMod.Content.HANDSurvivor.SkillDefs.PrimaryHammer;
+                //bool hasHammer = base.skillLocator && base.skillLocator.primary && base.skillLocator.primary.skillDef == RMORMod.Content.HANDSurvivor.SkillDefs.PrimaryHammer;
                 if (base.isAuthority && (base.inputBank && !base.inputBank.skill2.down))// || hasHammer
                 {
                     /*if (hasHammer)

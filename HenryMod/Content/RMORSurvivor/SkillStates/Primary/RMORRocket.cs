@@ -11,17 +11,17 @@ namespace EntityStates.RMOR.Primary
         public static float BaseDuration = 1.3f;
         //delay here for example and to match animation
         //ordinarily I recommend not having a delay before projectiles. makes the move feel sluggish
-        public static float BaseDelayDuration = 0.283f;
+        public static float BaseDelayDuration = 0.3f;
         public static float DamageCoefficient = 4.2f;
         private string animationLayer = "FullBody, Override";
         public static GameObject projectilePrefab;
-        public int strikeIndex;
+        public bool strikeIndex;
 
         public override void OnEnter()
         {
             base.projectilePrefab = projectilePrefab;
-            //base.effectPrefab = Modules.Assets.SomeMuzzleEffect;
-            this.targetMuzzle = (strikeIndex % 2 == 0) ? "MuzzleHandL" : "MuzzleHandR";    //Anim names are reversed. This is correct.
+            base.effectPrefab = LegacyResourcesAPI.Load<GameObject>("prefabs/effects/omnieffect/OmniImpactVFXLoader");
+            this.targetMuzzle = strikeIndex ? "HandL" : "HandR";    //Anim names are reversed. This is correct.
 
             base.attackSoundString = "Play_HOC_StartPunch";
 
@@ -47,6 +47,12 @@ namespace EntityStates.RMOR.Primary
             base.FixedUpdate();
         }
 
+        public override void FireProjectile()
+        {
+            base.FireProjectile();
+            strikeIndex = !strikeIndex;
+        }
+
 
         public override InterruptPriority GetMinimumInterruptPriority()
         {
@@ -55,7 +61,7 @@ namespace EntityStates.RMOR.Primary
 
         public override void PlayAnimation(float duration)
         {
-            if (this.strikeIndex % 2 == 0)
+            if (this.strikeIndex)
             {
                 base.PlayCrossfade(animationLayer, "PunchR", "Punch.playbackRate", this.duration, 0.2f);
             }

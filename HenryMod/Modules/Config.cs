@@ -3,7 +3,7 @@ using RiskOfOptions;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
-namespace HANDMod.Modules
+namespace RMORMod.Modules
 {
     public static class Config
     {

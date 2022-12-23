@@ -1,5 +1,5 @@
-﻿using HANDMod.Content.HANDSurvivor;
-using HANDMod.Content.HANDSurvivor.Components.Body;
+﻿using RMORMod.Content.HANDSurvivor;
+using RMORMod.Content.HANDSurvivor.Components.Body;
 using RoR2;
 using RoR2.Projectile;
 using UnityEngine;

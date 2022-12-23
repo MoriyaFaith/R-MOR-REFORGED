@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.Networking;
 
-namespace HANDMod.Content.HANDSurvivor.Components.Body
+namespace RMORMod.Content.HANDSurvivor.Components.Body
 {
     public class HANDNetworkComponent : NetworkBehaviour
     {

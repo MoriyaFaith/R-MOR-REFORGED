@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
 
-namespace HANDMod.Content.HANDSurvivor.Components.DroneProjectile
+namespace RMORMod.Content.HANDSurvivor.Components.DroneProjectile
 {
     public class DroneDamageController : MonoBehaviour
     {

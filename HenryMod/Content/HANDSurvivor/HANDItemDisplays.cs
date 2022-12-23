@@ -1,11 +1,11 @@
-﻿using HANDMod.Modules;
-using HANDMod.Modules.Characters;
+﻿using RMORMod.Modules;
+using RMORMod.Modules.Characters;
 using RoR2;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
-namespace HANDMod.Content.HANDSurvivor
+namespace RMORMod.Content.HANDSurvivor
 {
     public class HANDItemDisplays : ItemDisplaysBase
     {

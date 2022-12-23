@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace HANDMod.Modules.Characters
+namespace RMORMod.Modules.Characters
 {
     internal abstract class CharacterBase
     {

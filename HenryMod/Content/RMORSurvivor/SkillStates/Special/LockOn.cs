@@ -6,7 +6,7 @@ using RoR2.UI;
 using UnityEngine;
 using EntityStates;
 using EntityStates.Engi.EngiMissilePainter;
-using HANDMod.Modules;
+using RMORMod.Modules;
 
 namespace EntityStates.RMOR.Special
 {

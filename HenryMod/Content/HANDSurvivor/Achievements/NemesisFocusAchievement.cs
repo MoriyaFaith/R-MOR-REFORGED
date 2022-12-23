@@ -2,7 +2,7 @@
 using RoR2.Achievements;
 using UnityEngine;
 
-namespace HANDMod.Content.HANDSurvivor.Achievements
+namespace RMORMod.Content.HANDSurvivor.Achievements
 {
     [RegisterAchievement("MoffeinHANDOverclockedNemesisFocusUnlock", "Skills.HANDOverclocked.NemesisFocus", null, null)]
     public class HANDOverclockedNemesisFocusUnlockAchievement : BaseAchievement
@@ -10,16 +10,16 @@ namespace HANDMod.Content.HANDSurvivor.Achievements
 		public override void OnInstall()
 		{
 			base.OnInstall();
-			EntityStates.HAND_Overclocked.Utility.BeginOverclock.onAuthorityFixedUpdateGlobal += CheckOverclockTime;
+			EntityStates.RMOR.Utility.BeginOverclock.onAuthorityFixedUpdateGlobal += CheckOverclockTime;
 		}
 
 		public override void OnUninstall()
 		{
-			EntityStates.HAND_Overclocked.Utility.BeginOverclock.onAuthorityFixedUpdateGlobal -= CheckOverclockTime;
+			EntityStates.RMOR.Utility.BeginOverclock.onAuthorityFixedUpdateGlobal -= CheckOverclockTime;
 			base.OnUninstall();
 		}
 
-		private void CheckOverclockTime(EntityStates.HAND_Overclocked.Utility.BeginOverclock state)
+		private void CheckOverclockTime(EntityStates.RMOR.Utility.BeginOverclock state)
         {
 			if (state.outer.commonComponents.characterBody && state.outer.commonComponents.characterBody == base.localUser.cachedBody)
 			{

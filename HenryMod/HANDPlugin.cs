@@ -1,7 +1,7 @@
 ﻿using BepInEx;
 using HAND_Overclocked.Content.Shared.Components.Body;
-using HANDMod.Content.HANDSurvivor;
-using HANDMod.Content.RMORSurvivor;
+using RMORMod.Content.HANDSurvivor;
+using RMORMod.Content.RMORSurvivor;
 using R2API.Utils;
 using RoR2;
 using System.Collections.Generic;
@@ -13,7 +13,7 @@ using System.Security.Permissions;
 [assembly: SecurityPermission(SecurityAction.RequestMinimum, SkipVerification = true)]
 
 //rename this namespace
-namespace HANDMod
+namespace RMORMod
 {
     [BepInDependency("com.rune580.riskofoptions", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency("com.weliveinasociety.CustomEmotesAPI", BepInDependency.DependencyFlags.SoftDependency)]
@@ -34,11 +34,11 @@ namespace HANDMod
 
     public class HandPlugin : BaseUnityPlugin
     {
-        public const string MODUID = "com.EnforcerGang.HANDOverclocked";
-        public const string MODNAME = "HAN-D Overclocked";
-        public const string MODVERSION = "1.1.9";
+        public const string MODUID = "com.MoriyaLuna.RMORReforged";
+        public const string MODNAME = "RMOR Reforged";
+        public const string MODVERSION = "0.5.0";
 
-        public const string DEVELOPER_PREFIX = "MOFFEIN";
+        public const string DEVELOPER_PREFIX = "MORIYA";
 
         public static HandPlugin instance;
         public static PluginInfo pluginInfo;
@@ -69,8 +69,8 @@ namespace HANDMod
             new Content.Shared.SharedContent();
             Content.DamageTypes.Initialize();
 
-            new HANDSurvivor().Initialize();
-            if (Modules.Config.enableRMOR) new RMORSurvivor().Initialize();
+            //new HANDSurvivor().Initialize();
+            new RMORSurvivor().Initialize();
 
             // now make a content pack and add it- this part will change with the next update
             new Modules.ContentPacks().Initialize();

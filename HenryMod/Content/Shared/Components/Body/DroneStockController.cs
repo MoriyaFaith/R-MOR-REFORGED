@@ -3,9 +3,9 @@ using System.Collections.ObjectModel;
 using RoR2.Skills;
 using RoR2;
 using UnityEngine.Networking;
-using HANDMod.Content.HANDSurvivor.Components.Master;
-using HANDMod.Content.RMORSurvivor;
-using HANDMod.Content.HANDSurvivor;
+using RMORMod.Content.HANDSurvivor.Components.Master;
+using RMORMod.Content.RMORSurvivor;
+using RMORMod.Content.HANDSurvivor;
 
 namespace HAND_Overclocked.Content.Shared.Components.Body
 {

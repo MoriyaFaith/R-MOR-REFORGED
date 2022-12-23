@@ -3,10 +3,10 @@ using RoR2;
 using RoR2.Skills;
 using System;
 using System.Collections.Generic;
-using HANDMod;
+using RMORMod;
 using UnityEngine;
 
-namespace HANDMod.Modules
+namespace RMORMod.Modules
 {
     internal static class Skills
     {
@@ -41,7 +41,7 @@ namespace HANDMod.Modules
 
             skill._skillFamily = newFamily;
 
-            HANDMod.Modules.Content.AddSkillFamily(newFamily);
+            RMORMod.Modules.Content.AddSkillFamily(newFamily);
             return skill;
         }
         #endregion
@@ -139,7 +139,7 @@ namespace HANDMod.Modules
 
             skillDef.keywordTokens = skillDefInfo.keywordTokens;
 
-            HANDMod.Modules.Content.AddSkillDef(skillDef);
+            RMORMod.Modules.Content.AddSkillDef(skillDef);
 
 
             return skillDef;

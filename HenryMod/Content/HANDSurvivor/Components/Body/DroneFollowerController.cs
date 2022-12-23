@@ -3,7 +3,7 @@ using System;
 using UnityEngine;
 using UnityEngine.Networking;
 
-namespace HANDMod.Content.HANDSurvivor.Components.Body
+namespace RMORMod.Content.HANDSurvivor.Components.Body
 {
     public class DroneFollowerController : NetworkBehaviour
     {
@@ -171,7 +171,7 @@ namespace HANDMod.Content.HANDSurvivor.Components.Body
             }
             //base.transform.position += this.velocity * Time.fixedDeltaTime;   //Why is this here?
 
-            stopwatch += Time.deltaTime * (characterBody.HasBuff(HANDMod.Content.Shared.Buffs.Overclock) ? 2f : 1f);
+            stopwatch += Time.deltaTime * (characterBody.HasBuff(RMORMod.Content.Shared.Buffs.Overclock) ? 2f : 1f);
             if (stopwatch > orbitDuration)
             {
                 stopwatch -= orbitDuration;

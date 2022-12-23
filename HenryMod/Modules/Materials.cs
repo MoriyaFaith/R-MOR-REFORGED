@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace HANDMod.Modules
+namespace RMORMod.Modules
 {
     internal static class Materials
     {

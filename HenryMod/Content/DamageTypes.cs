@@ -1,10 +1,10 @@
 ﻿using RoR2;
 using UnityEngine;
 using R2API;
-using HANDMod.Content.HANDSurvivor.Components.Body;
+using RMORMod.Content.HANDSurvivor.Components.Body;
 using UnityEngine.Networking;
 
-namespace HANDMod.Content
+namespace RMORMod.Content
 {
     public static class DamageTypes
     {

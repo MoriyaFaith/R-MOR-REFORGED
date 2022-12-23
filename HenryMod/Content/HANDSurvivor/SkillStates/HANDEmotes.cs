@@ -2,9 +2,9 @@
 using UnityEngine;
 using System;
 using static RoR2.CameraTargetParams;
-using HANDMod.Content.HANDSurvivor.Components.Body;
-using HANDMod.Modules;
-using HANDMod.Content.Shared.Components.Body;
+using RMORMod.Content.HANDSurvivor.Components.Body;
+using RMORMod.Modules;
+using RMORMod.Content.Shared.Components.Body;
 
 namespace EntityStates.HAND_Overclocked.Emotes
 {

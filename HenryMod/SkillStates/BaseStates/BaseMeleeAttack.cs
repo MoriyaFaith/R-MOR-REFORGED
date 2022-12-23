@@ -5,7 +5,7 @@ using System;
 using UnityEngine;
 using UnityEngine.Networking;
 
-namespace HANDMod.SkillStates.BaseStates
+namespace RMORMod.SkillStates.BaseStates
 {
     public class BaseMeleeAttack : BaseSkillState
     {

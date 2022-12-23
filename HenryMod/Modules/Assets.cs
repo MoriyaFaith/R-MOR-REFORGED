@@ -8,15 +8,15 @@ using System.Collections.Generic;
 using RoR2.UI;
 using System;
 
-namespace HANDMod.Modules
+namespace RMORMod.Modules
 {
     internal static class Assets
     {
         // the assetbundle to load assets from
         internal static AssetBundle mainAssetBundle;
 
-        private const string assetbundleName = "handoverclockedassetbundle";
-        private const string csProjName = "HAND_Overclocked";
+        private const string assetbundleName = "rmorassetbundle";
+        private const string csProjName = "RMOR_Reforged";
 
         internal static GameObject lockOnTarget;
 

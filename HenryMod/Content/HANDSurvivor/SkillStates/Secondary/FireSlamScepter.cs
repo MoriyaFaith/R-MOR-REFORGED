@@ -1,4 +1,4 @@
-﻿using HANDMod.Content;
+﻿using RMORMod.Content;
 using R2API;
 
 namespace EntityStates.HAND_Overclocked.Secondary

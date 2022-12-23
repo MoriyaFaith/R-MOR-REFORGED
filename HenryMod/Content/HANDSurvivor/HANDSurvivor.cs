@@ -1,23 +1,23 @@
-﻿using HANDMod.Modules.Survivors;
+﻿using RMORMod.Modules.Survivors;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using RoR2;
 using RoR2.Skills;
-using HANDMod.Modules.Characters;
-using HANDMod.Modules;
+using RMORMod.Modules.Characters;
+using RMORMod.Modules;
 using System;
-using HANDMod;
+using RMORMod;
 using System.Collections.Generic;
-using HANDMod.Content.HANDSurvivor.Components.Body;
-using HANDMod.Content.Shared.Components.Body;
+using RMORMod.Content.HANDSurvivor.Components.Body;
+using RMORMod.Content.Shared.Components.Body;
 using EntityStates;
 using System.Linq;
 using R2API;
 using System.Runtime.CompilerServices;
-using HANDMod.Content.HANDSurvivor.CharacterUnlock;
+using RMORMod.Content.HANDSurvivor.CharacterUnlock;
 using HAND_Overclocked.Content.Shared.Components.Body;
 
-namespace HANDMod.Content.HANDSurvivor
+namespace RMORMod.Content.HANDSurvivor
 {
     internal class HANDSurvivor : SurvivorBase
     {
@@ -43,14 +43,14 @@ namespace HANDMod.Content.HANDSurvivor
             crosshair = LegacyResourcesAPI.Load<GameObject>("prefabs/crosshair/simpledotcrosshair"),
             podPrefab = LegacyResourcesAPI.Load<GameObject>("prefabs/networkedobjects/robocratepod"),//RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/NetworkedObjects/SurvivorPod")
 
-            damage = 14f,
-            damageGrowth = 14f * 0.2f,
+            damage = 10f,
+            damageGrowth = 10f * 0.2f,
 
-            maxHealth = 160f,
-            healthGrowth = 160f * 0.3f,
+            maxHealth = 130f,
+            healthGrowth = 130f * 0.3f,
 
             healthRegen = 2.5f,
-            regenGrowth = 2.5f * 0.2f,
+            regenGrowth = 2.5f * 0.1f,
             armor = 0f,
 
             jumpCount = 1,
@@ -79,7 +79,7 @@ namespace HANDMod.Content.HANDSurvivor
             {
                 survivorUnlock = ScriptableObject.CreateInstance<UnlockableDef>();
                 survivorUnlock.cachedName = "Characters.HANDOverclocked";
-                survivorUnlock.nameToken = "ACHIEVEMENT_MOFFEINHANDOVERCLOCKEDSURVIVORUNLOCK_NAME";
+                survivorUnlock.nameToken = "ACHIEVEMENT_MORIYAHANDOVERCLOCKEDSURVIVORUNLOCK_NAME";
                 survivorUnlock.achievementIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("texHANDUnlock.png");
                 Modules.ContentPacks.unlockableDefs.Add(survivorUnlock);
             }
@@ -156,17 +156,13 @@ namespace HANDMod.Content.HANDSurvivor
             
             Content.HANDSurvivor.Buffs.Init();
 
-            CreateHitEffects();
-            EntityStates.HAND_Overclocked.Utility.BeginOverclock.jetEffectPrefab = BuildOverclockJets();
-            EntityStates.HAND_Overclocked.Secondary.FireSlam.earthquakeEffectPrefab = CreateSlamEffect();
-
             Material matDefault = Addressables.LoadAssetAsync<Material>("RoR2/Base/Lemurian/matLizardBiteTrail.mat").WaitForCompletion();
-            EntityStates.HAND_Overclocked.Primary.SwingHammer.swingEffect = CreateSwingVFX("HANDMod_SwingHammerEffect", 1.5f * Vector3.one, matDefault);
-            EntityStates.HAND_Overclocked.Primary.SwingPunch.swingEffect = CreateSwingVFX("HANDMod_SwingPunchEffect", new Vector3(0.25f, 2f, 0.7f), matDefault);
+            EntityStates.HAND_Overclocked.Primary.SwingHammer.swingEffect = CreateSwingVFX("RMORMod_SwingHammerEffect", 1.5f * Vector3.one, matDefault);
+            EntityStates.HAND_Overclocked.Primary.SwingPunch.swingEffect = CreateSwingVFX("RMORMod_SwingPunchEffect", new Vector3(0.25f, 2f, 0.7f), matDefault);
 
             Material matFocus = Addressables.LoadAssetAsync<Material>("RoR2/Base/Imp/matImpSwipe.mat").WaitForCompletion();
-            EntityStates.HAND_Overclocked.Primary.SwingHammer.swingEffectFocus = CreateSwingVFX("HANDMod_SwingHammerFocusEffect", 1.5f * Vector3.one, matFocus);
-            EntityStates.HAND_Overclocked.Primary.SwingPunch.swingEffectFocus = CreateSwingVFX("HANDMod_SwingPunchFocusEffect", new Vector3(0.25f, 2f, 0.7f), matFocus);
+            EntityStates.HAND_Overclocked.Primary.SwingHammer.swingEffectFocus = CreateSwingVFX("RMORMod_SwingHammerFocusEffect", 1.5f * Vector3.one, matFocus);
+            EntityStates.HAND_Overclocked.Primary.SwingPunch.swingEffectFocus = CreateSwingVFX("RMORMod_SwingPunchFocusEffect", new Vector3(0.25f, 2f, 0.7f), matFocus);
 
             BrokenJanitorInteractable.Initialize();
             if (Modules.Config.allowPlayerRepair)
@@ -249,7 +245,7 @@ namespace HANDMod.Content.HANDSurvivor
 
             UnlockableDef primaryHammerUnlock = ScriptableObject.CreateInstance<UnlockableDef>();
             primaryHammerUnlock.cachedName = "Skills.HANDOverclocked.HammerPrimary";
-            primaryHammerUnlock.nameToken = "ACHIEVEMENT_MOFFEINHANDOVERCLOCKEDHAMMERPRIMARYUNLOCK_NAME";
+            primaryHammerUnlock.nameToken = "ACHIEVEMENT_MORIYAHANDOVERCLOCKEDHAMMERPRIMARYUNLOCK_NAME";
             primaryHammerUnlock.achievementIcon = primaryHammerSkill.icon;
             Modules.ContentPacks.unlockableDefs.Add(primaryHammerUnlock);
 
@@ -292,7 +288,7 @@ namespace HANDMod.Content.HANDSurvivor
         {
             UnlockableDef focusUnlock = ScriptableObject.CreateInstance<UnlockableDef>();
             focusUnlock.cachedName = "Skills.HANDOverclocked.NemesisFocus";
-            focusUnlock.nameToken = "ACHIEVEMENT_MOFFEINHANDOVERCLOCKEDNEMESISFOCUSUNLOCK_NAME";
+            focusUnlock.nameToken = "ACHIEVEMENT_MORIYAHANDOVERCLOCKEDNEMESISFOCUSUNLOCK_NAME";
             focusUnlock.achievementIcon = Shared.SkillDefs.UtilityFocus.icon;
             Modules.ContentPacks.unlockableDefs.Add(focusUnlock);
             
@@ -440,7 +436,7 @@ namespace HANDMod.Content.HANDSurvivor
 
             UnlockableDef masteryUnlockableDef = ScriptableObject.CreateInstance<UnlockableDef>();
             masteryUnlockableDef.cachedName = "Skins.HANDOverclocked.Mastery";
-            masteryUnlockableDef.nameToken = "ACHIEVEMENT_MOFFEINHANDOVERCLOCKEDHAMMERPRIMARYUNLOCK_NAME";
+            masteryUnlockableDef.nameToken = "ACHIEVEMENT_MORIYAHANDOVERCLOCKEDHAMMERPRIMARYUNLOCK_NAME";
             masteryUnlockableDef.achievementIcon = masteryIcon;
             Modules.ContentPacks.unlockableDefs.Add(masteryUnlockableDef);
             masterySkin.unlockableDef = masteryUnlockableDef;
@@ -558,90 +554,11 @@ namespace HANDMod.Content.HANDSurvivor
             Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HAND_Overclocked.Secondary.ChargeSlamScepter));
             Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HAND_Overclocked.Secondary.FireSlamScepter));
 
-            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HAND_Overclocked.Utility.BeginOverclock));
-            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HAND_Overclocked.Utility.CancelOverclock));
-            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HAND_Overclocked.Utility.BeginFocus));
+            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.RMOR.Utility.BeginOverclock));
+            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.RMOR.Utility.CancelOverclock));
+            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.RMOR.Utility.BeginFocus));
 
             Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HAND_Overclocked.Special.FireSeekingDrone));
-        }
-
-        private GameObject CreateSlamEffect()
-        {
-            GameObject slamImpactEffect = LegacyResourcesAPI.Load<GameObject>("prefabs/effects/impacteffects/ParentSlamEffect").InstantiateClone("HANDMod_SlamImpactEffect", false);
-
-            var particleParent = slamImpactEffect.transform.Find("Particles");
-            var debris = particleParent.Find("Debris, 3D");
-            var debris2 = particleParent.Find("Debris");
-            var sphere = particleParent.Find("Nova Sphere");
-
-            debris.gameObject.SetActive(false);
-            debris2.gameObject.SetActive(false);
-            sphere.gameObject.SetActive(false);
-
-            slamImpactEffect.GetComponent<EffectComponent>().soundName = "";
-            //Play_parent_attack1_slam
-
-            Modules.ContentPacks.effectDefs.Add(new EffectDef(slamImpactEffect));
-
-            return slamImpactEffect;
-        }
-
-        private void CreateHitEffects()
-        {
-            GameObject hitEffect = LegacyResourcesAPI.Load<GameObject>("prefabs/effects/impacteffects/ImpactToolbotDash").InstantiateClone("HANDMod_HitEffect", false);
-            EffectComponent ec = hitEffect.GetComponent<EffectComponent>();
-            ec.soundName = "Play_MULT_shift_hit";
-            Modules.ContentPacks.effectDefs.Add(new EffectDef(hitEffect));
-            EntityStates.HAND_Overclocked.Primary.SwingPunch.hitEffect = hitEffect;
-            EntityStates.HAND_Overclocked.Primary.SwingHammer.hitEffect = hitEffect;
-            EntityStates.HAND_Overclocked.Secondary.FireSlam.hitEffect = hitEffect;
-
-
-            /*NetworkSoundEventDef nse = Modules.Assets.CreateNetworkSoundEventDef("Play_MULT_shift_hit");
-            EntityStates.HAND_Overclocked.Primary.SwingFist.networkHitSound = nse;
-            EntityStates.HAND_Overclocked.Secondary.FireSlam.networkHitSound = nse;*/
-        }
-
-        private GameObject BuildOverclockJets()
-        {
-            GameObject jetObject = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Commando/CommandoDashJets.prefab").WaitForCompletion().InstantiateClone("HANDMod_OverclockJetObject", false);
-
-            ParticleSystemRenderer [] particles = jetObject.GetComponentsInChildren<ParticleSystemRenderer>();
-            foreach (ParticleSystemRenderer p in particles)
-            {
-                //[Info   : Unity Log] Jet
-                //[Info   : Unity Log] Ring
-                //[Info   : Unity Log] Distortion
-                //[Info   : Unity Log] Sparks
-                //[Info   : Unity Log] Flare
-
-                string name = p.name;
-                if (name != "Jet")
-                {
-                    UnityEngine.Object.Destroy(p);
-                }
-            }
-
-            VFXAttributes vfx = jetObject.GetComponent<VFXAttributes>();
-            if (vfx)
-            {
-                for (int i = 0; i< vfx.optionalLights.Length; i++)
-                {
-                    vfx.optionalLights[i].enabled = false;
-                }
-            }
-
-            DestroyOnTimer dot = jetObject.GetComponent<DestroyOnTimer>();
-            dot.duration = 0.2f;//0.3f vanilla
-
-            Light[] lights = jetObject.GetComponentsInChildren<Light>();
-            foreach (Light light in lights)
-            {
-                light.enabled = false;
-            }
-
-            //Does not have EffectComponent, no need to register.
-            return jetObject;
         }
 
         private GameObject CreateSwingVFX(string name, Vector3 scale, Material material)

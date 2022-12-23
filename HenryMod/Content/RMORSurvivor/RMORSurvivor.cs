@@ -1,33 +1,34 @@
-﻿using HANDMod.Modules.Survivors;
+﻿using RMORMod.Modules.Survivors;
 using UnityEngine;
 using RoR2;
-using HANDMod.Modules.Characters;
-using HANDMod.Modules;
+using RMORMod.Modules.Characters;
+using RMORMod.Modules;
 using System;
 using System.Collections.Generic;
 using RoR2.Skills;
 using UnityEngine.AddressableAssets;
 using R2API;
-using HANDMod.Content.RMORSurvivor.Components.Body;
+using RMORMod.Content.RMORSurvivor.Components.Body;
 using EntityStates;
 using System.Linq;
 using System.Runtime.CompilerServices;
 
-using HANDMod.Content.HANDSurvivor.Components.Body;
-using HANDMod.Content.Shared.Components.Body;
-using HANDMod.Content.HANDSurvivor.CharacterUnlock;
+using RMORMod.Content.HANDSurvivor.Components.Body;
+using RMORMod.Content.Shared.Components.Body;
+using RMORMod.Content.HANDSurvivor.CharacterUnlock;
 using HAND_Overclocked.Content.Shared.Components.Body;
+using RMORMod.Content.HANDSurvivor;
 
-namespace HANDMod.Content.RMORSurvivor
+namespace RMORMod.Content.RMORSurvivor
 {
     internal class RMORSurvivor : SurvivorBase
     {
         public static bool enabled = false;
         public const string RMOR_PREFIX = HandPlugin.DEVELOPER_PREFIX + "_RMOR_BODY_";
         public override string survivorTokenPrefix => RMOR_PREFIX;
-
-        public override UnlockableDef characterUnlockableDef => null;
-
+        public override ItemDisplaysBase itemDisplays => new HANDItemDisplays();
+        public override UnlockableDef characterUnlockableDef => CreateUnlockableDef();
+        private static UnlockableDef survivorUnlock;
         public override string bodyName => "RMOR";
         public override string cachedName => "RMOR";
 
@@ -37,7 +38,7 @@ namespace HANDMod.Content.RMORSurvivor
             bodyNameToken = HandPlugin.DEVELOPER_PREFIX + "_RMOR_BODY_NAME",
             subtitleNameToken = HandPlugin.DEVELOPER_PREFIX + "_RMOR_BODY_SUBTITLE",
 
-            characterPortrait = Assets.mainAssetBundle.LoadAsset<Texture>("texRMORPortraitOld.png"),
+            characterPortrait = Assets.mainAssetBundle.LoadAsset<Texture>("texRMORPortrait.png"),
             bodyColor = new Color(0.556862745f, 0.682352941f, 0.690196078f),
 
             crosshair = LegacyResourcesAPI.Load<GameObject>("prefabs/crosshair/simpledotcrosshair"),
@@ -46,12 +47,28 @@ namespace HANDMod.Content.RMORSurvivor
             damage = 12f,
             maxHealth = 140f,
             healthRegen = 0.5f,
-            armor = 20f,
+            armor = 50f,
+            armorGrowth = 50f * 0.2f,
 
             jumpCount = 1,
 
             sortPosition = Config.sortPosition
         };
+        private static UnlockableDef CreateUnlockableDef()
+        {
+            if (!survivorUnlock)
+            {
+                survivorUnlock = ScriptableObject.CreateInstance<UnlockableDef>();
+                survivorUnlock.cachedName = "Characters.RMOR";
+                survivorUnlock.nameToken = "ACHIEVEMENT_MORIYARMORSURVIVORUNLOCK_NAME";
+                survivorUnlock.hidden = true;
+                survivorUnlock.achievementIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("texRMORPortrait.png");
+                Modules.ContentPacks.unlockableDefs.Add(survivorUnlock);
+            }
+
+            if (Modules.Config.forceUnlock) return null;
+            return survivorUnlock;
+        }
 
         public override void InitializeCharacter()
         {
@@ -80,8 +97,8 @@ namespace HANDMod.Content.RMORSurvivor
             //hammerTransform.gameObject.SetActive(false);
 
             GameObject model = childLocator.gameObject;
-            //Transform fistHitboxTransform = childLocator.FindChild("FistHitbox");
-            //Prefabs.SetupHitbox(model, "FistHitbox", new Transform[] { fistHitboxTransform });
+            Transform bladeHitboxTransform = childLocator.FindChild("BladeHitbox");
+            Prefabs.SetupHitbox(model, "BladeHitbox", new Transform[] { bladeHitboxTransform }); ;
 
             AimAnimator aan = model.GetComponent<AimAnimator>();
             aan.yawRangeMin = -180f;
@@ -113,6 +130,10 @@ namespace HANDMod.Content.RMORSurvivor
 
             Content.HANDSurvivor.Buffs.Init();
 
+            CreateHitEffects();
+            EntityStates.RMOR.Utility.BeginOverclock.jetEffectPrefab = BuildOverclockJets();
+            EntityStates.RMOR.Secondary.FireSlam.earthquakeEffectPrefab = CreateSlamEffect();
+
             BrokenJanitorInteractable.Initialize();
             if (Modules.Config.allowPlayerRepair)
             {
@@ -123,7 +144,12 @@ namespace HANDMod.Content.RMORSurvivor
         //TODO: REPLACE
         public override CustomRendererInfo[] customRendererInfos { get; set; } = new CustomRendererInfo[] {
             new CustomRendererInfo {
-                childName = "HANDMesh",
+                childName = "RMORBody",
+                material = Materials.CreateHopooMaterial("matRMORDefault"),
+            },
+            new CustomRendererInfo {
+                childName = "Drone",
+                material = Materials.CreateHopooMaterial("matDroneBody"),
             },
         };
 
@@ -165,7 +191,6 @@ namespace HANDMod.Content.RMORSurvivor
             primarySkill.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texRMORPrimary.png");
             primarySkill.requiredStock = 1;
             primarySkill.stockToConsume = 1;
-            primarySkill.keywordTokens = new string[] { "KEYWORD_STUNNING" };
             Modules.Skills.FixScriptableObjectName(primarySkill);
             Modules.ContentPacks.skillDefs.Add(primarySkill);
             Skilldefs.PrimaryCannon = primarySkill;
@@ -179,7 +204,7 @@ namespace HANDMod.Content.RMORSurvivor
             SkillDef secondarySkill = SkillDef.CreateInstance<SkillDef>();
             secondarySkill.activationState = new SerializableEntityStateType(typeof(EntityStates.RMOR.Secondary.ChargeCannon));
             secondarySkill.skillNameToken = RMOR_PREFIX + "SECONDARY_NAME";
-            secondarySkill.skillName = "ChargeSlam";
+            secondarySkill.skillName = "ChargeCannon";
             secondarySkill.skillDescriptionToken = RMOR_PREFIX + "SECONDARY_DESC";
             secondarySkill.cancelSprintingOnActivation = false;
             secondarySkill.canceledFromSprinting = false;
@@ -192,52 +217,55 @@ namespace HANDMod.Content.RMORSurvivor
             secondarySkill.interruptPriority = EntityStates.InterruptPriority.Skill;
             secondarySkill.isCombatSkill = true;
             secondarySkill.mustKeyPress = false;
-            secondarySkill.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texSecondary.png");
+            secondarySkill.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texRMORSecondary.png");
             secondarySkill.beginSkillCooldownOnSkillEnd = true;
-            secondarySkill.keywordTokens = new string[] { "KEYWORD_STUNNING" };
             Modules.Skills.FixScriptableObjectName(secondarySkill);
             Modules.ContentPacks.skillDefs.Add(secondarySkill);
+            Skilldefs.SecondaryChargeCannon = secondarySkill;
 
-            SkillDef secondaryCannonSkill = SkillDef.CreateInstance<SkillDef>();
-            secondaryCannonSkill.activationState = new SerializableEntityStateType(typeof(EntityStates.HAND_Overclocked.Secondary.ChargeSlam));
-            secondaryCannonSkill.skillNameToken = RMOR_PREFIX + "PRIMARY_HAMMER_NAME";
-            secondaryCannonSkill.skillName = "SwingHammer";
-            secondaryCannonSkill.skillDescriptionToken = RMOR_PREFIX + "PRIMARY_HAMMER_DESC";
-            secondaryCannonSkill.cancelSprintingOnActivation = false;
-            secondaryCannonSkill.canceledFromSprinting = false;
-            secondaryCannonSkill.baseRechargeInterval = 0f;
-            secondaryCannonSkill.baseMaxStock = 1;
-            secondaryCannonSkill.rechargeStock = 1;
-            secondaryCannonSkill.beginSkillCooldownOnSkillEnd = false;
-            secondaryCannonSkill.activationStateMachineName = "Weapon";
-            secondaryCannonSkill.interruptPriority = EntityStates.InterruptPriority.Any;
-            secondaryCannonSkill.isCombatSkill = true;
-            secondaryCannonSkill.mustKeyPress = false;
-            secondaryCannonSkill.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texPrimaryHammer.png");
-            secondaryCannonSkill.requiredStock = 1;
-            secondaryCannonSkill.stockToConsume = 1;
-            secondaryCannonSkill.keywordTokens = new string[] { "KEYWORD_STUNNING" };
-            Modules.Skills.FixScriptableObjectName(secondaryCannonSkill);
-            Modules.ContentPacks.skillDefs.Add(secondaryCannonSkill);
-            Skilldefs.PrimaryMissile = secondaryCannonSkill;
-
-            UnlockableDef primaryHammerUnlock = ScriptableObject.CreateInstance<UnlockableDef>();
-            primaryHammerUnlock.cachedName = "Skills.HANDOverclocked.HammerPrimary";
-            primaryHammerUnlock.nameToken = "ACHIEVEMENT_MOFFEINHANDOVERCLOCKEDHAMMERPRIMARYUNLOCK_NAME";
-            primaryHammerUnlock.achievementIcon = secondaryCannonSkill.icon;
-            Modules.ContentPacks.unlockableDefs.Add(primaryHammerUnlock);
+            SkillDef secondaryHammerSkill = SkillDef.CreateInstance<SkillDef>();
+            secondaryHammerSkill.activationState = new SerializableEntityStateType(typeof(EntityStates.RMOR.Secondary.ChargeSlam));
+            secondaryHammerSkill.skillNameToken = RMOR_PREFIX + "ALTSECONDARY_NAME";
+            secondaryHammerSkill.skillName = "ChargeHammer";
+            secondaryHammerSkill.skillDescriptionToken = RMOR_PREFIX + "ALTSECONDARY_DESC";
+            secondarySkill.cancelSprintingOnActivation = false;
+            secondarySkill.canceledFromSprinting = false;
+            secondarySkill.baseRechargeInterval = 5f;
+            secondarySkill.baseMaxStock = 1;
+            secondarySkill.rechargeStock = 1;
+            secondarySkill.requiredStock = 1;
+            secondarySkill.stockToConsume = 1;
+            secondarySkill.activationStateMachineName = "Weapon";
+            secondarySkill.interruptPriority = EntityStates.InterruptPriority.Skill;
+            secondarySkill.isCombatSkill = true;
+            secondarySkill.mustKeyPress = false;
+            secondaryHammerSkill.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texSecondary.png");
+            secondarySkill.beginSkillCooldownOnSkillEnd = true;
+            secondarySkill.keywordTokens = new string[] { "KEYWORD_STUNNING" };
+            Modules.Skills.FixScriptableObjectName(secondaryHammerSkill);
+            Modules.ContentPacks.skillDefs.Add(secondaryHammerSkill);
+            Skilldefs.SecondaryChargeHammer = secondaryHammerSkill;
 
             SkillFamily secondarySkillFamily = bodyPrefab.GetComponent<SkillLocator>().secondary.skillFamily;
             Skilldefs.SecondaryChargeHammer = secondarySkill;
 
             Skills.AddSkillToFamily(secondarySkillFamily, secondarySkill);
-            Skills.AddSkillToFamily(secondarySkillFamily, secondaryCannonSkill, Modules.Config.forceUnlock ? null : primaryHammerUnlock);
+            //Skills.AddSkillToFamily(secondarySkillFamily, secondaryHammerSkill); not working right now
 
             InitializeScepterSkills();
         }
         private void InitializeUtilitySkills()
         {
-            Skills.AddUtilitySkills(bodyPrefab, new SkillDef[] { Shared.SkillDefs.UtilityOverclock, Shared.SkillDefs.UtilityFocus });
+            UnlockableDef ovcUnlock = ScriptableObject.CreateInstance<UnlockableDef>();
+            ovcUnlock.cachedName = "Skills.RMOR.Overclock";
+            ovcUnlock.nameToken = "ACHIEVEMENT_MORIYARMOROVERCLOCKUNLOCK_NAME";
+            ovcUnlock.achievementIcon = Shared.SkillDefs.UtilityOverclock.icon;
+            Modules.ContentPacks.unlockableDefs.Add(ovcUnlock);
+
+            SkillFamily utilityFamily = bodyPrefab.GetComponent<SkillLocator>().utility.skillFamily;
+            Skills.AddSkillToFamily(utilityFamily, Shared.SkillDefs.UtilityFortify);
+
+            Skills.AddSkillToFamily(utilityFamily, Shared.SkillDefs.UtilityOverclock, Modules.Config.forceUnlock ? null : ovcUnlock);
         }
         private void InitializeSpecialSkills()
         {
@@ -298,13 +326,37 @@ namespace HANDMod.Content.RMORSurvivor
             scepterSkill.interruptPriority = Skilldefs.SecondaryChargeHammer.interruptPriority;
             scepterSkill.isCombatSkill = Skilldefs.SecondaryChargeHammer.isCombatSkill;
             scepterSkill.mustKeyPress = Skilldefs.SecondaryChargeHammer.mustKeyPress;
-            scepterSkill.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texSecondaryScepter.png");
+            scepterSkill.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texRMORSecondaryScepter.png");
             scepterSkill.beginSkillCooldownOnSkillEnd = Skilldefs.SecondaryChargeHammer.beginSkillCooldownOnSkillEnd;
             scepterSkill.keywordTokens = Skilldefs.SecondaryChargeHammer.keywordTokens;
             Modules.Skills.FixScriptableObjectName(scepterSkill);
             Modules.ContentPacks.skillDefs.Add(scepterSkill);
 
-            Skilldefs.SecondaryChargeHammerScepter = scepterSkill;
+            Skilldefs.SecondaryChargeCannonScepter = scepterSkill;
+
+            SkillDef scepterHammerSkill = SkillDef.CreateInstance<SkillDef>();
+            scepterHammerSkill.activationState = new SerializableEntityStateType(typeof(EntityStates.RMOR.Secondary.ChargeSlamScepter));
+            scepterHammerSkill.skillNameToken = RMOR_PREFIX + "ALTSECONDARY_SCEPTER_NAME";
+            scepterHammerSkill.skillName = "ChargeSlamScepter";
+            scepterHammerSkill.skillDescriptionToken = RMOR_PREFIX + "ALTSECONDARY_SCEPTER_DESC";
+            scepterHammerSkill.cancelSprintingOnActivation = Skilldefs.SecondaryChargeHammer.cancelSprintingOnActivation;
+            scepterHammerSkill.canceledFromSprinting = Skilldefs.SecondaryChargeHammer.canceledFromSprinting;
+            scepterHammerSkill.baseRechargeInterval = Skilldefs.SecondaryChargeHammer.baseRechargeInterval = 5f;
+            scepterHammerSkill.baseMaxStock = Skilldefs.SecondaryChargeHammer.baseMaxStock;
+            scepterHammerSkill.rechargeStock = Skilldefs.SecondaryChargeHammer.rechargeStock;
+            scepterHammerSkill.requiredStock = Skilldefs.SecondaryChargeHammer.requiredStock;
+            scepterHammerSkill.stockToConsume = Skilldefs.SecondaryChargeHammer.stockToConsume;
+            scepterHammerSkill.activationStateMachineName = Skilldefs.SecondaryChargeHammer.activationStateMachineName;
+            scepterHammerSkill.interruptPriority = Skilldefs.SecondaryChargeHammer.interruptPriority;
+            scepterHammerSkill.isCombatSkill = Skilldefs.SecondaryChargeHammer.isCombatSkill;
+            scepterHammerSkill.mustKeyPress = Skilldefs.SecondaryChargeHammer.mustKeyPress;
+            scepterHammerSkill.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texSecondaryScepter.png");
+            scepterHammerSkill.beginSkillCooldownOnSkillEnd = Skilldefs.SecondaryChargeHammer.beginSkillCooldownOnSkillEnd;
+            scepterHammerSkill.keywordTokens = Skilldefs.SecondaryChargeHammer.keywordTokens;
+            Modules.Skills.FixScriptableObjectName(scepterHammerSkill);
+            Modules.ContentPacks.skillDefs.Add(scepterHammerSkill);
+
+            Skilldefs.SecondaryChargeHammerScepter = scepterHammerSkill;
 
             if (HandPlugin.ScepterClassicLoaded) ClassicScepterCompat();
             if (HandPlugin.ScepterStandaloneLoaded) StandaloneScepterCompat();
@@ -313,7 +365,8 @@ namespace HANDMod.Content.RMORSurvivor
         [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
         private void ClassicScepterCompat()
         {
-            ThinkInvisible.ClassicItems.Scepter.instance.RegisterScepterSkill(Skilldefs.SecondaryChargeHammerScepter, "RMORBody", SkillSlot.Secondary, Skilldefs.SecondaryChargeHammer);
+            ThinkInvisible.ClassicItems.Scepter.instance.RegisterScepterSkill(Skilldefs.SecondaryChargeHammerScepter, "RMORBody", SkillSlot.Secondary, Skilldefs.SecondaryChargeCannon);
+            //ThinkInvisible.ClassicItems.Scepter.instance.RegisterScepterSkill(Skilldefs.SecondaryChargeHammerScepter, "RMORBody", SkillSlot.Secondary, Skilldefs.SecondaryChargeHammer);
         }
 
 
@@ -321,7 +374,151 @@ namespace HANDMod.Content.RMORSurvivor
         private void StandaloneScepterCompat()
         {
             AncientScepter.AncientScepterItem.instance.RegisterScepterSkill(Skilldefs.SecondaryChargeHammerScepter, "RMORBody", SkillSlot.Secondary, 0);
+            //AncientScepter.AncientScepterItem.instance.RegisterScepterSkill(Skilldefs.SecondaryChargeHammerScepter, "RMORBody", SkillSlot.Secondary, 1);
         }
+        public override void InitializeSkins()
+        {
+            GameObject model = bodyPrefab.GetComponentInChildren<ModelLocator>().modelTransform.gameObject;
+            CharacterModel characterModel = model.GetComponent<CharacterModel>();
+
+            ModelSkinController skinController = model.AddComponent<ModelSkinController>();
+            ChildLocator childLocator = model.GetComponent<ChildLocator>();
+
+            CharacterModel.RendererInfo[] defaultRendererinfos = characterModel.baseRendererInfos;
+
+            List<SkinDef> skins = new List<SkinDef>();
+
+            #region DefaultSkin
+            //this creates a SkinDef with all default fields
+            SkinDef defaultSkin = Modules.Skins.CreateSkinDef("DEFAULT_SKIN",
+                Assets.mainAssetBundle.LoadAsset<Sprite>("texRMORSkinIconDefault"),
+                defaultRendererinfos,
+                model);
+
+            skins.Add(defaultSkin);
+
+            //materials are the default materials
+            #endregion
+
+            #region MasterySkin
+
+            //creating a new skindef as we did before
+            Sprite masteryIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("texHANDSkinIconMastery");
+            SkinDef masterySkin = Modules.Skins.CreateSkinDef(RMOR_PREFIX + "MASTERY_SKIN_NAME",
+                masteryIcon,
+                defaultRendererinfos,
+                model/*,
+                masterySkinUnlockableDef*/);
+
+            masterySkin.meshReplacements = Modules.Skins.getMeshReplacements(defaultRendererinfos,
+                "meshHanDMastery_Body",
+                "meshDroneMastery_Body");
+
+            masterySkin.rendererInfos[0].defaultMaterial = Modules.Materials.CreateHopooMaterial("matHANDMastery");
+
+            UnlockableDef masteryUnlockableDef = ScriptableObject.CreateInstance<UnlockableDef>();
+            masteryUnlockableDef.cachedName = "Skins.HANDOverclocked.Mastery";
+            masteryUnlockableDef.nameToken = "ACHIEVEMENT_MORIYARMORCLEARGAMEMONSOON_NAME";
+            masteryUnlockableDef.achievementIcon = masteryIcon;
+            Modules.ContentPacks.unlockableDefs.Add(masteryUnlockableDef);
+            masterySkin.unlockableDef = masteryUnlockableDef;
+
+            skins.Add(masterySkin);
+
+            #endregion
+
+            skinController.skins = skins.ToArray();
+
+            On.RoR2.ProjectileGhostReplacementManager.Init += ProjectileGhostReplacementManager_Init;
+        }
+
+        private void ProjectileGhostReplacementManager_Init(On.RoR2.ProjectileGhostReplacementManager.orig_Init orig)
+        {
+            ModelSkinController skinController = bodyPrefab.GetComponentInChildren<ModelSkinController>();
+            for (int i = 1; i < skinController.skins.Length; i++)
+            {
+                SkinDef skin = skinController.skins[i];
+
+                if (DoesSkinHaveDroneReplacement(skin))
+                {
+                    skin.projectileGhostReplacements = new SkinDef.ProjectileGhostReplacement[]
+                    {
+                        new SkinDef.ProjectileGhostReplacement
+                        {
+                            projectilePrefab = EntityStates.HAND_Overclocked.Special.FireSeekingDrone.projectilePrefab,
+                            projectileGhostReplacementPrefab = CreateProjectileGhostReplacementPrefab(skin),
+                        }
+                    };
+                }
+            }
+
+            orig();
+        }
+
+
+        public static bool DoesSkinHaveDroneReplacement(SkinDef skin)
+        {
+
+            SkinDef defaultSkin = RMORSurvivor.instance.bodyPrefab.GetComponentInChildren<ModelSkinController>().skins[0];
+
+            for (int i = 0; i < skin.meshReplacements.Length; i++)
+            {
+                if (skin.meshReplacements[i].renderer == defaultSkin.rendererInfos[2].renderer ||
+                   skin.meshReplacements[i].renderer == defaultSkin.rendererInfos[3].renderer)
+                {
+                    return true;
+                }
+            }
+            for (int i = 0; i < skin.rendererInfos.Length; i++)
+            {
+                if (skin.rendererInfos[i].renderer == defaultSkin.rendererInfos[2].renderer ||
+                    skin.rendererInfos[i].renderer == defaultSkin.rendererInfos[3].renderer)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+
+        public static GameObject CreateProjectileGhostReplacementPrefab(SkinDef skin)
+        {
+            GameObject ghostReplacement = PrefabAPI.InstantiateClone(DroneSetup.droneProjectileGhost, skin.nameToken + "DroneGhostReplacement", false);
+            SkinnedMeshRenderer ghostDroneRenderer = ghostReplacement.GetComponent<ChildLocator>().FindChildComponent<SkinnedMeshRenderer>("Drone");
+            MeshRenderer ghostSawRenderer = ghostReplacement.GetComponent<ChildLocator>().FindChildComponent<MeshRenderer>("Saw");
+
+            SkinDef defaultSkin = RMORSurvivor.instance.bodyPrefab.GetComponentInChildren<ModelSkinController>().skins[0];
+
+            CharacterModel.RendererInfo defaultRendererInfoDrone = defaultSkin.rendererInfos[2];
+            CharacterModel.RendererInfo defaultRendererInfoSaw = defaultSkin.rendererInfos[3];
+
+            for (int i = 0; i < skin.rendererInfos.Length; i++)
+            {
+                if (skin.rendererInfos[i].renderer == defaultRendererInfoDrone.renderer)
+                {
+                    ghostDroneRenderer.material = skin.rendererInfos[i].defaultMaterial;
+                }
+                if (skin.rendererInfos[i].renderer == defaultRendererInfoSaw.renderer)
+                {
+                    ghostSawRenderer.material = skin.rendererInfos[i].defaultMaterial;
+                }
+            }
+
+            for (int i = 0; i < skin.meshReplacements.Length; i++)
+            {
+                if (skin.meshReplacements[i].renderer == defaultRendererInfoDrone.renderer)
+                {
+                    ghostDroneRenderer.sharedMesh = skin.meshReplacements[i].mesh;
+                }
+                if (skin.meshReplacements[i].renderer == defaultRendererInfoSaw.renderer)
+                {
+                    ghostSawRenderer.GetComponent<MeshFilter>().mesh = skin.meshReplacements[i].mesh;
+                }
+            }
+
+            return ghostReplacement;
+        }
+
         private void RegisterStates()
         {
 
@@ -339,16 +536,95 @@ namespace HANDMod.Content.RMORSurvivor
             Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HAND_Overclocked.Secondary.ChargeSlamScepter));
             Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HAND_Overclocked.Secondary.FireSlamScepter));
 
-            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HAND_Overclocked.Utility.BeginOverclock));
-            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HAND_Overclocked.Utility.CancelOverclock));
-            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HAND_Overclocked.Utility.BeginFocus));
+            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.RMOR.Utility.BeginOverclock));
+            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.RMOR.Utility.CancelOverclock));
+            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.RMOR.Utility.BeginFocus));
 
             Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HAND_Overclocked.Special.FireSeekingDrone));
         }
 
+        private GameObject CreateSlamEffect()
+        {
+            GameObject slamImpactEffect = LegacyResourcesAPI.Load<GameObject>("prefabs/effects/impacteffects/ParentSlamEffect").InstantiateClone("RMORMod_SlamImpactEffect", false);
+
+            var particleParent = slamImpactEffect.transform.Find("Particles");
+            var debris = particleParent.Find("Debris, 3D");
+            var debris2 = particleParent.Find("Debris");
+            var sphere = particleParent.Find("Nova Sphere");
+
+            debris.gameObject.SetActive(false);
+            debris2.gameObject.SetActive(false);
+            sphere.gameObject.SetActive(false);
+
+            slamImpactEffect.GetComponent<EffectComponent>().soundName = "";
+            //Play_parent_attack1_slam
+
+            Modules.ContentPacks.effectDefs.Add(new EffectDef(slamImpactEffect));
+
+            return slamImpactEffect;
+        }
+
+        private void CreateHitEffects()
+        {
+            GameObject hitEffect = LegacyResourcesAPI.Load<GameObject>("prefabs/effects/impacteffects/ImpactToolbotDash").InstantiateClone("RMORMod_HitEffect", false);
+            EffectComponent ec = hitEffect.GetComponent<EffectComponent>();
+            ec.soundName = "Play_MULT_shift_hit";
+            Modules.ContentPacks.effectDefs.Add(new EffectDef(hitEffect));
+            EntityStates.HAND_Overclocked.Primary.SwingPunch.hitEffect = hitEffect;
+            EntityStates.HAND_Overclocked.Primary.SwingHammer.hitEffect = hitEffect;
+            EntityStates.HAND_Overclocked.Secondary.FireSlam.hitEffect = hitEffect;
+
+
+            /*NetworkSoundEventDef nse = Modules.Assets.CreateNetworkSoundEventDef("Play_MULT_shift_hit");
+            EntityStates.HAND_Overclocked.Primary.SwingFist.networkHitSound = nse;
+            EntityStates.HAND_Overclocked.Secondary.FireSlam.networkHitSound = nse;*/
+        }
+
+        private GameObject BuildOverclockJets()
+        {
+            GameObject jetObject = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Commando/CommandoDashJets.prefab").WaitForCompletion().InstantiateClone("RMORMod_OverclockJetObject", false);
+
+            ParticleSystemRenderer[] particles = jetObject.GetComponentsInChildren<ParticleSystemRenderer>();
+            foreach (ParticleSystemRenderer p in particles)
+            {
+                //[Info   : Unity Log] Jet
+                //[Info   : Unity Log] Ring
+                //[Info   : Unity Log] Distortion
+                //[Info   : Unity Log] Sparks
+                //[Info   : Unity Log] Flare
+
+                string name = p.name;
+                if (name != "Jet")
+                {
+                    UnityEngine.Object.Destroy(p);
+                }
+            }
+
+            VFXAttributes vfx = jetObject.GetComponent<VFXAttributes>();
+            if (vfx)
+            {
+                for (int i = 0; i < vfx.optionalLights.Length; i++)
+                {
+                    vfx.optionalLights[i].enabled = false;
+                }
+            }
+
+            DestroyOnTimer dot = jetObject.GetComponent<DestroyOnTimer>();
+            dot.duration = 0.2f;//0.3f vanilla
+
+            Light[] lights = jetObject.GetComponentsInChildren<Light>();
+            foreach (Light light in lights)
+            {
+                light.enabled = false;
+            }
+
+            //Does not have EffectComponent, no need to register.
+            return jetObject;
+        }
+
         private GameObject CreateEnemyIndicator()
         {
-            GameObject indicator = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Engi/EngiMissileTrackingIndicator.prefab").WaitForCompletion().InstantiateClone("HANDMod_RMOR_EnemyIndicator", false);
+            GameObject indicator = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Engi/EngiMissileTrackingIndicator.prefab").WaitForCompletion().InstantiateClone("RMORMod_RMOR_EnemyIndicator", false);
             SpriteRenderer[] sr = indicator.GetComponentsInChildren<SpriteRenderer>();
             foreach (SpriteRenderer s in sr)
             {

@@ -5,7 +5,7 @@ using UnityEngine;
 using RoR2;
 using System.Linq;
 
-namespace HANDMod.Content.HANDSurvivor.Components.Body
+namespace RMORMod.Content.HANDSurvivor.Components.Body
 {
     public class HANDTargetingController : MonoBehaviour
     {

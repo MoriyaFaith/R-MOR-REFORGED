@@ -3,7 +3,7 @@ using UnityEngine;
 using RoR2.CharacterAI;
 using R2API;
 
-namespace HANDMod.Content.HANDSurvivor
+namespace RMORMod.Content.HANDSurvivor
 {
     public class MasterAI
     {

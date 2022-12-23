@@ -1,5 +1,5 @@
-﻿using HANDMod.Content.HANDSurvivor;
-using HANDMod.Content.Shared.Components.Body;
+﻿using RMORMod.Content.HANDSurvivor;
+using RMORMod.Content.Shared.Components.Body;
 using RoR2;
 using RoR2.Skills;
 using System;
@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
 
-namespace EntityStates.HAND_Overclocked.Utility
+namespace EntityStates.RMOR.Utility
 {
 	public class BeginOverclock : BaseState
 	{
@@ -93,8 +93,8 @@ namespace EntityStates.HAND_Overclocked.Utility
 
 		public virtual void LoadStats()
         {
-			cancelDef = HANDMod.Content.Shared.SkillDefs.UtilityOverclockCancel;
-			buffDef = HANDMod.Content.Shared.Buffs.Overclock;
+			cancelDef = RMORMod.Content.Shared.SkillDefs.UtilityOverclockCancel;
+			buffDef = RMORMod.Content.Shared.Buffs.Overclock;
 			gaugeInternal = BeginOverclock.texGauge;
 			gaugeArrowInternal = BeginOverclock.texGaugeArrow;
 			internalOverlayMaterial = BeginOverclock.overlayMaterial;

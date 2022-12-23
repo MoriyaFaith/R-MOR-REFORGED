@@ -1,7 +1,7 @@
 ﻿using RoR2;
 using UnityEngine;
 
-namespace HANDMod.Content.HANDSurvivor.Components.Body
+namespace RMORMod.Content.HANDSurvivor.Components.Body
 {
     //Doesn't work, hammer transform seems to ignore modifications to localScale.
     public class HammerVisibilityController : MonoBehaviour

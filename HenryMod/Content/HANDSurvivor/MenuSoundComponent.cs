@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using RoR2;
 
-namespace HANDMod.Content.HANDSurvivor
+namespace RMORMod.Content.HANDSurvivor
 {
     public class MenuSoundComponent : MonoBehaviour
     {

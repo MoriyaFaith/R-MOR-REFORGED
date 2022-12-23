@@ -5,7 +5,7 @@ using UnityEngine;
 using RoR2;
 using System.Linq;
 
-namespace HANDMod.Content.RMORSurvivor.Components.Body
+namespace RMORMod.Content.RMORSurvivor.Components.Body
 {
     public class RMORTargetingController : MonoBehaviour
     {
@@ -19,14 +19,6 @@ namespace HANDMod.Content.RMORSurvivor.Components.Body
 
         public void FixedUpdate()
         {
-            if (HasMissilePrimary())
-            {
-                TrackerFixedUpdate();
-            }
-            else
-            {
-                this.enemyIndicator.active = false;
-            }
         }
 
         private void TrackerFixedUpdate()
@@ -87,11 +79,6 @@ namespace HANDMod.Content.RMORSurvivor.Components.Body
         public bool HasTarget()
         {
             return this.trackingTarget != null;
-        }
-
-        public bool HasMissilePrimary()
-        {
-            return characterBody && characterBody.skillLocator && characterBody.skillLocator.primary == Skilldefs.PrimaryMissile;
         }
 
         public static GameObject enemyIndicatorPrefab;

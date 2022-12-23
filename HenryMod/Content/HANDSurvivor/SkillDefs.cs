@@ -1,6 +1,6 @@
 ﻿using RoR2.Skills;
 
-namespace HANDMod.Content.HANDSurvivor
+namespace RMORMod.Content.HANDSurvivor
 {
     public static class SkillDefs
     {

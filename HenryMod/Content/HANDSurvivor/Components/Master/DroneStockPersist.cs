@@ -1,6 +1,6 @@
 ﻿using UnityEngine.Networking;
 
-namespace HANDMod.Content.HANDSurvivor.Components.Master
+namespace RMORMod.Content.HANDSurvivor.Components.Master
 {
 
     public class DroneStockPersist : NetworkBehaviour

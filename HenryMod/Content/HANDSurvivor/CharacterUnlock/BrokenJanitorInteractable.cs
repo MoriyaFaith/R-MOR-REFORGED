@@ -1,4 +1,4 @@
-﻿using HANDMod.Content.HANDSurvivor.CharacterUnlock;
+﻿using RMORMod.Content.HANDSurvivor.CharacterUnlock;
 using R2API;
 using RoR2;
 using RoR2.Hologram;
@@ -8,7 +8,7 @@ using UnityEngine.AddressableAssets;
 using UnityEngine.Events;
 using UnityEngine.Networking;
 
-namespace HANDMod.Content.HANDSurvivor.CharacterUnlock
+namespace RMORMod.Content.HANDSurvivor.CharacterUnlock
 {
     public class BrokenJanitorInteractable
     {
@@ -36,7 +36,7 @@ namespace HANDMod.Content.HANDSurvivor.CharacterUnlock
             SceneDef currentScene = SceneCatalog.GetSceneDefForCurrentScene();
             if (currentScene && currentScene == rallypointSceneDef)
             {
-                GameObject interactable = UnityEngine.Object.Instantiate(HANDMod.Content.HANDSurvivor.CharacterUnlock.BrokenJanitorInteractable.interactablePrefab);
+                GameObject interactable = UnityEngine.Object.Instantiate(RMORMod.Content.HANDSurvivor.CharacterUnlock.BrokenJanitorInteractable.interactablePrefab);
                 if (interactable)
                 {
                     interactable.transform.position = new Vector3(41.92087f, 5f, 87.45225f);
@@ -178,7 +178,7 @@ namespace HANDMod.Content.HANDSurvivor.CharacterUnlock
             if (NetworkServer.active && !spawnedRepair && !(healthComponent && healthComponent.alive))
             {
                 spawnedRepair = true;
-                GameObject interactable = UnityEngine.Object.Instantiate(HANDMod.Content.HANDSurvivor.CharacterUnlock.BrokenJanitorInteractable.repairPrefab);
+                GameObject interactable = UnityEngine.Object.Instantiate(RMORMod.Content.HANDSurvivor.CharacterUnlock.BrokenJanitorInteractable.repairPrefab);
 
                 if (interactable && base.gameObject && base.transform)
                 {
@@ -303,7 +303,7 @@ namespace EntityStates.HAND_Overclocked.BrokenJanitor
                 {
                     useAmbientLevel = true,
                     ignoreTeamMemberLimit = true,
-                    masterPrefab = HANDMod.Content.HANDSurvivor.MasterAI.HANDMaster,
+                    masterPrefab = RMORMod.Content.HANDSurvivor.MasterAI.HANDMaster,
                     position = base.transform.position,
                     rotation = base.transform.rotation,
                     summonerBodyObject = activator.gameObject
@@ -319,7 +319,7 @@ namespace EntityStates.HAND_Overclocked.BrokenJanitor
                         if (minionBody)
                         {
                             ///This component gets added to all bodies if allowPlayerRepair is enabled, so no need to re-add it here.
-                            if (!HANDMod.Modules.Config.allowPlayerRepair) minionBody.gameObject.AddComponent<CreateRepairOnDeath>();
+                            if (!RMORMod.Modules.Config.allowPlayerRepair) minionBody.gameObject.AddComponent<CreateRepairOnDeath>();
                             minionBody.SetLoadoutServer(minionMaster.loadout);
                             minionBody.bodyFlags |= CharacterBody.BodyFlags.IgnoreFallDamage;
                         }

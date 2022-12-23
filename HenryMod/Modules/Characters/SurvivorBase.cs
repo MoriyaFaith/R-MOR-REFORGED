@@ -1,12 +1,12 @@
 ﻿using BepInEx.Configuration;
 using RoR2;
 using System;
-using HANDMod.Modules.Characters;
+using RMORMod.Modules.Characters;
 using UnityEngine;
 using System.Collections.Generic;
 using RoR2.Skills;
 
-namespace HANDMod.Modules.Survivors
+namespace RMORMod.Modules.Survivors
 {
     internal abstract class SurvivorBase : CharacterBase
     {

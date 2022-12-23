@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.32228.343
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HAND_Overclocked", "HenryMod\HAND_Overclocked.csproj", "{9AC35CBB-F7EC-4C41-A458-59417F576A41}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RMOR_Reforged", "HenryMod\RMOR_Reforged.csproj", "{9AC35CBB-F7EC-4C41-A458-59417F576A41}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

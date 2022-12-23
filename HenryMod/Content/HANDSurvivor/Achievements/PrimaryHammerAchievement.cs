@@ -2,9 +2,9 @@
 using RoR2.Achievements;
 using UnityEngine;
 using R2API;
-using HANDMod.Content.HANDSurvivor.Components;
+using RMORMod.Content.HANDSurvivor.Components;
 
-namespace HANDMod.Content.HANDSurvivor.Achievements
+namespace RMORMod.Content.HANDSurvivor.Achievements
 {
     [RegisterAchievement("MoffeinHANDOverclockedHammerPrimaryUnlock", "Skills.HANDOverclocked.HammerPrimary", null, null)]
     public class HANDOverclockedHammerPrimaryUnlockAchievement : BaseAchievement

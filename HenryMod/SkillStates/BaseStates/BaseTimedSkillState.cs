@@ -1,7 +1,7 @@
 ﻿using EntityStates;
 using System;
 
-namespace HANDMod.SkillStates.BaseStates
+namespace RMORMod.SkillStates.BaseStates
 {
     //see example skills below
     public class BaseTimedSkillState : BaseSkillState

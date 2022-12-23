@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using Zio.FileSystems;
 
-namespace HANDMod
+namespace RMORMod
 {
     internal class LanguageTokens
     {

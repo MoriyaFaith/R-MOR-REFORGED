@@ -1,11 +1,11 @@
-﻿using HANDMod.Content.HANDSurvivor;
-using HANDMod.Content.HANDSurvivor.Components.Body;
+﻿using RMORMod.Content.HANDSurvivor;
+using RMORMod.Content.HANDSurvivor.Components.Body;
 using RoR2;
 using RoR2.Skills;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
-namespace EntityStates.HAND_Overclocked.Utility
+namespace EntityStates.RMOR.Utility
 {
     public class BeginFocus : BeginOverclock
     {
@@ -15,11 +15,11 @@ namespace EntityStates.HAND_Overclocked.Utility
 
         public override void LoadStats()
         {
-            cancelDef = HANDMod.Content.Shared.SkillDefs.UtilityOverclockCancel;
-            buffDef = HANDMod.Content.Shared.Buffs.NemesisFocus;
+            cancelDef = RMORMod.Content.Shared.SkillDefs.UtilityOverclockCancel;
+            buffDef = RMORMod.Content.Shared.Buffs.NemesisFocus;
             gaugeInternal = texGaugeNemesis;
             gaugeArrowInternal = texGaugeArrowNemesis;
-            internalOverlayMaterial = BeginFocus.overlayMaterial;
+            internalOverlayMaterial = overlayMaterial;
         }
 
         //Disabling sprint feels terrible.

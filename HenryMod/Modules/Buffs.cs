@@ -1,7 +1,7 @@
 ﻿using RoR2;
 using UnityEngine;
 
-namespace HANDMod.Modules
+namespace RMORMod.Modules
 {
     public class Buffs
     {
@@ -15,7 +15,7 @@ namespace HANDMod.Modules
             bd.buffColor = color;
             bd.iconSprite = iconSprite;
 
-            HANDMod.Modules.ContentPacks.buffDefs.Add(bd);
+            RMORMod.Modules.ContentPacks.buffDefs.Add(bd);
             (bd as UnityEngine.Object).name = bd.name;
             return bd;
         }

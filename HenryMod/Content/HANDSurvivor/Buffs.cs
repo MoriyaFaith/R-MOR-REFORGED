@@ -7,9 +7,9 @@ using MonoMod.Cil;
 using Mono.Cecil.Cil;
 using UnityEngine.Networking;
 using RoR2.Audio;
-using HANDMod.Modules;
+using RMORMod.Modules;
 
-namespace HANDMod.Content.HANDSurvivor
+namespace RMORMod.Content.HANDSurvivor
 {
     public class Buffs
     {
@@ -21,7 +21,7 @@ namespace HANDMod.Content.HANDSurvivor
             if (!Buffs.DronePassive)
             {
                 Buffs.DronePassive = Modules.Buffs.CreateBuffDef(
-                       "HANDMod_DronePassive",
+                       "RMORMod_DronePassive",
                        true,
                        false,
                        false,
@@ -53,7 +53,10 @@ namespace HANDMod.Content.HANDSurvivor
         private static void RMORPassiveHook(CharacterBody sender, R2API.RecalculateStatsAPI.StatHookEventArgs args)
         {
             if(BodyCatalog.GetBodyName(sender.bodyIndex).Equals("RMORBody"))
+            {
                 args.attackSpeedMultAdd += (sender.GetBuffCount(DronePassive) * 0.1f);
+                //args.damageMultAdd += (sender.GetBuffCount(DronePassive) * 0.1f);
+            }
         }
     }
 }

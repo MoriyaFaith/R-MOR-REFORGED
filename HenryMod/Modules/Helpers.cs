@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace HANDMod.Modules
+namespace RMORMod.Modules
 {
     internal static class Helpers
     {

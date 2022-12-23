@@ -1,35 +1,49 @@
-﻿using HANDMod.Content.Shared.Components.Body;
-using HANDMod.Content.HANDSurvivor.Components.Body;
-using RoR2;
+﻿using RoR2;
+using RMORMod.Content.Shared.Components.Body;
 using UnityEngine;
 
 namespace EntityStates.RMOR.Secondary
 {
     public class ChargeCannon : BaseState
     {
+        public static float baseDuration = 1.5f;
+        public static string partialChargeSoundString = "Play_engi_M1_chargeStock";
+        public static string fullChargeSoundString = "Play_HOC_StartHammer";
+        public static GameObject partialChargeEffect = LegacyResourcesAPI.Load<GameObject>("prefabs/effects/omnieffect/OmniImpactVFXLoader");
+        public static GameObject fullChargeEffect = LegacyResourcesAPI.Load<GameObject>("prefabs/effects/omnieffect/OmniImpactVFXLoader");
+        public static int maxChargeLevel = 3;
+
+        private float duration;
+        public int chargeLevel;
+
+        public static float baseMinDuration = 0.5f;
+        public static float baseChargeDuration = 1.5f;
+        private float minDuration;
+        private float charge;
+        public float chargePercent;
+        private Animator modelAnimator;
+        public static GameObject chargeEffectPrefab = LegacyResourcesAPI.Load<GameObject>("prefabs/effects/omnieffect/OmniImpactVFXLoader");
+        private bool startedChargeAnim = false;
+
+        public static GameObject holdChargeVfxPrefab = EntityStates.Toolbot.ChargeSpear.holdChargeVfxPrefab;
+        private GameObject holdChargeVfxGameObject = null;
+
         public override void OnEnter()
         {
             base.OnEnter();
-            Util.PlaySound("Play_HOC_StartHammer", base.gameObject);
+            ModifyStats();
             this.minDuration = ChargeCannon.baseMinDuration / this.attackSpeedStat;
             this.modelAnimator = base.GetModelAnimator();
             if (this.modelAnimator)
             {
-                base.PlayAnimation("Gesture, Override", "PrepHammer", "ChargeHammer.playbackRate", this.minDuration);
+                base.PlayAnimation("Gesture, Override", "PrepCannon", "ChargeHammer.playbackRate", this.minDuration);
             }
             if (base.characterBody)
             {
                 base.characterBody.SetAimTimer(3f);
             }
             charge = 0f;
-            chargePercent = 0f;
-            chargeDuration = ChargeCannon.baseChargeDuration / this.attackSpeedStat;
-
-            hammerController = base.GetComponent<HammerVisibilityController>();
-            if (hammerController)
-            {
-                hammerController.SetHammerEnabled(true);
-            }
+            chargeLevel = 1;
 
             OverclockController ovc = base.GetComponent<OverclockController>();
             bool hasOVC = ovc && ovc.BuffActive();
@@ -40,7 +54,6 @@ namespace EntityStates.RMOR.Secondary
                 base.characterBody.isSprinting = false;
             }
         }
-
         public override void OnExit()
         {
             if (this.holdChargeVfxGameObject)
@@ -52,10 +65,6 @@ namespace EntityStates.RMOR.Secondary
             {
                 this.PlayAnimation("Gesture, Override", "BufferEmpty");
             }
-            if (hammerController)
-            {
-                hammerController.SetHammerEnabled(false);
-            }
             base.OnExit();
         }
 
@@ -63,71 +72,51 @@ namespace EntityStates.RMOR.Secondary
         {
             base.FixedUpdate();
 
-            if (base.characterBody)
-            {
-                base.characterBody.SetAimTimer(3f);
-            }
+            charge += Time.deltaTime * this.attackSpeedStat;
 
-            if (base.fixedAge > this.minDuration && charge < chargeDuration)
+            if (chargeLevel < ChargeCannon.maxChargeLevel && charge > baseDuration)
             {
-                if (!startedChargeAnim)
+                chargeLevel++;
+                string soundString = ChargeCannon.partialChargeSoundString;
+                GameObject effectPrefab = ChargeCannon.partialChargeEffect;
+                if (chargeLevel >= ChargeCannon.maxChargeLevel)
                 {
-                    startedChargeAnim = true;
-                    base.PlayCrossfade("Gesture, Override", "ChargeHammer", "ChargeHammer.playbackRate", (this.chargeDuration - this.minDuration), 0.2f);
+                    soundString = ChargeCannon.fullChargeSoundString;
+                    effectPrefab = ChargeCannon.fullChargeEffect;
                 }
-
-                charge += Time.deltaTime * this.attackSpeedStat;
-                //if (charge >= chargeDuration)
-                //{
-                    base.PlayCrossfade("Gesture, Override", "ChargeHammerHold", "ChargeHammer.playbackRate", 0.6f, 0.05f);
-                    Util.PlaySound("Play_HOC_StartPunch", base.gameObject);
-                    charge = chargeDuration;
-                    EffectManager.SpawnEffect(chargeEffectPrefab, new EffectData
-                    {
-                        origin = base.transform.position
-                    }, false);
-                //}
-                chargePercent = Mathf.Max(0f, (charge - baseMinDuration) / (baseChargeDuration - baseMinDuration));
+                Util.PlaySound(soundString, base.gameObject);
+                //EffectManager.SimpleMuzzleFlash(effectPrefab, base.gameObject, "HandL", false);
+                EffectManager.SimpleMuzzleFlash(effectPrefab, base.gameObject, "HandL", false);
+                charge -= baseDuration;
             }
 
-            if (base.fixedAge >= this.minDuration)
+            if (base.isAuthority)
             {
-                //bool hasHammer = base.skillLocator && base.skillLocator.primary && base.skillLocator.primary.skillDef == HANDMod.Content.HANDSurvivor.SkillDefs.PrimaryHammer;
-                if (base.isAuthority && (base.inputBank && !base.inputBank.skill2.down))// || hasHammer
+                if (!base.inputBank || !base.inputBank.skill2.down)
                 {
-                    /*if (hasHammer)
+                    if (chargeLevel > 0)
                     {
-                        chargePercent = 1f;
-                    }*/
-                    SetNextState();
-                    return;
+                        SetNextState();
+                        return;
+                    }
+                    else
+                    {
+                        this.outer.SetNextStateToMain();
+                    }
                 }
             }
+        }
+
+        public virtual void ModifyStats() { }
+
+        public override InterruptPriority GetMinimumInterruptPriority()
+        {
+            return InterruptPriority.Skill;
         }
 
         public virtual void SetNextState()
         {
-            this.outer.SetNextState(new FireCannon() { chargeLevel = (int)chargePercent });
+            this.outer.SetNextState(new FireCannon() { chargeLevel = this.chargeLevel });
         }
-
-        public override InterruptPriority GetMinimumInterruptPriority()
-        {
-            return InterruptPriority.PrioritySkill;
-        }
-
-        public static float baseMinDuration = 0.5f;
-        public static float baseChargeDuration = 1.5f;
-        private float minDuration;
-        private float chargeDuration;
-        private float charge;
-        public float chargePercent;
-        private Animator modelAnimator;
-        public static GameObject chargeEffectPrefab = LegacyResourcesAPI.Load<GameObject>("prefabs/effects/omnieffect/OmniImpactVFXLoader");
-        private bool startedChargeAnim = false;
-
-        private HammerVisibilityController hammerController;
-
-        public static GameObject holdChargeVfxPrefab = EntityStates.Toolbot.ChargeSpear.holdChargeVfxPrefab;
-        private GameObject holdChargeVfxGameObject = null;
     }
 }

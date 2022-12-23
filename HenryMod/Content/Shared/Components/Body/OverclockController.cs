@@ -3,7 +3,7 @@ using RoR2.Skills;
 using UnityEngine;
 using UnityEngine.Networking;
 
-namespace HANDMod.Content.Shared.Components.Body
+namespace RMORMod.Content.Shared.Components.Body
 {
     public class OverclockController : MonoBehaviour
     {

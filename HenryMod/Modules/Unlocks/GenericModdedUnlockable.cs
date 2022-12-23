@@ -3,7 +3,7 @@ using System;
 using UnityEngine;
 using R2API;
 
-namespace HANDMod.Modules
+namespace RMORMod.Modules
 {
     public abstract class GenericModdedUnlockable : ModdedUnlockable
     {

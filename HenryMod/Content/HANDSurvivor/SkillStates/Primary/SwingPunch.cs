@@ -1,12 +1,12 @@
-﻿using HANDMod.Content.HANDSurvivor;
-using HANDMod.Content.HANDSurvivor.Components.Body;
-using HANDMod.SkillStates.BaseStates;
+﻿using RMORMod.Content.HANDSurvivor;
+using RMORMod.Content.HANDSurvivor.Components.Body;
+using RMORMod.SkillStates.BaseStates;
 using RoR2;
 using R2API;
 using UnityEngine;
-using HANDMod.Content;
-using HANDMod.Content.Shared.Components.Body;
-using HANDMod;
+using RMORMod.Content;
+using RMORMod.Content.Shared.Components.Body;
+using RMORMod;
 using HAND_Overclocked.Content.Shared.Components.Body;
 
 namespace EntityStates.HAND_Overclocked.Primary
@@ -79,7 +79,7 @@ namespace EntityStates.HAND_Overclocked.Primary
             this.swingEffectPrefab = SwingPunch.swingEffect;
             if (base.characterBody)
             {
-                if (SwingPunch.swingEffectFocus && base.characterBody.HasBuff(HANDMod.Content.Shared.Buffs.NemesisFocus))
+                if (SwingPunch.swingEffectFocus && base.characterBody.HasBuff(RMORMod.Content.Shared.Buffs.NemesisFocus))
                 {
                     this.swingEffectPrefab = SwingPunch.swingEffectFocus;
                 }
@@ -118,7 +118,7 @@ namespace EntityStates.HAND_Overclocked.Primary
                 this.attack.AddModdedDamageType(DamageTypes.HANDPrimaryPunch);
                 this.attack.AddModdedDamageType(DamageTypes.ResetVictimForce);
 
-                if (base.characterBody && base.characterBody.HasBuff(HANDMod.Content.Shared.Buffs.NemesisFocus))
+                if (base.characterBody && base.characterBody.HasBuff(RMORMod.Content.Shared.Buffs.NemesisFocus))
                 {
                     this.attack.damageColorIndex = DamageColorIndex.Sniper;
                 }
@@ -139,7 +139,7 @@ namespace EntityStates.HAND_Overclocked.Primary
             {
                 this.damageStat = base.characterBody.damage;
 
-                if (base.characterBody.HasBuff(HANDMod.Content.Shared.Buffs.NemesisFocus))
+                if (base.characterBody.HasBuff(RMORMod.Content.Shared.Buffs.NemesisFocus))
                 {
                     this.swingEffectPrefab = SwingPunch.swingEffectFocus;
                     this.attack.damageColorIndex = DamageColorIndex.Sniper;

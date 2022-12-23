@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 using RoR2;
-using HANDMod.SkillStates.BaseStates;
-using HANDMod.Content.HANDSurvivor.Components.Body;
+using RMORMod.SkillStates.BaseStates;
+using RMORMod.Content.HANDSurvivor.Components.Body;
 using R2API;
-using HANDMod.Content.HANDSurvivor;
-using HANDMod.Content;
-using HANDMod.Content.Shared.Components.Body;
+using RMORMod.Content.HANDSurvivor;
+using RMORMod.Content;
+using RMORMod.Content.Shared.Components.Body;
 using HAND_Overclocked.Content.Shared.Components.Body;
 
 namespace EntityStates.HAND_Overclocked.Secondary
@@ -105,7 +105,7 @@ namespace EntityStates.HAND_Overclocked.Secondary
             {
                 ModifyDamageTypes();
 
-                if (base.characterBody && base.characterBody.HasBuff(HANDMod.Content.Shared.Buffs.NemesisFocus))
+                if (base.characterBody && base.characterBody.HasBuff(RMORMod.Content.Shared.Buffs.NemesisFocus))
                 {
                     this.attack.damageColorIndex = DamageColorIndex.Sniper;
                 }
@@ -158,7 +158,7 @@ namespace EntityStates.HAND_Overclocked.Secondary
             Util.PlaySound("Play_parent_attack1_slam", base.gameObject);
             Util.PlaySound("Play_UI_podImpact", base.gameObject);
 
-            if (base.characterBody && base.characterBody.HasBuff(HANDMod.Content.Shared.Buffs.NemesisFocus))
+            if (base.characterBody && base.characterBody.HasBuff(RMORMod.Content.Shared.Buffs.NemesisFocus))
             {
                 Util.PlaySound("Play_HOC_Focus", base.gameObject);
             }

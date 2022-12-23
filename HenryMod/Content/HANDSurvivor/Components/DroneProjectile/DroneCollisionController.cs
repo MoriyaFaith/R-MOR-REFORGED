@@ -3,7 +3,7 @@ using RoR2.Projectile;
 using UnityEngine;
 using UnityEngine.Networking;
 
-namespace HANDMod.Content.HANDSurvivor.Components.DroneProjectile
+namespace RMORMod.Content.HANDSurvivor.Components.DroneProjectile
 {
     public class DroneCollisionController : MonoBehaviour
     {

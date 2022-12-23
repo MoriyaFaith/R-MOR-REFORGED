@@ -33,12 +33,93 @@ ModelImporter:
   - first:
       74: 9128317643362564477
     second: Armature|PunchLHang
+  - first:
+      74: -8945691123924629249
+    second: Armature|Idle
+  - first:
+      74: 908895126625364933
+    second: Armature|PunchFast
+  - first:
+      74: -6261248477106208685
+    second: Armature|PunchL
+  - first:
+      74: -4281082018218880012
+    second: Armature|IdleIn
+  - first:
+      74: -8030209418533159416
+    second: Armature|M2SlamNH
+  - first:
+      74: 1138058251333943779
+    second: Armature|Ascend
+  - first:
+      74: -5392195937436897604
+    second: Armature|Descend
+  - first:
+      74: -4476686389971139756
+    second: Armature|Emote1
+  - first:
+      74: 2702412570793667854
+    second: Armature|Emote2
+  - first:
+      74: 1079665108409675491
+    second: Armature|Jump
+  - first:
+      74: 9218157010744241517
+    second: Armature|Landing
+  - first:
+      74: 5362157535436554004
+    second: Armature|M2Charge
+  - first:
+      74: 2677152976354664939
+    second: Armature|M2Shake
+  - first:
+      74: -1463059131798192532
+    second: Armature|M2Slam
+  - first:
+      74: 2417216379723308148
+    second: Armature|M2SlamH
+  - first:
+      74: -6811980191856404238
+    second: Armature|M2Start
+  - first:
+      74: 2654675839126788622
+    second: Armature|M2StartH
+  - first:
+      74: -6152047181104185813
+    second: Armature|PunchLR
+  - first:
+      74: -8411290598952450958
+    second: Armature|PunchR
+  - first:
+      74: -963838404660705772
+    second: Armature|PunchRHang
+  - first:
+      74: 976535723279216135
+    second: Armature|PunchRL
+  - first:
+      74: 9115115818954613908
+    second: Armature|RunB
+  - first:
+      74: -3692564187089589101
+    second: Armature|RunF
+  - first:
+      74: -8651651518101165635
+    second: Armature|RunL
+  - first:
+      74: -7304068189903988303
+    second: Armature|RunR
+  - first:
+      74: -3112965366749432192
+    second: Armature|Sprint
+  - first:
+      74: 3741975146168832115
+    second: Armature|Pitch
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: RMor
-    second: {fileID: 2100000, guid: ccf26d302898edc45bb47505d4d42f39, type: 2}
+    second: {fileID: 2100000, guid: 65e0a021274c8674da1210d9a39d9214, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
