@@ -6,7 +6,7 @@ using RMORMod.Content.HANDSurvivor.Components.Body;
 using RMORMod.Modules;
 using RMORMod.Content.Shared.Components.Body;
 
-namespace EntityStates.HAND_Overclocked.Emotes
+namespace EntityStates.HAND_Junked.Emotes
 {
     public class HANDEmotes : BaseState
     {

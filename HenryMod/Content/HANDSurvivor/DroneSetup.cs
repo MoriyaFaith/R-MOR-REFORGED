@@ -2,7 +2,7 @@
 using UnityEngine;
 using RoR2.Projectile;
 using R2API;
-using EntityStates.HAND_Overclocked.Special;
+using EntityStates.HAND_Junked.Special;
 using EntityStates.RMOR.Primary;
 using EntityStates.RMOR.Secondary;
 using EntityStates.RMOR.Special;

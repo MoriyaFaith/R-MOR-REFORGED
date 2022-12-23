@@ -1,9 +1,9 @@
-﻿using EntityStates.HAND_Overclocked.Emotes;
+﻿using EntityStates.HAND_Junked.Emotes;
 using RMORMod.Modules;
 using RoR2;
 using UnityEngine;
 
-namespace EntityStates.HAND_Overclocked
+namespace EntityStates.HAND_Junked
 {
     public class HANDMainState : GenericCharacterMain
     {

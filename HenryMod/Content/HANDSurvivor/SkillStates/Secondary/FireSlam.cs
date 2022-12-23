@@ -6,9 +6,9 @@ using R2API;
 using RMORMod.Content.HANDSurvivor;
 using RMORMod.Content;
 using RMORMod.Content.Shared.Components.Body;
-using HAND_Overclocked.Content.Shared.Components.Body;
+using HAND_Junked.Content.Shared.Components.Body;
 
-namespace EntityStates.HAND_Overclocked.Secondary
+namespace EntityStates.HAND_Junked.Secondary
 {
     public class FireSlam : BaseMeleeAttack
     {

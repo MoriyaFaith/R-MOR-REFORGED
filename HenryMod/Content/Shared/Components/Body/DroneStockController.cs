@@ -7,7 +7,7 @@ using RMORMod.Content.HANDSurvivor.Components.Master;
 using RMORMod.Content.RMORSurvivor;
 using RMORMod.Content.HANDSurvivor;
 
-namespace HAND_Overclocked.Content.Shared.Components.Body
+namespace HAND_Junked.Content.Shared.Components.Body
 {
     public class DroneStockController : NetworkBehaviour, IOnKilledOtherServerReceiver
     {

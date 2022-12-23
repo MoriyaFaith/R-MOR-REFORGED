@@ -3,7 +3,7 @@ using RMORMod.Content.HANDSurvivor.Components.Body;
 using RoR2;
 using UnityEngine;
 
-namespace EntityStates.HAND_Overclocked.Secondary
+namespace EntityStates.HAND_Junked.Secondary
 {
     public class ChargeSlam : BaseState
     {

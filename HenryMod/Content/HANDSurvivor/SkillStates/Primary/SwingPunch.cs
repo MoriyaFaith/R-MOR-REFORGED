@@ -7,11 +7,11 @@ using UnityEngine;
 using RMORMod.Content;
 using RMORMod.Content.Shared.Components.Body;
 using RMORMod;
-using HAND_Overclocked.Content.Shared.Components.Body;
+using HAND_Junked.Content.Shared.Components.Body;
 
-namespace EntityStates.HAND_Overclocked.Primary
+namespace EntityStates.HAND_Junked.Primary
 {
-    public class SwingPunch : BaseMeleeAttack
+    public class SwingStab : BaseMeleeAttack
     {
         public static NetworkSoundEventDef networkHitSound = null;
         public static GameObject swingEffect = null;
@@ -42,7 +42,7 @@ namespace EntityStates.HAND_Overclocked.Primary
 
             this.muzzleString = swingIndex == 1 ? "MuzzleHandL" : "MuzzleHandR";    //Anim names are reversed. This is correct.
             //this.hitEffectPrefab = SwingPunch.hitEffect;  //Why does this play the DRONE sound?
-            if(SwingPunch.networkHitSound != null) this.impactSound = networkHitSound.index;
+            if(SwingStab.networkHitSound != null) this.impactSound = networkHitSound.index;
 
             this.damageType = DamageType.Generic;
             this.hitHopVelocity = 8f;
@@ -62,7 +62,7 @@ namespace EntityStates.HAND_Overclocked.Primary
             Vector3 aimFlat = base.GetAimRay().direction;
             aimFlat.y = 0;
             aimFlat.Normalize();
-            this.bonusForce = SwingPunch.force * aimFlat;
+            this.bonusForce = SwingStab.force * aimFlat;
             this.forceForwardVelocity = true;
             this.forwardVelocityCurve = swingCurve;
 
@@ -76,12 +76,12 @@ namespace EntityStates.HAND_Overclocked.Primary
             Animator an = base.GetModelAnimator();
             if (an) an.SetFloat("hammerIdle", 0f);
             
-            this.swingEffectPrefab = SwingPunch.swingEffect;
+            this.swingEffectPrefab = SwingStab.swingEffect;
             if (base.characterBody)
             {
-                if (SwingPunch.swingEffectFocus && base.characterBody.HasBuff(RMORMod.Content.Shared.Buffs.NemesisFocus))
+                if (SwingStab.swingEffectFocus && base.characterBody.HasBuff(RMORMod.Content.Shared.Buffs.NemesisFocus))
                 {
-                    this.swingEffectPrefab = SwingPunch.swingEffectFocus;
+                    this.swingEffectPrefab = SwingStab.swingEffectFocus;
                 }
                 if (!HandPlugin.ArenaModeActive && hasOVC && this.swingIndex == 1)
                 {
@@ -132,7 +132,7 @@ namespace EntityStates.HAND_Overclocked.Primary
             aimFlat.Normalize();
             if (this.attack != null)
             {
-                this.attack.forceVector = SwingPunch.force * aimFlat;
+                this.attack.forceVector = SwingStab.force * aimFlat;
             }
 
             if (base.characterBody)
@@ -141,12 +141,12 @@ namespace EntityStates.HAND_Overclocked.Primary
 
                 if (base.characterBody.HasBuff(RMORMod.Content.Shared.Buffs.NemesisFocus))
                 {
-                    this.swingEffectPrefab = SwingPunch.swingEffectFocus;
+                    this.swingEffectPrefab = SwingStab.swingEffectFocus;
                     this.attack.damageColorIndex = DamageColorIndex.Sniper;
                 }
                 else
                 {
-                    this.swingEffectPrefab = SwingPunch.swingEffect;
+                    this.swingEffectPrefab = SwingStab.swingEffect;
                     this.attack.damageColorIndex = DamageColorIndex.Default;
                 }
             }
@@ -162,7 +162,7 @@ namespace EntityStates.HAND_Overclocked.Primary
                 se.transform.parent = base.transform;
             }
 
-            if (this.swingEffectPrefab == SwingPunch.swingEffectFocus)
+            if (this.swingEffectPrefab == SwingStab.swingEffectFocus)
             {
                 Util.PlaySound("Play_HOC_Focus", base.gameObject);
             }
@@ -243,7 +243,7 @@ namespace EntityStates.HAND_Overclocked.Primary
             //1 - PunchLR
             //2 - PunchRL
             setNextState = true;
-            this.outer.SetNextState(new SwingPunch
+            this.outer.SetNextState(new SwingStab
             {
                 swingIndex = index
             });

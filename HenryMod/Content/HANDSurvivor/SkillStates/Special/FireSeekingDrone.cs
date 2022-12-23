@@ -4,7 +4,7 @@ using RoR2;
 using RoR2.Projectile;
 using UnityEngine;
 
-namespace EntityStates.HAND_Overclocked.Special
+namespace EntityStates.HAND_Junked.Special
 {
     public class FireSeekingDrone : BaseState
     {

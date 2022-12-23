@@ -5,6 +5,7 @@ namespace RMORMod.Content.RMORSurvivor
     public static class Skilldefs
     {
         public static SkillDef PrimaryCannon;
+        public static SkillDef PrimaryStab;
         public static SkillDef SecondaryChargeCannon;
         public static SkillDef SecondaryChargeCannonScepter;
         public static SkillDef SecondaryChargeHammer;

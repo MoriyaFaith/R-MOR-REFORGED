@@ -2,7 +2,7 @@
 using RoR2.Achievements;
 using UnityEngine;
 
-namespace HAND_Overclocked.Content.HANDSurvivor.Achievements
+namespace HAND_Junked.Content.HANDSurvivor.Achievements
 {
 	[RegisterAchievement("MoffeinHANDOverclockedSurvivorUnlock", "Characters.HANDOverclocked", null, typeof(HANDOverclockedSurvivorUnlockServerAchievement))]
 	public class HANDOverclockedSurvivorUnlockAchievement : BaseAchievement
@@ -23,10 +23,10 @@ namespace HAND_Overclocked.Content.HANDSurvivor.Achievements
 			public override void OnInstall()
 			{
 				base.OnInstall();
-                EntityStates.HAND_Overclocked.BrokenJanitor.BrokenJanitorMain.onBrokenJanitorPurchaseGlobal += onPurchasedJanitor;
+                EntityStates.HAND_Junked.BrokenJanitor.BrokenJanitorMain.onBrokenJanitorPurchaseGlobal += onPurchasedJanitor;
 			}
 
-            private void onPurchasedJanitor(EntityStates.HAND_Overclocked.BrokenJanitor.BrokenJanitorMain state)
+            private void onPurchasedJanitor(EntityStates.HAND_Junked.BrokenJanitor.BrokenJanitorMain state)
 			{
 				CharacterBody currentBody = this.serverAchievementTracker.networkUser.GetCurrentBody();
 				if (currentBody && currentBody.GetComponent<Interactor>() == state.activator)
@@ -37,7 +37,7 @@ namespace HAND_Overclocked.Content.HANDSurvivor.Achievements
 
             public override void OnUninstall()
 			{
-				EntityStates.HAND_Overclocked.BrokenJanitor.BrokenJanitorMain.onBrokenJanitorPurchaseGlobal -= onPurchasedJanitor;
+				EntityStates.HAND_Junked.BrokenJanitor.BrokenJanitorMain.onBrokenJanitorPurchaseGlobal -= onPurchasedJanitor;
 				base.OnInstall();
 			}
 		}

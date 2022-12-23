@@ -23,8 +23,8 @@ namespace RMORMod.Content.HANDSurvivor.CharacterUnlock
             if (initialized) return;
             initialized = true;
 
-            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HAND_Overclocked.BrokenJanitor.BrokenJanitorMain));
-            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HAND_Overclocked.BrokenJanitor.BrokenJanitorActivate));
+            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HAND_Junked.BrokenJanitor.BrokenJanitorMain));
+            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HAND_Junked.BrokenJanitor.BrokenJanitorActivate));
 
             interactablePrefab = BuildPrefab();
             repairPrefab = BuildRepairPrefab();
@@ -89,7 +89,7 @@ namespace RMORMod.Content.HANDSurvivor.CharacterUnlock
             ml.modelTransform = gameObject.transform;
 
             EntityStateMachine esm = gameObject.AddComponent<EntityStateMachine>();
-            esm.mainStateType = new EntityStates.SerializableEntityStateType(typeof(EntityStates.HAND_Overclocked.BrokenJanitor.BrokenJanitorMain));
+            esm.mainStateType = new EntityStates.SerializableEntityStateType(typeof(EntityStates.HAND_Junked.BrokenJanitor.BrokenJanitorMain));
             esm.initialStateType = esm.mainStateType;
 
             NetworkStateMachine nsm = gameObject.AddComponent<NetworkStateMachine>();
@@ -151,7 +151,7 @@ namespace RMORMod.Content.HANDSurvivor.CharacterUnlock
             hl.hologramPivot = cl.FindChild("HologramPivot");
 
             EntityStateMachine esm = gameObject.AddComponent<EntityStateMachine>();
-            esm.mainStateType = new EntityStates.SerializableEntityStateType(typeof(EntityStates.HAND_Overclocked.BrokenJanitor.BrokenJanitorMain));
+            esm.mainStateType = new EntityStates.SerializableEntityStateType(typeof(EntityStates.HAND_Junked.BrokenJanitor.BrokenJanitorMain));
             esm.initialStateType = esm.mainStateType;
 
             NetworkStateMachine nsm = gameObject.AddComponent<NetworkStateMachine>();
@@ -235,7 +235,7 @@ namespace RMORMod.Content.HANDSurvivor.CharacterUnlock
     }
 }
 
-namespace EntityStates.HAND_Overclocked.BrokenJanitor
+namespace EntityStates.HAND_Junked.BrokenJanitor
 {
     public class BrokenJanitorMain : BaseState
     {

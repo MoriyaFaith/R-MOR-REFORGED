@@ -1,5 +1,5 @@
 ﻿using BepInEx;
-using HAND_Overclocked.Content.Shared.Components.Body;
+using HAND_Junked.Content.Shared.Components.Body;
 using RMORMod.Content.HANDSurvivor;
 using RMORMod.Content.RMORSurvivor;
 using R2API.Utils;

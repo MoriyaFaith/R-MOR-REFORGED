@@ -1,7 +1,7 @@
 ﻿using RMORMod.Content;
 using R2API;
 
-namespace EntityStates.HAND_Overclocked.Secondary
+namespace EntityStates.HAND_Junked.Secondary
 {
     public class FireSlamScepter : FireSlam
     {

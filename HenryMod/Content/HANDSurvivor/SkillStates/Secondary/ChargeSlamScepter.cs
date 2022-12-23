@@ -1,4 +1,4 @@
-﻿namespace EntityStates.HAND_Overclocked.Secondary
+﻿namespace EntityStates.HAND_Junked.Secondary
 {
     public class ChargeSlamScepter : ChargeSlam
     {

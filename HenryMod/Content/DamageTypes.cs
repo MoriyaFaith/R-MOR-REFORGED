@@ -111,7 +111,7 @@ namespace RMORMod.Content
                     }
 
                     //Plays the DRONE sound when spawned via BaseMeleeAttack hitEffectPrefab for some reason.
-                    EffectManager.SimpleEffect(EntityStates.HAND_Overclocked.Primary.SwingPunch.hitEffect, damageInfo.position, default, true);
+                    EffectManager.SimpleEffect(EntityStates.HAND_Junked.Primary.SwingStab.hitEffect, damageInfo.position, default, true);
                 }
 
                 //Make sure this doesn't stack with punch damagetype.
@@ -145,7 +145,7 @@ namespace RMORMod.Content
                         }
 
                         //Plays the DRONE sound when spawned via BaseMeleeAttack hitEffectPrefab for some reason.
-                        EffectManager.SimpleEffect(EntityStates.HAND_Overclocked.Primary.SwingHammer.hitEffect, damageInfo.position, default, true);
+                        EffectManager.SimpleEffect(EntityStates.HAND_Junked.Primary.SwingHammer.hitEffect, damageInfo.position, default, true);
                     }
 
                     if (cb.rigidbody)
@@ -184,7 +184,7 @@ namespace RMORMod.Content
                     }
 
                     //Plays the DRONE sound when spawned via BaseMeleeAttack hitEffectPrefab for some reason.
-                    EffectManager.SimpleEffect(EntityStates.HAND_Overclocked.Secondary.FireSlam.hitEffect, damageInfo.position, default, true);
+                    EffectManager.SimpleEffect(EntityStates.HAND_Junked.Secondary.FireSlam.hitEffect, damageInfo.position, default, true);
                 }
             }
             orig(self, damageInfo);

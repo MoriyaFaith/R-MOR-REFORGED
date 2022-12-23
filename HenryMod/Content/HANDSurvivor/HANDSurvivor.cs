@@ -15,7 +15,7 @@ using System.Linq;
 using R2API;
 using System.Runtime.CompilerServices;
 using RMORMod.Content.HANDSurvivor.CharacterUnlock;
-using HAND_Overclocked.Content.Shared.Components.Body;
+using HAND_Junked.Content.Shared.Components.Body;
 
 namespace RMORMod.Content.HANDSurvivor
 {
@@ -88,7 +88,7 @@ namespace RMORMod.Content.HANDSurvivor
             return survivorUnlock;
         }
 
-        public override Type characterMainState => typeof(EntityStates.HAND_Overclocked.HANDMainState);
+        public override Type characterMainState => typeof(EntityStates.HAND_Junked.HANDMainState);
 
         protected override void InitializeDisplayPrefab()
         {
@@ -157,12 +157,12 @@ namespace RMORMod.Content.HANDSurvivor
             Content.HANDSurvivor.Buffs.Init();
 
             Material matDefault = Addressables.LoadAssetAsync<Material>("RoR2/Base/Lemurian/matLizardBiteTrail.mat").WaitForCompletion();
-            EntityStates.HAND_Overclocked.Primary.SwingHammer.swingEffect = CreateSwingVFX("RMORMod_SwingHammerEffect", 1.5f * Vector3.one, matDefault);
-            EntityStates.HAND_Overclocked.Primary.SwingPunch.swingEffect = CreateSwingVFX("RMORMod_SwingPunchEffect", new Vector3(0.25f, 2f, 0.7f), matDefault);
+            EntityStates.HAND_Junked.Primary.SwingHammer.swingEffect = CreateSwingVFX("RMORMod_SwingHammerEffect", 1.5f * Vector3.one, matDefault);
+            EntityStates.HAND_Junked.Primary.SwingStab.swingEffect = CreateSwingVFX("RMORMod_SwingPunchEffect", new Vector3(0.25f, 2f, 0.7f), matDefault);
 
             Material matFocus = Addressables.LoadAssetAsync<Material>("RoR2/Base/Imp/matImpSwipe.mat").WaitForCompletion();
-            EntityStates.HAND_Overclocked.Primary.SwingHammer.swingEffectFocus = CreateSwingVFX("RMORMod_SwingHammerFocusEffect", 1.5f * Vector3.one, matFocus);
-            EntityStates.HAND_Overclocked.Primary.SwingPunch.swingEffectFocus = CreateSwingVFX("RMORMod_SwingPunchFocusEffect", new Vector3(0.25f, 2f, 0.7f), matFocus);
+            EntityStates.HAND_Junked.Primary.SwingHammer.swingEffectFocus = CreateSwingVFX("RMORMod_SwingHammerFocusEffect", 1.5f * Vector3.one, matFocus);
+            EntityStates.HAND_Junked.Primary.SwingStab.swingEffectFocus = CreateSwingVFX("RMORMod_SwingPunchFocusEffect", new Vector3(0.25f, 2f, 0.7f), matFocus);
 
             BrokenJanitorInteractable.Initialize();
             if (Modules.Config.allowPlayerRepair)
@@ -195,7 +195,7 @@ namespace RMORMod.Content.HANDSurvivor
         private void InitializePrimarySkills()
         {
             SkillDef primarySkill = SkillDef.CreateInstance<SkillDef>();
-            primarySkill.activationState = new SerializableEntityStateType(typeof(EntityStates.HAND_Overclocked.Primary.SwingPunch));
+            primarySkill.activationState = new SerializableEntityStateType(typeof(EntityStates.HAND_Junked.Primary.SwingStab));
             primarySkill.skillNameToken = HAND_PREFIX + "PRIMARY_NAME";
             primarySkill.skillName = "SwingPunch";
             primarySkill.skillDescriptionToken = HAND_PREFIX + "PRIMARY_DESC";
@@ -217,11 +217,11 @@ namespace RMORMod.Content.HANDSurvivor
             Modules.ContentPacks.skillDefs.Add(primarySkill);
             SkillDefs.PrimaryPunch = primarySkill;
 
-            EntityStates.HAND_Overclocked.Primary.SwingPunch.swingCurve.preWrapMode = UnityEngine.WrapMode.ClampForever;
-            EntityStates.HAND_Overclocked.Primary.SwingPunch.swingCurve.postWrapMode = UnityEngine.WrapMode.ClampForever;
+            EntityStates.HAND_Junked.Primary.SwingStab.swingCurve.preWrapMode = UnityEngine.WrapMode.ClampForever;
+            EntityStates.HAND_Junked.Primary.SwingStab.swingCurve.postWrapMode = UnityEngine.WrapMode.ClampForever;
 
             SkillDef primaryHammerSkill = SkillDef.CreateInstance<SkillDef>();
-            primaryHammerSkill.activationState = new SerializableEntityStateType(typeof(EntityStates.HAND_Overclocked.Primary.SwingHammer));
+            primaryHammerSkill.activationState = new SerializableEntityStateType(typeof(EntityStates.HAND_Junked.Primary.SwingHammer));
             primaryHammerSkill.skillNameToken = HAND_PREFIX + "PRIMARY_HAMMER_NAME";
             primaryHammerSkill.skillName = "SwingHammer";
             primaryHammerSkill.skillDescriptionToken = HAND_PREFIX + "PRIMARY_HAMMER_DESC";
@@ -257,7 +257,7 @@ namespace RMORMod.Content.HANDSurvivor
         private void InitializeSecondarySkills()
         {
             SkillDef secondarySkill = SkillDef.CreateInstance<SkillDef>();
-            secondarySkill.activationState = new SerializableEntityStateType(typeof(EntityStates.HAND_Overclocked.Secondary.ChargeSlam));
+            secondarySkill.activationState = new SerializableEntityStateType(typeof(EntityStates.HAND_Junked.Secondary.ChargeSlam));
             secondarySkill.skillNameToken = HANDSurvivor.HAND_PREFIX + "SECONDARY_NAME";
             secondarySkill.skillName = "ChargeSlam";
             secondarySkill.skillDescriptionToken = HANDSurvivor.HAND_PREFIX + "SECONDARY_DESC";
@@ -314,7 +314,7 @@ namespace RMORMod.Content.HANDSurvivor
 
             //DroneSkillDef too restrictive, but it's there if it's needed.
             SkillDef droneSkill = SkillDef.CreateInstance<SkillDef>();
-            droneSkill.activationState = new SerializableEntityStateType(typeof(EntityStates.HAND_Overclocked.Special.FireSeekingDrone));
+            droneSkill.activationState = new SerializableEntityStateType(typeof(EntityStates.HAND_Junked.Special.FireSeekingDrone));
             droneSkill.skillNameToken = HANDSurvivor.HAND_PREFIX + "SPECIAL_NAME";
             droneSkill.skillName = "Drones";
             droneSkill.skillDescriptionToken = HANDSurvivor.HAND_PREFIX + "SPECIAL_DESC";
@@ -343,7 +343,7 @@ namespace RMORMod.Content.HANDSurvivor
         private void InitializeScepterSkills()
         {
             SkillDef scepterSkill = SkillDef.CreateInstance<SkillDef>();
-            scepterSkill.activationState = new SerializableEntityStateType(typeof(EntityStates.HAND_Overclocked.Secondary.ChargeSlamScepter));
+            scepterSkill.activationState = new SerializableEntityStateType(typeof(EntityStates.HAND_Junked.Secondary.ChargeSlamScepter));
             scepterSkill.skillNameToken = HANDSurvivor.HAND_PREFIX + "SECONDARY_SCEPTER_NAME";
             scepterSkill.skillName = "ChargeSlamScepter";
             scepterSkill.skillDescriptionToken = HANDSurvivor.HAND_PREFIX + "SECONDARY_SCEPTER_DESC";
@@ -463,7 +463,7 @@ namespace RMORMod.Content.HANDSurvivor
                     {
                         new SkinDef.ProjectileGhostReplacement
                         {
-                            projectilePrefab = EntityStates.HAND_Overclocked.Special.FireSeekingDrone.projectilePrefab,
+                            projectilePrefab = EntityStates.HAND_Junked.Special.FireSeekingDrone.projectilePrefab,
                             projectileGhostReplacementPrefab = CreateProjectileGhostReplacementPrefab(skin),
                         }
                     };
@@ -540,25 +540,25 @@ namespace RMORMod.Content.HANDSurvivor
         private void RegisterStates()
         {
 
-            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HAND_Overclocked.HANDMainState));
-            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HAND_Overclocked.Emotes.Sit));
-            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HAND_Overclocked.Emotes.Spin));
-            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HAND_Overclocked.Emotes.MenuPose));
+            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HAND_Junked.HANDMainState));
+            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HAND_Junked.Emotes.Sit));
+            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HAND_Junked.Emotes.Spin));
+            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HAND_Junked.Emotes.MenuPose));
 
-            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HAND_Overclocked.Primary.SwingPunch));
-            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HAND_Overclocked.Primary.SwingHammer));
+            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HAND_Junked.Primary.SwingStab));
+            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HAND_Junked.Primary.SwingHammer));
 
-            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HAND_Overclocked.Secondary.ChargeSlam));
-            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HAND_Overclocked.Secondary.FireSlam));
+            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HAND_Junked.Secondary.ChargeSlam));
+            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HAND_Junked.Secondary.FireSlam));
 
-            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HAND_Overclocked.Secondary.ChargeSlamScepter));
-            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HAND_Overclocked.Secondary.FireSlamScepter));
+            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HAND_Junked.Secondary.ChargeSlamScepter));
+            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HAND_Junked.Secondary.FireSlamScepter));
 
             Modules.ContentPacks.entityStates.Add(typeof(EntityStates.RMOR.Utility.BeginOverclock));
             Modules.ContentPacks.entityStates.Add(typeof(EntityStates.RMOR.Utility.CancelOverclock));
             Modules.ContentPacks.entityStates.Add(typeof(EntityStates.RMOR.Utility.BeginFocus));
 
-            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HAND_Overclocked.Special.FireSeekingDrone));
+            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HAND_Junked.Special.FireSeekingDrone));
         }
 
         private GameObject CreateSwingVFX(string name, Vector3 scale, Material material)

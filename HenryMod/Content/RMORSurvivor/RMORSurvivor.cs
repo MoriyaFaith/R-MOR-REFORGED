@@ -16,7 +16,7 @@ using System.Runtime.CompilerServices;
 using RMORMod.Content.HANDSurvivor.Components.Body;
 using RMORMod.Content.Shared.Components.Body;
 using RMORMod.Content.HANDSurvivor.CharacterUnlock;
-using HAND_Overclocked.Content.Shared.Components.Body;
+using HAND_Junked.Content.Shared.Components.Body;
 using RMORMod.Content.HANDSurvivor;
 
 namespace RMORMod.Content.RMORSurvivor
@@ -99,17 +99,19 @@ namespace RMORMod.Content.RMORSurvivor
             GameObject model = childLocator.gameObject;
             Transform bladeHitboxTransform = childLocator.FindChild("BladeHitbox");
             Prefabs.SetupHitbox(model, "BladeHitbox", new Transform[] { bladeHitboxTransform }); ;
+            Transform stabHitboxTransform = childLocator.FindChild("StabHitbox");
+            Prefabs.SetupHitbox(model, "StabHitbox", new Transform[] { stabHitboxTransform }); ;
 
             AimAnimator aan = model.GetComponent<AimAnimator>();
             aan.yawRangeMin = -180f;
             aan.yawRangeMax = 180f;
             aan.fullYaw = true;
 
-            //Transform chargeHammerHitboxTransform = childLocator.FindChild("ChargeHammerHitbox");
-            //Prefabs.SetupHitbox(model, "ChargeHammerHitbox", new Transform[] { chargeHammerHitboxTransform });
+            Material matDefault = Addressables.LoadAssetAsync<Material>("RoR2/Base/Lemurian/matLizardBiteTrail.mat").WaitForCompletion();
+            EntityStates.RMOR.Primary.SwingStab.swingEffect = CreateSwingVFX("RMORMod_SwingPunchEffect", new Vector3(0.25f, 2f, 0.7f), matDefault);
 
-            //Transform hammerHitboxTransform = childLocator.FindChild("HammerHitbox");
-            //Prefabs.SetupHitbox(model, "HammerHitbox", new Transform[] { hammerHitboxTransform });
+            Material matFocus = Addressables.LoadAssetAsync<Material>("RoR2/Base/Imp/matImpSwipe.mat").WaitForCompletion();
+            EntityStates.RMOR.Primary.SwingStab.swingEffectFocus = CreateSwingVFX("RMORMod_SwingPunchFocusEffect", new Vector3(0.25f, 2f, 0.7f), matFocus);
 
             LoopSoundWhileCharacterMoving ls = bodyPrefab.AddComponent<LoopSoundWhileCharacterMoving>();
             ls.startSoundName = "Play_MULT_move_loop";
@@ -153,7 +155,7 @@ namespace RMORMod.Content.RMORSurvivor
             },
         };
 
-        public override Type characterMainState => typeof(EntityStates.HAND_Overclocked.HANDMainState);
+        public override Type characterMainState => typeof(EntityStates.HAND_Junked.HANDMainState);
 
         public override void InitializeSkills()
         {
@@ -195,8 +197,32 @@ namespace RMORMod.Content.RMORSurvivor
             Modules.ContentPacks.skillDefs.Add(primarySkill);
             Skilldefs.PrimaryCannon = primarySkill;
 
+            SkillDef primaryStabSkill = SkillDef.CreateInstance<SkillDef>();
+            primaryStabSkill.activationState = new SerializableEntityStateType(typeof(EntityStates.RMOR.Primary.SwingStab));
+            primaryStabSkill.skillNameToken = RMOR_PREFIX + "PRIMARY_BLADE_NAME";
+            primaryStabSkill.skillName = "SwingPunch";
+            primaryStabSkill.skillDescriptionToken = RMOR_PREFIX + "PRIMARY_BLADE_DESC";
+            primaryStabSkill.cancelSprintingOnActivation = false;
+            primaryStabSkill.canceledFromSprinting = false;
+            primaryStabSkill.baseRechargeInterval = 0f;
+            primaryStabSkill.baseMaxStock = 1;
+            primaryStabSkill.rechargeStock = 1;
+            primaryStabSkill.beginSkillCooldownOnSkillEnd = false;
+            primaryStabSkill.activationStateMachineName = "Weapon";
+            primaryStabSkill.interruptPriority = EntityStates.InterruptPriority.Any;
+            primaryStabSkill.isCombatSkill = true;
+            primaryStabSkill.mustKeyPress = false;
+            primaryStabSkill.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texPrimaryPunch.png");
+            primaryStabSkill.requiredStock = 1;
+            primaryStabSkill.stockToConsume = 1;
+            primaryStabSkill.keywordTokens = new string[] { "KEYWORD_MORIYARMOR_BLEEDING" };
+            Modules.Skills.FixScriptableObjectName(primaryStabSkill);
+            Modules.ContentPacks.skillDefs.Add(primaryStabSkill);
+            Skilldefs.PrimaryStab = primaryStabSkill;
+
             SkillFamily primarySkillFamily = bodyPrefab.GetComponent<SkillLocator>().primary.skillFamily;
             Skills.AddSkillToFamily(primarySkillFamily, primarySkill);
+            Skills.AddSkillToFamily(primarySkillFamily, primaryStabSkill);
 
         }
         private void InitializeSecondarySkills()
@@ -241,7 +267,7 @@ namespace RMORMod.Content.RMORSurvivor
             secondaryHammerSkill.mustKeyPress = false;
             secondaryHammerSkill.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texSecondary.png");
             secondaryHammerSkill.beginSkillCooldownOnSkillEnd = true;
-            secondaryHammerSkill.keywordTokens = new string[] { "KEYWORD_BLEEDING" };
+            secondaryHammerSkill.keywordTokens = new string[] { "KEYWORD_MORIYARMOR_BLEEDING" };
             Modules.Skills.FixScriptableObjectName(secondaryHammerSkill);
             Modules.ContentPacks.skillDefs.Add(secondaryHammerSkill);
             Skilldefs.SecondaryChargeHammer = secondaryHammerSkill;
@@ -445,7 +471,7 @@ namespace RMORMod.Content.RMORSurvivor
                     {
                         new SkinDef.ProjectileGhostReplacement
                         {
-                            projectilePrefab = EntityStates.HAND_Overclocked.Special.FireSeekingDrone.projectilePrefab,
+                            projectilePrefab = EntityStates.HAND_Junked.Special.FireSeekingDrone.projectilePrefab,
                             projectileGhostReplacementPrefab = CreateProjectileGhostReplacementPrefab(skin),
                         }
                     };
@@ -522,13 +548,13 @@ namespace RMORMod.Content.RMORSurvivor
         private void RegisterStates()
         {
 
-            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HAND_Overclocked.HANDMainState));
-            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HAND_Overclocked.Emotes.Sit));
-            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HAND_Overclocked.Emotes.Spin));
-            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HAND_Overclocked.Emotes.MenuPose));
+            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HAND_Junked.HANDMainState));
+            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HAND_Junked.Emotes.Sit));
+            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HAND_Junked.Emotes.Spin));
+            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HAND_Junked.Emotes.MenuPose));
 
             Modules.ContentPacks.entityStates.Add(typeof(EntityStates.RMOR.Primary.RMORRocket));
-            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HAND_Overclocked.Primary.SwingHammer));
+            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HAND_Junked.Primary.SwingHammer));
 
             Modules.ContentPacks.entityStates.Add(typeof(EntityStates.RMOR.Secondary.ChargeSlam));
             Modules.ContentPacks.entityStates.Add(typeof(EntityStates.RMOR.Secondary.FireSlam));
@@ -544,6 +570,26 @@ namespace RMORMod.Content.RMORSurvivor
             Modules.ContentPacks.entityStates.Add(typeof(EntityStates.RMOR.Utility.BeginFocus));
 
             Modules.ContentPacks.entityStates.Add(typeof(EntityStates.RMOR.Special.LockOn));
+        }
+        private GameObject CreateSwingVFX(string name, Vector3 scale, Material material)
+        {
+            GameObject swingTrail = LegacyResourcesAPI.Load<GameObject>("prefabs/effects/handslamtrail").InstantiateClone(name, false);
+            UnityEngine.Object.Destroy(swingTrail.GetComponent<ShakeEmitter>());
+
+            Transform swingTrailTransform = swingTrail.transform.Find("SlamTrail");
+            swingTrailTransform.localScale = scale;
+
+            ParticleSystemRenderer renderer = swingTrailTransform.GetComponent<ParticleSystemRenderer>();
+
+            Material swingTrailMat = material;
+            if (renderer)
+            {
+                renderer.material = swingTrailMat;
+            }
+
+            Modules.ContentPacks.effectDefs.Add(new EffectDef(swingTrail));
+
+            return swingTrail;
         }
 
         private GameObject CreateSlamEffect()
@@ -573,14 +619,14 @@ namespace RMORMod.Content.RMORSurvivor
             EffectComponent ec = hitEffect.GetComponent<EffectComponent>();
             ec.soundName = "Play_MULT_shift_hit";
             Modules.ContentPacks.effectDefs.Add(new EffectDef(hitEffect));
-            EntityStates.HAND_Overclocked.Primary.SwingPunch.hitEffect = hitEffect;
-            EntityStates.HAND_Overclocked.Primary.SwingHammer.hitEffect = hitEffect;
-            EntityStates.HAND_Overclocked.Secondary.FireSlam.hitEffect = hitEffect;
+            EntityStates.HAND_Junked.Primary.SwingStab.hitEffect = hitEffect;
+            EntityStates.HAND_Junked.Primary.SwingHammer.hitEffect = hitEffect;
+            EntityStates.HAND_Junked.Secondary.FireSlam.hitEffect = hitEffect;
 
 
             /*NetworkSoundEventDef nse = Modules.Assets.CreateNetworkSoundEventDef("Play_MULT_shift_hit");
-            EntityStates.HAND_Overclocked.Primary.SwingFist.networkHitSound = nse;
-            EntityStates.HAND_Overclocked.Secondary.FireSlam.networkHitSound = nse;*/
+            EntityStates.HAND_Junked.Primary.SwingFist.networkHitSound = nse;
+            EntityStates.HAND_Junked.Secondary.FireSlam.networkHitSound = nse;*/
         }
 
         private GameObject BuildOverclockJets()
