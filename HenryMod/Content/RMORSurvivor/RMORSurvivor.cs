@@ -149,7 +149,7 @@ namespace RMORMod.Content.RMORSurvivor
             },
             new CustomRendererInfo {
                 childName = "Drone",
-                material = Materials.CreateHopooMaterial("matDroneBody"),
+                material = Materials.CreateHopooMaterial("matRMORDrone"),
             },
         };
 
@@ -228,29 +228,29 @@ namespace RMORMod.Content.RMORSurvivor
             secondaryHammerSkill.skillNameToken = RMOR_PREFIX + "ALTSECONDARY_NAME";
             secondaryHammerSkill.skillName = "ChargeHammer";
             secondaryHammerSkill.skillDescriptionToken = RMOR_PREFIX + "ALTSECONDARY_DESC";
-            secondarySkill.cancelSprintingOnActivation = false;
-            secondarySkill.canceledFromSprinting = false;
-            secondarySkill.baseRechargeInterval = 5f;
-            secondarySkill.baseMaxStock = 1;
-            secondarySkill.rechargeStock = 1;
-            secondarySkill.requiredStock = 1;
-            secondarySkill.stockToConsume = 1;
-            secondarySkill.activationStateMachineName = "Weapon";
-            secondarySkill.interruptPriority = EntityStates.InterruptPriority.Skill;
-            secondarySkill.isCombatSkill = true;
-            secondarySkill.mustKeyPress = false;
+            secondaryHammerSkill.cancelSprintingOnActivation = false;
+            secondaryHammerSkill.canceledFromSprinting = false;
+            secondaryHammerSkill.baseRechargeInterval = 5f;
+            secondaryHammerSkill.baseMaxStock = 1;
+            secondaryHammerSkill.rechargeStock = 1;
+            secondaryHammerSkill.requiredStock = 1;
+            secondaryHammerSkill.stockToConsume = 1;
+            secondaryHammerSkill.activationStateMachineName = "Weapon";
+            secondaryHammerSkill.interruptPriority = EntityStates.InterruptPriority.Skill;
+            secondaryHammerSkill.isCombatSkill = true;
+            secondaryHammerSkill.mustKeyPress = false;
             secondaryHammerSkill.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texSecondary.png");
-            secondarySkill.beginSkillCooldownOnSkillEnd = true;
-            secondarySkill.keywordTokens = new string[] { "KEYWORD_STUNNING" };
+            secondaryHammerSkill.beginSkillCooldownOnSkillEnd = true;
+            secondaryHammerSkill.keywordTokens = new string[] { "KEYWORD_BLEEDING" };
             Modules.Skills.FixScriptableObjectName(secondaryHammerSkill);
             Modules.ContentPacks.skillDefs.Add(secondaryHammerSkill);
             Skilldefs.SecondaryChargeHammer = secondaryHammerSkill;
 
             SkillFamily secondarySkillFamily = bodyPrefab.GetComponent<SkillLocator>().secondary.skillFamily;
-            Skilldefs.SecondaryChargeHammer = secondarySkill;
+            Skilldefs.SecondaryChargeHammer = secondaryHammerSkill;
 
             Skills.AddSkillToFamily(secondarySkillFamily, secondarySkill);
-            //Skills.AddSkillToFamily(secondarySkillFamily, secondaryHammerSkill); not working right now
+            Skills.AddSkillToFamily(secondarySkillFamily, secondaryHammerSkill); //not working right now
 
             InitializeScepterSkills();
         }
@@ -311,24 +311,24 @@ namespace RMORMod.Content.RMORSurvivor
         private void InitializeScepterSkills()
         {
             SkillDef scepterSkill = SkillDef.CreateInstance<SkillDef>();
-            scepterSkill.activationState = new SerializableEntityStateType(typeof(EntityStates.HAND_Overclocked.Secondary.ChargeSlamScepter));
+            scepterSkill.activationState = new SerializableEntityStateType(typeof(EntityStates.RMOR.Secondary.ChargeCannonScepter));
             scepterSkill.skillNameToken = RMOR_PREFIX + "SECONDARY_SCEPTER_NAME";
-            scepterSkill.skillName = "ChargeSlamScepter";
+            scepterSkill.skillName = "ChargeCannonScepter";
             scepterSkill.skillDescriptionToken = RMOR_PREFIX + "SECONDARY_SCEPTER_DESC";
-            scepterSkill.cancelSprintingOnActivation = Skilldefs.SecondaryChargeHammer.cancelSprintingOnActivation;
-            scepterSkill.canceledFromSprinting = Skilldefs.SecondaryChargeHammer.canceledFromSprinting;
-            scepterSkill.baseRechargeInterval = Skilldefs.SecondaryChargeHammer.baseRechargeInterval = 5f;
-            scepterSkill.baseMaxStock = Skilldefs.SecondaryChargeHammer.baseMaxStock;
-            scepterSkill.rechargeStock = Skilldefs.SecondaryChargeHammer.rechargeStock;
-            scepterSkill.requiredStock = Skilldefs.SecondaryChargeHammer.requiredStock;
-            scepterSkill.stockToConsume = Skilldefs.SecondaryChargeHammer.stockToConsume;
-            scepterSkill.activationStateMachineName = Skilldefs.SecondaryChargeHammer.activationStateMachineName;
-            scepterSkill.interruptPriority = Skilldefs.SecondaryChargeHammer.interruptPriority;
-            scepterSkill.isCombatSkill = Skilldefs.SecondaryChargeHammer.isCombatSkill;
-            scepterSkill.mustKeyPress = Skilldefs.SecondaryChargeHammer.mustKeyPress;
+            scepterSkill.cancelSprintingOnActivation = Skilldefs.SecondaryChargeCannon.cancelSprintingOnActivation;
+            scepterSkill.canceledFromSprinting = Skilldefs.SecondaryChargeCannon.canceledFromSprinting;
+            scepterSkill.baseRechargeInterval = Skilldefs.SecondaryChargeCannon.baseRechargeInterval = 5f;
+            scepterSkill.baseMaxStock = Skilldefs.SecondaryChargeCannon.baseMaxStock;
+            scepterSkill.rechargeStock = Skilldefs.SecondaryChargeCannon.rechargeStock;
+            scepterSkill.requiredStock = Skilldefs.SecondaryChargeCannon.requiredStock;
+            scepterSkill.stockToConsume = Skilldefs.SecondaryChargeCannon.stockToConsume;
+            scepterSkill.activationStateMachineName = Skilldefs.SecondaryChargeCannon.activationStateMachineName;
+            scepterSkill.interruptPriority = Skilldefs.SecondaryChargeCannon.interruptPriority;
+            scepterSkill.isCombatSkill = Skilldefs.SecondaryChargeCannon.isCombatSkill;
+            scepterSkill.mustKeyPress = Skilldefs.SecondaryChargeCannon.mustKeyPress;
             scepterSkill.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texRMORSecondaryScepter.png");
-            scepterSkill.beginSkillCooldownOnSkillEnd = Skilldefs.SecondaryChargeHammer.beginSkillCooldownOnSkillEnd;
-            scepterSkill.keywordTokens = Skilldefs.SecondaryChargeHammer.keywordTokens;
+            scepterSkill.beginSkillCooldownOnSkillEnd = Skilldefs.SecondaryChargeCannon.beginSkillCooldownOnSkillEnd;
+            scepterSkill.keywordTokens = Skilldefs.SecondaryChargeCannon.keywordTokens;
             Modules.Skills.FixScriptableObjectName(scepterSkill);
             Modules.ContentPacks.skillDefs.Add(scepterSkill);
 
@@ -365,16 +365,16 @@ namespace RMORMod.Content.RMORSurvivor
         [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
         private void ClassicScepterCompat()
         {
-            ThinkInvisible.ClassicItems.Scepter.instance.RegisterScepterSkill(Skilldefs.SecondaryChargeHammerScepter, "RMORBody", SkillSlot.Secondary, Skilldefs.SecondaryChargeCannon);
-            //ThinkInvisible.ClassicItems.Scepter.instance.RegisterScepterSkill(Skilldefs.SecondaryChargeHammerScepter, "RMORBody", SkillSlot.Secondary, Skilldefs.SecondaryChargeHammer);
+            ThinkInvisible.ClassicItems.Scepter.instance.RegisterScepterSkill(Skilldefs.SecondaryChargeCannonScepter, "RMORBody", SkillSlot.Secondary, Skilldefs.SecondaryChargeCannon);
+            ThinkInvisible.ClassicItems.Scepter.instance.RegisterScepterSkill(Skilldefs.SecondaryChargeHammerScepter, "RMORBody", SkillSlot.Secondary, Skilldefs.SecondaryChargeHammer);
         }
 
 
         [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
         private void StandaloneScepterCompat()
         {
-            AncientScepter.AncientScepterItem.instance.RegisterScepterSkill(Skilldefs.SecondaryChargeHammerScepter, "RMORBody", SkillSlot.Secondary, 0);
-            //AncientScepter.AncientScepterItem.instance.RegisterScepterSkill(Skilldefs.SecondaryChargeHammerScepter, "RMORBody", SkillSlot.Secondary, 1);
+            AncientScepter.AncientScepterItem.instance.RegisterScepterSkill(Skilldefs.SecondaryChargeCannonScepter, "RMORBody", SkillSlot.Secondary, 0);
+            AncientScepter.AncientScepterItem.instance.RegisterScepterSkill(Skilldefs.SecondaryChargeHammerScepter, "RMORBody", SkillSlot.Secondary, 1);
         }
         public override void InitializeSkins()
         {
@@ -417,7 +417,7 @@ namespace RMORMod.Content.RMORSurvivor
             masterySkin.rendererInfos[0].defaultMaterial = Modules.Materials.CreateHopooMaterial("matHANDMastery");
 
             UnlockableDef masteryUnlockableDef = ScriptableObject.CreateInstance<UnlockableDef>();
-            masteryUnlockableDef.cachedName = "Skins.HANDOverclocked.Mastery";
+            masteryUnlockableDef.cachedName = "Skins.RMOR.Mastery";
             masteryUnlockableDef.nameToken = "ACHIEVEMENT_MORIYARMORCLEARGAMEMONSOON_NAME";
             masteryUnlockableDef.achievementIcon = masteryIcon;
             Modules.ContentPacks.unlockableDefs.Add(masteryUnlockableDef);
@@ -527,20 +527,23 @@ namespace RMORMod.Content.RMORSurvivor
             Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HAND_Overclocked.Emotes.Spin));
             Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HAND_Overclocked.Emotes.MenuPose));
 
-            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HAND_Overclocked.Primary.SwingPunch));
+            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.RMOR.Primary.RMORRocket));
             Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HAND_Overclocked.Primary.SwingHammer));
 
-            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HAND_Overclocked.Secondary.ChargeSlam));
-            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HAND_Overclocked.Secondary.FireSlam));
+            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.RMOR.Secondary.ChargeSlam));
+            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.RMOR.Secondary.FireSlam));
+            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.RMOR.Secondary.ChargeCannon));
+            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.RMOR.Secondary.FireCannon));
 
-            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HAND_Overclocked.Secondary.ChargeSlamScepter));
-            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HAND_Overclocked.Secondary.FireSlamScepter));
+            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.RMOR.Secondary.ChargeSlamScepter));
+            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.RMOR.Secondary.FireSlamScepter));
+            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.RMOR.Secondary.ChargeCannonScepter));
 
             Modules.ContentPacks.entityStates.Add(typeof(EntityStates.RMOR.Utility.BeginOverclock));
             Modules.ContentPacks.entityStates.Add(typeof(EntityStates.RMOR.Utility.CancelOverclock));
             Modules.ContentPacks.entityStates.Add(typeof(EntityStates.RMOR.Utility.BeginFocus));
 
-            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HAND_Overclocked.Special.FireSeekingDrone));
+            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.RMOR.Special.LockOn));
         }
 
         private GameObject CreateSlamEffect()

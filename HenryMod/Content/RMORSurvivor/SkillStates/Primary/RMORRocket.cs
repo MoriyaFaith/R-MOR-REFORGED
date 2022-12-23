@@ -53,7 +53,6 @@ namespace EntityStates.RMOR.Primary
             strikeIndex = !strikeIndex;
         }
 
-
         public override InterruptPriority GetMinimumInterruptPriority()
         {
             return InterruptPriority.Skill;

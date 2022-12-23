@@ -5,8 +5,10 @@ using R2API;
 using EntityStates.HAND_Overclocked.Special;
 using EntityStates.RMOR.Primary;
 using EntityStates.RMOR.Secondary;
+using EntityStates.RMOR.Special;
 using RMORMod.Content.HANDSurvivor.Components.Body;
 using UnityEngine.AddressableAssets;
+using RMORMod.Content.RMORSurvivor.Components.Projectiles;
 
 namespace RMORMod.Content.HANDSurvivor
 {
@@ -23,6 +25,7 @@ namespace RMORMod.Content.HANDSurvivor
             if (!FireCannon.level2Prefab) FireCannon.level2Prefab = CreateLevel2Projectile();
             if (!FireCannon.level3Prefab) FireCannon.level3Prefab = CreateLevel3Projectile();
             if (!FireCannon.level4Prefab) FireCannon.level4Prefab = CreateLevel4Projectile();
+            if (!FireMissiles.projectilePrefab) FireMissiles.projectilePrefab = CreateRMORMissile();
             if (!DroneFollowerController.dronePrefab) DroneFollowerController.dronePrefab = CreateDroneFollower();
             if (!HANDTargetingController.allyIndicatorPrefab) HANDTargetingController.allyIndicatorPrefab = CreateAllyIndicator();
             if (!HANDTargetingController.enemyIndicatorPrefab) HANDTargetingController.enemyIndicatorPrefab = CreateEnemyIndicator();
@@ -62,6 +65,8 @@ namespace RMORMod.Content.HANDSurvivor
         private static GameObject CreateRocketProjectile()
         {
             GameObject projectile = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Drones/PaladinRocket.prefab").WaitForCompletion().InstantiateClone("RMORMod_RMOR_Rocket", true);
+            ProjectileRestoreOverclockOnImpact ovc = projectile.AddComponent<ProjectileRestoreOverclockOnImpact>();
+            ovc.duration = 0.8f;
             Modules.ContentPacks.projectilePrefabs.Add(projectile);
             return projectile;
         }
@@ -72,6 +77,8 @@ namespace RMORMod.Content.HANDSurvivor
             //if (!projectileGhost.GetComponent<NetworkIdentity>()) projectileGhost.AddComponent<NetworkIdentity>();
             if (!projectileGhost.GetComponent<ProjectileGhostController>()) projectileGhost.AddComponent<ProjectileGhostController>();
             projectile.GetComponent<ProjectileController>().ghostPrefab = projectileGhost;
+            ProjectileRestoreOverclockOnImpact ovc = projectile.AddComponent<ProjectileRestoreOverclockOnImpact>();
+            ovc.duration = 0.8f;
             Modules.ContentPacks.projectilePrefabs.Add(projectile);
             return projectile;
         }
@@ -82,6 +89,8 @@ namespace RMORMod.Content.HANDSurvivor
             //if (!projectileGhost.GetComponent<NetworkIdentity>()) projectileGhost.AddComponent<NetworkIdentity>();
             if (!projectileGhost.GetComponent<ProjectileGhostController>()) projectileGhost.AddComponent<ProjectileGhostController>();
             projectile.GetComponent<ProjectileController>().ghostPrefab = projectileGhost;
+            ProjectileRestoreOverclockOnImpact ovc = projectile.AddComponent<ProjectileRestoreOverclockOnImpact>();
+            ovc.duration = 1.6f;
             Modules.ContentPacks.projectilePrefabs.Add(projectile);
             return projectile;
         }
@@ -92,6 +101,8 @@ namespace RMORMod.Content.HANDSurvivor
             //if (!projectileGhost.GetComponent<NetworkIdentity>()) projectileGhost.AddComponent<NetworkIdentity>();
             if (!projectileGhost.GetComponent<ProjectileGhostController>()) projectileGhost.AddComponent<ProjectileGhostController>();
             projectile.GetComponent<ProjectileController>().ghostPrefab = projectileGhost;
+            ProjectileRestoreOverclockOnImpact ovc = projectile.AddComponent<ProjectileRestoreOverclockOnImpact>();
+            ovc.duration = 2.4f;
             Modules.ContentPacks.projectilePrefabs.Add(projectile);
             return projectile;
         }
@@ -99,6 +110,18 @@ namespace RMORMod.Content.HANDSurvivor
         {
             GameObject projectile = LegacyResourcesAPI.Load<GameObject>("prefabs/projectiles/PaladinRocket").InstantiateClone("RMOR_ChargeShot", true);
             GameObject projectileGhost = PrefabAPI.InstantiateClone(RMORMod.Modules.Assets.mainAssetBundle.LoadAsset<GameObject>("Level4Blast"), "RMOR_ChargeShotGhost");
+            //if (!projectileGhost.GetComponent<NetworkIdentity>()) projectileGhost.AddComponent<NetworkIdentity>();
+            if (!projectileGhost.GetComponent<ProjectileGhostController>()) projectileGhost.AddComponent<ProjectileGhostController>();
+            projectile.GetComponent<ProjectileController>().ghostPrefab = projectileGhost;
+            ProjectileRestoreOverclockOnImpact ovc = projectile.AddComponent<ProjectileRestoreOverclockOnImpact>();
+            ovc.duration = 3.2f;
+            Modules.ContentPacks.projectilePrefabs.Add(projectile);
+            return projectile;
+        }
+        private static GameObject CreateRMORMissile()
+        {
+            GameObject projectile = LegacyResourcesAPI.Load<GameObject>("Prefabs/Projectiles/MissileProjectile").InstantiateClone("RMOR_DroneMissile", true);
+            GameObject projectileGhost = PrefabAPI.InstantiateClone(RMORMod.Modules.Assets.mainAssetBundle.LoadAsset<GameObject>("DroneMissilePrefab"), "RMOR_DroneMissileGhost");
             //if (!projectileGhost.GetComponent<NetworkIdentity>()) projectileGhost.AddComponent<NetworkIdentity>();
             if (!projectileGhost.GetComponent<ProjectileGhostController>()) projectileGhost.AddComponent<ProjectileGhostController>();
             projectile.GetComponent<ProjectileController>().ghostPrefab = projectileGhost;
@@ -207,7 +230,7 @@ namespace RMORMod.Content.HANDSurvivor
         private static GameObject CreateDroneFollower()
         {
             Shader hotpoo = LegacyResourcesAPI.Load<Shader>("Shaders/Deferred/hgstandard");
-            GameObject droneFollower = PrefabAPI.InstantiateClone(RMORMod.Modules.Assets.mainAssetBundle.LoadAsset<GameObject>("DroneFollowerPrefab"), "RMORMod_DroneFollower", false);
+            GameObject droneFollower = PrefabAPI.InstantiateClone(RMORMod.Modules.Assets.mainAssetBundle.LoadAsset<GameObject>("RMORFollowerPrefab"), "RMORMod_DroneFollower", false);
 
             MeshRenderer[] meshes = droneFollower.GetComponentsInChildren<MeshRenderer>();
             foreach (MeshRenderer m in meshes)
@@ -220,8 +243,8 @@ namespace RMORMod.Content.HANDSurvivor
 
             droneFollower.layer = LayerIndex.noCollision.intVal;
 
-            Material droneMat = Modules.Materials.CreateHopooMaterial("DroneBody");
-            Modules.Materials.SetEmission(droneMat, 3f, Color.white);
+            Material droneMat = Modules.Materials.CreateHopooMaterial("matRMORDrone");
+            //Modules.Materials.SetEmission(droneMat, 3f, Color.white);
             droneFollower.GetComponentInChildren<SkinnedMeshRenderer>().material = droneMat;
 
             SkinnedMeshRenderer[] smr = droneFollower.GetComponentsInChildren<SkinnedMeshRenderer>();

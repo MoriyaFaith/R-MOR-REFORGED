@@ -52,7 +52,7 @@ namespace EntityStates.HAND_Overclocked.Secondary
             this.hitEffectPrefab = null;
             if (FireSlam.networkHitSound) this.impactSound = networkHitSound.index;
 
-            this.damageType = DamageType.Stun1s;
+            this.damageType = DamageType.BleedOnHit;
             this.hitHopVelocity = FireSlam.shortHopOnHit;
             this.hitStopDuration = 0.1f;
             this.hitSoundString = "";
@@ -202,14 +202,14 @@ namespace EntityStates.HAND_Overclocked.Secondary
                     base.SmallHop(base.characterMotor, FireSlam.shortHop);
                 }
 
-                ShakeEmitter se = ShakeEmitter.CreateSimpleShakeEmitter(base.transform.position, new Wave()
+                /*ShakeEmitter se = ShakeEmitter.CreateSimpleShakeEmitter(base.transform.position, new Wave()
                 {
                     amplitude = 12f,
                     cycleOffset = 0f,
                     frequency = 6f
                 },
                 0.75f, 30f, true);
-                se.transform.parent = base.transform;
+                se.transform.parent = base.transform;*/
             }
         }
 

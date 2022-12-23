@@ -81,7 +81,7 @@ namespace RMORMod.Content.Shared
             if (sender.HasBuff(Buffs.Fortify))
             {
                 args.armorAdd += 20f * sender.level;
-                args.baseRegenAdd += 20.0f;
+                args.baseRegenAdd += 10.0f;
             }
         }
     }
