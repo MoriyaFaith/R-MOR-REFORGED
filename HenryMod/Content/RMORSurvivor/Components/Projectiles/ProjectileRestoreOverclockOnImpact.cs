@@ -4,6 +4,7 @@ using RoR2;
 using System.Collections.Generic;
 using UnityEngine.Networking;
 using UnityEngine;
+using RMORMod.Content.HANDSurvivor.Components.Body;
 
 namespace RMORMod.Content.RMORSurvivor.Components.Projectiles
 {
@@ -39,10 +40,10 @@ namespace RMORMod.Content.RMORSurvivor.Components.Projectiles
                 if (owner && IsEnemyInSphere(radius, base.transform.position, projectileTeam))
                 {
                     //THIS WILL NEED TO BE CHANGED TO WORK ONLINE. LET ME KNOW WHEN IT WORKS IN-GAME, AND I WILL SHOW YOU HOW.
-                    OverclockController oc = owner.GetComponent<OverclockController>();
+                    HANDNetworkComponent oc = owner.GetComponent<HANDNetworkComponent>();
                     if (oc)
                     {
-                        oc.ExtendOverclock(duration);
+                        oc.ExtendOverclockServer(duration);
                     }
                 }
             }

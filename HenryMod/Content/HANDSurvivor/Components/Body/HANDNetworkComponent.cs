@@ -1,4 +1,5 @@
-﻿using RoR2;
+﻿using RMORMod.Content.Shared.Components.Body;
+using RoR2;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -7,9 +8,11 @@ namespace RMORMod.Content.HANDSurvivor.Components.Body
     public class HANDNetworkComponent : NetworkBehaviour
     {
         private CharacterBody characterBody;
+        private OverclockController overclockController;
         public void Awake()
         {
             characterBody = base.GetComponent<CharacterBody>();
+            overclockController = base.GetComponent<OverclockController>();
         }
 
         [Server]
@@ -66,6 +69,20 @@ namespace RMORMod.Content.HANDSurvivor.Components.Body
         private void OnDestroy()
         {
             Util.PlaySound("Play_MULT_shift_end", base.gameObject);
+        }
+        public void ExtendOverclockServer(float duration)
+        {
+            if (!NetworkServer.active) return;
+            RpcExtendOverclock(duration);
+        }
+
+        [ClientRpc]
+        private void RpcExtendOverclock(float duration)
+        {
+            if (this.hasAuthority && overclockController)
+            {
+                overclockController.ExtendOverclock(duration);
+            }
         }
     }
 }

@@ -122,11 +122,12 @@ namespace RMORMod.Content.RMORSurvivor
             ls.requireGrounded = false;
 
             RegisterStates();
-            bodyPrefab.AddComponent<HANDNetworkComponent>();
             bodyPrefab.AddComponent<OverclockController>();
-            //bodyPrefab.AddComponent<HANDTargetingController>(); RMOR doesn't use this
             bodyPrefab.AddComponent<DroneStockController>();
             bodyPrefab.AddComponent<DroneFollowerController>();
+            bodyPrefab.AddComponent<HANDNetworkComponent>();
+            //From HAN-D, R-MOR doesn't need these
+            //bodyPrefab.AddComponent<HANDTargetingController>();
             //bodyPrefab.AddComponent<HammerVisibilityController>();
 
 
