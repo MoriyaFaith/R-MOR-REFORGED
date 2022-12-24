@@ -114,7 +114,7 @@ namespace RMORMod.Content.Shared
             focusSkill.isCombatSkill = false;
             focusSkill.cancelSprintingOnActivation = false;
             focusSkill.canceledFromSprinting = false;
-            focusSkill.baseRechargeInterval = 7f;
+            focusSkill.baseRechargeInterval = 12f;
             focusSkill.interruptPriority = EntityStates.InterruptPriority.Any;
             focusSkill.mustKeyPress = true;
             focusSkill.beginSkillCooldownOnSkillEnd = false;

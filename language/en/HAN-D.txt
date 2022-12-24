@@ -23,6 +23,9 @@
 	"MORIYA_HAND_BODY_PRIMARY_NAME" : "HURT",
 	"MORIYA_HAND_BODY_PRIMARY_DESC" : "Apply force to all combatants for <style=cIsDamage>390% damage</style>. <style=cIsDamage>Stuns</style> while <style=cIsDamage>OVERCLOCK</style> is active.",
 	
+	"MORIYA_RMOR_BODY_PRIMARY_BLADE_NAME" : "SKEWER",
+	"MORIYA_RMOR_BODY_PRIMARY_BLADE_DESC" : "Stab all combatants for <style=cIsDamage>220% damage</style>. <style=cIsDamage>Bleeds</style> while <style=cIsDamage>OVERCLOCK</style> is active.",
+	
 	"MORIYA_HAND_BODY_PRIMARY_HAMMER_NAME" : "SMASH",
 	"MORIYA_HAND_BODY_PRIMARY_HAMMER_DESC" : "<style=cIsHealth>Slow down</style> and smash all combatants for <style=cIsDamage>600% damage</style>. <style=cIsDamage>Stuns</style> while <style=cIsDamage>OVERCLOCK</style> is active.",
 
@@ -32,7 +35,7 @@
 	"MORIYA_HAND_BODY_SECONDARY_NAME" : "FORCED_REASSEMBLY",
 	"MORIYA_HAND_BODY_SECONDARY_DESC" : "<style=cIsDamage>Stunning</style>. Charge up and apply great force to all combatants for <style=cIsDamage>600%-1500% damage</style>.",
 	"MORIYA_RMOR_BODY_ALTSECONDARY_NAME" : "FORCED_REASSEMBLY",
-	"MORIYA_RMOR_BODY_ALTSECONDARY_DESC" : "<style=cIsDamage>Stunning</style>. Charge up and apply great force to all combatants for <style=cIsDamage>600%-1500% damage</style>.",
+	"MORIYA_RMOR_BODY_ALTSECONDARY_DESC" : "<style=cIsDamage>Bleeding</style>. Charge up and apply great force to all combatants for <style=cIsDamage>600%-1500% damage</style>.",
 	
 	"MORIYA_RMOR_BODY_SECONDARY_NAME" : "CLUSTER_CANNON",
 	"MORIYA_RMOR_BODY_SECONDARY_DESC" : "Charge up and launch a powerful missile for <style=cIsDamage>600%-1800% damage</style>.",
@@ -40,9 +43,10 @@
 	"MORIYA_RMOR_BODY_SECONDARY_SCEPTER_DESC" : "Charge up quickly and launch a powerful missile for <style=cIsDamage>600%-2400% damage</style>.",
 	
 	"MORIYA_RMOR_BODY_ALTSECONDARY_SCEPTER_NAME" : "UNETHICAL_REASSEMBLY",
-	"MORIYA_RMOR_BODY_ALTSECONDARY_SCEPTER_DESC" : "<style=cIsDamage>Stunning</style>. Charge up and apply <style=cIsHealth>OVERWHELMING</style> force to all combatants for <style=cIsDamage>900%-2250% damage</style>.",
+	"MORIYA_RMOR_BODY_ALTSECONDARY_SCEPTER_DESC" : "<style=cIsDamage>Bleeding</style>. Charge up and apply <style=cIsHealth>OVERWHELMING</style> force to all combatants for <style=cIsDamage>900%-2250% damage</style>.",
 	
 	"KEYWORD_MORIYAHANDOVERCLOCKED_BOOST" : "<style=cKeywordName>Boost</style><style=cSub>The skill can be cancelled early to boost upwards.</style>",
+	"KEYWORD_MORIYARMOR_BLEEDING" : "<style=cKeywordName>Bleeding</style><style=cSub>The skill causes bleed on hit.</style>",
 	
 	"MORIYA_HAND_BODY_UTILITY_CANCEL_NAME" : "CANCEL",
 	"MORIYA_HAND_BODY_UTILITY_CANCEL_DESC" : "<style=cIsUtility>Boost upwards</style>.",
@@ -51,7 +55,7 @@
 	"MORIYA_HAND_BODY_UTILITY_DESC" : "<style=cIsUtility>Boost</style>. Increase <style=cIsUtility>movement speed</style> and <style=cIsDamage>attack speed</style> by <style=cIsDamage>40%</style>. Hit enemies to <style=cIsUtility>increase duration</style>.",
 	
 	"MORIYA_HAND_BODY_UTILITY_RMOR_NAME" : "FORTIFY",
-	"MORIYA_HAND_BODY_UTILITY_RMOR_DESC" : "<style=cIsUtility>Boost</style>. Greatly increase <style=cIsUtility>armor</style> and increase <style=cIsHealing>health regeneration</style> by <style=cIsHealing>500%/style>. Hit enemies to <style=cIsUtility>increase duration</style>.",
+	"MORIYA_HAND_BODY_UTILITY_RMOR_DESC" : "<style=cIsUtility>Boost</style>. Gain <style=cIsUtility>300 armor</style> and increase <style=cIsHealing>health regeneration</style> by <style=cIsHealing>10% of your max health per second</style>. Hit enemies to <style=cIsUtility>increase duration</style>.",
 	
 	"MORIYA_HAND_BODY_UTILITY_NEMESIS_NAME" : "FOCUS",
 	"MORIYA_HAND_BODY_UTILITY_NEMESIS_DESC" : "<style=cIsUtility>Boost</style>. Gain <style=cIsDamage>+50% damage</style> and <style=cIsUtility>50 armor</style>, but lose <style=cIsHealth>-30% movement speed</style>. Hit enemies to <style=cIsUtility>increase duration</style>.",
@@ -60,7 +64,7 @@
 	"MORIYA_HAND_BODY_SPECIAL_DESC" : "Fire a drone that deals <style=cIsDamage>270% damage</style> and <style=cIsHealing>heals for 40% of the damage dealt</style>. Kills and melee hits <style=cIsUtility>reduce cooldown</style>.",
 
 	"MORIYA_RMOR_BODY_SPECIAL_NAME" : "MISSILE",
-	"MORIYA_RMOR_BODY_SPECIAL_DESC" : "Enter a painting mode to lock onto enemies. Fires missiles that deal <style=cIsDamage>500% damage.</style> Kills and melee hits <style=cIsUtility>reduce cooldown</style>.",
+	"MORIYA_RMOR_BODY_SPECIAL_DESC" : "Enter a painting mode to lock onto enemies. Fires missiles that deal <style=cIsDamage>300% damage.</style> Kills <style=cIsUtility>reduce cooldown</style>.",
 	
 	"ACHIEVEMENT_MORIYARMORSURVIVORUNLOCK_NAME" : "Battle Hardened",
 	"ACHIEVEMENT_MORIYARMORSURVIVORUNLOCK_DESCRIPTION" : "Reach 1000 Armor in a single run.",
@@ -68,8 +72,8 @@
 	"ACHIEVEMENT_MORIYARMOROVERCLOCKUNLOCK_NAME" : "R-MOR: Octane",
 	"ACHIEVEMENT_MORIYARMOROVERCLOCKUNLOCK_DESCRIPTION" : "As R-MOR, reach 200% movement speed.",
 	
-	"ACHIEVEMENT_MORIYARMORHAMMERPRIMARYUNLOCK_NAME" : "RMOR: Hack'n Slash",
-	"ACHIEVEMENT_MORIYARMORHAMMERPRIMARYUNLOCK_DESCRIPTION" : "Flatten the final boss.",
+	"ACHIEVEMENT_MORIYARMORHAMMERPRIMARYUNLOCK_NAME" : "RMOR: Bled Dry",
+	"ACHIEVEMENT_MORIYARMORHAMMERPRIMARYUNLOCK_DESCRIPTION" : "As R-MOR, apply 25 stacks of bleed onto a single enemy.",
 	
 	"MORIYA_RMOR_BODY_MASTERY_SKIN_NAME" : "Z-ROW",
 	"ACHIEVEMENT_MORIYARMORCLEARGAMEMONSOON_NAME" : "R-MOR: Mastery",

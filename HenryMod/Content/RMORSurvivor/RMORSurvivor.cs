@@ -44,11 +44,17 @@ namespace RMORMod.Content.RMORSurvivor
             crosshair = LegacyResourcesAPI.Load<GameObject>("prefabs/crosshair/simpledotcrosshair"),
             podPrefab = LegacyResourcesAPI.Load<GameObject>("prefabs/networkedobjects/robocratepod"),//RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/NetworkedObjects/SurvivorPod")
 
-            damage = 12f,
-            maxHealth = 140f,
+            damage = 10f,
+            damageGrowth = 10f * 0.2f,
+
+            maxHealth = 110f,
+            healthGrowth = 110f * 0.3f,
+
             healthRegen = 0.5f,
-            armor = 50f,
-            armorGrowth = 50f * 0.2f,
+            regenGrowth = 0.5f * 0.1f,
+
+            armor = 40f,
+            armorGrowth = 6f,
 
             jumpCount = 1,
 

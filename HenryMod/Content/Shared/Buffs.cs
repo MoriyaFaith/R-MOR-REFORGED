@@ -80,8 +80,8 @@ namespace RMORMod.Content.Shared
         {
             if (sender.HasBuff(Buffs.Fortify))
             {
-                args.armorAdd += 20f * sender.level;
-                args.baseRegenAdd += 10.0f;
+                args.armorAdd += 300f;
+                args.baseRegenAdd += sender.baseMaxHealth / 10;
             }
         }
     }
