@@ -13,6 +13,12 @@ Basically the same as HAN-D, just without a saw.
 
 Place the RMOR_Reforged folder in /Risk of Rain 2/BepInEx/plugins/  
 
+## To Do
+- New Skill Icons
+- Better Texture and/or rig
+- Unlocks for alternate primary and secondary
+- Real Mastery Skin that isn't just WOO-D
+
 ## Credits
 
 MoriyaLuna - Main Dev of R-MOR
@@ -47,6 +53,11 @@ Sounds taken from Risk of Rain 1 and Starstorm
 
 ## Changelog
 
-`1.0.0`
+`0.1.1`
+
+- I'm stupid (Fixed Language Tokens and Sort Order)
+
+`0.1.0`
 
 - Initial Mod Upload
+

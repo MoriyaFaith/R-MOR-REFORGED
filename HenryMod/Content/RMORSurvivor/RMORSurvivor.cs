@@ -431,6 +431,7 @@ namespace RMORMod.Content.RMORSurvivor
             //materials are the default materials
             #endregion
 
+            /*
             #region MasterySkin
 
             //creating a new skindef as we did before
@@ -438,8 +439,9 @@ namespace RMORMod.Content.RMORSurvivor
             SkinDef masterySkin = Modules.Skins.CreateSkinDef(RMOR_PREFIX + "MASTERY_SKIN_NAME",
                 masteryIcon,
                 defaultRendererinfos,
-                model/*,
-                masterySkinUnlockableDef*/);
+                model,
+                //masterySkinUnlockableDef
+                );
 
             masterySkin.meshReplacements = Modules.Skins.getMeshReplacements(defaultRendererinfos,
                 "meshHanDMastery_Body",
@@ -457,6 +459,7 @@ namespace RMORMod.Content.RMORSurvivor
             skins.Add(masterySkin);
 
             #endregion
+            */
 
             skinController.skins = skins.ToArray();
 

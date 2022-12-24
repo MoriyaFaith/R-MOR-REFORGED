@@ -12,11 +12,11 @@ namespace RMORMod.Modules
         public static ConfigEntry<KeyboardShortcut> KeybindEmoteCSS;
         public static ConfigEntry<KeyboardShortcut> KeybindEmote1;
         public static ConfigEntry<KeyboardShortcut> KeybindEmote2;
-        public static float sortPosition = 7.5f;
+        public static float sortPosition = 7.51f;
 
         public static void ReadConfig()
         {
-            sortPosition = HandPlugin.instance.Config.Bind("General", "Survivor Sort Position", 4.5f, "Controls where R-MOR is placed in the character select screen.").Value;
+            sortPosition = HandPlugin.instance.Config.Bind("General", "Survivor Sort Position", 4.51f, "Controls where R-MOR is placed in the character select screen.").Value;
             forceUnlock = HandPlugin.instance.Config.Bind("General", "Force Unlock", false, "Automatically unlock R-MOR and his skills by default.").Value;
 
             KeybindEmote1 = HandPlugin.instance.Config.Bind("Keybinds", "Emote - Sit", new KeyboardShortcut(KeyCode.Alpha1), "Button to play this emote.");
