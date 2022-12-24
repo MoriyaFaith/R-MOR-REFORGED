@@ -7,20 +7,30 @@ using UnityEngine;
 public class RagdollBoneComponentsCopier : NotRetardedUnityComponentCopier {
 
     protected override void PasteStoredComponent(GameObject selected) {
+
+        if (selected.GetComponent<CharacterJoint>()) {
+            UnityEngine.Object.DestroyImmediate(selected.GetComponent<CharacterJoint>());
+        }
+        if (selected.GetComponent<Rigidbody>()) {
+            UnityEngine.Object.DestroyImmediate(selected.GetComponent<Rigidbody>());
+        }
+        if (selected.GetComponent<Collider>()) {
+            UnityEngine.Object.DestroyImmediate(selected.GetComponent<Collider>());
+        }
+
         base.PasteStoredComponent(selected);
 
         for (int i = 0; i < storedComponents.Count; i++) {
 
-            System.Type componentType = storedComponents[i].GetType();
+            System.Type storedComponentType = storedComponents[i].GetType();
 
-            if(componentType == typeof(CharacterJoint)) {
+            if (storedComponentType == typeof(CharacterJoint)) {
                 HandlePasteJoint((CharacterJoint)storedComponents[i], selected.GetComponent<CharacterJoint>());
             }
 
-            //todo: working out rescaling colliders for fixing the stupid 100 armatures
-            //if (componentType == typeof(Collider)) {
-            //    HandlePasteCollider((Collider)storedComponents[i], selected.GetComponent<Collider>());
-            //}
+            if (storedComponentType == typeof(Collider)) {
+                HandlePasteCollider((Collider)storedComponents[i], selected.GetComponent<Collider>());
+            }
         }
     }
 
@@ -65,22 +75,23 @@ public class RagdollBoneComponentsCopier : NotRetardedUnityComponentCopier {
 
             return;
         }
-        //if (storedCollider is CapsuleCollider) {
-        //    CapsuleCollider col = selected.GetComponent<CapsuleCollider>();
+        if (storedCollider is CapsuleCollider) {
+            
+            CapsuleCollider col = (CapsuleCollider)newCollider;
 
-        //    col.center = (storedCollider as CapsuleCollider).center;
-        //    col.radius = (storedCollider as CapsuleCollider).radius;
-        //    col.height = (storedCollider as CapsuleCollider).height;
-        //    col.direction = (storedCollider as CapsuleCollider).direction;
-        //    return;
-        //}
-        //if (storedCollider is BoxCollider) {
-        //    BoxCollider col = selected.GetComponent<BoxCollider>();
+            col.center = (storedCollider as CapsuleCollider).center;
+            col.radius = (storedCollider as CapsuleCollider).radius;
+            col.height = (storedCollider as CapsuleCollider).height;
+            col.direction = (storedCollider as CapsuleCollider).direction;
+            return;
+        }
+        if (storedCollider is BoxCollider) {
+            BoxCollider col = (BoxCollider)newCollider;
 
-        //    col.center = (storedCollider as BoxCollider).center;
-        //    col.size = (storedCollider as BoxCollider).size;
-        //    return;
-        //}
+            col.center = (storedCollider as BoxCollider).center;
+            col.size = (storedCollider as BoxCollider).size;
+            return;
+        }
     }
 }
 
