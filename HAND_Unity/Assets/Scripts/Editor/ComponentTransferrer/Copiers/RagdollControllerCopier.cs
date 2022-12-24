@@ -30,7 +30,7 @@ public class RagdollControllerCopier : ComponentCopier<RagdollController> {
                 pasteReport += $"\ncould not get bone for {storedBone.name}";
             }
 
-            if (newBone != null && !newBone.GetComponent<Rigidbody>() && storedBone.GetComponent<Rigidbody>()) {
+            if (newBone != null && /*!newBone.GetComponent<Rigidbody>() && */storedBone.GetComponent<Rigidbody>()) {
 
                 RagdollBoneComponentsCopier componentCopier = new RagdollBoneComponentsCopier();
                 componentCopier.TransferComponents(storedBone.gameObject, newBone.gameObject);
