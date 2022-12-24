@@ -16,7 +16,6 @@ using System.Runtime.CompilerServices;
 using RMORMod.Content.HANDSurvivor.Components.Body;
 using RMORMod.Content.Shared.Components.Body;
 using RMORMod.Content.HANDSurvivor.CharacterUnlock;
-using HAND_Junked.Content.Shared.Components.Body;
 using RMORMod.Content.HANDSurvivor;
 
 namespace RMORMod.Content.RMORSurvivor

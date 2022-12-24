@@ -15,7 +15,6 @@ using System.Linq;
 using R2API;
 using System.Runtime.CompilerServices;
 using RMORMod.Content.HANDSurvivor.CharacterUnlock;
-using HAND_Junked.Content.Shared.Components.Body;
 
 namespace RMORMod.Content.HANDSurvivor
 {

@@ -1,0 +1,53 @@
+{
+	strings:
+	{
+	"MOFFEIN_HAND_BODY_NAME" : "韩迪",
+	"MOFFEIN_HAND_BODY_SUBTITLE" : "看门狗",
+	"MOFFEIN_HAND_BODY_DESCRIPTION" : "韩迪是一个坦克机器人，其强大的近战攻击肯定会造成混乱！<style=cSub>\r\n\r\n< ! > 锤击增加了对空中敌人的击退。使用强制重组将敌人弹到空中，然后锤击他们，让他们飞起来！\r\n\r\n< ! > 只要保持攻击敌人，超频就会持续。\r\n\r\n< ! > 强制重组的自我击退可以用来接触飞行的敌人。\r\n\r\n< ! > 使用无人机治愈自身以提高生存能力。\r\n\r\n",
+	"MOFFEIN_HAND_BODY_LORE" :  "<style=cMono>\r\n//--来自UES基础部门的自动转录[已编校]--//</style>\r\n\r\n<i>*敲了敲<color=#327FFF>尖晶强心剂</color>*</i>\n\n玩的时候不带上“软蛋专属”<color=#6955A6>统率</color>神器？\n\n笑死，我真没法想象能有比不带上<color=#6955A6>统率</color>神器更废物的做法了。说实在的，咱们理性的思考一下。你这六十分钟射来射去跑来跑去跳来跳去仅仅是他妈的因为你能够拿到个<color=#77FF16>乌贼增生体</color>。你这轮游戏付出的所有汗水：躲避<style=cIsHealth>石傀儡</style>的激光，被头顶上六千个<style=cIsHealth>小型幽魂</color>骚扰，甚至激活了<color=#E5C962>山之神龛</color>都只是为了花钱让你的物品栏被<color=#FFFFFF>战旗</color>和<color=#FFFFFF>怪物牙齿</color>填满。\n\n这可真是棒极了不是吗？很好，一大堆没有增益效果的垃圾物品最后都会出现在你花钱买的<color=#E5C962>箱子</color>中出现。这帮人把你杀<style=cIsHealth>利莫里亚</style>赚来的辛苦钱全都骗走啦~\n\n作为一个玩这个游戏的新新人类，你<style=cIsHealth>完全</style>就是在花费你宝贵人生中的两个小时来开箱还要跪求不要再出另外一个<color=#77FF16>时空装置</color>。哥们，这才是超级无敌宇宙巨无霸废物，好好想想吧。\r\n<style=cMono>\r\n转录已完成。\r\n</style>\r\n \r\n\r\n",
+	"MOFFEIN_HAND_BODY_OUTRO_FLAVOR" : "..就这样它离开了，伺服系统充满了新的生机。",
+	"MOFFEIN_HAND_BODY_OUTRO_FAILURE" : "..所以它消失了，所有的努力都没有得到回报。",
+	
+	"MOFFEIN_HAND_BODY_PASSIVE_NAME" : "机械护甲",
+	"MOFFEIN_HAND_BODY_PASSIVE_DESC" : "每个友方<style=cIsUtility>无人机</style>可减少最大生命值<style=cIsDamage>0.3%</style>的<style=cIsDamage>伤害</style>。",
+	
+	"MOFFEIN_HAND_BODY_PRIMARY_NAME" : "攻击",
+	"MOFFEIN_HAND_BODY_PRIMARY_DESC" : "伤害敌人造成<style=cIsDamage>390%伤害</style>。当<style=cIsDamage>超频</style>激活时，可<style=cIsDamage>眩晕</style>敌人。",
+	
+	"MOFFEIN_HAND_BODY_PRIMARY_HAMMER_NAME" : "锤击",
+	"MOFFEIN_HAND_BODY_PRIMARY_HAMMER_DESC" : "以大弧度挥动你的锤子，<style=cIsHealth>减速</style>并对敌人造成<style=cIsDamage>600%的伤害</style>。当<style=cIsDamage>超频</style>激活时，可<style=cIsDamage>眩晕</style>敌人。",
+	
+	"MOFFEIN_HAND_BODY_SECONDARY_NAME" : "强制重组",
+	"MOFFEIN_HAND_BODY_SECONDARY_DESC" : "<style=cIsDamage>眩晕</style>。充能并发动一次强大的锤击，造成<style=cIsDamage>600%-1500%的伤害</style>。",
+	
+	"MOFFEIN_HAND_BODY_SECONDARY_SCEPTER_NAME" : "UNETHICAL_REASSEMBLY",
+	"MOFFEIN_HAND_BODY_SECONDARY_SCEPTER_DESC" : "<style=cIsDamage>Stunning</style>. Charge up and apply <style=cIsHealth>OVERWHELMING</style> force to all combatants for <style=cIsDamage>900%-2250% damage</style>.",
+	
+	"KEYWORD_MOFFEINHANDOVERCLOCKED_BOOST" : "<style=cKeywordName>弹起</style><style=cSub>技能提前取消会再次跳跃。</style>",
+	
+	"MOFFEIN_HAND_BODY_UTILITY_CANCEL_NAME" : "冷静",
+	"MOFFEIN_HAND_BODY_UTILITY_CANCEL_DESC" : "<style=cIsUtility>再次跳跃</style>。",
+	
+	"MOFFEIN_HAND_BODY_UTILITY_NAME" : "超频",
+	"MOFFEIN_HAND_BODY_UTILITY_DESC" : "<style=cIsUtility>弹起</style>。增加<style=cIsDamage>40%</style><style=cIsUtility>移动速度</style>和<style=cIsDamage>攻击速度</style>。攻击敌人可<style=cIsUtility>增加持续时间</style>。",
+	
+	"MOFFEIN_HAND_BODY_UTILITY_NEMESIS_NAME" : "专注",
+	"MOFFEIN_HAND_BODY_UTILITY_NEMESIS_DESC" : "<style=cIsUtility>弹起</style>。增加<style=cIsDamage>50%的伤害</style>和<style=cIsUtility>50点护甲</style>，但同时减少<style=cIsHealth>30%移动速度</style>。攻击敌人可<style=cIsUtility>增加持续时间</style>。",
+	
+	"MOFFEIN_HAND_BODY_SPECIAL_NAME" : "无人机",
+	"MOFFEIN_HAND_BODY_SPECIAL_DESC" : "发射一架无人机对敌人造成<style=cIsDamage>270%的伤害</style>，并<style=cIsHealing>治疗自身其无人机造成伤害的40%</style>。击败或锤击敌人可<style=cIsUtility>减少冷却</style>。",
+	
+	"ACHIEVEMENT_MOFFEINHANDOVERCLOCKEDSURVIVORUNLOCK_NAME" : "勤杂工",
+	"ACHIEVEMENT_MOFFEINHANDOVERCLOCKEDSURVIVORUNLOCK_DESCRIPTION" : "使用逃生舱的燃料组件修理达尔塔集合点上的机器人。",
+	
+	"ACHIEVEMENT_MOFFEINHANDOVERCLOCKEDNEMESISFOCUSUNLOCK_NAME" : "韩迪：击落",
+	"ACHIEVEMENT_MOFFEINHANDOVERCLOCKEDNEMESISFOCUSUNLOCK_DESCRIPTION" : "激活超频持续45秒以上。",
+	
+	"ACHIEVEMENT_MOFFEINHANDOVERCLOCKEDHAMMERPRIMARYUNLOCK_NAME" : "韩迪：蚌！",
+	"ACHIEVEMENT_MOFFEINHANDOVERCLOCKEDHAMMERPRIMARYUNLOCK_DESCRIPTION" : "敲扁最终头目。",
+	
+	"MOFFEIN_HAND_BODY_MASTERY_SKIN_NAME" : "木迪",
+	"ACHIEVEMENT_MOFFEINHANDOVERCLOCKEDCLEARGAMEMONSOON_NAME" : "韩迪：精通",
+	"ACHIEVEMENT_MOFFEINHANDOVERCLOCKEDCLEARGAMEMONSOON_DESCRIPTION" : "作为韩迪，在季风难度下通关游戏或抹除自己。"
+	}
+}

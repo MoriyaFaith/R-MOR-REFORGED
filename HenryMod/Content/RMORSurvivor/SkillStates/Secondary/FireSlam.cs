@@ -6,7 +6,6 @@ using R2API;
 using RMORMod.Content.HANDSurvivor;
 using RMORMod.Content;
 using RMORMod.Content.Shared.Components.Body;
-using HAND_Junked.Content.Shared.Components.Body;
 
 namespace EntityStates.RMOR.Secondary
 {

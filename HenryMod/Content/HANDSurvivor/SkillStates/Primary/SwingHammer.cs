@@ -8,7 +8,6 @@ using RMORMod.Content;
 using RMORMod.Content.Shared.Components.Body;
 using UnityEngine.Networking;
 using RMORMod;
-using HAND_Junked.Content.Shared.Components.Body;
 
 namespace EntityStates.HAND_Junked.Primary
 {

@@ -1,6 +1,7 @@
 ﻿using RMORMod.Content.Shared.Components.Body;
 using RoR2;
 using UnityEngine;
+using RMORMod.Content.RMORSurvivor;
 using UnityEngine.Networking;
 
 namespace RMORMod.Content.HANDSurvivor.Components.Body
@@ -66,10 +67,7 @@ namespace RMORMod.Content.HANDSurvivor.Components.Body
             }
         }
 
-        private void OnDestroy()
-        {
-            Util.PlaySound("Play_MULT_shift_end", base.gameObject);
-        }
+        [Server]
         public void ExtendOverclockServer(float duration)
         {
             if (!NetworkServer.active) return;
@@ -83,6 +81,31 @@ namespace RMORMod.Content.HANDSurvivor.Components.Body
             {
                 overclockController.ExtendOverclock(duration);
             }
+        }
+
+        [Server]
+        public void AddSpecialStockServer()
+        {
+            if (!NetworkServer.active) return;
+            RpcAddSpecialStock();
+        }
+
+        [ClientRpc]
+        public void RpcAddSpecialStock()
+        {
+            if (hasAuthority && characterBody.skillLocator.special.stock < characterBody.skillLocator.special.maxStock && (characterBody.skillLocator.special.skillDef == Skilldefs.SpecialMissile))
+            {
+                characterBody.skillLocator.special.stock++;
+                if (characterBody.skillLocator.special.stock == characterBody.skillLocator.special.maxStock)
+                {
+                    characterBody.skillLocator.special.rechargeStopwatch = 0f;
+                }
+            }
+        }
+
+        private void OnDestroy()
+        {
+            Util.PlaySound("Play_MULT_shift_end", base.gameObject);
         }
     }
 }

@@ -5,9 +5,9 @@ using RoR2;
 using UnityEngine.Networking;
 using RMORMod.Content.HANDSurvivor.Components.Master;
 using RMORMod.Content.RMORSurvivor;
-using RMORMod.Content.HANDSurvivor;
+using RMORMod.Content.HANDSurvivor.Components.Body;
 
-namespace HAND_Junked.Content.Shared.Components.Body
+namespace RMORMod.Content.Shared.Components.Body
 {
     public class DroneStockController : NetworkBehaviour, IOnKilledOtherServerReceiver
     {
@@ -27,7 +27,7 @@ namespace HAND_Junked.Content.Shared.Components.Body
                 }
                 else
                 {
-                    if (characterBody.skillLocator.special.skillDef == SkillDefs.SpecialDrone || characterBody.skillLocator.special.skillDef == Skilldefs.SpecialMissile)
+                    if (characterBody.skillLocator.special.skillDef == HANDSurvivor.SkillDefs.SpecialDrone || characterBody.skillLocator.special.skillDef == RMORSurvivor.Skilldefs.SpecialMissile)
                     {
                         characterBody.skillLocator.special.stock = dronePersist.droneCount;
                     }
@@ -44,7 +44,7 @@ namespace HAND_Junked.Content.Shared.Components.Body
         {
             if (hasAuthority)
             {
-                if (dronePersist && (characterBody.skillLocator.special.skillDef == SkillDefs.SpecialDrone || characterBody.skillLocator.special.skillDef == Skilldefs.SpecialMissile))
+                if (dronePersist && (characterBody.skillLocator.special.skillDef == HANDSurvivor.SkillDefs.SpecialDrone || characterBody.skillLocator.special.skillDef == Skilldefs.SpecialMissile))
                 {
                     if (characterBody.skillLocator.special.stock > dronePersist.droneCount)
                     {
@@ -53,7 +53,7 @@ namespace HAND_Junked.Content.Shared.Components.Body
                     dronePersist.droneCount = characterBody.skillLocator.special.stock;
                 }
 
-                int droneCount = (characterBody.skillLocator.special.skillDef == SkillDefs.SpecialDrone || characterBody.skillLocator.special.skillDef == Skilldefs.SpecialMissile) ? characterBody.skillLocator.special.stock : 0;
+                int droneCount = (characterBody.skillLocator.special.skillDef == HANDSurvivor.SkillDefs.SpecialDrone || characterBody.skillLocator.special.skillDef == Skilldefs.SpecialMissile) ? characterBody.skillLocator.special.stock : 0;
                 ReadOnlyCollection<TeamComponent> teamMembers = TeamComponent.GetTeamMembers(characterBody.teamComponent.teamIndex);
                 foreach (TeamComponent tc in teamMembers)
                 {
@@ -100,21 +100,12 @@ namespace HAND_Junked.Content.Shared.Components.Body
 
         public void OnKilledOtherServer(DamageReport damageReport) //This seems to be called by both OnCharacterDeath and TakeDamage, resulting in it being called twice
         {
-            if (NetworkServer.active && damageReport.attacker == gameObject)
+            if (damageReport.attacker == gameObject)
             {
-                RpcAddSpecialStock();
-            }
-        }
-
-        [ClientRpc]
-        public void RpcAddSpecialStock()
-        {
-            if (hasAuthority && characterBody.skillLocator.special.stock < characterBody.skillLocator.special.maxStock && (characterBody.skillLocator.special.skillDef == SkillDefs.SpecialDrone || characterBody.skillLocator.special.skillDef == Skilldefs.SpecialMissile))
-            {
-                characterBody.skillLocator.special.stock++;
-                if (characterBody.skillLocator.special.stock == characterBody.skillLocator.special.maxStock)
+                HANDNetworkComponent oc = characterBody.GetComponent<HANDNetworkComponent>();
+                if (oc)
                 {
-                    characterBody.skillLocator.special.rechargeStopwatch = 0f;
+                    oc.AddSpecialStockServer();
                 }
             }
         }
@@ -124,31 +115,31 @@ namespace HAND_Junked.Content.Shared.Components.Body
         {
             if (NetworkServer.active)
             {
-                int buffCount = characterBody.GetBuffCount(Buffs.DronePassive);
+                int buffCount = characterBody.GetBuffCount(HANDSurvivor.Buffs.DronePassive);
                 if (buffCount < newCount)
                 {
                     int diff = newCount - buffCount;
                     for (int i = 0; i < diff; i++)
                     {
-                        characterBody.AddBuff(Buffs.DronePassive);
+                        characterBody.AddBuff(HANDSurvivor.Buffs.DronePassive);
                     }
                 }
                 else if (buffCount > newCount)
                 {
                     for (int i = 0; i < buffCount; i++)
                     {
-                        characterBody.RemoveBuff(Buffs.DronePassive);
+                        characterBody.RemoveBuff(HANDSurvivor.Buffs.DronePassive);
                     }
                     for (int i = 0; i < newCount; i++)
                     {
-                        characterBody.AddBuff(Buffs.DronePassive);
+                        characterBody.AddBuff(HANDSurvivor.Buffs.DronePassive);
                     }
                 }
             }
         }
         public void MeleeHit()
         {
-            if (characterBody.skillLocator.special.stock < characterBody.skillLocator.special.maxStock && (characterBody.skillLocator.special.skillDef == SkillDefs.SpecialDrone || characterBody.skillLocator.special.skillDef == Skilldefs.SpecialMissile))
+            if (characterBody.skillLocator.special.stock < characterBody.skillLocator.special.maxStock && (characterBody.skillLocator.special.skillDef == HANDSurvivor.SkillDefs.SpecialDrone || characterBody.skillLocator.special.skillDef == Skilldefs.SpecialMissile))
             {
                 characterBody.skillLocator.special.rechargeStopwatch += 2f;
             }

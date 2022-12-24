@@ -7,7 +7,6 @@ using UnityEngine;
 using RMORMod.Content;
 using RMORMod.Content.Shared.Components.Body;
 using RMORMod;
-using HAND_Junked.Content.Shared.Components.Body;
 
 namespace EntityStates.RMOR.Primary
 {

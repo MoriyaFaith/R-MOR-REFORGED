@@ -27,7 +27,8 @@ namespace RMORMod.Content.RMORSurvivor.Components.Projectiles
         //Pretty sure projectile code only runs on the server, but I'm adding a network check here just to be safe.
         public void OnProjectileImpact(ProjectileImpactInfo impactInfo)
         {
-            if (!NetworkServer.active || triggeredImpact) return;
+            if (!NetworkServer.active || triggeredImpact) 
+                return;
             triggeredImpact = true;
 
             if (pc && pie)
@@ -39,7 +40,6 @@ namespace RMORMod.Content.RMORSurvivor.Components.Projectiles
 
                 if (owner && IsEnemyInSphere(radius, base.transform.position, projectileTeam))
                 {
-                    //THIS WILL NEED TO BE CHANGED TO WORK ONLINE. LET ME KNOW WHEN IT WORKS IN-GAME, AND I WILL SHOW YOU HOW.
                     HANDNetworkComponent oc = owner.GetComponent<HANDNetworkComponent>();
                     if (oc)
                     {

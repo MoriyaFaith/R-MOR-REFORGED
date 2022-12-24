@@ -1,10 +1,10 @@
 {
-  "name": "HAND_OVERCLOCKED",
-  "version_number": "1.1.11",
-  "website_url": "https://github.com/Moffein/HAN-D_OVERCLOCKED",
-  "description": "Adds HAN-D, the classic robot janitor from Risk of Rain 1. Multiplayer-compatible!",
-  "dependencies": [
-    "bbepis-BepInExPack-5.4.1905",
-    "tristanmcpherson-R2API-4.4.1"
-  ]
-}
+    "name": "RMOR_REFORGED",
+    "version_number": "0.1.0",
+    "website_url": "https://github.com/MoriyaFaith/R-MOR_REFORGED",
+    "description": "Adds R-MOR, the HAN-D variant from the Risk of Rain Starstorm Mod. Multiplayer-compatible!",
+    "dependencies": [
+      "bbepis-BepInExPack-5.4.1905",
+      "tristanmcpherson-R2API-4.4.1"
+    ]
+  }
