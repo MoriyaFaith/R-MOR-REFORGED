@@ -43,9 +43,9 @@ namespace RMORMod.Content.RMORSurvivor
 
             crosshair = LegacyResourcesAPI.Load<GameObject>("prefabs/crosshair/simpledotcrosshair"),
             podPrefab = LegacyResourcesAPI.Load<GameObject>("prefabs/networkedobjects/robocratepod"),//RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/NetworkedObjects/SurvivorPod")
-
-            damage = 10f,
-            damageGrowth = 10f * 0.2f,
+            
+            damage = 12f,
+            damageGrowth = 12f * 0.2f,
 
             maxHealth = 110f,
             healthGrowth = 110f * 0.3f,
@@ -128,12 +128,11 @@ namespace RMORMod.Content.RMORSurvivor
             ls.requireGrounded = false;
 
             RegisterStates();
+            bodyPrefab.AddComponent<HANDNetworkComponent>();
             bodyPrefab.AddComponent<OverclockController>();
+            //bodyPrefab.AddComponent<HANDTargetingController>(); RMOR doesn't use this
             bodyPrefab.AddComponent<DroneStockController>();
             bodyPrefab.AddComponent<DroneFollowerController>();
-            bodyPrefab.AddComponent<HANDNetworkComponent>();
-            //From HAN-D, R-MOR doesn't need these
-            //bodyPrefab.AddComponent<HANDTargetingController>();
             //bodyPrefab.AddComponent<HammerVisibilityController>();
 
 
