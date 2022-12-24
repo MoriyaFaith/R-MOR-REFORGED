@@ -91,6 +91,8 @@ namespace RMORMod.Content.HANDSurvivor
             projectile.GetComponent<ProjectileController>().ghostPrefab = projectileGhost;
             ProjectileRestoreOverclockOnImpact ovc = projectile.AddComponent<ProjectileRestoreOverclockOnImpact>();
             ovc.duration = 1.6f;
+            ProjectileImpactExplosion impactExplosion = projectile.GetComponent<ProjectileImpactExplosion>();
+            impactExplosion.blastRadius *= 1.5f;
             Modules.ContentPacks.projectilePrefabs.Add(projectile);
             return projectile;
         }
@@ -103,6 +105,8 @@ namespace RMORMod.Content.HANDSurvivor
             projectile.GetComponent<ProjectileController>().ghostPrefab = projectileGhost;
             ProjectileRestoreOverclockOnImpact ovc = projectile.AddComponent<ProjectileRestoreOverclockOnImpact>();
             ovc.duration = 2.4f;
+            ProjectileImpactExplosion impactExplosion = projectile.GetComponent<ProjectileImpactExplosion>();
+            impactExplosion.blastRadius *= 2;
             Modules.ContentPacks.projectilePrefabs.Add(projectile);
             return projectile;
         }
@@ -115,6 +119,8 @@ namespace RMORMod.Content.HANDSurvivor
             projectile.GetComponent<ProjectileController>().ghostPrefab = projectileGhost;
             ProjectileRestoreOverclockOnImpact ovc = projectile.AddComponent<ProjectileRestoreOverclockOnImpact>();
             ovc.duration = 3.2f;
+            ProjectileImpactExplosion impactExplosion = projectile.GetComponent<ProjectileImpactExplosion>();
+            impactExplosion.blastRadius *= 3;
             Modules.ContentPacks.projectilePrefabs.Add(projectile);
             return projectile;
         }
