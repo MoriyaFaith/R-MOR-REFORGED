@@ -1,7 +1,7 @@
 HAN-D is a tanky melee survivor who can heal himself and his allies to stay in the fight. His melee attacks have high knockback, and comboing them properly will allow him to knock away even the heaviest enemies!
 
 We are looking for translators! Check the languages folder on the [GitHub](https://github.com/Moffein/HAN-D_OVERCLOCKED/tree/master/language) if you would like to submit a translation for your language.
-Current Supported Languages: English, Simplified Chinese, Russian, French
+Current Supported Languages: English, Simplified Chinese, Russian, French, Ukrainian
 
 [![](https://i.imgur.com/9pHqh2i.jpg)]()
 [![](https://i.imgur.com/5HoCYrq.png)]()
@@ -35,15 +35,23 @@ KoobyKarasu - SMASH Skill Icon
 
 Jaysian - Bankroller
 
+## Translation Credits
+
 WockyTheWolf, JunJun_w - Simplified Chinese translation.
 
 MoonsugarCrusader - Russian translation.
 
 FyreBW - French translation.
 
+Damglador - Ukrainian translation.
+
 Sounds taken from Risk of Rain 1 and Starstorm
 
 ## Changelog
+
+`1.1.11`
+
+- Added Ukrainian translation (Thanks Damglador!)
 
 `1.1.10`
 
