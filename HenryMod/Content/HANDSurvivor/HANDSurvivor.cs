@@ -15,6 +15,7 @@ using System.Linq;
 using R2API;
 using System.Runtime.CompilerServices;
 using RMORMod.Content.HANDSurvivor.CharacterUnlock;
+using RMOR_Reforged.Content.RMORSurvivor;
 
 namespace RMORMod.Content.HANDSurvivor
 {
@@ -22,7 +23,7 @@ namespace RMORMod.Content.HANDSurvivor
     {
         public const string HAND_PREFIX = HandPlugin.DEVELOPER_PREFIX + "_HAND_BODY_";
         public override string survivorTokenPrefix => HAND_PREFIX;
-        public override ItemDisplaysBase itemDisplays => new HANDItemDisplays();
+        public override ItemDisplaysBase itemDisplays => new RMORItemDisplays();
         public override UnlockableDef characterUnlockableDef => CreateUnlockableDef();
 
         private static UnlockableDef survivorUnlock;

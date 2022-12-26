@@ -25,7 +25,7 @@ namespace RMORMod.Content.RMORSurvivor
         public static bool enabled = false;
         public const string RMOR_PREFIX = HandPlugin.DEVELOPER_PREFIX + "_RMOR_BODY_";
         public override string survivorTokenPrefix => RMOR_PREFIX;
-        public override ItemDisplaysBase itemDisplays => new HANDItemDisplays();
+        public override ItemDisplaysBase itemDisplays => new RMOR_Reforged.Content.RMORSurvivor.RMORItemDisplays();
         public override UnlockableDef characterUnlockableDef => CreateUnlockableDef();
         private static UnlockableDef survivorUnlock;
         public override string bodyName => "RMOR";
