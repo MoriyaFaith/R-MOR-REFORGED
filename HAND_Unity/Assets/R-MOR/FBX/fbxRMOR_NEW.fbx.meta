@@ -120,6 +120,11 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: RMor
     second: {fileID: 2100000, guid: 65e0a021274c8674da1210d9a39d9214, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: matRMOR
+    second: {fileID: 2100000, guid: 65e0a021274c8674da1210d9a39d9214, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0

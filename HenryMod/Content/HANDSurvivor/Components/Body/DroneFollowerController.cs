@@ -45,10 +45,6 @@ namespace RMORMod.Content.HANDSurvivor.Components.Body
                 SkinnedMeshRenderer droneRenderer = droneChildLocator.FindChildComponent<SkinnedMeshRenderer>("Drone");
                 droneRenderer.sharedMaterial = characterModel.baseRendererInfos[2].defaultMaterial;
                 droneRenderer.sharedMesh = (characterModel.baseRendererInfos[2].renderer as SkinnedMeshRenderer).sharedMesh;
-
-                GameObject saw = droneChildLocator.FindChildGameObject("Saw");
-                saw.GetComponent<MeshRenderer>().material = characterModel.baseRendererInfos[3].defaultMaterial;
-                saw.GetComponent<MeshFilter>().mesh = characterModel.baseRendererInfos[3].renderer.GetComponent<MeshFilter>().mesh;
             }
         }
 

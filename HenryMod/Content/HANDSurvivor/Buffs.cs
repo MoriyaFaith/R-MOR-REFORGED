@@ -28,35 +28,13 @@ namespace RMORMod.Content.HANDSurvivor
                        new Color(74f / 255f, 170f / 255f, 198f / 255f),
                        Assets.mainAssetBundle.LoadAsset<Sprite>("texBuffSwarmArmor.png")
                        );
-                On.RoR2.HealthComponent.TakeDamage += HANDPassiveHook;
                 R2API.RecalculateStatsAPI.GetStatCoefficients += RMORPassiveHook;
             }
         }
-
-        private static void HANDPassiveHook(On.RoR2.HealthComponent.orig_TakeDamage orig, HealthComponent self, DamageInfo damageInfo)
-        {
-            if (NetworkServer.active && BodyCatalog.GetBodyName(self.body.bodyIndex).Equals("HANDOverclockedBody"))
-            {
-                if (!damageInfo.damageType.HasFlag(DamageType.BypassArmor) && self.body)
-                {
-                    int buffCount = self.body.GetBuffCount(Buffs.DronePassive);
-                    if (buffCount > 0 && damageInfo.damage > 1f)
-                    {
-                        float totalDamageReduction = buffCount * 0.003f * self.fullCombinedHealth;
-                        damageInfo.damage = Mathf.Max(1f, damageInfo.damage - totalDamageReduction);
-                        EntitySoundManager.EmitSoundServer(platingSound.index, self.gameObject);
-                    }
-                }
-            }
-            orig(self, damageInfo);
-        }
         private static void RMORPassiveHook(CharacterBody sender, R2API.RecalculateStatsAPI.StatHookEventArgs args)
         {
-            if(BodyCatalog.GetBodyName(sender.bodyIndex).Equals("RMORBody"))
-            {
-                args.attackSpeedMultAdd += (sender.GetBuffCount(DronePassive) * 0.1f);
-                //args.damageMultAdd += (sender.GetBuffCount(DronePassive) * 0.1f);
-            }
+            args.attackSpeedMultAdd += (sender.GetBuffCount(DronePassive) * 0.05f);
+            //args.damageMultAdd += (sender.GetBuffCount(DronePassive) * 0.1f);
         }
     }
 }

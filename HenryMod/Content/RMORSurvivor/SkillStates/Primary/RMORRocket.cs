@@ -13,7 +13,7 @@ namespace EntityStates.RMOR.Primary
         //ordinarily I recommend not having a delay before projectiles. makes the move feel sluggish
         public static float BaseDelayDuration = 0.3f;
         public static float DamageCoefficient = 4.2f;
-        private string animationLayer = "FullBody, Override";
+        private string animationLayer = "Gesture, Override";
         public static GameObject projectilePrefab;
         public bool strikeIndex;
 
@@ -26,7 +26,7 @@ namespace EntityStates.RMOR.Primary
             base.attackSoundString = "Play_HOC_StartPunch";
 
             base.baseDuration = BaseDuration;
-            base.baseDelayBeforeFiringProjectile = BaseDelayDuration;
+            //base.baseDelayBeforeFiringProjectile = BaseDelayDuration;
 
             base.damageCoefficient = DamageCoefficient;
             //proc coefficient is set on the components of the projectile prefab
@@ -40,6 +40,7 @@ namespace EntityStates.RMOR.Primary
             base.bloom = 10;
 
             base.OnEnter();
+            base.characterBody.SetAimTimer(3f);
         }
 
         public override void FixedUpdate()

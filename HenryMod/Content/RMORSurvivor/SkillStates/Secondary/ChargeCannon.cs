@@ -71,6 +71,7 @@ namespace EntityStates.RMOR.Secondary
         public override void FixedUpdate()
         {
             base.FixedUpdate();
+            base.characterBody.SetAimTimer(3f);
 
             charge += Time.deltaTime * this.attackSpeedStat;
 
@@ -104,8 +105,7 @@ namespace EntityStates.RMOR.Secondary
                         this.outer.SetNextStateToMain();
                     }
                 }
-            }
-        }
+            }        }
 
         public virtual void ModifyStats() { }
 

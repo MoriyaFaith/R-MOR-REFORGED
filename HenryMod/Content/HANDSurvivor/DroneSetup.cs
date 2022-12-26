@@ -2,11 +2,11 @@
 using UnityEngine;
 using RoR2.Projectile;
 using R2API;
-using EntityStates.HAND_Junked.Special;
 using EntityStates.RMOR.Primary;
 using EntityStates.RMOR.Secondary;
 using EntityStates.RMOR.Special;
 using RMORMod.Content.HANDSurvivor.Components.Body;
+using RMORMod.Content.RMORSurvivor.Components.Body;
 using UnityEngine.AddressableAssets;
 using RMORMod.Content.RMORSurvivor.Components.Projectiles;
 
@@ -19,7 +19,7 @@ namespace RMORMod.Content.HANDSurvivor
 
         public static void Init()
         {
-            if (!FireSeekingDrone.projectilePrefab) FireSeekingDrone.projectilePrefab = CreateDroneProjectile();
+            if (!FireSeekingDrone.projectilePrefab) FireSeekingDrone.projectilePrefab = CreateRMORMissile();
             if (!RMORRocket.projectilePrefab) RMORRocket.projectilePrefab = CreateRocketProjectile();
             if (!FireCannon.level1Prefab) FireCannon.level1Prefab = CreateLevel1Projectile();
             if (!FireCannon.level2Prefab) FireCannon.level2Prefab = CreateLevel2Projectile();
@@ -29,6 +29,7 @@ namespace RMORMod.Content.HANDSurvivor
             if (!DroneFollowerController.dronePrefab) DroneFollowerController.dronePrefab = CreateDroneFollower();
             if (!HANDTargetingController.allyIndicatorPrefab) HANDTargetingController.allyIndicatorPrefab = CreateAllyIndicator();
             if (!HANDTargetingController.enemyIndicatorPrefab) HANDTargetingController.enemyIndicatorPrefab = CreateEnemyIndicator();
+            if (!RMORTargetingController.enemyIndicatorPrefab) RMORTargetingController.enemyIndicatorPrefab = CreateEnemyIndicator();
         }
 
         private static GameObject CreateAllyIndicator()
@@ -66,7 +67,9 @@ namespace RMORMod.Content.HANDSurvivor
         {
             GameObject projectile = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Drones/PaladinRocket.prefab").WaitForCompletion().InstantiateClone("RMORMod_RMOR_Rocket", true);
             ProjectileRestoreOverclockOnImpact ovc = projectile.AddComponent<ProjectileRestoreOverclockOnImpact>();
-            ovc.duration = 0.8f;
+            ovc.duration = 0.4f;
+            ProjectileImpactExplosion impactExplosion = projectile.GetComponent<ProjectileImpactExplosion>();
+            impactExplosion.falloffModel = BlastAttack.FalloffModel.SweetSpot;
             Modules.ContentPacks.projectilePrefabs.Add(projectile);
             return projectile;
         }
@@ -78,7 +81,9 @@ namespace RMORMod.Content.HANDSurvivor
             if (!projectileGhost.GetComponent<ProjectileGhostController>()) projectileGhost.AddComponent<ProjectileGhostController>();
             projectile.GetComponent<ProjectileController>().ghostPrefab = projectileGhost;
             ProjectileRestoreOverclockOnImpact ovc = projectile.AddComponent<ProjectileRestoreOverclockOnImpact>();
-            ovc.duration = 0.8f;
+            ovc.duration = 0.6f;
+            ProjectileImpactExplosion impactExplosion = projectile.GetComponent<ProjectileImpactExplosion>();
+            impactExplosion.falloffModel = BlastAttack.FalloffModel.SweetSpot;
             Modules.ContentPacks.projectilePrefabs.Add(projectile);
             return projectile;
         }
@@ -90,8 +95,9 @@ namespace RMORMod.Content.HANDSurvivor
             if (!projectileGhost.GetComponent<ProjectileGhostController>()) projectileGhost.AddComponent<ProjectileGhostController>();
             projectile.GetComponent<ProjectileController>().ghostPrefab = projectileGhost;
             ProjectileRestoreOverclockOnImpact ovc = projectile.AddComponent<ProjectileRestoreOverclockOnImpact>();
-            ovc.duration = 1.6f;
+            ovc.duration = 1.2f;
             ProjectileImpactExplosion impactExplosion = projectile.GetComponent<ProjectileImpactExplosion>();
+            impactExplosion.falloffModel = BlastAttack.FalloffModel.SweetSpot;
             impactExplosion.blastRadius *= 1.5f;
             Modules.ContentPacks.projectilePrefabs.Add(projectile);
             return projectile;
@@ -104,8 +110,9 @@ namespace RMORMod.Content.HANDSurvivor
             if (!projectileGhost.GetComponent<ProjectileGhostController>()) projectileGhost.AddComponent<ProjectileGhostController>();
             projectile.GetComponent<ProjectileController>().ghostPrefab = projectileGhost;
             ProjectileRestoreOverclockOnImpact ovc = projectile.AddComponent<ProjectileRestoreOverclockOnImpact>();
-            ovc.duration = 2.4f;
+            ovc.duration = 1.8f;
             ProjectileImpactExplosion impactExplosion = projectile.GetComponent<ProjectileImpactExplosion>();
+            impactExplosion.falloffModel = BlastAttack.FalloffModel.SweetSpot;
             impactExplosion.blastRadius *= 2;
             Modules.ContentPacks.projectilePrefabs.Add(projectile);
             return projectile;
@@ -118,8 +125,9 @@ namespace RMORMod.Content.HANDSurvivor
             if (!projectileGhost.GetComponent<ProjectileGhostController>()) projectileGhost.AddComponent<ProjectileGhostController>();
             projectile.GetComponent<ProjectileController>().ghostPrefab = projectileGhost;
             ProjectileRestoreOverclockOnImpact ovc = projectile.AddComponent<ProjectileRestoreOverclockOnImpact>();
-            ovc.duration = 3.2f;
+            ovc.duration = 2.4f;
             ProjectileImpactExplosion impactExplosion = projectile.GetComponent<ProjectileImpactExplosion>();
+            impactExplosion.falloffModel = BlastAttack.FalloffModel.SweetSpot;
             impactExplosion.blastRadius *= 3;
             Modules.ContentPacks.projectilePrefabs.Add(projectile);
             return projectile;
@@ -131,6 +139,34 @@ namespace RMORMod.Content.HANDSurvivor
             //if (!projectileGhost.GetComponent<NetworkIdentity>()) projectileGhost.AddComponent<NetworkIdentity>();
             if (!projectileGhost.GetComponent<ProjectileGhostController>()) projectileGhost.AddComponent<ProjectileGhostController>();
             projectile.GetComponent<ProjectileController>().ghostPrefab = projectileGhost;
+
+            UnityEngine.Object.Destroy(projectile.GetComponent<MissileController>());
+            ProjectileSteerTowardTarget pst = projectile.AddComponent<ProjectileSteerTowardTarget>();
+            pst.yAxisOnly = false;
+            pst.rotationSpeed = 360f;
+
+            ProjectileSimple ps = projectile.AddComponent<ProjectileSimple>();
+            ps.desiredForwardSpeed = 40f;
+            ps.lifetime = 30f;
+            ps.updateAfterFiring = true;
+            ps.enableVelocityOverLifetime = false;
+            ps.oscillate = true;
+            ps.oscillateMagnitude = 6f;
+            ps.oscillateSpeed = 1.5f;
+            
+            ProjectileSphereTargetFinder pstf = projectile.AddComponent<ProjectileSphereTargetFinder>();
+            pstf.lookRange = 90f;
+            pstf.targetSearchInterval = 0.3f;
+            pstf.onlySearchIfNoTarget = true;
+            pstf.allowTargetLoss = false;
+            pstf.testLoS = false;
+            pstf.ignoreAir = false;
+            pstf.flierAltitudeTolerance = Mathf.Infinity;
+
+            ProjectileController pc = projectile.GetComponent<ProjectileController>();
+            pc.allowPrediction = false;
+
+
             Modules.ContentPacks.projectilePrefabs.Add(projectile);
             return projectile;
         }

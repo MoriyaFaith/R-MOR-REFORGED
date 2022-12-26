@@ -46,14 +46,14 @@ namespace RMORMod.Content.RMORSurvivor
             damage = 12f,
             damageGrowth = 12f * 0.2f,
 
-            maxHealth = 110f,
-            healthGrowth = 110f * 0.3f,
+            maxHealth = 120f,
+            healthGrowth = 120f * 0.3f,
 
             healthRegen = 0.5f,
             regenGrowth = 0.5f * 0.1f,
 
-            armor = 40f,
-            armorGrowth = 6f,
+            armor = 50f,
+            armorGrowth = 0f,
 
             jumpCount = 1,
 
@@ -127,9 +127,9 @@ namespace RMORMod.Content.RMORSurvivor
             ls.requireGrounded = false;
 
             RegisterStates();
-            bodyPrefab.AddComponent<HANDNetworkComponent>();
+            bodyPrefab.AddComponent<RMORNetworkComponent>();
             bodyPrefab.AddComponent<OverclockController>();
-            //bodyPrefab.AddComponent<HANDTargetingController>(); RMOR doesn't use this
+            bodyPrefab.AddComponent<RMORTargetingController>();
             bodyPrefab.AddComponent<DroneStockController>();
             bodyPrefab.AddComponent<DroneFollowerController>();
             //bodyPrefab.AddComponent<HammerVisibilityController>();
@@ -314,7 +314,7 @@ namespace RMORMod.Content.RMORSurvivor
 
             //DroneSkillDef too restrictive, but it's there if it's needed.
             SkillDef droneSkill = SkillDef.CreateInstance<SkillDef>();
-            droneSkill.activationState = new SerializableEntityStateType(typeof(EntityStates.RMOR.Special.LockOn));
+            droneSkill.activationState = new SerializableEntityStateType(typeof(EntityStates.RMOR.Special.FireSeekingDrone));
             droneSkill.skillNameToken = RMORSurvivor.RMOR_PREFIX + "SPECIAL_NAME";
             droneSkill.skillName = "MissileDrones";
             droneSkill.skillDescriptionToken = RMORSurvivor.RMOR_PREFIX + "SPECIAL_DESC";
@@ -329,7 +329,7 @@ namespace RMORMod.Content.RMORSurvivor
             droneSkill.fullRestockOnAssign = false;
             droneSkill.rechargeStock = 1;
             droneSkill.requiredStock = 1;
-            droneSkill.stockToConsume =0;
+            droneSkill.stockToConsume = 1;
             droneSkill.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texSpecial.png");
             droneSkill.activationStateMachineName = "DroneLauncher";
             droneSkill.keywordTokens = new string[] { };

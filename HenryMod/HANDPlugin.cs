@@ -1,6 +1,5 @@
 ﻿using BepInEx;
 using RMORMod.Content.Shared.Components.Body;
-using RMORMod.Content.HANDSurvivor;
 using RMORMod.Content.RMORSurvivor;
 using R2API.Utils;
 using RoR2;

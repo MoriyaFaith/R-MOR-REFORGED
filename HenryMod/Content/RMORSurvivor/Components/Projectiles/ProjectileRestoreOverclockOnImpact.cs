@@ -4,7 +4,7 @@ using RoR2;
 using System.Collections.Generic;
 using UnityEngine.Networking;
 using UnityEngine;
-using RMORMod.Content.HANDSurvivor.Components.Body;
+using RMORMod.Content.RMORSurvivor.Components.Body;
 
 namespace RMORMod.Content.RMORSurvivor.Components.Projectiles
 {
@@ -40,7 +40,7 @@ namespace RMORMod.Content.RMORSurvivor.Components.Projectiles
 
                 if (owner && IsEnemyInSphere(radius, base.transform.position, projectileTeam))
                 {
-                    HANDNetworkComponent oc = owner.GetComponent<HANDNetworkComponent>();
+                    RMORNetworkComponent oc = owner.GetComponent<RMORNetworkComponent>();
                     if (oc)
                     {
                         oc.ExtendOverclockServer(duration);

@@ -55,7 +55,9 @@ Sounds taken from Risk of Rain 1 and Starstorm
 
 `0.1.1`
 
-- I'm stupid (Fixed Language Tokens and Sort Order)
+- I'm stupid (Fixed Language Tokens)
+- Sort order defaults to 4.51 (always after HAN-D)
+- Removed broken mastery skin
 
 `0.1.0`
 

@@ -65,7 +65,7 @@ namespace EntityStates.RMOR.Primary
             this.forceForwardVelocity = true;
             this.forwardVelocityCurve = swingCurve;
 
-            this.animationLayer = "FullBody, Override";
+            this.animationLayer = "Gesture, Override";
 
             Util.PlaySound("Play_HOC_StartPunch", base.gameObject);
 

@@ -18,7 +18,7 @@
 	"MORIYA_HAND_BODY_PASSIVE_NAME" : "SWARM_ARMOR",
 	"MORIYA_HAND_BODY_PASSIVE_DESC" : "<style=cIsDamage>Reduce incoming damage</style> by <style=cIsDamage>0.3%</style> of your maximum health for every <style=cIsUtility>drone</style> on your team.",
 	"MORIYA_RMOR_BODY_PASSIVE_NAME" : "SWARM_ASSAULT",
-	"MORIYA_RMOR_BODY_PASSIVE_DESC" : "<style=cIsDamage>Increase attack speed</style> by <style=cIsDamage>10%</style> for every <style=cIsUtility>drone</style> on your team. Gains extra armor every level.",
+	"MORIYA_RMOR_BODY_PASSIVE_DESC" : "<style=cIsDamage>Increase attack speed</style> by <style=cIsDamage>5%</style> for every <style=cIsUtility>drone</style> on your team. Gains extra armor every level.",
 	
 	"MORIYA_HAND_BODY_PRIMARY_NAME" : "HURT",
 	"MORIYA_HAND_BODY_PRIMARY_DESC" : "Apply force to all combatants for <style=cIsDamage>390% damage</style>. <style=cIsDamage>Stuns</style> while <style=cIsDamage>OVERCLOCK</style> is active.",
@@ -64,7 +64,7 @@
 	"MORIYA_HAND_BODY_SPECIAL_DESC" : "Fire a drone that deals <style=cIsDamage>270% damage</style> and <style=cIsHealing>heals for 40% of the damage dealt</style>. Kills and melee hits <style=cIsUtility>reduce cooldown</style>.",
 
 	"MORIYA_RMOR_BODY_SPECIAL_NAME" : "MISSILE",
-	"MORIYA_RMOR_BODY_SPECIAL_DESC" : "Enter a painting mode to lock onto enemies. Fires missiles that deal <style=cIsDamage>300% damage.</style> Kills <style=cIsUtility>reduce cooldown</style>.",
+	"MORIYA_RMOR_BODY_SPECIAL_DESC" : "Enter a painting mode to lock onto enemies. Fires missiles that deal <style=cIsDamage>800% damage.</style> Kills <style=cIsUtility>reduce cooldown</style>.",
 	
 	"ACHIEVEMENT_MORIYARMORSURVIVORUNLOCK_NAME" : "Battle Hardened",
 	"ACHIEVEMENT_MORIYARMORSURVIVORUNLOCK_DESCRIPTION" : "Reach 1000 Armor in a single run.",

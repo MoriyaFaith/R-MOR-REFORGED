@@ -5,7 +5,7 @@ using RoR2;
 using UnityEngine.Networking;
 using RMORMod.Content.HANDSurvivor.Components.Master;
 using RMORMod.Content.RMORSurvivor;
-using RMORMod.Content.HANDSurvivor.Components.Body;
+using RMORMod.Content.RMORSurvivor.Components.Body;
 
 namespace RMORMod.Content.Shared.Components.Body
 {
@@ -102,7 +102,7 @@ namespace RMORMod.Content.Shared.Components.Body
         {
             if (damageReport.attacker == gameObject)
             {
-                HANDNetworkComponent oc = characterBody.GetComponent<HANDNetworkComponent>();
+                RMORNetworkComponent oc = characterBody.GetComponent<RMORNetworkComponent>();
                 if (oc)
                 {
                     oc.AddSpecialStockServer();

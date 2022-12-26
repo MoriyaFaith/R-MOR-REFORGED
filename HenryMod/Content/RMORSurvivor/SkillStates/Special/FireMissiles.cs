@@ -72,7 +72,7 @@ namespace EntityStates.RMOR.Special
 		}
 
 		public static float baseDurationPerMissile;
-		public static float damageCoefficient = 3.0f;
+		public static float damageCoefficient = 8.0f;
 		public static GameObject projectilePrefab; //RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Projectiles/MissileProjectile")
         public static GameObject muzzleflashEffectPrefab;
 		public List<HurtBox> targetsList;

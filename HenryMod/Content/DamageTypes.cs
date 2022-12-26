@@ -1,7 +1,7 @@
 ﻿using RoR2;
 using UnityEngine;
 using R2API;
-using RMORMod.Content.HANDSurvivor.Components.Body;
+using RMORMod.Content.RMORSurvivor.Components.Body;
 using UnityEngine.Networking;
 
 namespace RMORMod.Content
@@ -43,7 +43,7 @@ namespace RMORMod.Content
                 {
                     if (damageInfo.HasModdedDamageType(DamageTypes.SquashOnKill))
                     {
-                        HANDNetworkComponent hnc = damageInfo.attacker.GetComponent<HANDNetworkComponent>();
+                        RMORNetworkComponent hnc = damageInfo.attacker.GetComponent<RMORNetworkComponent>();
                         if (hnc)
                         {
                             if (cb.master)

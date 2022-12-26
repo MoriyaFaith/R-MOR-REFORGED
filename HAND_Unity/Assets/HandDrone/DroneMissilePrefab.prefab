@@ -106,43 +106,13 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3097125083159445176, guid: 579596f7facc9be4d91fb969c7d6eb7d,
         type: 3}
-      propertyPath: ShapeModule.type
-      value: 12
+      propertyPath: InitialModule.startRotationX.scalar
+      value: 3.1415925
       objectReference: {fileID: 0}
     - target: {fileID: 3097125083159445176, guid: 579596f7facc9be4d91fb969c7d6eb7d,
         type: 3}
-      propertyPath: moveWithTransform
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3097125083159445176, guid: 579596f7facc9be4d91fb969c7d6eb7d,
-        type: 3}
-      propertyPath: ShapeModule.m_Scale.x
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3097125083159445176, guid: 579596f7facc9be4d91fb969c7d6eb7d,
-        type: 3}
-      propertyPath: ShapeModule.m_Scale.y
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3097125083159445176, guid: 579596f7facc9be4d91fb969c7d6eb7d,
-        type: 3}
-      propertyPath: ShapeModule.m_Rotation.x
-      value: -90
-      objectReference: {fileID: 0}
-    - target: {fileID: 3097125083159445176, guid: 579596f7facc9be4d91fb969c7d6eb7d,
-        type: 3}
-      propertyPath: ShapeModule.radiusThickness
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3097125083159445176, guid: 579596f7facc9be4d91fb969c7d6eb7d,
-        type: 3}
-      propertyPath: InitialModule.startSpeed.scalar
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 3097125083159445176, guid: 579596f7facc9be4d91fb969c7d6eb7d,
-        type: 3}
-      propertyPath: EmissionModule.rateOverTime.scalar
-      value: 60
+      propertyPath: InitialModule.startRotationX.minScalar
+      value: 3.1415925
       objectReference: {fileID: 0}
     - target: {fileID: 5328143536652613111, guid: 579596f7facc9be4d91fb969c7d6eb7d,
         type: 3}
@@ -219,7 +189,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: DroneMissilePrefab
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6925981721117856979, guid: 579596f7facc9be4d91fb969c7d6eb7d, type: 3}
+    - {fileID: 3097125083159445176, guid: 579596f7facc9be4d91fb969c7d6eb7d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 579596f7facc9be4d91fb969c7d6eb7d, type: 3}
 --- !u!1 &1863298846171062327 stripped
 GameObject:

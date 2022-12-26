@@ -42,7 +42,8 @@ namespace EntityStates.RMOR.Secondary
             fireStopwatch = 0f;
             durationBetweenShots = FireCannon.baseDurationBetweenShots / this.attackSpeedStat;
             totalDuration = FireCannon.baseExitDuration / this.attackSpeedStat + durationBetweenShots * shotsRemaining;
-            this.PlayAnimation("FullBody, Override", "FireCannon");
+            base.characterBody.SetAimTimer(3f);
+            this.PlayAnimation("Gesture, Override", "FireCannon");
             FireProjectile();
         }
 
@@ -72,7 +73,7 @@ namespace EntityStates.RMOR.Secondary
         {
             if (!this.outer.destroying)
             {
-                this.PlayAnimation("FullBody, Override", "Empty");
+                this.PlayAnimation("Gesture, Override", "Empty");
             }
             base.OnExit();
         }

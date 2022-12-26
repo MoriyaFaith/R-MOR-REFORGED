@@ -19,10 +19,6 @@ namespace RMORMod.Content.RMORSurvivor.Components.Body
 
         public void FixedUpdate()
         {
-        }
-
-        private void TrackerFixedUpdate()
-        {
             this.trackerUpdateStopwatch += Time.fixedDeltaTime;
             if (this.trackerUpdateStopwatch >= 1f / this.trackerUpdateFrequency)
             {
@@ -82,8 +78,9 @@ namespace RMORMod.Content.RMORSurvivor.Components.Body
         }
 
         public static GameObject enemyIndicatorPrefab;
+        public static GameObject allyIndicatorPrefab;
 
-        public float maxTrackingDistance = 60f;
+        public float maxTrackingDistance = 160f;
         public float maxTrackingAngle = 60f;
         public float trackerUpdateFrequency = 10f;
 
