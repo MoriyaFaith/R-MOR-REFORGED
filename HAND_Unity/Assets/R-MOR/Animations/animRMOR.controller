@@ -417,7 +417,8 @@ AnimatorState:
   m_Name: StabR
   m_Speed: 1
   m_CycleOffset: 0
-  m_Transitions: []
+  m_Transitions:
+  - {fileID: 6182179760146517724}
   m_StateMachineBehaviours: []
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
@@ -427,9 +428,9 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: ec5e940cd74f5494bbd6093de47c387b, type: 2}
+  m_Motion: {fileID: 7400000, guid: 56140f5ba6c9c134e96963834cc1eb85, type: 2}
   m_Tag: 
-  m_SpeedParameter: forwardSpeed
+  m_SpeedParameter: Punch.playbackRate
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
@@ -608,6 +609,33 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
+--- !u!1102 &-4092761107456029847
+AnimatorState:
+  serializedVersion: 5
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: StabEnd
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions:
+  - {fileID: -3802873971992539889}
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 1
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: 7400000, guid: a53f0c0bce993894283614508f00b5ad, type: 2}
+  m_Tag: 
+  m_SpeedParameter: Punch.playbackRate
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
 --- !u!206 &-4064893385268126040
 BlendTree:
   m_ObjectHideFlags: 1
@@ -640,6 +668,28 @@ BlendTree:
   m_UseAutomaticThresholds: 1
   m_NormalizedBlendValues: 0
   m_BlendType: 0
+--- !u!1101 &-3802873971992539889
+AnimatorStateTransition:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_Conditions: []
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: 1102812050849431824}
+  m_Solo: 0
+  m_Mute: 0
+  m_IsExit: 0
+  serializedVersion: 3
+  m_TransitionDuration: 0.25
+  m_TransitionOffset: 0
+  m_ExitTime: 0.64705884
+  m_HasExitTime: 1
+  m_HasFixedDuration: 1
+  m_InterruptionSource: 0
+  m_OrderedInterruption: 1
+  m_CanTransitionToSelf: 1
 --- !u!1101 &-3778727898038691092
 AnimatorStateTransition:
   m_ObjectHideFlags: 3
@@ -724,7 +774,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ChargeSlash
+  m_Name: FullCharge
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -733,12 +783,11 @@ AnimatorState:
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
   m_Mirror: 0
-  m_SpeedParameterActive: 0
+  m_SpeedParameterActive: 1
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 5002394448174081342, guid: e9d253cddd39c67468990752ae7edcd9,
-    type: 3}
+  m_Motion: {fileID: 7400000, guid: 701eadca04f66144a9ca5c0665fa76b7, type: 2}
   m_Tag: 
   m_SpeedParameter: ChargeHammer.playbackRate
   m_MirrorParameter: 
@@ -4703,10 +4752,10 @@ AnimatorStateMachine:
     m_Position: {x: 336, y: 120, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -6213507075814037925}
-    m_Position: {x: 220, y: -20, z: 0}
+    m_Position: {x: 230, y: 210, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 6013805005234409563}
-    m_Position: {x: 450, y: -20, z: 0}
+    m_Position: {x: 450, y: 210, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -7431277923404821224}
     m_Position: {x: 240, y: -180, z: 0}
@@ -4715,7 +4764,7 @@ AnimatorStateMachine:
     m_Position: {x: 480, y: -180, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1547839211921018193}
-    m_Position: {x: 560, y: 270, z: 0}
+    m_Position: {x: 800, y: 250, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 7330954476877073993}
     m_Position: {x: 560, y: 120, z: 0}
@@ -4727,22 +4776,22 @@ AnimatorStateMachine:
     m_Position: {x: 820, y: -260, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 3827490592036481750}
-    m_Position: {x: 340, y: 200, z: 0}
+    m_Position: {x: 680, y: 320, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 8903991496185344091}
-    m_Position: {x: 330, y: 50, z: 0}
+    m_Position: {x: 680, y: -10, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -3350824639159911030}
-    m_Position: {x: 560, y: 50, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: 3493981760582570531}
-    m_Position: {x: 780, y: 50, z: 0}
+    m_Position: {x: 790, y: 50, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 5604903890532892644}
-    m_Position: {x: 220, y: -80, z: 0}
+    m_Position: {x: 230, y: 20, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -6706137442603877146}
-    m_Position: {x: 450, y: -80, z: 0}
+    m_Position: {x: 450, y: 20, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: -4092761107456029847}
+    m_Position: {x: 340, y: 70, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -5448,7 +5497,8 @@ AnimatorState:
   m_Name: StabL
   m_Speed: 1
   m_CycleOffset: 0
-  m_Transitions: []
+  m_Transitions:
+  - {fileID: 5956250338510611704}
   m_StateMachineBehaviours: []
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
@@ -5458,7 +5508,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: ec5e940cd74f5494bbd6093de47c387b, type: 2}
+  m_Motion: {fileID: 7400000, guid: 0d229e6e377d22d47aaa832ae7a1ff58, type: 2}
   m_Tag: 
   m_SpeedParameter: Punch.playbackRate
   m_MirrorParameter: 
@@ -5513,6 +5563,28 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
+--- !u!1101 &5956250338510611704
+AnimatorStateTransition:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_Conditions: []
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: -4092761107456029847}
+  m_Solo: 0
+  m_Mute: 0
+  m_IsExit: 0
+  serializedVersion: 3
+  m_TransitionDuration: 0.25
+  m_TransitionOffset: 0
+  m_ExitTime: 0.6666666
+  m_HasExitTime: 1
+  m_HasFixedDuration: 1
+  m_InterruptionSource: 0
+  m_OrderedInterruption: 1
+  m_CanTransitionToSelf: 1
 --- !u!1102 &5966311548224304010
 AnimatorState:
   serializedVersion: 5
@@ -5626,6 +5698,28 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
+--- !u!1101 &6182179760146517724
+AnimatorStateTransition:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_Conditions: []
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: -4092761107456029847}
+  m_Solo: 0
+  m_Mute: 0
+  m_IsExit: 0
+  serializedVersion: 3
+  m_TransitionDuration: 0.25
+  m_TransitionOffset: 0
+  m_ExitTime: 0.6666666
+  m_HasExitTime: 1
+  m_HasFixedDuration: 1
+  m_InterruptionSource: 0
+  m_OrderedInterruption: 1
+  m_CanTransitionToSelf: 1
 --- !u!1102 &6407083971329442467
 AnimatorState:
   serializedVersion: 5
@@ -5647,7 +5741,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 38bc9b883656b4e4d9be0c8a42fe30d6, type: 2}
+  m_Motion: {fileID: 7400000, guid: cefa42f238667824f9c4d229bb2f4012, type: 2}
   m_Tag: 
   m_SpeedParameter: SwingHammer.playbackRate
   m_MirrorParameter: 
@@ -5855,7 +5949,7 @@ AnimatorState:
   m_Motion: {fileID: -3020390431817130320, guid: e9d253cddd39c67468990752ae7edcd9,
     type: 3}
   m_Tag: 
-  m_SpeedParameter: 
+  m_SpeedParameter: forwardSpeed
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
@@ -6196,7 +6290,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: PrepSlash
+  m_Name: ChargeSlash
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -6205,14 +6299,13 @@ AnimatorState:
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
   m_Mirror: 0
-  m_SpeedParameterActive: 0
+  m_SpeedParameterActive: 1
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 5002394448174081342, guid: e9d253cddd39c67468990752ae7edcd9,
-    type: 3}
+  m_Motion: {fileID: 7400000, guid: 80864a89a27be8d4e9111b191be2b63b, type: 2}
   m_Tag: 
-  m_SpeedParameter: 
+  m_SpeedParameter: ChargeHammer.playbackRate
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 

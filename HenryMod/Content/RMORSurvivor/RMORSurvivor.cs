@@ -12,11 +12,7 @@ using RMORMod.Content.RMORSurvivor.Components.Body;
 using EntityStates;
 using System.Linq;
 using System.Runtime.CompilerServices;
-
-using RMORMod.Content.HANDSurvivor.Components.Body;
 using RMORMod.Content.Shared.Components.Body;
-using RMORMod.Content.HANDSurvivor.CharacterUnlock;
-using RMORMod.Content.HANDSurvivor;
 
 namespace RMORMod.Content.RMORSurvivor
 {
@@ -83,7 +79,7 @@ namespace RMORMod.Content.RMORSurvivor
             cm.mass = 300f;
 
             DroneFollowerController.Initialize();
-            HammerVisibilityController.Initialize();
+            //HammerVisibilityController.Initialize();
 
             CharacterBody cb = bodyPrefab.GetComponent<CharacterBody>();
             cb.bodyFlags = CharacterBody.BodyFlags.ImmuneToExecutes | CharacterBody.BodyFlags.Mechanical;
@@ -140,12 +136,6 @@ namespace RMORMod.Content.RMORSurvivor
             CreateHitEffects();
             EntityStates.RMOR.Utility.BeginOverclock.jetEffectPrefab = BuildOverclockJets();
             EntityStates.RMOR.Secondary.FireSlam.earthquakeEffectPrefab = CreateSlamEffect();
-
-            BrokenJanitorInteractable.Initialize();
-            if (Modules.Config.allowPlayerRepair)
-            {
-                bodyPrefab.AddComponent<CreateRepairOnDeath>();
-            }
         }
 
         //TODO: REPLACE
@@ -300,10 +290,10 @@ namespace RMORMod.Content.RMORSurvivor
         }
         private void InitializeSpecialSkills()
         {
-            HANDSurvivor.DroneSetup.Init();
+            DroneSetup.Init();
 
-            HANDSurvivor.Components.DroneProjectile.DroneDamageController.startSound = Assets.CreateNetworkSoundEventDef("Play_HOC_Drill");
-            HANDSurvivor.Components.DroneProjectile.DroneDamageController.hitSound = Assets.CreateNetworkSoundEventDef("Play_treeBot_m1_impact");
+            Components.DroneProjectile.DroneDamageController.startSound = Assets.CreateNetworkSoundEventDef("Play_HOC_Drill");
+            Components.DroneProjectile.DroneDamageController.hitSound = Assets.CreateNetworkSoundEventDef("Play_treeBot_m1_impact");
 
             EntityStateMachine stateMachine = bodyPrefab.AddComponent<EntityStateMachine>();
             stateMachine.customName = "DroneLauncher";

@@ -1263,10 +1263,9 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                     }
                 }
             });
-            /*
             itemDisplayRules.Add(new ItemDisplayRuleSet.KeyAssetRuleGroup
             {
-                keyAsset = AncientScepter.AncientScepterItem,
+                keyAsset = AncientScepter.AncientScepterItem.instance.ItemDef,
                 displayRuleGroup = new DisplayRuleGroup
                 {
                     rules = new ItemDisplayRule[]
@@ -1274,7 +1273,7 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                         new ItemDisplayRule
                         {
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
-                            followerPrefab = ItemDisplays.LoadDisplay("mdlAnceintScepterDisplay"),
+                            followerPrefab = AncientScepter.AncientScepterItem.displayPrefab,
                             childName = "HandR",
                             localPos = new Vector3(-0.081F, 0.77276F, 0.00097F),
                             localAngles = new Vector3(0F, 0F, 0F),
@@ -1284,7 +1283,6 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                     }
                 }
             });
-            */
 
             itemDisplayRules.Add(new ItemDisplayRuleSet.KeyAssetRuleGroup
             {

@@ -41,9 +41,18 @@ namespace EntityStates.RMOR.Special
         private void FireProjectile(HurtBox target, Vector3 position)
         {
             hasFired = true;
+            FireProjectileInfo fireProjectileInfo = default(FireProjectileInfo);
+            fireProjectileInfo.position = position;
+
+            fireProjectileInfo.rotation = Util.QuaternionSafeLookRotation(base.GetAimRay().direction);
+            fireProjectileInfo.crit = base.RollCrit();
+            fireProjectileInfo.damage = this.damageStat * FireSeekingDrone.damageCoefficient;
+            fireProjectileInfo.damageColorIndex = DamageColorIndex.Default;
+            fireProjectileInfo.owner = base.gameObject;
+            fireProjectileInfo.force = FireSeekingDrone.force;
+            fireProjectileInfo.projectilePrefab = FireSeekingDrone.projectilePrefab;
             if (target)
             {
-
                 MissileUtils.FireMissile(position, base.characterBody, default(ProcChainMask), target.gameObject, this.damageStat * FireSeekingDrone.damageCoefficient,
                     base.RollCrit(), FireSeekingDrone.projectilePrefab, DamageColorIndex.Default, Vector3.up, FireSeekingDrone.force, false);
             }
@@ -52,6 +61,7 @@ namespace EntityStates.RMOR.Special
                 MissileUtils.FireMissile(position, base.characterBody, default(ProcChainMask), default(GameObject), this.damageStat * FireSeekingDrone.damageCoefficient,
                     base.RollCrit(), FireSeekingDrone.projectilePrefab, DamageColorIndex.Default, Vector3.up, FireSeekingDrone.force, false);
             }
+            //ProjectileManager.instance.FireProjectile(fireProjectileInfo);
         }
 
         public override void FixedUpdate()

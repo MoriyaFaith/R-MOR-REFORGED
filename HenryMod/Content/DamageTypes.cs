@@ -39,25 +39,6 @@ namespace RMORMod.Content
             {
                 CharacterBody cb = self.body;
 
-                if (damageInfo.attacker)
-                {
-                    if (damageInfo.HasModdedDamageType(DamageTypes.SquashOnKill))
-                    {
-                        RMORNetworkComponent hnc = damageInfo.attacker.GetComponent<RMORNetworkComponent>();
-                        if (hnc)
-                        {
-                            if (cb.master)
-                            {
-                                NetworkIdentity ni = cb.master.GetComponent<NetworkIdentity>();
-                                if (ni)
-                                {
-                                    hnc.SquashEnemy(ni.netId.Value);
-                                }
-                            }
-                        }
-                    }
-                }
-
                 //This will only work on things that are run on the server.
                 if (damageInfo.HasModdedDamageType(DamageTypes.ResetVictimForce))
                 {
@@ -67,7 +48,7 @@ namespace RMORMod.Content
                         cb.rigidbody.angularVelocity = new Vector3(0f, cb.rigidbody.angularVelocity.y, 0f);
                     }
                     if (cb.characterMotor != null)
-                    {
+                    { 
                         cb.characterMotor.velocity.x = 0f;
                         cb.characterMotor.velocity.z = 0f;
                         cb.characterMotor.rootMotion.x = 0f;

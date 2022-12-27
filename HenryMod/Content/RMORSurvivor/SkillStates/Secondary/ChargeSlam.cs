@@ -13,10 +13,6 @@ namespace EntityStates.RMOR.Secondary
             Util.PlaySound("Play_HOC_StartHammer", base.gameObject);
             this.minDuration = ChargeSlam.baseMinDuration / this.attackSpeedStat;
             this.modelAnimator = base.GetModelAnimator();
-            if (this.modelAnimator)
-            {
-                base.PlayAnimation("Gesture, Override", "PrepSlash", "ChargeHammer.playbackRate", this.minDuration);
-            }
             if (base.characterBody)
             {
                 base.characterBody.SetAimTimer(3f);

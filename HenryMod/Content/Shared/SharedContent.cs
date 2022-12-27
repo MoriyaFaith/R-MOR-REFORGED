@@ -28,9 +28,9 @@ namespace RMORMod.Content.Shared
         {
             SkillDef ovcSkill = SkillDef.CreateInstance<SkillDef>();
             ovcSkill.activationState = new SerializableEntityStateType(typeof(EntityStates.RMOR.Utility.BeginOverclock));
-            ovcSkill.skillNameToken = RMORMod.Content.HANDSurvivor.HANDSurvivor.HAND_PREFIX + "UTILITY_NAME";
+            ovcSkill.skillNameToken = RMORMod.Content.RMORSurvivor.RMORSurvivor.RMOR_PREFIX + "UTILITY_NAME";
             ovcSkill.skillName = "BeginOverclock";
-            ovcSkill.skillDescriptionToken = RMORMod.Content.HANDSurvivor.HANDSurvivor.HAND_PREFIX + "UTILITY_DESC";
+            ovcSkill.skillDescriptionToken = RMORMod.Content.RMORSurvivor.RMORSurvivor.RMOR_PREFIX + "UTILITY_DESC";
             ovcSkill.isCombatSkill = false;
             ovcSkill.cancelSprintingOnActivation = false;
             ovcSkill.canceledFromSprinting = false;
@@ -52,9 +52,9 @@ namespace RMORMod.Content.Shared
 
             SkillDef fortifySkill = SkillDef.CreateInstance<SkillDef>();
             fortifySkill.activationState = new SerializableEntityStateType(typeof(EntityStates.RMOR.Utility.BeginFortify));
-            fortifySkill.skillNameToken = RMORMod.Content.HANDSurvivor.HANDSurvivor.HAND_PREFIX + "UTILITY_RMOR_NAME";
+            fortifySkill.skillNameToken = RMORMod.Content.RMORSurvivor.RMORSurvivor.RMOR_PREFIX + "UTILITY_RMOR_NAME";
             fortifySkill.skillName = "BeginOverclock";
-            fortifySkill.skillDescriptionToken = RMORMod.Content.HANDSurvivor.HANDSurvivor.HAND_PREFIX + "UTILITY_RMOR_DESC";
+            fortifySkill.skillDescriptionToken = RMORMod.Content.RMORSurvivor.RMORSurvivor.RMOR_PREFIX + "UTILITY_RMOR_DESC";
             fortifySkill.isCombatSkill = false;
             fortifySkill.cancelSprintingOnActivation = false;
             fortifySkill.canceledFromSprinting = false;
@@ -93,8 +93,8 @@ namespace RMORMod.Content.Shared
             ovcCancelDef.rechargeStock = 1;
             ovcCancelDef.requiredStock = 0;
             ovcCancelDef.skillName = "CancelOverclock";
-            ovcCancelDef.skillNameToken = RMORMod.Content.HANDSurvivor.HANDSurvivor.HAND_PREFIX + "UTILITY_CANCEL_NAME";
-            ovcCancelDef.skillDescriptionToken = RMORMod.Content.HANDSurvivor.HANDSurvivor.HAND_PREFIX + "UTILITY_CANCEL_DESC";
+            ovcCancelDef.skillNameToken = RMORMod.Content.RMORSurvivor.RMORSurvivor.RMOR_PREFIX + "UTILITY_CANCEL_NAME";
+            ovcCancelDef.skillDescriptionToken = RMORMod.Content.RMORSurvivor.RMORSurvivor.RMOR_PREFIX + "UTILITY_CANCEL_DESC";
             ovcCancelDef.stockToConsume = 0;
             Modules.Skills.FixScriptableObjectName(ovcCancelDef);
             RMORMod.Modules.ContentPacks.skillDefs.Add(ovcCancelDef);
@@ -108,9 +108,9 @@ namespace RMORMod.Content.Shared
 
             SkillDef focusSkill = SkillDef.CreateInstance<SkillDef>();
             focusSkill.activationState = new SerializableEntityStateType(typeof(EntityStates.RMOR.Utility.BeginFocus));
-            focusSkill.skillNameToken = RMORMod.Content.HANDSurvivor.HANDSurvivor.HAND_PREFIX + "UTILITY_NEMESIS_NAME";
+            focusSkill.skillNameToken = RMORMod.Content.RMORSurvivor.RMORSurvivor.RMOR_PREFIX + "UTILITY_NEMESIS_NAME";
             focusSkill.skillName = "BeginFocus";
-            focusSkill.skillDescriptionToken = RMORMod.Content.HANDSurvivor.HANDSurvivor.HAND_PREFIX + "UTILITY_NEMESIS_DESC";
+            focusSkill.skillDescriptionToken = RMORMod.Content.RMORSurvivor.RMORSurvivor.RMOR_PREFIX + "UTILITY_NEMESIS_DESC";
             focusSkill.isCombatSkill = false;
             focusSkill.cancelSprintingOnActivation = false;
             focusSkill.canceledFromSprinting = false;
