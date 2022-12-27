@@ -16,14 +16,14 @@ namespace RMORMod.Modules
 
         public static void ReadConfig()
         {
-            sortPosition = HandPlugin.instance.Config.Bind("General", "Survivor Sort Position", 4.51f, "Controls where R-MOR is placed in the character select screen.").Value;
-            forceUnlock = HandPlugin.instance.Config.Bind("General", "Force Unlock", false, "Automatically unlock R-MOR and his skills by default.").Value;
+            sortPosition = RMORPlugin.instance.Config.Bind("General", "Survivor Sort Position", 4.51f, "Controls where R-MOR is placed in the character select screen.").Value;
+            forceUnlock = RMORPlugin.instance.Config.Bind("General", "Force Unlock", false, "Automatically unlock R-MOR and his skills by default.").Value;
 
-            KeybindEmote1 = HandPlugin.instance.Config.Bind("Keybinds", "Emote - Sit", new KeyboardShortcut(KeyCode.Alpha1), "Button to play this emote.");
-            KeybindEmote2 = HandPlugin.instance.Config.Bind("Keybinds", "Emote - Malfunction", new KeyboardShortcut(KeyCode.Alpha2), "Button to play this emote.");
-            KeybindEmoteCSS = HandPlugin.instance.Config.Bind("Keybinds", "Emote - Hat Tip", new KeyboardShortcut(KeyCode.Alpha3), "Button to play this emote.");
+            KeybindEmote1 = RMORPlugin.instance.Config.Bind("Keybinds", "Emote - Sit", new KeyboardShortcut(KeyCode.Alpha1), "Button to play this emote.");
+            KeybindEmote2 = RMORPlugin.instance.Config.Bind("Keybinds", "Emote - Malfunction", new KeyboardShortcut(KeyCode.Alpha2), "Button to play this emote.");
+            KeybindEmoteCSS = RMORPlugin.instance.Config.Bind("Keybinds", "Emote - Hat Tip", new KeyboardShortcut(KeyCode.Alpha3), "Button to play this emote.");
 
-            if (HandPlugin.RiskOfOptionsLoaded)
+            if (RMORPlugin.RiskOfOptionsLoaded)
             {
                 RiskOfOptionsCompat();
             }
@@ -40,7 +40,7 @@ namespace RMORMod.Modules
         // this helper automatically makes config entries for disabling survivors
         public static ConfigEntry<bool> CharacterEnableConfig(string characterName, string description = "Set to false to disable this character", bool enabledDefault = true) {
 
-            return HandPlugin.instance.Config.Bind<bool>("General",
+            return RMORPlugin.instance.Config.Bind<bool>("General",
                                                           "Enable " + characterName,
                                                           enabledDefault,
                                                           description);

@@ -10,7 +10,7 @@ namespace RMORMod.Modules
     internal class ContentPacks : IContentPackProvider
     {
         internal ContentPack contentPack = new ContentPack();
-        public string identifier => HandPlugin.MODUID;
+        public string identifier => RMORPlugin.MODUID;
 
         public static List<GameObject> bodyPrefabs = new List<GameObject>();
         public static List<GameObject> masterPrefabs = new List<GameObject>();

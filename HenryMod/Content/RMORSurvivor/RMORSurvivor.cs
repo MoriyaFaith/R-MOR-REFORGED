@@ -19,7 +19,7 @@ namespace RMORMod.Content.RMORSurvivor
     internal class RMORSurvivor : SurvivorBase
     {
         public static bool enabled = false;
-        public const string RMOR_PREFIX = HandPlugin.DEVELOPER_PREFIX + "_RMOR_BODY_";
+        public const string RMOR_PREFIX = RMORPlugin.DEVELOPER_PREFIX + "_RMOR_BODY_";
         public override string survivorTokenPrefix => RMOR_PREFIX;
         public override ItemDisplaysBase itemDisplays => new RMOR_Reforged.Content.RMORSurvivor.RMORItemDisplays();
         public override UnlockableDef characterUnlockableDef => CreateUnlockableDef();
@@ -30,8 +30,8 @@ namespace RMORMod.Content.RMORSurvivor
         public override BodyInfo bodyInfo { get; set; } = new BodyInfo
         {
             bodyName = "RMORBody",
-            bodyNameToken = HandPlugin.DEVELOPER_PREFIX + "_RMOR_BODY_NAME",
-            subtitleNameToken = HandPlugin.DEVELOPER_PREFIX + "_RMOR_BODY_SUBTITLE",
+            bodyNameToken = RMORPlugin.DEVELOPER_PREFIX + "_RMOR_BODY_NAME",
+            subtitleNameToken = RMORPlugin.DEVELOPER_PREFIX + "_RMOR_BODY_SUBTITLE",
 
             characterPortrait = Assets.mainAssetBundle.LoadAsset<Texture>("texRMORPortrait.png"),
             bodyColor = new Color(0.556862745f, 0.682352941f, 0.690196078f),
@@ -379,8 +379,8 @@ namespace RMORMod.Content.RMORSurvivor
 
             Skilldefs.SecondaryChargeHammerScepter = scepterHammerSkill;
 
-            if (HandPlugin.ScepterClassicLoaded) ClassicScepterCompat();
-            if (HandPlugin.ScepterStandaloneLoaded) StandaloneScepterCompat();
+            if (RMORPlugin.ScepterClassicLoaded) ClassicScepterCompat();
+            if (RMORPlugin.ScepterStandaloneLoaded) StandaloneScepterCompat();
         }
 
         [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]

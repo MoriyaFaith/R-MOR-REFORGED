@@ -1,7 +1,9 @@
-﻿using RMORMod.Modules;
+﻿using RMORMod;
+using RMORMod.Modules;
 using RMORMod.Modules.Characters;
 using RoR2;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
@@ -9,6 +11,7 @@ namespace RMOR_Reforged.Content.RMORSurvivor
 {
     public class RMORItemDisplays : ItemDisplaysBase
     {
+
         protected override void SetItemDisplayRules(List<ItemDisplayRuleSet.KeyAssetRuleGroup> itemDisplayRules)
         {
             itemDisplayRules.Add(new ItemDisplayRuleSet.KeyAssetRuleGroup
@@ -1263,26 +1266,11 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                     }
                 }
             });
-            itemDisplayRules.Add(new ItemDisplayRuleSet.KeyAssetRuleGroup
+
+            if (RMORPlugin.ScepterStandaloneLoaded)
             {
-                keyAsset = AncientScepter.AncientScepterItem.instance.ItemDef,
-                displayRuleGroup = new DisplayRuleGroup
-                {
-                    rules = new ItemDisplayRule[]
-                    {
-                        new ItemDisplayRule
-                        {
-                            ruleType = ItemDisplayRuleType.ParentedPrefab,
-                            followerPrefab = AncientScepter.AncientScepterItem.displayPrefab,
-                            childName = "HandR",
-                            localPos = new Vector3(-0.081F, 0.77276F, 0.00097F),
-                            localAngles = new Vector3(0F, 0F, 0F),
-                            localScale = new Vector3(1F, 1F, 1F),
-                            limbMask = LimbFlags.None
-                        }
-                    }
-                }
-            });
+                AddScepterDisplay(itemDisplayRules);
+            }
 
             itemDisplayRules.Add(new ItemDisplayRuleSet.KeyAssetRuleGroup
             {
@@ -3716,6 +3704,31 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             localPos = new Vector3(0F, 1.25838F, 0.02986F),
                             localAngles = new Vector3(327.3969F, 181.9719F, 330.4663F),
                             localScale = new Vector3(1.5F, 1.5F, 1.5F),
+                            limbMask = LimbFlags.None
+                        }
+                    }
+                }
+            });
+        }
+
+        [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
+        private void AddScepterDisplay(List<ItemDisplayRuleSet.KeyAssetRuleGroup> itemDisplayRules)
+        {
+            itemDisplayRules.Add(new ItemDisplayRuleSet.KeyAssetRuleGroup
+            {
+                keyAsset = AncientScepter.AncientScepterItem.instance.ItemDef,
+                displayRuleGroup = new DisplayRuleGroup
+                {
+                    rules = new ItemDisplayRule[]
+                    {
+                        new ItemDisplayRule
+                        {
+                            ruleType = ItemDisplayRuleType.ParentedPrefab,
+                            followerPrefab = AncientScepter.AncientScepterItem.displayPrefab,
+                            childName = "HandR",
+                            localPos = new Vector3(-0.081F, 0.77276F, 0.00097F),
+                            localAngles = new Vector3(0F, 0F, 0F),
+                            localScale = new Vector3(1F, 1F, 1F),
                             limbMask = LimbFlags.None
                         }
                     }

@@ -16,7 +16,7 @@ namespace RMORMod
         {
             get
             {
-                return System.IO.Path.GetDirectoryName(HandPlugin.pluginInfo.Location);
+                return System.IO.Path.GetDirectoryName(RMORPlugin.pluginInfo.Location);
             }
         }
         public LanguageTokens()

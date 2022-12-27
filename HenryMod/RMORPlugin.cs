@@ -31,15 +31,15 @@ namespace RMORMod
         "DamageAPI"
     })]
 
-    public class HandPlugin : BaseUnityPlugin
+    public class RMORPlugin : BaseUnityPlugin
     {
         public const string MODUID = "com.MoriyaLuna.RMORReforged";
         public const string MODNAME = "RMOR Reforged";
-        public const string MODVERSION = "0.5.0";
+        public const string MODVERSION = "0.2.1";
 
         public const string DEVELOPER_PREFIX = "MORIYA";
 
-        public static HandPlugin instance;
+        public static RMORPlugin instance;
         public static PluginInfo pluginInfo;
 
         public static bool ScepterStandaloneLoaded = false;
@@ -104,7 +104,7 @@ namespace RMORMod
         [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
         private static void SetArena(Stage obj)
         {
-            HandPlugin.ArenaModeActive = NS_KingKombatArena.KingKombatArenaMainPlugin.s_GAME_MODE_ACTIVE;
+            RMORPlugin.ArenaModeActive = NS_KingKombatArena.KingKombatArenaMainPlugin.s_GAME_MODE_ACTIVE;
         }
 
         [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]

@@ -77,7 +77,7 @@ namespace EntityStates.HAND_Junked.Primary
                 {
                     this.swingEffectPrefab = SwingHammer.swingEffectFocus;
                 }
-                if (!HandPlugin.ArenaModeActive && hasOVC && this.swingIndex == 1)
+                if (!RMORPlugin.ArenaModeActive && hasOVC && this.swingIndex == 1)
                 {
                     this.damageType |= DamageType.Stun1s;
                 }

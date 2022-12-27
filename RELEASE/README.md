@@ -60,6 +60,9 @@ Sounds taken from Risk of Rain 1 and Starstorm
 
 ## Changelog
 
+`0.2.1`
+- Fixed game crashing if Ancient Scepter wasn't installed
+
 `0.2.0`
 
 - Entirely new animations (Thanks, Lui!)
