@@ -92,53 +92,7 @@ namespace RMORMod.Content
                     }
 
                     //Plays the DRONE sound when spawned via BaseMeleeAttack hitEffectPrefab for some reason.
-                    EffectManager.SimpleEffect(EntityStates.HAND_Junked.Primary.SwingStab.hitEffect, damageInfo.position, default, true);
-                }
-
-                //Make sure this doesn't stack with punch damagetype.
-                if (damageInfo.HasModdedDamageType(DamageTypes.HANDPrimaryHammer))
-                {
-                    if (cb.isFlying)
-                    {
-                        damageInfo.force.x *= 0.4375f;//0.5 * 7/8
-                        damageInfo.force.z *= 0.4375f;
-                    }
-                    else if (cb.characterMotor != null)
-                    {
-                        if (!cb.characterMotor.isGrounded)    //Multiply launched enemy force
-                        {
-                            //damageInfo.force.x *= 1.2f;
-                            //damageInfo.force.z *= 1.2f;
-
-                            if (cb.isChampion)
-                            {
-                                damageInfo.force.x *= 0.7f;
-                                damageInfo.force.z *= 0.7f;
-                            }
-                        }
-                        else
-                        {
-                            if (cb.isChampion) //deal less knockback against bosses if they're on the ground
-                            {
-                                damageInfo.force.x *= 0.5f;
-                                damageInfo.force.z *= 0.5f;
-                            }
-                        }
-
-                        //Plays the DRONE sound when spawned via BaseMeleeAttack hitEffectPrefab for some reason.
-                        EffectManager.SimpleEffect(EntityStates.HAND_Junked.Primary.SwingHammer.hitEffect, damageInfo.position, default, true);
-                    }
-
-                    if (cb.rigidbody)
-                    {
-                        float forceMult = Mathf.Max(cb.rigidbody.mass / 100f, 1f);
-                        damageInfo.force *= forceMult;
-
-                        if (cb.isFlying)
-                        {
-                            damageInfo.force += 1500f * Vector3.down * Mathf.Min(7.5f, forceMult);
-                        }
-                    }
+                    EffectManager.SimpleEffect(EntityStates.RMOR.Primary.SwingStab.hitEffect, damageInfo.position, default, true);
                 }
 
                 bool isSecondary = damageInfo.HasModdedDamageType(DamageTypes.HANDSecondary);
@@ -165,7 +119,7 @@ namespace RMORMod.Content
                     }
 
                     //Plays the DRONE sound when spawned via BaseMeleeAttack hitEffectPrefab for some reason.
-                    EffectManager.SimpleEffect(EntityStates.HAND_Junked.Secondary.FireSlam.hitEffect, damageInfo.position, default, true);
+                    EffectManager.SimpleEffect(EntityStates.RMOR.Secondary.FireSlam.hitEffect, damageInfo.position, default, true);
                 }
             }
             orig(self, damageInfo);

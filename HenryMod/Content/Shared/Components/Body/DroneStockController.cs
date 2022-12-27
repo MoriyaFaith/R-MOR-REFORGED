@@ -115,24 +115,24 @@ namespace RMORMod.Content.Shared.Components.Body
         {
             if (NetworkServer.active)
             {
-                int buffCount = characterBody.GetBuffCount(HANDSurvivor.Buffs.DronePassive);
+                int buffCount = characterBody.GetBuffCount(RMORMod.Content.RMORSurvivor.Buffs.DronePassive);
                 if (buffCount < newCount)
                 {
                     int diff = newCount - buffCount;
                     for (int i = 0; i < diff; i++)
                     {
-                        characterBody.AddBuff(HANDSurvivor.Buffs.DronePassive);
+                        characterBody.AddBuff(RMORMod.Content.RMORSurvivor.Buffs.DronePassive);
                     }
                 }
                 else if (buffCount > newCount)
                 {
                     for (int i = 0; i < buffCount; i++)
                     {
-                        characterBody.RemoveBuff(HANDSurvivor.Buffs.DronePassive);
+                        characterBody.RemoveBuff(RMORMod.Content.RMORSurvivor.Buffs.DronePassive);
                     }
                     for (int i = 0; i < newCount; i++)
                     {
-                        characterBody.AddBuff(HANDSurvivor.Buffs.DronePassive);
+                        characterBody.AddBuff(RMORMod.Content.RMORSurvivor.Buffs.DronePassive);
                     }
                 }
             }

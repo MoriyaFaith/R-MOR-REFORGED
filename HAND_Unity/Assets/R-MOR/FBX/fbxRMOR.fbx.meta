@@ -276,6 +276,9 @@ ModelImporter:
   - first:
       74: 6601360480195513178
     second: RMOR|SlamHold
+  - first:
+      74: -3918387218541460743
+    second: RMOR|RMORmesh.001Action
   externalObjects:
   - first:
       type: UnityEngine:Material

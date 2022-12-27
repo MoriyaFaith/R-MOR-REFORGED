@@ -13,6 +13,8 @@ using EntityStates;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using RMORMod.Content.Shared.Components.Body;
+using EntityStates.RMOR.Emotes;
+using EntityStates.RMOR;
 
 namespace RMORMod.Content.RMORSurvivor
 {
@@ -131,7 +133,7 @@ namespace RMORMod.Content.RMORSurvivor
             //bodyPrefab.AddComponent<HammerVisibilityController>();
 
 
-            Content.HANDSurvivor.Buffs.Init();
+            RMORMod.Content.RMORSurvivor.Buffs.Init();
 
             CreateHitEffects();
             EntityStates.RMOR.Utility.BeginOverclock.jetEffectPrefab = BuildOverclockJets();
@@ -150,7 +152,12 @@ namespace RMORMod.Content.RMORSurvivor
             },
         };
 
-        public override Type characterMainState => typeof(EntityStates.HAND_Junked.HANDMainState);
+        public override Type characterMainState => typeof(EntityStates.RMOR.RMORMainState);
+        protected override void InitializeDisplayPrefab()
+        {
+            base.InitializeDisplayPrefab();
+            displayPrefab.AddComponent<MenuSoundComponent>();
+        }
 
         public override void InitializeSkills()
         {
@@ -469,7 +476,7 @@ namespace RMORMod.Content.RMORSurvivor
                     {
                         new SkinDef.ProjectileGhostReplacement
                         {
-                            projectilePrefab = EntityStates.HAND_Junked.Special.FireSeekingDrone.projectilePrefab,
+                            projectilePrefab = EntityStates.RMOR.Special.FireSeekingDrone.projectilePrefab,
                             projectileGhostReplacementPrefab = CreateProjectileGhostReplacementPrefab(skin),
                         }
                     };
@@ -546,13 +553,12 @@ namespace RMORMod.Content.RMORSurvivor
         private void RegisterStates()
         {
 
-            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HAND_Junked.HANDMainState));
-            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HAND_Junked.Emotes.Sit));
-            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HAND_Junked.Emotes.Spin));
-            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HAND_Junked.Emotes.MenuPose));
+            Modules.ContentPacks.entityStates.Add(typeof(RMORMainState));
+            Modules.ContentPacks.entityStates.Add(typeof(Sit));
+            Modules.ContentPacks.entityStates.Add(typeof(Spin));
+            Modules.ContentPacks.entityStates.Add(typeof(MenuPose));
 
             Modules.ContentPacks.entityStates.Add(typeof(EntityStates.RMOR.Primary.RMORRocket));
-            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.HAND_Junked.Primary.SwingHammer));
 
             Modules.ContentPacks.entityStates.Add(typeof(EntityStates.RMOR.Secondary.ChargeSlam));
             Modules.ContentPacks.entityStates.Add(typeof(EntityStates.RMOR.Secondary.FireSlam));
@@ -566,8 +572,9 @@ namespace RMORMod.Content.RMORSurvivor
             Modules.ContentPacks.entityStates.Add(typeof(EntityStates.RMOR.Utility.BeginOverclock));
             Modules.ContentPacks.entityStates.Add(typeof(EntityStates.RMOR.Utility.CancelOverclock));
             Modules.ContentPacks.entityStates.Add(typeof(EntityStates.RMOR.Utility.BeginFocus));
+            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.RMOR.Utility.BeginFortify));
 
-            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.RMOR.Special.LockOn));
+            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.RMOR.Special.FireSeekingDrone));
         }
         private GameObject CreateSwingVFX(string name, Vector3 scale, Material material)
         {
@@ -617,9 +624,8 @@ namespace RMORMod.Content.RMORSurvivor
             EffectComponent ec = hitEffect.GetComponent<EffectComponent>();
             ec.soundName = "Play_MULT_shift_hit";
             Modules.ContentPacks.effectDefs.Add(new EffectDef(hitEffect));
-            EntityStates.HAND_Junked.Primary.SwingStab.hitEffect = hitEffect;
-            EntityStates.HAND_Junked.Primary.SwingHammer.hitEffect = hitEffect;
-            EntityStates.HAND_Junked.Secondary.FireSlam.hitEffect = hitEffect;
+            EntityStates.RMOR.Primary.SwingStab.hitEffect = hitEffect;
+            EntityStates.RMOR.Secondary.FireSlam.hitEffect = hitEffect;
 
 
             /*NetworkSoundEventDef nse = Modules.Assets.CreateNetworkSoundEventDef("Play_MULT_shift_hit");

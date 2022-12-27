@@ -26,10 +26,7 @@ namespace RMORMod.Content.RMORSurvivor
             if (!FireCannon.level2Prefab) FireCannon.level2Prefab = CreateLevel2Projectile();
             if (!FireCannon.level3Prefab) FireCannon.level3Prefab = CreateLevel3Projectile();
             if (!FireCannon.level4Prefab) FireCannon.level4Prefab = CreateLevel4Projectile();
-            if (!FireMissiles.projectilePrefab) FireMissiles.projectilePrefab = CreateRMORMissile();
             if (!DroneFollowerController.dronePrefab) DroneFollowerController.dronePrefab = CreateDroneFollower();
-            if (!HANDTargetingController.allyIndicatorPrefab) HANDTargetingController.allyIndicatorPrefab = CreateAllyIndicator();
-            if (!HANDTargetingController.enemyIndicatorPrefab) HANDTargetingController.enemyIndicatorPrefab = CreateEnemyIndicator();
             if (!RMORTargetingController.enemyIndicatorPrefab) RMORTargetingController.enemyIndicatorPrefab = CreateEnemyIndicator();
         }
 

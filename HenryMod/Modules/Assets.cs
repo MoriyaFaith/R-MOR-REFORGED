@@ -127,6 +127,8 @@ namespace RMORMod.Modules
 
             foreach (Renderer i in objectToConvert.GetComponentsInChildren<Renderer>())
             {
+                if (i is ParticleSystemRenderer)
+                    continue;
                 i?.material?.SetHopooMaterial();
             }
         }
