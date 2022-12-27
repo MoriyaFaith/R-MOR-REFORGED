@@ -1,0 +1,82 @@
+{
+	strings:
+	{
+	"MORIYA_HAND_BODY_NAME" : "HAN-D",
+	"MORIYA_HAND_BODY_SUBTITLE" : "Conserje sin sueldo",
+	"MORIYA_HAND_BODY_DESCRIPTION" : "HAN-D es un robot conserje tanquista cuyos poderosos ataques cuerpo a cuerpo te dejarán hecho un desastre! <style=cSub>\r\n\r\n< ! > DOLOR aumenta el golpe contra enemigos aéreos. Utiliza REENSAMBLAJE_FORZADO para lanzar a los enemigos por los aires y, a continuación, hazles DOLOR para que salgan volando!\r\n\r\n< ! > OVERCLOCK dura mas mientras puedas seguir golpeando enemigos.\r\n\r\n< ! > Si cancelas OVERCLOCK, podrás impulsarte hacia arriba y alcanzar a los enemigos voladores.\r\n\r\n< ! > Utiliza DRONES para curarte y permanecer en el combate.\r\n\r\n",
+	"MORIYA_HAND_BODY_LORE" :  "<style=cMono>\r\n//--AUTO-TRANSCRIPCIÓN DEL DEPARTAMENTO DE UES BASADO EN [REDACTADO]--//</style>\r\n\r\n<i>*hits <color=#327FFF>Spinel Tonic</color>*</i>\n\nIs playing without the <color=#6955A6>Command</color> artifact the ultimate form of cuckoldry?\n\nI cannot think or comprehend of anything more cucked than playing without <color=#6955A6>Command</color>. Honestly, think about it rationally. You are shooting, running, jumping for like 60 minutes solely so you can get a fucking <color=#77FF16>Squid Polyp</color>. All that hard work you put into your run - dodging <style=cIsHealth>Stone Golem</style> lasers, getting annoyed by six thousand <style=cIsHealth>Lesser Wisps</color> spawning above your head, activating <color=#E5C962>Shrines of the Mountain</color> all for one simple result: your inventory is filled up with <color=#FFFFFF>Warbanners</color> and <color=#FFFFFF>Monster Tooth</color> necklaces which cost money.\n\nOn a god run? Great. A bunch of shitty items which add nothing to your run end up coming out of the <color=#E5C962>Chests</color> you buy. They get the benefit of your hard earned dosh that came from killing <style=cIsHealth>Lemurians</style>.\n\nAs a man who plays this game you are <style=cIsHealth>LITERALLY</style> dedicating two hours of your life to opening boxes and praying it's not another <color=#77FF16>Chronobauble</color>. It's the ultimate and final cuck. Think about it logically.\r\n<style=cMono>\r\nTranscriptions complete.\r\n</style>\r\n \r\n\r\n",
+	"MORIYA_HAND_BODY_OUTRO_FLAVOR" : "... se marchó, servos pulsando con nueva vida.",
+	"MORIYA_HAND_BODY_OUTRO_FAILURE" : "... y así desapareció, sin ver recompensados todos sus esfuerzos.",
+
+	"MORIYA_RMOR_BODY_NAME" : "R-MOR",
+	"MORIYA_RMOR_BODY_SUBTITLE" : "Bot cohete",
+	"MORIYA_RMOR_BODY_DESCRIPTION" : "R-MOR es una máquina devastadora hecha para encuentros críticos: blindaje extremo, cuchillas retráctiles y lanzamisiles. Un behemoth imparable. <style=cSub>< ! > ERRADICAR es lento, pero fuerte. Es muy bueno para acabar con enemigos débiles.\r\n\r\n< ! > CAÑON_CLUSTER tarda en alcanzar toda su potencia, pero es poderoso cuando lo hace, lanzando a los enemigos muy lejos si no los mata directamente.\r\n\r\n< ! > FORTIFICAR puede ayudar a compensar la baja regeneración de salud de R-MOR.\r\n\r\n< ! > Si cancelas FORTIFICAR, podrás impulsarte hacia arriba y alcanzar a los enemigos voladores. > Usa MISILES para infligir mucho daño, a costa de la velocidad de ataque.\r\n\r\n",
+	"MORIYA_RMOR_BODY_LORE" :  "<style=cMono>\r\n//--AUTO-TRANSCRIPTION FROM BASED DEPARTMENT OF UES [REDACTED]--//</style>\r\n\r\n<i>*hits <color=#327FFF>Spinel Tonic</color>*</i>\n\nIs playing without the <color=#6955A6>Command</color> artifact the ultimate form of cuckoldry?\n\nI cannot think or comprehend of anything more cucked than playing without <color=#6955A6>Command</color>. Honestly, think about it rationally. You are shooting, running, jumping for like 60 minutes solely so you can get a fucking <color=#77FF16>Squid Polyp</color>. All that hard work you put into your run - dodging <style=cIsHealth>Stone Golem</style> lasers, getting annoyed by six thousand <style=cIsHealth>Lesser Wisps</color> spawning above your head, activating <color=#E5C962>Shrines of the Mountain</color> all for one simple result: your inventory is filled up with <color=#FFFFFF>Warbanners</color> and <color=#FFFFFF>Monster Tooth</color> necklaces which cost money.\n\nOn a god run? Great. A bunch of shitty items which add nothing to your run end up coming out of the <color=#E5C962>Chests</color> you buy. They get the benefit of your hard earned dosh that came from killing <style=cIsHealth>Lemurians</style>.\n\nAs a man who plays this game you are <style=cIsHealth>LITERALLY</style> dedicating two hours of your life to opening boxes and praying it's not another <color=#77FF16>Chronobauble</color>. It's the ultimate and final cuck. Think about it logically.\r\n<style=cMono>\r\nTranscriptions complete.\r\n</style>\r\n \r\n\r\n",
+	"MORIYA_RMOR_BODY_OUTRO_FLAVOR" : "...y se marchó, dejando al descubierto signos de decadencia.",
+	"MORIYA_RMOR_BODY_OUTRO_FAILURE" : "...y así desapareció, sin ver recompensados todos sus esfuerzos.",
+	
+	"MORIYA_HAND_BODY_PASSIVE_NAME" : "ARMADURA_DE_GUERRA",
+	"MORIYA_HAND_BODY_PASSIVE_DESC" : "<style=cIsDamage>Reduce el daño recibido</style> por <style=cIsDamage>0.3%</style> de tu vida maxima por cada <style=cIsUtility>dron</style> en tu equipo.",
+	"MORIYA_RMOR_BODY_PASSIVE_NAME" : "ATAQUE_AÉREO",
+	"MORIYA_RMOR_BODY_PASSIVE_DESC" : "<style=cIsDamage>Aumenta la velocidad de disparo</style> por <style=cIsDamage>5%</style> por cada <style=cIsUtility>dron</style> en tu equipo.",
+	
+	"MORIYA_HAND_BODY_PRIMARY_NAME" : "DOLOR",
+	"MORIYA_HAND_BODY_PRIMARY_DESC" : "Aplica fuerza a todos los combatientes para <style=cIsDamage>390% de daño</style>. <style=cIsDamage>Aturde</style> mientras <style=cIsDamage>OVERCLOCK</style> este activo.",
+	
+	"MORIYA_RMOR_BODY_PRIMARY_BLADE_NAME" : "DESTORNO",
+	"MORIYA_RMOR_BODY_PRIMARY_BLADE_DESC" : "Apuñala a todos los combatientes para <style=cIsDamage>220% de daño</style>. <style=cIsDamage>Sangran</style> mientras <style=cIsDamage>OVERCLOCK</style> este activo.",
+	
+	"MORIYA_HAND_BODY_PRIMARY_HAMMER_NAME" : "SMASH",
+	"MORIYA_HAND_BODY_PRIMARY_HAMMER_DESC" : "<style=cIsHealth>Ralentiza</style> y aplasta a todos los combatientes para <style=cIsDamage>600% de daño</style>. <style=cIsDamage>Aturde</style> mientras <style=cIsDamage>OVERCLOCK</style> este activo.",
+
+	"MORIYA_RMOR_BODY_PRIMARY_NAME" : "ERRADICAR",
+	"MORIYA_RMOR_BODY_PRIMARY_DESC" : "Dispara un misil que explota al impactar para <style=cIsDamage>420% de daño</style>.",
+	
+	"MORIYA_HAND_BODY_SECONDARY_NAME" : "REENSAMBLAJE_FORZADO",
+	"MORIYA_HAND_BODY_SECONDARY_DESC" : "<style=cIsDamage>Aturde</style>. Carga y aplica gran fuerza a todos los combatientes para <style=cIsDamage>600%-1500% de daño</style>.",
+	"MORIYA_RMOR_BODY_ALTSECONDARY_NAME" : "REENSAMBLAJE_FORZADO",
+	"MORIYA_RMOR_BODY_ALTSECONDARY_DESC" : "<style=cIsDamage>Sangrado</style>. Carga y aplica gran fuerza a todos los combatientes para <style=cIsDamage>600%-1500% de daño</style>.",
+	
+	"MORIYA_RMOR_BODY_SECONDARY_NAME" : "CAÑON_CLUSTER",
+	"MORIYA_RMOR_BODY_SECONDARY_DESC" : "Carga y lanza un potente misil para <style=cIsDamage>600%-1800% de daño</style>.",
+	"MORIYA_RMOR_BODY_SECONDARY_SCEPTER_NAME" : "CAÑÓN_DEL_OLVIDO",
+	"MORIYA_RMOR_BODY_SECONDARY_SCEPTER_DESC" : "Carga rápidamente y lanza un potente misil para <style=cIsDamage>600%-2400% de daño</style>.",
+	
+	"MORIYA_RMOR_BODY_ALTSECONDARY_SCEPTER_NAME" : "REENSAMBLADO_NO_ÉTICO",
+	"MORIYA_RMOR_BODY_ALTSECONDARY_SCEPTER_DESC" : "<style=cIsDamage>Sangrado</style>. Carga y aplica <style=cIsHealth>Poder Abrumador</style> a todos los combatientes para <style=cIsDamage>900%-2250% de daño</style>.",
+	
+	"KEYWORD_MORIYAHANDOVERCLOCKED_BOOST" : "<style=cKeywordName>Boost</style><style=cSub>La habilidad puede cancelarse pronto para impulsarse hacia arriba.</style>",
+	"KEYWORD_MORIYARMOR_BLEEDING" : "<style=cKeywordName>Bleeding</style><style=cSub>La habilidad causa hemorragia al golpear.</style>",
+	
+	"MORIYA_RMOR_BODY_UTILITY_CANCEL_NAME" : "CANCELAR",
+	"MORIYA_RMOR_BODY_UTILITY_CANCEL_DESC" : "<style=cIsUtility>Impulso hacia arriba</style>.",
+	
+	"MORIYA_RMOR_BODY_UTILITY_NAME" : "OVERCLOCK",
+	"MORIYA_RMOR_BODY_UTILITY_DESC" : "<style=cIsUtility>Boost</style>. Aumenta <style=cIsUtility>velocidad de movimiento</style> y <style=cIsDamage>velocidad de ataque</style> en un <style=cIsDamage>40%</style>. Golpea a los enemigos para que <style=cIsUtility>aumente la duracion</style>.",
+	
+	"MORIYA_RMOR_BODY_UTILITY_RMOR_NAME" : "FORTIFICAR",
+	"MORIYA_RMOR_BODY_UTILITY_RMOR_DESC" : "<style=cIsUtility>Boost</style>. Gana <style=cIsUtility>200 de armadura</style> y aumenta la <style=cIsHealing>regeneracion de vida</style> en un <style=cIsHealing>10% de tu vida maxima por segundo</style>. Golpea a los enemigos para que <style=cIsUtility>aumente la duracion</style>.",
+	
+	"MORIYA_RMOR_BODY_UTILITY_NEMESIS_NAME" : "FOCUS",
+	"MORIYA_RMOR_BODY_UTILITY_NEMESIS_DESC" : "<style=cIsUtility>Boost</style>. Gana <style=cIsDamage>+50% de daño</style> y <style=cIsUtility>50 de armadura</style>, pero pierdes <style=cIsHealth>-30% de velocidad de movimiento</style>. Golpea enemigos para que <style=cIsUtility>aumente la duracion</style>.",
+	
+	"MORIYA_HAND_BODY_SPECIAL_NAME" : "DRON",
+	"MORIYA_HAND_BODY_SPECIAL_DESC" : "Lanza un dron que hace <style=cIsDamage>270% de daño</style> y <style=cIsHealing>cura el 40% del daño causado</style>. Muertes e impactos cuerpo a cuerpo <style=cIsUtility>reducen su enfriamiento</style>.",
+
+	"MORIYA_RMOR_BODY_SPECIAL_NAME" : "MISIL",
+	"MORIYA_RMOR_BODY_SPECIAL_DESC" : "Dispara misiles que infligen <style=cIsDamage>800% de daño.</style> Muertes e impactos cuerpo a cuerpo <style=cIsUtility>reducen su enfriamiento</style>.",
+	
+	"ACHIEVEMENT_MORIYARMORSURVIVORUNLOCK_NAME" : "Endurecido para la batalla",
+	"ACHIEVEMENT_MORIYARMORSURVIVORUNLOCK_DESCRIPTION" : "Alcanza 1000 de armadura en una sola partida",
+	
+	"ACHIEVEMENT_MORIYARMOROVERCLOCKUNLOCK_NAME" : "R-MOR: Octane",
+	"ACHIEVEMENT_MORIYARMOROVERCLOCKUNLOCK_DESCRIPTION" : "Como R-MOR, alcanza un 200% de velocidad de movimiento.",
+	
+	"ACHIEVEMENT_MORIYARMORHAMMERPRIMARYUNLOCK_NAME" : "RMOR: Desangrado",
+	"ACHIEVEMENT_MORIYARMORHAMMERPRIMARYUNLOCK_DESCRIPTION" : "Como R-MOR, aplica 25 acumulaciones de hemorragia a un solo enemigo.",
+	
+	"MORIYA_RMOR_BODY_MASTERY_SKIN_NAME" : "Z-ROW",
+	"ACHIEVEMENT_MORIYARMORCLEARGAMEMONSOON_NAME" : "R-MOR: Maestría",
+	"ACHIEVEMENT_MORIYARMORCLEARGAMEMONSOON_DESCRIPTION" : "Como R-MOR, vence el juego o destruyete en Monzón.",
+	}
+}

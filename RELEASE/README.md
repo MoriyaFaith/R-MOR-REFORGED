@@ -22,7 +22,7 @@ Place the RMOR_Reforged folder in /Risk of Rain 2/BepInEx/plugins/
 - Green overlay material of Fortify
 
 ## Known Issues
-- R-MOR will simply sometimes cause the game to lose frames. Most noticable on Distant Roost. Any help figuring out the cause is appreciated!
+- Ragdoll really likes to explode
 - Current M1 animation is a little buggy
 If anything else is found, please contact me on the RoR2 modding server!
 
@@ -59,6 +59,10 @@ Jaysian - Bankroller
 Sounds taken from Risk of Rain 1 and Starstorm
 
 ## Changelog
+
+`0.2.3`
+- Updated Textures
+- Removed heavy frame dropping in certain maps
 
 `0.2.2`
 - Fixed Readme
