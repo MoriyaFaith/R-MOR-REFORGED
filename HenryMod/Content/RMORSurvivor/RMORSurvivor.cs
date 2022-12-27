@@ -237,7 +237,7 @@ namespace RMORMod.Content.RMORSurvivor
             secondarySkill.activationStateMachineName = "Weapon";
             secondarySkill.interruptPriority = EntityStates.InterruptPriority.Skill;
             secondarySkill.isCombatSkill = true;
-            secondarySkill.mustKeyPress = false;
+            secondarySkill.mustKeyPress = true;
             secondarySkill.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texRMORSecondary.png");
             secondarySkill.beginSkillCooldownOnSkillEnd = true;
             Modules.Skills.FixScriptableObjectName(secondarySkill);

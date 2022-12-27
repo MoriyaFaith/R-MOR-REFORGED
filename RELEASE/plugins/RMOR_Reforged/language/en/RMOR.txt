@@ -48,23 +48,23 @@
 	"KEYWORD_MORIYAHANDOVERCLOCKED_BOOST" : "<style=cKeywordName>Boost</style><style=cSub>The skill can be cancelled early to boost upwards.</style>",
 	"KEYWORD_MORIYARMOR_BLEEDING" : "<style=cKeywordName>Bleeding</style><style=cSub>The skill causes bleed on hit.</style>",
 	
-	"MORIYA_HAND_BODY_UTILITY_CANCEL_NAME" : "CANCEL",
-	"MORIYA_HAND_BODY_UTILITY_CANCEL_DESC" : "<style=cIsUtility>Boost upwards</style>.",
+	"MORIYA_RMOR_BODY_UTILITY_CANCEL_NAME" : "CANCEL",
+	"MORIYA_RMOR_BODY_UTILITY_CANCEL_DESC" : "<style=cIsUtility>Boost upwards</style>.",
 	
-	"MORIYA_HAND_BODY_UTILITY_NAME" : "OVERCLOCK",
-	"MORIYA_HAND_BODY_UTILITY_DESC" : "<style=cIsUtility>Boost</style>. Increase <style=cIsUtility>movement speed</style> and <style=cIsDamage>attack speed</style> by <style=cIsDamage>40%</style>. Hit enemies to <style=cIsUtility>increase duration</style>.",
+	"MORIYA_RMOR_BODY_UTILITY_NAME" : "OVERCLOCK",
+	"MORIYA_RMOR_BODY_UTILITY_DESC" : "<style=cIsUtility>Boost</style>. Increase <style=cIsUtility>movement speed</style> and <style=cIsDamage>attack speed</style> by <style=cIsDamage>40%</style>. Hit enemies to <style=cIsUtility>increase duration</style>.",
 	
-	"MORIYA_HAND_BODY_UTILITY_RMOR_NAME" : "FORTIFY",
-	"MORIYA_HAND_BODY_UTILITY_RMOR_DESC" : "<style=cIsUtility>Boost</style>. Gain <style=cIsUtility>300 armor</style> and increase <style=cIsHealing>health regeneration</style> by <style=cIsHealing>10% of your max health per second</style>. Hit enemies to <style=cIsUtility>increase duration</style>.",
+	"MORIYA_RMOR_BODY_UTILITY_RMOR_NAME" : "FORTIFY",
+	"MORIYA_RMOR_BODY_UTILITY_RMOR_DESC" : "<style=cIsUtility>Boost</style>. Gain <style=cIsUtility>200 armor</style> and increase <style=cIsHealing>health regeneration</style> by <style=cIsHealing>10% of your max health per second</style>. Hit enemies to <style=cIsUtility>increase duration</style>.",
 	
-	"MORIYA_HAND_BODY_UTILITY_NEMESIS_NAME" : "FOCUS",
-	"MORIYA_HAND_BODY_UTILITY_NEMESIS_DESC" : "<style=cIsUtility>Boost</style>. Gain <style=cIsDamage>+50% damage</style> and <style=cIsUtility>50 armor</style>, but lose <style=cIsHealth>-30% movement speed</style>. Hit enemies to <style=cIsUtility>increase duration</style>.",
+	"MORIYA_RMOR_BODY_UTILITY_NEMESIS_NAME" : "FOCUS",
+	"MORIYA_RMOR_BODY_UTILITY_NEMESIS_DESC" : "<style=cIsUtility>Boost</style>. Gain <style=cIsDamage>+50% damage</style> and <style=cIsUtility>50 armor</style>, but lose <style=cIsHealth>-30% movement speed</style>. Hit enemies to <style=cIsUtility>increase duration</style>.",
 	
 	"MORIYA_HAND_BODY_SPECIAL_NAME" : "DRONE",
 	"MORIYA_HAND_BODY_SPECIAL_DESC" : "Fire a drone that deals <style=cIsDamage>270% damage</style> and <style=cIsHealing>heals for 40% of the damage dealt</style>. Kills and melee hits <style=cIsUtility>reduce cooldown</style>.",
 
 	"MORIYA_RMOR_BODY_SPECIAL_NAME" : "MISSILE",
-	"MORIYA_RMOR_BODY_SPECIAL_DESC" : "Enter a painting mode to lock onto enemies. Fires missiles that deal <style=cIsDamage>800% damage.</style> Kills <style=cIsUtility>reduce cooldown</style>.",
+	"MORIYA_RMOR_BODY_SPECIAL_DESC" : "Fires missiles that deal <style=cIsDamage>800% damage.</style> Kills and melee hits <style=cIsUtility>reduce cooldown</style>.",
 	
 	"ACHIEVEMENT_MORIYARMORSURVIVORUNLOCK_NAME" : "Battle Hardened",
 	"ACHIEVEMENT_MORIYARMORSURVIVORUNLOCK_DESCRIPTION" : "Reach 1000 Armor in a single run.",
