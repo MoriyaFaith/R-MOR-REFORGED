@@ -1,7 +1,7 @@
 R-MOR is a devastating machine made for critical encounters: extreme armor, retractable blades and missile launchers. An unstoppable behemoth.
 
 [![](https://media.discordapp.net/attachments/739985285252775936/1057368556146262066/20221227023126_1.jpg?width=1202&height=676)]()
-[![](https://media.discordapp.net/attachments/739985285252775936/1057368556146262066/20221227023126_1.jpg?width=1202&height=676)]()
+[![](https://cdn.discordapp.com/attachments/739985285252775936/1057368631262072934/20221227023905_1.jpg)]()
 
 ## For Skin Creators
 
@@ -59,6 +59,9 @@ Jaysian - Bankroller
 Sounds taken from Risk of Rain 1 and Starstorm
 
 ## Changelog
+
+`0.2.2`
+- Fixed Readme
 
 `0.2.1`
 - Fixed game crashing if Ancient Scepter wasn't installed

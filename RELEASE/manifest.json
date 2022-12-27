@@ -1,6 +1,6 @@
 {
     "name": "RMOR_REFORGED",
-    "version_number": "0.2.1",
+    "version_number": "0.2.2",
     "website_url": "https://github.com/MoriyaFaith/R-MOR_REFORGED",
     "description": "Adds R-MOR, the HAN-D variant from the Risk of Rain Starstorm Mod. Multiplayer-compatible!",
     "dependencies": [
