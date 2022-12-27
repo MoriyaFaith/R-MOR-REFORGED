@@ -15,9 +15,16 @@ Place the RMOR_Reforged folder in /Risk of Rain 2/BepInEx/plugins/
 
 ## To Do
 - New Skill Icons
-- Better Texture and/or rig
+- Better Textures
+- Improve Animations and effects
 - Unlocks for alternate primary and secondary
-- Real Mastery Skin that isn't just WOO-D
+- Mastery Skin
+- Green overlay material of Fortify
+
+## Known Issues
+- R-MOR will simply sometimes cause the game to lose frames. Most noticable on Distant Roost. Any help figuring out the cause is appreciated!
+- Current M1 animation is a little buggy
+If anything else is found, please contact me on the RoR2 modding server!
 
 ## Credits
 
@@ -25,9 +32,9 @@ MoriyaLuna - Main Dev of R-MOR
 
 Moffein - Major Coding Help, Leaving R-MOR model in HAN-D's Unity project for me to see and lose my shit over
 
-TheTimesweeper - HenryMod template, help with Unity/Animations, and Ragdoll
+TheTimesweeper - HenryMod template, help with Ragdoll
 
-lui - R-MOR Model
+lui - R-MOR Model and Animations
 
 ## Credits for HAN-D
 
@@ -52,6 +59,24 @@ Jaysian - Bankroller
 Sounds taken from Risk of Rain 1 and Starstorm
 
 ## Changelog
+
+`0.2.0`
+
+- Entirely new animations (Thanks, Lui!)
+- All projectiles restore Utilities less
+- Minor update to CLUSTER_CANNON VFX
+- New thruster VFX from missile drones. Active missiles no longer have a particle effect.
+- New skill icons!
+- SWARM_ASSAULT buff icon has a new color
+- SWARM_ASSAULT Attack speed bonus: 10% -> 5%
+- FORTIFY Armor: 300 -> 200
+- MISSILE: Targeting now works just like HAN-D's DRONE skill
+- MISSILE Damage: 300% -> 800%
+- Starting Armor: 40 -> 50
+- No longer gains armor on Level-Up
+- Began work on new ItemDisplays to replace HAN-D's
+- Fixed a massive bug where Coil Golems would completely break
+- Fixed bug where all stocks of CLUSTER_CANNON would be consumed immediately
 
 `0.1.1`
 

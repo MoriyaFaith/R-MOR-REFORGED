@@ -160,7 +160,7 @@ namespace RMORMod.Content.RMORSurvivor
             sk.passiveSkill.enabled = true;
             sk.passiveSkill.skillNameToken = RMOR_PREFIX + "PASSIVE_NAME";
             sk.passiveSkill.skillDescriptionToken = RMOR_PREFIX + "PASSIVE_DESC";
-            sk.passiveSkill.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texPassive.png");
+            sk.passiveSkill.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texPassiveAssault.png");
 
             InitializePrimarySkills();
             InitializeSecondarySkills();
@@ -320,7 +320,7 @@ namespace RMORMod.Content.RMORSurvivor
             droneSkill.rechargeStock = 1;
             droneSkill.requiredStock = 1;
             droneSkill.stockToConsume = 1;
-            droneSkill.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texSpecial.png");
+            droneSkill.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texSpecialMissile.png");
             droneSkill.activationStateMachineName = "DroneLauncher";
             droneSkill.keywordTokens = new string[] { };
             Modules.Skills.FixScriptableObjectName(droneSkill);

@@ -21,12 +21,12 @@ namespace RMORMod.Content.HANDSurvivor
             if (!Buffs.DronePassive)
             {
                 Buffs.DronePassive = Modules.Buffs.CreateBuffDef(
-                       "RMORMod_DronePassive",
+                       "SWARM_ASSAULT",
                        true,
                        false,
                        false,
-                       new Color(74f / 255f, 170f / 255f, 198f / 255f),
-                       Assets.mainAssetBundle.LoadAsset<Sprite>("texBuffSwarmArmor.png")
+                       new Color(255f / 255f, 0f / 255f, 84f / 255f),
+                       Assets.mainAssetBundle.LoadAsset<Sprite>("texBuffSwarmAssault.png")
                        );
                 R2API.RecalculateStatsAPI.GetStatCoefficients += RMORPassiveHook;
             }

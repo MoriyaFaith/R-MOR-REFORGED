@@ -13,6 +13,11 @@ namespace EntityStates.RMOR.Secondary
             Util.PlaySound("Play_HOC_StartHammer", base.gameObject);
             this.minDuration = ChargeSlam.baseMinDuration / this.attackSpeedStat;
             this.modelAnimator = base.GetModelAnimator();
+            if (this.modelAnimator)
+            {
+                startedChargeAnim = true;
+                base.PlayAnimation("Gesture, Override", "ChargeSlash", "ChargeHammer.playbackRate", 0.2f);
+            }
             if (base.characterBody)
             {
                 base.characterBody.SetAimTimer(3f);
@@ -66,12 +71,6 @@ namespace EntityStates.RMOR.Secondary
 
             if (base.fixedAge > this.minDuration && charge < chargeDuration)
             {
-                if (!startedChargeAnim)
-                {
-                    startedChargeAnim = true;
-                    base.PlayCrossfade("Gesture, Override", "ChargeSlash", "ChargeHammer.playbackRate", (this.chargeDuration - this.minDuration), 0.2f);
-                }
-
                 charge += Time.deltaTime * this.attackSpeedStat;
                 if (charge >= chargeDuration)
                 {

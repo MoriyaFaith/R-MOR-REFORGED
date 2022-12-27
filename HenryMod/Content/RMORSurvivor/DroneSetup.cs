@@ -168,7 +168,6 @@ namespace RMORMod.Content.RMORSurvivor
             ProjectileController pc = projectile.GetComponent<ProjectileController>();
             pc.allowPrediction = false;
 
-
             Modules.ContentPacks.projectilePrefabs.Add(projectile);
             return projectile;
         }

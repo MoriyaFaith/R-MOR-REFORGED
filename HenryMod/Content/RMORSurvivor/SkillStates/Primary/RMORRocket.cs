@@ -21,7 +21,7 @@ namespace EntityStates.RMOR.Primary
         {
             base.projectilePrefab = projectilePrefab;
             base.effectPrefab = LegacyResourcesAPI.Load<GameObject>("prefabs/effects/omnieffect/OmniImpactVFXLoader");
-            this.targetMuzzle = strikeIndex ? "HandL" : "HandR";    //Anim names are reversed. This is correct.
+            this.targetMuzzle = strikeIndex ? "HandR" : "HandL";    //Anim names are reversed. This is correct.
 
             base.attackSoundString = "Play_HOC_StartPunch";
 

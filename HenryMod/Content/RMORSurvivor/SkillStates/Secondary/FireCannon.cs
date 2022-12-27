@@ -100,7 +100,7 @@ namespace EntityStates.RMOR.Secondary
             shotsRemaining--;
             Util.PlaySound(FireCannon.attackSoundString, base.gameObject);
             EffectManager.SimpleMuzzleFlash(FireCannon.muzzleflashEffectPrefab, base.gameObject, "HandL", false);
-            //EffectManager.SimpleMuzzleFlash(FireCannon.muzzleflashEffectPrefab, base.gameObject, "HandR", false);
+            EffectManager.SimpleMuzzleFlash(FireCannon.muzzleflashEffectPrefab, base.gameObject, "HandR", false);
             Ray aimRay = base.GetAimRay();
             if (base.isAuthority)
             {

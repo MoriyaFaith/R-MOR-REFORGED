@@ -55,7 +55,7 @@ namespace RMORMod.Content.RMORSurvivor.Components.Body
 
         private void SearchForTarget(Ray aimRay)
         {
-            this.search.teamMaskFilter = TeamMask.all;
+            this.search.teamMaskFilter = TeamMask.GetEnemyTeams(characterBody.teamComponent.teamIndex);
             this.search.filterByLoS = true;
             this.search.searchOrigin = aimRay.origin;
             this.search.searchDirection = aimRay.direction;

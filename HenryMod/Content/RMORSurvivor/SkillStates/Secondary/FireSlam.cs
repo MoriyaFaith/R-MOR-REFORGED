@@ -56,7 +56,7 @@ namespace EntityStates.RMOR.Secondary
             this.hitStopDuration = 0.1f;
             this.hitSoundString = "";
             this.swingSoundString = "";
-            this.hitboxName = "BladeHitbox";
+            this.hitboxName = "StabHitbox";
             this.damageCoefficient = Mathf.Lerp(FireSlam.minDamageCoefficient, FireSlam.maxDamageCoefficient, chargePercent);
             this.procCoefficient = 1f;
             this.baseDuration = 0.7f;

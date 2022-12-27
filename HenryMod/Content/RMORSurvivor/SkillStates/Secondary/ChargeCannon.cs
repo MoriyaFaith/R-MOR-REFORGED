@@ -86,8 +86,8 @@ namespace EntityStates.RMOR.Secondary
                     effectPrefab = ChargeCannon.fullChargeEffect;
                 }
                 Util.PlaySound(soundString, base.gameObject);
-                //EffectManager.SimpleMuzzleFlash(effectPrefab, base.gameObject, "HandL", false);
                 EffectManager.SimpleMuzzleFlash(effectPrefab, base.gameObject, "HandL", false);
+                EffectManager.SimpleMuzzleFlash(effectPrefab, base.gameObject, "HandR", false);
                 charge -= baseDuration;
             }
 
