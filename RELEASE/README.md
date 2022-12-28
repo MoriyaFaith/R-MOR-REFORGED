@@ -1,7 +1,7 @@
 R-MOR is a devastating machine made for critical encounters: extreme armor, retractable blades and missile launchers. An unstoppable behemoth.
 
-[![](https://media.discordapp.net/attachments/739985285252775936/1057368556146262066/20221227023126_1.jpg?width=1202&height=676)]()
-[![](https://cdn.discordapp.com/attachments/739985285252775936/1057368631262072934/20221227023905_1.jpg)]()
+[![](https://media.discordapp.net/attachments/567832879879553037/1057546186250260540/20221228012242_1.jpg?width=1202&height=676)]()
+[![](https://media.discordapp.net/attachments/567832879879553037/1057546186036355123/20221228012833_1.jpg?width=1202&height=676)]()
 
 ## For Skin Creators
 
@@ -14,12 +14,9 @@ Basically the same as HAN-D, just without a saw.
 Place the RMOR_Reforged folder in /Risk of Rain 2/BepInEx/plugins/  
 
 ## To Do
-- New Skill Icons
 - Better Textures
-- Improve Animations and effects
 - Unlocks for alternate primary and secondary
 - Mastery Skin
-- Green overlay material of Fortify
 
 ## Known Issues
 - Ragdoll really likes to explode
@@ -60,9 +57,13 @@ Sounds taken from Risk of Rain 1 and Starstorm
 
 ## Changelog
 
-`0.2.3`
+`0.2.5`
+- **Removed heavy frame dropping in certain maps.** It's still there to a minor degree, but I do think it's improved quite a bit from before.
 - Updated Textures
-- Removed heavy frame dropping in certain maps
+- New Projectile Particle effects
+- Added Effects on using Fortify
+- Added Sound and Screen shake on Character Select Screen
+- Fixed Overclock not being able to be unlocked
 
 `0.2.2`
 - Fixed Readme

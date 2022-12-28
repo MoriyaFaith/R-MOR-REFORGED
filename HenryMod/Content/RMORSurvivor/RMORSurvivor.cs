@@ -38,7 +38,7 @@ namespace RMORMod.Content.RMORSurvivor
             characterPortrait = Assets.mainAssetBundle.LoadAsset<Texture>("texRMORPortrait.png"),
             bodyColor = new Color(0.556862745f, 0.682352941f, 0.690196078f),
 
-            crosshair = LegacyResourcesAPI.Load<GameObject>("prefabs/crosshair/simpledotcrosshair"),
+            crosshair = LegacyResourcesAPI.Load<GameObject>("prefabs/crosshair/captaincrosshair"),
             podPrefab = LegacyResourcesAPI.Load<GameObject>("prefabs/networkedobjects/robocratepod"),//RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/NetworkedObjects/SurvivorPod")
             
             damage = 12f,
@@ -65,7 +65,7 @@ namespace RMORMod.Content.RMORSurvivor
                 survivorUnlock.cachedName = "Characters.RMOR";
                 survivorUnlock.nameToken = "ACHIEVEMENT_MORIYARMORSURVIVORUNLOCK_NAME";
                 survivorUnlock.hidden = true;
-                survivorUnlock.achievementIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("texRMORPortrait.png");
+                survivorUnlock.achievementIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("texRMORUnlock.png");
                 Modules.ContentPacks.unlockableDefs.Add(survivorUnlock);
             }
 

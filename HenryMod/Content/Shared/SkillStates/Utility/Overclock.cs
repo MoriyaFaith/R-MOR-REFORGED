@@ -20,7 +20,7 @@ namespace EntityStates.RMOR.Utility
             modelAnimator = base.GetModelAnimator();
             if (modelAnimator)
             {
-                modelAnimator.SetFloat("KeyCrank", 1f);
+                this.PlayAnimation("Overclock, Override", "SprintFWD");
             }
 
 			this.overclockController = base.gameObject.GetComponent<OverclockController>();
@@ -136,7 +136,7 @@ namespace EntityStates.RMOR.Utility
 			Util.PlaySound(endSoundString, base.gameObject);
             if (modelAnimator)
             {
-                modelAnimator.SetFloat("KeyCrank", 0f);
+                this.PlayAnimation("Overclock, Override", "BufferEmpty");
             }
             base.OnExit();
 		}
@@ -169,7 +169,7 @@ namespace EntityStates.RMOR.Utility
 				}
 
 				if (onAuthorityFixedUpdateGlobal != null) onAuthorityFixedUpdateGlobal.Invoke(this);
-
+                
 				if (!this.skillSlot || this.skillSlot.stock == 0 || stopwatch >= buffDuration)
 				{
 					this.beginExit = true;

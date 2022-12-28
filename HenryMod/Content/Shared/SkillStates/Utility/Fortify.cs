@@ -20,6 +20,9 @@ namespace EntityStates.RMOR.Utility
             gaugeInternal = texGaugeFortify;
             gaugeArrowInternal = texGaugeArrowFortify;
             internalOverlayMaterial = BeginFortify.overlayMaterial;
+            //fortifyMat.SetTexture();
+            internalOverlayMaterial.SetTexture("_RemapTex", RMORMod.Modules.Assets.mainAssetBundle.LoadAsset<Texture>("texFortifyColor"));
+            internalOverlayMaterial.SetColor("_TintColor", new Color(0, 1, 0));
         }
     }
 }

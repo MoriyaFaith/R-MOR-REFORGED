@@ -20,10 +20,14 @@ namespace RMORMod.Content.RMOR.Achievements
 
             RoR2Application.onUpdate -= this.CheckMovementSpeed;
         }
+        public override BodyIndex LookUpRequiredBodyIndex()
+        {
+            return BodyCatalog.FindBodyIndex("RMORBody");
+        }
 
         public void CheckMovementSpeed()
         {
-            if (base.localUser != null && base.localUser.cachedBody != null && base.localUser.cachedBody.baseMoveSpeed >= 2f && base.meetsBodyRequirement)
+            if (base.localUser != null && base.localUser.cachedBody != null && base.localUser.cachedBody.moveSpeed / base.localUser.cachedBody.baseMoveSpeed >= 2f && base.meetsBodyRequirement)
             {
                 base.Grant();
             }
