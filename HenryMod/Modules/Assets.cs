@@ -16,7 +16,7 @@ namespace RMORMod.Modules
         internal static AssetBundle mainAssetBundle;
 
         private const string assetbundleName = "rmorassetbundle";
-        private const string csProjName = "RMOR_Reforged";
+        private const string csProjName = "RMORMod";
 
         internal static GameObject lockOnTarget;
 

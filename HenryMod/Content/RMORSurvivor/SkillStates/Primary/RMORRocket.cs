@@ -51,7 +51,6 @@ namespace EntityStates.RMOR.Primary
         public override void FireProjectile()
         {
             base.FireProjectile();
-            strikeIndex = !strikeIndex;
         }
 
         public override InterruptPriority GetMinimumInterruptPriority()

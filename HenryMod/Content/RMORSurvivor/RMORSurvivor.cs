@@ -147,6 +147,10 @@ namespace RMORMod.Content.RMORSurvivor
                 material = Materials.CreateHopooMaterial("matRMORDefault"),
             },
             new CustomRendererInfo {
+                childName = "RMORExtra",
+                material = Materials.CreateHopooMaterial("matRMORDefault"),
+            },
+            new CustomRendererInfo {
                 childName = "Drone",
                 material = Materials.CreateHopooMaterial("matRMORDrone"),
             },
@@ -199,6 +203,29 @@ namespace RMORMod.Content.RMORSurvivor
             Modules.ContentPacks.skillDefs.Add(primarySkill);
             Skilldefs.PrimaryCannon = primarySkill;
 
+            SteppedSkillDef primaryGunSkill = ScriptableObject.CreateInstance<SteppedSkillDef>();
+            primaryGunSkill.activationState = new SerializableEntityStateType(typeof(EntityStates.RMOR.Primary.GatlingGun));
+            primaryGunSkill.skillNameToken = RMOR_PREFIX + "PRIMARY_GUN_NAME";
+            primaryGunSkill.skillName = "GatlingGun";
+            primaryGunSkill.skillDescriptionToken = RMOR_PREFIX + "PRIMARY_GUN_DESC";
+            primaryGunSkill.cancelSprintingOnActivation = false;
+            primaryGunSkill.canceledFromSprinting = false;
+            primaryGunSkill.baseRechargeInterval = 0f;
+            primaryGunSkill.baseMaxStock = 1;
+            primaryGunSkill.rechargeStock = 1;
+            primaryGunSkill.beginSkillCooldownOnSkillEnd = false;
+            primaryGunSkill.activationStateMachineName = "Weapon";
+            primaryGunSkill.interruptPriority = EntityStates.InterruptPriority.Any;
+            primaryGunSkill.isCombatSkill = true;
+            primaryGunSkill.mustKeyPress = false;
+            primaryGunSkill.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texPrimaryHammer.png");
+            primaryGunSkill.requiredStock = 1;
+            primaryGunSkill.stockToConsume = 1;
+            primaryGunSkill.stepCount = 2;
+            Modules.Skills.FixScriptableObjectName(primaryGunSkill);
+            Modules.ContentPacks.skillDefs.Add(primaryGunSkill);
+            Skilldefs.PrimaryGatlingGun = primaryGunSkill;
+
             SkillDef primaryStabSkill = SkillDef.CreateInstance<SkillDef>();
             primaryStabSkill.activationState = new SerializableEntityStateType(typeof(EntityStates.RMOR.Primary.SwingStab));
             primaryStabSkill.skillNameToken = RMOR_PREFIX + "PRIMARY_BLADE_NAME";
@@ -224,6 +251,7 @@ namespace RMORMod.Content.RMORSurvivor
 
             SkillFamily primarySkillFamily = bodyPrefab.GetComponent<SkillLocator>().primary.skillFamily;
             Skills.AddSkillToFamily(primarySkillFamily, primarySkill);
+            Skills.AddSkillToFamily(primarySkillFamily, primaryGunSkill);
             Skills.AddSkillToFamily(primarySkillFamily, primaryStabSkill);
 
         }
@@ -428,7 +456,6 @@ namespace RMORMod.Content.RMORSurvivor
             //materials are the default materials
             #endregion
 
-            /*
             #region MasterySkin
 
             //creating a new skindef as we did before
@@ -436,27 +463,28 @@ namespace RMORMod.Content.RMORSurvivor
             SkinDef masterySkin = Modules.Skins.CreateSkinDef(RMOR_PREFIX + "MASTERY_SKIN_NAME",
                 masteryIcon,
                 defaultRendererinfos,
-                model,
-                //masterySkinUnlockableDef
+                model
                 );
 
             masterySkin.meshReplacements = Modules.Skins.getMeshReplacements(defaultRendererinfos,
-                "meshHanDMastery_Body",
-                "meshDroneMastery_Body");
+                "2HOUmesh",
+                "2HOUextra",
+                null);
 
-            masterySkin.rendererInfos[0].defaultMaterial = Modules.Materials.CreateHopooMaterial("matHANDMastery");
+            masterySkin.rendererInfos[0].defaultMaterial = Modules.Materials.CreateHopooMaterial("matRMORMastery");
+            masterySkin.rendererInfos[1].defaultMaterial = Modules.Materials.CreateHopooMaterial("matRMORMasteryExtra");
+            //masterySkin.rendererInfos[2].defaultMaterial = Modules.Materials.CreateHopooMaterial("matRMORDroneMastery");
 
             UnlockableDef masteryUnlockableDef = ScriptableObject.CreateInstance<UnlockableDef>();
             masteryUnlockableDef.cachedName = "Skins.RMOR.Mastery";
             masteryUnlockableDef.nameToken = "ACHIEVEMENT_MORIYARMORCLEARGAMEMONSOON_NAME";
             masteryUnlockableDef.achievementIcon = masteryIcon;
             Modules.ContentPacks.unlockableDefs.Add(masteryUnlockableDef);
-            masterySkin.unlockableDef = masteryUnlockableDef;
+            masterySkin.unlockableDef = (Modules.Config.forceUnlock) ? null : masteryUnlockableDef;
 
             skins.Add(masterySkin);
 
             #endregion
-            */
 
             skinController.skins = skins.ToArray();
 
