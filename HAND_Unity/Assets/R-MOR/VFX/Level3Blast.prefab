@@ -12,6 +12,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Level1Blast (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 337577428241548399, guid: 80d833b8e16ad354c9838be95162fe29,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0172b10faf4d40345bab6e6c765d9a4e, type: 2}
     - target: {fileID: 2794912810431265611, guid: 80d833b8e16ad354c9838be95162fe29,
         type: 3}
       propertyPath: m_Parameters.colorGradient.atime0
@@ -410,6 +415,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Level1Blast (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 337577428241548399, guid: 80d833b8e16ad354c9838be95162fe29,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0172b10faf4d40345bab6e6c765d9a4e, type: 2}
     - target: {fileID: 2794912810431265611, guid: 80d833b8e16ad354c9838be95162fe29,
         type: 3}
       propertyPath: m_Parameters.colorGradient.atime0
@@ -949,11 +959,21 @@ PrefabInstance:
       propertyPath: m_Parameters.colorGradient.key1.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6407237518242300500, guid: 179a41a694610b74da02ce9c1c0509bc,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0172b10faf4d40345bab6e6c765d9a4e, type: 2}
     - target: {fileID: 7498067010653559822, guid: 179a41a694610b74da02ce9c1c0509bc,
         type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7806871083744354136, guid: 179a41a694610b74da02ce9c1c0509bc,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0172b10faf4d40345bab6e6c765d9a4e, type: 2}
     - target: {fileID: 8534960810627713797, guid: 179a41a694610b74da02ce9c1c0509bc,
         type: 3}
       propertyPath: ColorModule.gradient.maxGradient.atime0

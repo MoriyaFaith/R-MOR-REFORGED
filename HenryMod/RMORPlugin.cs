@@ -60,6 +60,7 @@ namespace RMORMod
             Log.Init(Logger);
             Modules.Assets.Initialize(); // load assets and read config
             Modules.ItemDisplays.PopulateDisplays(); // collect item display prefabs for use in our display rules
+            Modules.Projectiles.RegisterProjectiles(); // add and register custom projectiles
 
             new LanguageTokens();
             // survivor initialization

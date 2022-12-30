@@ -1,14 +1,17 @@
 ﻿using EntityStates;
+using RMORMod.Content.RMORSurvivor.Components.Projectiles;
 using RoR2;
 using RoR2.Skills;
 using UnityEngine;
+using RMORMod.Content;
 using UnityEngine.AddressableAssets;
+using R2API;
 
 namespace EntityStates.RMOR.Primary
 {
     public class GatlingGun : BaseSkillState, SteppedSkillDef.IStepSetter
     {
-        public static float damageCoefficient = 1.1f;
+        public static float damageCoefficient = 0.9f;
         public static float procCoefficient = 1f;
         public static float baseDuration = 0.2f;
         public static float force = 10f;
@@ -25,18 +28,19 @@ namespace EntityStates.RMOR.Primary
 
         public override void OnEnter()
         {
+            base.characterBody.SetAimTimer(3f);
             base.OnEnter();
             duration = baseDuration / attackSpeedStat;
             characterBody.SetAimTimer(2f);
             if (step == 1)
             {
                 this.muzzleString = "HandL";
-                base.PlayCrossfade("Weapon, Override", "GatlingR", "Punch.playbackRate", this.duration, 0.1f);
+                base.PlayCrossfade("Gesture, Override", "GatlingR", "Punch.playbackRate", this.duration, 0.1f);
             }
             else
             {
                 this.muzzleString = "HandR";
-                base.PlayCrossfade("Weapon, Override", "GatlingL", "Punch.playbackRate", this.duration, 0.1f);
+                base.PlayCrossfade("Gesture, Override", "GatlingL", "Punch.playbackRate", this.duration, 0.1f);
             }
             Fire();
 
@@ -57,7 +61,7 @@ namespace EntityStates.RMOR.Primary
                     Ray aimRay = GetAimRay();
                     AddRecoil(-1f * recoil, -2f * recoil, -0.5f * recoil, 0.5f * recoil);
 
-                    new BulletAttack
+                    BulletAttack bullet = new BulletAttack
                     {
                         bulletCount = 1,
                         aimVector = aimRay.direction,
@@ -86,7 +90,9 @@ namespace EntityStates.RMOR.Primary
                         spreadYawScale = 0f,
                         queryTriggerInteraction = QueryTriggerInteraction.UseGlobal,
                         hitEffectPrefab = EntityStates.Commando.CommandoWeapon.FirePistol2.hitEffectPrefab,
-                    }.Fire();
+                    };
+                    bullet.AddModdedDamageType(DamageTypes.Restore2OV);
+                    bullet.Fire();
                 }
             }
         }

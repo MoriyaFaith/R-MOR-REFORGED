@@ -3,6 +3,7 @@ using UnityEngine;
 using R2API;
 using RMORMod.Content.RMORSurvivor.Components.Body;
 using UnityEngine.Networking;
+using RMORMod.Content.Shared.Components.Body;
 
 namespace RMORMod.Content
 {
@@ -14,6 +15,7 @@ namespace RMORMod.Content
         public static DamageAPI.ModdedDamageType HANDSecondary;
         public static DamageAPI.ModdedDamageType HANDSecondaryScepter;
         public static DamageAPI.ModdedDamageType SquashOnKill;
+        public static DamageAPI.ModdedDamageType Restore2OV;
 
         private static bool initialized = false;
 
@@ -40,6 +42,16 @@ namespace RMORMod.Content
                 CharacterBody cb = self.body;
 
                 //This will only work on things that are run on the server.
+                if (damageInfo.HasModdedDamageType(DamageTypes.Restore2OV) && damageInfo.attacker != null)
+                {
+                    OverclockController hc = damageInfo.attacker.GetComponent<OverclockController>();
+                    if (hc)
+                    {
+                        hc.ExtendOverclock(0.2f);
+                    }
+                }
+
+                //This will only work on things that are run on the server.
                 if (damageInfo.HasModdedDamageType(DamageTypes.ResetVictimForce))
                 {
                     if (cb.rigidbody)
@@ -48,7 +60,7 @@ namespace RMORMod.Content
                         cb.rigidbody.angularVelocity = new Vector3(0f, cb.rigidbody.angularVelocity.y, 0f);
                     }
                     if (cb.characterMotor != null)
-                    { 
+                    {
                         cb.characterMotor.velocity.x = 0f;
                         cb.characterMotor.velocity.z = 0f;
                         cb.characterMotor.rootMotion.x = 0f;

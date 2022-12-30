@@ -16,25 +16,25 @@ AvatarMask:
   - m_Path: RMOR/Root
     m_Weight: 1
   - m_Path: RMOR/Root/FootIK.L
-    m_Weight: 1
-  - m_Path: RMOR/Root/FootIK.L/FootIK.L_end
-    m_Weight: 1
-  - m_Path: RMOR/Root/FootIK.R
-    m_Weight: 1
-  - m_Path: RMOR/Root/FootIK.R/FootIK.R_end
-    m_Weight: 1
-  - m_Path: RMOR/Root/KneeIK.L
-    m_Weight: 1
-  - m_Path: RMOR/Root/KneeIK.L/KneeIK.L_end
-    m_Weight: 1
-  - m_Path: RMOR/Root/KneeIK.R
-    m_Weight: 1
-  - m_Path: RMOR/Root/KneeIK.R/KneeIK.R_end
-    m_Weight: 1
-  - m_Path: RMOR/Root/RootIK
-    m_Weight: 1
-  - m_Path: RMOR/Root/RootIK/Hips
     m_Weight: 0
+  - m_Path: RMOR/Root/FootIK.L/FootIK.L_end
+    m_Weight: 0
+  - m_Path: RMOR/Root/FootIK.R
+    m_Weight: 0
+  - m_Path: RMOR/Root/FootIK.R/FootIK.R_end
+    m_Weight: 0
+  - m_Path: RMOR/Root/KneeIK.L
+    m_Weight: 0
+  - m_Path: RMOR/Root/KneeIK.L/KneeIK.L_end
+    m_Weight: 0
+  - m_Path: RMOR/Root/KneeIK.R
+    m_Weight: 0
+  - m_Path: RMOR/Root/KneeIK.R/KneeIK.R_end
+    m_Weight: 0
+  - m_Path: RMOR/Root/RootIK
+    m_Weight: 0
+  - m_Path: RMOR/Root/RootIK/Hips
+    m_Weight: 1
   - m_Path: RMOR/Root/RootIK/Hips/UpperLeg.L
     m_Weight: 0
   - m_Path: RMOR/Root/RootIK/Hips/UpperLeg.L/LowerLeg.L

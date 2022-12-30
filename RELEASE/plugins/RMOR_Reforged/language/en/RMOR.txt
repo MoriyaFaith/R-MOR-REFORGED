@@ -23,14 +23,15 @@
 	"MORIYA_HAND_BODY_PRIMARY_NAME" : "HURT",
 	"MORIYA_HAND_BODY_PRIMARY_DESC" : "Apply force to all combatants for <style=cIsDamage>390% damage</style>. <style=cIsDamage>Stuns</style> while <style=cIsDamage>OVERCLOCK</style> is active.",
 	
-	"MORIYA_RMOR_BODY_PRIMARY_BLADE_NAME" : "SKEWER",
-	"MORIYA_RMOR_BODY_PRIMARY_BLADE_DESC" : "Stab all combatants for <style=cIsDamage>220% damage</style>. <style=cIsDamage>Bleeds</style> while <style=cIsDamage>OVERCLOCK</style> is active.",
-	
 	"MORIYA_HAND_BODY_PRIMARY_HAMMER_NAME" : "SMASH",
 	"MORIYA_HAND_BODY_PRIMARY_HAMMER_DESC" : "<style=cIsHealth>Slow down</style> and smash all combatants for <style=cIsDamage>600% damage</style>. <style=cIsDamage>Stuns</style> while <style=cIsDamage>OVERCLOCK</style> is active.",
-
+	
 	"MORIYA_RMOR_BODY_PRIMARY_NAME" : "ERADICATE",
 	"MORIYA_RMOR_BODY_PRIMARY_DESC" : "Shoot a missile which explodes on impact for <style=cIsDamage>420% damage</style>.",
+	"MORIYA_RMOR_BODY_PRIMARY_GUN_NAME" : "ASSAULT",
+	"MORIYA_RMOR_BODY_PRIMARY_GUN_DESC" : "Rapidly fire twin gatling guns for <style=cIsDamage>90% damage</style>.",
+	"MORIYA_RMOR_BODY_PRIMARY_BLADE_NAME" : "SKEWER",
+	"MORIYA_RMOR_BODY_PRIMARY_BLADE_DESC" : "Stab all combatants for <style=cIsDamage>220% damage</style>. <style=cIsDamage>Bleeds</style> while <style=cIsDamage>OVERCLOCK</style> is active.",
 	
 	"MORIYA_HAND_BODY_SECONDARY_NAME" : "FORCED_REASSEMBLY",
 	"MORIYA_HAND_BODY_SECONDARY_DESC" : "<style=cIsDamage>Stunning</style>. Charge up and apply great force to all combatants for <style=cIsDamage>600%-1500% damage</style>.",
@@ -75,7 +76,7 @@
 	"ACHIEVEMENT_MORIYARMORHAMMERPRIMARYUNLOCK_NAME" : "RMOR: Bled Dry",
 	"ACHIEVEMENT_MORIYARMORHAMMERPRIMARYUNLOCK_DESCRIPTION" : "As R-MOR, apply 25 stacks of bleed onto a single enemy.",
 	
-	"MORIYA_RMOR_BODY_MASTERY_SKIN_NAME" : "Z-ROW",
+	"MORIYA_RMOR_BODY_MASTERY_SKIN_NAME" : "2-HOU",
 	"ACHIEVEMENT_MORIYARMORCLEARGAMEMONSOON_NAME" : "R-MOR: Mastery",
 	"ACHIEVEMENT_MORIYARMORCLEARGAMEMONSOON_DESCRIPTION" : "As R-MOR, beat the game or obliterate on Monsoon.",
 	}

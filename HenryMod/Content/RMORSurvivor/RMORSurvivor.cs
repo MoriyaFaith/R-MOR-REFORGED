@@ -15,6 +15,11 @@ using System.Runtime.CompilerServices;
 using RMORMod.Content.Shared.Components.Body;
 using EntityStates.RMOR.Emotes;
 using EntityStates.RMOR;
+using UnityEngine.Networking;
+using RoR2.Projectile;
+using EntityStates.RMOR.Primary;
+using EntityStates.RMOR.Secondary;
+using EntityStates.RMOR.Special;
 
 namespace RMORMod.Content.RMORSurvivor
 {
@@ -147,7 +152,7 @@ namespace RMORMod.Content.RMORSurvivor
                 material = Materials.CreateHopooMaterial("matRMORDefault"),
             },
             new CustomRendererInfo {
-                childName = "RMORExtra",
+                childName = "RMORextra",
                 material = Materials.CreateHopooMaterial("matRMORDefault"),
             },
             new CustomRendererInfo {
@@ -218,7 +223,7 @@ namespace RMORMod.Content.RMORSurvivor
             primaryGunSkill.interruptPriority = EntityStates.InterruptPriority.Any;
             primaryGunSkill.isCombatSkill = true;
             primaryGunSkill.mustKeyPress = false;
-            primaryGunSkill.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texPrimaryHammer.png");
+            primaryGunSkill.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texPrimaryGun.png");
             primaryGunSkill.requiredStock = 1;
             primaryGunSkill.stockToConsume = 1;
             primaryGunSkill.stepCount = 2;
@@ -451,6 +456,11 @@ namespace RMORMod.Content.RMORSurvivor
                 defaultRendererinfos,
                 model);
 
+            defaultSkin.meshReplacements = Modules.Skins.getMeshReplacements(defaultRendererinfos,
+                "RMORmesh",
+                "RMORextra",
+                null);
+
             skins.Add(defaultSkin);
 
             //materials are the default materials
@@ -459,7 +469,7 @@ namespace RMORMod.Content.RMORSurvivor
             #region MasterySkin
 
             //creating a new skindef as we did before
-            Sprite masteryIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("texHANDSkinIconMastery");
+            Sprite masteryIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("texRMORSkinIconMastery");
             SkinDef masterySkin = Modules.Skins.CreateSkinDef(RMOR_PREFIX + "MASTERY_SKIN_NAME",
                 masteryIcon,
                 defaultRendererinfos,
@@ -469,11 +479,62 @@ namespace RMORMod.Content.RMORSurvivor
             masterySkin.meshReplacements = Modules.Skins.getMeshReplacements(defaultRendererinfos,
                 "2HOUmesh",
                 "2HOUextra",
-                null);
+                "meshDroneRMOR_Body");
+
+            #region Projectiles
+            GameObject ghostP = RMORMod.Modules.Assets.mainAssetBundle.LoadAsset<GameObject>("PrimaryStar");
+            if (!ghostP.GetComponent<NetworkIdentity>()) ghostP.AddComponent<NetworkIdentity>();
+            if (!ghostP.GetComponent<ProjectileGhostController>()) ghostP.AddComponent<ProjectileGhostController>();
+            GameObject ghost1 = RMORMod.Modules.Assets.mainAssetBundle.LoadAsset<GameObject>("Level1Star");
+            if (!ghost1.GetComponent<NetworkIdentity>()) ghost1.AddComponent<NetworkIdentity>();
+            if (!ghost1.GetComponent<ProjectileGhostController>()) ghost1.AddComponent<ProjectileGhostController>();
+            GameObject ghost2 = RMORMod.Modules.Assets.mainAssetBundle.LoadAsset<GameObject>("Level2Star");
+            if (!ghost2.GetComponent<NetworkIdentity>()) ghost2.AddComponent<NetworkIdentity>();
+            if (!ghost2.GetComponent<ProjectileGhostController>()) ghost2.AddComponent<ProjectileGhostController>();
+            GameObject ghost3 = RMORMod.Modules.Assets.mainAssetBundle.LoadAsset<GameObject>("Level3Star");
+            if (!ghost3.GetComponent<NetworkIdentity>()) ghost3.AddComponent<NetworkIdentity>();
+            if (!ghost3.GetComponent<ProjectileGhostController>()) ghost3.AddComponent<ProjectileGhostController>();
+            GameObject ghost4 = RMORMod.Modules.Assets.mainAssetBundle.LoadAsset<GameObject>("Level4Star");
+            if (!ghost4.GetComponent<NetworkIdentity>()) ghost4.AddComponent<NetworkIdentity>();
+            if (!ghost4.GetComponent<ProjectileGhostController>()) ghost4.AddComponent<ProjectileGhostController>();
+            GameObject missile = RMORMod.Modules.Assets.mainAssetBundle.LoadAsset<GameObject>("MasteryMissilePrefab");
+            if (!missile.GetComponent<NetworkIdentity>()) missile.AddComponent<NetworkIdentity>();
+            if (!missile.GetComponent<ProjectileGhostController>()) missile.AddComponent<ProjectileGhostController>();
+            HG.ArrayUtils.ArrayAppend(ref masterySkin.projectileGhostReplacements, new SkinDef.ProjectileGhostReplacement
+            {
+                projectilePrefab = RMORRocket.projectilePrefab,
+                projectileGhostReplacementPrefab = ghostP
+            }); 
+            HG.ArrayUtils.ArrayAppend(ref masterySkin.projectileGhostReplacements, new SkinDef.ProjectileGhostReplacement
+            {
+                projectilePrefab = FireCannon.level1Prefab,
+                projectileGhostReplacementPrefab = ghost1
+            }) ;
+            HG.ArrayUtils.ArrayAppend(ref masterySkin.projectileGhostReplacements, new SkinDef.ProjectileGhostReplacement
+            {
+                projectilePrefab = FireCannon.level2Prefab,
+                projectileGhostReplacementPrefab = ghost2
+            });
+            HG.ArrayUtils.ArrayAppend(ref masterySkin.projectileGhostReplacements, new SkinDef.ProjectileGhostReplacement
+            {
+                projectilePrefab = FireCannon.level3Prefab,
+                projectileGhostReplacementPrefab = ghost3
+            });
+            HG.ArrayUtils.ArrayAppend(ref masterySkin.projectileGhostReplacements, new SkinDef.ProjectileGhostReplacement
+            {
+                projectilePrefab = FireCannon.level4Prefab,
+                projectileGhostReplacementPrefab = ghost4
+            });
+            HG.ArrayUtils.ArrayAppend(ref masterySkin.projectileGhostReplacements, new SkinDef.ProjectileGhostReplacement
+            {
+                projectilePrefab = FireSeekingDrone.projectilePrefab,
+                projectileGhostReplacementPrefab = missile
+            });
+            #endregion
 
             masterySkin.rendererInfos[0].defaultMaterial = Modules.Materials.CreateHopooMaterial("matRMORMastery");
             masterySkin.rendererInfos[1].defaultMaterial = Modules.Materials.CreateHopooMaterial("matRMORMasteryExtra");
-            //masterySkin.rendererInfos[2].defaultMaterial = Modules.Materials.CreateHopooMaterial("matRMORDroneMastery");
+            masterySkin.rendererInfos[2].defaultMaterial = Modules.Materials.CreateHopooMaterial("matRMORDroneMastery");
 
             UnlockableDef masteryUnlockableDef = ScriptableObject.CreateInstance<UnlockableDef>();
             masteryUnlockableDef.cachedName = "Skins.RMOR.Mastery";
@@ -488,7 +549,7 @@ namespace RMORMod.Content.RMORSurvivor
 
             skinController.skins = skins.ToArray();
 
-            On.RoR2.ProjectileGhostReplacementManager.Init += ProjectileGhostReplacementManager_Init;
+            //On.RoR2.ProjectileGhostReplacementManager.Init += ProjectileGhostReplacementManager_Init;
         }
 
         private void ProjectileGhostReplacementManager_Init(On.RoR2.ProjectileGhostReplacementManager.orig_Init orig)
@@ -522,16 +583,14 @@ namespace RMORMod.Content.RMORSurvivor
 
             for (int i = 0; i < skin.meshReplacements.Length; i++)
             {
-                if (skin.meshReplacements[i].renderer == defaultSkin.rendererInfos[2].renderer ||
-                   skin.meshReplacements[i].renderer == defaultSkin.rendererInfos[3].renderer)
+                if (skin.meshReplacements[i].renderer == defaultSkin.rendererInfos[2].renderer)
                 {
                     return true;
                 }
             }
             for (int i = 0; i < skin.rendererInfos.Length; i++)
             {
-                if (skin.rendererInfos[i].renderer == defaultSkin.rendererInfos[2].renderer ||
-                    skin.rendererInfos[i].renderer == defaultSkin.rendererInfos[3].renderer)
+                if (skin.rendererInfos[i].renderer == defaultSkin.rendererInfos[2].renderer)
                 {
                     return true;
                 }

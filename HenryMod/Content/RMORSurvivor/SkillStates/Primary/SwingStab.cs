@@ -189,10 +189,6 @@ namespace EntityStates.RMOR.Primary
 
         public override void OnExit()
         {
-            if (!this.outer.destroying && !setNextState)
-            {
-                this.PlayCrossfade(animationLayer, "BufferEmpty", "Punch.playbackRate", 0.2f, 0.2f);
-            }
             base.OnExit();
         }
 

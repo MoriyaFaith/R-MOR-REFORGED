@@ -38,9 +38,9 @@ namespace EntityStates.RMOR.Primary
 
             base.recoilAmplitude = 0.1f;
             base.bloom = 10;
+            base.characterBody.SetAimTimer(3f);
 
             base.OnEnter();
-            base.characterBody.SetAimTimer(3f);
         }
 
         public override void FixedUpdate()
