@@ -7,6 +7,7 @@ using RMORMod.Content.RMORSurvivor.Components.Body;
 using UnityEngine.AddressableAssets;
 using RMORMod.Content.RMORSurvivor.Components.Projectiles;
 using UnityEngine.Networking;
+using RMORMod.Modules;
 
 namespace RMORMod.Content.RMORSurvivor
 {
@@ -83,7 +84,7 @@ namespace RMORMod.Content.RMORSurvivor
 
             droneProjectile.GetComponent<ProjectileController>().ghostPrefab = droneProjectileGhost;
 
-            Material droneMat = Modules.Materials.CreateHopooMaterial("DroneBody");
+            Material droneMat = Assets.mainAssetBundle.LoadAsset<Material>("DroneBody");
             Modules.Materials.SetEmission(droneMat, 3f, Color.white);
             droneProjectileGhost.GetComponentInChildren<SkinnedMeshRenderer>().material = droneMat;
 
@@ -165,8 +166,8 @@ namespace RMORMod.Content.RMORSurvivor
 
             droneFollower.layer = LayerIndex.noCollision.intVal;
 
-            Material droneMat = Modules.Materials.CreateHopooMaterial("matRMORDrone");
-            //Modules.Materials.SetEmission(droneMat, 3f, Color.white);
+            Material droneMat = Assets.mainAssetBundle.LoadAsset<Material>("matRMORDrone");
+            Modules.Materials.SetEmission(droneMat, 3f, Color.white);
             droneFollower.GetComponentInChildren<SkinnedMeshRenderer>().material = droneMat;
 
             SkinnedMeshRenderer[] smr = droneFollower.GetComponentsInChildren<SkinnedMeshRenderer>();

@@ -149,15 +149,15 @@ namespace RMORMod.Content.RMORSurvivor
         public override CustomRendererInfo[] customRendererInfos { get; set; } = new CustomRendererInfo[] {
             new CustomRendererInfo {
                 childName = "RMORBody",
-                material = Materials.CreateHopooMaterial("matRMORDefault"),
+                material = Assets.mainAssetBundle.LoadAsset<Material>("matRMORDefault"),
             },
             new CustomRendererInfo {
                 childName = "RMORextra",
-                material = Materials.CreateHopooMaterial("matRMORDefault"),
+                material = Assets.mainAssetBundle.LoadAsset<Material>("matRMORDefault"),
             },
             new CustomRendererInfo {
                 childName = "Drone",
-                material = Materials.CreateHopooMaterial("matRMORDrone"),
+                material = Assets.mainAssetBundle.LoadAsset < Material >("matRMORDrone"),
             },
         };
 
@@ -187,7 +187,7 @@ namespace RMORMod.Content.RMORSurvivor
         private void InitializePrimarySkills()
         {
             SkillDef primarySkill = SkillDef.CreateInstance<SkillDef>();
-            primarySkill.activationState = new SerializableEntityStateType(typeof(EntityStates.RMOR.Primary.RMORRocket));
+            primarySkill.activationState = new SerializableEntityStateType(typeof(EntityStates.RMOR.Primary.PrimaryRocket));
             primarySkill.skillNameToken = RMOR_PREFIX + "PRIMARY_NAME";
             primarySkill.skillName = "SwingPunch";
             primarySkill.skillDescriptionToken = RMOR_PREFIX + "PRIMARY_DESC";
@@ -256,7 +256,6 @@ namespace RMORMod.Content.RMORSurvivor
 
             SkillFamily primarySkillFamily = bodyPrefab.GetComponent<SkillLocator>().primary.skillFamily;
             Skills.AddSkillToFamily(primarySkillFamily, primarySkill);
-            Skills.AddSkillToFamily(primarySkillFamily, primaryGunSkill);
             Skills.AddSkillToFamily(primarySkillFamily, primaryStabSkill);
 
         }
@@ -502,7 +501,7 @@ namespace RMORMod.Content.RMORSurvivor
             if (!missile.GetComponent<ProjectileGhostController>()) missile.AddComponent<ProjectileGhostController>();
             HG.ArrayUtils.ArrayAppend(ref masterySkin.projectileGhostReplacements, new SkinDef.ProjectileGhostReplacement
             {
-                projectilePrefab = RMORRocket.projectilePrefab,
+                projectilePrefab = PrimaryRocket.projectilePrefab,
                 projectileGhostReplacementPrefab = ghostP
             }); 
             HG.ArrayUtils.ArrayAppend(ref masterySkin.projectileGhostReplacements, new SkinDef.ProjectileGhostReplacement
@@ -532,9 +531,9 @@ namespace RMORMod.Content.RMORSurvivor
             });
             #endregion
 
-            masterySkin.rendererInfos[0].defaultMaterial = Modules.Materials.CreateHopooMaterial("matRMORMastery");
-            masterySkin.rendererInfos[1].defaultMaterial = Modules.Materials.CreateHopooMaterial("matRMORMasteryExtra");
-            masterySkin.rendererInfos[2].defaultMaterial = Modules.Materials.CreateHopooMaterial("matRMORDroneMastery");
+            masterySkin.rendererInfos[0].defaultMaterial = Assets.mainAssetBundle.LoadAsset<Material>("matRMORMastery");
+            masterySkin.rendererInfos[1].defaultMaterial = Assets.mainAssetBundle.LoadAsset<Material>("matRMORMasteryExtra");
+            masterySkin.rendererInfos[2].defaultMaterial = Assets.mainAssetBundle.LoadAsset<Material>("matRMORDroneMastery");
 
             UnlockableDef masteryUnlockableDef = ScriptableObject.CreateInstance<UnlockableDef>();
             masteryUnlockableDef.cachedName = "Skins.RMOR.Mastery";
@@ -645,7 +644,7 @@ namespace RMORMod.Content.RMORSurvivor
             Modules.ContentPacks.entityStates.Add(typeof(Spin));
             Modules.ContentPacks.entityStates.Add(typeof(MenuPose));
 
-            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.RMOR.Primary.RMORRocket));
+            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.RMOR.Primary.PrimaryRocket));
 
             Modules.ContentPacks.entityStates.Add(typeof(EntityStates.RMOR.Secondary.ChargeSlam));
             Modules.ContentPacks.entityStates.Add(typeof(EntityStates.RMOR.Secondary.FireSlam));

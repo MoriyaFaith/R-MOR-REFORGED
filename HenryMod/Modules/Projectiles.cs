@@ -22,7 +22,8 @@ namespace RMORMod.Modules
 
         internal static void RegisterProjectiles()
         {
-            if (!RMORRocket.projectilePrefab) RMORRocket.projectilePrefab = CreateRocketProjectile();
+            if (!PrimaryRocket.projectilePrefab) PrimaryRocket.projectilePrefab = CreateRocketProjectile();
+            //if (!PrimaryRocket.effectPrefab) PrimaryRocket.effectPrefab = Assets.LoadEffect("ExplosionRed");
             if (!FireCannon.level1Prefab) FireCannon.level1Prefab = CreateLevel1Projectile();
             if (!FireCannon.level2Prefab) FireCannon.level2Prefab = CreateLevel2Projectile();
             if (!FireCannon.level3Prefab) FireCannon.level3Prefab = CreateLevel3Projectile();
@@ -46,9 +47,15 @@ namespace RMORMod.Modules
             if (!projectile.GetComponent<NetworkIdentity>()) projectile.AddComponent<NetworkIdentity>();
             ProjectileRestoreOverclockOnImpact ovc = projectile.AddComponent<ProjectileRestoreOverclockOnImpact>();
             ovc.duration = 0.4f;
+
             ProjectileImpactExplosion impactExplosion = projectile.GetComponent<ProjectileImpactExplosion>();
-            impactExplosion.blastRadius *= 0.5f;
-            impactExplosion.falloffModel = BlastAttack.FalloffModel.SweetSpot;
+            InitializeImpactExplosion(impactExplosion);
+            impactExplosion.blastRadius = 6f;
+            impactExplosion.destroyOnEnemy = true;
+            impactExplosion.destroyOnWorld = true;
+            impactExplosion.lifetime = 200f;
+            impactExplosion.explosionEffect = Assets.LoadEffect("ExplosionRed");
+
             Modules.ContentPacks.projectilePrefabs.Add(projectile);
             return projectile;
         }
@@ -61,8 +68,15 @@ namespace RMORMod.Modules
             projectile.GetComponent<ProjectileController>().ghostPrefab = level1Ghost;
             ProjectileRestoreOverclockOnImpact ovc = projectile.AddComponent<ProjectileRestoreOverclockOnImpact>();
             ovc.duration = 0.6f;
+
             ProjectileImpactExplosion impactExplosion = projectile.GetComponent<ProjectileImpactExplosion>();
-            impactExplosion.falloffModel = BlastAttack.FalloffModel.SweetSpot;
+            InitializeImpactExplosion(impactExplosion);
+            impactExplosion.blastRadius = 10f;
+            impactExplosion.destroyOnEnemy = true;
+            impactExplosion.destroyOnWorld = true;
+            impactExplosion.lifetime = 200f;
+            impactExplosion.explosionEffect = Assets.LoadEffect("ExplosionYellow");
+
             Modules.ContentPacks.projectilePrefabs.Add(projectile);
             return projectile;
         }
@@ -75,9 +89,15 @@ namespace RMORMod.Modules
             projectile.GetComponent<ProjectileController>().ghostPrefab = level2Ghost;
             ProjectileRestoreOverclockOnImpact ovc = projectile.AddComponent<ProjectileRestoreOverclockOnImpact>();
             ovc.duration = 1.2f;
+
             ProjectileImpactExplosion impactExplosion = projectile.GetComponent<ProjectileImpactExplosion>();
-            impactExplosion.falloffModel = BlastAttack.FalloffModel.SweetSpot;
-            impactExplosion.blastRadius *= 1.5f;
+            InitializeImpactExplosion(impactExplosion);
+            impactExplosion.blastRadius = 15f;
+            impactExplosion.destroyOnEnemy = true;
+            impactExplosion.destroyOnWorld = true;
+            impactExplosion.lifetime = 200f;
+            impactExplosion.explosionEffect = Assets.LoadEffect("ExplosionBlue");
+
             Modules.ContentPacks.projectilePrefabs.Add(projectile);
             return projectile;
         }
@@ -90,9 +110,15 @@ namespace RMORMod.Modules
             projectile.GetComponent<ProjectileController>().ghostPrefab = level3Ghost;
             ProjectileRestoreOverclockOnImpact ovc = projectile.AddComponent<ProjectileRestoreOverclockOnImpact>();
             ovc.duration = 1.8f;
+
             ProjectileImpactExplosion impactExplosion = projectile.GetComponent<ProjectileImpactExplosion>();
-            impactExplosion.falloffModel = BlastAttack.FalloffModel.SweetSpot;
-            impactExplosion.blastRadius *= 2;
+            InitializeImpactExplosion(impactExplosion);
+            impactExplosion.blastRadius = 20f;
+            impactExplosion.destroyOnEnemy = true;
+            impactExplosion.destroyOnWorld = true;
+            impactExplosion.lifetime = 200f;
+            impactExplosion.explosionEffect = Assets.LoadEffect("ExplosionRed");
+
             Modules.ContentPacks.projectilePrefabs.Add(projectile);
             return projectile;
         }
@@ -105,9 +131,15 @@ namespace RMORMod.Modules
             projectile.GetComponent<ProjectileController>().ghostPrefab = level4Ghost;
             ProjectileRestoreOverclockOnImpact ovc = projectile.AddComponent<ProjectileRestoreOverclockOnImpact>();
             ovc.duration = 2.4f;
+
             ProjectileImpactExplosion impactExplosion = projectile.GetComponent<ProjectileImpactExplosion>();
-            impactExplosion.falloffModel = BlastAttack.FalloffModel.SweetSpot;
-            impactExplosion.blastRadius *= 3;
+            InitializeImpactExplosion(impactExplosion);
+            impactExplosion.blastRadius = 30f;
+            impactExplosion.destroyOnEnemy = true;
+            impactExplosion.destroyOnWorld = true;
+            impactExplosion.lifetime = 200f;
+            impactExplosion.explosionEffect = Assets.LoadEffect("ExplosionPurple");
+
             Modules.ContentPacks.projectilePrefabs.Add(projectile);
             return projectile;
         }
@@ -148,5 +180,30 @@ namespace RMORMod.Modules
             Modules.ContentPacks.projectilePrefabs.Add(projectile);
             return projectile;
         }
+
+
+        private static void InitializeImpactExplosion(ProjectileImpactExplosion projectileImpactExplosion)
+        {
+            projectileImpactExplosion.blastDamageCoefficient = 1f;
+            projectileImpactExplosion.blastProcCoefficient = 1f;
+            projectileImpactExplosion.blastRadius = 1f;
+            projectileImpactExplosion.bonusBlastForce = Vector3.zero;
+            projectileImpactExplosion.childrenCount = 0;
+            projectileImpactExplosion.childrenDamageCoefficient = 0f;
+            projectileImpactExplosion.childrenProjectilePrefab = null;
+            projectileImpactExplosion.destroyOnEnemy = false;
+            projectileImpactExplosion.destroyOnWorld = false;
+            projectileImpactExplosion.falloffModel = RoR2.BlastAttack.FalloffModel.SweetSpot;
+            projectileImpactExplosion.fireChildren = false;
+            projectileImpactExplosion.impactEffect = null;
+            projectileImpactExplosion.lifetime = 0f;
+            projectileImpactExplosion.lifetimeAfterImpact = 0f;
+            projectileImpactExplosion.lifetimeRandomOffset = 0f;
+            projectileImpactExplosion.offsetForLifetimeExpiredSound = 0f;
+            projectileImpactExplosion.timerAfterImpact = false;
+
+            projectileImpactExplosion.GetComponent<ProjectileDamage>().damageType = DamageType.Generic;
+        }
+
     }
 }

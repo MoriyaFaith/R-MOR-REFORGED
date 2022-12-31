@@ -7,6 +7,8 @@ using System.IO;
 using System.Collections.Generic;
 using RoR2.UI;
 using System;
+using System.Linq;
+using UnityEngine.AddressableAssets;
 
 namespace RMORMod.Modules
 {
@@ -23,6 +25,7 @@ namespace RMORMod.Modules
         internal static void Initialize()
         {
             LoadAssetBundle();
+            SwapShadersGhetti();
             LoadSoundbank();
             PopulateAssets();
         }
@@ -44,6 +47,48 @@ namespace RMORMod.Modules
                 Log.Error("Failed to load assetbundle. Make sure your assetbundle name is setup correctly\n" + e);
                 return;
             }
+        }
+        private static void SwapShadersGhetti()
+        {
+            Shader cloudRemap = Addressables.LoadAssetAsync<Shader>("RoR2/Base/Shaders/HGCloudRemap.shader").WaitForCompletion();
+            Shader standard = Addressables.LoadAssetAsync<Shader>("RoR2/Base/Shaders/HGStandard.shader").WaitForCompletion();
+            Shader triplanar = Addressables.LoadAssetAsync<Shader>("RoR2/Base/Shaders/HGTriplanarTerrainBlend.shader").WaitForCompletion();
+
+            var materials = mainAssetBundle.LoadAllAssets<Material>();
+            foreach (Material mat in materials)
+            {
+                switch (mat.shader.name)
+                {
+                    case "StubbedRoR2/Base/Shaders/HGCloudRemap": // name may differ
+                        mat.shader = cloudRemap;
+                        break;
+
+                    case "StubbedRoR2/Base/Shaders/HGStandard": // name may differ
+                        mat.shader = standard;
+                        break;
+                    case "StubbedRoR2/Base/Shaders/HGTriplanarTerrainBlend": // name may differ
+                        mat.shader = triplanar;
+                        break;
+                }
+            }
+        }
+        private static void SwapShadersFromMaterials()
+        {
+            var shaders = mainAssetBundle.LoadAllAssets<Shader>().Where(shader => shader.name.StartsWith("StubbedShader"));
+            foreach (Shader shader in shaders)
+            {
+                try
+                {
+                    SwapShader(shader);
+                }
+                catch (Exception e) { Debug.LogError(e); }
+            }
+        }
+        private static async void SwapShader(Shader shader)
+        {
+            var shaderName = shader.name.Substring("Stubbed".Length);
+            var adressablePath = $"{shaderName}.shader";
+            shader = Addressables.LoadAssetAsync<Shader>(adressablePath).WaitForCompletion();
         }
 
         internal static void LoadSoundbank()
@@ -174,7 +219,7 @@ namespace RMORMod.Modules
             return RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Crosshair/" + crosshairName + "Crosshair");
         }
 
-        private static GameObject LoadEffect(string resourceName)
+        internal static GameObject LoadEffect(string resourceName)
         {
             return LoadEffect(resourceName, "", false);
         }

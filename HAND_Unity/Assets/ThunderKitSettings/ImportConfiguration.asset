@@ -1,0 +1,82 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-5931962212937386012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: Import Addressable Catalog
+  m_EditorClassIdentifier: ThunderKit.Addressable.Config:ThunderKit.Addressable.Config:ImportAddressableCatalog
+  enabled: 1
+--- !u!114 &-2590303079804836494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: Create Game Package
+  m_EditorClassIdentifier: ThunderKit.Core:ThunderKit.Core.Config:CreateGamePackage
+  enabled: 1
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: ImportConfiguration
+  m_EditorClassIdentifier: ThunderKit.Core:ThunderKit.Core.Data:ImportConfiguration
+  ConfigurationExecutors: []
+  ConfigurationIndex: -1
+--- !u!114 &2671029059009365404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: Import Project Settings
+  m_EditorClassIdentifier: ThunderKit.Core:ThunderKit.Core.Config.Common:ImportProjectSettings
+  enabled: 1
+  IncludedSettings: 0
+--- !u!114 &3604590226110102444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: Get Bitness
+  m_EditorClassIdentifier: ThunderKit.Core:ThunderKit.Core.Config.Common:GetBitness
+  enabled: 1
+--- !u!114 &5821501466843024735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: Import Assemblies
+  m_EditorClassIdentifier: ThunderKit.Core:ThunderKit.Core.Config:ImportAssemblies
+  enabled: 1

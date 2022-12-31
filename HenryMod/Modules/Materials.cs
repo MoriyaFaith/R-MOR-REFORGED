@@ -9,27 +9,6 @@ namespace RMORMod.Modules
 
         internal static Shader hotpoo = RoR2.LegacyResourcesAPI.Load<Shader>("Shaders/Deferred/HGStandard");
 
-        public static Material CreateHopooMaterial(string materialName)
-        {
-            Material tempMat = cachedMaterials.Find(mat =>
-            {
-                materialName.Replace(" (Instance)", "");
-                return mat.name.Contains(materialName);
-            });
-            if (tempMat)
-                return tempMat;
-
-            tempMat = Assets.mainAssetBundle.LoadAsset<Material>(materialName);
-
-            if (!tempMat)
-            {
-                Log.Error("Failed to load material: " + materialName + " - Check to see that the material in your Unity project matches this name");
-                return new Material(hotpoo);
-            }
-
-            return tempMat.SetHopooMaterial();
-        }
-
         public static Material SetHopooMaterial(this Material tempMat)
         {
             if (cachedMaterials.Contains(tempMat))

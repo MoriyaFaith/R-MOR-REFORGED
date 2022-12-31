@@ -216,6 +216,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4502744690038060287, guid: 5db8df61a415187478e18bb113936379,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1e59d9b7938fc6849945fa267b33774e, type: 2}
     - target: {fileID: 4820025606020721784, guid: 5db8df61a415187478e18bb113936379,
         type: 3}
       propertyPath: ColorModule.enabled
@@ -556,6 +561,11 @@ PrefabInstance:
       propertyPath: ColorModule.gradient.maxGradient.m_NumColorKeys
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 6246172045355537849, guid: 80d833b8e16ad354c9838be95162fe29,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 79f60060e245ad642a78f8fb6d241d5c, type: 2}
     - target: {fileID: 7583134319200360940, guid: 80d833b8e16ad354c9838be95162fe29,
         type: 3}
       propertyPath: m_Color.b
@@ -881,6 +891,11 @@ PrefabInstance:
       propertyPath: ColorModule.gradient.maxGradient.m_NumColorKeys
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 6246172045355537849, guid: 80d833b8e16ad354c9838be95162fe29,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 79f60060e245ad642a78f8fb6d241d5c, type: 2}
     - target: {fileID: 7583134319200360940, guid: 80d833b8e16ad354c9838be95162fe29,
         type: 3}
       propertyPath: m_Color.b
@@ -1216,6 +1231,11 @@ PrefabInstance:
       propertyPath: ColorModule.gradient.maxGradient.m_NumColorKeys
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 6246172045355537849, guid: 80d833b8e16ad354c9838be95162fe29,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 79f60060e245ad642a78f8fb6d241d5c, type: 2}
     - target: {fileID: 7583134319200360940, guid: 80d833b8e16ad354c9838be95162fe29,
         type: 3}
       propertyPath: m_Color.b
@@ -1556,6 +1576,11 @@ PrefabInstance:
       propertyPath: ColorModule.gradient.maxGradient.m_NumColorKeys
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 6246172045355537849, guid: 80d833b8e16ad354c9838be95162fe29,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 79f60060e245ad642a78f8fb6d241d5c, type: 2}
     - target: {fileID: 7583134319200360940, guid: 80d833b8e16ad354c9838be95162fe29,
         type: 3}
       propertyPath: m_Color.b
