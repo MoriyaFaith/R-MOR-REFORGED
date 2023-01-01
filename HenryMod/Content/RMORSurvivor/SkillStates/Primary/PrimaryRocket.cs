@@ -25,7 +25,7 @@ namespace EntityStates.RMOR.Primary
             base.effectPrefab = effectPrefab;
             this.targetMuzzle = strikeIndex ? "HandR" : "HandL";    //Anim names are reversed. This is correct.
 
-            base.attackSoundString = "Play_HOC_StartPunch";
+            base.attackSoundString = "Play_RMOR_Primary";
 
             base.baseDuration = BaseDuration;
             //base.baseDelayBeforeFiringProjectile = BaseDelayDuration;

@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="12" SoundbankVersion="135">
 	<RootPaths>
-		<ProjectRoot>C:\Users\Node\RoR2 Mods\HAND\HAND_Overclocked_WWISE\</ProjectRoot>
-		<SourceFilesRoot>C:\Users\Node\RoR2 Mods\HAND\HAND_Overclocked_WWISE\.cache\Windows\</SourceFilesRoot>
-		<SoundBanksRoot>C:\Users\Node\RoR2 Mods\HAND\HAND_Overclocked_WWISE\GeneratedSoundBanks\Windows\</SoundBanksRoot>
+		<ProjectRoot>D:\Programs\Unity\HAN-D_OVERCLOCKED\HAND_Overclocked_WWISE\</ProjectRoot>
+		<SourceFilesRoot>D:\Programs\Unity\HAN-D_OVERCLOCKED\HAND_Overclocked_WWISE\.cache\Windows\</SourceFilesRoot>
+		<SoundBanksRoot>D:\Programs\Unity\HAN-D_OVERCLOCKED\HAND_Overclocked_WWISE\GeneratedSoundBanks\Windows\</SoundBanksRoot>
 		<ExternalSourcesInputFile></ExternalSourcesInputFile>
-		<ExternalSourcesOutputRoot>C:\Users\Node\RoR2 Mods\HAND\HAND_Overclocked_WWISE\GeneratedSoundBanks\Windows</ExternalSourcesOutputRoot>
+		<ExternalSourcesOutputRoot>D:\Programs\Unity\HAN-D_OVERCLOCKED\HAND_Overclocked_WWISE\GeneratedSoundBanks\Windows</ExternalSourcesOutputRoot>
 	</RootPaths>
 	<DialogueEvents/>
 	<StreamedFiles/>
 	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
-		<SoundBank Id="1029746374" Language="SFX" Hash="1805663773">
+		<SoundBank Id="1029746374" Language="SFX" Hash="1202372011">
 			<ObjectPath>\SoundBanks\Default Work Unit\HAND_Overclocked_Soundbank</ObjectPath>
 			<ShortName>HAND_Overclocked_Soundbank</ShortName>
 			<Path>HAND_Overclocked_Soundbank.bnk</Path>
@@ -93,6 +93,74 @@
 						<File Id="269277722" Language="SFX">
 							<ShortName>sndHammer.wav</ShortName>
 							<Path>SFX\sndHammer_3F75BDB9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="698574441" Name="Play_RMOR_Boot" ObjectPath="\Events\Default Work Unit\Play_RMOR_Boot">
+					<IncludedMemoryFiles>
+						<File Id="269277722" Language="SFX">
+							<ShortName>sndHammer.wav</ShortName>
+							<Path>SFX\sndHammer_3F75BDB9.wem</Path>
+						</File>
+						<File Id="307642525" Language="SFX">
+							<ShortName>wBladeExtend.wav</ShortName>
+							<Path>SFX\wBladeExtend_3F75BDB9.wem</Path>
+						</File>
+						<File Id="338730201" Language="SFX">
+							<ShortName>wRobotMove2.wav</ShortName>
+							<Path>SFX\wRobotMove2_3F75BDB9.wem</Path>
+						</File>
+						<File Id="346040265" Language="SFX">
+							<ShortName>wRobotMove3.wav</ShortName>
+							<Path>SFX\wRobotMove3_3F75BDB9.wem</Path>
+						</File>
+						<File Id="577481445" Language="SFX">
+							<ShortName>wRobotMove.wav</ShortName>
+							<Path>SFX\wRobotMove_3F75BDB9.wem</Path>
+						</File>
+						<File Id="1066685140" Language="SFX">
+							<ShortName>wBootComputer.wav</ShortName>
+							<Path>SFX\wBootComputer_44EACAF3.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="782889910" Name="Play_RMOR_FullCharge" ObjectPath="\Events\Default Work Unit\Play_RMOR_FullCharge">
+					<IncludedMemoryFiles>
+						<File Id="971856121" Language="SFX">
+							<ShortName>DOOM\wBFGCharge.wav</ShortName>
+							<Path>SFX\DOOM\wBFGCharge_AF0256DD.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="3326163533" Name="Play_RMOR_Primary" ObjectPath="\Events\Default Work Unit\Play_RMOR_Primary">
+					<IncludedMemoryFiles>
+						<File Id="273402032" Language="SFX">
+							<ShortName>DOOM\wShotgunCock.wav</ShortName>
+							<Path>SFX\DOOM\wShotgunCock_3F75BDB9.wem</Path>
+						</File>
+						<File Id="743812189" Language="SFX">
+							<ShortName>DOOM\wFireRocket.wav</ShortName>
+							<Path>SFX\DOOM\wFireRocket_3F75BDB9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="303044525" Name="Play_RMOR_Rocket" ObjectPath="\Events\Default Work Unit\Play_RMOR_Rocket">
+					<IncludedMemoryFiles>
+						<File Id="273402032" Language="SFX">
+							<ShortName>DOOM\wShotgunCock.wav</ShortName>
+							<Path>SFX\DOOM\wShotgunCock_3F75BDB9.wem</Path>
+						</File>
+						<File Id="743812189" Language="SFX">
+							<ShortName>DOOM\wFireRocket.wav</ShortName>
+							<Path>SFX\DOOM\wFireRocket_3F75BDB9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="3414541919" Name="Play_RMOR_SemiCharge" ObjectPath="\Events\Default Work Unit\Play_RMOR_SemiCharge">
+					<IncludedMemoryFiles>
+						<File Id="327647864" Language="SFX">
+							<ShortName>DOOM\wPlasmaGun.wav</ShortName>
+							<Path>SFX\DOOM\wPlasmaGun_3F75BDB9.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>

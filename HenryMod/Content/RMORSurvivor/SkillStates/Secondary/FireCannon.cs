@@ -8,7 +8,7 @@ namespace EntityStates.RMOR.Secondary
 {
     public class FireCannon : BaseState
     {
-        public static string attackSoundString;
+        public static string attackSoundString = "Play_RMOR_Rocket";
         public static GameObject level1Prefab;
         public static GameObject level2Prefab;
         public static GameObject level3Prefab;
@@ -17,7 +17,7 @@ namespace EntityStates.RMOR.Secondary
         public static float baseDurationBetweenShots = 0.5f;
         public static float damageCoefficient = 6.0f;
         public static float force = 2000f;
-        public static GameObject muzzleflashEffectPrefab = LegacyResourcesAPI.Load<GameObject>("prefabs/effects/omnieffect/OmniImpactVFXLoader");
+        public static GameObject muzzleflashEffectPrefab;
 
         public int chargeLevel;
         private bool crit;

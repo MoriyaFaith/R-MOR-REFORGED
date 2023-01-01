@@ -35,7 +35,7 @@ namespace RMORMod
     {
         public const string MODUID = "com.MoriyaLuna.RMORReforged";
         public const string MODNAME = "RMOR Reforged";
-        public const string MODVERSION = "0.2.1";
+        public const string MODVERSION = "1.0.0";
 
         public const string DEVELOPER_PREFIX = "MORIYA";
 

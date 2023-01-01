@@ -1,5 +1,8 @@
 Event	ID	Name			Wwise Object Path	Notes
+	303044525	Play_RMOR_Rocket			\Default Work Unit\Play_RMOR_Rocket	
 	475308029	Play_HOC_SwingHammer			\Default Work Unit\Play_HOC_SwingHammer	
+	698574441	Play_RMOR_Boot			\Default Work Unit\Play_RMOR_Boot	
+	782889910	Play_RMOR_FullCharge			\Default Work Unit\Play_RMOR_FullCharge	
 	1030244185	Play_HOC_Hammer			\Default Work Unit\Play_HOC_Hammer	
 	1032766253	Play_HOC_Punch			\Default Work Unit\Play_HOC_Punch	
 	1596425374	Play_HOC_DroneHit			\Default Work Unit\Play_HOC_DroneHit	
@@ -7,21 +10,32 @@ Event	ID	Name			Wwise Object Path	Notes
 	1983674255	Play_HOC_StartPunch			\Default Work Unit\Play_HOC_StartPunch	
 	2201467365	Play_HOC_Focus			\Default Work Unit\Play_HOC_Focus	
 	3281996986	Play_HOC_DroneGain			\Default Work Unit\Play_HOC_DroneGain	
+	3326163533	Play_RMOR_Primary			\Default Work Unit\Play_RMOR_Primary	
 	3352294839	Play_HOC_Drone			\Default Work Unit\Play_HOC_Drone	
+	3414541919	Play_RMOR_SemiCharge			\Default Work Unit\Play_RMOR_SemiCharge	
 	3923719566	Play_HOC_Drill			\Default Work Unit\Play_HOC_Drill	
 
 Game Parameter	ID	Name			Wwise Object Path	Notes
 	3673881719	Volume_SFX			\Default Work Unit\Volume_SFX	
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
-	28592980	wJanitorShoot1 1	C:\Users\Node\RoR2 Mods\HAND\HAND_Overclocked_WWISE\.cache\Windows\SFX\wJanitorShoot1 1_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\HAND_Sounds\wJanitorShoot1 1		4846
-	115842647	wJanitorShoot4 2	C:\Users\Node\RoR2 Mods\HAND\HAND_Overclocked_WWISE\.cache\Windows\SFX\wJanitorShoot4 2_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\HAND_Sounds\wJanitorShoot4 2		13352
-	189267586	exeSpecial	C:\Users\Node\RoR2 Mods\HAND\HAND_Overclocked_WWISE\.cache\Windows\SFX\exeSpecial_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\HAND_Sounds\exeSpecial		14268
-	199100726	wDrill	C:\Users\Node\RoR2 Mods\HAND\HAND_Overclocked_WWISE\.cache\Windows\SFX\wDrill_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\HAND_Sounds\Drone_Sounds\wDrill		18190
-	269277722	sndHammer	C:\Users\Node\RoR2 Mods\HAND\HAND_Overclocked_WWISE\.cache\Windows\SFX\sndHammer_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\HAND_Sounds\sndHammer		3784
-	306440750	wJanitorShoot4 1	C:\Users\Node\RoR2 Mods\HAND\HAND_Overclocked_WWISE\.cache\Windows\SFX\wJanitorShoot4 1_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\HAND_Sounds\wJanitorShoot4 1		11743
-	407884217	wJanitorShoot2 2	C:\Users\Node\RoR2 Mods\HAND\HAND_Overclocked_WWISE\.cache\Windows\SFX\wJanitorShoot2 2_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\HAND_Sounds\wJanitorShoot2 2		3774
-	415114961	wJanitorShoot2 1	C:\Users\Node\RoR2 Mods\HAND\HAND_Overclocked_WWISE\.cache\Windows\SFX\wJanitorShoot2 1_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\HAND_Sounds\wJanitorShoot2 1		1304
-	863164524	wLizardHit	C:\Users\Node\RoR2 Mods\HAND\HAND_Overclocked_WWISE\.cache\Windows\SFX\wLizardHit_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\HAND_Sounds\Drone_Sounds\wLizardHit		4720
-	940683805	wJanitorShoot1 2	C:\Users\Node\RoR2 Mods\HAND\HAND_Overclocked_WWISE\.cache\Windows\SFX\wJanitorShoot1 2_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\HAND_Sounds\wJanitorShoot1 2		6343
+	28592980	wJanitorShoot1 1	D:\Programs\Unity\HAN-D_OVERCLOCKED\HAND_Overclocked_WWISE\.cache\Windows\SFX\wJanitorShoot1 1_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\RMOR_Sounds\wJanitorShoot1 1		4846
+	115842647	wJanitorShoot4 2	D:\Programs\Unity\HAN-D_OVERCLOCKED\HAND_Overclocked_WWISE\.cache\Windows\SFX\wJanitorShoot4 2_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\RMOR_Sounds\wJanitorShoot4 2		13352
+	189267586	exeSpecial	D:\Programs\Unity\HAN-D_OVERCLOCKED\HAND_Overclocked_WWISE\.cache\Windows\SFX\exeSpecial_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\RMOR_Sounds\exeSpecial		14268
+	199100726	wDrill	D:\Programs\Unity\HAN-D_OVERCLOCKED\HAND_Overclocked_WWISE\.cache\Windows\SFX\wDrill_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\RMOR_Sounds\Drone_Sounds\wDrill		18190
+	269277722	sndHammer	D:\Programs\Unity\HAN-D_OVERCLOCKED\HAND_Overclocked_WWISE\.cache\Windows\SFX\sndHammer_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\RMOR_Sounds\sndHammer		3784
+	273402032	wShotgunCock	D:\Programs\Unity\HAN-D_OVERCLOCKED\HAND_Overclocked_WWISE\.cache\Windows\SFX\DOOM\wShotgunCock_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\RMOR_Sounds\DOOM\wShotgunCock		2655
+	306440750	wJanitorShoot4 1	D:\Programs\Unity\HAN-D_OVERCLOCKED\HAND_Overclocked_WWISE\.cache\Windows\SFX\wJanitorShoot4 1_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\RMOR_Sounds\wJanitorShoot4 1		11743
+	307642525	wBladeExtend	D:\Programs\Unity\HAN-D_OVERCLOCKED\HAND_Overclocked_WWISE\.cache\Windows\SFX\wBladeExtend_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\RMOR_Sounds\wBladeExtend		10726
+	327647864	wPlasmaGun	D:\Programs\Unity\HAN-D_OVERCLOCKED\HAND_Overclocked_WWISE\.cache\Windows\SFX\DOOM\wPlasmaGun_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\RMOR_Sounds\DOOM\wPlasmaGun		2682
+	338730201	wRobotMove2	D:\Programs\Unity\HAN-D_OVERCLOCKED\HAND_Overclocked_WWISE\.cache\Windows\SFX\wRobotMove2_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\RMOR_Sounds\wRobotMove2		23324
+	346040265	wRobotMove3	D:\Programs\Unity\HAN-D_OVERCLOCKED\HAND_Overclocked_WWISE\.cache\Windows\SFX\wRobotMove3_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\RMOR_Sounds\wRobotMove3		5467
+	407884217	wJanitorShoot2 2	D:\Programs\Unity\HAN-D_OVERCLOCKED\HAND_Overclocked_WWISE\.cache\Windows\SFX\wJanitorShoot2 2_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\RMOR_Sounds\wJanitorShoot2 2		3774
+	415114961	wJanitorShoot2 1	D:\Programs\Unity\HAN-D_OVERCLOCKED\HAND_Overclocked_WWISE\.cache\Windows\SFX\wJanitorShoot2 1_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\RMOR_Sounds\wJanitorShoot2 1		1304
+	577481445	wRobotMove	D:\Programs\Unity\HAN-D_OVERCLOCKED\HAND_Overclocked_WWISE\.cache\Windows\SFX\wRobotMove_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\RMOR_Sounds\wRobotMove		19881
+	743812189	wFireRocket	D:\Programs\Unity\HAN-D_OVERCLOCKED\HAND_Overclocked_WWISE\.cache\Windows\SFX\DOOM\wFireRocket_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\RMOR_Sounds\DOOM\wFireRocket		6383
+	863164524	wLizardHit	D:\Programs\Unity\HAN-D_OVERCLOCKED\HAND_Overclocked_WWISE\.cache\Windows\SFX\wLizardHit_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\RMOR_Sounds\Drone_Sounds\wLizardHit		4720
+	940683805	wJanitorShoot1 2	D:\Programs\Unity\HAN-D_OVERCLOCKED\HAND_Overclocked_WWISE\.cache\Windows\SFX\wJanitorShoot1 2_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\RMOR_Sounds\wJanitorShoot1 2		6343
+	971856121	wBFGCharge	D:\Programs\Unity\HAN-D_OVERCLOCKED\HAND_Overclocked_WWISE\.cache\Windows\SFX\DOOM\wBFGCharge_AF0256DD.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\RMOR_Sounds\DOOM\wBFGCharge		6240
+	1066685140	wBootComputer	D:\Programs\Unity\HAN-D_OVERCLOCKED\HAND_Overclocked_WWISE\.cache\Windows\SFX\wBootComputer_44EACAF3.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\RMOR_Sounds\wBootComputer		209344
 

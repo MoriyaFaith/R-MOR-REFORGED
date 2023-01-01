@@ -254,9 +254,15 @@ namespace RMORMod.Content.RMORSurvivor
             Modules.ContentPacks.skillDefs.Add(primaryStabSkill);
             Skilldefs.PrimaryStab = primaryStabSkill;
 
+            UnlockableDef skewerUnlock = ScriptableObject.CreateInstance<UnlockableDef>();
+            skewerUnlock.cachedName = "Skills.RMOR.Skewer";
+            skewerUnlock.nameToken = "ACHIEVEMENT_MORIYARMORSKEWERUNLOCK_NAME";
+            skewerUnlock.achievementIcon = primaryStabSkill.icon;
+            Modules.ContentPacks.unlockableDefs.Add(skewerUnlock);
+
             SkillFamily primarySkillFamily = bodyPrefab.GetComponent<SkillLocator>().primary.skillFamily;
             Skills.AddSkillToFamily(primarySkillFamily, primarySkill);
-            Skills.AddSkillToFamily(primarySkillFamily, primaryStabSkill);
+            Skills.AddSkillToFamily(primarySkillFamily, primaryStabSkill, Modules.Config.forceUnlock ? null : skewerUnlock);
 
         }
         private void InitializeSecondarySkills()
@@ -309,8 +315,14 @@ namespace RMORMod.Content.RMORSurvivor
             SkillFamily secondarySkillFamily = bodyPrefab.GetComponent<SkillLocator>().secondary.skillFamily;
             Skilldefs.SecondaryChargeHammer = secondaryHammerSkill;
 
+            UnlockableDef slashUnlock = ScriptableObject.CreateInstance<UnlockableDef>();
+            slashUnlock.cachedName = "Skills.RMOR.SlashAttack";
+            slashUnlock.nameToken = "ACHIEVEMENT_MORIYARMORSLASHUNLOCK_NAME";
+            slashUnlock.achievementIcon = secondaryHammerSkill.icon;
+            Modules.ContentPacks.unlockableDefs.Add(slashUnlock);
+
             Skills.AddSkillToFamily(secondarySkillFamily, secondarySkill);
-            Skills.AddSkillToFamily(secondarySkillFamily, secondaryHammerSkill); //not working right now
+            Skills.AddSkillToFamily(secondarySkillFamily, secondaryHammerSkill, Modules.Config.forceUnlock ? null : slashUnlock);
 
             InitializeScepterSkills();
         }
@@ -478,7 +490,7 @@ namespace RMORMod.Content.RMORSurvivor
             masterySkin.meshReplacements = Modules.Skins.getMeshReplacements(defaultRendererinfos,
                 "2HOUmesh",
                 "2HOUextra",
-                "meshDroneRMOR_Body");
+                "meshReimu");
 
             #region Projectiles
             GameObject ghostP = RMORMod.Modules.Assets.mainAssetBundle.LoadAsset<GameObject>("PrimaryStar");

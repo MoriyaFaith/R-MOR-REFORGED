@@ -6,7 +6,7 @@ using RMORMod.Content.HANDSurvivor.Components;
 
 namespace RMORMod.Content.RMOR.Achievements
 {
-    [RegisterAchievement("MoffeinHANDOverclockedHammerPrimaryUnlock", "Skills.HANDOverclocked.HammerPrimary", null, null)]
+    [RegisterAchievement("MoffeinHANDOverclockedHammerPrimaryUnlock", "Skills.RMOR.HammerPrimary", null, null)]
     public class HANDOverclockedHammerPrimaryUnlockAchievement : BaseAchievement
     {
         BodyIndex mithrixBody;

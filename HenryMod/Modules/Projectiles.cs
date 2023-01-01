@@ -13,17 +13,35 @@ namespace RMORMod.Modules
 {
     internal static class Projectiles
     {
+        #region Ghosts
         public static GameObject primaryGhost;
         public static GameObject level1Ghost;
         public static GameObject level2Ghost;
         public static GameObject level3Ghost;
         public static GameObject level4Ghost;
         public static GameObject droneProjectileGhost;
+        #endregion
+
+        #region Explosions and Flares
+        public static GameObject primaryExplosion = Assets.LoadEffect("PrimaryExplosion");
+        public static GameObject level1Explosion = Assets.LoadEffect("Level1Explosion");
+        public static GameObject level2Explosion = Assets.LoadEffect("Level2Explosion");
+        public static GameObject level3Explosion = Assets.LoadEffect("Level3Explosion");
+        public static GameObject level4Explosion = Assets.LoadEffect("Level4Explosion");
+
+        public static GameObject primaryFlare = Assets.LoadEffect("RedFlare");
+        public static GameObject secondaryFlare = Assets.LoadEffect("YellowFlare");
+        public static GameObject midCharge = Assets.LoadEffect("RedCharge");
+        public static GameObject fullCharge = Assets.LoadEffect("BlueCharge");
+        #endregion
 
         internal static void RegisterProjectiles()
         {
             if (!PrimaryRocket.projectilePrefab) PrimaryRocket.projectilePrefab = CreateRocketProjectile();
-            //if (!PrimaryRocket.effectPrefab) PrimaryRocket.effectPrefab = Assets.LoadEffect("ExplosionRed");
+            if (!PrimaryRocket.effectPrefab) PrimaryRocket.effectPrefab = primaryFlare;
+            if (!FireCannon.muzzleflashEffectPrefab) FireCannon.muzzleflashEffectPrefab = secondaryFlare;
+            if (!ChargeCannon.partialChargeEffect) ChargeCannon.partialChargeEffect = midCharge;
+            if (!ChargeCannon.fullChargeEffect) ChargeCannon.fullChargeEffect = fullCharge;
             if (!FireCannon.level1Prefab) FireCannon.level1Prefab = CreateLevel1Projectile();
             if (!FireCannon.level2Prefab) FireCannon.level2Prefab = CreateLevel2Projectile();
             if (!FireCannon.level3Prefab) FireCannon.level3Prefab = CreateLevel3Projectile();
@@ -54,7 +72,7 @@ namespace RMORMod.Modules
             impactExplosion.destroyOnEnemy = true;
             impactExplosion.destroyOnWorld = true;
             impactExplosion.lifetime = 200f;
-            impactExplosion.explosionEffect = Assets.LoadEffect("ExplosionRed");
+            impactExplosion.explosionEffect = primaryExplosion;
 
             Modules.ContentPacks.projectilePrefabs.Add(projectile);
             return projectile;
@@ -75,7 +93,7 @@ namespace RMORMod.Modules
             impactExplosion.destroyOnEnemy = true;
             impactExplosion.destroyOnWorld = true;
             impactExplosion.lifetime = 200f;
-            impactExplosion.explosionEffect = Assets.LoadEffect("ExplosionYellow");
+            impactExplosion.explosionEffect = level1Explosion;
 
             Modules.ContentPacks.projectilePrefabs.Add(projectile);
             return projectile;
@@ -96,7 +114,7 @@ namespace RMORMod.Modules
             impactExplosion.destroyOnEnemy = true;
             impactExplosion.destroyOnWorld = true;
             impactExplosion.lifetime = 200f;
-            impactExplosion.explosionEffect = Assets.LoadEffect("ExplosionBlue");
+            impactExplosion.explosionEffect = level2Explosion;
 
             Modules.ContentPacks.projectilePrefabs.Add(projectile);
             return projectile;
@@ -117,7 +135,7 @@ namespace RMORMod.Modules
             impactExplosion.destroyOnEnemy = true;
             impactExplosion.destroyOnWorld = true;
             impactExplosion.lifetime = 200f;
-            impactExplosion.explosionEffect = Assets.LoadEffect("ExplosionRed");
+            impactExplosion.explosionEffect = level3Explosion;
 
             Modules.ContentPacks.projectilePrefabs.Add(projectile);
             return projectile;
@@ -138,7 +156,7 @@ namespace RMORMod.Modules
             impactExplosion.destroyOnEnemy = true;
             impactExplosion.destroyOnWorld = true;
             impactExplosion.lifetime = 200f;
-            impactExplosion.explosionEffect = Assets.LoadEffect("ExplosionPurple");
+            impactExplosion.explosionEffect = level4Explosion;
 
             Modules.ContentPacks.projectilePrefabs.Add(projectile);
             return projectile;

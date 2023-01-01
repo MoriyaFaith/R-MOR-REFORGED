@@ -10,26 +10,23 @@ namespace RMORMod.Content.RMOR.Achievements
         public override void OnInstall()
         {
             base.OnInstall();
-
-            RoR2Application.onUpdate += this.CheckMovementSpeed;
+            EntityStates.RMOR.Utility.BeginOverclock.onAuthorityFixedUpdateGlobal += CheckOverclockTime;
         }
 
         public override void OnUninstall()
         {
+            EntityStates.RMOR.Utility.BeginOverclock.onAuthorityFixedUpdateGlobal -= CheckOverclockTime;
             base.OnUninstall();
-
-            RoR2Application.onUpdate -= this.CheckMovementSpeed;
-        }
-        public override BodyIndex LookUpRequiredBodyIndex()
-        {
-            return BodyCatalog.FindBodyIndex("RMORBody");
         }
 
-        public void CheckMovementSpeed()
+        private void CheckOverclockTime(EntityStates.RMOR.Utility.BeginOverclock state)
         {
-            if (base.localUser != null && base.localUser.cachedBody != null && base.localUser.cachedBody.moveSpeed / base.localUser.cachedBody.baseMoveSpeed >= 2f && base.meetsBodyRequirement)
+            if (state.outer.commonComponents.characterBody && state.outer.commonComponents.characterBody == base.localUser.cachedBody)
             {
-                base.Grant();
+                if (state.fixedAge >= 45f)
+                {
+                    base.Grant();
+                }
             }
         }
     }

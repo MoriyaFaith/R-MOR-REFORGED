@@ -10,9 +10,13 @@
 						<ObjectRef Name="Play_HOC_Hammer" ID="{858A263C-084E-435C-A37B-76BC509AFF81}" WorkUnitID="{38978FD5-8D2C-4C2D-9894-9E7B04E034AF}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_HOC_Drill" ID="{995825FD-63D1-4384-955F-2FB92F5771DD}" WorkUnitID="{38978FD5-8D2C-4C2D-9894-9E7B04E034AF}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_HOC_DroneHit" ID="{5DF2FE57-9222-438C-A519-46D2BBDF3B84}" WorkUnitID="{38978FD5-8D2C-4C2D-9894-9E7B04E034AF}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_RMOR_FullCharge" ID="{FACA729E-9214-472D-9F7D-EF4EFD260AA4}" WorkUnitID="{38978FD5-8D2C-4C2D-9894-9E7B04E034AF}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_HOC_Drone" ID="{F8B3C466-B82E-48C1-BA3F-5CB0831FC608}" WorkUnitID="{38978FD5-8D2C-4C2D-9894-9E7B04E034AF}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_HOC_DroneGain" ID="{C57632A0-11F3-4903-87AA-62A21DF11E2A}" WorkUnitID="{38978FD5-8D2C-4C2D-9894-9E7B04E034AF}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_HOC_Punch" ID="{C2CE9FF4-558F-49FC-96DB-3052C9BE5688}" WorkUnitID="{38978FD5-8D2C-4C2D-9894-9E7B04E034AF}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_RMOR_Rocket" ID="{2818BFFF-83DF-4ADF-B083-725627B02036}" WorkUnitID="{38978FD5-8D2C-4C2D-9894-9E7B04E034AF}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_RMOR_Boot" ID="{1401A5C0-4CC0-4BB6-9EF2-046D13FB6E19}" WorkUnitID="{38978FD5-8D2C-4C2D-9894-9E7B04E034AF}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_RMOR_SemiCharge" ID="{2B793287-DFED-4DA2-BF7C-8087D121ABF2}" WorkUnitID="{38978FD5-8D2C-4C2D-9894-9E7B04E034AF}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_HOC_StartHammer" ID="{F41C9FAA-B9C1-4F14-BB76-C853E1CDBCDD}" WorkUnitID="{38978FD5-8D2C-4C2D-9894-9E7B04E034AF}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_HOC_Focus" ID="{4784BACE-3E8E-4F3B-A63D-56B12F923A52}" WorkUnitID="{38978FD5-8D2C-4C2D-9894-9E7B04E034AF}" Origin="Manual" Filter="7"/>
 					</ObjectInclusionList>

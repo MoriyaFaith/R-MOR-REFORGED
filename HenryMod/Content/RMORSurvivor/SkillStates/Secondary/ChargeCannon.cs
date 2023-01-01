@@ -7,10 +7,10 @@ namespace EntityStates.RMOR.Secondary
     public class ChargeCannon : BaseState
     {
         public static float baseDuration = 1.5f;
-        public static string partialChargeSoundString = "Play_engi_M1_chargeStock";
-        public static string fullChargeSoundString = "Play_HOC_StartHammer";
-        public static GameObject partialChargeEffect = LegacyResourcesAPI.Load<GameObject>("prefabs/effects/omnieffect/OmniImpactVFXLoader");
-        public static GameObject fullChargeEffect = LegacyResourcesAPI.Load<GameObject>("prefabs/effects/omnieffect/OmniImpactVFXLoader");
+        public static string partialChargeSoundString = "Play_RMOR_SemiCharge";
+        public static string fullChargeSoundString = "Play_RMOR_FullCharge";
+        public static GameObject partialChargeEffect;
+        public static GameObject fullChargeEffect;
         public static int maxChargeLevel = 3;
 
         private float duration;
@@ -22,8 +22,6 @@ namespace EntityStates.RMOR.Secondary
         private float charge;
         public float chargePercent;
         private Animator modelAnimator;
-        public static GameObject chargeEffectPrefab = LegacyResourcesAPI.Load<GameObject>("prefabs/effects/omnieffect/OmniImpactVFXLoader");
-        private bool startedChargeAnim = false;
 
         public static GameObject holdChargeVfxPrefab = EntityStates.Toolbot.ChargeSpear.holdChargeVfxPrefab;
         private GameObject holdChargeVfxGameObject = null;

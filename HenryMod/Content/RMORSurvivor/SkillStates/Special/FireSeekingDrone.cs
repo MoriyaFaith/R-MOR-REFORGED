@@ -86,7 +86,7 @@ namespace EntityStates.RMOR.Special
         private bool hasFired;
 
 
-        public static float damageCoefficient = 8f;
+        public static float damageCoefficient = 6f;
         public static GameObject projectilePrefab;
         public static string muzzleString;
         public static GameObject muzzleflashEffectPrefab;

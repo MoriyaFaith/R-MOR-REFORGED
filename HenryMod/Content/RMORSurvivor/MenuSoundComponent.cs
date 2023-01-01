@@ -7,7 +7,7 @@ namespace RMORMod.Content.RMORSurvivor
     {
         private void OnEnable()
         {
-            Util.PlaySound("Play_MULT_shift_hit", gameObject);
+            Util.PlaySound("Play_RMOR_Boot", gameObject);
             ShakeEmitter se = ShakeEmitter.CreateSimpleShakeEmitter(gameObject.transform.position, new Wave()
             {
                 amplitude = 1f,

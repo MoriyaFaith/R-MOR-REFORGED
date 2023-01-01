@@ -143,6 +143,128 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Play_RMOR_Boot" ID="{1401A5C0-4CC0-4BB6-9EF2-046D13FB6E19}">
+					<ChildrenList>
+						<Action Name="" ID="{66A7C5FE-4E8E-4EE8-95F7-861CF475E33F}" ShortID="683143211">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+								<Property Name="Delay" Type="Real64" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="wBootComputer" ID="{759B4943-0DC5-454A-9C64-5A5AB063F1AE}" WorkUnitID="{068EBB0B-3714-4C7C-A629-E920CE6D27A5}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{FE502732-FFAC-4736-9425-9BA00B29AAEA}" ShortID="415571362">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+								<Property Name="Delay" Type="Real64" Value="2.5"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="wRobotMove" ID="{80163F5B-C0B5-4382-8F30-69F1D072A2B4}" WorkUnitID="{068EBB0B-3714-4C7C-A629-E920CE6D27A5}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{348C09B2-4DEC-4E9E-9249-F925235FDFBA}" ShortID="529320476">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+								<Property Name="Delay" Type="Real64" Value="8"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="wBladeExtend" ID="{C967F5E7-A094-49C8-98AC-0C45DCAFB210}" WorkUnitID="{068EBB0B-3714-4C7C-A629-E920CE6D27A5}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{73AE765A-BE04-47C3-ACCD-B54C92080708}" ShortID="929033563">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+								<Property Name="Delay" Type="Real64" Value="3.5"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="wRobotMove2" ID="{31D364DA-EE1F-4951-A9B1-93A855460A31}" WorkUnitID="{068EBB0B-3714-4C7C-A629-E920CE6D27A5}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{9C83195E-503E-4F08-8631-3EE734DD5743}" ShortID="534058524">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="sndHammer" ID="{6AB5DF88-326E-406E-9835-3C0AEED593A6}" WorkUnitID="{068EBB0B-3714-4C7C-A629-E920CE6D27A5}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{10D04DD2-E635-4DD1-8816-6C9BAC1094BC}" ShortID="709811108">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+								<Property Name="Delay" Type="Real64" Value="5.5"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="wRobotMove3" ID="{29760BF3-DD38-4949-BE68-6B872ECCA975}" WorkUnitID="{068EBB0B-3714-4C7C-A629-E920CE6D27A5}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_RMOR_Rocket" ID="{2818BFFF-83DF-4ADF-B083-725627B02036}">
+					<ChildrenList>
+						<Action Name="" ID="{E229A809-67A7-4BB6-978B-5E0302B0E694}" ShortID="1011921609">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="wFireRocket" ID="{6928B347-CF68-4E17-9CCE-CCDECB8254E7}" WorkUnitID="{068EBB0B-3714-4C7C-A629-E920CE6D27A5}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{349C357A-0C62-4C22-B97C-B269DB75DD98}" ShortID="1008029176">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+								<Property Name="Delay" Type="Real64" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="wShotgunCock" ID="{D3FA3905-3209-412D-B849-ED3C673867BE}" WorkUnitID="{068EBB0B-3714-4C7C-A629-E920CE6D27A5}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_RMOR_SemiCharge" ID="{2B793287-DFED-4DA2-BF7C-8087D121ABF2}">
+					<ChildrenList>
+						<Action Name="" ID="{9A54C564-ACCE-49C6-8222-A8A613CE55BA}" ShortID="122692470">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="wPlasmaGun" ID="{BE0D225F-441B-4FF6-8D6E-414FC39DDCD8}" WorkUnitID="{068EBB0B-3714-4C7C-A629-E920CE6D27A5}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_RMOR_FullCharge" ID="{FACA729E-9214-472D-9F7D-EF4EFD260AA4}">
+					<ChildrenList>
+						<Action Name="" ID="{E92239B8-E8AC-4C71-B589-41ACBEF32A86}" ShortID="521513218">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="wBFGCharge" ID="{F91C305C-1545-44A2-BE0F-C55A33327A0D}" WorkUnitID="{068EBB0B-3714-4C7C-A629-E920CE6D27A5}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

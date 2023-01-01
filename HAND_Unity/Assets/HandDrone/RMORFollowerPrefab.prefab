@@ -344,8 +344,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.4
-      minScalar: 0.3
+      scalar: 0.3
+      minScalar: 0.4
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -397,8 +397,8 @@ ParticleSystem:
     startSizeY:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.4
-      minScalar: 0.3
+      scalar: 0.3
+      minScalar: 0.4
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -451,7 +451,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 3
       scalar: 2
-      minScalar: 2.5
+      minScalar: 3
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -725,7 +725,7 @@ ParticleSystem:
     boxThickness: {x: 0, y: 0, z: 0}
     radiusThickness: 1
     donutRadius: 0.2
-    m_Position: {x: 0, y: -0.28, z: 0}
+    m_Position: {x: 0, y: -0.3, z: 0}
     m_Rotation: {x: 0, y: 0, z: 0}
     m_Scale: {x: 1, y: 1, z: 1}
     placementMode: 0
@@ -4842,6 +4842,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 81c8e9b4fce56f64cb2eb7e516b1f3ad,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 81c8e9b4fce56f64cb2eb7e516b1f3ad,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 81c8e9b4fce56f64cb2eb7e516b1f3ad,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 81c8e9b4fce56f64cb2eb7e516b1f3ad,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -4899,6 +4914,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: RMORFollowerPrefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 3363523365516986632, guid: 81c8e9b4fce56f64cb2eb7e516b1f3ad,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3363523365516986632, guid: 81c8e9b4fce56f64cb2eb7e516b1f3ad,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3363523365516986632, guid: 81c8e9b4fce56f64cb2eb7e516b1f3ad,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3621167388883893680, guid: 81c8e9b4fce56f64cb2eb7e516b1f3ad,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 246a6b377ea7ea843ae294843271389c, type: 2}
+    - target: {fileID: 4037068992377784181, guid: 81c8e9b4fce56f64cb2eb7e516b1f3ad,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: -19.06
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 81c8e9b4fce56f64cb2eb7e516b1f3ad, type: 3}
