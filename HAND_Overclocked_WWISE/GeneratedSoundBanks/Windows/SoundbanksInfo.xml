@@ -11,91 +11,11 @@
 	<StreamedFiles/>
 	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
-		<SoundBank Id="1029746374" Language="SFX" Hash="1202372011">
+		<SoundBank Id="1029746374" Language="SFX" Hash="883210336">
 			<ObjectPath>\SoundBanks\Default Work Unit\HAND_Overclocked_Soundbank</ObjectPath>
 			<ShortName>HAND_Overclocked_Soundbank</ShortName>
 			<Path>HAND_Overclocked_Soundbank.bnk</Path>
 			<IncludedEvents>
-				<Event Id="3923719566" Name="Play_HOC_Drill" ObjectPath="\Events\Default Work Unit\Play_HOC_Drill">
-					<IncludedMemoryFiles>
-						<File Id="199100726" Language="SFX">
-							<ShortName>wDrill.wav</ShortName>
-							<Path>SFX\wDrill_0D5756A9.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
-				</Event>
-				<Event Id="3352294839" Name="Play_HOC_Drone" ObjectPath="\Events\Default Work Unit\Play_HOC_Drone">
-					<IncludedMemoryFiles>
-						<File Id="407884217" Language="SFX">
-							<ShortName>wJanitorShoot2 2.wav</ShortName>
-							<Path>SFX\wJanitorShoot2 2_0D5756A9.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
-				</Event>
-				<Event Id="3281996986" Name="Play_HOC_DroneGain" ObjectPath="\Events\Default Work Unit\Play_HOC_DroneGain">
-					<IncludedMemoryFiles>
-						<File Id="415114961" Language="SFX">
-							<ShortName>wJanitorShoot2 1.wav</ShortName>
-							<Path>SFX\wJanitorShoot2 1_0D5756A9.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
-				</Event>
-				<Event Id="1596425374" Name="Play_HOC_DroneHit" ObjectPath="\Events\Default Work Unit\Play_HOC_DroneHit">
-					<IncludedMemoryFiles>
-						<File Id="863164524" Language="SFX">
-							<ShortName>wLizardHit.wav</ShortName>
-							<Path>SFX\wLizardHit_0D5756A9.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
-				</Event>
-				<Event Id="2201467365" Name="Play_HOC_Focus" ObjectPath="\Events\Default Work Unit\Play_HOC_Focus">
-					<IncludedMemoryFiles>
-						<File Id="189267586" Language="SFX">
-							<ShortName>exeSpecial.wav</ShortName>
-							<Path>SFX\exeSpecial_3F75BDB9.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
-				</Event>
-				<Event Id="1030244185" Name="Play_HOC_Hammer" ObjectPath="\Events\Default Work Unit\Play_HOC_Hammer">
-					<IncludedMemoryFiles>
-						<File Id="115842647" Language="SFX">
-							<ShortName>wJanitorShoot4 2.wav</ShortName>
-							<Path>SFX\wJanitorShoot4 2_0D5756A9.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
-				</Event>
-				<Event Id="1032766253" Name="Play_HOC_Punch" ObjectPath="\Events\Default Work Unit\Play_HOC_Punch">
-					<IncludedMemoryFiles>
-						<File Id="940683805" Language="SFX">
-							<ShortName>wJanitorShoot1 2.wav</ShortName>
-							<Path>SFX\wJanitorShoot1 2_0D5756A9.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
-				</Event>
-				<Event Id="1629303843" Name="Play_HOC_StartHammer" ObjectPath="\Events\Default Work Unit\Play_HOC_StartHammer">
-					<IncludedMemoryFiles>
-						<File Id="306440750" Language="SFX">
-							<ShortName>wJanitorShoot4 1.wav</ShortName>
-							<Path>SFX\wJanitorShoot4 1_0D5756A9.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
-				</Event>
-				<Event Id="1983674255" Name="Play_HOC_StartPunch" ObjectPath="\Events\Default Work Unit\Play_HOC_StartPunch">
-					<IncludedMemoryFiles>
-						<File Id="28592980" Language="SFX">
-							<ShortName>wJanitorShoot1 1.wav</ShortName>
-							<Path>SFX\wJanitorShoot1 1_0D5756A9.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
-				</Event>
-				<Event Id="475308029" Name="Play_HOC_SwingHammer" ObjectPath="\Events\Default Work Unit\Play_HOC_SwingHammer">
-					<IncludedMemoryFiles>
-						<File Id="269277722" Language="SFX">
-							<ShortName>sndHammer.wav</ShortName>
-							<Path>SFX\sndHammer_3F75BDB9.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
-				</Event>
 				<Event Id="698574441" Name="Play_RMOR_Boot" ObjectPath="\Events\Default Work Unit\Play_RMOR_Boot">
 					<IncludedMemoryFiles>
 						<File Id="269277722" Language="SFX">
@@ -124,11 +44,59 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
+				<Event Id="3402979856" Name="Play_RMOR_Drill" ObjectPath="\Events\Default Work Unit\Play_RMOR_Drill">
+					<IncludedMemoryFiles>
+						<File Id="199100726" Language="SFX">
+							<ShortName>wDrill.wav</ShortName>
+							<Path>SFX\wDrill_0D5756A9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2900637097" Name="Play_RMOR_Drone" ObjectPath="\Events\Default Work Unit\Play_RMOR_Drone">
+					<IncludedMemoryFiles>
+						<File Id="407884217" Language="SFX">
+							<ShortName>wJanitorShoot2 2.wav</ShortName>
+							<Path>SFX\wJanitorShoot2 2_0D5756A9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2160186188" Name="Play_RMOR_DroneGain" ObjectPath="\Events\Default Work Unit\Play_RMOR_DroneGain">
+					<IncludedMemoryFiles>
+						<File Id="415114961" Language="SFX">
+							<ShortName>wJanitorShoot2 1.wav</ShortName>
+							<Path>SFX\wJanitorShoot2 1_0D5756A9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="1141946212" Name="Play_RMOR_DroneHit" ObjectPath="\Events\Default Work Unit\Play_RMOR_DroneHit">
+					<IncludedMemoryFiles>
+						<File Id="863164524" Language="SFX">
+							<ShortName>wLizardHit.wav</ShortName>
+							<Path>SFX\wLizardHit_0D5756A9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2789313795" Name="Play_RMOR_Focus" ObjectPath="\Events\Default Work Unit\Play_RMOR_Focus">
+					<IncludedMemoryFiles>
+						<File Id="189267586" Language="SFX">
+							<ShortName>exeSpecial.wav</ShortName>
+							<Path>SFX\exeSpecial_3F75BDB9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
 				<Event Id="782889910" Name="Play_RMOR_FullCharge" ObjectPath="\Events\Default Work Unit\Play_RMOR_FullCharge">
 					<IncludedMemoryFiles>
 						<File Id="971856121" Language="SFX">
 							<ShortName>DOOM\wBFGCharge.wav</ShortName>
 							<Path>SFX\DOOM\wBFGCharge_AF0256DD.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="1722030311" Name="Play_RMOR_Hammer" ObjectPath="\Events\Default Work Unit\Play_RMOR_Hammer">
+					<IncludedMemoryFiles>
+						<File Id="115842647" Language="SFX">
+							<ShortName>wJanitorShoot4 2.wav</ShortName>
+							<Path>SFX\wJanitorShoot4 2_0D5756A9.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
@@ -141,6 +109,14 @@
 						<File Id="743812189" Language="SFX">
 							<ShortName>DOOM\wFireRocket.wav</ShortName>
 							<Path>SFX\DOOM\wFireRocket_3F75BDB9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="3843400403" Name="Play_RMOR_Punch" ObjectPath="\Events\Default Work Unit\Play_RMOR_Punch">
+					<IncludedMemoryFiles>
+						<File Id="940683805" Language="SFX">
+							<ShortName>wJanitorShoot1 2.wav</ShortName>
+							<Path>SFX\wJanitorShoot1 2_0D5756A9.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
@@ -161,6 +137,30 @@
 						<File Id="327647864" Language="SFX">
 							<ShortName>DOOM\wPlasmaGun.wav</ShortName>
 							<Path>SFX\DOOM\wPlasmaGun_3F75BDB9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2223204629" Name="Play_RMOR_StartHammer" ObjectPath="\Events\Default Work Unit\Play_RMOR_StartHammer">
+					<IncludedMemoryFiles>
+						<File Id="306440750" Language="SFX">
+							<ShortName>wJanitorShoot4 1.wav</ShortName>
+							<Path>SFX\wJanitorShoot4 1_0D5756A9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="3181734345" Name="Play_RMOR_StartPunch" ObjectPath="\Events\Default Work Unit\Play_RMOR_StartPunch">
+					<IncludedMemoryFiles>
+						<File Id="28592980" Language="SFX">
+							<ShortName>wJanitorShoot1 1.wav</ShortName>
+							<Path>SFX\wJanitorShoot1 1_0D5756A9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2606084527" Name="Play_RMOR_SwingHammer" ObjectPath="\Events\Default Work Unit\Play_RMOR_SwingHammer">
+					<IncludedMemoryFiles>
+						<File Id="269277722" Language="SFX">
+							<ShortName>sndHammer.wav</ShortName>
+							<Path>SFX\sndHammer_3F75BDB9.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>

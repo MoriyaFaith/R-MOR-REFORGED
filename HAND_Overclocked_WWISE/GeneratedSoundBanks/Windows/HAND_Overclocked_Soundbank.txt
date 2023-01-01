@@ -1,19 +1,19 @@
 Event	ID	Name			Wwise Object Path	Notes
 	303044525	Play_RMOR_Rocket			\Default Work Unit\Play_RMOR_Rocket	
-	475308029	Play_HOC_SwingHammer			\Default Work Unit\Play_HOC_SwingHammer	
 	698574441	Play_RMOR_Boot			\Default Work Unit\Play_RMOR_Boot	
 	782889910	Play_RMOR_FullCharge			\Default Work Unit\Play_RMOR_FullCharge	
-	1030244185	Play_HOC_Hammer			\Default Work Unit\Play_HOC_Hammer	
-	1032766253	Play_HOC_Punch			\Default Work Unit\Play_HOC_Punch	
-	1596425374	Play_HOC_DroneHit			\Default Work Unit\Play_HOC_DroneHit	
-	1629303843	Play_HOC_StartHammer			\Default Work Unit\Play_HOC_StartHammer	
-	1983674255	Play_HOC_StartPunch			\Default Work Unit\Play_HOC_StartPunch	
-	2201467365	Play_HOC_Focus			\Default Work Unit\Play_HOC_Focus	
-	3281996986	Play_HOC_DroneGain			\Default Work Unit\Play_HOC_DroneGain	
+	1141946212	Play_RMOR_DroneHit			\Default Work Unit\Play_RMOR_DroneHit	
+	1722030311	Play_RMOR_Hammer			\Default Work Unit\Play_RMOR_Hammer	
+	2160186188	Play_RMOR_DroneGain			\Default Work Unit\Play_RMOR_DroneGain	
+	2223204629	Play_RMOR_StartHammer			\Default Work Unit\Play_RMOR_StartHammer	
+	2606084527	Play_RMOR_SwingHammer			\Default Work Unit\Play_RMOR_SwingHammer	
+	2789313795	Play_RMOR_Focus			\Default Work Unit\Play_RMOR_Focus	
+	2900637097	Play_RMOR_Drone			\Default Work Unit\Play_RMOR_Drone	
+	3181734345	Play_RMOR_StartPunch			\Default Work Unit\Play_RMOR_StartPunch	
 	3326163533	Play_RMOR_Primary			\Default Work Unit\Play_RMOR_Primary	
-	3352294839	Play_HOC_Drone			\Default Work Unit\Play_HOC_Drone	
+	3402979856	Play_RMOR_Drill			\Default Work Unit\Play_RMOR_Drill	
 	3414541919	Play_RMOR_SemiCharge			\Default Work Unit\Play_RMOR_SemiCharge	
-	3923719566	Play_HOC_Drill			\Default Work Unit\Play_HOC_Drill	
+	3843400403	Play_RMOR_Punch			\Default Work Unit\Play_RMOR_Punch	
 
 Game Parameter	ID	Name			Wwise Object Path	Notes
 	3673881719	Volume_SFX			\Default Work Unit\Volume_SFX	
