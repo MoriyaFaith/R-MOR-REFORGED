@@ -1,4 +1,4 @@
-﻿using RMORMod.Content.HANDSurvivor;
+﻿using RMORMod.Content.RMORSurvivor;
 using RMORMod.Content.RMORSurvivor.Components.Body;
 using RoR2;
 using RoR2.Projectile;
@@ -15,7 +15,7 @@ namespace EntityStates.RMOR.Special
             hasFired = false;
             Transform modelTransform = base.GetModelTransform();
             targetingController = base.GetComponent<RMORTargetingController>();
-            Util.PlaySound("Play_HOC_Drone", base.gameObject);
+            Util.PlaySound("Play_RMOR_Drone", base.gameObject);
             if (base.isAuthority && targetingController)
             {
                 this.initialOrbTarget = targetingController.GetTrackingTarget();

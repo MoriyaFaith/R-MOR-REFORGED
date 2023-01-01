@@ -1,4 +1,4 @@
-﻿using RMORMod.Content.HANDSurvivor;
+﻿using RMORMod.Content.RMORSurvivor;
 using RMORMod.Content.Shared.Components.Body;
 using RoR2;
 using RoR2.Skills;
@@ -94,7 +94,7 @@ namespace EntityStates.RMOR.Utility
 		public virtual void LoadStats()
         {
 			cancelDef = RMORMod.Content.Shared.SkillDefs.UtilityOverclockCancel;
-			buffDef = RMORMod.Content.Shared.Buffs.Overclock;
+			buffDef = RMORMod.Content.Shared.Buffs.RMOROverclock;
 			gaugeInternal = BeginOverclock.texGauge;
 			gaugeArrowInternal = BeginOverclock.texGaugeArrow;
 			internalOverlayMaterial = BeginOverclock.overlayMaterial;

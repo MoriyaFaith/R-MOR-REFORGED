@@ -14,13 +14,13 @@ namespace RMORMod.Content.RMORSurvivor
     public class Buffs
     {
         private static NetworkSoundEventDef platingSound = LegacyResourcesAPI.Load<NetworkSoundEventDef>("NetworkSoundEventDefs/nseArmorPlateBlock");
-        public static BuffDef DronePassive;
+        public static BuffDef RMORPassive;
 
         public static void Init()
         {
-            if (!DronePassive)
+            if (!RMORPassive)
             {
-                DronePassive = Modules.Buffs.CreateBuffDef(
+                RMORPassive = Modules.Buffs.CreateBuffDef(
                        "SWARM_ASSAULT",
                        true,
                        false,
@@ -33,9 +33,9 @@ namespace RMORMod.Content.RMORSurvivor
         }
         private static void RMORPassiveHook(CharacterBody sender, RecalculateStatsAPI.StatHookEventArgs args)
         {
-            if (sender.HasBuff(Buffs.DronePassive))
+            if (sender.HasBuff(Buffs.RMORPassive))
             {
-                args.attackSpeedMultAdd += sender.GetBuffCount(DronePassive) * 0.05f;
+                args.attackSpeedMultAdd += sender.GetBuffCount(RMORPassive) * 0.05f;
             }
         }
     }

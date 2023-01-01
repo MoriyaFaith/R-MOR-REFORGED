@@ -26,8 +26,8 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayAfterburnerShoulderRing"),
                             childName = "Jetpack.L",
-                            localPos = new Vector3(0.8F, 0.45F, 0F),
-                            localAngles = new Vector3(0F, 0F, 270F),
+                            localPos = new Vector3(0.8F, 0.65F, 0F),
+                            localAngles = new Vector3(0F, 0F, 280F),
                             localScale = new Vector3(4F, 4F, 4F),
                             limbMask = LimbFlags.None
                         },
@@ -163,8 +163,8 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayShippingRequestForm"),
                             childName = "Head",
-                            localPos = new Vector3(-0.5366F, 0.22825F, -1.1064F),
-                            localAngles = new Vector3(87.00272F, 65.25777F, 244.977F),
+                            localPos = new Vector3(-0.75667F, 0.923F, -0.37008F),
+                            localAngles = new Vector3(87.00285F, 65.25772F, 244.977F),
                             localScale = new Vector3(2F, 2F, 2F),
                             limbMask = LimbFlags.None
                         }
@@ -184,7 +184,7 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayMask"),
                             childName = "Head",
-                            localPos = new Vector3(0F, 0.60038F, 1.12111F),
+                            localPos = new Vector3(0F, 0.9855F, 0.19567F),
                             localAngles = new Vector3(0F, 0F, 0F),
                             localScale = new Vector3(2.1F, 2.1F, 2.1F),
                             limbMask = LimbFlags.None
@@ -247,8 +247,8 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayPauldron"),
                             childName = "ShoulderL",
-                            localPos = new Vector3(-0.00343F, 1.39271F, -0.00379F),
-                            localAngles = new Vector3(335.2361F, 359.5875F, 11.45406F),
+                            localPos = new Vector3(0.21208F, 0.93543F, -0.00379F),
+                            localAngles = new Vector3(0F, 90F, 0F),
                             localScale = new Vector3(3F, 3F, 3F),
                             limbMask = LimbFlags.None
                         }
@@ -270,7 +270,7 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             childName = "UpperArmL",
                             localPos = new Vector3(0F, 0F, 0F),
                             localAngles = new Vector3(0F, 0F, 0F),
-                            localScale = new Vector3(3.6F, 3.6F, 3.6F),
+                            localScale = new Vector3(2.98538F, 3.6F, 2.26689F),
                             limbMask = LimbFlags.None
                         }
                     }
@@ -331,9 +331,9 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayAntler"),
                             childName = "Head",
-                            localPos = new Vector3(-1.27693F, 0.88377F, 0F),
+                            localPos = new Vector3(1.10675F, 0.8837F, 0.00099F),
                             localAngles = new Vector3(0F, 90F, 0F),
-                            localScale = new Vector3(1.4F, 1.4F, -1.4F),
+                            localScale = new Vector3(1.4F, 1.4F, 1.4F),
                             limbMask = LimbFlags.None
                         },
                         new ItemDisplayRule
@@ -341,9 +341,9 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayAntler"),
                             childName = "Head",
-                            localPos = new Vector3(1.27693F, 0.88377F, 0F),
+                            localPos = new Vector3(-1.10675F, 0.8837F, 0.00099F),
                             localAngles = new Vector3(0F, 90F, 0F),
-                            localScale = new Vector3(1.4F, 1.4F, 1.4F),
+                            localScale = new Vector3(1.4F, 1.4F, -1.4F),
                             limbMask = LimbFlags.None
                         }
                     }
@@ -362,7 +362,7 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayBrainstalk"),
                             childName = "Head",
-                            localPos = new Vector3(0.45889F, 0.76346F, -0.45378F),
+                            localPos = new Vector3(0F, 1.3709F, 0F),
                             localAngles = new Vector3(0F, 0F, 0F),
                             localScale = new Vector3(1F, 1F, 1F),
                             limbMask = LimbFlags.None
@@ -383,7 +383,7 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayDevilHorns"),
                             childName = "Head",
-                            localPos = new Vector3(0.97387F, 0.15372F, 0.73159F),
+                            localPos = new Vector3(0.30285F, 1.16327F, 0.01726F),
                             localAngles = new Vector3(0F, 0F, 0F),
                             localScale = new Vector3(3F, 3F, 3F),
                             limbMask = LimbFlags.None
@@ -393,7 +393,7 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayDevilHorns"),
                             childName = "Head",
-                            localPos = new Vector3(-0.97387F, 0.15372F, 0.73159F),
+                            localPos = new Vector3(0.30285F, 1.16327F, 0.01726F),
                             localAngles = new Vector3(0F, 0F, 0F),
                             localScale = new Vector3(-3F, 3F, 3F),
                             limbMask = LimbFlags.None
@@ -456,8 +456,8 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayBoneCrown"),
                             childName = "Head",
-                            localPos = new Vector3(-0.27599F, 0.82905F, 0.29295F),
-                            localAngles = new Vector3(0F, 270F, 0F),
+                            localPos = new Vector3(-0.04795F, 1.21167F, -0.04023F),
+                            localAngles = new Vector3(0F, 0F, 0F),
                             localScale = new Vector3(4.3F, 4F, 4F),
                             limbMask = LimbFlags.None
                         }
@@ -477,7 +477,7 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayCorpseFlower"),
                             childName = "Chest",
-                            localPos = new Vector3(-0.53163F, 0.54281F, 1.80412F),
+                            localPos = new Vector3(0F, 0.37485F, 1.00947F),
                             localAngles = new Vector3(90F, 0F, 0F),
                             localScale = new Vector3(1.4F, 1.4F, 1.4F),
                             limbMask = LimbFlags.None
@@ -519,7 +519,7 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayHippo"),
                             childName = "Chest",
-                            localPos = new Vector3(-1.09314F, 1.12391F, -0.96432F),
+                            localPos = new Vector3(-0.64118F, 0.96616F, -0.49101F),
                             localAngles = new Vector3(299.2325F, 214.607F, 359.5162F),
                             localScale = new Vector3(0.7F, 0.7F, 0.7F),
                             limbMask = LimbFlags.None
@@ -561,7 +561,7 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayHippoVoid"),
                             childName = "Chest",
-                            localPos = new Vector3(-1.09314F, 1.12391F, -0.96432F),
+                            localPos = new Vector3(-0.64118F, 0.96616F, -0.49101F),
                             localAngles = new Vector3(299.2325F, 214.607F, 359.5162F),
                             localScale = new Vector3(0.7F, 0.7F, 0.7F),
                             limbMask = LimbFlags.None
@@ -666,7 +666,7 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayIceRing"),
                             childName = "LowerArmR",
-                            localPos = new Vector3(0.04706F, -0.05544F, -0.03281F),
+                            localPos = new Vector3(0.28118F, 1.09306F, -0.03281F),
                             localAngles = new Vector3(274.3965F, 90F, 270F),
                             localScale = new Vector3(3F, 3F, 3F),
                             limbMask = LimbFlags.None
@@ -687,7 +687,7 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayFireRing"),
                             childName = "LowerArmL",
-                            localPos = new Vector3(0.00143F, -0.06617F, -0.02875F),
+                            localPos = new Vector3(-0.28149F, 1.102F, 0.44138F),
                             localAngles = new Vector3(274.3965F, 90F, 270F),
                             localScale = new Vector3(3F, 3F, 3F),
                             limbMask = LimbFlags.None
@@ -708,7 +708,7 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayVoidRing"),
                             childName = "LowerArmR",
-                            localPos = new Vector3(0.04706F, -0.05544F, -0.03281F),
+                            localPos = new Vector3(0.28118F, 1.09306F, -0.03281F),
                             localAngles = new Vector3(274.3965F, 90F, 270F),
                             localScale = new Vector3(3F, 3F, 3F),
                             limbMask = LimbFlags.None
@@ -718,7 +718,7 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayVoidRing"),
                             childName = "LowerArmL",
-                            localPos = new Vector3(0.00143F, -0.06617F, -0.02875F),
+                            localPos = new Vector3(-0.28149F, 1.102F, 0.44138F),
                             localAngles = new Vector3(274.3965F, 90F, 270F),
                             localScale = new Vector3(3F, 3F, 3F),
                             limbMask = LimbFlags.None
@@ -771,7 +771,7 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayMissileRack"),
                             childName = "Chest",
-                            localPos = new Vector3(0.01969F, 1.12364F, -1.5036F),
+                            localPos = new Vector3(0.01271F, 0.8935F, -1.17516F),
                             localAngles = new Vector3(60F, 180F, 0F),
                             localScale = new Vector3(2F, 2F, 2F),
                             limbMask = LimbFlags.None
@@ -834,9 +834,9 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayHoof"),
                             childName = "CalfR",
-                            localPos = new Vector3(0.02358F, 1.03058F, -0.0098F),
-                            localAngles = new Vector3(90F, 0F, 0F),
-                            localScale = new Vector3(0.3F, 0.3F, 0.3F),
+                            localPos = new Vector3(0.10321F, 1.42845F, -0.39158F),
+                            localAngles = new Vector3(78.64225F, 0.00003F, 0.00003F),
+                            localScale = new Vector3(0.4F, 0.46778F, 0.4F),
                             limbMask = LimbFlags.None
                         },
                         new ItemDisplayRule {
@@ -900,10 +900,10 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                         {
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayDiamond"),
-                            childName = "HandL",
-                            localPos = new Vector3(-0.29584F, 0.411F, 0.00169F),
+                            childName = "LowerArmL",
+                            localPos = new Vector3(0.01678F, 1.80666F, 0.88207F),
                             localAngles = new Vector3(274.3965F, 90F, 270F),
-                            localScale = new Vector3(0.25F, 0.25F, 0.25F),
+                            localScale = new Vector3(0.5F, 0.25F, 0.5F),
                             limbMask = LimbFlags.None
                         }
                     }
@@ -943,7 +943,7 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayWarbanner"),
                             childName = "Pelvis",
-                            localPos = new Vector3(0F, 0.54329F, 0.93286F),
+                            localPos = new Vector3(0F, -0.03319F, 0.49448F),
                             localAngles = new Vector3(90F, 90F, 0F),
                             localScale = new Vector3(1.3F, 1.3F, 1.3F),
                             limbMask = LimbFlags.None
@@ -985,7 +985,7 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayStealthkit"),
                             childName = "Chest",
-                            localPos = new Vector3(0.37466F, 0.50156F, -1.50662F),
+                            localPos = new Vector3(0.00436F, 0.50148F, -1.32149F),
                             localAngles = new Vector3(90F, 0F, 0F),
                             localScale = new Vector3(1.1F, 1.1F, 1.1F),
                             limbMask = LimbFlags.None
@@ -1006,7 +1006,7 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayDeathProjectile"),
                             childName = "Pelvis",
-                            localPos = new Vector3(0F, 0.57203F, 1.2946F),
+                            localPos = new Vector3(0F, 0.43958F, 1.2428F),
                             localAngles = new Vector3(0F, 0F, 180F),
                             localScale = new Vector3(0.5F, 0.5F, 0.5F),
                             limbMask = LimbFlags.None
@@ -1027,7 +1027,7 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayNeuralImplant"),
                             childName = "Head",
-                            localPos = new Vector3(-0.00003F, 0.52758F, 2.14767F),
+                            localPos = new Vector3(0F, 1F, 2F),
                             localAngles = new Vector3(0F, 0F, 0F),
                             localScale = new Vector3(1F, 1F, 1F),
                             limbMask = LimbFlags.None
@@ -1048,7 +1048,7 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayBugWings"),
                             childName = "Chest",
-                            localPos = new Vector3(0F, 0.2765F, -1.1505F),
+                            localPos = new Vector3(0F, 0.275F, -1F),
                             localAngles = new Vector3(330F, 0F, 0F),
                             localScale = new Vector3(0.5F, 0.5F, 0.5F),
                             limbMask = LimbFlags.None
@@ -1069,7 +1069,7 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayScanner"),
                             childName = "Chest",
-                            localPos = new Vector3(-2.22625F, 0.59025F, 0.00979F),
+                            localPos = new Vector3(-1.64165F, 0.39609F, -0.01796F),
                             localAngles = new Vector3(270F, 0F, 0F),
                             localScale = new Vector3(1F, 1F, 1F),
                             limbMask = LimbFlags.None
@@ -1091,7 +1091,7 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayWhip"),
                             childName = "Pelvis",
                             localPos = new Vector3(-1.85379F, 0.49299F, 0.0422F),
-                            localAngles = new Vector3(0F, 0F, 0F),
+                            localAngles = new Vector3(0F, 0F, 180F),
                             localScale = new Vector3(2F, 2F, 2F),
                             limbMask = LimbFlags.None
                         }
@@ -1111,7 +1111,7 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayShieldGenerator"),
                             childName = "Chest",
-                            localPos = new Vector3(-1.13876F, 0.557F, 1.35612F),
+                            localPos = new Vector3(-0.88772F, 0.44052F, 0.88555F),
                             localAngles = new Vector3(90F, 130F, 0F),
                             localScale = new Vector3(0.8F, 0.8F, 0.8F),
                             limbMask = LimbFlags.None
@@ -1132,7 +1132,7 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayGoldGat"),
                             childName = "Pelvis",
-                            localPos = new Vector3(0F, 2.01706F, -0.07716F),
+                            localPos = new Vector3(0F, 1.516F, -0.07716F),
                             localAngles = new Vector3(0F, 270F, 0F),
                             localScale = new Vector3(0.7F, 0.7F, 0.7F),
                             limbMask = LimbFlags.None
@@ -1174,8 +1174,8 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayLifestealOnHit"),
                             childName = "Head",
-                            localPos = new Vector3(0.04249F, 0.73979F, 1.95164F),
-                            localAngles = new Vector3(0F, 180F, 0F),
+                            localPos = new Vector3(0F, 1.25F, -1.2F),
+                            localAngles = new Vector3(0F, 0F, 0F),
                             localScale = new Vector3(0.5F, 0.5F, 0.5F),
                             limbMask = LimbFlags.None
                         }
@@ -1195,9 +1195,9 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayAPRound"),
                             childName = "Head",
-                            localPos = new Vector3(-0.75299F, 1.25173F, 0.05481F),
-                            localAngles = new Vector3(90F, 90F, 0F),
-                            localScale = new Vector3(2F, 2F, 2F),
+                            localPos = new Vector3(-0.01714F, 0.90267F, 0.24809F),
+                            localAngles = new Vector3(270F, 0F, 0F),
+                            localScale = new Vector3(1.6F, 1.6F, 1.6F),
                             limbMask = LimbFlags.None
                         }
                     }
@@ -1216,8 +1216,8 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayLaserTurbine"),
                             childName = "ShoulderR",
-                            localPos = new Vector3(-0.00664F, 1.35992F, -0.06253F),
-                            localAngles = new Vector3(90F, 90F, 0F),
+                            localPos = new Vector3(0.01469F, 1.05897F, -0.06245F),
+                            localAngles = new Vector3(66.8504F, 359.963F, 270.0395F),
                             localScale = new Vector3(1.5F, 1.5F, 1.5F),
                             limbMask = LimbFlags.None
                         }
@@ -1237,7 +1237,7 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayBrokenMask"),
                             childName = "UpperArmR",
-                            localPos = new Vector3(-0.06679F, 0.06875F, -1.08445F),
+                            localPos = new Vector3(0.02201F, 0.12219F, -0.25182F),
                             localAngles = new Vector3(0F, 180F, 0F),
                             localScale = new Vector3(1F, 1F, 1F),
                             limbMask = LimbFlags.None
@@ -1326,7 +1326,7 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayFruit"),
                             childName = "Chest",
-                            localPos = new Vector3(0.46711F, -0.18246F, -0.5095F),
+                            localPos = new Vector3(-0.37293F, -0.37853F, -0.46671F),
                             localAngles = new Vector3(0F, 90F, 0F),
                             localScale = new Vector3(1F, 1F, 1F),
                             limbMask = LimbFlags.None
@@ -1389,8 +1389,8 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayRadio"),
                             childName = "Head",
-                            localPos = new Vector3(0.5646F, 0.88416F, -1.21746F),
-                            localAngles = new Vector3(0F, 180F, 0F),
+                            localPos = new Vector3(0.47638F, 0.88373F, 0.10788F),
+                            localAngles = new Vector3(0F, 90F, 0F),
                             localScale = new Vector3(2F, 2F, 2F),
                             limbMask = LimbFlags.None
                         }
@@ -1409,11 +1409,15 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                         {
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayLightningArmRight"),
-                            childName = "UpperArmR",
-                            localPos = new Vector3(0F, 0F, 0F),
-                            localAngles = new Vector3(0F, 0F, 0F),
-                            localScale = new Vector3(-4F, 4F, 4F),
+                            childName = "ShoulderR",
+                            localPos = new Vector3(-0.02351F, -0.4094F, -0.00657F),
+                            localAngles = new Vector3(347.6048F, 43.96684F, 359.5699F),
+                            localScale = new Vector3(2F, 2F, 2F),
                             limbMask = LimbFlags.None
+                        },
+                        new ItemDisplayRule {
+                            ruleType = ItemDisplayRuleType.LimbMask,
+                            limbMask = LimbFlags.RightArm
                         }
                     }
                 }
@@ -1452,9 +1456,9 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayPearl"),
                             childName = "LowerArmR",
-                            localPos = new Vector3(0.04706F, -0.05544F, -0.03281F),
+                            localPos = new Vector3(0.01366F, 1.52196F, -0.03281F),
                             localAngles = new Vector3(274.3965F, 90F, 270F),
-                            localScale = new Vector3(0.3F, 0.3F, 0.3F),
+                            localScale = new Vector3(0.5F, 0.5F, 0.5F),
                             limbMask = LimbFlags.None
                         }
                     }
@@ -1473,9 +1477,9 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayShinyPearl"),
                             childName = "LowerArmL",
-                            localPos = new Vector3(0.04706F, -0.05544F, -0.03281F),
+                            localPos = new Vector3(0.01366F, 1.52196F, -0.03281F),
                             localAngles = new Vector3(274.3965F, 90F, 270F),
-                            localScale = new Vector3(0.3F, 0.3F, 0.3F),
+                            localScale = new Vector3(0.5F, 0.5F, 0.5F),
                             limbMask = LimbFlags.None
                         }
                     }
@@ -1683,7 +1687,7 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayTonic"),
                             childName = "Pelvis",
-                            localPos = new Vector3(-2.01845F, 0.3102F, 0.05113F),
+                            localPos = new Vector3(0.8582F, 0.31026F, 0.05113F),
                             localAngles = new Vector3(0F, 270F, 150F),
                             localScale = new Vector3(1.3F, 1.3F, 1.3F),
                             limbMask = LimbFlags.None
@@ -1704,7 +1708,7 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayMolotov"),
                             childName = "Head",
-                            localPos = new Vector3(-1.67488F, 0.312456F, 0.05488F),
+                            localPos = new Vector3(-1.4F, 0.6F, 0F),
                             localAngles = new Vector3(0F, 0F, 0F),
                             localScale = new Vector3(1F, 1F, 1F),
                             limbMask = LimbFlags.None
@@ -1714,7 +1718,7 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayMolotov"),
                             childName = "Head",
-                            localPos = new Vector3(1.67488F, 0.312456F, 0.05488F),
+                            localPos = new Vector3(1.4F, 0.6F, 0F),
                             localAngles = new Vector3(0F, 0F, 0F),
                             localScale = new Vector3(-1F, 1F, 1F),
                             limbMask = LimbFlags.None
@@ -1756,7 +1760,7 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayGummyClone"),
                             childName = "Head",
-                            localPos = new Vector3(0.49778F, 1.34068F, -1.17572F),
+                            localPos = new Vector3(0.02835F, 1.34054F, -0.58153F),
                             localAngles = new Vector3(0F, 0F, 0F),
                             localScale = new Vector3(0.5F, 0.5F, 0.5F),
                             limbMask = LimbFlags.None
@@ -1777,7 +1781,7 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayExecutiveCard"),
                             childName = "Chest",
-                            localPos = new Vector3(-0.60869F, 0.54873F, -1.5384F),
+                            localPos = new Vector3(-0.48545F, 0.54866F, -1.44648F),
                             localAngles = new Vector3(90F, 270F, 0F),
                             localScale = new Vector3(3F, 3F, 3F),
                             limbMask = LimbFlags.None
@@ -1798,7 +1802,7 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayVendingMachine"),
                             childName = "Head",
-                            localPos = new Vector3(0.47835F, 0.98633F, -1.11264F),
+                            localPos = new Vector3(0.45974F, 0.98614F, -0.40292F),
                             localAngles = new Vector3(0F, 180F, 0F),
                             localScale = new Vector3(0.8F, 0.8F, 0.8F),
                             limbMask = LimbFlags.None
@@ -1819,7 +1823,7 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayAffixVoid"),
                             childName = "Head",
-                            localPos = new Vector3(0F, 0.40845F, 1.20601F),
+                            localPos = new Vector3(0F, 0.71166F, 0.34138F),
                             localAngles = new Vector3(90F, 0F, 0F),
                             localScale = new Vector3(0.8F, 0.8F, 0.8F),
                             limbMask = LimbFlags.None
@@ -1840,7 +1844,7 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayEliteHorn"),
                             childName = "Head",
-                            localPos = new Vector3(1.22185F, 0.88893F, 0.0065F),
+                            localPos = new Vector3(0.1F, 1.1F, 0F),
                             localAngles = new Vector3(0F, 0F, 0F),
                             localScale = new Vector3(0.5F, 0.5F, 0.5F),
                             limbMask = LimbFlags.None
@@ -1851,7 +1855,7 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayEliteHorn"),
                             childName = "Head",
-                            localPos = new Vector3(-1.22185F, 0.88893F, 0.0065F),
+                            localPos = new Vector3(-0.1F, 1.1F, 0F),
                             localAngles = new Vector3(0F, 0F, 0F),
                             localScale = new Vector3(-0.5F, 0.5F, 0.5F),
                             limbMask = LimbFlags.None
@@ -1874,7 +1878,7 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             childName = "Head",
                             localPos = new Vector3(0F, 1.60141F, 0F),
                             localAngles = new Vector3(270F, 0F, 0F),
-                            localScale = new Vector3(0.2F, 0.2F, 0.2F),
+                            localScale = new Vector3(0.07781F, 0.07781F, 0.07781F),
                             limbMask = LimbFlags.None
                         }
                     }
@@ -1893,7 +1897,7 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayEliteRhinoHorn"),
                             childName = "Head",
-                            localPos = new Vector3(0.0385F, 0.81658F, 0.82963F),
+                            localPos = new Vector3(0F, 1.34178F, 0.43087F),
                             localAngles = new Vector3(315F, 0F, 0F),
                             localScale = new Vector3(0.7F, 0.7F, 0.7F),
                             limbMask = LimbFlags.None
@@ -1904,7 +1908,7 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayEliteRhinoHorn"),
                             childName = "Head",
-                            localPos = new Vector3(0.03906F, 0.72268F, 0.96535F),
+                            localPos = new Vector3(0F, 1.34178F, 0.43087F),
                             localAngles = new Vector3(340F, 0F, 0F),
                             localScale = new Vector3(1F, 1F, 1F),
                             limbMask = LimbFlags.None
@@ -1980,7 +1984,7 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             childName = "Head",
                             localPos = new Vector3(-0.00626F, 0.95351F, -0.39432F),
                             localAngles = new Vector3(0F, 0F, 0F),
-                            localScale = new Vector3(4F, 4F, 4F),
+                            localScale = new Vector3(3.34926F, 3.34926F, 3.34926F),
                             limbMask = LimbFlags.None
                         }
                     }
@@ -1999,9 +2003,9 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayEliteUrchinCrown"),
                             childName = "Head",
-                            localPos = new Vector3(-0.0298F, 0.96761F, -0.0052F),
+                            localPos = new Vector3(-0.0298F, 1.55086F, -0.0052F),
                             localAngles = new Vector3(270F, 90F, 0F),
-                            localScale = new Vector3(0.34F, 0.34F, 0.34F),
+                            localScale = new Vector3(0.11914F, 0.19801F, 0.19801F),
                             limbMask = LimbFlags.None
                         }
                     }
@@ -2020,9 +2024,9 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayEliteStealthCrown"),
                             childName = "Head",
-                            localPos = new Vector3(0.01668F, 1.80998F, -0.23431F),
+                            localPos = new Vector3(0F, 1.25F, -0.125F),
                             localAngles = new Vector3(90F, 180F, 0F),
-                            localScale = new Vector3(0.4F, 0.4F, 0.4F),
+                            localScale = new Vector3(0.2F, 0.2F, 0.2F),
                             limbMask = LimbFlags.None
                         }
                     }
@@ -2041,7 +2045,7 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayOddlyShapedOpal"),
                             childName = "Chest",
-                            localPos = new Vector3(-1.16109F, 1.08549F, 0.48321F),
+                            localPos = new Vector3(-0.88721F, 0.82509F, 0.48321F),
                             localAngles = new Vector3(90F, 135F, 0F),
                             localScale = new Vector3(1F, 1F, 1F),
                             limbMask = LimbFlags.None
@@ -2125,12 +2129,15 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplaySunHead"),
                             childName = "Head",
-                            localPos = new Vector3(-0.00086F, 0.51444F, 1.16411F),
+                            localPos = new Vector3(0.03955F, 0.9238F, -0.05299F),
                             localAngles = new Vector3(0F, 0F, 0F),
-                            localScale = new Vector3(2.1F, 2.1F, 2.1F),
+                            localScale = new Vector3(4F, 4F, 4F),
                             limbMask = LimbFlags.None
                         },
-
+                        new ItemDisplayRule {
+                            ruleType = ItemDisplayRuleType.LimbMask,
+                            limbMask = LimbFlags.Head
+                        },
                         new ItemDisplayRule
                         {
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
@@ -2199,8 +2206,8 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayBuckler"),
                             childName = "LowerArmR",
-                            localPos = new Vector3(0.55291F, 0.27591F, 0.22005F),
-                            localAngles = new Vector3(24.13992F, 76.18073F, 355.0659F),
+                            localPos = new Vector3(0.75739F, 1.14294F, -0.01811F),
+                            localAngles = new Vector3(0F, 90F, 0F),
                             localScale = new Vector3(1F, 1F, 1F),
                             limbMask = LimbFlags.None
                         }
@@ -2220,8 +2227,8 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayFeather"),
                             childName = "UpperArmL",
-                            localPos = new Vector3(-0.07067F, 1.58443F, 0.02026F),
-                            localAngles = new Vector3(322.8272F, 200.6293F, 261.7263F),
+                            localPos = new Vector3(0.13615F, 0.65787F, 0.43406F),
+                            localAngles = new Vector3(347.3637F, 260.3924F, 258.5751F),
                             localScale = new Vector3(0.1F, 0.1F, 0.1F),
                             limbMask = LimbFlags.None
                         }
@@ -2241,7 +2248,7 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayMushroom"),
                             childName = "Chest",
-                            localPos = new Vector3(1.09596F, 1.03824F, 1.06886F),
+                            localPos = new Vector3(0.45347F, 0.83357F, 0.89058F),
                             localAngles = new Vector3(0F, 0F, 0F),
                             localScale = new Vector3(0.15F, 0.15F, 0.15F),
                             limbMask = LimbFlags.None
@@ -2262,7 +2269,7 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayMushroomVoid"),
                             childName = "Chest",
-                            localPos = new Vector3(1.09596F, 1.03824F, 1.06886F),
+                            localPos = new Vector3(0.45347F, 0.83357F, 0.89058F),
                             localAngles = new Vector3(0F, 0F, 0F),
                             localScale = new Vector3(0.15F, 0.15F, 0.15F),
                             limbMask = LimbFlags.None
@@ -2324,9 +2331,9 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                         {
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayBattery"),
-                            childName = "Pelvis",
-                            localPos = new Vector3(-0.21407F, 1.17682F, 0.1752F),
-                            localAngles = new Vector3(0F, 90F, 0F),
+                            childName = "Chest",
+                            localPos = new Vector3(-0.32446F, 0.27701F, -1.25428F),
+                            localAngles = new Vector3(270F, 270F, 0F),
                             localScale = new Vector3(1F, 1F, 1F),
                             limbMask = LimbFlags.None
                         }
@@ -2345,9 +2352,9 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                         {
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayFuelCellVoid"),
-                            childName = "Pelvis",
-                            localPos = new Vector3(0.17693F, 1.17685F, 0.1752F),
-                            localAngles = new Vector3(0F, 0F, 90F),
+                            childName = "Chest",
+                            localPos = new Vector3(-0.32446F, 0.27701F, -1.25428F),
+                            localAngles = new Vector3(270F, 270F, 0F),
                             localScale = new Vector3(1F, 1F, 1F),
                             limbMask = LimbFlags.None
                         }
@@ -2367,7 +2374,7 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayTeslaCoil"),
                             childName = "Chest",
-                            localPos = new Vector3(0.02544F, 1.06572F, -1.36462F),
+                            localPos = new Vector3(0.02557F, 0.6985F, -1.16443F),
                             localAngles = new Vector3(315F, 0F, 0F),
                             localScale = new Vector3(2F, 2F, 2F),
                             limbMask = LimbFlags.None
@@ -2388,7 +2395,7 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayShieldBug"),
                             childName = "Head",
-                            localPos = new Vector3(0.8F, 0.5F, 0F),
+                            localPos = new Vector3(1F, 0.5F, 0F),
                             localAngles = new Vector3(0F, 0F, 0F),
                             localScale = new Vector3(1F, 1F, 1F),
                             limbMask = LimbFlags.None
@@ -2399,7 +2406,7 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayShieldBug"),
                             childName = "Head",
-                            localPos = new Vector3(-0.8F, 0.5F, 0F),
+                            localPos = new Vector3(-1F, 0.5F, 0F),
                             localAngles = new Vector3(0F, 0F, 0F),
                             localScale = new Vector3(-1F, 1F, 1F),
                             limbMask = LimbFlags.None
@@ -2420,7 +2427,7 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayICBM"),
                             childName = "LowerArmR",
-                            localPos = new Vector3(1.0526F, 0.92267F, 0.33512F),
+                            localPos = new Vector3(1.05189F, 0.92269F, -0.01579F),
                             localAngles = new Vector3(358.4739F, 196.2306F, 1.74141F),
                             localScale = new Vector3(0.8F, 0.8F, 0.8F),
                             limbMask = LimbFlags.None
@@ -2441,8 +2448,8 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayLunarShoulderStone"),
                             childName = "ShoulderL",
-                            localPos = new Vector3(-0.02389F, 1.55666F, 0.04708F),
-                            localAngles = new Vector3(2.76242F, 276.0806F, 302.8358F),
+                            localPos = new Vector3(-0.02399F, 0.95534F, 0.03414F),
+                            localAngles = new Vector3(2.76242F, 0F, 302.8358F),
                             localScale = new Vector3(3F, 3F, 3F),
                             limbMask = LimbFlags.None
                         }
@@ -2462,9 +2469,9 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayShuriken"),
                             childName = "Chest",
-                            localPos = new Vector3(1.89677F, 0.6126F, 0.02436F),
+                            localPos = new Vector3(1.32207F, 0.37817F, 0.02436F),
                             localAngles = new Vector3(0F, 90F, 0F),
-                            localScale = new Vector3(3F, 3F, 3F),
+                            localScale = new Vector3(5F, 5F, 5F),
                             limbMask = LimbFlags.None
                         },
                         new ItemDisplayRule
@@ -2472,9 +2479,9 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayShuriken"),
                             childName = "Chest",
-                            localPos = new Vector3(-1.89677F, 0.6126F, 0.02436F),
+                            localPos = new Vector3(-1.32207F, 0.37817F, 0.02436F),
                             localAngles = new Vector3(0F, 90F, 0F),
-                            localScale = new Vector3(3F, 3F, 3F),
+                            localScale = new Vector3(5F, 5F, 5F),
                             limbMask = LimbFlags.None
                         }
                     }
@@ -2493,7 +2500,7 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplaySkullcrown"),
                             childName = "Pelvis",
-                            localPos = new Vector3(0.01188F, 0.60949F, -0.00688F),
+                            localPos = new Vector3(0.01188F, 0.29211F, -0.00688F),
                             localAngles = new Vector3(0F, 180F, 180F),
                             localScale = new Vector3(3.3F, 1F, 1F),
                             limbMask = LimbFlags.None
@@ -2514,7 +2521,7 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayRegeneratingScrap"),
                             childName = "ThighL",
-                            localPos = new Vector3(0.06018F, 0.99113F, 0.6685F),
+                            localPos = new Vector3(-0.12112F, 0.96724F, 0.26707F),
                             localAngles = new Vector3(0F, 180F, 180F),
                             localScale = new Vector3(1F, 1F, 1F),
                             limbMask = LimbFlags.None
@@ -2535,7 +2542,7 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayGasTank"),
                             childName = "Chest",
-                            localPos = new Vector3(-0.03283F, -0.31868F, -1.24492F),
+                            localPos = new Vector3(-0.02881F, -0.31874F, -0.73502F),
                             localAngles = new Vector3(32.01325F, 180.3033F, 270.0353F),
                             localScale = new Vector3(1F, 1F, 1F),
                             limbMask = LimbFlags.None
@@ -2577,7 +2584,7 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayWaxBird"),
                             childName = "Head",
-                            localPos = new Vector3(0.97737F, -1.5143F, 0.0345F),
+                            localPos = new Vector3(0.10266F, -0.97803F, -0.41841F),
                             localAngles = new Vector3(0F, 350F, 0F),
                             localScale = new Vector3(4F, 4F, 4F),
                             limbMask = LimbFlags.None
@@ -2598,7 +2605,7 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayInfusion"),
                             childName = "Chest",
-                            localPos = new Vector3(0.50334F, 0.81582F, 1.76645F),
+                            localPos = new Vector3(0.42683F, 0.3252F, 1.27874F),
                             localAngles = new Vector3(0F, 0F, 0F),
                             localScale = new Vector3(2F, 2F, 2F),
                             limbMask = LimbFlags.None
@@ -2619,8 +2626,8 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayInterstellarDeskPlant"),
                             childName = "Head",
-                            localPos = new Vector3(0.02259F, 0.54096F, 1.25526F),
-                            localAngles = new Vector3(0F, 0F, 0F),
+                            localPos = new Vector3(0.02259F, 1.92731F, -0.03225F),
+                            localAngles = new Vector3(270F, 0F, 0F),
                             localScale = new Vector3(0.5F, 0.5F, 0.5F),
                             limbMask = LimbFlags.None
                         }
@@ -2640,8 +2647,8 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplaySyringeCluster"),
                             childName = "Pelvis",
-                            localPos = new Vector3(1.78492F, -0.0063F, 0.08677F),
-                            localAngles = new Vector3(59.70058F, 187.0446F, 98.52901F),
+                            localPos = new Vector3(1.74825F, -0.00623F, 0.08677F),
+                            localAngles = new Vector3(59.70059F, 187.0446F, 98.52901F),
                             localScale = new Vector3(0.7F, 0.7F, 0.7F),
                             limbMask = LimbFlags.None
                         }
@@ -2661,8 +2668,8 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayGuillotine"),
                             childName = "LowerArmL",
-                            localPos = new Vector3(-0.65809F, 2.0874F, 0.43508F),
-                            localAngles = new Vector3(88.13177F, 341.1274F, 46.61266F),
+                            localPos = new Vector3(-0.00084F, 2.09997F, 1.09714F),
+                            localAngles = new Vector3(90F, 0F, 0F),
                             localScale = new Vector3(1.3F, 1.3F, 1.3F),
                             limbMask = LimbFlags.None
                         }
@@ -2682,7 +2689,7 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayMedkit"),
                             childName = "Pelvis",
-                            localPos = new Vector3(1.97824F, 0.8335F, 0.04976F),
+                            localPos = new Vector3(1.70006F, 0.19012F, 0.04976F),
                             localAngles = new Vector3(90F, 270F, 0F),
                             localScale = new Vector3(3F, 3F, 3F),
                             limbMask = LimbFlags.None
@@ -2703,7 +2710,7 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplaySeed"),
                             childName = "ThighR",
-                            localPos = new Vector3(-3.11582F, -1.36913F, 1.33288F),
+                            localPos = new Vector3(0.04695F, -0.9854F, -0.14655F),
                             localAngles = new Vector3(39.20604F, 345.9948F, 287.024F),
                             localScale = new Vector3(0.2F, 0.2F, 0.2F),
                             limbMask = LimbFlags.None
@@ -2724,7 +2731,7 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayStunGrenade"),
                             childName = "Chest",
-                            localPos = new Vector3(1.27849F, 0.52871F, 1.46618F),
+                            localPos = new Vector3(1.23457F, 0.52865F, 0.59534F),
                             localAngles = new Vector3(270F, 140F, 0F),
                             localScale = new Vector3(3F, 3F, 3F),
                             limbMask = LimbFlags.None
@@ -2745,8 +2752,8 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplaySnail"),
                             childName = "Chest",
-                            localPos = new Vector3(0.90107F, -0.02878F, 1.3107F),
-                            localAngles = new Vector3(45.26494F, 242.1814F, 200.7004F),
+                            localPos = new Vector3(0.8908F, 0.05611F, 0.65817F),
+                            localAngles = new Vector3(45.26495F, 242.1814F, 200.7004F),
                             localScale = new Vector3(0.2F, 0.2F, 0.2F),
                             limbMask = LimbFlags.None
                         }
@@ -2766,7 +2773,7 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayToothMeshLarge"),
                             childName = "Chest",
-                            localPos = new Vector3(0F, 1.0895F, 1.38636F),
+                            localPos = new Vector3(0F, 0.84563F, 0.78836F),
                             localAngles = new Vector3(90F, 180F, 0F),
                             localScale = new Vector3(8F, 8F, 8F),
                             limbMask = LimbFlags.None
@@ -2776,7 +2783,7 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayToothMeshLarge"),
                             childName = "Chest",
-                            localPos = new Vector3(-0.2477389f, 1.09445F, 1.35364F),
+                            localPos = new Vector3(-0.24774F, 0.84727F, 0.70468F),
                             localAngles = new Vector3(90F, 180F, 0F),
                             localScale = new Vector3(6F, 6F, 6F),
                             limbMask = LimbFlags.None
@@ -2786,7 +2793,7 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayToothMeshLarge"),
                             childName = "Chest",
-                            localPos = new Vector3(0.2477389f, 1.09445F, 1.35364F),
+                            localPos = new Vector3(0.24774F, 0.87125F, 0.71567F),
                             localAngles = new Vector3(90F, 180F, 0F),
                             localScale = new Vector3(6F, 6F, 6F),
                             limbMask = LimbFlags.None
@@ -2796,7 +2803,7 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayToothMeshLarge"),
                             childName = "Chest",
-                            localPos = new Vector3(-0.47564F, 1.10054F, 1.264277F),
+                            localPos = new Vector3(-0.47564F, 0.85982F, 0.52498F),
                             localAngles = new Vector3(90F, 180F, 0F),
                             localScale = new Vector3(5F, 5F, 5F),
                             limbMask = LimbFlags.None
@@ -2806,7 +2813,7 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayToothMeshLarge"),
                             childName = "Chest",
-                            localPos = new Vector3(0.47564F, 1.10054F, 1.264277F),
+                            localPos = new Vector3(0.47564F, 0.86009F, 0.50768F),
                             localAngles = new Vector3(90F, 180F, 0F),
                             localScale = new Vector3(5F, 5F, 5F),
                             limbMask = LimbFlags.None
@@ -2827,10 +2834,10 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayGoldHeart"),
                             childName = "Chest",
-                            localPos = new Vector3(-0.1348F, 0.30163F, 2.11047F),
+                            localPos = new Vector3(0.33485F, 0.30151F, 1.33234F),
                             localAngles = new Vector3(0F, 0F, 0F),
                             localScale = new Vector3(1F, 1F, 1F),
-                                                        limbMask = LimbFlags.None
+                            limbMask = LimbFlags.None
                         }
                     }
                 }
@@ -2848,7 +2855,7 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayBauble"),
                             childName = "Pelvis",
-                            localPos = new Vector3(-2.10812F, 1.8948F, 1.11686F),
+                            localPos = new Vector3(-0.83337F, 1.54434F, 1.1168F),
                             localAngles = new Vector3(0.47835F, 102.6075F, 182.4889F),
                             localScale = new Vector3(1.5F, 1.5F, 1.5F),
                             limbMask = LimbFlags.None
@@ -2869,7 +2876,7 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayBaubleVoid"),
                             childName = "Pelvis",
-                            localPos = new Vector3(-2.10812F, 1.8948F, 1.11686F),
+                            localPos = new Vector3(-0.83337F, 1.54434F, 1.1168F),
                             localAngles = new Vector3(0.47835F, 102.6075F, 182.4889F),
                             localScale = new Vector3(1.5F, 1.5F, 1.5F),
                             limbMask = LimbFlags.None
@@ -2890,8 +2897,8 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayFirework"),
                             childName = "Head",
-                            localPos = new Vector3(1.46065F, 0.59488F, -0.8081F),
-                            localAngles = new Vector3(274.7068F, 69.15612F, 52.48836F),
+                            localPos = new Vector3(1.21368F, 0.95704F, -0.06116F),
+                            localAngles = new Vector3(274.7067F, 69.15607F, 52.48841F),
                             localScale = new Vector3(1.5F, 1.5F, 1.5F),
                             limbMask = LimbFlags.None
                         }
@@ -2911,7 +2918,7 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayRollOfPennies"),
                             childName = "Head",
-                            localPos = new Vector3(0.53561F, 0.17481F, -1.16899F),
+                            localPos = new Vector3(-0.01273F, 0.85698F, -0.25929F),
                             localAngles = new Vector3(90F, 270F, 0F),
                             localScale = new Vector3(3F, 3F, 3F),
                             limbMask = LimbFlags.None
@@ -2932,8 +2939,8 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayLunarShoulderNature"),
                             childName = "ShoulderR",
-                            localPos = new Vector3(0.07999F, 1.29681F, 0.05322F),
-                            localAngles = new Vector3(357.2791F, 282.0003F, 325.975F),
+                            localPos = new Vector3(0.07412F, 0.81839F, -0.12984F),
+                            localAngles = new Vector3(0.10477F, 92.70396F, 305.5227F),
                             localScale = new Vector3(3F, 3F, 3F),
                             limbMask = LimbFlags.None
                         }
@@ -2974,7 +2981,7 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayKnurl"),
                             childName = "Chest",
-                            localPos = new Vector3(1.10091F, -0.42219F, -0.9034F),
+                            localPos = new Vector3(-0.06019F, -0.42236F, -0.44318F),
                             localAngles = new Vector3(13.78956F, 344.0582F, 88.98917F),
                             localScale = new Vector3(0.3F, 0.3F, 0.3F),
                             limbMask = LimbFlags.None
@@ -2995,7 +3002,7 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayEffigy"),
                             childName = "Head",
-                            localPos = new Vector3(-0.10648F, 1.03051F, -0.20891F),
+                            localPos = new Vector3(-0.10648F, 1.56202F, -0.20891F),
                             localAngles = new Vector3(0F, 330F, 0F),
                             localScale = new Vector3(1.5F, 1.5F, 1.5F),
                             limbMask = LimbFlags.None
@@ -3016,7 +3023,7 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayPotion"),
                             childName = "Pelvis",
-                            localPos = new Vector3(-2.38152F, 0.37895F, 0.0485F),
+                            localPos = new Vector3(-0.75033F, 0.65916F, 0.0485F),
                             localAngles = new Vector3(0F, 270F, 150F),
                             localScale = new Vector3(0.2F, 0.2F, 0.2F),
                             limbMask = LimbFlags.None
@@ -3037,7 +3044,7 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayHealingPotion"),
                             childName = "Pelvis",
-                            localPos = new Vector3(1.62825F, 0.05218F, 0.9549F),
+                            localPos = new Vector3(-0.67498F, 0.05234F, -0.48225F),
                             localAngles = new Vector3(322.0498F, 175.1867F, 187.1756F),
                             localScale = new Vector3(0.2F, 0.2F, 0.2F),
                             limbMask = LimbFlags.None
@@ -3058,7 +3065,7 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayWarHorn"),
                             childName = "Pelvis",
-                            localPos = new Vector3(-1.57522F, 0.27268F, 0.91862F),
+                            localPos = new Vector3(-0.83785F, 0.24541F, -0.06638F),
                             localAngles = new Vector3(2.35106F, 94.1549F, 267.8134F),
                             localScale = new Vector3(1.5F, 1.5F, 1.5F),
                             limbMask = LimbFlags.None
@@ -3142,7 +3149,7 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayDoubleMag"),
                             childName = "ThighL",
-                            localPos = new Vector3(-0.31077F, 0.35379F, -0.89277F),
+                            localPos = new Vector3(-0.5155F, 0.35382F, -0.89277F),
                             localAngles = new Vector3(45.26951F, 355.9093F, 358.4541F),
                             localScale = new Vector3(0.25F, 0.25F, 0.25F),
                             limbMask = LimbFlags.None
@@ -3163,7 +3170,7 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayBottledChaos"),
                             childName = "Pelvis",
-                            localPos = new Vector3(0.8891F, 0.8036F, 0.7103F),
+                            localPos = new Vector3(0.7162F, 0.80366F, 0.03497F),
                             localAngles = new Vector3(358.0485F, 28.57144F, 180.2457F),
                             localScale = new Vector3(0.7F, 0.7F, 0.7F),
                             limbMask = LimbFlags.None
@@ -3184,7 +3191,7 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplaySquidTurret"),
                             childName = "Chest",
-                            localPos = new Vector3(-0.99237F, -0.12482F, 1.37679F),
+                            localPos = new Vector3(-0.71133F, -0.12488F, 0.46837F),
                             localAngles = new Vector3(10.40466F, 212.2179F, 225.3876F),
                             localScale = new Vector3(0.2F, 0.2F, 0.2F),
                             limbMask = LimbFlags.None
@@ -3247,8 +3254,8 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayGlowFlower"),
                             childName = "Head",
-                            localPos = new Vector3(-1.2569F, 0.84597F, 0.86491F),
-                            localAngles = new Vector3(332.5085F, 317.2161F, 294.9464F),
+                            localPos = new Vector3(-0.52046F, 1.35499F, 0.06836F),
+                            localAngles = new Vector3(332.5085F, 317.2161F, 266.4367F),
                             localScale = new Vector3(2F, 2F, 2F),
                             limbMask = LimbFlags.None
                         }
@@ -3289,7 +3296,7 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayGrappleHook"),
                             childName = "Head",
-                            localPos = new Vector3(-0.29667F, 1.8204F, -1.03377F),
+                            localPos = new Vector3(0.68237F, 2.39021F, -0.215F),
                             localAngles = new Vector3(356.0622F, 232.2437F, 23.71056F),
                             localScale = new Vector3(0.5F, 0.5F, 0.5F),
                             limbMask = LimbFlags.None
@@ -3331,7 +3338,7 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayScorpion"),
                             childName = "Pelvis",
-                            localPos = new Vector3(0.16563F, 0.42393F, 0.9751F),
+                            localPos = new Vector3(0.16563F, 0.23561F, 0.70226F),
                             localAngles = new Vector3(0F, 180F, 180F),
                             localScale = new Vector3(4F, 4F, 4F),
                             limbMask = LimbFlags.None
@@ -3352,8 +3359,8 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayFossil"),
                             childName = "Pelvis",
-                            localPos = new Vector3(-1.08701F, 0.48789F, -0.00209F),
-                            localAngles = new Vector3(66.71906F, 180F, 180F),
+                            localPos = new Vector3(-0.81297F, 0.19515F, 0.08807F),
+                            localAngles = new Vector3(66.71907F, 180F, 180F),
                             localScale = new Vector3(2.5F, 2.5F, 2.5F),
                             limbMask = LimbFlags.None
                         }
@@ -3373,7 +3380,7 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayParentEgg"),
                             childName = "Chest",
-                            localPos = new Vector3(0.02529F, 0.33657F, 2.25553F),
+                            localPos = new Vector3(0.00806F, 0.33643F, 1.65533F),
                             localAngles = new Vector3(0F, 0F, 0F),
                             localScale = new Vector3(0.5F, 0.5F, 0.5F),
                             limbMask = LimbFlags.None
@@ -3416,7 +3423,7 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayBeads"),
                             childName = "HandR",
                             localPos = new Vector3(-0.02785F, 0.48068F, -0.11959F),
-                            localAngles = new Vector3(77.51471F, 54.62633F, 162.8953F),
+                            localAngles = new Vector3(328.9055F, 83.18603F, 203.7835F),
                             localScale = new Vector3(4F, 4F, 4F),
                             limbMask = LimbFlags.None
                         }
@@ -3457,7 +3464,7 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayRandomDamageZone"),
                             childName = "UpperArmL",
-                            localPos = new Vector3(-0.87482F, 3.86063F, -1.42822F),
+                            localPos = new Vector3(-0.21517F, 2.77057F, 0.59553F),
                             localAngles = new Vector3(12.79649F, 111.1767F, 232.5848F),
                             localScale = new Vector3(0.2F, 0.2F, 0.2F),
                             limbMask = LimbFlags.None
@@ -3478,7 +3485,7 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplays.LoadDisplay("DisplayBirdFoot"),
                             childName = "Head",
-                            localPos = new Vector3(0.00188F, 1.33041F, -0.84227F),
+                            localPos = new Vector3(-0.0336F, 1.55059F, -0.50325F),
                             localAngles = new Vector3(0F, 270F, 315F),
                             localScale = new Vector3(2F, 2F, 2F),
                             limbMask = LimbFlags.None
@@ -3668,7 +3675,7 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/DroneWeapons/DisplayDroneWeaponLauncher.prefab").WaitForCompletion(),
                             childName = "Chest",
-                            localPos = new Vector3(-0.49153F, 0.63633F, -1.06785F),
+                            localPos = new Vector3(0F, 0.6363F, -1.06784F),
                             localAngles = new Vector3(0F, 180F, 0F),
                             localScale = new Vector3(1F, 1F, 1F),
                             limbMask = LimbFlags.None
@@ -3678,9 +3685,9 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                         {
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/DroneWeapons/DisplayDroneWeaponMinigun.prefab").WaitForCompletion(),
-                            childName = "Head",
-                            localPos = new Vector3(1.31409F, 0.52271F, 0.11515F),
-                            localAngles = new Vector3(90F, 270F, 0F),
+                            childName = "Chest",
+                            localPos = new Vector3(0.75455F, 0.81932F, 0.10829F),
+                            localAngles = new Vector3(-0.00001F, 90F, 180F),
                             localScale = new Vector3(1F, 1F, 1F),
                             limbMask = LimbFlags.None
                         }
@@ -3701,7 +3708,7 @@ namespace RMOR_Reforged.Content.RMORSurvivor
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/DroneWeapons/DisplayDroneWeaponRobotArm.prefab").WaitForCompletion(),
                             childName = "ShoulderL",
-                            localPos = new Vector3(0F, 1.25838F, 0.02986F),
+                            localPos = new Vector3(-0.0001F, 0.86716F, 0.02606F),
                             localAngles = new Vector3(327.3969F, 181.9719F, 330.4663F),
                             localScale = new Vector3(1.5F, 1.5F, 1.5F),
                             limbMask = LimbFlags.None

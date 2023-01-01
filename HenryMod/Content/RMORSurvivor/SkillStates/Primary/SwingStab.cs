@@ -1,5 +1,5 @@
-﻿using RMORMod.Content.HANDSurvivor;
-using RMORMod.Content.HANDSurvivor.Components.Body;
+﻿using RMORMod.Content.RMORSurvivor;
+using RMORMod.Content.RMORSurvivor.Components.Body;
 using RMORMod.SkillStates.BaseStates;
 using RoR2;
 using R2API;
@@ -48,7 +48,7 @@ namespace EntityStates.RMOR.Primary
             this.scaleHitHopWithAttackSpeed = true;
             this.hitStopDuration = 0.1f;
             this.hitSoundString = "";
-            this.swingSoundString = "Play_HOC_Punch";
+            this.swingSoundString = "Play_RMOR_Punch";
             this.hitboxName = "StabHitbox";
             this.damageCoefficient = 3.9f;
             this.procCoefficient = 1f;
@@ -67,7 +67,7 @@ namespace EntityStates.RMOR.Primary
 
             this.animationLayer = "Gesture, Override";
 
-            Util.PlaySound("Play_HOC_StartPunch", base.gameObject);
+            Util.PlaySound("Play_RMOR_StartPunch", base.gameObject);
 
             OverclockController ovc = base.GetComponent<OverclockController>();
             bool hasOVC = ovc && ovc.BuffActive();
@@ -78,7 +78,7 @@ namespace EntityStates.RMOR.Primary
             this.swingEffectPrefab = SwingStab.swingEffect;
             if (base.characterBody)
             {
-                if (SwingStab.swingEffectFocus && base.characterBody.HasBuff(RMORMod.Content.Shared.Buffs.NemesisFocus))
+                if (SwingStab.swingEffectFocus && base.characterBody.HasBuff(RMORMod.Content.Shared.Buffs.RMORFocus))
                 {
                     this.swingEffectPrefab = SwingStab.swingEffectFocus;
                 }
@@ -97,12 +97,6 @@ namespace EntityStates.RMOR.Primary
                     base.characterBody.OnSkillActivated(base.skillLocator.primary);
                 }
 
-                HammerVisibilityController hvc = base.GetComponent<HammerVisibilityController>();
-                if (hvc)
-                {
-                    hvc.SetHammerEnabled(false);
-                }
-
                 //Attack is only agile while in OVC
                 if (base.isAuthority && !hasOVC)
                 {
@@ -117,7 +111,7 @@ namespace EntityStates.RMOR.Primary
                 this.attack.AddModdedDamageType(DamageTypes.HANDPrimaryPunch);
                 this.attack.AddModdedDamageType(DamageTypes.ResetVictimForce);
 
-                if (base.characterBody && base.characterBody.HasBuff(RMORMod.Content.Shared.Buffs.NemesisFocus))
+                if (base.characterBody && base.characterBody.HasBuff(RMORMod.Content.Shared.Buffs.RMORFocus))
                 {
                     this.attack.damageColorIndex = DamageColorIndex.Sniper;
                 }
@@ -138,7 +132,7 @@ namespace EntityStates.RMOR.Primary
             {
                 this.damageStat = base.characterBody.damage;
 
-                if (base.characterBody.HasBuff(RMORMod.Content.Shared.Buffs.NemesisFocus))
+                if (base.characterBody.HasBuff(RMORMod.Content.Shared.Buffs.RMORFocus))
                 {
                     this.swingEffectPrefab = SwingStab.swingEffectFocus;
                     this.attack.damageColorIndex = DamageColorIndex.Sniper;
@@ -157,7 +151,7 @@ namespace EntityStates.RMOR.Primary
         {
             if (this.swingEffectPrefab == SwingStab.swingEffectFocus)
             {
-                Util.PlaySound("Play_HOC_Focus", base.gameObject);
+                Util.PlaySound("Play_RMOR_Focus", base.gameObject);
             }
         }
 

@@ -3,18 +3,18 @@ using UnityEngine;
 using RoR2.CharacterAI;
 using R2API;
 
-namespace RMORMod.Content.HANDSurvivor
+namespace RMORMod.Content.RMORSurvivor
 {
     public class MasterAI
     {
         private static bool initialized = false;
-        public static GameObject HANDMaster;
+        public static GameObject RMORMaster;
         public static void Init(GameObject bodyPrefab)
         {
             if (initialized) return;
             initialized = true;
 
-            GameObject masterObject = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("prefabs/charactermasters/commandomonstermaster"), "HANDOverclockedMonsterMaster", true);
+            GameObject masterObject = LegacyResourcesAPI.Load<GameObject>("prefabs/charactermasters/commandomonstermaster").InstantiateClone("RMORMonsterMaster", true);
             Modules.ContentPacks.masterPrefabs.Add(masterObject);
 
             CharacterMaster cm = masterObject.GetComponent<CharacterMaster>();
@@ -23,7 +23,7 @@ namespace RMORMod.Content.HANDSurvivor
             Component[] toDelete = masterObject.GetComponents<AISkillDriver>();
             foreach (AISkillDriver asd in toDelete)
             {
-                UnityEngine.Object.Destroy(asd);
+                Object.Destroy(asd);
             }
 
             AISkillDriver specialSelfHeal = masterObject.AddComponent<AISkillDriver>();
@@ -86,7 +86,7 @@ namespace RMORMod.Content.HANDSurvivor
 
             AISkillDriver utility = masterObject.AddComponent<AISkillDriver>();
             utility.skillSlot = SkillSlot.Utility;
-            utility.requiredSkill = Content.Shared.SkillDefs.UtilityOverclock;
+            utility.requiredSkill = Shared.SkillDefs.UtilityOverclock;
             utility.requireSkillReady = true;
             utility.requireEquipmentReady = false;
             utility.moveTargetType = AISkillDriver.TargetType.CurrentEnemy;
@@ -106,7 +106,7 @@ namespace RMORMod.Content.HANDSurvivor
 
             AISkillDriver utilityFocus = masterObject.AddComponent<AISkillDriver>();
             utilityFocus.skillSlot = SkillSlot.Utility;
-            utilityFocus.requiredSkill = Content.Shared.SkillDefs.UtilityFocus;
+            utilityFocus.requiredSkill = Shared.SkillDefs.UtilityFocus;
             utilityFocus.requireSkillReady = true;
             utilityFocus.requireEquipmentReady = false;
             utilityFocus.moveTargetType = AISkillDriver.TargetType.CurrentEnemy;
@@ -178,7 +178,7 @@ namespace RMORMod.Content.HANDSurvivor
             afk.shouldSprint = true;
             afk.shouldFireEquipment = false;
 
-            HANDMaster = masterObject;
+            RMORMaster = masterObject;
         }
     }
 }

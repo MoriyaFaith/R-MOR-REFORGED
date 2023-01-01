@@ -1,5 +1,5 @@
-﻿using RMORMod.Content.HANDSurvivor;
-using RMORMod.Content.HANDSurvivor.Components.Body;
+﻿using RMORMod.Content.RMORSurvivor;
+using RMORMod.Content.RMORSurvivor.Components.Body;
 using RoR2;
 using RoR2.Skills;
 using UnityEngine;
@@ -16,7 +16,7 @@ namespace EntityStates.RMOR.Utility
         public override void LoadStats()
         {
             cancelDef = RMORMod.Content.Shared.SkillDefs.UtilityOverclockCancel;
-            buffDef = RMORMod.Content.Shared.Buffs.NemesisFocus;
+            buffDef = RMORMod.Content.Shared.Buffs.RMORFocus;
             gaugeInternal = texGaugeNemesis;
             gaugeArrowInternal = texGaugeArrowNemesis;
             internalOverlayMaterial = overlayMaterial;

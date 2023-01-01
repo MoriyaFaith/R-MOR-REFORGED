@@ -2,7 +2,7 @@
 using UnityEngine;
 using System;
 using static RoR2.CameraTargetParams;
-using RMORMod.Content.HANDSurvivor.Components.Body;
+using RMORMod.Content.RMORSurvivor.Components.Body;
 using RMORMod.Modules;
 using RMORMod.Content.Shared.Components.Body;
 using EntityStates;
@@ -21,7 +21,6 @@ namespace EntityStates.RMOR.Emotes
 
         public LocalUser localUser;
         public bool useHammer;
-        private HammerVisibilityController hammerVisibility;
 
         private CharacterCameraParamsData emoteCameraParams = new CharacterCameraParamsData()
         {
@@ -61,13 +60,6 @@ namespace EntityStates.RMOR.Emotes
             };
 
             camOverrideHandle = cameraTargetParams.AddParamsOverride(request, 0.5f);
-
-            hammerVisibility = GetComponent<HammerVisibilityController>();
-            if (hammerVisibility)
-            {
-                hammerVisibility.SetEmote(true);
-                hammerVisibility.SetHammerEnabled(useHammer);
-            }
         }
 
         private void FindLocalUser()
@@ -90,11 +82,6 @@ namespace EntityStates.RMOR.Emotes
 
         public override void OnExit()
         {
-            if (hammerVisibility)
-            {
-                hammerVisibility.SetHammerEnabled(false);
-                hammerVisibility.SetEmote(false);
-            }
 
             characterBody.hideCrosshair = false;
 
@@ -180,7 +167,7 @@ namespace EntityStates.RMOR.Emotes
             useHammer = true;
             base.OnEnter();
 
-            Util.PlaySound("Play_HOC_StartHammer", gameObject);
+            Util.PlaySound("Play_RMOR_StartHammer", gameObject);
         }
     }
 
@@ -218,7 +205,7 @@ namespace EntityStates.RMOR.Emotes
             if (!playedSound3 && animPercent >= 136f / 129f)
             {
                 playedSound3 = true;
-                Util.PlaySound("Play_HOC_StartPunch", gameObject);
+                Util.PlaySound("Play_RMOR_StartPunch", gameObject);
             }
         }
 

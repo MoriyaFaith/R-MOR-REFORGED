@@ -1,5 +1,5 @@
 ﻿using RMORMod.Content.Shared.Components.Body;
-using RMORMod.Content.HANDSurvivor.Components.Body;
+using RMORMod.Content.RMORSurvivor.Components.Body;
 using RoR2;
 using UnityEngine;
 
@@ -10,7 +10,7 @@ namespace EntityStates.RMOR.Secondary
         public override void OnEnter()
         {
             base.OnEnter();
-            Util.PlaySound("Play_HOC_StartHammer", base.gameObject);
+            Util.PlaySound("Play_RMOR_StartHammer", base.gameObject);
             this.minDuration = ChargeSlam.baseMinDuration / this.attackSpeedStat;
             this.modelAnimator = base.GetModelAnimator();
             if (this.modelAnimator)
@@ -25,12 +25,6 @@ namespace EntityStates.RMOR.Secondary
             charge = 0f;
             chargePercent = 0f;
             chargeDuration = ChargeSlam.baseChargeDuration / this.attackSpeedStat;
-
-            hammerController = base.GetComponent<HammerVisibilityController>();
-            if (hammerController)
-            {
-                hammerController.SetHammerEnabled(true);
-            }
 
             OverclockController ovc = base.GetComponent<OverclockController>();
             bool hasOVC = ovc && ovc.BuffActive();
@@ -53,10 +47,6 @@ namespace EntityStates.RMOR.Secondary
             {
                 this.PlayAnimation("Gesture, Override", "BufferEmpty");
             }
-            if (hammerController)
-            {
-                hammerController.SetHammerEnabled(false);
-            }
             base.OnExit();
         }
 
@@ -75,7 +65,7 @@ namespace EntityStates.RMOR.Secondary
                 if (charge >= chargeDuration)
                 {
                     base.PlayCrossfade("Gesture, Override", "ShakeSlash", "ChargeHammer.playbackRate", 0.6f, 0.05f);
-                    Util.PlaySound("Play_HOC_StartPunch", base.gameObject);
+                    Util.PlaySound("Play_RMOR_StartPunch", base.gameObject);
                     charge = chargeDuration;
                     EffectManager.SpawnEffect(chargeEffectPrefab, new EffectData
                     {
@@ -119,8 +109,6 @@ namespace EntityStates.RMOR.Secondary
         private Animator modelAnimator;
         public static GameObject chargeEffectPrefab = LegacyResourcesAPI.Load<GameObject>("prefabs/effects/omnieffect/OmniImpactVFXLoader");
         private bool startedChargeAnim = false;
-
-        private HammerVisibilityController hammerController;
 
         public static GameObject holdChargeVfxPrefab = EntityStates.Toolbot.ChargeSpear.holdChargeVfxPrefab;
         private GameObject holdChargeVfxGameObject = null;

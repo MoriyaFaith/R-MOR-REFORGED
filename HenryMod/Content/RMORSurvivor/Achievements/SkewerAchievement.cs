@@ -8,19 +8,14 @@ namespace RMORMod.Content.RMOR.Achievements
     [RegisterAchievement("MoriyaRMORSkewerUnlock", "Skills.RMOR.Skewer", null, null)]
     public class SkewerAchievement : BaseAchievement
     {
-        // Token: 0x06005710 RID: 22288 RVA: 0x00160BDC File Offset: 0x0015EDDC
         public override BodyIndex LookUpRequiredBodyIndex()
         {
             return BodyCatalog.FindBodyIndex("RMORBody");
         }
-
-        // Token: 0x06005711 RID: 22289 RVA: 0x00160D85 File Offset: 0x0015EF85
         private void SubscribeHealthCheck()
         {
             RoR2Application.onFixedUpdate += this.CheckHealth;
         }
-
-        // Token: 0x06005712 RID: 22290 RVA: 0x00160D98 File Offset: 0x0015EF98
         private void UnsubscribeHealthCheck()
         {
             RoR2Application.onFixedUpdate -= this.CheckHealth;
@@ -83,9 +78,9 @@ namespace RMORMod.Content.RMOR.Achievements
 
         private void CheckHealth()
         {
-            if (!this.healthComponent || 0.3f < this.healthComponent.combinedHealthFraction)
+            if (this.healthComponent && this.healthComponent.combinedHealth < (this.healthComponent.fullCombinedHealth * 0.6f)) //40% Health
             {
-                Fail();
+                this.Fail();
             }
         }
 

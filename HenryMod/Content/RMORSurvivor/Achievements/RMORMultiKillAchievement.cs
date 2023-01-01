@@ -8,40 +8,23 @@ namespace RMORMod.Content.RMOR.Achievements
     [RegisterAchievement("MoriyaRMORSlashUnlock", "Skills.RMOR.SlashAttack", null, null)]
     public class RMORMultiKillAchievement : BaseAchievement
     {
-        public override BodyIndex LookUpRequiredBodyIndex()
+        public override void OnInstall()
         {
-            return BodyCatalog.FindBodyIndex("RMORBody");
+            base.OnInstall();
+            RoR2Application.onFixedUpdate += CheckMultikillCount;
         }
-        public override void OnBodyRequirementMet()
+
+        public override void OnUninstall()
         {
-            base.OnBodyRequirementMet();
-            base.SetServerTracked(true);
+            RoR2Application.onFixedUpdate -= CheckMultikillCount;
+            base.OnUninstall();
         }
-        public override void OnBodyRequirementBroken()
+
+        private void CheckMultikillCount()
         {
-            base.SetServerTracked(false);
-            base.OnBodyRequirementBroken();
-        }
-        private static readonly int requirement = 20;
-        private class MageMultiKillServerAchievement : BaseServerAchievement
-        {
-            public override void OnInstall()
+            if (base.localUser != null && base.localUser.cachedBody != null && base.localUser.cachedBody.multiKillCount > 20 && base.meetsBodyRequirement)
             {
-                base.OnInstall();
-                RoR2Application.onFixedUpdate += this.OnFixedUpdate;
-            }
-            public override void OnUninstall()
-            {
-                RoR2Application.onFixedUpdate -= this.OnFixedUpdate;
-                base.OnUninstall();
-            }
-            private void OnFixedUpdate()
-            {
-                CharacterBody currentBody = base.GetCurrentBody();
-                if (currentBody && RMORMultiKillAchievement.requirement <= currentBody.multiKillCount)
-                {
-                    base.Grant();
-                }
+                base.Grant();
             }
         }
     }

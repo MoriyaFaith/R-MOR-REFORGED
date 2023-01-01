@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using RoR2;
 using RMORMod.SkillStates.BaseStates;
-using RMORMod.Content.HANDSurvivor.Components.Body;
+using RMORMod.Content.RMORSurvivor.Components.Body;
 using R2API;
-using RMORMod.Content.HANDSurvivor;
+using RMORMod.Content.RMORSurvivor;
 using RMORMod.Content;
 using RMORMod.Content.Shared.Components.Body;
 
@@ -37,8 +37,6 @@ namespace EntityStates.RMOR.Secondary
         public static GameObject earthquakeEffectPrefab;
         public static GameObject hitEffect = null;
 
-        private HammerVisibilityController hammerController;
-
         private bool hitEnemy = false;
         public override void OnEnter()
         {
@@ -70,12 +68,6 @@ namespace EntityStates.RMOR.Secondary
 
             ModifyStats();
 
-            hammerController = base.GetComponent<HammerVisibilityController>();
-            if (hammerController)
-            {
-                hammerController.SetHammerEnabled(true);
-            }
-
             //Hitreg is clientside, so only change it on the client
             if (base.isAuthority)
             {
@@ -104,7 +96,7 @@ namespace EntityStates.RMOR.Secondary
             {
                 ModifyDamageTypes();
 
-                if (base.characterBody && base.characterBody.HasBuff(RMORMod.Content.Shared.Buffs.NemesisFocus))
+                if (base.characterBody && base.characterBody.HasBuff(RMORMod.Content.Shared.Buffs.RMORFocus))
                 {
                     this.attack.damageColorIndex = DamageColorIndex.Sniper;
                 }
@@ -120,7 +112,6 @@ namespace EntityStates.RMOR.Secondary
         public virtual void ModifyDamageTypes()
         {
             this.attack.AddModdedDamageType(DamageTypes.HANDSecondary);
-            this.attack.AddModdedDamageType(DamageTypes.SquashOnKill);
             this.attack.AddModdedDamageType(DamageTypes.ResetVictimForce);
         }
 
@@ -157,9 +148,9 @@ namespace EntityStates.RMOR.Secondary
             Util.PlaySound("Play_parent_attack1_slam", base.gameObject);
             Util.PlaySound("Play_UI_podImpact", base.gameObject);
 
-            if (base.characterBody && base.characterBody.HasBuff(RMORMod.Content.Shared.Buffs.NemesisFocus))
+            if (base.characterBody && base.characterBody.HasBuff(RMORMod.Content.Shared.Buffs.RMORFocus))
             {
-                Util.PlaySound("Play_HOC_Focus", base.gameObject);
+                Util.PlaySound("Play_RMOR_Focus", base.gameObject);
             }
 
             if (base.isAuthority)
@@ -214,10 +205,6 @@ namespace EntityStates.RMOR.Secondary
 
         public override void OnExit()
         {
-            if (hammerController)
-            {
-                hammerController.SetHammerEnabled(false);
-            }
             if (!this.outer.destroying)
             {
                 this.PlayAnimation("FullBody, Override", "Empty");

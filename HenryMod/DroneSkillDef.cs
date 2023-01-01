@@ -1,4 +1,4 @@
-﻿using RMORMod.Content.HANDSurvivor.Components.Body;
+﻿using RMORMod.Content.RMORSurvivor.Components.Body;
 using JetBrains.Annotations;
 using RoR2;
 using RoR2.Skills;
@@ -12,7 +12,7 @@ namespace RMORMod
 		{
 			return new DroneSkillDef.InstanceData
 			{
-				targetingController = skillSlot.GetComponent<HANDTargetingController>()
+				targetingController = skillSlot.GetComponent<RMORTargetingController>()
 			};
 		}
 
@@ -28,12 +28,12 @@ namespace RMORMod
 
 		protected class InstanceData : SkillDef.BaseSkillInstanceData
 		{
-			public HANDTargetingController targetingController;
+			public RMORTargetingController targetingController;
 		}
 
 		private static bool HasTarget([NotNull] GenericSkill skillSlot)
 		{
-			HANDTargetingController targeter = ((DroneSkillDef.InstanceData)skillSlot.skillInstanceData).targetingController;
+			RMORTargetingController targeter = ((DroneSkillDef.InstanceData)skillSlot.skillInstanceData).targetingController;
 			return (targeter != null) ? targeter.HasTarget() : false;
 		}
 	}

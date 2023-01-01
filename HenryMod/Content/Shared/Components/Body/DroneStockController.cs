@@ -3,9 +3,9 @@ using System.Collections.ObjectModel;
 using RoR2.Skills;
 using RoR2;
 using UnityEngine.Networking;
-using RMORMod.Content.HANDSurvivor.Components.Master;
 using RMORMod.Content.RMORSurvivor;
 using RMORMod.Content.RMORSurvivor.Components.Body;
+using RMORMod.Content.RMORSurvivor.Components.Master;
 
 namespace RMORMod.Content.Shared.Components.Body
 {
@@ -27,7 +27,7 @@ namespace RMORMod.Content.Shared.Components.Body
                 }
                 else
                 {
-                    if (characterBody.skillLocator.special.skillDef == HANDSurvivor.SkillDefs.SpecialDrone || characterBody.skillLocator.special.skillDef == RMORSurvivor.Skilldefs.SpecialMissile)
+                    if (characterBody.skillLocator.special.skillDef == RMORSurvivor.Skilldefs.SpecialMissile)
                     {
                         characterBody.skillLocator.special.stock = dronePersist.droneCount;
                     }
@@ -44,16 +44,16 @@ namespace RMORMod.Content.Shared.Components.Body
         {
             if (hasAuthority)
             {
-                if (dronePersist && (characterBody.skillLocator.special.skillDef == HANDSurvivor.SkillDefs.SpecialDrone || characterBody.skillLocator.special.skillDef == Skilldefs.SpecialMissile))
+                if (dronePersist && (characterBody.skillLocator.special.skillDef == Skilldefs.SpecialMissile))
                 {
                     if (characterBody.skillLocator.special.stock > dronePersist.droneCount)
                     {
-                        Util.PlaySound("Play_HOC_DroneGain", gameObject);
+                        Util.PlaySound("Play_RMOR_DroneGain", gameObject);
                     }
                     dronePersist.droneCount = characterBody.skillLocator.special.stock;
                 }
 
-                int droneCount = (characterBody.skillLocator.special.skillDef == HANDSurvivor.SkillDefs.SpecialDrone || characterBody.skillLocator.special.skillDef == Skilldefs.SpecialMissile) ? characterBody.skillLocator.special.stock : 0;
+                int droneCount = (characterBody.skillLocator.special.skillDef == Skilldefs.SpecialMissile) ? characterBody.skillLocator.special.stock : 0;
                 ReadOnlyCollection<TeamComponent> teamMembers = TeamComponent.GetTeamMembers(characterBody.teamComponent.teamIndex);
                 foreach (TeamComponent tc in teamMembers)
                 {
@@ -115,31 +115,31 @@ namespace RMORMod.Content.Shared.Components.Body
         {
             if (NetworkServer.active)
             {
-                int buffCount = characterBody.GetBuffCount(RMORMod.Content.RMORSurvivor.Buffs.DronePassive);
+                int buffCount = characterBody.GetBuffCount(RMORMod.Content.RMORSurvivor.Buffs.RMORPassive);
                 if (buffCount < newCount)
                 {
                     int diff = newCount - buffCount;
                     for (int i = 0; i < diff; i++)
                     {
-                        characterBody.AddBuff(RMORMod.Content.RMORSurvivor.Buffs.DronePassive);
+                        characterBody.AddBuff(RMORMod.Content.RMORSurvivor.Buffs.RMORPassive);
                     }
                 }
                 else if (buffCount > newCount)
                 {
                     for (int i = 0; i < buffCount; i++)
                     {
-                        characterBody.RemoveBuff(RMORMod.Content.RMORSurvivor.Buffs.DronePassive);
+                        characterBody.RemoveBuff(RMORMod.Content.RMORSurvivor.Buffs.RMORPassive);
                     }
                     for (int i = 0; i < newCount; i++)
                     {
-                        characterBody.AddBuff(RMORMod.Content.RMORSurvivor.Buffs.DronePassive);
+                        characterBody.AddBuff(RMORMod.Content.RMORSurvivor.Buffs.RMORPassive);
                     }
                 }
             }
         }
         public void MeleeHit()
         {
-            if (characterBody.skillLocator.special.stock < characterBody.skillLocator.special.maxStock && (characterBody.skillLocator.special.skillDef == HANDSurvivor.SkillDefs.SpecialDrone || characterBody.skillLocator.special.skillDef == Skilldefs.SpecialMissile))
+            if (characterBody.skillLocator.special.stock < characterBody.skillLocator.special.maxStock && characterBody.skillLocator.special.skillDef == Skilldefs.SpecialMissile)
             {
                 characterBody.skillLocator.special.rechargeStopwatch += 2f;
             }

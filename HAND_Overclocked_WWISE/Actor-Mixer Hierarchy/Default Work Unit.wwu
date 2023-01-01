@@ -573,6 +573,13 @@
 											</ActiveSourceList>
 										</Sound>
 										<Sound Name="wPlasmaGun" ID="{BE0D225F-441B-4FF6-8D6E-414FC39DDCD8}" ShortID="826058605">
+											<PropertyList>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>-10</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9ABFC28C-F9CE-4070-B4DF-0A3FFE7A6911}"/>
@@ -632,7 +639,7 @@
 											<PropertyList>
 												<Property Name="Volume" Type="Real64">
 													<ValueList>
-														<Value>15</Value>
+														<Value>5</Value>
 													</ValueList>
 												</Property>
 											</PropertyList>

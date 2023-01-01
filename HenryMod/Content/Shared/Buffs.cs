@@ -10,14 +10,14 @@ namespace RMORMod.Content.Shared
 {
     public class Buffs
     {
-        public static BuffDef NemesisFocus;
+        public static BuffDef RMORFocus;
         public static BuffDef Fortify;
-        public static BuffDef Overclock;
+        public static BuffDef RMOROverclock;
         public static void Init()
         {
-            if (!Buffs.Overclock)
+            if (!Buffs.RMOROverclock)
             {
-                Buffs.Overclock = Modules.Buffs.CreateBuffDef(
+                Buffs.RMOROverclock = Modules.Buffs.CreateBuffDef(
                     "RMORMod_Overclock",
                     false,
                     false,
@@ -29,9 +29,9 @@ namespace RMORMod.Content.Shared
                 RecalculateStatsAPI.GetStatCoefficients += OverclockHook;
             }
 
-            if (!Buffs.NemesisFocus)
+            if (!Buffs.RMORFocus)
             {
-                Buffs.NemesisFocus = Modules.Buffs.CreateBuffDef(
+                Buffs.RMORFocus = Modules.Buffs.CreateBuffDef(
                     "RMORMod_NemesisFocus",
                     false,
                     false,
@@ -60,7 +60,7 @@ namespace RMORMod.Content.Shared
 
         private static void OverclockHook(CharacterBody sender, R2API.RecalculateStatsAPI.StatHookEventArgs args)
         {
-            if (sender.HasBuff(Buffs.Overclock))
+            if (sender.HasBuff(Buffs.RMOROverclock))
             {
                 args.attackSpeedMultAdd += 0.4f;
                 args.moveSpeedMultAdd += 0.4f;
@@ -69,7 +69,7 @@ namespace RMORMod.Content.Shared
 
         private static void NemesisFocusHook(CharacterBody sender, R2API.RecalculateStatsAPI.StatHookEventArgs args)
         {
-            if (sender.HasBuff(Buffs.NemesisFocus))
+            if (sender.HasBuff(Buffs.RMORFocus))
             {
                 args.damageMultAdd += 0.5f;
                 args.moveSpeedReductionMultAdd += 0.3f;
