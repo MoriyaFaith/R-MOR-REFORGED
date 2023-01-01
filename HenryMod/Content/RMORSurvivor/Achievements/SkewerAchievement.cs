@@ -12,25 +12,10 @@ namespace RMORMod.Content.RMOR.Achievements
         {
             return BodyCatalog.FindBodyIndex("RMORBody");
         }
-        private void SubscribeHealthCheck()
-        {
-            RoR2Application.onFixedUpdate += this.CheckHealth;
-        }
-        private void UnsubscribeHealthCheck()
-        {
-            RoR2Application.onFixedUpdate -= this.CheckHealth;
-        }
-        private void SubscribeTeleporterCheck()
-        {
-            TeleporterInteraction.onTeleporterChargedGlobal += this.CheckTeleporter;
-        }
-        private void UnsubscribeTeleporterCheck()
-        {
-            TeleporterInteraction.onTeleporterChargedGlobal -= this.CheckTeleporter;
-        }
+
         private void CheckTeleporter(TeleporterInteraction teleporterInteraction)
         {
-            if (this.sceneOk && this.characterOk && !this.failed)
+            if (!this.failed && this.meetsBodyRequirement)
             {
                 base.Grant();
             }
@@ -38,42 +23,23 @@ namespace RMORMod.Content.RMOR.Achievements
         public override void OnInstall()
         {
             base.OnInstall();
-            this.healthCheck = new ToggleAction(new Action(this.SubscribeHealthCheck), new Action(this.UnsubscribeHealthCheck));
-            this.teleporterCheck = new ToggleAction(new Action(this.SubscribeTeleporterCheck), new Action(this.UnsubscribeTeleporterCheck));
-            base.localUser.onBodyChanged += this.OnBodyChanged;
+            RoR2Application.onFixedUpdate += this.CheckHealth;
+            TeleporterInteraction.onTeleporterChargedGlobal += this.CheckTeleporter;
         }
         public override void OnUninstall()
         {
-            base.localUser.onBodyChanged -= this.OnBodyChanged;
-            this.healthCheck.Dispose();
-            this.teleporterCheck.Dispose();
+            RoR2Application.onFixedUpdate -= this.CheckHealth;
+            TeleporterInteraction.onTeleporterChargedGlobal -= this.CheckTeleporter;
             base.OnUninstall();
-        }
-        private void OnBodyChanged()
-        {
-            if (this.sceneOk && this.characterOk && !this.failed && base.localUser.cachedBody)
-            {
-                this.healthComponent = base.localUser.cachedBody.healthComponent;
-                this.healthCheck.SetActive(true);
-                this.teleporterCheck.SetActive(true);
-            }
-        }
-        public override void OnBodyRequirementMet()
-        {
-            base.OnBodyRequirementMet();
-            this.characterOk = true;
         }
         public override void OnBodyRequirementBroken()
         {
-            this.characterOk = false;
             this.Fail();
             base.OnBodyRequirementBroken();
         }
         private void Fail()
         {
             this.failed = true;
-            this.healthCheck.SetActive(false);
-            this.teleporterCheck.SetActive(false);
         }
 
         private void CheckHealth()
@@ -86,9 +52,5 @@ namespace RMORMod.Content.RMOR.Achievements
 
         private HealthComponent healthComponent;
         private bool failed;
-        private bool sceneOk;
-        private bool characterOk;
-        private ToggleAction healthCheck;
-        private ToggleAction teleporterCheck;
     }
 }

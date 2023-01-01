@@ -5,27 +5,53 @@ using System;
 
 namespace RMORMod.Content.RMOR.Achievements
 {
-    [RegisterAchievement("MoriyaRMORSlashUnlock", "Skills.RMOR.SlashAttack", null, null)]
+    [RegisterAchievement("MoriyaRMORSlashUnlock", "Skills.RMOR.SlashAttack", null, typeof(RMORMultiKillAchievement.RMORMultikillServerAchievement))]
     public class RMORMultiKillAchievement : BaseAchievement
     {
-        public override void OnInstall()
+        public override BodyIndex LookUpRequiredBodyIndex()
         {
-            base.OnInstall();
-            RoR2Application.onFixedUpdate += CheckMultikillCount;
+            return BodyCatalog.FindBodyIndex("RMORBody");
         }
-
-        public override void OnUninstall()
+        public override void OnBodyRequirementMet()
         {
-            RoR2Application.onFixedUpdate -= CheckMultikillCount;
-            base.OnUninstall();
+            base.OnBodyRequirementMet();
+            base.SetServerTracked(true);
         }
-
-        private void CheckMultikillCount()
+        public override void OnBodyRequirementBroken()
         {
-            if (base.localUser != null && base.localUser.cachedBody != null && base.localUser.cachedBody.multiKillCount > 20 && base.meetsBodyRequirement)
+            base.SetServerTracked(false);
+            base.OnBodyRequirementBroken();
+        }
+        private class RMORMultikillServerAchievement : BaseServerAchievement
+        { 
+            public override void OnInstall()
             {
-                base.Grant();
+                base.OnInstall();
+                GlobalEventManager.onCharacterDeathGlobal += this.OnCharacterDeath;
             }
+            public override void OnUninstall()
+            {
+                GlobalEventManager.onCharacterDeathGlobal -= this.OnCharacterDeath;
+                base.OnUninstall();
+            }
+            private void OnCharacterDeath(DamageReport damageReport)
+            {
+                GameObject attacker = damageReport.damageInfo.attacker;
+                if (!attacker)
+                {
+                    return;
+                }
+                CharacterBody component = attacker.GetComponent<CharacterBody>();
+                if (!component)
+                {
+                    return;
+                }
+                if (component.multiKillCount >= multiKillThreshold && component.masterObject == this.serverAchievementTracker.networkUser.masterObject)
+                {
+                    base.Grant();
+                }
+            }
+            private const int multiKillThreshold = 20;
         }
     }
 }

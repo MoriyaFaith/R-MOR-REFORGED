@@ -23,7 +23,7 @@ namespace RMORMod.Content.RMOR.Achievements
 
         public void CheckArmor()
         {
-            if (base.localUser != null && base.localUser.cachedBody != null && base.localUser.cachedBody.armor >= 1000f)
+            if (base.localUser != null && base.localUser.cachedBody != null && base.localUser.cachedBody.armor >= 1000.0f)
             {
                 base.Grant();
             }

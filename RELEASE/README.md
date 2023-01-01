@@ -1,7 +1,8 @@
 R-MOR is a devastating machine made for critical encounters: extreme armor, retractable blades and missile launchers. An unstoppable behemoth.
 
-[![](https://media.discordapp.net/attachments/567832879879553037/1057546186250260540/20221228012242_1.jpg?width=1202&height=676)]()
+[![](https://i.imgur.com/liGexI0.jpg)]()
 [![](https://media.discordapp.net/attachments/567832879879553037/1057546186036355123/20221228012833_1.jpg?width=1202&height=676)]()
+[![](https://i.imgur.com/N4ex8oo.png)]()
 
 ## For Skin Creators
 
@@ -14,18 +15,23 @@ Basically the same as HAN-D, just without a saw.
 Place the RMOR_Reforged folder in /Risk of Rain 2/BepInEx/plugins/  
 
 ## To Do
+- Fix up all animations
 - Emotes
 - Better Ability Icons
-- Unique Sounds
+- Fix Royal Capacitor's Item Display
+- Better Starstorm 2 Integration?
+- More Skins
+- More Abilities
+- More polish
 
 ## Known Issues
-None known at the moment! If anything is found, please contact me on the RoR2 modding server!
+If anything is found, please contact me on the RoR2 modding server!
 
 ## Resources Used
 
 東方 Project - V2 Reimu Hakurei Fumo (3D scan) (https://skfb.ly/oqJsH) by Renafox is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
 
-Doom - Sound Effects
+DOOM (1993) - Sound Effects
 
 Gensou Sky Drift - Extra parts for Mastery Model
 
