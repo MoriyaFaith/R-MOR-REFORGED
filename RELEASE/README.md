@@ -8,7 +8,7 @@ R-MOR is a devastating machine made for critical encounters: extreme armor, retr
 
 To add custom DRONE models to your R-MOR skin, refer to the prefab in the Unity project on the GitHub. The DRONE model is a disabled GameObject attached to the prefab, and the game will attempt to load the textures/mesh from that.
 
-Basically the same as HAN-D, just without a saw.
+Basically the same as HAN-D's DRONE, just without a saw.
 
 ## Installation
 
@@ -25,6 +25,10 @@ Place the RMOR_Reforged folder in /Risk of Rain 2/BepInEx/plugins/
 - More polish
 
 ## Known Issues
+Some Achievements might be host-only. I don't know if this is the case.
+
+Ragdoll kind of explodes and goes wacky. 
+
 If anything is found, please contact me on the RoR2 modding server!
 
 ## Resources Used
@@ -78,10 +82,11 @@ Sounds taken from Risk of Rain 1 and Starstorm
 - All projectiles have new effects and meshes
 - Mastery Skin with custom drones and projectiles
 - Large amount of new sounds
-- Unlocks for all alt skills - *If any are broken, tell me!*
+- Unlocks for all alt skills
 
-- **ONLY BALANCE CHANGE**
-- MISSILE - Damage reduced from 800% to 600%
+- **BALANCE CHANGEs**
+- MISSILE Damage reduced from 800% to 600%
+- ERADICATE Damage reduced from 420% to 390% to prevent proccing bands
 
 `0.2.5`
 - **Removed heavy frame dropping in certain maps.** It's still there to a minor degree, but I do think it's improved quite a bit from before.

@@ -15,8 +15,7 @@ namespace EntityStates.RMOR.Secondary
             this.modelAnimator = base.GetModelAnimator();
             if (this.modelAnimator)
             {
-                startedChargeAnim = true;
-                base.PlayAnimation("Gesture, Override", "ChargeSlash", "ChargeHammer.playbackRate", 0.2f);
+                base.PlayAnimation("Gesture, Override", "PrepSlash", "ChargeHammer.playbackRate", this.minDuration);
             }
             if (base.characterBody)
             {
@@ -61,18 +60,24 @@ namespace EntityStates.RMOR.Secondary
 
             if (base.fixedAge > this.minDuration && charge < chargeDuration)
             {
+                if (!startedChargeAnim)
+                {
+                    startedChargeAnim = true;
+                    base.PlayCrossfade("Gesture, Override", "ChargeSlash", "ChargeHammer.playbackRate", (this.chargeDuration - this.minDuration), 0.2f);
+                }
+
                 charge += Time.deltaTime * this.attackSpeedStat;
                 if (charge >= chargeDuration)
                 {
-                    base.PlayCrossfade("Gesture, Override", "ShakeSlash", "ChargeHammer.playbackRate", 0.6f, 0.05f);
-                    Util.PlaySound("Play_RMOR_StartPunch", base.gameObject);
+                    base.PlayCrossfade("Gesture, Override", "FullCharge", "ChargeHammer.playbackRate", 0.6f, 0.05f);
+                    Util.PlaySound("Play_HOC_StartPunch", base.gameObject);
                     charge = chargeDuration;
                     EffectManager.SpawnEffect(chargeEffectPrefab, new EffectData
                     {
                         origin = base.transform.position
                     }, false);
                 }
-                chargePercent = Mathf.Max(0f, (charge-baseMinDuration)/(baseChargeDuration-baseMinDuration));
+                chargePercent = Mathf.Max(0f, (charge - baseMinDuration) / (baseChargeDuration - baseMinDuration));
             }
 
             if (base.fixedAge >= this.minDuration)

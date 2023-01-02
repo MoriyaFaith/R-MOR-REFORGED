@@ -13,7 +13,7 @@ namespace EntityStates.RMOR.Primary
         //delay here for example and to match animation
         //ordinarily I recommend not having a delay before projectiles. makes the move feel sluggish
         public static float BaseDelayDuration = 0.3f;
-        public static float DamageCoefficient = 4.2f;
+        public static float DamageCoefficient = 3.9f;
         private string animationLayer = "Gesture, Override";
         public static GameObject projectilePrefab;
         public static GameObject effectPrefab;
@@ -43,6 +43,15 @@ namespace EntityStates.RMOR.Primary
             base.characterBody.SetAimTimer(3f);
 
             base.OnEnter();
+        }
+
+        public override void OnExit()
+        {
+            if (!this.outer.destroying)
+            {
+                this.PlayAnimation(animationLayer, "RMOR|RocketShootHold");
+            }
+            base.OnExit();
         }
 
         public override void FixedUpdate()

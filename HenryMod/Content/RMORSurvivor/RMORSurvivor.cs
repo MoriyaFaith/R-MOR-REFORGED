@@ -246,7 +246,7 @@ namespace RMORMod.Content.RMORSurvivor
             primaryStabSkill.interruptPriority = EntityStates.InterruptPriority.Any;
             primaryStabSkill.isCombatSkill = true;
             primaryStabSkill.mustKeyPress = false;
-            primaryStabSkill.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texPrimaryPunch.png");
+            primaryStabSkill.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texPrimaryStab.png");
             primaryStabSkill.requiredStock = 1;
             primaryStabSkill.stockToConsume = 1;
             primaryStabSkill.keywordTokens = new string[] { "KEYWORD_MORIYARMOR_BLEEDING" };
