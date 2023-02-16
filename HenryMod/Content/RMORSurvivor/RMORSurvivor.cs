@@ -52,8 +52,8 @@ namespace RMORMod.Content.RMORSurvivor
             maxHealth = 120f,
             healthGrowth = 120f * 0.3f,
 
-            healthRegen = 0.5f,
-            regenGrowth = 0.5f * 0.1f,
+            healthRegen = 0.3f,
+            regenGrowth = 0.3f * 0.1f,
 
             armor = 50f,
             armorGrowth = 0f,
@@ -189,9 +189,9 @@ namespace RMORMod.Content.RMORSurvivor
             SkillDef primarySkill = SkillDef.CreateInstance<SkillDef>();
             primarySkill.activationState = new SerializableEntityStateType(typeof(EntityStates.RMOR.Primary.PrimaryRocket));
             primarySkill.skillNameToken = RMOR_PREFIX + "PRIMARY_NAME";
-            primarySkill.skillName = "SwingPunch";
+            primarySkill.skillName = "PrimaryRocket";
             primarySkill.skillDescriptionToken = RMOR_PREFIX + "PRIMARY_DESC";
-            primarySkill.cancelSprintingOnActivation = false;
+            primarySkill.cancelSprintingOnActivation = true;
             primarySkill.canceledFromSprinting = false;
             primarySkill.baseRechargeInterval = 0f;
             primarySkill.baseMaxStock = 1;
@@ -234,7 +234,7 @@ namespace RMORMod.Content.RMORSurvivor
             SkillDef primaryStabSkill = SkillDef.CreateInstance<SkillDef>();
             primaryStabSkill.activationState = new SerializableEntityStateType(typeof(EntityStates.RMOR.Primary.SwingStab));
             primaryStabSkill.skillNameToken = RMOR_PREFIX + "PRIMARY_BLADE_NAME";
-            primaryStabSkill.skillName = "SwingPunch";
+            primaryStabSkill.skillName = "SwingStab";
             primaryStabSkill.skillDescriptionToken = RMOR_PREFIX + "PRIMARY_BLADE_DESC";
             primaryStabSkill.cancelSprintingOnActivation = false;
             primaryStabSkill.canceledFromSprinting = false;

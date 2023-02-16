@@ -25,8 +25,6 @@ Place the RMOR_Reforged folder in /Risk of Rain 2/BepInEx/plugins/
 - More polish
 
 ## Known Issues
-Some Achievements might be host-only. I don't know if this is the case.
-
 Ragdoll kind of explodes and goes wacky. 
 
 If anything is found, please contact me on the RoR2 modding server!
@@ -74,6 +72,16 @@ Jaysian - Bankroller
 Sounds taken from Risk of Rain 1 and Starstorm
 
 ## Changelog
+
+`1.1.0`
+- Fixed Skewer unlocking irregardless of whether the conditions were met or not
+- Fixed ERADICATE erroneously being Agile
+- Entirely redid sounds
+
+- **FORTIFY CHANGES**
+- Originally, FORTIFY was rediculously powerful and made R-MOR hard to kill despite his weaknesses. In turn, FORTIFY's effectiveness was heavily turned down.
+- Added Armor reduced from 200 to 100
+- Added Health regeneration reduced from 10% of max health per second to 5% of max health per second
 
 `1.0.0`
 - New model texture by DotFlare!
