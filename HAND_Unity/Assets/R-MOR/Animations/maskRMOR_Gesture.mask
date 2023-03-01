@@ -34,7 +34,7 @@ AvatarMask:
   - m_Path: RMOR/Root/RootIK
     m_Weight: 0
   - m_Path: RMOR/Root/RootIK/Hips
-    m_Weight: 1
+    m_Weight: 0
   - m_Path: RMOR/Root/RootIK/Hips/UpperLeg.L
     m_Weight: 0
   - m_Path: RMOR/Root/RootIK/Hips/UpperLeg.L/LowerLeg.L

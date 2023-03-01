@@ -57,11 +57,16 @@ namespace RMORMod.Modules
 
         private static GameObject CreateRocketProjectile()
         {
-            GameObject projectile = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Drones/PaladinRocket.prefab").WaitForCompletion().InstantiateClone("RMORMod_RMOR_Rocket", true);
+            GameObject projectile = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Toolbot/ToolbotGrenadeLauncherProjectile.prefab").WaitForCompletion().InstantiateClone("RMORMod_RMOR_Rocket", true);
             primaryGhost = RMORMod.Modules.Assets.mainAssetBundle.LoadAsset<GameObject>("PrimaryRocket");
+
+            ProjectileSimple ps = projectile.GetComponent<ProjectileSimple>();
+            ps.desiredForwardSpeed = 100f;// 20.96f should be equivalent to tf2 rockets (1100HU/S) but this doesn't seem to be the case in-game.
+            ps.lifetime = 20f;
+
+            projectile.GetComponent<ProjectileController>().ghostPrefab = primaryGhost;
             if (!primaryGhost.GetComponent<NetworkIdentity>()) primaryGhost.AddComponent<NetworkIdentity>();
             if (!primaryGhost.GetComponent<ProjectileGhostController>()) primaryGhost.AddComponent<ProjectileGhostController>();
-            projectile.GetComponent<ProjectileController>().ghostPrefab = primaryGhost;
             if (!projectile.GetComponent<NetworkIdentity>()) projectile.AddComponent<NetworkIdentity>();
             ProjectileRestoreOverclockOnImpact ovc = projectile.AddComponent<ProjectileRestoreOverclockOnImpact>();
             ovc.duration = 0.4f;
@@ -79,8 +84,14 @@ namespace RMORMod.Modules
         }
         private static GameObject CreateLevel1Projectile()
         {
-            GameObject projectile = LegacyResourcesAPI.Load<GameObject>("prefabs/projectiles/PaladinRocket").InstantiateClone("RMOR_ChargeShot", true);
+            GameObject projectile = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Toolbot/ToolbotGrenadeLauncherProjectile.prefab").WaitForCompletion().InstantiateClone("RMORMod_RMOR_LV1", true);
             level1Ghost = RMORMod.Modules.Assets.mainAssetBundle.LoadAsset<GameObject>("Level1Blast").InstantiateClone("RMOR_ChargeShotGhost");
+
+            ProjectileSimple ps = projectile.GetComponent<ProjectileSimple>();
+            ps.desiredForwardSpeed = 75f;// 20.96f should be equivalent to tf2 rockets (1100HU/S) but this doesn't seem to be the case in-game.
+            ps.lifetime = 20f;
+
+
             if (!level1Ghost.GetComponent<NetworkIdentity>()) level1Ghost.AddComponent<NetworkIdentity>();
             if (!level1Ghost.GetComponent<ProjectileGhostController>()) level1Ghost.AddComponent<ProjectileGhostController>();
             projectile.GetComponent<ProjectileController>().ghostPrefab = level1Ghost;
@@ -100,8 +111,14 @@ namespace RMORMod.Modules
         }
         private static GameObject CreateLevel2Projectile()
         {
-            GameObject projectile = LegacyResourcesAPI.Load<GameObject>("prefabs/projectiles/PaladinRocket").InstantiateClone("RMOR_ChargeShot", true);
+            GameObject projectile = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Toolbot/ToolbotGrenadeLauncherProjectile.prefab").WaitForCompletion().InstantiateClone("RMORMod_RMOR_LV2", true);
             level2Ghost = RMORMod.Modules.Assets.mainAssetBundle.LoadAsset<GameObject>("Level2Blast").InstantiateClone("RMOR_ChargeShotGhost");
+
+            ProjectileSimple ps = projectile.GetComponent<ProjectileSimple>();
+            ps.desiredForwardSpeed = 100f;// 20.96f should be equivalent to tf2 rockets (1100HU/S) but this doesn't seem to be the case in-game.
+            ps.lifetime = 20f;
+
+
             if (!level2Ghost.GetComponent<NetworkIdentity>()) level2Ghost.AddComponent<NetworkIdentity>();
             if (!level2Ghost.GetComponent<ProjectileGhostController>()) level2Ghost.AddComponent<ProjectileGhostController>();
             projectile.GetComponent<ProjectileController>().ghostPrefab = level2Ghost;
@@ -121,8 +138,14 @@ namespace RMORMod.Modules
         }
         private static GameObject CreateLevel3Projectile()
         {
-            GameObject projectile = LegacyResourcesAPI.Load<GameObject>("prefabs/projectiles/PaladinRocket").InstantiateClone("RMOR_ChargeShot", true);
+            GameObject projectile = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Toolbot/ToolbotGrenadeLauncherProjectile.prefab").WaitForCompletion().InstantiateClone("RMORMod_RMOR_LV3", true);
             level3Ghost = RMORMod.Modules.Assets.mainAssetBundle.LoadAsset<GameObject>("Level3Blast").InstantiateClone("RMOR_ChargeShotGhost");
+
+            ProjectileSimple ps = projectile.GetComponent<ProjectileSimple>();
+            ps.desiredForwardSpeed = 125f;// 20.96f should be equivalent to tf2 rockets (1100HU/S) but this doesn't seem to be the case in-game.
+            ps.lifetime = 20f;
+
+
             if (!level3Ghost.GetComponent<NetworkIdentity>()) level3Ghost.AddComponent<NetworkIdentity>();
             if (!level3Ghost.GetComponent<ProjectileGhostController>()) level3Ghost.AddComponent<ProjectileGhostController>();
             projectile.GetComponent<ProjectileController>().ghostPrefab = level3Ghost;
@@ -142,8 +165,14 @@ namespace RMORMod.Modules
         }
         private static GameObject CreateLevel4Projectile()
         {
-            GameObject projectile = LegacyResourcesAPI.Load<GameObject>("prefabs/projectiles/PaladinRocket").InstantiateClone("RMOR_ChargeShot", true);
+            GameObject projectile = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Toolbot/ToolbotGrenadeLauncherProjectile.prefab").WaitForCompletion().InstantiateClone("RMORMod_RMOR_LV4", true);
             level4Ghost = RMORMod.Modules.Assets.mainAssetBundle.LoadAsset<GameObject>("Level4Blast").InstantiateClone("RMOR_ChargeShotGhost");
+
+            ProjectileSimple ps = projectile.GetComponent<ProjectileSimple>();
+            ps.desiredForwardSpeed = 150f;// 20.96f should be equivalent to tf2 rockets (1100HU/S) but this doesn't seem to be the case in-game.
+            ps.lifetime = 20f;
+
+
             if (!level4Ghost.GetComponent<NetworkIdentity>()) level4Ghost.AddComponent<NetworkIdentity>();
             if (!level4Ghost.GetComponent<ProjectileGhostController>()) level4Ghost.AddComponent<ProjectileGhostController>();
             projectile.GetComponent<ProjectileController>().ghostPrefab = level4Ghost;

@@ -73,6 +73,9 @@ Sounds taken from Risk of Rain 1 and Starstorm
 
 ## Changelog
 
+`1.1.1`
+- Fixed bug where R-MOR could use OBLIVION_CANNON without Ancient Scepter
+
 `1.1.0`
 - Fixed Skewer unlocking irregardless of whether the conditions were met or not
 - Fixed ERADICATE erroneously being Agile

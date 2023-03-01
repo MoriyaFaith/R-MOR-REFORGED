@@ -30,7 +30,7 @@ namespace EntityStates.RMOR.Secondary
         {
             base.OnEnter();
             ModifyStats();
-            this.minDuration = ChargeCannon.baseMinDuration / this.attackSpeedStat;
+            this.minDuration = ChargeCannon.baseChargeDuration / this.attackSpeedStat;
             this.modelAnimator = base.GetModelAnimator();
             if (this.modelAnimator)
             {
@@ -105,7 +105,10 @@ namespace EntityStates.RMOR.Secondary
                 }
             }        }
 
-        public virtual void ModifyStats() { }
+        public virtual void ModifyStats() {
+            maxChargeLevel = 3;
+            baseDuration = 1.5f;
+        }
 
         public override InterruptPriority GetMinimumInterruptPriority()
         {
