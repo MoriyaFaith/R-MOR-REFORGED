@@ -23,7 +23,7 @@ namespace EntityStates.RMOR.Secondary
             }
             charge = 0f;
             chargePercent = 0f;
-            chargeDuration = ChargeSlam.baseChargeDuration / this.attackSpeedStat * 2; //multiplied by 2 to fix anim error
+            chargeDuration = ChargeSlam.baseChargeDuration / this.attackSpeedStat;
 
             OverclockController ovc = base.GetComponent<OverclockController>();
             bool hasOVC = ovc && ovc.BuffActive();

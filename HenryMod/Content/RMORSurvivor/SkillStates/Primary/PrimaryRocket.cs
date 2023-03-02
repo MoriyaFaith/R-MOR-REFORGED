@@ -3,6 +3,7 @@ using RoR2;
 using RoR2.Projectile;
 using UnityEngine;
 using RMORMod.Modules;
+using System;
 
 namespace EntityStates.RMOR.Primary
 {
@@ -14,6 +15,7 @@ namespace EntityStates.RMOR.Primary
         //ordinarily I recommend not having a delay before projectiles. makes the move feel sluggish
         public static float BaseDelayDuration = 0.3f;
         public static float DamageCoefficient = 3.9f;
+
         private string animationLayer = "Gesture, Override";
         public static GameObject projectilePrefab;
         public static GameObject effectPrefab;
@@ -34,6 +36,10 @@ namespace EntityStates.RMOR.Primary
             //proc coefficient is set on the components of the projectile prefab
             base.force = 80f;
 
+            Ray aimRay = base.GetAimRay();
+
+            if (base.characterMotor)
+                base.characterMotor.ApplyForce(-force * 25f * aimRay.direction, false, false);
             //base.projectilePitchBonus = 0;
             //base.minSpread = 0;
             //base.maxSpread = 0;

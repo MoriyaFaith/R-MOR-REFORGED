@@ -1,7 +1,9 @@
 R-MOR is a devastating machine made for critical encounters: extreme armor, retractable blades and missile launchers. An unstoppable behemoth.
 
-[![](https://i.imgur.com/liGexI0.jpg)]()
-[![](https://media.discordapp.net/attachments/567832879879553037/1057546186036355123/20221228012833_1.jpg?width=1202&height=676)]()
+[![](https://i.imgur.com/GOHd9Tb.jpg)]()
+[![](https://i.imgur.com/qtxtlgM.jpg)]()
+[![](https://i.imgur.com/0K50bEI.jpg)]()
+[![](https://i.imgur.com/gJ2VPrN.jpg)]()
 [![](https://i.imgur.com/N4ex8oo.png)]()
 
 ## For Skin Creators
@@ -73,8 +75,15 @@ Sounds taken from Risk of Rain 1 and Starstorm
 
 ## Changelog
 
-`1.1.1`
-- Fixed bug where R-MOR could use OBLIVION_CANNON without Ancient Scepter
+`1.2.0`
+- Fixed Skewer not unlocking if pre-requisites were broken on a stage prior to the game closing
+- R-MOR's rockets should now have slightly better collision online, inform me if I'm incorrect
+- Should have fixed any more frame drop problems
+- Projectiles now all have unique speeds. Hitting Eradicate should now be easier on airborne enemies
+- CLUSTER_CANNON's charge animation properly scales with attack speed
+- CLUSTER_CANNON and ERADICATE's animations no longer lock R-MOR's bottom half in-place
+- ERADICATE and CLUSTER_CANNON now feature kickback, getting stronger at higher charge levels
+- Removed custom explosion effects and lowered radi of all explosions. Range of explosions is no longer deceptively large
 
 `1.1.0`
 - Fixed Skewer unlocking irregardless of whether the conditions were met or not
@@ -87,7 +96,7 @@ Sounds taken from Risk of Rain 1 and Starstorm
 - Added Health regeneration reduced from 10% of max health per second to 5% of max health per second
 
 `1.0.0`
-- New model texture by DotFlare!
+- New model texture by dotflare
 - More New animations
 - CSS Animation Fixed, now uses sounds and screenshake
 - All projectiles have new effects and meshes

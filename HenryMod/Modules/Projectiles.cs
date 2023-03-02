@@ -77,7 +77,8 @@ namespace RMORMod.Modules
             impactExplosion.destroyOnEnemy = true;
             impactExplosion.destroyOnWorld = true;
             impactExplosion.lifetime = 200f;
-            impactExplosion.explosionEffect = primaryExplosion;
+            impactExplosion.explosionEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Common/VFX/OmniExplosionVFXQuick.prefab").WaitForCompletion();
+            //impactExplosion.explosionEffect = primaryExplosion;
 
             Modules.ContentPacks.projectilePrefabs.Add(projectile);
             return projectile;
@@ -100,11 +101,12 @@ namespace RMORMod.Modules
 
             ProjectileImpactExplosion impactExplosion = projectile.GetComponent<ProjectileImpactExplosion>();
             InitializeImpactExplosion(impactExplosion);
-            impactExplosion.blastRadius = 10f;
+            impactExplosion.blastRadius = 8f;
             impactExplosion.destroyOnEnemy = true;
             impactExplosion.destroyOnWorld = true;
             impactExplosion.lifetime = 200f;
-            impactExplosion.explosionEffect = level1Explosion;
+            impactExplosion.explosionEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Common/VFX/OmniExplosionVFXQuick.prefab").WaitForCompletion();
+            //impactExplosion.explosionEffect = level1Explosion;
 
             Modules.ContentPacks.projectilePrefabs.Add(projectile);
             return projectile;
@@ -127,11 +129,12 @@ namespace RMORMod.Modules
 
             ProjectileImpactExplosion impactExplosion = projectile.GetComponent<ProjectileImpactExplosion>();
             InitializeImpactExplosion(impactExplosion);
-            impactExplosion.blastRadius = 15f;
+            impactExplosion.blastRadius = 12f;
             impactExplosion.destroyOnEnemy = true;
             impactExplosion.destroyOnWorld = true;
             impactExplosion.lifetime = 200f;
-            impactExplosion.explosionEffect = level2Explosion;
+            impactExplosion.explosionEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Common/VFX/OmniExplosionVFXQuick.prefab").WaitForCompletion();
+            //impactExplosion.explosionEffect = level2Explosion;
 
             Modules.ContentPacks.projectilePrefabs.Add(projectile);
             return projectile;
@@ -154,11 +157,12 @@ namespace RMORMod.Modules
 
             ProjectileImpactExplosion impactExplosion = projectile.GetComponent<ProjectileImpactExplosion>();
             InitializeImpactExplosion(impactExplosion);
-            impactExplosion.blastRadius = 20f;
+            impactExplosion.blastRadius = 16f;
             impactExplosion.destroyOnEnemy = true;
             impactExplosion.destroyOnWorld = true;
             impactExplosion.lifetime = 200f;
-            impactExplosion.explosionEffect = level3Explosion;
+            impactExplosion.explosionEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Common/VFX/OmniExplosionVFXQuick.prefab").WaitForCompletion();
+            //impactExplosion.explosionEffect = level3Explosion;
 
             Modules.ContentPacks.projectilePrefabs.Add(projectile);
             return projectile;
@@ -181,11 +185,12 @@ namespace RMORMod.Modules
 
             ProjectileImpactExplosion impactExplosion = projectile.GetComponent<ProjectileImpactExplosion>();
             InitializeImpactExplosion(impactExplosion);
-            impactExplosion.blastRadius = 30f;
+            impactExplosion.blastRadius = 24f;
             impactExplosion.destroyOnEnemy = true;
             impactExplosion.destroyOnWorld = true;
             impactExplosion.lifetime = 200f;
-            impactExplosion.explosionEffect = level4Explosion;
+            impactExplosion.explosionEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Common/VFX/OmniExplosionVFXQuick.prefab").WaitForCompletion();
+            //impactExplosion.explosionEffect = level4Explosion;
 
             Modules.ContentPacks.projectilePrefabs.Add(projectile);
             return projectile;

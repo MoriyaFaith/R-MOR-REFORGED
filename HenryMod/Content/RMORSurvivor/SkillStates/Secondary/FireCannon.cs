@@ -106,6 +106,8 @@ namespace EntityStates.RMOR.Secondary
             {
                 ProjectileManager.instance.FireProjectile(GetProjectilePrefab(), aimRay.origin, Util.QuaternionSafeLookRotation(aimRay.direction), base.gameObject, this.damageStat * damageCoefficient * chargeLevel, force * chargeLevel, crit);
             }
+            if (base.characterMotor)
+                base.characterMotor.ApplyForce(-force * chargeLevel * 1.5f * aimRay.direction, false, false);
         }
     }
 }

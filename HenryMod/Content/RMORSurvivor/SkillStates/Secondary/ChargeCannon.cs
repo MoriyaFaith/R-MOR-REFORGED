@@ -88,6 +88,12 @@ namespace EntityStates.RMOR.Secondary
                 EffectManager.SimpleMuzzleFlash(effectPrefab, base.gameObject, "HandR", false);
                 charge -= baseDuration;
             }
+            if (chargeLevel > maxChargeLevel && charge % 3 == 0)
+            {
+                GameObject effectPrefab = ChargeCannon.fullChargeEffect;
+                EffectManager.SimpleMuzzleFlash(effectPrefab, base.gameObject, "HandL", false);
+                EffectManager.SimpleMuzzleFlash(effectPrefab, base.gameObject, "HandR", false);
+            }
 
             if (base.isAuthority)
             {
