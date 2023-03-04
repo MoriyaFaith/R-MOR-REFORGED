@@ -38,6 +38,7 @@ namespace RMORMod.Modules
         internal static void RegisterProjectiles()
         {
             if (!PrimaryRocket.projectilePrefab) PrimaryRocket.projectilePrefab = CreateRocketProjectile();
+            if (!PrimaryRocket.overclockPrefab) PrimaryRocket.overclockPrefab = CreateOverclockProjectile();
             if (!PrimaryRocket.effectPrefab) PrimaryRocket.effectPrefab = primaryFlare;
             if (!FireCannon.muzzleflashEffectPrefab) FireCannon.muzzleflashEffectPrefab = secondaryFlare;
             if (!ChargeCannon.partialChargeEffect) ChargeCannon.partialChargeEffect = midCharge;
@@ -53,8 +54,6 @@ namespace RMORMod.Modules
         {
             Modules.Content.AddProjectilePrefab(projectileToAdd);
         }
-
-
         private static GameObject CreateRocketProjectile()
         {
             GameObject projectile = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Toolbot/ToolbotGrenadeLauncherProjectile.prefab").WaitForCompletion().InstantiateClone("RMORMod_RMOR_Rocket", true);
@@ -69,7 +68,38 @@ namespace RMORMod.Modules
             if (!primaryGhost.GetComponent<ProjectileGhostController>()) primaryGhost.AddComponent<ProjectileGhostController>();
             if (!projectile.GetComponent<NetworkIdentity>()) projectile.AddComponent<NetworkIdentity>();
             ProjectileRestoreOverclockOnImpact ovc = projectile.AddComponent<ProjectileRestoreOverclockOnImpact>();
-            ovc.duration = 0.4f;
+            ovc.duration = 0.6f;
+
+            ProjectileImpactExplosion impactExplosion = projectile.GetComponent<ProjectileImpactExplosion>();
+            InitializeImpactExplosion(impactExplosion);
+            impactExplosion.blastRadius = 6f;
+            impactExplosion.destroyOnEnemy = true;
+            impactExplosion.destroyOnWorld = true;
+            impactExplosion.lifetime = 200f;
+            impactExplosion.explosionEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Common/VFX/OmniExplosionVFXQuick.prefab").WaitForCompletion();
+            //impactExplosion.explosionEffect = primaryExplosion;
+
+            Modules.ContentPacks.projectilePrefabs.Add(projectile);
+            return projectile;
+        }
+        private static GameObject CreateOverclockProjectile()
+        {
+            GameObject projectile = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Toolbot/ToolbotGrenadeLauncherProjectile.prefab").WaitForCompletion().InstantiateClone("RMORMod_RMOR_OVC_Rocket", true);
+            primaryGhost = RMORMod.Modules.Assets.mainAssetBundle.LoadAsset<GameObject>("OVCRocket");
+
+            ProjectileSimple ps = projectile.GetComponent<ProjectileSimple>();
+            ps.desiredForwardSpeed = 175f;// 20.96f should be equivalent to tf2 rockets (1100HU/S) but this doesn't seem to be the case in-game.
+            ps.lifetime = 20f;
+
+            ProjectileDamage pd = projectile.GetComponent<ProjectileDamage>();
+            pd.damageType = DamageType.Stun1s;
+
+            projectile.GetComponent<ProjectileController>().ghostPrefab = primaryGhost;
+            if (!primaryGhost.GetComponent<NetworkIdentity>()) primaryGhost.AddComponent<NetworkIdentity>();
+            if (!primaryGhost.GetComponent<ProjectileGhostController>()) primaryGhost.AddComponent<ProjectileGhostController>();
+            if (!projectile.GetComponent<NetworkIdentity>()) projectile.AddComponent<NetworkIdentity>();
+            ProjectileRestoreOverclockOnImpact ovc = projectile.AddComponent<ProjectileRestoreOverclockOnImpact>();
+            ovc.duration = 1.2f;
 
             ProjectileImpactExplosion impactExplosion = projectile.GetComponent<ProjectileImpactExplosion>();
             InitializeImpactExplosion(impactExplosion);
@@ -97,7 +127,7 @@ namespace RMORMod.Modules
             if (!level1Ghost.GetComponent<ProjectileGhostController>()) level1Ghost.AddComponent<ProjectileGhostController>();
             projectile.GetComponent<ProjectileController>().ghostPrefab = level1Ghost;
             ProjectileRestoreOverclockOnImpact ovc = projectile.AddComponent<ProjectileRestoreOverclockOnImpact>();
-            ovc.duration = 0.6f;
+            ovc.duration = 0.8f;
 
             ProjectileImpactExplosion impactExplosion = projectile.GetComponent<ProjectileImpactExplosion>();
             InitializeImpactExplosion(impactExplosion);
@@ -125,7 +155,7 @@ namespace RMORMod.Modules
             if (!level2Ghost.GetComponent<ProjectileGhostController>()) level2Ghost.AddComponent<ProjectileGhostController>();
             projectile.GetComponent<ProjectileController>().ghostPrefab = level2Ghost;
             ProjectileRestoreOverclockOnImpact ovc = projectile.AddComponent<ProjectileRestoreOverclockOnImpact>();
-            ovc.duration = 1.2f;
+            ovc.duration = 1.6f;
 
             ProjectileImpactExplosion impactExplosion = projectile.GetComponent<ProjectileImpactExplosion>();
             InitializeImpactExplosion(impactExplosion);
@@ -153,7 +183,7 @@ namespace RMORMod.Modules
             if (!level3Ghost.GetComponent<ProjectileGhostController>()) level3Ghost.AddComponent<ProjectileGhostController>();
             projectile.GetComponent<ProjectileController>().ghostPrefab = level3Ghost;
             ProjectileRestoreOverclockOnImpact ovc = projectile.AddComponent<ProjectileRestoreOverclockOnImpact>();
-            ovc.duration = 1.8f;
+            ovc.duration = 2.4f;
 
             ProjectileImpactExplosion impactExplosion = projectile.GetComponent<ProjectileImpactExplosion>();
             InitializeImpactExplosion(impactExplosion);
@@ -181,7 +211,7 @@ namespace RMORMod.Modules
             if (!level4Ghost.GetComponent<ProjectileGhostController>()) level4Ghost.AddComponent<ProjectileGhostController>();
             projectile.GetComponent<ProjectileController>().ghostPrefab = level4Ghost;
             ProjectileRestoreOverclockOnImpact ovc = projectile.AddComponent<ProjectileRestoreOverclockOnImpact>();
-            ovc.duration = 2.4f;
+            ovc.duration = 3.2f;
 
             ProjectileImpactExplosion impactExplosion = projectile.GetComponent<ProjectileImpactExplosion>();
             InitializeImpactExplosion(impactExplosion);
@@ -207,6 +237,9 @@ namespace RMORMod.Modules
             ProjectileSteerTowardTarget pst = projectile.AddComponent<ProjectileSteerTowardTarget>();
             pst.yAxisOnly = false;
             pst.rotationSpeed = 360f;
+
+            ProjectileDamage pd = projectile.GetComponent<ProjectileDamage>();
+            pd.damageType = DamageType.WeakOnHit;
 
             ProjectileSimple ps = projectile.AddComponent<ProjectileSimple>();
             ps.desiredForwardSpeed = 40f;

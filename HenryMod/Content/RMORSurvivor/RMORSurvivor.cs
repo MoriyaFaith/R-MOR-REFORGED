@@ -46,16 +46,16 @@ namespace RMORMod.Content.RMORSurvivor
             crosshair = LegacyResourcesAPI.Load<GameObject>("prefabs/crosshair/captaincrosshair"),
             podPrefab = LegacyResourcesAPI.Load<GameObject>("prefabs/networkedobjects/robocratepod"),//RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/NetworkedObjects/SurvivorPod")
             
-            damage = 12f,
-            damageGrowth = 12f * 0.2f,
+            damage = 13f,
+            damageGrowth = 13f * 0.2f,
 
             maxHealth = 120f,
             healthGrowth = 120f * 0.3f,
 
-            healthRegen = 0.3f,
-            regenGrowth = 0.3f * 0.1f,
+            healthRegen = 0.2f,
+            regenGrowth = 0.2f * 0.1f,
 
-            armor = 50f,
+            armor = 30f,
             armorGrowth = 0f,
 
             jumpCount = 1,
@@ -515,7 +515,12 @@ namespace RMORMod.Content.RMORSurvivor
             {
                 projectilePrefab = PrimaryRocket.projectilePrefab,
                 projectileGhostReplacementPrefab = ghostP
-            }); 
+            });
+            HG.ArrayUtils.ArrayAppend(ref masterySkin.projectileGhostReplacements, new SkinDef.ProjectileGhostReplacement
+            {
+                projectilePrefab = PrimaryRocket.overclockPrefab,
+                projectileGhostReplacementPrefab = ghostP
+            });
             HG.ArrayUtils.ArrayAppend(ref masterySkin.projectileGhostReplacements, new SkinDef.ProjectileGhostReplacement
             {
                 projectilePrefab = FireCannon.level1Prefab,

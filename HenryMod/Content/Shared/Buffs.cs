@@ -81,7 +81,7 @@ namespace RMORMod.Content.Shared
             if (sender.HasBuff(Buffs.Fortify))
             {
                 args.armorAdd += 100f;
-                args.baseRegenAdd += sender.maxHealth / 20;
+                sender.barrierDecayRate = 0f;
             }
         }
     }

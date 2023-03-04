@@ -200,7 +200,7 @@ namespace EntityStates.RMOR.Utility
 		public SkillDef cancelDef;
 
         private Animator modelAnimator;
-		private float stopwatch = 0f;
+		public float stopwatch = 0f;
 		private float jetFireTime;
 		private float jetStopwatch;
 		private float timerSinceComplete = 0f;

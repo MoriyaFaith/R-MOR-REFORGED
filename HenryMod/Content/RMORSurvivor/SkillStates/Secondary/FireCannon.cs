@@ -15,7 +15,7 @@ namespace EntityStates.RMOR.Secondary
         public static GameObject level4Prefab;
         public static float baseExitDuration = 0.6f;
         public static float baseDurationBetweenShots = 0.5f;
-        public static float damageCoefficient = 6.0f;
+        public static float damageCoefficient = 8.0f;
         public static float force = 2000f;
         public static GameObject muzzleflashEffectPrefab;
 

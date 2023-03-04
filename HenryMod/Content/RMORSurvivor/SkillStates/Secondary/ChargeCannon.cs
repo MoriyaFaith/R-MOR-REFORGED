@@ -16,8 +16,7 @@ namespace EntityStates.RMOR.Secondary
         private float duration;
         public int chargeLevel;
 
-        public static float baseMinDuration = 0.5f;
-        public static float baseChargeDuration = 1.5f;
+        public static float baseChargeDuration = 1.8f;
         private float minDuration;
         private float charge;
         public float chargePercent;

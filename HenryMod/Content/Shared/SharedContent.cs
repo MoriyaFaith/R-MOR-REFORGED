@@ -58,7 +58,7 @@ namespace RMORMod.Content.Shared
             fortifySkill.isCombatSkill = false;
             fortifySkill.cancelSprintingOnActivation = false;
             fortifySkill.canceledFromSprinting = false;
-            fortifySkill.baseRechargeInterval = 7f;
+            fortifySkill.baseRechargeInterval = 10f;
             fortifySkill.interruptPriority = EntityStates.InterruptPriority.Any;
             fortifySkill.mustKeyPress = true;
             fortifySkill.beginSkillCooldownOnSkillEnd = false;

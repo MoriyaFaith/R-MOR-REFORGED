@@ -4,6 +4,7 @@ using RoR2.Projectile;
 using UnityEngine;
 using RMORMod.Modules;
 using System;
+using RMORMod.Content.Shared.Components.Body;
 
 namespace EntityStates.RMOR.Primary
 {
@@ -15,15 +16,19 @@ namespace EntityStates.RMOR.Primary
         //ordinarily I recommend not having a delay before projectiles. makes the move feel sluggish
         public static float BaseDelayDuration = 0.3f;
         public static float DamageCoefficient = 3.9f;
+        //public static float OVCDamageCoefficient = 6f;
 
         private string animationLayer = "Gesture, Override";
         public static GameObject projectilePrefab;
+        public static GameObject overclockPrefab;
         public static GameObject effectPrefab;
         public bool strikeIndex;
 
         public override void OnEnter()
         {
-            base.projectilePrefab = projectilePrefab;
+            OverclockController ovc = base.GetComponent<OverclockController>();
+            bool hasOVC = ovc && ovc.BuffActive();
+            base.projectilePrefab = hasOVC ? overclockPrefab : projectilePrefab; //shoots faster projectile in overclock
             base.effectPrefab = effectPrefab;
             this.targetMuzzle = strikeIndex ? "HandR" : "HandL";    //Anim names are reversed. This is correct.
 
@@ -34,6 +39,7 @@ namespace EntityStates.RMOR.Primary
 
             base.damageCoefficient = DamageCoefficient;
             //proc coefficient is set on the components of the projectile prefab
+
             base.force = 80f;
 
             Ray aimRay = base.GetAimRay();

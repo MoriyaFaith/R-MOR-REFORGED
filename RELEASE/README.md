@@ -1,4 +1,4 @@
-R-MOR is a devastating machine made for critical encounters: extreme armor, retractable blades and missile launchers. An unstoppable behemoth.
+# R-MOR is a devastating machine made for critical encounters: extreme armor, retractable blades and missile launchers. An unstoppable behemoth.
 
 [![](https://i.imgur.com/GOHd9Tb.jpg)]()
 [![](https://i.imgur.com/qtxtlgM.jpg)]()
@@ -73,7 +73,36 @@ Jaysian - Bankroller
 
 Sounds taken from Risk of Rain 1 and Starstorm
 
-## Changelog
+# 1.3.0 - Huge Balance Update
+### GENERAL CHANGES
+`R-MOR simply used to have way too much damage reduction to be killable when combined with FORTIFY. As a result, I had to lower it even further than it originally was when it increased per level.`
+- Armor decreased from 50 (*33% damage reduction*) to 30 (*23% damage reduction*)
+- Base damage increased from 12 to 13
+- Health regeneration decreased from 0.3 to 0.2 
+- Projectiles increase FORTIFY time by a greater amount
+### ERADICATE
+`Added an effect with OVERCLOCK like HAN-D and R-MOR's other primaries`
+- Now stuns on hit with FORTIFY or OVERCLOCK activated
+- Rockets now fly much faster with FORTIFY or OVERCLOCK active
+### CLUSTER_CANNON
+`CLUSTER_CANNON's damage just seemed rather weak to me. Maybe this is the Vergil player in me coming out when I see a single flaw in a character, but it just felt a little weak. I also really want to redo animations for this attack.`
+- Base damage increased from 600% to 800%
+- Base charge time increased from 1.5 seconds to 1.8 seconds
+- Cooldown increased from 5 seconds to 7 seconds
+### FORTIFY
+`As it was, FORTIFY was inherently powerful as its health regeneration scaled with player HP, which was unique among any type of healing in the game to my knowledge. As a result, I changed its effect to use Barrier, and have a longer Cooldown.`
+- All effects changed to blue
+- Health Regeneration buff removed
+- Now builds Barrier at a rate of 12 barrier/sec
+- Disables Barrier decay while active
+- Cooldown increased form 7 seconds to 10 seconds
+- Buff time decreased from 4 seconds to 3 seconds
+### MISSILE
+`Missiles were originally really simple, just doing a large amount of damage. However, they would proc Bands, and didn't have any ability for support like HAN-D's drones do. This makes a more offensive-based support to help R-MOR's purpose as a machine made for combat`
+- Damage reduced from 600% to 250%
+- Now applies Weak, which will likely be replaced by a custom debuff at some point
+
+## Older Changelogs
 
 `1.2.0`
 - Fixed Skewer not unlocking if pre-requisites were broken on a stage prior to the game closing
