@@ -131,7 +131,7 @@ namespace RMORMod.Content
                     }
 
                     //Plays the DRONE sound when spawned via BaseMeleeAttack hitEffectPrefab for some reason.
-                    EffectManager.SimpleEffect(EntityStates.RMOR.Secondary.FireSlam.hitEffect, damageInfo.position, default, true);
+                    EffectManager.SimpleEffect(EntityStates.RMOR.Special.FireSlam.hitEffect, damageInfo.position, default, true);
                 }
             }
             orig(self, damageInfo);

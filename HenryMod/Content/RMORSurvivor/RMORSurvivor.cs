@@ -142,7 +142,7 @@ namespace RMORMod.Content.RMORSurvivor
 
             CreateHitEffects();
             EntityStates.RMOR.Utility.BeginOverclock.jetEffectPrefab = BuildOverclockJets();
-            EntityStates.RMOR.Secondary.FireSlam.earthquakeEffectPrefab = CreateSlamEffect();
+            EntityStates.RMOR.Special.FireSlam.earthquakeEffectPrefab = CreateSlamEffect();
         }
 
         //TODO: REPLACE
@@ -268,7 +268,7 @@ namespace RMORMod.Content.RMORSurvivor
         private void InitializeSpecialSkills()
         {
             SkillDef specialSkillCannon = SkillDef.CreateInstance<SkillDef>();
-            specialSkillCannon.activationState = new SerializableEntityStateType(typeof(EntityStates.RMOR.Secondary.ChargeCannon));
+            specialSkillCannon.activationState = new SerializableEntityStateType(typeof(EntityStates.RMOR.Special.ChargeCannon));
             specialSkillCannon.skillNameToken = RMOR_PREFIX + "SECONDARY_NAME";
             specialSkillCannon.skillName = "ChargeCannon";
             specialSkillCannon.skillDescriptionToken = RMOR_PREFIX + "SECONDARY_DESC";
@@ -290,7 +290,7 @@ namespace RMORMod.Content.RMORSurvivor
             Skilldefs.SpecialChargeCannon = specialSkillCannon;
 
             SkillDef specialSlashSkill = SkillDef.CreateInstance<SkillDef>();
-            specialSlashSkill.activationState = new SerializableEntityStateType(typeof(EntityStates.RMOR.Secondary.ChargeSlam));
+            specialSlashSkill.activationState = new SerializableEntityStateType(typeof(EntityStates.RMOR.Special.ChargeSlam));
             specialSlashSkill.skillNameToken = RMOR_PREFIX + "ALTSECONDARY_NAME";
             specialSlashSkill.skillName = "ChargeHammer";
             specialSlashSkill.skillDescriptionToken = RMOR_PREFIX + "ALTSECONDARY_DESC";
@@ -355,7 +355,7 @@ namespace RMORMod.Content.RMORSurvivor
 
             //DroneSkillDef too restrictive, but it's there if it's needed.
             SkillDef droneSkill = SkillDef.CreateInstance<SkillDef>();
-            droneSkill.activationState = new SerializableEntityStateType(typeof(EntityStates.RMOR.Special.FireSeekingDrone));
+            droneSkill.activationState = new SerializableEntityStateType(typeof(EntityStates.RMOR.Secondary.FireSeekingDrone));
             droneSkill.skillNameToken = RMORSurvivor.RMOR_PREFIX + "SPECIAL_NAME";
             droneSkill.skillName = "MissileDrones";
             droneSkill.skillDescriptionToken = RMORSurvivor.RMOR_PREFIX + "SPECIAL_DESC";
@@ -383,7 +383,7 @@ namespace RMORMod.Content.RMORSurvivor
         private void InitializeScepterSkills()
         {
             SkillDef scepterSkill = SkillDef.CreateInstance<SkillDef>();
-            scepterSkill.activationState = new SerializableEntityStateType(typeof(EntityStates.RMOR.Secondary.ChargeCannonScepter));
+            scepterSkill.activationState = new SerializableEntityStateType(typeof(EntityStates.RMOR.Special.ChargeCannonScepter));
             scepterSkill.skillNameToken = RMOR_PREFIX + "SECONDARY_SCEPTER_NAME";
             scepterSkill.skillName = "ChargeCannonScepter";
             scepterSkill.skillDescriptionToken = RMOR_PREFIX + "SECONDARY_SCEPTER_DESC";
@@ -407,7 +407,7 @@ namespace RMORMod.Content.RMORSurvivor
             Skilldefs.SpecialChargeCannonScepter = scepterSkill;
 
             SkillDef scepterHammerSkill = SkillDef.CreateInstance<SkillDef>();
-            scepterHammerSkill.activationState = new SerializableEntityStateType(typeof(EntityStates.RMOR.Secondary.ChargeSlamScepter));
+            scepterHammerSkill.activationState = new SerializableEntityStateType(typeof(EntityStates.RMOR.Special.ChargeSlamScepter));
             scepterHammerSkill.skillNameToken = RMOR_PREFIX + "ALTSECONDARY_SCEPTER_NAME";
             scepterHammerSkill.skillName = "ChargeSlamScepter";
             scepterHammerSkill.skillDescriptionToken = RMOR_PREFIX + "ALTSECONDARY_SCEPTER_DESC";
@@ -581,7 +581,7 @@ namespace RMORMod.Content.RMORSurvivor
                     {
                         new SkinDef.ProjectileGhostReplacement
                         {
-                            projectilePrefab = EntityStates.RMOR.Special.FireSeekingDrone.projectilePrefab,
+                            projectilePrefab = EntityStates.RMOR.Secondary.FireSeekingDrone.projectilePrefab,
                             projectileGhostReplacementPrefab = CreateProjectileGhostReplacementPrefab(skin),
                         }
                     };
@@ -666,10 +666,6 @@ namespace RMORMod.Content.RMORSurvivor
 
             Modules.ContentPacks.entityStates.Add(typeof(EntityStates.RMOR.Secondary.FireSeekingDrone));
 
-            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.RMOR.Secondary.ChargeSlamScepter));
-            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.RMOR.Secondary.FireSlamScepter));
-            Modules.ContentPacks.entityStates.Add(typeof(EntityStates.RMOR.Secondary.ChargeCannonScepter));
-
             Modules.ContentPacks.entityStates.Add(typeof(EntityStates.RMOR.Utility.BeginOverclock));
             Modules.ContentPacks.entityStates.Add(typeof(EntityStates.RMOR.Utility.CancelOverclock));
             Modules.ContentPacks.entityStates.Add(typeof(EntityStates.RMOR.Utility.BeginFocus));
@@ -729,7 +725,7 @@ namespace RMORMod.Content.RMORSurvivor
             ec.soundName = "Play_MULT_shift_hit";
             Modules.ContentPacks.effectDefs.Add(new EffectDef(hitEffect));
             EntityStates.RMOR.Primary.SwingStab.hitEffect = hitEffect;
-            EntityStates.RMOR.Secondary.FireSlam.hitEffect = hitEffect;
+            EntityStates.RMOR.Special.FireSlam.hitEffect = hitEffect;
 
 
             /*NetworkSoundEventDef nse = Modules.Assets.CreateNetworkSoundEventDef("Play_MULT_shift_hit");
