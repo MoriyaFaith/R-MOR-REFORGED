@@ -29,6 +29,8 @@ Place the RMOR_Reforged folder in /Risk of Rain 2/BepInEx/plugins/
 ## Known Issues
 Ragdoll kind of explodes and goes wacky. 
 
+Mastery Skin Assets are not visible to other players.
+
 If anything is found, please contact me on the RoR2 modding server!
 
 ## Resources Used
@@ -102,7 +104,16 @@ Sounds taken from Risk of Rain 1 and Starstorm
 - Damage reduced from 600% to 250%
 - Now applies Weak, which will likely be replaced by a custom debuff at some point
 
-## Older Changelogs
+## Other Changelogs
+`1.3.1`
+- Fixed Several Achievements heavily lagging and flooding logs
+- Fixed SKEWER not animating when seen by other players
+
+`1.3.2`
+- Fixed Formatting error in text.
+- Fixed Keywords not appearing.
+- Fortify now scales with level
+- Fixed Eradicate not actually stunning enemies
 
 `1.2.0`
 - Fixed Skewer not unlocking if pre-requisites were broken on a stage prior to the game closing

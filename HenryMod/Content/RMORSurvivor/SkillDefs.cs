@@ -7,10 +7,10 @@ namespace RMORMod.Content.RMORSurvivor
         public static SkillDef PrimaryCannon;
         public static SkillDef PrimaryGatlingGun;
         public static SkillDef PrimaryStab;
-        public static SkillDef SecondaryChargeCannon;
-        public static SkillDef SecondaryChargeCannonScepter;
-        public static SkillDef SecondaryChargeHammer;
-        public static SkillDef SecondaryChargeHammerScepter;
+        public static SkillDef SpecialChargeCannon;
+        public static SkillDef SpecialChargeCannonScepter;
+        public static SkillDef SpecialChargeSlash;
+        public static SkillDef SpecialChargeSlashScepter;
         public static SkillDef SpecialMissile;
     }
 }

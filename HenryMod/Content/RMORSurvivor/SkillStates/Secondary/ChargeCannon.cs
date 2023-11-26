@@ -2,7 +2,7 @@
 using RMORMod.Content.Shared.Components.Body;
 using UnityEngine;
 
-namespace EntityStates.RMOR.Secondary
+namespace EntityStates.RMOR.Special
 {
     public class ChargeCannon : BaseState
     {

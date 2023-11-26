@@ -1,4 +1,4 @@
-﻿namespace EntityStates.RMOR.Secondary
+﻿namespace EntityStates.RMOR.Special
 {
     public class ChargeCannonScepter : ChargeCannon
     {

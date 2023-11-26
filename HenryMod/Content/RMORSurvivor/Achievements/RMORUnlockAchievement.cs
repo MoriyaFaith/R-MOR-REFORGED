@@ -11,21 +11,26 @@ namespace RMORMod.Content.RMOR.Achievements
         {
             base.OnInstall();
 
-            RoR2Application.onUpdate += this.CheckArmor;
+            On.RoR2.CharacterBody.RecalculateStats += this.CheckArmor;
         }
 
         public override void OnUninstall()
         {
             base.OnUninstall();
 
-            RoR2Application.onUpdate -= this.CheckArmor;
+            On.RoR2.CharacterBody.RecalculateStats -= this.CheckArmor;
         }
 
-        public void CheckArmor()
+        private void CheckArmor(On.RoR2.CharacterBody.orig_RecalculateStats orig, CharacterBody self)
         {
-            if (base.localUser != null && base.localUser.cachedBody != null && base.localUser.cachedBody.armor >= 1000f)
+            orig(self);
+
+            if (self && base.localUser.cachedBody && base.localUser.cachedBody == self) // check if local player body is the body recalculating its stats here
             {
-                base.Grant();
+                if (self.armor >= 1000f)
+                {
+                    base.Grant();
+                }
             }
         }
     }

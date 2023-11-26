@@ -2,7 +2,7 @@
 using UnityEngine;
 using RoR2.Projectile;
 using R2API;
-using EntityStates.RMOR.Special;
+using EntityStates.RMOR.Secondary;
 using RMORMod.Content.RMORSurvivor.Components.Body;
 using UnityEngine.AddressableAssets;
 using RMORMod.Content.RMORSurvivor.Components.Projectiles;

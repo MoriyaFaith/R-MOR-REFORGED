@@ -4,7 +4,7 @@ using RoR2;
 using RoR2.Projectile;
 using UnityEngine;
 
-namespace EntityStates.RMOR.Special
+namespace EntityStates.RMOR.Secondary
 {
     public class FireSeekingDrone : BaseState
     {

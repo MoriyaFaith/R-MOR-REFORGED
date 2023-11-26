@@ -48,21 +48,21 @@ namespace RMORMod.Content.RMORSurvivor.Components.Body
         }
 
         [Server]
-        public void AddSpecialStockServer()
+        public void AddSecondaryStockServer()
         {
             if (!NetworkServer.active) return;
-            RpcAddSpecialStock();
+            RpcAddSecondaryStock();
         }
 
         [ClientRpc]
-        public void RpcAddSpecialStock()
+        public void RpcAddSecondaryStock()
         {
-            if (hasAuthority && characterBody.skillLocator.special.stock < characterBody.skillLocator.special.maxStock && (characterBody.skillLocator.special.skillDef == Skilldefs.SpecialMissile))
+            if (hasAuthority && characterBody.skillLocator.secondary.stock < characterBody.skillLocator.secondary.maxStock && (characterBody.skillLocator.secondary.skillDef == Skilldefs.SpecialMissile))
             {
-                characterBody.skillLocator.special.stock++;
-                if (characterBody.skillLocator.special.stock == characterBody.skillLocator.special.maxStock)
+                characterBody.skillLocator.secondary.stock++;
+                if (characterBody.skillLocator.secondary.stock == characterBody.skillLocator.secondary.maxStock)
                 {
-                    characterBody.skillLocator.special.rechargeStopwatch = 0f;
+                    characterBody.skillLocator.secondary.rechargeStopwatch = 0f;
                 }
             }
         }

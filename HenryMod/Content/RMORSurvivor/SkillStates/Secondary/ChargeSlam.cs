@@ -3,7 +3,7 @@ using RMORMod.Content.RMORSurvivor.Components.Body;
 using RoR2;
 using UnityEngine;
 
-namespace EntityStates.RMOR.Secondary
+namespace EntityStates.RMOR.Special
 {
     public class ChargeSlam : BaseState
     {

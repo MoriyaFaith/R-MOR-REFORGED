@@ -137,9 +137,9 @@ namespace RMORMod.Content.RMORSurvivor.Components.Body
         {
             if (hasAuthority)
             {
-                if (characterBody.skillLocator.special.stock != _droneCountServer)
+                if (characterBody.skillLocator.secondary.stock != _droneCountServer)
                 {
-                    CmdUpdateDroneCount(characterBody.skillLocator.special.stock);
+                    CmdUpdateDroneCount(characterBody.skillLocator.secondary.stock);
                 }
             }
             if (sleepTimer > 0f)
@@ -176,7 +176,7 @@ namespace RMORMod.Content.RMORSurvivor.Components.Body
 
         private void UpdateMotion()
         {
-            droneCount = hasAuthority ? characterBody.skillLocator.special.stock : _droneCountServer;
+            droneCount = hasAuthority ? characterBody.skillLocator.secondary.stock : _droneCountServer;
             for (int i = 0; i < maxFollowingDrones; i++)
             {
                 if (i < droneCount)

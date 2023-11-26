@@ -24,14 +24,14 @@ namespace RMORMod.Content.RMOR.Achievements
         {
             base.OnInstall();
             base.localUser.onBodyChanged += this.OnBodyChanged;
-            RoR2Application.onFixedUpdate += this.CheckHealth;
+            On.RoR2.HealthComponent.TakeDamage += HealthComponent_TakeDamage;
             SceneCatalog.onMostRecentSceneDefChanged += this.OnMostRecentSceneDefChanged;
             TeleporterInteraction.onTeleporterChargedGlobal += this.CheckTeleporter;
         }
         public override void OnUninstall()
         {
             base.localUser.onBodyChanged -= this.OnBodyChanged;
-            RoR2Application.onFixedUpdate -= this.CheckHealth;
+            On.RoR2.HealthComponent.TakeDamage -= HealthComponent_TakeDamage;
 			SceneCatalog.onMostRecentSceneDefChanged -= this.OnMostRecentSceneDefChanged;
             TeleporterInteraction.onTeleporterChargedGlobal -= this.CheckTeleporter;
             base.OnUninstall();
@@ -49,12 +49,13 @@ namespace RMORMod.Content.RMOR.Achievements
             this.failed = false;
         }
 
-        private void CheckHealth()
+        private void HealthComponent_TakeDamage(On.RoR2.HealthComponent.orig_TakeDamage orig, HealthComponent self, DamageInfo damageInfo)
         {
+            orig(self, damageInfo);
+
             if (this.healthComponent && this.healthComponent.combinedHealth < (this.healthComponent.fullCombinedHealth * 0.6f)) //40% Health
             {
                 this.failed = true;
-                Log.Warning("this.failed set to true due to health threshold");
             }
         }
 

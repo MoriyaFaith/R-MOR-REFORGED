@@ -7,7 +7,7 @@ using RMORMod.Content.RMORSurvivor;
 using RMORMod.Content;
 using RMORMod.Content.Shared.Components.Body;
 
-namespace EntityStates.RMOR.Secondary
+namespace EntityStates.RMOR.Special
 {
     public class FireSlam : BaseMeleeAttack
     {

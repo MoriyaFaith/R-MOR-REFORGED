@@ -17,7 +17,7 @@ namespace RMORMod.Content.Shared.Components.Body
 
         public void Start()
         {
-            characterBody.skillLocator.special.RemoveAllStocks();
+            characterBody.skillLocator.secondary.RemoveAllStocks();
             if (characterBody.master)
             {
                 dronePersist = characterBody.master.gameObject.GetComponent<DroneStockPersist>();
@@ -27,9 +27,9 @@ namespace RMORMod.Content.Shared.Components.Body
                 }
                 else
                 {
-                    if (characterBody.skillLocator.special.skillDef == RMORSurvivor.Skilldefs.SpecialMissile)
+                    if (characterBody.skillLocator.secondary.skillDef == RMORSurvivor.Skilldefs.SpecialMissile)
                     {
-                        characterBody.skillLocator.special.stock = dronePersist.droneCount;
+                        characterBody.skillLocator.secondary.stock = dronePersist.droneCount;
                     }
                 }
             }
@@ -44,16 +44,16 @@ namespace RMORMod.Content.Shared.Components.Body
         {
             if (hasAuthority)
             {
-                if (dronePersist && (characterBody.skillLocator.special.skillDef == Skilldefs.SpecialMissile))
+                if (dronePersist && (characterBody.skillLocator.secondary.skillDef == Skilldefs.SpecialMissile))
                 {
-                    if (characterBody.skillLocator.special.stock > dronePersist.droneCount)
+                    if (characterBody.skillLocator.secondary.stock > dronePersist.droneCount)
                     {
                         Util.PlaySound("Play_RMOR_DroneGain", gameObject);
                     }
-                    dronePersist.droneCount = characterBody.skillLocator.special.stock;
+                    dronePersist.droneCount = characterBody.skillLocator.secondary.stock;
                 }
 
-                int droneCount = (characterBody.skillLocator.special.skillDef == Skilldefs.SpecialMissile) ? characterBody.skillLocator.special.stock : 0;
+                int droneCount = (characterBody.skillLocator.secondary.skillDef == Skilldefs.SpecialMissile) ? characterBody.skillLocator.secondary.stock : 0;
                 ReadOnlyCollection<TeamComponent> teamMembers = TeamComponent.GetTeamMembers(characterBody.teamComponent.teamIndex);
                 foreach (TeamComponent tc in teamMembers)
                 {
@@ -105,7 +105,7 @@ namespace RMORMod.Content.Shared.Components.Body
                 RMORNetworkComponent oc = characterBody.GetComponent<RMORNetworkComponent>();
                 if (oc)
                 {
-                    oc.AddSpecialStockServer();
+                    oc.AddSecondaryStockServer();
                 }
             }
         }

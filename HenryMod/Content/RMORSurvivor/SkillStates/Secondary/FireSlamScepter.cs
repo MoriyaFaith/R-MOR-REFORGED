@@ -1,7 +1,7 @@
 ﻿using RMORMod.Content;
 using R2API;
 
-namespace EntityStates.RMOR.Secondary
+namespace EntityStates.RMOR.Special
 {
     public class FireSlamScepter : FireSlam
     {
