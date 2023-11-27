@@ -96,7 +96,7 @@ namespace EntityStates.RMOR.Special
 
             if (base.isAuthority)
             {
-                if (!base.inputBank || !base.inputBank.skill2.down)
+                if (!base.inputBank || !base.inputBank.skill4.down)
                 {
                     if (chargeLevel > 0)
                     {

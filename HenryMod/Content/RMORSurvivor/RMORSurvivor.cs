@@ -363,12 +363,14 @@ namespace RMORMod.Content.RMORSurvivor
             droneSkill.cancelSprintingOnActivation = false;
             droneSkill.canceledFromSprinting = false;
             droneSkill.baseRechargeInterval = 0f;
+            if (Modules.Config.skillIssue) droneSkill.baseRechargeInterval = 20f;
             droneSkill.interruptPriority = EntityStates.InterruptPriority.Any;
             droneSkill.mustKeyPress = false;
             droneSkill.beginSkillCooldownOnSkillEnd = true;
             droneSkill.baseMaxStock = 10;
             droneSkill.fullRestockOnAssign = false;
             droneSkill.rechargeStock = 0;
+            if (Modules.Config.skillIssue) droneSkill.rechargeStock = 1;
             droneSkill.requiredStock = 1;
             droneSkill.stockToConsume = 1;
             droneSkill.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texSpecialMissile.png");

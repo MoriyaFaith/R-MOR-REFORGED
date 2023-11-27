@@ -60,7 +60,7 @@ namespace RMORMod.Modules
             primaryGhost = RMORMod.Modules.Assets.mainAssetBundle.LoadAsset<GameObject>("PrimaryRocket");
 
             ProjectileSimple ps = projectile.GetComponent<ProjectileSimple>();
-            ps.desiredForwardSpeed = 100f;// 20.96f should be equivalent to tf2 rockets (1100HU/S) but this doesn't seem to be the case in-game.
+            ps.desiredForwardSpeed = 125f;// 20.96f should be equivalent to tf2 rockets (1100HU/S) but this doesn't seem to be the case in-game.
             ps.lifetime = 20f;
 
             projectile.GetComponent<ProjectileController>().ghostPrefab = primaryGhost;
@@ -119,7 +119,7 @@ namespace RMORMod.Modules
             level1Ghost = RMORMod.Modules.Assets.mainAssetBundle.LoadAsset<GameObject>("Level1Blast").InstantiateClone("RMOR_ChargeShotGhost");
 
             ProjectileSimple ps = projectile.GetComponent<ProjectileSimple>();
-            ps.desiredForwardSpeed = 75f;// 20.96f should be equivalent to tf2 rockets (1100HU/S) but this doesn't seem to be the case in-game.
+            ps.desiredForwardSpeed = 100f;// 20.96f should be equivalent to tf2 rockets (1100HU/S) but this doesn't seem to be the case in-game.
             ps.lifetime = 20f;
 
 
@@ -147,7 +147,7 @@ namespace RMORMod.Modules
             level2Ghost = RMORMod.Modules.Assets.mainAssetBundle.LoadAsset<GameObject>("Level2Blast").InstantiateClone("RMOR_ChargeShotGhost");
 
             ProjectileSimple ps = projectile.GetComponent<ProjectileSimple>();
-            ps.desiredForwardSpeed = 100f;// 20.96f should be equivalent to tf2 rockets (1100HU/S) but this doesn't seem to be the case in-game.
+            ps.desiredForwardSpeed = 125f;// 20.96f should be equivalent to tf2 rockets (1100HU/S) but this doesn't seem to be the case in-game.
             ps.lifetime = 20f;
 
 
@@ -175,7 +175,7 @@ namespace RMORMod.Modules
             level3Ghost = RMORMod.Modules.Assets.mainAssetBundle.LoadAsset<GameObject>("Level3Blast").InstantiateClone("RMOR_ChargeShotGhost");
 
             ProjectileSimple ps = projectile.GetComponent<ProjectileSimple>();
-            ps.desiredForwardSpeed = 125f;// 20.96f should be equivalent to tf2 rockets (1100HU/S) but this doesn't seem to be the case in-game.
+            ps.desiredForwardSpeed = 175f;// 20.96f should be equivalent to tf2 rockets (1100HU/S) but this doesn't seem to be the case in-game.
             ps.lifetime = 20f;
 
 
@@ -203,7 +203,7 @@ namespace RMORMod.Modules
             level4Ghost = RMORMod.Modules.Assets.mainAssetBundle.LoadAsset<GameObject>("Level4Blast").InstantiateClone("RMOR_ChargeShotGhost");
 
             ProjectileSimple ps = projectile.GetComponent<ProjectileSimple>();
-            ps.desiredForwardSpeed = 150f;// 20.96f should be equivalent to tf2 rockets (1100HU/S) but this doesn't seem to be the case in-game.
+            ps.desiredForwardSpeed = 180f;// 20.96f should be equivalent to tf2 rockets (1100HU/S) but this doesn't seem to be the case in-game.
             ps.lifetime = 20f;
 
 

@@ -83,7 +83,7 @@ namespace EntityStates.RMOR.Special
             if (base.fixedAge >= this.minDuration)
             {
                 //bool hasHammer = base.skillLocator && base.skillLocator.primary && base.skillLocator.primary.skillDef == RMORMod.Content.HANDSurvivor.SkillDefs.PrimaryHammer;
-                if (base.isAuthority && (base.inputBank && !base.inputBank.skill2.down))// || hasHammer
+                if (base.isAuthority && (base.inputBank && !base.inputBank.skill4.down))// || hasHammer
                 {
                     /*if (hasHammer)
                     {
