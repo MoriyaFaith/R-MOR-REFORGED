@@ -149,15 +149,11 @@ namespace RMORMod.Content.RMORSurvivor
         public override CustomRendererInfo[] customRendererInfos { get; set; } = new CustomRendererInfo[] {
             new CustomRendererInfo {
                 childName = "RMORBody",
-                material = Assets.mainAssetBundle.LoadAsset<Material>("matRMORDefault"),
-            },
-            new CustomRendererInfo {
-                childName = "RMORextra",
-                material = Assets.mainAssetBundle.LoadAsset<Material>("matRMORDefault"),
+                material = Assets.mainAssetBundle.LoadAsset<Material>("matRMOR"),
             },
             new CustomRendererInfo {
                 childName = "Drone",
-                material = Assets.mainAssetBundle.LoadAsset < Material >("matRMORDrone"),
+                material = Assets.mainAssetBundle.LoadAsset<Material>("matRMORDrone"),
             },
         };
 
@@ -471,7 +467,6 @@ namespace RMORMod.Content.RMORSurvivor
 
             defaultSkin.meshReplacements = Modules.Skins.getMeshReplacements(defaultRendererinfos,
                 "RMORmesh",
-                "RMORextra",
                 null);
 
             skins.Add(defaultSkin);
@@ -491,7 +486,6 @@ namespace RMORMod.Content.RMORSurvivor
 
             masterySkin.meshReplacements = Modules.Skins.getMeshReplacements(defaultRendererinfos,
                 "2HOUmesh",
-                "2HOUextra",
                 "meshReimu");
 
             #region Projectiles
@@ -551,8 +545,7 @@ namespace RMORMod.Content.RMORSurvivor
             #endregion
 
             masterySkin.rendererInfos[0].defaultMaterial = Assets.mainAssetBundle.LoadAsset<Material>("matRMORMastery");
-            masterySkin.rendererInfos[1].defaultMaterial = Assets.mainAssetBundle.LoadAsset<Material>("matRMORMasteryExtra");
-            masterySkin.rendererInfos[2].defaultMaterial = Assets.mainAssetBundle.LoadAsset<Material>("matRMORDroneMastery");
+            masterySkin.rendererInfos[1].defaultMaterial = Assets.mainAssetBundle.LoadAsset<Material>("matRMORDroneMastery");
 
             UnlockableDef masteryUnlockableDef = ScriptableObject.CreateInstance<UnlockableDef>();
             masteryUnlockableDef.cachedName = "Skins.RMOR.Mastery";
