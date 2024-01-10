@@ -1,0 +1,67 @@
+{
+	strings:
+	{
+	"MORIYA_RMOR_BODY_NAME" : "R-MOR",
+	"MORIYA_RMOR_BODY_SUBTITLE" : "火箭机器人",
+	"MORIYA_RMOR_BODY_DESCRIPTION" : "R-MOR是一种专为高烈度遭遇战而设计的毁灭性机器：拥有极强的装甲、可伸缩刀刃和导弹发射器。它是不可阻挡的战争巨兽。<style=cSub>\r\n\r\n< ! >技能“根除”沉重但强大。它擅长于对弱小的敌人逐一点名。\r\n\r\n< ! >技能“集束火炮”需要时间充能以达到最大威力，达到最大充能时其将十分强大。如果不能直接杀死敌人，它会将敌人炸飞出去。\r\n\r\n< ! >技能“筑防”可以弥补R-MOR基础生命回复能力弱的缺点。\r\n\r\n< ! >中途取消技能“筑防”可使你向上推进并够到天上的敌人。\r\n\r\n< ! > 使用技能“导弹”以攻速为代价造成海量伤害。\r\n\r\n",
+	"MORIYA_RMOR_BODY_LORE" :  "<style=cMono>\r\n//<style=cMono>\r\n//–来自UES[保密]部门的自动转录–//</style>\r\n\r\n<i>*瓶装 <color=#327FFF>尖晶石补剂</color>*</i>\n\n不带<color=#6955A6>统率神器</color> 玩游戏是不是最终形式的戴绿帽？\n\n我无法想象或理解有什么比不拿<color=#6955A6>统率神器</color>更戴绿帽的了。老实说，理性地想想。你花了大约一个钟头去跑、跳、杀，只为了得到一个该死的<color=#77FF16>鱿鱼卵囊</color>。你为了你的游戏投入了所有的努力——躲避<style=cIsHealth>石傀儡</style>的激光，忍受无数 <style=cIsHealth>小型幽魂</color>在你头顶刷出来，激活<color=#E5C962>山之神龛</color>…而结果只是：你的物品栏被<color=#FFFFFF>战旗</color>跟<color=#FFFFFF>怪物牙齿</color>占满了， 这些还都是花钱买的。\n\n在天胡局？很好。你买的<color=#E5C962>箱子</color>里开出来的净是一坨对你的游戏体验毫无帮助的破玩意。它们榨干了你从干掉<style=cIsHealth>利莫里亚们</style>得来的辛苦钱。\n\n作为一个玩这个游戏的人，你<style=cIsHealth>实际上</style>是把你两个小时的生命浪费在打开盒子和祈祷不要再得到一个<color=#77FF16>时间泡泡</color>上。这才是最终和最彻底的戴绿帽。拿脑子想想吧。\r\n<style=cMono>\r\n转录完毕。\r\n</style>\r\n \r\n\r\n",
+	"MORIYA_RMOR_BODY_OUTRO_FLAVOR" : "..于是它离开了，露出腐朽的痕迹。",
+	"MORIYA_RMOR_BODY_OUTRO_FAILURE" : "..于是它消失了，再难履行它唯一的责任。",
+	
+	"MORIYA_RMOR_BODY_PASSIVE_NAME" : "集群突击",
+	"MORIYA_RMOR_BODY_PASSIVE_DESC" : "令队伍中的全体<style=cIsUtility>无人机</style><style=cIsDamage>提升</style><style=cIsDamage>5%</style>攻速。",\
+
+	"MORIYA_RMOR_BODY_PRIMARY_NAME" : "根除",
+	"MORIYA_RMOR_BODY_PRIMARY_DESC" : "发射一枚导弹，爆炸并造成<style=cIsDamage>390%伤害</style>。当技能<style=cIsHealing>筑防</style>激活时，导弹弹速更快且<style=cIsUtility>命中时造成眩晕</style>。",
+	"MORIYA_RMOR_BODY_PRIMARY_GUN_NAME" : "突击",
+	"MORIYA_RMOR_BODY_PRIMARY_GUN_DESC" : "使用两挺格林机炮快速射击，造成<style=cIsDamage>90%伤害</style>。",
+	"MORIYA_RMOR_BODY_PRIMARY_BLADE_NAME" : "扦子<color=#8888>(串串香)</color>",
+	"MORIYA_RMOR_BODY_PRIMARY_BLADE_DESC" : "刺穿范围内所有敌人，造成<style=cIsDamage>220%伤害</style>。当技能<style=cIsHealing>筑防</style>激活时额外造成<style=cIsDamage>流血</style>。",
+	
+	"MORIYA_RMOR_BODY_ALTSECONDARY_NAME" : "强制重组",
+	"MORIYA_RMOR_BODY_ALTSECONDARY_DESC" : "<style=cIsDamage>出血</style>。充能后对范围内所有敌人施以重压，造成<style=cIsDamage>600%-1500%伤害</style>。",
+	"MORIYA_RMOR_BODY_ALTSECONDARY_SCEPTER_NAME" : "无限制重组",
+	"MORIYA_RMOR_BODY_ALTSECONDARY_SCEPTER_DESC" : "<style=cIsDamage>出血</style>。充能后对范围内所有敌人施以<style=cIsHealth>压倒性</style>冲击，造成<style=cIsDamage>900%-2250%伤害</style>。",
+
+	"MORIYA_RMOR_BODY_SECONDARY_NAME" : "集束火炮",
+	"MORIYA_RMOR_BODY_SECONDARY_DESC" : "蓄力后发射一发大威力飞弹，造成<style=cIsDamage>800%-2400%伤害</style>。",
+	"MORIYA_RMOR_BODY_SECONDARY_SCEPTER_NAME" : "毁灭大炮",
+	"MORIYA_RMOR_BODY_SECONDARY_SCEPTER_DESC" : "快速蓄力后发射一发大威力飞弹，造成<style=cIsDamage>800%-3200%伤害</style>。",
+	
+	
+	"KEYWORD_MORIYAHANDOVERCLOCKED_BOOST" : "<style=cKeywordName>增压</style><style=cSub>此技能可以被提前取消以触发一次向上推进。</style>",
+	"KEYWORD_MORIYARMOR_BLEEDING" : "<style=cKeywordName>出血</style><style=cSub>技能命中时造成流血。</style>",
+	"KEYWORD_MORIYARMOR_Weaken" : "<style=cKeywordName>削弱</style><style=cSub>降低30%护甲，并降低40%移速与伤害。</style>",
+	
+	"MORIYA_RMOR_BODY_UTILITY_CANCEL_NAME" : "撤销<color=#8888>(Ctrl+z)</color>",
+	"MORIYA_RMOR_BODY_UTILITY_CANCEL_DESC" : "<style=cIsUtility>向上推进</style>。",
+	
+	"MORIYA_RMOR_BODY_UTILITY_NAME" : "超频",
+	"MORIYA_RMOR_BODY_UTILITY_DESC" : "<style=cIsUtility>增压</style>。提升<style=cIsDamage>40%</style>的<style=cIsUtility>移速</style>与<style=cIsDamage>攻速</style>。攻击敌人以<style=cIsUtility>延长持续时间</style>。",
+	
+	"MORIYA_RMOR_BODY_UTILITY_RMOR_NAME" : "筑防",
+	"MORIYA_RMOR_BODY_UTILITY_RMOR_DESC" : "<style=cIsUtility>增压</style>。获得<style=cIsUtility>100护甲</style>并持续获得<style=cIsUtility>每秒12点屏障</style>。攻击敌人以<style=cIsUtility>延长持续时间</style>。",
+	
+	"MORIYA_RMOR_BODY_UTILITY_NEMESIS_NAME" : "专注",
+	"MORIYA_RMOR_BODY_UTILITY_NEMESIS_DESC" : "<style=cIsUtility>增压</style>。获得<style=cIsDamage>+50%伤害</style>与<style=cIsUtility>50护甲</style>但降低<style=cIsHealth>30%移速</style>。攻击敌人以<style=cIsUtility>延长持续时间</style>。",
+	
+	"MORIYA_RMOR_BODY_SPECIAL_NAME" : "导弹",
+	"MORIYA_RMOR_BODY_SPECIAL_DESC" : "发射导弹，造成<style=cIsDamage>250%伤害</style>并在命中时<style=cIsDamage>削弱</style>敌人。击杀与近战命中<style=cIsUtility>重置技能冷却</style>。",
+	
+	"ACHIEVEMENT_MORIYARMORSURVIVORUNLOCK_NAME" : "身经百战",
+	"ACHIEVEMENT_MORIYARMORSURVIVORUNLOCK_DESCRIPTION" : "在一场游戏中达到1000护甲。",
+	
+	"ACHIEVEMENT_MORIYARMOROVERCLOCKUNLOCK_NAME" : "R-MOR：辛烷",
+	"ACHIEVEMENT_MORIYARMOROVERCLOCKUNLOCK_DESCRIPTION" : "作为R-MOR，激活技能“筑防”持续45秒以上。",
+	
+	"ACHIEVEMENT_MORIYARMORSKEWERUNLOCK_NAME" : "R-MOR：坚不可摧",
+	"ACHIEVEMENT_MORIYARMORSKEWERUNLOCK_DESCRIPTION" : "作为R-MOR，在生命值不低于上限的60%的前提下通过一层关卡。",
+
+	"ACHIEVEMENT_MORIYARMORSLASHUNLOCK_NAME" : "R-MOR：人群控制",
+	"ACHIEVEMENT_MORIYARMORSLASHUNLOCK_DESCRIPTION" : "作为R-MOR，一次击杀20名敌人。",
+	
+	"MORIYA_RMOR_BODY_MASTERY_SKIN_NAME" : "2-HOU",
+	"ACHIEVEMENT_MORIYARMORCLEARGAMEMONSOON_NAME" : "R-MOR：精通",
+	"ACHIEVEMENT_MORIYARMORCLEARGAMEMONSOON_DESCRIPTION" : "作为R-MOR，在季风难度下通关游戏或抹除自己。",
+	}
+}
